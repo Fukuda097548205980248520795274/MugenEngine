@@ -13,10 +13,42 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{475c444e-45e0-4f8b-a158-8b55ba27939a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include">
+      <UniqueIdentifier>{6459b621-5613-400b-8a6a-9f8c21c0701b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\WinApp">
+      <UniqueIdentifier>{bdeb0850-bb48-4a00-a675-4a12f087b509}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\LogString">
+      <UniqueIdentifier>{aa8eef1e-8185-4c86-8f07-d46f4058c575}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\MugenEngine.cpp">
+      <Filter>Engine\Include</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\WinApp\WinApp.cpp">
+      <Filter>Engine\Include\WinApp</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\LogString\LogString.cpp">
+      <Filter>Engine\Include\LogString</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\Include\MugenEngine.h">
+      <Filter>Engine\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\WinApp\WinApp.h">
+      <Filter>Engine\Include\WinApp</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\LogString\LogString.h">
+      <Filter>Engine\Include\LogString</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
