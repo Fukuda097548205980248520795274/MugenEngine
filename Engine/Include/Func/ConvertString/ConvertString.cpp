@@ -1,4 +1,4 @@
-#include "LogString.h"
+#include "ConvertString.h"
 
 /// <summary>
 /// string -> wstring
@@ -36,14 +36,4 @@ std::string ConvertString(const std::wstring& str) {
     std::string result(sizeNeeded, 0);
     WideCharToMultiByte(CP_UTF8, 0, str.data(), static_cast<int>(str.size()), result.data(), sizeNeeded, NULL, NULL);
     return result;
-}
-
-/// <summary>
-/// ログを出力する
-/// </summary>
-/// <param name="str"></param>
-/// <returns></returns>
-void Log(const std::string& message)
-{
-    OutputDebugStringA(message.c_str());
 }

@@ -5,6 +5,13 @@
 /// </summary>
 void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const std::string& title)
 {
+	// 出力用のディレクトリを掘る
+	std::filesystem::create_directories("./Engine/Output");
+
+	// ログファイルの生成と初期化
+	logFile_ = std::make_unique<LogFile>();
+	logFile_->Initialize();
+
 	// ウィンドウアプリケーションの生成と初期化
 	winApp_ = std::make_unique<WinApp>();
 	winApp_->Initialize(clientWidth, clientHeight, title);

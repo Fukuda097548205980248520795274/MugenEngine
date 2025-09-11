@@ -1,7 +1,7 @@
 #pragma once
 #include <Windows.h>
 #include <cstdint>
-#include "../LogString/LogString.h"
+#include "../Func/ConvertString/ConvertString.h"
 
 class WinApp
 {

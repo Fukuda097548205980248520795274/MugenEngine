@@ -1,6 +1,8 @@
 #pragma once
-#include "WinApp/WinApp.h"
 #include <memory>
+
+#include "WinApp/WinApp.h"
+#include "LogFile/LogFile.h"
 
 class MugenEngine
 {
@@ -19,6 +21,9 @@ public:
 
 
 private:
+
+	// ログファイル
+	std::unique_ptr<LogFile> logFile_ = nullptr;
 
 	// ウィンドウズアプリケーション
 	std::unique_ptr<WinApp> winApp_ = nullptr;

@@ -16,10 +16,3 @@ std::wstring ConvertString(const std::string& str);
 /// <param name="str"></param>
 /// <returns></returns>
 std::string ConvertString(const std::wstring& str);
-
-/// <summary>
-/// ログを出力する
-/// </summary>
-/// <param name="str"></param>
-/// <returns></returns>
-void Log(const std::string& message);

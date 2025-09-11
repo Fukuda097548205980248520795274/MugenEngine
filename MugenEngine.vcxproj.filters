@@ -22,8 +22,14 @@
     <Filter Include="Engine\Include\WinApp">
       <UniqueIdentifier>{bdeb0850-bb48-4a00-a675-4a12f087b509}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Include\LogString">
+    <Filter Include="Engine\Include\Func">
+      <UniqueIdentifier>{e6d6118b-2e12-44e6-845c-6800784e700b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\Func\ConvertString">
       <UniqueIdentifier>{aa8eef1e-8185-4c86-8f07-d46f4058c575}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\LogFile">
+      <UniqueIdentifier>{717f1a3b-07be-4ec4-a841-1afe854d047a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -36,8 +42,11 @@
     <ClCompile Include="Engine\Include\WinApp\WinApp.cpp">
       <Filter>Engine\Include\WinApp</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\LogString\LogString.cpp">
-      <Filter>Engine\Include\LogString</Filter>
+    <ClCompile Include="Engine\Include\Func\ConvertString\ConvertString.cpp">
+      <Filter>Engine\Include\Func\ConvertString</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\LogFile\LogFile.cpp">
+      <Filter>Engine\Include\LogFile</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -47,8 +56,11 @@
     <ClInclude Include="Engine\Include\WinApp\WinApp.h">
       <Filter>Engine\Include\WinApp</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\LogString\LogString.h">
-      <Filter>Engine\Include\LogString</Filter>
+    <ClInclude Include="Engine\Include\Func\ConvertString\ConvertString.h">
+      <Filter>Engine\Include\Func\ConvertString</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\LogFile\LogFile.h">
+      <Filter>Engine\Include\LogFile</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

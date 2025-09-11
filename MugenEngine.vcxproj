@@ -80,13 +80,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Engine\Include\LogString\LogString.cpp" />
+    <ClCompile Include="Engine\Include\Func\ConvertString\ConvertString.cpp" />
+    <ClCompile Include="Engine\Include\LogFile\LogFile.cpp" />
     <ClCompile Include="Engine\Include\MugenEngine.cpp" />
     <ClCompile Include="Engine\Include\WinApp\WinApp.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine\Include\LogString\LogString.h" />
+    <ClInclude Include="Engine\Include\Func\ConvertString\ConvertString.h" />
+    <ClInclude Include="Engine\Include\LogFile\LogFile.h" />
     <ClInclude Include="Engine\Include\MugenEngine.h" />
     <ClInclude Include="Engine\Include\WinApp\WinApp.h" />
   </ItemGroup>
