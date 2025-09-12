@@ -10,7 +10,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	// ゲームループ
 	while (mugenEngine->ProcessMessage())
 	{
+		// 描画前処理
+		mugenEngine->PreDraw();
 
+
+		// 描画後処理
+		mugenEngine->PostDraw();
 	}
 
 	// 無限エンジンの削除

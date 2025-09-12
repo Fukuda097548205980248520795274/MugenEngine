@@ -31,6 +31,18 @@ public:
 	int32_t GetClientHeight()const { return clientHeight_; }
 
 	/// <summary>
+	/// クライアント領域横幅のポインタのGetter
+	/// </summary>
+	/// <returns></returns>
+	const int32_t* GetClientWidthP()const { return &clientWidth_; }
+
+	/// <summary>
+	/// クライアント領域縦幅のポインタのGetter
+	/// </summary>
+	/// <returns></returns>
+	const int32_t* GetClientHeightP()const { return &clientHeight_; }
+
+	/// <summary>
 	/// ウィンドウハンドルのGetter
 	/// </summary>
 	/// <returns></returns>

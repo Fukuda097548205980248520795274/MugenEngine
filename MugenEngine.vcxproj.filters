@@ -55,6 +55,15 @@
     <Filter Include="Engine\Include\Func\CrushHandler">
       <UniqueIdentifier>{59209c0f-9e99-4f6f-b983-aa76421bf2bb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXCommand">
+      <UniqueIdentifier>{9faffcbb-153f-4c83-a953-64d22f9e8477}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXHeap">
+      <UniqueIdentifier>{1ef69ca3-d451-4f89-8ea2-f9c9b3be3979}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXBuffering">
+      <UniqueIdentifier>{ff80784e-50f6-494d-8a4b-4e184025a6e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -93,6 +102,15 @@
     <ClCompile Include="Engine\Include\Func\CrushHandler\CrushHandler.cpp">
       <Filter>Engine\Include\Func\CrushHandler</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXCommand\DirectXCommand.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXCommand</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXHeap\DirectXHeap.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXHeap</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXBuffering\DirectXBuffering.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXBuffering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -127,6 +145,15 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\Func\CrushHandler\CrushHandler.h">
       <Filter>Engine\Include\Func\CrushHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXCommand\DirectXCommand.h">
+      <Filter>Engine\Include\DirectXBase\DirectXCommand</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXHeap\DirectXHeap.h">
+      <Filter>Engine\Include\DirectXBase\DirectXHeap</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXBuffering\DirectXBuffering.h">
+      <Filter>Engine\Include\DirectXBase\DirectXBuffering</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

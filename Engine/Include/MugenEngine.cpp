@@ -19,7 +19,11 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 	winApp_ = std::make_unique<WinApp>();
 	winApp_->Initialize(clientWidth, clientHeight, title);
 
+	// クライアント領域のポインタを取得する
+	kClientWidth_ = winApp_->GetClientWidthP();
+	kClientHeight_ = winApp_->GetClientHeightP();
+
 	// DirectXベースの生成と初期化
 	directXBase_ = std::make_unique<DirectXBase>();
-	directXBase_->Initialize(logFile_.get());
+	directXBase_->Initialize(logFile_.get(), winApp_->GetHwnd(), kClientWidth_, kClientHeight_);
 }

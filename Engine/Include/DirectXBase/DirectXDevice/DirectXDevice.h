@@ -17,6 +17,18 @@ public:
 	/// <param name="logfile"></param>
 	void Initialize(LogFile* logFile);
 
+	/// <summary>
+	/// デバイスのGetter
+	/// </summary>
+	/// <returns></returns>
+	ID3D12Device* GetDevice()const { return device_.Get(); }
+
+	/// <summary>
+	/// DXGIファクトリーのGetter
+	/// </summary>
+	/// <returns></returns>
+	IDXGIFactory7* GetDXGIfactory()const { return dxgiFactory_.Get(); }
+
 
 private:
 
