@@ -8,6 +8,9 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 	// 出力用のディレクトリを掘る
 	std::filesystem::create_directories("./Engine/Output");
 
+	// 例外が発生したときに起動する
+	SetUnhandledExceptionFilter(ExportDump);
+
 	// ログファイルの生成と初期化
 	logFile_ = std::make_unique<LogFile>();
 	logFile_->Initialize();

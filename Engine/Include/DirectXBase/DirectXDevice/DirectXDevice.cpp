@@ -23,7 +23,7 @@ void DirectXDevice::Initialize(LogFile* logFile)
 	assert(SUCCEEDED(hr));
 
 	// 成功ログ出力
-	logFile_->Log("SUCCEEDED : DXGIfactory");
+	logFile_->Log("SUCCEEDED : DXGIfactory \n");
 
 
 	/*-----------------------------------
@@ -44,7 +44,7 @@ void DirectXDevice::Initialize(LogFile* logFile)
 		if (!(adapterDesc.Flags & DXGI_ADAPTER_FLAG3_SOFTWARE))
 		{
 			// 採用したアダプタ情報をログに出力
-			logFile_->Log(ConvertString(std::format(L"Use Adapter : {}", adapterDesc.Description)));
+			logFile_->Log(ConvertString(std::format(L"Use Adapter : {} \n", adapterDesc.Description)));
 			break;
 		}
 
@@ -76,12 +76,12 @@ void DirectXDevice::Initialize(LogFile* logFile)
 		if (SUCCEEDED(hr))
 		{
 			// 生成したデバイスの機能レベルをログ出力
-			logFile_->Log(std::format("FeatureLevel : {}", featureLevelStrings[i]));
+			logFile_->Log(std::format("FeatureLevel : {} \n", featureLevelStrings[i]));
 			break;
 		}
 	}
 
 	// うまく生成できなかったら停止させる
 	assert(device_ != nullptr);
-	logFile_->Log("SUCCEEDED : Device");
+	logFile_->Log("SUCCEEDED : Device \n");
 }

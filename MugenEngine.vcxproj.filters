@@ -52,6 +52,9 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDevice">
       <UniqueIdentifier>{37d0084b-0eee-4e69-99f3-55b501d557ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\Func\CrushHandler">
+      <UniqueIdentifier>{59209c0f-9e99-4f6f-b983-aa76421bf2bb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -87,6 +90,9 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDevice</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\Func\CrushHandler\CrushHandler.cpp">
+      <Filter>Engine\Include\Func\CrushHandler</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -118,6 +124,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.h">
       <Filter>Engine\Include\DirectXBase\DirectXDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\Func\CrushHandler\CrushHandler.h">
+      <Filter>Engine\Include\Func\CrushHandler</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

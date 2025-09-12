@@ -25,6 +25,9 @@ void LogFile::Log(const std::string& message)
 /// <returns></returns>
 std::ofstream LogFile::CreateLogStream()
 {
+	// ディレクトリを掘る
+	CreateDirectory(L"./Engine/Output/Logs", nullptr);
+
 	// 現在時刻（UTC時刻）を取得
 	std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
 
@@ -39,7 +42,7 @@ std::ofstream LogFile::CreateLogStream()
 	std::string dateString = std::format("{:%Y%m%d_%H%M%S}", localTime);
 
 	// ファイル名は時刻を使う
-	std::string logFilePath = std::string("./Engine/Output/Logs") + dateString + ".log";
+	std::string logFilePath = std::string("./Engine/Output/Logs/") + dateString + ".log";
 
 	// ファイルを作って書き込み準備
 	std::ofstream logStream(logFilePath);

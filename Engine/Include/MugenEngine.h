@@ -4,6 +4,7 @@
 #include "WinApp/WinApp.h"
 #include "LogFile/LogFile.h"
 #include "DirectXBase/DirectXBase.h"
+#include "Func/CrushHandler/CrushHandler.h"
 
 class MugenEngine
 {

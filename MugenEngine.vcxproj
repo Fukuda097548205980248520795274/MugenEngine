@@ -59,6 +59,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -83,6 +84,7 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXBase.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.cpp" />
     <ClCompile Include="Engine\Include\Func\ConvertString\ConvertString.cpp" />
+    <ClCompile Include="Engine\Include\Func\CrushHandler\CrushHandler.cpp" />
     <ClCompile Include="Engine\Include\LogFile\LogFile.cpp" />
     <ClCompile Include="Engine\Include\Math\Vector1\Vector1.cpp" />
     <ClCompile Include="Engine\Include\Math\Vector2\Vector2.cpp" />
@@ -96,6 +98,7 @@
     <ClInclude Include="Engine\Include\DirectXBase\DirectXBase.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.h" />
     <ClInclude Include="Engine\Include\Func\ConvertString\ConvertString.h" />
+    <ClInclude Include="Engine\Include\Func\CrushHandler\CrushHandler.h" />
     <ClInclude Include="Engine\Include\LogFile\LogFile.h" />
     <ClInclude Include="Engine\Include\Math\Vector1\Vector1.h" />
     <ClInclude Include="Engine\Include\Math\Vector2\Vector2.h" />
