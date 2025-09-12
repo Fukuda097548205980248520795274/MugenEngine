@@ -31,6 +31,27 @@
     <Filter Include="Engine\Include\LogFile">
       <UniqueIdentifier>{717f1a3b-07be-4ec4-a841-1afe854d047a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\Math">
+      <UniqueIdentifier>{8242f031-fc5f-4c4c-96af-bd4ba73f4884}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\Math\Vector2">
+      <UniqueIdentifier>{f09d6009-530c-4b8d-bca3-3fe1e0e958c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\Math\Vector3">
+      <UniqueIdentifier>{de5c37a8-1133-41d9-8854-54ed843ca9bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\Math\Vector1">
+      <UniqueIdentifier>{72aa6cfa-d545-4571-9b49-3d39c127045d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\Math\Vector4">
+      <UniqueIdentifier>{a6c00fd0-0b50-4f7a-8ab7-8daaf3a6f322}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase">
+      <UniqueIdentifier>{7a619389-ce8d-4af3-9eb4-a0b900e1ee73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDevice">
+      <UniqueIdentifier>{37d0084b-0eee-4e69-99f3-55b501d557ac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -48,6 +69,24 @@
     <ClCompile Include="Engine\Include\LogFile\LogFile.cpp">
       <Filter>Engine\Include\LogFile</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\Math\Vector2\Vector2.cpp">
+      <Filter>Engine\Include\Math\Vector2</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\Math\Vector3\Vector3.cpp">
+      <Filter>Engine\Include\Math\Vector3</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\Math\Vector1\Vector1.cpp">
+      <Filter>Engine\Include\Math\Vector1</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\Math\Vector4\Vector4.cpp">
+      <Filter>Engine\Include\Math\Vector4</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXBase.cpp">
+      <Filter>Engine\Include\DirectXBase</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDevice</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -61,6 +100,24 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\LogFile\LogFile.h">
       <Filter>Engine\Include\LogFile</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\Math\Vector2\Vector2.h">
+      <Filter>Engine\Include\Math\Vector2</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\Math\Vector3\Vector3.h">
+      <Filter>Engine\Include\Math\Vector3</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\Math\Vector1\Vector1.h">
+      <Filter>Engine\Include\Math\Vector1</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\Math\Vector4\Vector4.h">
+      <Filter>Engine\Include\Math\Vector4</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXBase.h">
+      <Filter>Engine\Include\DirectXBase</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDevice</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

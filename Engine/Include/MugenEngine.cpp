@@ -15,4 +15,8 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 	// ウィンドウアプリケーションの生成と初期化
 	winApp_ = std::make_unique<WinApp>();
 	winApp_->Initialize(clientWidth, clientHeight, title);
+
+	// DirectXベースの生成と初期化
+	directXBase_ = std::make_unique<DirectXBase>();
+	directXBase_->Initialize(logFile_.get());
 }

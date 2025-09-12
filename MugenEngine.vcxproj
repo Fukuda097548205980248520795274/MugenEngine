@@ -80,15 +80,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXBase.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.cpp" />
     <ClCompile Include="Engine\Include\Func\ConvertString\ConvertString.cpp" />
     <ClCompile Include="Engine\Include\LogFile\LogFile.cpp" />
+    <ClCompile Include="Engine\Include\Math\Vector1\Vector1.cpp" />
+    <ClCompile Include="Engine\Include\Math\Vector2\Vector2.cpp" />
+    <ClCompile Include="Engine\Include\Math\Vector3\Vector3.cpp" />
+    <ClCompile Include="Engine\Include\Math\Vector4\Vector4.cpp" />
     <ClCompile Include="Engine\Include\MugenEngine.cpp" />
     <ClCompile Include="Engine\Include\WinApp\WinApp.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXBase.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.h" />
     <ClInclude Include="Engine\Include\Func\ConvertString\ConvertString.h" />
     <ClInclude Include="Engine\Include\LogFile\LogFile.h" />
+    <ClInclude Include="Engine\Include\Math\Vector1\Vector1.h" />
+    <ClInclude Include="Engine\Include\Math\Vector2\Vector2.h" />
+    <ClInclude Include="Engine\Include\Math\Vector3\Vector3.h" />
+    <ClInclude Include="Engine\Include\Math\Vector4\Vector4.h" />
     <ClInclude Include="Engine\Include\MugenEngine.h" />
     <ClInclude Include="Engine\Include\WinApp\WinApp.h" />
   </ItemGroup>

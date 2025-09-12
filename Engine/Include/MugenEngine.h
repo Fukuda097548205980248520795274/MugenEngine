@@ -3,6 +3,7 @@
 
 #include "WinApp/WinApp.h"
 #include "LogFile/LogFile.h"
+#include "DirectXBase/DirectXBase.h"
 
 class MugenEngine
 {
@@ -28,5 +29,7 @@ private:
 	// ウィンドウズアプリケーション
 	std::unique_ptr<WinApp> winApp_ = nullptr;
 	
+	// DirectXのベース
+	std::unique_ptr<DirectXBase> directXBase_ = nullptr;
 };
 
