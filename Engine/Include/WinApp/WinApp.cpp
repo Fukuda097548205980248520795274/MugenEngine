@@ -18,6 +18,18 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 	return DefWindowProc(hwnd, msg, wparam, lparam);
 }
 
+
+
+/// <summary>
+/// デストラクタ
+/// </summary>
+WinApp::~WinApp()
+{
+	// ウィンドウハンドルを閉じる
+	CloseWindow(hwnd_);
+}
+
+
 /// <summary>
 /// 初期化
 /// </summary>

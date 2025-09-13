@@ -1,4 +1,13 @@
 #include "MugenEngine.h"
+#pragma comment(lib,"dxguid.lib")
+
+/// <summary>
+/// デストラクタ
+/// </summary>
+MugenEngine::~MugenEngine()
+{
+	
+}
 
 /// <summary>
 /// 初期化

@@ -64,6 +64,15 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXBuffering">
       <UniqueIdentifier>{ff80784e-50f6-494d-8a4b-4e184025a6e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDebug">
+      <UniqueIdentifier>{0a1246e9-544d-4227-bd7a-5d049f906e74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXTransitionBarrier">
+      <UniqueIdentifier>{76721cd8-d9aa-49f4-a033-67bcd75cd194}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXFence">
+      <UniqueIdentifier>{1c375bb0-b07e-475c-89bf-f743b8adb7e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -111,6 +120,15 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXBuffering\DirectXBuffering.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXBuffering</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDebug\DirectXDebug.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDebug</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXTransitionBarrier\DirectXTransitionBarrier.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXTransitionBarrier</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXFence\DirectXFence.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXFence</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -154,6 +172,15 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXBuffering\DirectXBuffering.h">
       <Filter>Engine\Include\DirectXBase\DirectXBuffering</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDebug\DirectXDebug.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDebug</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXTransitionBarrier\DirectXTransitionBarrier.h">
+      <Filter>Engine\Include\DirectXBase\DirectXTransitionBarrier</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXFence\DirectXFence.h">
+      <Filter>Engine\Include\DirectXBase\DirectXFence</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

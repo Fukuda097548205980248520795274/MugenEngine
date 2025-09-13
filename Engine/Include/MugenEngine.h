@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include <dxgidebug.h>
 
 #include "WinApp/WinApp.h"
 #include "LogFile/LogFile.h"
@@ -9,6 +10,11 @@
 class MugenEngine
 {
 public:
+
+	/// <summary>
+	/// デストラクタ
+	/// </summary>
+	~MugenEngine();
 
 	/// <summary>
 	/// 初期化

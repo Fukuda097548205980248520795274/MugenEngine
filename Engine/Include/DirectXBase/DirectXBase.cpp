@@ -17,18 +17,31 @@ void DirectXBase::Initialize(LogFile* logFile, HWND hwnd, const int32_t* kClient
 	kClientHeight_ = kClientHeight;
 
 
+#ifdef _DEBUG
+
+	// DirectXデバッグの生成と初期化
+	directXDebug_ = std::make_unique<DirectXDebug>();
+	directXDebug_->Initialize(logFile_);
+
+#endif
+
+
 	// DirectXデバイスの生成と初期化
 	directXDevice_ = std::make_unique<DirectXDevice>();
 	directXDevice_->Initialize(logFile_);
 
+
+#ifdef _DEBUG
+
+	// エラー・警告で停止するようにする
+	directXDebug_->Stop(directXDevice_->GetDevice());
+
+#endif
+
+
 	// DirectXコマンドの生成と初期化
 	directXCommand_ = std::make_unique<DirectXCommand>();
 	directXCommand_->Initialize(directXDevice_->GetDevice(), logFile_);
-
-	// コマンド関連のオブジェクトを取得する
-	commandQueue_ = directXCommand_->GetCommandQueue();
-	commandAllocator_ = directXCommand_->GetCommandAllocator();
-	commandList_ = directXCommand_->GetCommandList();
 
 	// DirectXヒープの生成と初期化
 	directXHeap_ = std::make_unique<DirectXHeap>();
@@ -38,6 +51,10 @@ void DirectXBase::Initialize(LogFile* logFile, HWND hwnd, const int32_t* kClient
 	directXBuffering_ = std::make_unique<DirectXBuffering>();
 	directXBuffering_->Initialize(logFile_, directXHeap_.get(), directXDevice_->GetDXGIfactory(), directXDevice_->GetDevice(),
 		hwnd_, kClientWidth_, kClientHeight_, directXCommand_->GetCommandQueue());
+
+	// DirectXフェンスの生成と初期化
+	directXFence_ = std::make_unique<DirectXFence>();
+	directXFence_->Initialize(logFile_, directXDevice_->GetDevice());
 }
 
 
@@ -53,13 +70,19 @@ void DirectXBase::PreDraw()
 	// バックバッファのCPUハンドルを取得する
 	D3D12_CPU_DESCRIPTOR_HANDLE backBufferCPUHandle = directXBuffering_->GetSwapChainRtvCPUHandle(backBufferIndex);
 
+	// バックバッファのリソースを取得する
+	ID3D12Resource* backBufferResource = directXBuffering_->GetSwapChainResource(backBufferIndex);
+
+
+	// バックバッファリソース Present -> RenderTarget
+	TransitionBarrier(backBufferResource, D3D12_RESOURCE_STATE_PRESENT, D3D12_RESOURCE_STATE_RENDER_TARGET, directXCommand_->GetCommandList());
 
 	// 描画先のRTVを設定する
-	commandList_->OMSetRenderTargets(1, &backBufferCPUHandle, false, nullptr);
+	directXCommand_->GetCommandList()->OMSetRenderTargets(1, &backBufferCPUHandle, false, nullptr);
 
 	// 指定した色で画面全体をクリアする
 	float clearColor[] = { 0.1f , 0.1f , 0.1f , 1.0f };
-	commandList_->ClearRenderTargetView(backBufferCPUHandle, clearColor, 0, nullptr);
+	directXCommand_->GetCommandList()->ClearRenderTargetView(backBufferCPUHandle, clearColor, 0, nullptr);
 }
 
 /// <summary>
@@ -67,21 +90,37 @@ void DirectXBase::PreDraw()
 /// </summary>
 void DirectXBase::PostDraw()
 {
+	// バックバッファのインデックスを取得する
+	UINT backBufferIndex = directXBuffering_->GetSwapChain()->GetCurrentBackBufferIndex();
+
+	// バックバッファのリソースを取得する
+	ID3D12Resource* backBufferResource = directXBuffering_->GetSwapChainResource(backBufferIndex);
+
+	// バックバッファリソース RenderTarget -> Present
+	TransitionBarrier(backBufferResource, D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT, directXCommand_->GetCommandList());
+
+
 	// コマンドの内容を確定させる（閉じる）
-	HRESULT hr = commandList_->Close();
+	HRESULT hr = directXCommand_->GetCommandList()->Close();
 	assert(SUCCEEDED(hr));
 
 	// GPUにコマンドリストの実行を行わせる
-	ID3D12CommandList* commandLists[] = { commandList_ };
-	commandQueue_->ExecuteCommandLists(1, commandLists);
+	ID3D12CommandList* commandLists[] = { directXCommand_->GetCommandList() };
+	directXCommand_->GetCommandQueue()->ExecuteCommandLists(1, commandLists);
 
 	// GPUとOSに画面の交換を行うよう通知する
 	directXBuffering_->GetSwapChain()->Present(1, 0);
 
+	// GPUにシグナルを送る
+	directXFence_->SnedSignal(directXCommand_->GetCommandQueue());
+
+	// フェンスの値を確認してGPUを待つ
+	directXFence_->WaitGPU();
+
 	// 次のフレーム用のコマンドリストを準備
-	hr = commandAllocator_->Reset();
+	hr = directXCommand_->GetCommandAllocator()->Reset();
 	assert(SUCCEEDED(hr));
 
-	hr = commandList_->Reset(commandAllocator_, nullptr);
+	hr = directXCommand_->GetCommandList()->Reset(directXCommand_->GetCommandAllocator(), nullptr);
 	assert(SUCCEEDED(hr));
 }

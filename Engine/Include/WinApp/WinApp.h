@@ -8,6 +8,11 @@ class WinApp
 public:
 
 	/// <summary>
+	/// デストラクタ
+	/// </summary>
+	~WinApp();
+
+	/// <summary>
 	/// 初期化
 	/// </summary>
 	void Initialize(int32_t clientWidth , int32_t clientHeight , const std::string& title);

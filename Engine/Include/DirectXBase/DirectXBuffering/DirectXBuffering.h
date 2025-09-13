@@ -35,6 +35,13 @@ public:
 	/// <returns></returns>
 	D3D12_CPU_DESCRIPTOR_HANDLE GetSwapChainRtvCPUHandle(UINT index)const { return rtvCPUHandle_[index]; }
 
+	/// <summary>
+	/// スワップチェーンのリソースのGetter
+	/// </summary>
+	/// <param name="index"></param>
+	/// <returns></returns>
+	ID3D12Resource* GetSwapChainResource(UINT index)const { return swapChainResource_[index].Get(); }
+
 
 private:
 

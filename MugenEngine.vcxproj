@@ -84,8 +84,11 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXBase.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXBuffering\DirectXBuffering.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXCommand\DirectXCommand.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDebug\DirectXDebug.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXFence\DirectXFence.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXHeap\DirectXHeap.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXTransitionBarrier\DirectXTransitionBarrier.cpp" />
     <ClCompile Include="Engine\Include\Func\ConvertString\ConvertString.cpp" />
     <ClCompile Include="Engine\Include\Func\CrushHandler\CrushHandler.cpp" />
     <ClCompile Include="Engine\Include\LogFile\LogFile.cpp" />
@@ -101,8 +104,11 @@
     <ClInclude Include="Engine\Include\DirectXBase\DirectXBase.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXBuffering\DirectXBuffering.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXCommand\DirectXCommand.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDebug\DirectXDebug.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXFence\DirectXFence.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXHeap\DirectXHeap.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXTransitionBarrier\DirectXTransitionBarrier.h" />
     <ClInclude Include="Engine\Include\Func\ConvertString\ConvertString.h" />
     <ClInclude Include="Engine\Include\Func\CrushHandler\CrushHandler.h" />
     <ClInclude Include="Engine\Include\LogFile\LogFile.h" />

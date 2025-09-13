@@ -3,6 +3,9 @@
 #include "DirectXCommand/DirectXCommand.h"
 #include "DirectXHeap/DirectXHeap.h"
 #include "DirectXBuffering/DirectXBuffering.h"
+#include "DirectXDebug/DirectXDebug.h"
+#include "DirectXTransitionBarrier/DirectXTransitionBarrier.h"
+#include "DirectXFence/DirectXFence.h"
 
 class DirectXBase
 {
@@ -39,17 +42,6 @@ private:
 	const int32_t* kClientHeight_ = nullptr;
 
 
-	// コマンドキュー
-	ID3D12CommandQueue* commandQueue_ = nullptr;
-
-	// コマンドアロケータ
-	ID3D12CommandAllocator* commandAllocator_ = nullptr;
-
-	// コマンドリスト
-	ID3D12GraphicsCommandList* commandList_ = nullptr;
-
-
-
 
 	// DirectXデバイス
 	std::unique_ptr<DirectXDevice> directXDevice_ = nullptr;
@@ -62,5 +54,17 @@ private:
 	
 	// DirectXバッファリング
 	std::unique_ptr<DirectXBuffering> directXBuffering_ = nullptr;
+
+	// DirectXフェンス
+	std::unique_ptr<DirectXFence> directXFence_ = nullptr;
+
+
+
+#ifdef _DEBUG
+
+	// DirectXデバッグ
+	std::unique_ptr<DirectXDebug> directXDebug_ = nullptr;
+
+#endif
 };
 
