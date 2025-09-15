@@ -18,33 +18,14 @@ void ResourcesTriangle::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 
 
 	/*----------------------
-	    頂点リソースの作成
+		頂点リソースの作成
 	----------------------*/
 
-	// ヒープの設定
-	D3D12_HEAP_PROPERTIES uploadHeapProperties{};
-	uploadHeapProperties.Type = D3D12_HEAP_TYPE_UPLOAD;
-
-	// 頂点リソースの設定
-	D3D12_RESOURCE_DESC vertexResourceDesc{};
-	vertexResourceDesc.Dimension = D3D12_RESOURCE_DIMENSION_BUFFER;
-	vertexResourceDesc.Width = sizeof(Vector4) * 3;
-
-	vertexResourceDesc.Height = 1;
-	vertexResourceDesc.DepthOrArraySize = 1;
-	vertexResourceDesc.MipLevels = 1;
-	vertexResourceDesc.SampleDesc.Count = 1;
-
-	vertexResourceDesc.Layout = D3D12_TEXTURE_LAYOUT_ROW_MAJOR;
-
-	// 頂点リソースを作る
-	HRESULT hr = device_->CreateCommittedResource(&uploadHeapProperties, D3D12_HEAP_FLAG_NONE,
-		&vertexResourceDesc, D3D12_RESOURCE_STATE_GENERIC_READ, nullptr, IID_PPV_ARGS(&vertexResource_));
-	assert(SUCCEEDED(hr));
+	vertexResource_ = CreateBufferResource(device_, sizeof(Vector4) * 3);
 
 
 	/*-------------------------------
-	    頂点リソースのビューを設定する
+		頂点リソースのビューを設定する
 	-------------------------------*/
 
 	// リソースの先頭のアドレスから使う
@@ -55,7 +36,7 @@ void ResourcesTriangle::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 
 
 	/*----------------------------------
-	    頂点データをリソースに割り当てる
+		頂点データをリソースに割り当てる
 	----------------------------------*/
 
 	vertexResource_->Map(0, nullptr, reinterpret_cast<void**>(&vertexData_));
@@ -68,6 +49,17 @@ void ResourcesTriangle::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 
 	// 右下
 	vertexData_[2] = Vector4(0.5f, -0.5f, 0.0f, 1.0f);
+
+
+
+	/*--------------------------------------
+		マテリアルリソースの作成とデータの設定
+	--------------------------------------*/
+
+	materialResource_ = CreateBufferResource(device_, sizeof(Vector4));
+
+	materialResource_->Map(0, nullptr, reinterpret_cast<void**>(&materialData_));
+	*materialData_ = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
 }
 
 
@@ -78,4 +70,7 @@ void ResourcesTriangle::SetCommandList()
 {
 	// 頂点バッファリソースの設定
 	commandList_->IASetVertexBuffers(0, 1, &vertexBufferView_);
+
+	// マテリアルリソースの設定
+	commandList_->SetGraphicsRootConstantBufferView(0, materialResource_->GetGPUVirtualAddress());
 }

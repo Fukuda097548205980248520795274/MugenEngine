@@ -16,13 +16,32 @@ void PSOPrimitiveNone::Initialize(LogFile* logFile, IDxcBlob* vertexShaderBlob, 
 
 	logFile_->Log("\n");
 
-	/*-----------------------------
-	    ルートシグネチャを生成する
-	-----------------------------*/
+
+
+	/*-------------------------
+		ルートパラメータの設定
+	-------------------------*/
+
+	D3D12_ROOT_PARAMETER rootParameter[1];
+
+	// CBV PixelShader b0
+	rootParameter[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
+	rootParameter[0].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+	rootParameter[0].Descriptor.RegisterSpace = 0;
+	rootParameter[0].Descriptor.ShaderRegister = 0;
+
+
+	/*---------------------------------------
+	    ルートシグネチャのバイナリデータの生成
+	---------------------------------------*/
 
 	D3D12_ROOT_SIGNATURE_DESC descriptionRootSignature{};
 	descriptionRootSignature.Flags =
 		D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT;
+
+	// ルートパラメータを設定する
+	descriptionRootSignature.pParameters = rootParameter;
+	descriptionRootSignature.NumParameters = _countof(rootParameter);
 
 	// シリアライズしてバイナリにする
 	HRESULT hr = D3D12SerializeRootSignature(&descriptionRootSignature,
@@ -34,6 +53,12 @@ void PSOPrimitiveNone::Initialize(LogFile* logFile, IDxcBlob* vertexShaderBlob, 
 		logFile_->Log(reinterpret_cast<char*>(errorBlob_->GetBufferPointer()));
 		assert(false);
 	}
+
+	
+
+	/*-------------------------
+	    ルートシグネチャの生成
+	-------------------------*/
 
 	// バイナリを元に生成
 	hr = device_->CreateRootSignature(0, 

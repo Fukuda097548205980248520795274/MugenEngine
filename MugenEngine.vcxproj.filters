@@ -97,6 +97,9 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle">
       <UniqueIdentifier>{180463ce-b918-490a-9ba2-576ebcaf74f0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\Func\CreateBufferResource">
+      <UniqueIdentifier>{6a780bdc-608b-423b-b4fd-7ee6bc501002}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -171,6 +174,9 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle\ResourcesTriangle.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\Func\CreateBufferResource\CreateBufferResource.cpp">
+      <Filter>Engine\Include\Func\CreateBufferResource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -241,6 +247,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle\ResourcesTriangle.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\Func\CreateBufferResource\CreateBufferResource.h">
+      <Filter>Engine\Include\Func\CreateBufferResource</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

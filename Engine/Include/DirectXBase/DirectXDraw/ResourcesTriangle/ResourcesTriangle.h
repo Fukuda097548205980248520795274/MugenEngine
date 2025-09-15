@@ -1,9 +1,7 @@
 #pragma once
-#include <d3d12.h>
-#include <dxgi1_6.h>
 #include <cassert>
-#include <wrl.h>
 
+#include "../../../Func/CreateBufferResource/CreateBufferResource.h"
 #include "../../../Math/Vector4/Vector4.h"
 
 class ResourcesTriangle
@@ -39,5 +37,12 @@ public:
 
 	// 頂点データ
 	Vector4* vertexData_ = nullptr;
+
+
+	// マテリアルリソース
+	Microsoft::WRL::ComPtr<ID3D12Resource> materialResource_ = nullptr;
+
+	// マテリアルデータ
+	Vector4* materialData_ = nullptr;
 };
 
