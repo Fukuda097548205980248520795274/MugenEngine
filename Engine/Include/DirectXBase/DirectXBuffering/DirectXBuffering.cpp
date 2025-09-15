@@ -34,31 +34,29 @@ void DirectXBuffering::Initialize(LogFile* logFile, DirectXHeap* directXHeap, ID
 	    スワップチェーンを生成する
 	-----------------------------*/
 
-	DXGI_SWAP_CHAIN_DESC1 swapChainDesc{};
-
 	// クライアント領域
-	swapChainDesc.Width = *kClientWidth_;
-	swapChainDesc.Height = *kClientHeight_;
+	swapChainDesc_.Width = *kClientWidth_;
+	swapChainDesc_.Height = *kClientHeight_;
 
 	// 色の形式
-	swapChainDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+	swapChainDesc_.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
 
 	// マルチサンプルしない
-	swapChainDesc.SampleDesc.Count = 1;
+	swapChainDesc_.SampleDesc.Count = 1;
 
 	// 描画のターゲットとして利用する
-	swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+	swapChainDesc_.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 
 	// ダブルバッファ
-	swapChainDesc.BufferCount = 2;
+	swapChainDesc_.BufferCount = 2;
 
 	// モニタに移したら中身を破棄
-	swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
+	swapChainDesc_.SwapEffect = DXGI_SWAP_EFFECT_FLIP_DISCARD;
 
 
 	// 生成する
 	HRESULT hr = dxgiFactory_->CreateSwapChainForHwnd(commandQueue_, hwnd_, 
-		&swapChainDesc, nullptr, nullptr, reinterpret_cast<IDXGISwapChain1**>(swapChain_.GetAddressOf()));
+		&swapChainDesc_, nullptr, nullptr, reinterpret_cast<IDXGISwapChain1**>(swapChain_.GetAddressOf()));
 	assert(SUCCEEDED(hr));
 
 	// スワップチェーン生成成功のログ

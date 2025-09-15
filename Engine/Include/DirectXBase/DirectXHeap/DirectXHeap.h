@@ -16,6 +16,12 @@ public:
 	/// <param name="device"></param>
 	void Initialize(ID3D12Device* device, LogFile* logFile);
 
+	/// <summary>
+	/// SRV用ディスクリプタヒープのGetter
+	/// </summary>
+	/// <returns></returns>
+	ID3D12DescriptorHeap* GetSrvDescriptorHeap()const { return srvDescriptorHeap_.Get(); }
+
 
 	/// <summary>
 	/// RTV用のCPUハンドルを取得する

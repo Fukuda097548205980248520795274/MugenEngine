@@ -29,6 +29,12 @@ public:
 	IDXGISwapChain4* GetSwapChain()const { return swapChain_.Get(); }
 
 	/// <summary>
+	/// スワップチェーンの設定のGetter
+	/// </summary>
+	/// <returns></returns>
+	DXGI_SWAP_CHAIN_DESC1 GetSwapChainDesc()const { return swapChainDesc_; }
+
+	/// <summary>
 	/// スワップチェーンのRTV用CPUハンドルのGetter
 	/// </summary>
 	/// <param name="index"></param>
@@ -41,6 +47,12 @@ public:
 	/// <param name="index"></param>
 	/// <returns></returns>
 	ID3D12Resource* GetSwapChainResource(UINT index)const { return swapChainResource_[index].Get(); }
+
+	/// <summary>
+	/// RTVの設定のGetter
+	/// </summary>
+	/// <returns></returns>
+	D3D12_RENDER_TARGET_VIEW_DESC GetRtvDesc()const { return rtvDesc_; }
 
 
 private:
@@ -70,6 +82,9 @@ private:
 	ID3D12CommandQueue* commandQueue_ = nullptr;
 
 
+
+	// スワップチェーンの設定
+	DXGI_SWAP_CHAIN_DESC1 swapChainDesc_{};
 
 	// スワップチェーン
 	Microsoft::WRL::ComPtr<IDXGISwapChain4> swapChain_ = nullptr;

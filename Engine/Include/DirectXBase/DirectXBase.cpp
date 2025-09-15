@@ -1,5 +1,18 @@
 #include "DirectXBase.h"
 
+
+/// <summary>
+/// デストラクタ
+/// </summary>
+DirectXBase::~DirectXBase()
+{
+	// ImGuiの終了処理
+	ImGui_ImplDX12_Shutdown();
+	ImGui_ImplWin32_Shutdown();
+	ImGui::DestroyContext();
+}
+
+
 /// <summary>
 /// 初期化
 /// </summary>
@@ -59,6 +72,16 @@ void DirectXBase::Initialize(LogFile* logFile, HWND hwnd, const int32_t* kClient
 	// DirectX描画の生成と初期化
 	directXDraw_ = std::make_unique<DirectXDraw>();
 	directXDraw_->Initialize(logFile_, kClientWidth_, kClientHeight_, directXCommand_->GetCommandList(), directXDevice_->GetDevice());
+
+
+	// ImGuiを初期化する
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGui::StyleColorsDark();
+	ImGui_ImplWin32_Init(hwnd_);
+	ImGui_ImplDX12_Init(directXDevice_->GetDevice(), directXBuffering_->GetSwapChainDesc().BufferCount,
+		directXBuffering_->GetRtvDesc().Format, directXHeap_->GetSrvDescriptorHeap(),
+		directXHeap_->GetSrvDescriptorHeap()->GetCPUDescriptorHandleForHeapStart(), directXHeap_->GetSrvDescriptorHeap()->GetGPUDescriptorHandleForHeapStart());
 }
 
 
@@ -68,6 +91,12 @@ void DirectXBase::Initialize(LogFile* logFile, HWND hwnd, const int32_t* kClient
 /// </summary>
 void DirectXBase::PreDraw()
 {
+	// フレームの開始をImGuiに伝える
+	ImGui_ImplDX12_NewFrame();
+	ImGui_ImplWin32_NewFrame();
+	ImGui::NewFrame();
+
+
 	// バックバッファのインデックスを取得する
 	UINT backBufferIndex = directXBuffering_->GetSwapChain()->GetCurrentBackBufferIndex();
 
@@ -94,6 +123,18 @@ void DirectXBase::PreDraw()
 /// </summary>
 void DirectXBase::PostDraw()
 {
+	// ImGuiの内部コマンドを生成する
+	ImGui::Render();
+
+	// 描画用のディスクリプタヒープを設定
+	ID3D12DescriptorHeap* descriptorHeaps[] = { directXHeap_->GetSrvDescriptorHeap() };
+	directXCommand_->GetCommandList()->SetDescriptorHeaps(1, descriptorHeaps);
+
+	// ImGuiを描画する
+	ImGui_ImplDX12_RenderDrawData(ImGui::GetDrawData(), directXCommand_->GetCommandList());
+
+
+
 	// バックバッファのインデックスを取得する
 	UINT backBufferIndex = directXBuffering_->GetSwapChain()->GetCurrentBackBufferIndex();
 
