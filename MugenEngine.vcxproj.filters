@@ -100,6 +100,12 @@
     <Filter Include="Engine\Include\Func\CreateBufferResource">
       <UniqueIdentifier>{6a780bdc-608b-423b-b4fd-7ee6bc501002}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\Math\Matrix4x4">
+      <UniqueIdentifier>{8d346657-3693-4f5c-a955-ce67d0365658}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\Transform">
+      <UniqueIdentifier>{0bebbc86-7cfc-4d47-8ba8-d0ad641818ed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -177,6 +183,12 @@
     <ClCompile Include="Engine\Include\Func\CreateBufferResource\CreateBufferResource.cpp">
       <Filter>Engine\Include\Func\CreateBufferResource</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\Math\Matrix4x4\Matrix4x4.cpp">
+      <Filter>Engine\Include\Math\Matrix4x4</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\Transform\Transform.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\Transform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -250,6 +262,12 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\Func\CreateBufferResource\CreateBufferResource.h">
       <Filter>Engine\Include\Func\CreateBufferResource</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\Math\Matrix4x4\Matrix4x4.h">
+      <Filter>Engine\Include\Math\Matrix4x4</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\Transform\Transform.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\Transform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

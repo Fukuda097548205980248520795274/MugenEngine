@@ -22,13 +22,19 @@ void PSOPrimitiveNone::Initialize(LogFile* logFile, IDxcBlob* vertexShaderBlob, 
 		ルートパラメータの設定
 	-------------------------*/
 
-	D3D12_ROOT_PARAMETER rootParameter[1];
+	D3D12_ROOT_PARAMETER rootParameter[2];
 
 	// CBV PixelShader b0
 	rootParameter[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
 	rootParameter[0].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 	rootParameter[0].Descriptor.RegisterSpace = 0;
 	rootParameter[0].Descriptor.ShaderRegister = 0;
+
+	// CBV VertexShader b0
+	rootParameter[1].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
+	rootParameter[1].ShaderVisibility = D3D12_SHADER_VISIBILITY_VERTEX;
+	rootParameter[1].Descriptor.RegisterSpace = 0;
+	rootParameter[1].Descriptor.ShaderRegister = 0;
 
 
 	/*---------------------------------------

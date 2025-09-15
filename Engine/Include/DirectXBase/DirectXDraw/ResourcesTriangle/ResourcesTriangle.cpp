@@ -60,6 +60,16 @@ void ResourcesTriangle::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 
 	materialResource_->Map(0, nullptr, reinterpret_cast<void**>(&materialData_));
 	*materialData_ = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+
+
+	/*-------------------------------------
+	    座標変換リソースの作成とデータの設定
+	-------------------------------------*/
+
+	transformationResource_ = CreateBufferResource(device_, sizeof(Matrix4x4));
+
+	transformationResource_->Map(0, nullptr, reinterpret_cast<void**>(&transformationData_));
+	*transformationData_ = MakeIdentityMatrix();
 }
 
 
@@ -73,4 +83,7 @@ void ResourcesTriangle::SetCommandList()
 
 	// マテリアルリソースの設定
 	commandList_->SetGraphicsRootConstantBufferView(0, materialResource_->GetGPUVirtualAddress());
+
+	// 座標変換リソースの設定
+	commandList_->SetGraphicsRootConstantBufferView(1, transformationResource_->GetGPUVirtualAddress());
 }

@@ -4,13 +4,13 @@
 #include <cassert>
 #include <wrl.h>
 
-#include "../../WinApp/WinApp.h"
-
 #include "DirectXShaderCompile/DirectXShaderCompile.h"
 
 #include "PSOPrimitive/PSOPrimitive.h"
 
 #include "ResourcesTriangle/ResourcesTriangle.h"
+
+#include "Transform/Transform.h"
 
 class DirectXDraw
 {
@@ -50,6 +50,7 @@ private:
 
 
 
+
 	// DirectXシェーダコンパイラ
 	std::unique_ptr<DirectXShaderCompile> directXShaderCompiler_ = nullptr;
 
@@ -66,5 +67,12 @@ private:
 
 	// 三角形用のリソース
 	std::unique_ptr<ResourcesTriangle> resourcesTriangle_ = nullptr;
+
+
+	// 図形
+	Transform3D transform_;
+
+	// カメラ
+	Transform3D camera_;
 };
 

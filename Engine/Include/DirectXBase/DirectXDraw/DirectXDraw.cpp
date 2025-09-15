@@ -54,6 +54,14 @@ void DirectXDraw::Initialize(LogFile* logFile, const int32_t* kClientWidth, cons
 	// 三角形用リソースの生成と初期化
 	resourcesTriangle_ = std::make_unique<ResourcesTriangle>();
 	resourcesTriangle_->Initialize(device_, commandList_);
+
+
+	// 図形の設定
+	transform_.scale = { 1.0f , 1.0f , 1.0f };
+
+	// カメラの設定
+	camera_.scale = { 1.0f , 1.0f , 1.0f };
+	camera_.translation.z = -5.0f;
 }
 
 
@@ -63,6 +71,29 @@ void DirectXDraw::Initialize(LogFile* logFile, const int32_t* kClientWidth, cons
 /// </summary>
 void DirectXDraw::DrawTriangle()
 {
+	/*------------------
+	    座標変換を行う
+	------------------*/
+
+	// 回転させる
+	transform_.rotation.y += 0.03f;
+
+	// ワールド行列
+	Matrix4x4 worldMatrix = MakeAffineMatrix(transform_.scale, transform_.rotation, transform_.translation);
+
+	// ビュー行列
+	Matrix4x4 viewMatrix = MakeInverseMatrix(MakeAffineMatrix(camera_.scale, camera_.rotation, camera_.translation));
+
+	// 透視投影行列
+	Matrix4x4 projectionMatrix = MakePerspectiveFovMatrix(0.45f, float(*kClientWidth_) / float(*kClientHeight_), 0.1f, 100.0f);
+
+	*resourcesTriangle_->transformationData_ = worldMatrix * viewMatrix * projectionMatrix;
+
+
+	/*---------------------------
+	    コマンドリストに登録する
+	---------------------------*/
+
 	// ビューポート、シザー矩形の設定
 	commandList_->RSSetViewports(1, &viewport_);
 	commandList_->RSSetScissorRects(1, &scissorRect_);

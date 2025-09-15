@@ -99,6 +99,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitive.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitiveNone\PSOPrimitiveNone.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle\ResourcesTriangle.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\Transform\Transform.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXFence\DirectXFence.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXHeap\DirectXHeap.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DirectXShaderCompile\DirectXShaderCompile.cpp" />
@@ -107,6 +108,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\Include\Func\CreateBufferResource\CreateBufferResource.cpp" />
     <ClCompile Include="Engine\Include\Func\CrushHandler\CrushHandler.cpp" />
     <ClCompile Include="Engine\Include\LogFile\LogFile.cpp" />
+    <ClCompile Include="Engine\Include\Math\Matrix4x4\Matrix4x4.cpp" />
     <ClCompile Include="Engine\Include\Math\Vector1\Vector1.cpp" />
     <ClCompile Include="Engine\Include\Math\Vector2\Vector2.cpp" />
     <ClCompile Include="Engine\Include\Math\Vector3\Vector3.cpp" />
@@ -126,6 +128,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitive.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitiveNone\PSOPrimitiveNone.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle\ResourcesTriangle.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\Transform\Transform.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXFence\DirectXFence.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXHeap\DirectXHeap.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DirectXShaderCompile\DirectXShaderCompile.h" />
@@ -134,6 +137,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Include\Func\CreateBufferResource\CreateBufferResource.h" />
     <ClInclude Include="Engine\Include\Func\CrushHandler\CrushHandler.h" />
     <ClInclude Include="Engine\Include\LogFile\LogFile.h" />
+    <ClInclude Include="Engine\Include\Math\Matrix4x4\Matrix4x4.h" />
     <ClInclude Include="Engine\Include\Math\Vector1\Vector1.h" />
     <ClInclude Include="Engine\Include\Math\Vector2\Vector2.h" />
     <ClInclude Include="Engine\Include\Math\Vector3\Vector3.h" />

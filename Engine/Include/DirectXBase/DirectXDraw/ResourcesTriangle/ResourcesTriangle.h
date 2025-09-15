@@ -3,6 +3,7 @@
 
 #include "../../../Func/CreateBufferResource/CreateBufferResource.h"
 #include "../../../Math/Vector4/Vector4.h"
+#include "../../../Math/Matrix4x4/Matrix4x4.h"
 
 class ResourcesTriangle
 {
@@ -20,7 +21,18 @@ public:
 	/// </summary>
 	void SetCommandList();
 
+
+	// 頂点データ
+	Vector4* vertexData_ = nullptr;
+
+	// マテリアルデータ
+	Vector4* materialData_ = nullptr;
+
+	// 座標変換データ
+	Matrix4x4* transformationData_ = nullptr;
+
 	
+private:
 
 	// デバイス
 	ID3D12Device* device_ = nullptr;
@@ -35,14 +47,12 @@ public:
 	// 頂点バッファビュー
 	D3D12_VERTEX_BUFFER_VIEW vertexBufferView_{};
 
-	// 頂点データ
-	Vector4* vertexData_ = nullptr;
-
 
 	// マテリアルリソース
 	Microsoft::WRL::ComPtr<ID3D12Resource> materialResource_ = nullptr;
 
-	// マテリアルデータ
-	Vector4* materialData_ = nullptr;
+
+	// 座標変換リソース
+	Microsoft::WRL::ComPtr<ID3D12Resource> transformationResource_ = nullptr;
 };
 
