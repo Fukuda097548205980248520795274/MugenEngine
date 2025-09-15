@@ -103,7 +103,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\Include\DirectXBase\DirectXFence\DirectXFence.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXHeap\DirectXHeap.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DirectXShaderCompile\DirectXShaderCompile.cpp" />
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXTransitionBarrier\DirectXTransitionBarrier.cpp" />
+    <ClCompile Include="Engine\Include\Func\DirectXTransitionBarrier\DirectXTransitionBarrier.cpp" />
     <ClCompile Include="Engine\Include\Func\ConvertString\ConvertString.cpp" />
     <ClCompile Include="Engine\Include\Func\CreateBufferResource\CreateBufferResource.cpp" />
     <ClCompile Include="Engine\Include\Func\CrushHandler\CrushHandler.cpp" />
@@ -139,7 +139,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Include\DirectXBase\DirectXFence\DirectXFence.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXHeap\DirectXHeap.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DirectXShaderCompile\DirectXShaderCompile.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXTransitionBarrier\DirectXTransitionBarrier.h" />
+    <ClInclude Include="Engine\Include\Func\DirectXTransitionBarrier\DirectXTransitionBarrier.h" />
     <ClInclude Include="Engine\Include\Func\ConvertString\ConvertString.h" />
     <ClInclude Include="Engine\Include\Func\CreateBufferResource\CreateBufferResource.h" />
     <ClInclude Include="Engine\Include\Func\CrushHandler\CrushHandler.h" />

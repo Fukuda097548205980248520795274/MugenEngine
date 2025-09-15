@@ -4,7 +4,7 @@
 #include "DirectXHeap/DirectXHeap.h"
 #include "DirectXBuffering/DirectXBuffering.h"
 #include "DirectXDebug/DirectXDebug.h"
-#include "DirectXTransitionBarrier/DirectXTransitionBarrier.h"
+#include "../Func/DirectXTransitionBarrier/DirectXTransitionBarrier.h"
 #include "DirectXFence/DirectXFence.h"
 #include "DirectXDraw/DirectXDraw.h"
 
