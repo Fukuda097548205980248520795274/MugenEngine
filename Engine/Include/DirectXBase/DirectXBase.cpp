@@ -71,7 +71,7 @@ void DirectXBase::Initialize(LogFile* logFile, HWND hwnd, const int32_t* kClient
 
 	// DirectX描画の生成と初期化
 	directXDraw_ = std::make_unique<DirectXDraw>();
-	directXDraw_->Initialize(logFile_, kClientWidth_, kClientHeight_, directXCommand_->GetCommandList(), directXDevice_->GetDevice());
+	directXDraw_->Initialize(logFile_,directXHeap_.get(), kClientWidth_, kClientHeight_, directXCommand_->GetCommandList(), directXDevice_->GetDevice());
 
 
 	// ImGuiを初期化する
@@ -116,6 +116,11 @@ void DirectXBase::PreDraw()
 	// 指定した色で画面全体をクリアする
 	float clearColor[] = { 0.1f , 0.1f , 0.1f , 1.0f };
 	directXCommand_->GetCommandList()->ClearRenderTargetView(backBufferCPUHandle, clearColor, 0, nullptr);
+
+
+	// 描画用のディスクリプタヒープを設定
+	ID3D12DescriptorHeap* descriptorHeaps[] = { directXHeap_->GetSrvDescriptorHeap() };
+	directXCommand_->GetCommandList()->SetDescriptorHeaps(1, descriptorHeaps);
 }
 
 /// <summary>
@@ -125,10 +130,6 @@ void DirectXBase::PostDraw()
 {
 	// ImGuiの内部コマンドを生成する
 	ImGui::Render();
-
-	// 描画用のディスクリプタヒープを設定
-	ID3D12DescriptorHeap* descriptorHeaps[] = { directXHeap_->GetSrvDescriptorHeap() };
-	directXCommand_->GetCommandList()->SetDescriptorHeaps(1, descriptorHeaps);
 
 	// ImGuiを描画する
 	ImGui_ImplDX12_RenderDrawData(ImGui::GetDrawData(), directXCommand_->GetCommandList());

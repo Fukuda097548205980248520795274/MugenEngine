@@ -8,11 +8,12 @@
 /// <param name="logFile"></param>
 /// <param name="commandList"></param>
 /// <param name="device"></param>
-void DirectXDraw::Initialize(LogFile* logFile, const int32_t* kClientWidth, const int32_t* kClientHeight,
+void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const int32_t* kClientWidth, const int32_t* kClientHeight,
 	ID3D12GraphicsCommandList* commandList, ID3D12Device* device)
 {
 	// nullptrチェック
 	assert(logFile);
+	assert(directXHeap);
 	assert(kClientWidth);
 	assert(kClientHeight);
 	assert(commandList);
@@ -20,6 +21,7 @@ void DirectXDraw::Initialize(LogFile* logFile, const int32_t* kClientWidth, cons
 
 	// 引数を受け取る
 	logFile_ = logFile;
+	directXHeap_ = directXHeap;
 	kClientWidth_ = kClientWidth;
 	kClientHeight_ = kClientHeight;
 	commandList_ = commandList;
@@ -51,10 +53,11 @@ void DirectXDraw::Initialize(LogFile* logFile, const int32_t* kClientWidth, cons
 	scissorRect_.bottom = *kClientHeight_;
 
 
+
+
 	// 三角形用リソースの生成と初期化
 	resourcesTriangle_ = std::make_unique<ResourcesTriangle>();
 	resourcesTriangle_->Initialize(device_, commandList_);
-
 
 	// 図形の設定
 	transform_.scale = { 1.0f , 1.0f , 1.0f };
@@ -62,6 +65,23 @@ void DirectXDraw::Initialize(LogFile* logFile, const int32_t* kClientWidth, cons
 	// カメラの設定
 	camera_.scale = { 1.0f , 1.0f , 1.0f };
 	camera_.translation.z = -5.0f;
+
+	DirectX::ScratchImage mipImages = LoadTexture("./Resources/Textures/uvChecker.png");
+	const DirectX::TexMetadata& metadata = mipImages.GetMetadata();
+	textureResource_ = CreateTextureResource(device_, metadata);
+	subresource_ = UploadTextureData(textureResource_.Get(), mipImages, device_, commandList_);
+
+	D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc{};
+	srvDesc.Format = metadata.format;
+	srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
+	srvDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;
+	srvDesc.Texture2D.MipLevels = UINT(metadata.mipLevels);
+
+	textureSrvHandleCPU_ = directXHeap_->GetSrvCPUDescriptorHandle();
+	textureSrvHandleGPU_ = directXHeap_->GetSrvGPUDescriptorHandle();
+
+	// SRVの生成
+	device_->CreateShaderResourceView(textureResource_.Get(), &srvDesc, textureSrvHandleCPU_);
 }
 
 
@@ -103,6 +123,9 @@ void DirectXDraw::DrawTriangle()
 
 	// リソースの設定
 	resourcesTriangle_->SetCommandList();
+
+	// テクスチャのSRVを設定する
+	commandList_->SetGraphicsRootDescriptorTable(2, textureSrvHandleGPU_);
 
 	// 形状の設定
 	commandList_->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);

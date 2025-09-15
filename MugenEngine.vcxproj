@@ -100,6 +100,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitiveNone\PSOPrimitiveNone.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle\ResourcesTriangle.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\Transform\Transform.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\VertexData\VertexData.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXFence\DirectXFence.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXHeap\DirectXHeap.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DirectXShaderCompile\DirectXShaderCompile.cpp" />
@@ -107,6 +108,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\Include\Func\ConvertString\ConvertString.cpp" />
     <ClCompile Include="Engine\Include\Func\CreateBufferResource\CreateBufferResource.cpp" />
     <ClCompile Include="Engine\Include\Func\CrushHandler\CrushHandler.cpp" />
+    <ClCompile Include="Engine\Include\Func\LoadTexture\LoadTexture.cpp" />
     <ClCompile Include="Engine\Include\LogFile\LogFile.cpp" />
     <ClCompile Include="Engine\Include\Math\Matrix4x4\Matrix4x4.cpp" />
     <ClCompile Include="Engine\Include\Math\Vector1\Vector1.cpp" />
@@ -136,6 +138,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitiveNone\PSOPrimitiveNone.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle\ResourcesTriangle.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\Transform\Transform.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\VertexData\VertexData.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXFence\DirectXFence.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXHeap\DirectXHeap.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DirectXShaderCompile\DirectXShaderCompile.h" />
@@ -143,6 +146,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Include\Func\ConvertString\ConvertString.h" />
     <ClInclude Include="Engine\Include\Func\CreateBufferResource\CreateBufferResource.h" />
     <ClInclude Include="Engine\Include\Func\CrushHandler\CrushHandler.h" />
+    <ClInclude Include="Engine\Include\Func\LoadTexture\LoadTexture.h" />
     <ClInclude Include="Engine\Include\LogFile\LogFile.h" />
     <ClInclude Include="Engine\Include\Math\Matrix4x4\Matrix4x4.h" />
     <ClInclude Include="Engine\Include\Math\Vector1\Vector1.h" />
@@ -179,6 +183,11 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
   </ItemGroup>
   <ItemGroup>
     <Text Include="Externals\ImGui\LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Externals\DirectXTex\DirectXTex_Desktop_2022_Win10.vcxproj">
+      <Project>{371b9fa9-4c90-4ac6-a123-aced756d6c77}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

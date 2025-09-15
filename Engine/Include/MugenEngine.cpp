@@ -18,6 +18,9 @@ MugenEngine::~MugenEngine()
 	// ログファイル
 	delete logFile_;
 
+	// COMの終了処理
+	CoUninitialize();
+
 	// 解放漏れを検知する
 	IDXGIDebug1* debug;
 	if (SUCCEEDED(DXGIGetDebugInterface1(0, IID_PPV_ARGS(&debug))))
@@ -36,6 +39,9 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 {
 	// 出力用のディレクトリを掘る
 	std::filesystem::create_directories("./Engine/Output");
+
+	// COMの初期化
+	CoInitializeEx(0, COINIT_MULTITHREADED);
 
 	// 例外が発生したときに起動する
 	SetUnhandledExceptionFilter(ExportDump);

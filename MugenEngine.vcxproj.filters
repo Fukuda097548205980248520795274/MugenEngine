@@ -112,6 +112,12 @@
     <Filter Include="Engine\Include\Func\DirectXTransitionBarrier">
       <UniqueIdentifier>{76721cd8-d9aa-49f4-a033-67bcd75cd194}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\Func\LoadTexture">
+      <UniqueIdentifier>{9d3096eb-1ba9-4c9c-8d96-7ceaf4d00191}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\VertexData">
+      <UniqueIdentifier>{f2010888-5f83-4575-84f8-6ac1c3ff0d88}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -216,6 +222,12 @@
     <ClCompile Include="Externals\ImGui\imgui_widgets.cpp">
       <Filter>Externals\ImGui</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\Func\LoadTexture\LoadTexture.cpp">
+      <Filter>Engine\Include\Func\LoadTexture</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\VertexData\VertexData.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\VertexData</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -319,6 +331,12 @@
     </ClInclude>
     <ClInclude Include="Externals\ImGui\imstb_truetype.h">
       <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\Func\LoadTexture\LoadTexture.h">
+      <Filter>Engine\Include\Func\LoadTexture</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\VertexData\VertexData.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\VertexData</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

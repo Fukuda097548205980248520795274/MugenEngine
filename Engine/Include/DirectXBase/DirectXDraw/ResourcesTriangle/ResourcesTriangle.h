@@ -2,7 +2,7 @@
 #include <cassert>
 
 #include "../../../Func/CreateBufferResource/CreateBufferResource.h"
-#include "../../../Math/Vector4/Vector4.h"
+#include "../VertexData/VertexData.h"
 #include "../../../Math/Matrix4x4/Matrix4x4.h"
 
 class ResourcesTriangle
@@ -23,7 +23,7 @@ public:
 
 
 	// 頂点データ
-	Vector4* vertexData_ = nullptr;
+	VertexData* vertexData_ = nullptr;
 
 	// マテリアルデータ
 	Vector4* materialData_ = nullptr;

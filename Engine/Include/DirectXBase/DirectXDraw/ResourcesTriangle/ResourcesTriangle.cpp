@@ -21,7 +21,7 @@ void ResourcesTriangle::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 		頂点リソースの作成
 	----------------------*/
 
-	vertexResource_ = CreateBufferResource(device_, sizeof(Vector4) * 3);
+	vertexResource_ = CreateBufferResource(device_, sizeof(VertexData) * 3);
 
 
 	/*-------------------------------
@@ -31,8 +31,8 @@ void ResourcesTriangle::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 	// リソースの先頭のアドレスから使う
 	vertexBufferView_.BufferLocation = vertexResource_->GetGPUVirtualAddress();
 
-	vertexBufferView_.SizeInBytes = sizeof(Vector4) * 3;
-	vertexBufferView_.StrideInBytes = sizeof(Vector4);
+	vertexBufferView_.SizeInBytes = sizeof(VertexData) * 3;
+	vertexBufferView_.StrideInBytes = sizeof(VertexData);
 
 
 	/*----------------------------------
@@ -42,13 +42,16 @@ void ResourcesTriangle::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 	vertexResource_->Map(0, nullptr, reinterpret_cast<void**>(&vertexData_));
 
 	// 左下
-	vertexData_[0] = Vector4(-0.5f, -0.5f, 0.0f, 1.0f);
+	vertexData_[0].position = Vector4(-0.5f, -0.5f, 0.0f, 1.0f);
+	vertexData_[0].texcoord = Vector2(0.0f, 1.0f);
 
 	// 上
-	vertexData_[1] = Vector4(0.0f, 0.5f, 0.0f, 1.0f);
+	vertexData_[1].position = Vector4(0.0f, 0.5f, 0.0f, 1.0f);
+	vertexData_[1].texcoord = Vector2(0.5f, 0.0f);
 
 	// 右下
-	vertexData_[2] = Vector4(0.5f, -0.5f, 0.0f, 1.0f);
+	vertexData_[2].position = Vector4(0.5f, -0.5f, 0.0f, 1.0f);
+	vertexData_[2].texcoord = Vector2(1.0f, 1.0f);
 
 
 
@@ -59,7 +62,7 @@ void ResourcesTriangle::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 	materialResource_ = CreateBufferResource(device_, sizeof(Vector4));
 
 	materialResource_->Map(0, nullptr, reinterpret_cast<void**>(&materialData_));
-	*materialData_ = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+	*materialData_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 
 
 	/*-------------------------------------

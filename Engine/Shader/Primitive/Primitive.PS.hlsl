@@ -13,12 +13,18 @@ struct Material
 };
 ConstantBuffer<Material> gMaterial : register(b0);
 
-PixelShaderOutput main()
+Texture2D<float4> gTexture : register(t0);
+SamplerState gSampler : register(s0);
+
+PixelShaderOutput main(VertexShaderOutput input)
 {
     PixelShaderOutput output;
     
+    // テクスチャの色
+    float4 textureColor = gTexture.Sample(gSampler, input.texcoord);
+    
     // 色の設定
-    output.color = gMaterial.color;
+    output.color = gMaterial.color * textureColor;
     
     return output;
 }
