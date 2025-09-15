@@ -1,6 +1,4 @@
 #include "DirectXDebug.h"
-#pragma comment(lib,"d3d12.lib")
-#pragma comment(lib,"dxgi.lib")
 
 /// <summary>
 /// 初期化

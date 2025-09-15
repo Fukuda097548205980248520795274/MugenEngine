@@ -6,6 +6,7 @@
 #include "DirectXDebug/DirectXDebug.h"
 #include "DirectXTransitionBarrier/DirectXTransitionBarrier.h"
 #include "DirectXFence/DirectXFence.h"
+#include "DirectXDraw/DirectXDraw.h"
 
 class DirectXBase
 {
@@ -25,6 +26,10 @@ public:
 	/// 描画後処理
 	/// </summary>
 	void PostDraw();
+
+
+	// 三角形を描画する
+	void DrawTrinagle() { directXDraw_->DrawTriangle(); }
 
 	
 private:
@@ -57,6 +62,9 @@ private:
 
 	// DirectXフェンス
 	std::unique_ptr<DirectXFence> directXFence_ = nullptr;
+
+	// DirectX描画
+	std::unique_ptr<DirectXDraw> directXDraw_ = nullptr;
 
 
 

@@ -55,6 +55,10 @@ void DirectXBase::Initialize(LogFile* logFile, HWND hwnd, const int32_t* kClient
 	// DirectXフェンスの生成と初期化
 	directXFence_ = std::make_unique<DirectXFence>();
 	directXFence_->Initialize(logFile_, directXDevice_->GetDevice());
+
+	// DirectX描画の生成と初期化
+	directXDraw_ = std::make_unique<DirectXDraw>();
+	directXDraw_->Initialize(logFile_, kClientWidth_, kClientHeight_, directXCommand_->GetCommandList(), directXDevice_->GetDevice());
 }
 
 

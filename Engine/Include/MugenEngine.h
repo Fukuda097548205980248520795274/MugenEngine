@@ -37,6 +37,9 @@ public:
 	/// </summary>
 	void PostDraw() { directXBase_->PostDraw(); }
 
+	// 三角形を描画する
+	void DrawTriangle()const { directXBase_->DrawTrinagle(); }
+
 
 private:
 
@@ -48,12 +51,12 @@ private:
 
 
 	// ログファイル
-	std::unique_ptr<LogFile> logFile_ = nullptr;
+	LogFile* logFile_ = nullptr;
 
 	// ウィンドウズアプリケーション
-	std::unique_ptr<WinApp> winApp_ = nullptr;
+	WinApp* winApp_ = nullptr;
 	
 	// DirectXのベース
-	std::unique_ptr<DirectXBase> directXBase_ = nullptr;
+	DirectXBase* directXBase_ = nullptr;
 };
 

@@ -73,6 +73,30 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXFence">
       <UniqueIdentifier>{1c375bb0-b07e-475c-89bf-f743b8adb7e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Shader">
+      <UniqueIdentifier>{fecc635c-d963-4d7f-bd83-babb8fe4add7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Shader\Primitive">
+      <UniqueIdentifier>{9970ef29-ffdc-43f3-9fd7-fc62d7a620dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw">
+      <UniqueIdentifier>{b541e424-0ca9-4771-8fe4-bef46b656422}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\DirectXShaderCompile">
+      <UniqueIdentifier>{743ead50-15d2-441b-8651-b18d09d9c073}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive">
+      <UniqueIdentifier>{f76cd2d4-5835-4c57-a408-b774176981bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BasePSO">
+      <UniqueIdentifier>{be4f900c-b83d-45e9-bcee-ba858a050aca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitiveNone">
+      <UniqueIdentifier>{d4d2cf54-b4bc-4214-b048-846f9408e0d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle">
+      <UniqueIdentifier>{180463ce-b918-490a-9ba2-576ebcaf74f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -129,6 +153,24 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXFence\DirectXFence.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXFence</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DirectXShaderCompile\DirectXShaderCompile.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\DirectXShaderCompile</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DirectXDraw.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitive.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BasePSO\BasePSO.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BasePSO</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitiveNone\PSOPrimitiveNone.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitiveNone</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle\ResourcesTriangle.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -182,5 +224,36 @@
     <ClInclude Include="Engine\Include\DirectXBase\DirectXFence\DirectXFence.h">
       <Filter>Engine\Include\DirectXBase\DirectXFence</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DirectXShaderCompile\DirectXShaderCompile.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\DirectXShaderCompile</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DirectXDraw.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitive.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BasePSO\BasePSO.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BasePSO</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitiveNone\PSOPrimitiveNone.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitiveNone</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle\ResourcesTriangle.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Engine\Shader\Primitive\Primitive.VS.hlsl">
+      <Filter>Engine\Shader\Primitive</Filter>
+    </FxCompile>
+    <FxCompile Include="Engine\Shader\Primitive\Primitive.PS.hlsl">
+      <Filter>Engine\Shader\Primitive</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Engine\Shader\Primitive\Primitive.hlsli">
+      <Filter>Engine\Shader\Primitive</Filter>
+    </None>
   </ItemGroup>
 </Project>

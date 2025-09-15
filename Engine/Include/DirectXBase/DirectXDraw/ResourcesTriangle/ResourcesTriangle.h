@@ -1,0 +1,43 @@
+#pragma once
+#include <d3d12.h>
+#include <dxgi1_6.h>
+#include <cassert>
+#include <wrl.h>
+
+#include "../../../Math/Vector4/Vector4.h"
+
+class ResourcesTriangle
+{
+public:
+
+	/// <summary>
+	/// 初期化
+	/// </summary>
+	/// <param name="device"></param>
+	/// <param name="commandList"></param>
+	void Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* commandList);
+
+	/// <summary>
+	/// コマンドリストに設定を登録する
+	/// </summary>
+	void SetCommandList();
+
+	
+
+	// デバイス
+	ID3D12Device* device_ = nullptr;
+
+	// コマンドリスト
+	ID3D12GraphicsCommandList* commandList_ = nullptr;
+
+
+	// 頂点リソース
+	Microsoft::WRL::ComPtr<ID3D12Resource> vertexResource_ = nullptr;
+
+	// 頂点バッファビュー
+	D3D12_VERTEX_BUFFER_VIEW vertexBufferView_{};
+
+	// 頂点データ
+	Vector4* vertexData_ = nullptr;
+};
+

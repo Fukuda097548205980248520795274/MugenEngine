@@ -1,4 +1,7 @@
 #include "MugenEngine.h"
+#pragma comment(lib,"d3d12.lib")
+#pragma comment(lib,"dxgi.lib")
+#pragma comment(lib, "dxcompiler.lib")
 #pragma comment(lib,"dxguid.lib")
 
 /// <summary>
@@ -6,7 +9,24 @@
 /// </summary>
 MugenEngine::~MugenEngine()
 {
-	
+	// DirectXベース
+	delete directXBase_;
+
+	//ウィンドウアプリケーション
+	delete winApp_;
+
+	// ログファイル
+	delete logFile_;
+
+	// 解放漏れを検知する
+	IDXGIDebug1* debug;
+	if (SUCCEEDED(DXGIGetDebugInterface1(0, IID_PPV_ARGS(&debug))))
+	{
+		debug->ReportLiveObjects(DXGI_DEBUG_ALL, DXGI_DEBUG_RLO_ALL);
+		debug->ReportLiveObjects(DXGI_DEBUG_APP, DXGI_DEBUG_RLO_ALL);
+		debug->ReportLiveObjects(DXGI_DEBUG_D3D12, DXGI_DEBUG_RLO_ALL);
+		debug->Release();
+	}
 }
 
 /// <summary>
@@ -21,11 +41,11 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 	SetUnhandledExceptionFilter(ExportDump);
 
 	// ログファイルの生成と初期化
-	logFile_ = std::make_unique<LogFile>();
+	logFile_ = new LogFile();
 	logFile_->Initialize();
 
 	// ウィンドウアプリケーションの生成と初期化
-	winApp_ = std::make_unique<WinApp>();
+	winApp_ = new WinApp();
 	winApp_->Initialize(clientWidth, clientHeight, title);
 
 	// クライアント領域のポインタを取得する
@@ -33,6 +53,6 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 	kClientHeight_ = winApp_->GetClientHeightP();
 
 	// DirectXベースの生成と初期化
-	directXBase_ = std::make_unique<DirectXBase>();
-	directXBase_->Initialize(logFile_.get(), winApp_->GetHwnd(), kClientWidth_, kClientHeight_);
+	directXBase_ = new DirectXBase();
+	directXBase_->Initialize(logFile_, winApp_->GetHwnd(), kClientWidth_, kClientHeight_);
 }

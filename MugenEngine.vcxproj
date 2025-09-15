@@ -61,6 +61,10 @@
       <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
       <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxcompiler.dll" "$(TargetDir)dxcompiler.dll"
+copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dxil.dll"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -79,6 +83,10 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxcompiler.dll" "$(TargetDir)dxcompiler.dll"
+copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dxil.dll"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Include\DirectXBase\DirectXBase.cpp" />
@@ -86,8 +94,14 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXCommand\DirectXCommand.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDebug\DirectXDebug.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BasePSO\BasePSO.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DirectXDraw.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitive.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitiveNone\PSOPrimitiveNone.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle\ResourcesTriangle.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXFence\DirectXFence.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXHeap\DirectXHeap.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DirectXShaderCompile\DirectXShaderCompile.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXTransitionBarrier\DirectXTransitionBarrier.cpp" />
     <ClCompile Include="Engine\Include\Func\ConvertString\ConvertString.cpp" />
     <ClCompile Include="Engine\Include\Func\CrushHandler\CrushHandler.cpp" />
@@ -106,8 +120,14 @@
     <ClInclude Include="Engine\Include\DirectXBase\DirectXCommand\DirectXCommand.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDebug\DirectXDebug.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BasePSO\BasePSO.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DirectXDraw.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitive.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitiveNone\PSOPrimitiveNone.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle\ResourcesTriangle.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXFence\DirectXFence.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXHeap\DirectXHeap.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DirectXShaderCompile\DirectXShaderCompile.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXTransitionBarrier\DirectXTransitionBarrier.h" />
     <ClInclude Include="Engine\Include\Func\ConvertString\ConvertString.h" />
     <ClInclude Include="Engine\Include\Func\CrushHandler\CrushHandler.h" />
@@ -118,6 +138,21 @@
     <ClInclude Include="Engine\Include\Math\Vector4\Vector4.h" />
     <ClInclude Include="Engine\Include\MugenEngine.h" />
     <ClInclude Include="Engine\Include\WinApp\WinApp.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Engine\Shader\Primitive\Primitive.PS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Engine\Shader\Primitive\Primitive.VS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Engine\Shader\Primitive\Primitive.hlsli" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
