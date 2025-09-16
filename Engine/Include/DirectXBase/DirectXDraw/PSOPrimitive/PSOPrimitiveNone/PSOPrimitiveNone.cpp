@@ -158,6 +158,22 @@ void PSOPrimitiveNone::Initialize(LogFile* logFile, IDxcBlob* vertexShaderBlob, 
 	rasterizerDesc.FillMode = D3D12_FILL_MODE_SOLID;
 
 
+	/*----------------------
+	    深度ステートの設定
+	----------------------*/
+
+	D3D12_DEPTH_STENCIL_DESC depthStencilDesc{};
+
+	// Depthを有効化する
+	depthStencilDesc.DepthEnable = true;
+
+	// 書き込む
+	depthStencilDesc.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ALL;
+
+	// 比較関数　近ければ描画する
+	depthStencilDesc.DepthFunc = D3D12_COMPARISON_FUNC_LESS_EQUAL;
+
+
 	/*------------------
 	    PSOを生成する
 	------------------*/
@@ -169,10 +185,14 @@ void PSOPrimitiveNone::Initialize(LogFile* logFile, IDxcBlob* vertexShaderBlob, 
 	graphicsPipelineStateDesc.PS = { pixelShaderBlob_->GetBufferPointer(), pixelShaderBlob_->GetBufferSize() };
 	graphicsPipelineStateDesc.BlendState = blendDesc;
 	graphicsPipelineStateDesc.RasterizerState = rasterizerDesc;
+	graphicsPipelineStateDesc.DepthStencilState = depthStencilDesc;
 
 	// 書き込むRTVの情報
 	graphicsPipelineStateDesc.NumRenderTargets = 1;
 	graphicsPipelineStateDesc.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM_SRGB;
+
+	// 書き込むDSVの情報
+	graphicsPipelineStateDesc.DSVFormat = DXGI_FORMAT_D24_UNORM_S8_UINT;
 
 	// 利用するトポロジ（形状）
 	graphicsPipelineStateDesc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;

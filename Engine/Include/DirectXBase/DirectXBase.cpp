@@ -73,6 +73,10 @@ void DirectXBase::Initialize(LogFile* logFile, HWND hwnd, const int32_t* kClient
 	directXDraw_ = std::make_unique<DirectXDraw>();
 	directXDraw_->Initialize(logFile_,directXHeap_.get(), kClientWidth_, kClientHeight_, directXCommand_->GetCommandList(), directXDevice_->GetDevice());
 
+	// 深度情報リソースの生成と初期化
+	resourceDepthStencil_ = std::make_unique<ResourcesDepthStencil>();
+	resourceDepthStencil_->Initialize(directXHeap_.get(), directXDevice_->GetDevice(), kClientWidth_, kClientHeight_);
+
 
 	// ImGuiを初期化する
 	IMGUI_CHECKVERSION();
@@ -110,12 +114,18 @@ void DirectXBase::PreDraw()
 	// バックバッファリソース Present -> RenderTarget
 	TransitionBarrier(backBufferResource, D3D12_RESOURCE_STATE_PRESENT, D3D12_RESOURCE_STATE_RENDER_TARGET, directXCommand_->GetCommandList());
 
-	// 描画先のRTVを設定する
-	directXCommand_->GetCommandList()->OMSetRenderTargets(1, &backBufferCPUHandle, false, nullptr);
+	// 深度情報リソースのハンドルを取得する
+	D3D12_CPU_DESCRIPTOR_HANDLE dsvHandle = resourceDepthStencil_->GetCPUDescriptorHandle();
+
+	// 描画先のRTVとDSVを設定する
+	directXCommand_->GetCommandList()->OMSetRenderTargets(1, &backBufferCPUHandle, false, &dsvHandle);
 
 	// 指定した色で画面全体をクリアする
 	float clearColor[] = { 0.1f , 0.1f , 0.1f , 1.0f };
 	directXCommand_->GetCommandList()->ClearRenderTargetView(backBufferCPUHandle, clearColor, 0, nullptr);
+
+	// 指定した深度で画面全体をクリアする
+	directXCommand_->GetCommandList()->ClearDepthStencilView(dsvHandle, D3D12_CLEAR_FLAG_DEPTH, 1.0f, 0, 0, nullptr);
 
 
 	// 描画用のディスクリプタヒープを設定

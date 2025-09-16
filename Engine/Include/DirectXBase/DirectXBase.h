@@ -7,6 +7,7 @@
 #include "../Func/DirectXTransitionBarrier/DirectXTransitionBarrier.h"
 #include "DirectXFence/DirectXFence.h"
 #include "DirectXDraw/DirectXDraw.h"
+#include "ResourcesDepthStencil/ResourcesDepthStencil.h"
 
 #include "../../../Externals/ImGui/imgui.h"
 #include "../../../Externals/ImGui/imgui_impl_dx12.h"
@@ -80,6 +81,9 @@ private:
 
 	// DirectX描画
 	std::unique_ptr<DirectXDraw> directXDraw_ = nullptr;
+
+	// 深度情報のリソース
+	std::unique_ptr<ResourcesDepthStencil> resourceDepthStencil_ = nullptr;
 
 
 

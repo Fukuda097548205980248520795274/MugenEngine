@@ -104,7 +104,7 @@ D3D12_GPU_DESCRIPTOR_HANDLE DirectXHeap::GetSrvGPUDescriptorHandle()
 /// <returns></returns>
 D3D12_CPU_DESCRIPTOR_HANDLE DirectXHeap::GetDsvCPUDescriptorHandle()
 {
-	D3D12_CPU_DESCRIPTOR_HANDLE cpuHandle = srvDescriptorHeap_->GetCPUDescriptorHandleForHeapStart();
+	D3D12_CPU_DESCRIPTOR_HANDLE cpuHandle = dsvDescriptorHeap_->GetCPUDescriptorHandleForHeapStart();
 	cpuHandle.ptr += device_->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_DSV) * useDsvCPUDescriptor_;
 
 	// ログを出力する
@@ -127,7 +127,7 @@ D3D12_CPU_DESCRIPTOR_HANDLE DirectXHeap::GetDsvCPUDescriptorHandle()
 /// <returns></returns>
 D3D12_GPU_DESCRIPTOR_HANDLE DirectXHeap::GetDsvGPUDescriptorHandle()
 {
-	D3D12_GPU_DESCRIPTOR_HANDLE gpuHandle = srvDescriptorHeap_->GetGPUDescriptorHandleForHeapStart();
+	D3D12_GPU_DESCRIPTOR_HANDLE gpuHandle = dsvDescriptorHeap_->GetGPUDescriptorHandleForHeapStart();
 	gpuHandle.ptr += device_->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_DSV) * useDsvGPUDescriptor_;
 
 	// ログを出力する

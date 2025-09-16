@@ -121,6 +121,9 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\TextureStore">
       <UniqueIdentifier>{77f17519-3a2f-46aa-91f8-265f621846eb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\ResourcesDepthStencil">
+      <UniqueIdentifier>{820a6ebe-7db8-4569-a78d-ebd623ca873e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -234,6 +237,9 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\TextureStore\TextureStore.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\TextureStore</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\ResourcesDepthStencil\ResourcesDepthStencil.cpp">
+      <Filter>Engine\Include\DirectXBase\ResourcesDepthStencil</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -346,6 +352,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\TextureStore\TextureStore.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\TextureStore</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\ResourcesDepthStencil\ResourcesDepthStencil.h">
+      <Filter>Engine\Include\DirectXBase\ResourcesDepthStencil</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -21,7 +21,7 @@ void ResourcesTriangle::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 		頂点リソースの作成
 	----------------------*/
 
-	vertexResource_ = CreateBufferResource(device_, sizeof(VertexData) * 3);
+	vertexResource_ = CreateBufferResource(device_, sizeof(VertexData) * 6);
 
 
 	/*-------------------------------
@@ -31,7 +31,7 @@ void ResourcesTriangle::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 	// リソースの先頭のアドレスから使う
 	vertexBufferView_.BufferLocation = vertexResource_->GetGPUVirtualAddress();
 
-	vertexBufferView_.SizeInBytes = sizeof(VertexData) * 3;
+	vertexBufferView_.SizeInBytes = sizeof(VertexData) * 6;
 	vertexBufferView_.StrideInBytes = sizeof(VertexData);
 
 
@@ -52,6 +52,18 @@ void ResourcesTriangle::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 	// 右下
 	vertexData_[2].position = Vector4(0.5f, -0.5f, 0.0f, 1.0f);
 	vertexData_[2].texcoord = Vector2(1.0f, 1.0f);
+
+	// 左下2
+	vertexData_[3].position = Vector4(-0.5f, -0.5f, 0.5f, 1.0f);
+	vertexData_[3].texcoord = Vector2(0.0f, 1.0f);
+
+	// 上2
+	vertexData_[4].position = Vector4(0.0f, 0.0f, 0.0f, 1.0f);
+	vertexData_[4].texcoord = Vector2(0.5f, 0.0f);
+
+	// 右下2
+	vertexData_[5].position = Vector4(0.5f, -0.5f, -0.5f, 1.0f);
+	vertexData_[5].texcoord = Vector2(1.0f, 1.0f);
 
 
 

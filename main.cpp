@@ -10,8 +10,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
 	// uvChecker
 	uint32_t ghUvChecker = mugenEngine->LoadTexture("./Resources/Textures/uvChecker.png");
-	uint32_t ghUvChecker2 = mugenEngine->LoadTexture("./Resources/Textures/uvChecker.png");
-	uint32_t ghWhite = mugenEngine->LoadTexture("./Resources/Textures/white2x2.png");
 
 
 	// ゲームループ
@@ -22,7 +20,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
 
 		// 三角形を描画する
-		mugenEngine->DrawTriangle(ghWhite);
+		mugenEngine->DrawTriangle(ghUvChecker);
 
 
 		// 描画後処理

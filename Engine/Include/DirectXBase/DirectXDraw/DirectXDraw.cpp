@@ -118,5 +118,5 @@ void DirectXDraw::DrawTriangle(uint32_t textureHandle)
 	commandList_->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	
 	// ドローコール
-	commandList_->DrawInstanced(3, 1, 0, 0);
+	commandList_->DrawInstanced(6, 1, 0, 0);
 }

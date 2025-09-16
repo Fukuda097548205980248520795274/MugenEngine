@@ -24,6 +24,15 @@ DirectX::ScratchImage LoadTextureGetMipImages(const std::string& filePath);
 Microsoft::WRL::ComPtr<ID3D12Resource> CreateTextureResource(ID3D12Device* device, const DirectX::TexMetadata& metadata);
 
 /// <summary>
+/// 深度情報テクスチャリソースを作成する
+/// </summary>
+/// <param name="device"></param>
+/// <param name="width"></param>
+/// <param name="height"></param>
+/// <returns></returns>
+Microsoft::WRL::ComPtr<ID3D12Resource> CreateDepthStencilTextureResource(ID3D12Device* device, int32_t width, int height);
+
+/// <summary>
 /// テクスチャデータをGPUに転送するためのリソースを生成する
 /// </summary>
 /// <param name="texture"></param>

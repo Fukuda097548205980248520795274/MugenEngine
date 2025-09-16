@@ -22,6 +22,13 @@ public:
 	/// <returns></returns>
 	ID3D12DescriptorHeap* GetSrvDescriptorHeap()const { return srvDescriptorHeap_.Get(); }
 
+	/// <summary>
+	/// DSV用ディスクリプタヒープのGetter
+	/// </summary>
+	/// <returns></returns>
+	ID3D12DescriptorHeap* GetDsvDescriptorHeap()const { return dsvDescriptorHeap_.Get(); }
+
+
 
 	/// <summary>
 	/// RTV用のCPUハンドルを取得する

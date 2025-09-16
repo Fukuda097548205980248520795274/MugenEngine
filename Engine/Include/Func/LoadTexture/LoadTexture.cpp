@@ -85,6 +85,78 @@ Microsoft::WRL::ComPtr<ID3D12Resource> CreateTextureResource(ID3D12Device* devic
 
 
 /// <summary>
+/// 深度情報テクスチャリソースを作成する
+/// </summary>
+/// <param name="device"></param>
+/// <param name="width"></param>
+/// <param name="height"></param>
+/// <returns></returns>
+Microsoft::WRL::ComPtr<ID3D12Resource> CreateDepthStencilTextureResource(ID3D12Device* device, int32_t width, int32_t height)
+{
+	/*------------------
+	    リソースの設定
+	------------------*/
+
+	D3D12_RESOURCE_DESC resourceDesc{};
+	resourceDesc.Width = width;
+	resourceDesc.Height = height;
+	resourceDesc.MipLevels = 1;
+	resourceDesc.DepthOrArraySize = 1;
+	resourceDesc.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
+	resourceDesc.SampleDesc.Count = 1;
+	resourceDesc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;
+	resourceDesc.Flags = D3D12_RESOURCE_FLAG_ALLOW_DEPTH_STENCIL;
+
+
+	/*----------------
+	    ヒープの設定
+	----------------*/
+
+	D3D12_HEAP_PROPERTIES heapProperties{};
+	heapProperties.Type = D3D12_HEAP_TYPE_DEFAULT;
+
+	
+	/*----------------------
+	    深度値のクリア設定
+	----------------------*/
+
+	D3D12_CLEAR_VALUE depthCalerValue{};
+
+	// 1.0fでクリアする
+	depthCalerValue.DepthStencil.Depth = 1.0f;
+	depthCalerValue.Format = DXGI_FORMAT_D24_UNORM_S8_UINT;
+
+
+	/*----------------------
+	    リソースを生成する
+	----------------------*/
+
+	Microsoft::WRL::ComPtr<ID3D12Resource> resource = nullptr;
+	HRESULT hr = device->CreateCommittedResource(
+		// ヒープの設定
+		&heapProperties,
+
+		// ヒープの特殊な設定
+		D3D12_HEAP_FLAG_NONE,
+
+		// リソースの設定
+		&resourceDesc,
+
+		// 深度値を書き込む設定
+		D3D12_RESOURCE_STATE_DEPTH_WRITE,
+
+		// クリア最適地
+		&depthCalerValue,
+
+		IID_PPV_ARGS(&resource)
+	);
+	assert(SUCCEEDED(hr));
+
+	return resource;
+}
+
+
+/// <summary>
 /// テクスチャデータをGPUに転送するためのリソースを生成する
 /// </summary>
 /// <param name="texture"></param>
