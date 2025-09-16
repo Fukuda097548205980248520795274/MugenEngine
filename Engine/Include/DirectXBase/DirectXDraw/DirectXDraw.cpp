@@ -32,6 +32,10 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	directXShaderCompiler_ = std::make_unique<DirectXShaderCompile>();
 	directXShaderCompiler_->Initialize(logFile_);
 
+	// テクスチャ格納場所の生成と初期化
+	textureStore_ = std::make_unique<TextureStore>();
+	textureStore_->Initialize(directXHeap_, device_, commandList_);
+
 
 	// プリミティブ用PSOの生成と初期化
 	primitivePSO_ = std::make_unique<PSOPrimitive>();
@@ -65,23 +69,6 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	// カメラの設定
 	camera_.scale = { 1.0f , 1.0f , 1.0f };
 	camera_.translation.z = -5.0f;
-
-	DirectX::ScratchImage mipImages = LoadTexture("./Resources/Textures/uvChecker.png");
-	const DirectX::TexMetadata& metadata = mipImages.GetMetadata();
-	textureResource_ = CreateTextureResource(device_, metadata);
-	subresource_ = UploadTextureData(textureResource_.Get(), mipImages, device_, commandList_);
-
-	D3D12_SHADER_RESOURCE_VIEW_DESC srvDesc{};
-	srvDesc.Format = metadata.format;
-	srvDesc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
-	srvDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;
-	srvDesc.Texture2D.MipLevels = UINT(metadata.mipLevels);
-
-	textureSrvHandleCPU_ = directXHeap_->GetSrvCPUDescriptorHandle();
-	textureSrvHandleGPU_ = directXHeap_->GetSrvGPUDescriptorHandle();
-
-	// SRVの生成
-	device_->CreateShaderResourceView(textureResource_.Get(), &srvDesc, textureSrvHandleCPU_);
 }
 
 
@@ -89,7 +76,7 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 /// <summary>
 /// 三角形を描画する
 /// </summary>
-void DirectXDraw::DrawTriangle()
+void DirectXDraw::DrawTriangle(uint32_t textureHandle)
 {
 	/*------------------
 	    座標変換を行う
@@ -125,7 +112,7 @@ void DirectXDraw::DrawTriangle()
 	resourcesTriangle_->SetCommandList();
 
 	// テクスチャのSRVを設定する
-	commandList_->SetGraphicsRootDescriptorTable(2, textureSrvHandleGPU_);
+	commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(textureHandle));
 
 	// 形状の設定
 	commandList_->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);

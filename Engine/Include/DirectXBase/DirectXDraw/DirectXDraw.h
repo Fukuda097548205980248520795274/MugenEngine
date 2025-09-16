@@ -6,6 +6,7 @@
 
 #include "DirectXShaderCompile/DirectXShaderCompile.h"
 #include "../DirectXHeap/DirectXHeap.h"
+#include "TextureStore/TextureStore.h"
 
 #include "PSOPrimitive/PSOPrimitive.h"
 
@@ -29,9 +30,16 @@ public:
 		ID3D12GraphicsCommandList* commandList, ID3D12Device* device);
 
 	/// <summary>
+	/// テクスチャを読み込む
+	/// </summary>
+	/// <param name="filePath"></param>
+	/// <returns></returns>
+	uint32_t LoadTexture(const std::string& filePath) { return textureStore_->LoadTexture(filePath); }
+
+	/// <summary>
 	/// 三角形を描画する
 	/// </summary>
-	void DrawTriangle();
+	void DrawTriangle(uint32_t textureHandle);
 
 
 private:
@@ -60,6 +68,10 @@ private:
 	// DirectXシェーダコンパイラ
 	std::unique_ptr<DirectXShaderCompile> directXShaderCompiler_ = nullptr;
 
+	// テクスチャ格納場所
+	std::unique_ptr<TextureStore> textureStore_ = nullptr;
+
+
 	// プリミティブ用PSO
 	std::unique_ptr<PSOPrimitive> primitivePSO_ = nullptr;
 
@@ -82,14 +94,5 @@ private:
 
 	// カメラ
 	Transform3D camera_;
-
-	// テクスチャリソース
-	Microsoft::WRL::ComPtr<ID3D12Resource> textureResource_;
-
-	// サブリソース
-	Microsoft::WRL::ComPtr<ID3D12Resource> subresource_;
-
-	D3D12_CPU_DESCRIPTOR_HANDLE textureSrvHandleCPU_;
-	D3D12_GPU_DESCRIPTOR_HANDLE textureSrvHandleGPU_;
 };
 

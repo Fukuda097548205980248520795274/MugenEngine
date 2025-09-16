@@ -7,6 +7,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	MugenEngine* mugenEngine = new MugenEngine();
 	mugenEngine->Initialize(1280, 720, "LE2A_11_フクダ_ソウワ");
 
+
+	// uvChecker
+	uint32_t ghUvChecker = mugenEngine->LoadTexture("./Resources/Textures/uvChecker.png");
+	uint32_t ghUvChecker2 = mugenEngine->LoadTexture("./Resources/Textures/uvChecker.png");
+	uint32_t ghWhite = mugenEngine->LoadTexture("./Resources/Textures/white2x2.png");
+
+
 	// ゲームループ
 	while (mugenEngine->ProcessMessage())
 	{
@@ -15,7 +22,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 
 
 		// 三角形を描画する
-		mugenEngine->DrawTriangle();
+		mugenEngine->DrawTriangle(ghWhite);
 
 
 		// 描画後処理

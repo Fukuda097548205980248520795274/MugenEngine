@@ -99,6 +99,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitive.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitiveNone\PSOPrimitiveNone.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle\ResourcesTriangle.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\TextureStore\TextureStore.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\Transform\Transform.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\VertexData\VertexData.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXFence\DirectXFence.cpp" />
@@ -137,6 +138,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitive.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitiveNone\PSOPrimitiveNone.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle\ResourcesTriangle.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\TextureStore\TextureStore.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\Transform\Transform.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\VertexData\VertexData.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXFence\DirectXFence.h" />

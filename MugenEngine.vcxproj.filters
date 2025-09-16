@@ -118,6 +118,9 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\VertexData">
       <UniqueIdentifier>{f2010888-5f83-4575-84f8-6ac1c3ff0d88}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\TextureStore">
+      <UniqueIdentifier>{77f17519-3a2f-46aa-91f8-265f621846eb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -228,6 +231,9 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\VertexData\VertexData.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\VertexData</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\TextureStore\TextureStore.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\TextureStore</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -337,6 +343,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\VertexData\VertexData.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\VertexData</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\TextureStore\TextureStore.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\TextureStore</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

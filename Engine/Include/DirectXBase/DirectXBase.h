@@ -36,9 +36,15 @@ public:
 	/// </summary>
 	void PostDraw();
 
+	/// <summary>
+	/// テクスチャを読み込む
+	/// </summary>
+	/// <param name="filePath"></param>
+	/// <returns></returns>
+	uint32_t LoadTexture(const std::string& filePath) { return directXDraw_->LoadTexture(filePath); }
 
 	// 三角形を描画する
-	void DrawTrinagle() { directXDraw_->DrawTriangle(); }
+	void DrawTrinagle(uint32_t textureHandle) { directXDraw_->DrawTriangle(textureHandle); }
 
 	
 private:

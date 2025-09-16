@@ -7,7 +7,7 @@
 /// </summary>
 /// <param name="filePath"></param>
 /// <returns></returns>
-DirectX::ScratchImage LoadTexture(const std::string& filePath)
+DirectX::ScratchImage LoadTextureGetMipImages(const std::string& filePath)
 {
 	// テクスチャファイルを読んで、プログラムで扱えるようにする
 	DirectX::ScratchImage image{};

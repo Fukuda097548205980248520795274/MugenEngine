@@ -13,7 +13,7 @@
 /// </summary>
 /// <param name="filePath"></param>
 /// <returns></returns>
-DirectX::ScratchImage LoadTexture(const std::string& filePath);
+DirectX::ScratchImage LoadTextureGetMipImages(const std::string& filePath);
 
 /// <summary>
 /// テクスチャ用リソースを作成する
