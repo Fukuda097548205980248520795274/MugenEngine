@@ -4,7 +4,7 @@
 #include <cassert>
 #include <wrl.h>
 
-#include "../DirectXShaderCompile/DirectXShaderCompile.h"
+#include "../../DirectXShaderCompile/DirectXShaderCompile.h"
 
 #include "PSOPrimitiveNone/PSOPrimitiveNone.h"
 

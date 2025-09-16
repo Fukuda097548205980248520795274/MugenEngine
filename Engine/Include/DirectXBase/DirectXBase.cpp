@@ -115,7 +115,7 @@ void DirectXBase::PreDraw()
 	TransitionBarrier(backBufferResource, D3D12_RESOURCE_STATE_PRESENT, D3D12_RESOURCE_STATE_RENDER_TARGET, directXCommand_->GetCommandList());
 
 	// 深度情報リソースのハンドルを取得する
-	D3D12_CPU_DESCRIPTOR_HANDLE dsvHandle = resourceDepthStencil_->GetCPUDescriptorHandle();
+	D3D12_CPU_DESCRIPTOR_HANDLE dsvHandle = resourceDepthStencil_->GetDsvCPUDescriptorHandle();
 
 	// 描画先のRTVとDSVを設定する
 	directXCommand_->GetCommandList()->OMSetRenderTargets(1, &backBufferCPUHandle, false, &dsvHandle);

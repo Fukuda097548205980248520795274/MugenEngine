@@ -16,7 +16,7 @@ public:
 	/// CPUディスクリプタハンドルのGetter
 	/// </summary>
 	/// <returns></returns>
-	D3D12_CPU_DESCRIPTOR_HANDLE GetCPUDescriptorHandle()const { return cpuHandle_; }
+	D3D12_CPU_DESCRIPTOR_HANDLE GetDsvCPUDescriptorHandle()const { return cpuHandle_; }
 
 
 private:

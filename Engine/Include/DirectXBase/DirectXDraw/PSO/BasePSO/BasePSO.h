@@ -5,7 +5,7 @@
 #include <cassert>
 #include <wrl.h>
 
-#include "../../../LogFile/LogFile.h"
+#include "../../../../LogFile/LogFile.h"
 
 
 class BasePSO

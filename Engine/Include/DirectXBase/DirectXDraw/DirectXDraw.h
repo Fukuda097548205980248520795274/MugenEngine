@@ -8,7 +8,7 @@
 #include "../DirectXHeap/DirectXHeap.h"
 #include "TextureStore/TextureStore.h"
 
-#include "PSOPrimitive/PSOPrimitive.h"
+#include "PSO/PSOPrimitive/PSOPrimitive.h"
 
 #include "ResourcesTriangle/ResourcesTriangle.h"
 

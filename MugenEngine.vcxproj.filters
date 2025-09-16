@@ -82,15 +82,6 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\DirectXShaderCompile">
       <UniqueIdentifier>{743ead50-15d2-441b-8651-b18d09d9c073}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive">
-      <UniqueIdentifier>{f76cd2d4-5835-4c57-a408-b774176981bd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BasePSO">
-      <UniqueIdentifier>{be4f900c-b83d-45e9-bcee-ba858a050aca}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitiveNone">
-      <UniqueIdentifier>{d4d2cf54-b4bc-4214-b048-846f9408e0d0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle">
       <UniqueIdentifier>{180463ce-b918-490a-9ba2-576ebcaf74f0}</UniqueIdentifier>
     </Filter>
@@ -123,6 +114,24 @@
     </Filter>
     <Filter Include="Engine\Include\DirectXBase\ResourcesDepthStencil">
       <UniqueIdentifier>{820a6ebe-7db8-4569-a78d-ebd623ca873e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Shader\Sprite">
+      <UniqueIdentifier>{4a81b3b3-6e4c-4ef2-9145-6c2c68b7f732}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\PSO">
+      <UniqueIdentifier>{b7227316-3fef-4d71-bed1-5286622f6847}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\PSO\BasePSO">
+      <UniqueIdentifier>{be4f900c-b83d-45e9-bcee-ba858a050aca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\PSO\PSOPrimitive">
+      <UniqueIdentifier>{f76cd2d4-5835-4c57-a408-b774176981bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\PSO\PSOPrimitive\PSOPrimitiveNone">
+      <UniqueIdentifier>{d4d2cf54-b4bc-4214-b048-846f9408e0d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\PSO\PSOSprite">
+      <UniqueIdentifier>{ef725885-152a-4cc0-8c80-12888c7d55c7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -186,14 +195,14 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DirectXDraw.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitive.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive</Filter>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\PSO\PSOPrimitive\PSOPrimitive.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSO\PSOPrimitive</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BasePSO\BasePSO.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\BasePSO</Filter>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\PSO\BasePSO\BasePSO.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSO\BasePSO</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitiveNone\PSOPrimitiveNone.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitiveNone</Filter>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\PSO\PSOPrimitive\PSOPrimitiveNone\PSOPrimitiveNone.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSO\PSOPrimitive\PSOPrimitiveNone</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle\ResourcesTriangle.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle</Filter>
@@ -239,6 +248,9 @@
     </ClCompile>
     <ClCompile Include="Engine\Include\DirectXBase\ResourcesDepthStencil\ResourcesDepthStencil.cpp">
       <Filter>Engine\Include\DirectXBase\ResourcesDepthStencil</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\PSO\PSOSprite\PSOSprite.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSO\PSOSprite</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -299,14 +311,14 @@
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DirectXDraw.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitive.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive</Filter>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\PSO\PSOPrimitive\PSOPrimitive.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSO\PSOPrimitive</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BasePSO\BasePSO.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\BasePSO</Filter>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\PSO\BasePSO\BasePSO.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSO\BasePSO</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitiveNone\PSOPrimitiveNone.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSOPrimitive\PSOPrimitiveNone</Filter>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\PSO\PSOPrimitive\PSOPrimitiveNone\PSOPrimitiveNone.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSO\PSOPrimitive\PSOPrimitiveNone</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle\ResourcesTriangle.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle</Filter>
@@ -356,6 +368,9 @@
     <ClInclude Include="Engine\Include\DirectXBase\ResourcesDepthStencil\ResourcesDepthStencil.h">
       <Filter>Engine\Include\DirectXBase\ResourcesDepthStencil</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\PSO\PSOSprite\PSOSprite.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSO\PSOSprite</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Engine\Shader\Primitive\Primitive.VS.hlsl">
@@ -364,10 +379,19 @@
     <FxCompile Include="Engine\Shader\Primitive\Primitive.PS.hlsl">
       <Filter>Engine\Shader\Primitive</Filter>
     </FxCompile>
+    <FxCompile Include="Engine\Shader\Sprite\Sprite.VS.hlsl">
+      <Filter>Engine\Shader\Sprite</Filter>
+    </FxCompile>
+    <FxCompile Include="Engine\Shader\Sprite\Sprite.PS.hlsl">
+      <Filter>Engine\Shader\Sprite</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Shader\Primitive\Primitive.hlsli">
       <Filter>Engine\Shader\Primitive</Filter>
+    </None>
+    <None Include="Engine\Shader\Sprite\Sprite.hlsli">
+      <Filter>Engine\Shader\Sprite</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
