@@ -6,9 +6,9 @@
 
 #include "../../DirectXShaderCompile/DirectXShaderCompile.h"
 
-#include "PSOPrimitiveNone/PSOPrimitiveNone.h"
+#include "SinglePSOPrimitiveNone/SinglePSOPrimitiveNone.h"
 
-class PSOPrimitive
+class OrganizePSOPrimitive
 {
 public:
 
@@ -49,6 +49,6 @@ private:
 
 
 	// PSO
-	std::unique_ptr<BasePSO> pso_ = nullptr;
+	std::unique_ptr<BaseSinglePSO> pso_ = nullptr;
 };
 

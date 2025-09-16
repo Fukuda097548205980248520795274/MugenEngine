@@ -1,4 +1,4 @@
-#include "BasePSO.h"
+#include "BaseSinglePSO.h"
 
 /// <summary>
 /// 初期化
@@ -7,7 +7,7 @@
 /// <param name="vertexShaderBlob"></param>
 /// <param name="pixelShaderBlob"></param>
 /// <param name="device"></param>
-void BasePSO::Initialize(LogFile* logFile, IDxcBlob* vertexShaderBlob, IDxcBlob* pixelShaderBlob,
+void BaseSinglePSO::Initialize(LogFile* logFile, IDxcBlob* vertexShaderBlob, IDxcBlob* pixelShaderBlob,
 	ID3D12Device* device, ID3D12GraphicsCommandList* commandList)
 {
 	// nullptrチェック
@@ -28,7 +28,7 @@ void BasePSO::Initialize(LogFile* logFile, IDxcBlob* vertexShaderBlob, IDxcBlob*
 /// <summary>
 /// PSOをコマンドリストのセットする
 /// </summary>
-void BasePSO::SetPSOState()
+void BaseSinglePSO::SetPSOState()
 {
 	commandList_->SetGraphicsRootSignature(rootSignature_.Get());
 	commandList_->SetPipelineState(graphicsPipelineState_.Get());

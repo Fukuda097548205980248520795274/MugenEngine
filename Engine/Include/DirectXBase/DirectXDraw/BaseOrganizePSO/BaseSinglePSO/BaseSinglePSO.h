@@ -8,7 +8,7 @@
 #include "../../../../LogFile/LogFile.h"
 
 
-class BasePSO
+class BaseSinglePSO
 {
 public:
 

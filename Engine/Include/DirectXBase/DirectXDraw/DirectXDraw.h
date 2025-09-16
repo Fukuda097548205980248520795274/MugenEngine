@@ -8,7 +8,7 @@
 #include "../DirectXHeap/DirectXHeap.h"
 #include "TextureStore/TextureStore.h"
 
-#include "PSO/PSOPrimitive/PSOPrimitive.h"
+#include "BaseOrganizePSO/OrganizePSOPrimitive/OrganizePSOPrimitive.h"
 
 #include "ResourcesTriangle/ResourcesTriangle.h"
 
@@ -73,7 +73,7 @@ private:
 
 
 	// プリミティブ用PSO
-	std::unique_ptr<PSOPrimitive> primitivePSO_ = nullptr;
+	std::unique_ptr<OrganizePSOPrimitive> primitivePSO_ = nullptr;
 
 
 	// ビューポート

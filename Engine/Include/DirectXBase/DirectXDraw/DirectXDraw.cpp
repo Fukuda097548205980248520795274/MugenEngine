@@ -38,7 +38,7 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 
 
 	// プリミティブ用PSOの生成と初期化
-	primitivePSO_ = std::make_unique<PSOPrimitive>();
+	primitivePSO_ = std::make_unique<OrganizePSOPrimitive>();
 	primitivePSO_->Initialize(logFile_, directXShaderCompiler_.get(), commandList_, device_);
 
 

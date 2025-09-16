@@ -1,7 +1,7 @@
 #pragma once
-#include "../../BasePSO/BasePSO.h"
+#include "../../BaseSinglePSO/BaseSinglePSO.h"
 
-class PSOPrimitiveNone : public BasePSO
+class SinglePSOPrimitiveNone : public BaseSinglePSO
 {
 public:
 

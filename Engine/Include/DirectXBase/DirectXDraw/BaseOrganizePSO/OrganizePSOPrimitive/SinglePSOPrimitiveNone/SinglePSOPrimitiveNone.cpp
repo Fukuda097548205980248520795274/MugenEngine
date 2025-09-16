@@ -1,4 +1,4 @@
-#include "PSOPrimitiveNone.h"
+#include "SinglePSOPrimitiveNone.h"
 
 /// <summary>
 /// 初期化
@@ -7,11 +7,11 @@
 /// <param name="vertexShaderBlob"></param>
 /// <param name="pixelShaderBlob"></param>
 /// <param name="device"></param>
-void PSOPrimitiveNone::Initialize(LogFile* logFile, IDxcBlob* vertexShaderBlob, IDxcBlob* pixelShaderBlob,
+void SinglePSOPrimitiveNone::Initialize(LogFile* logFile, IDxcBlob* vertexShaderBlob, IDxcBlob* pixelShaderBlob,
 	ID3D12Device* device, ID3D12GraphicsCommandList* commandList)
 {
 	// 基底クラスの初期化
-	BasePSO::Initialize(logFile, vertexShaderBlob, pixelShaderBlob, device, commandList);
+	BaseSinglePSO::Initialize(logFile, vertexShaderBlob, pixelShaderBlob, device, commandList);
 
 
 	logFile_->Log("\n");

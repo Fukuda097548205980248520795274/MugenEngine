@@ -1,11 +1,11 @@
-#include "PSOPrimitive.h"
+#include "OrganizePSOPrimitive.h"
 
 /// <summary>
 /// 初期化
 /// </summary>
 /// <param name="logFile"></param>
 /// <param name="directXShaderCompile"></param>
-void PSOPrimitive::Initialize(LogFile* logFile, DirectXShaderCompile* directXShaderCompile,
+void OrganizePSOPrimitive::Initialize(LogFile* logFile, DirectXShaderCompile* directXShaderCompile,
 	ID3D12GraphicsCommandList* commandList, ID3D12Device* device)
 {
 	// nullptrチェック
@@ -34,6 +34,6 @@ void PSOPrimitive::Initialize(LogFile* logFile, DirectXShaderCompile* directXSha
 
 
 	// PSOの生成と初期化
-	pso_ = std::make_unique<PSOPrimitiveNone>();
+	pso_ = std::make_unique<SinglePSOPrimitiveNone>();
 	pso_->Initialize(logFile_, vertexShaderBlob_.Get(), pixelShaderBlob_.Get(), device_, commandList_);
 }

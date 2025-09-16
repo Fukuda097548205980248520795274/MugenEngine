@@ -118,20 +118,20 @@
     <Filter Include="Engine\Shader\Sprite">
       <UniqueIdentifier>{4a81b3b3-6e4c-4ef2-9145-6c2c68b7f732}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\PSO">
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO">
       <UniqueIdentifier>{b7227316-3fef-4d71-bed1-5286622f6847}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\PSO\BasePSO">
-      <UniqueIdentifier>{be4f900c-b83d-45e9-bcee-ba858a050aca}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\PSO\PSOPrimitive">
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive">
       <UniqueIdentifier>{f76cd2d4-5835-4c57-a408-b774176981bd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\PSO\PSOPrimitive\PSOPrimitiveNone">
-      <UniqueIdentifier>{d4d2cf54-b4bc-4214-b048-846f9408e0d0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\PSO\PSOSprite">
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite">
       <UniqueIdentifier>{ef725885-152a-4cc0-8c80-12888c7d55c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO">
+      <UniqueIdentifier>{be4f900c-b83d-45e9-bcee-ba858a050aca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone">
+      <UniqueIdentifier>{d4d2cf54-b4bc-4214-b048-846f9408e0d0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -195,14 +195,14 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DirectXDraw.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\PSO\PSOPrimitive\PSOPrimitive.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSO\PSOPrimitive</Filter>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\OrganizePSOPrimitive.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\PSO\BasePSO\BasePSO.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSO\BasePSO</Filter>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO\BaseSinglePSO.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\PSO\PSOPrimitive\PSOPrimitiveNone\PSOPrimitiveNone.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSO\PSOPrimitive\PSOPrimitiveNone</Filter>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone\SinglePSOPrimitiveNone.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle\ResourcesTriangle.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle</Filter>
@@ -249,8 +249,8 @@
     <ClCompile Include="Engine\Include\DirectXBase\ResourcesDepthStencil\ResourcesDepthStencil.cpp">
       <Filter>Engine\Include\DirectXBase\ResourcesDepthStencil</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\PSO\PSOSprite\PSOSprite.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSO\PSOSprite</Filter>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -311,14 +311,14 @@
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DirectXDraw.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\PSO\PSOPrimitive\PSOPrimitive.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSO\PSOPrimitive</Filter>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\OrganizePSOPrimitive.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\PSO\BasePSO\BasePSO.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSO\BasePSO</Filter>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO\BaseSinglePSO.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\PSO\PSOPrimitive\PSOPrimitiveNone\PSOPrimitiveNone.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSO\PSOPrimitive\PSOPrimitiveNone</Filter>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone\SinglePSOPrimitiveNone.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle\ResourcesTriangle.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle</Filter>
@@ -368,8 +368,8 @@
     <ClInclude Include="Engine\Include\DirectXBase\ResourcesDepthStencil\ResourcesDepthStencil.h">
       <Filter>Engine\Include\DirectXBase\ResourcesDepthStencil</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\PSO\PSOSprite\PSOSprite.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\PSO\PSOSprite</Filter>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
