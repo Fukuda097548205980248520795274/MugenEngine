@@ -94,6 +94,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\Include\DirectXBase\DirectXCommand\DirectXCommand.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDebug\DirectXDebug.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO\BaseSinglePSO.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DirectXDraw.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\OrganizePSOPrimitive.cpp" />
@@ -135,6 +136,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Include\DirectXBase\DirectXCommand\DirectXCommand.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDebug\DirectXDebug.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO\BaseSinglePSO.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DirectXDraw.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\OrganizePSOPrimitive.h" />

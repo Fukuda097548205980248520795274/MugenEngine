@@ -8,17 +8,8 @@
 void OrganizePSOPrimitive::Initialize(LogFile* logFile, DirectXShaderCompile* directXShaderCompile,
 	ID3D12GraphicsCommandList* commandList, ID3D12Device* device)
 {
-	// nullptrチェック
-	assert(logFile);
-	assert(directXShaderCompile);
-	assert(commandList);
-	assert(device);
-
-	// 引数を受け取る
-	logFile_ = logFile;
-	directXShaderCompile_ = directXShaderCompile;
-	commandList_ = commandList;
-	device_ = device;
+	// 基底クラスの初期化
+	BaseOrganizePSO::Initialize(logFile, directXShaderCompile, commandList, device);
 
 
 	// 頂点シェーダのバイナリデータを取得する

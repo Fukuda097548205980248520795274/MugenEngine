@@ -252,6 +252,9 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -370,6 +373,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
