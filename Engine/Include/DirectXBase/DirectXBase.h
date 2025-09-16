@@ -47,6 +47,9 @@ public:
 	// 三角形を描画する
 	void DrawTrinagle(uint32_t textureHandle) { directXDraw_->DrawTriangle(textureHandle); }
 
+	// スプライトを描画する
+	void DrawSprite(uint32_t textureHandle) { directXDraw_->DrawSprite(textureHandle); }
+
 	
 private:
 

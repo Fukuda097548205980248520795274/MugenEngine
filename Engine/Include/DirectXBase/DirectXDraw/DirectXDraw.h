@@ -9,8 +9,10 @@
 #include "TextureStore/TextureStore.h"
 
 #include "BaseOrganizePSO/OrganizePSOPrimitive/OrganizePSOPrimitive.h"
+#include "BaseOrganizePSO/OrganizePSOSprite/OrganizePSOSprite.h"
 
 #include "ResourcesTriangle/ResourcesTriangle.h"
+#include "ResourcesSprite/ResourcesSprite.h"
 
 #include "Transform/Transform.h"
 
@@ -40,6 +42,12 @@ public:
 	/// 三角形を描画する
 	/// </summary>
 	void DrawTriangle(uint32_t textureHandle);
+
+	/// <summary>
+	/// スプライトを描画する
+	/// </summary>
+	/// <param name="textureHandle"></param>
+	void DrawSprite(uint32_t textureHandle);
 
 
 private:
@@ -75,6 +83,9 @@ private:
 	// プリミティブ用PSO
 	std::unique_ptr<OrganizePSOPrimitive> primitivePSO_ = nullptr;
 
+	// スプライト用PSO
+	std::unique_ptr<OrganizePSOSprite> spritePSO_ = nullptr;
+
 
 	// ビューポート
 	D3D12_VIEWPORT viewport_{};
@@ -86,13 +97,21 @@ private:
 	// 三角形用のリソース
 	std::unique_ptr<ResourcesTriangle> resourcesTriangle_ = nullptr;
 
+	// スプライト用のリソース
+	std::unique_ptr<ResourcesSprite> resourceSprite_ = nullptr;
+
 
 
 
 	// 図形
-	Transform3D transform_;
+	Transform3D transform1_;
 
 	// カメラ
-	Transform3D camera_;
+	Transform3D camera3d_;
+
+
+
+	// 図形
+	Transform3D transform2_;
 };
 

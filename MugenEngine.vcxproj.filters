@@ -133,6 +133,12 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone">
       <UniqueIdentifier>{d4d2cf54-b4bc-4214-b048-846f9408e0d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone">
+      <UniqueIdentifier>{83596395-1b6f-496d-b05a-66e2ba785cc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesSprite">
+      <UniqueIdentifier>{a6dc0e52-472a-4186-be00-da58d841cef7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -255,6 +261,12 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone\SinglePSOSpriteNone.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesSprite\ResourcesSprite.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesSprite</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -376,6 +388,12 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone\SinglePSOSpriteNone.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesSprite\ResourcesSprite.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesSprite</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

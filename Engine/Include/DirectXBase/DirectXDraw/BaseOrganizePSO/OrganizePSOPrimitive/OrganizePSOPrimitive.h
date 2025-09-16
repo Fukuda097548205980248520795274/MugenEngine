@@ -1,7 +1,5 @@
 #pragma once
-
 #include "../BaseOrganizePSO.h"
-
 #include "SinglePSOPrimitiveNone/SinglePSOPrimitiveNone.h"
 
 class OrganizePSOPrimitive : public BaseOrganizePSO

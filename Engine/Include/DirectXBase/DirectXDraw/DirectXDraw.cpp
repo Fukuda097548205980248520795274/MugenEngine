@@ -41,6 +41,10 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	primitivePSO_ = std::make_unique<OrganizePSOPrimitive>();
 	primitivePSO_->Initialize(logFile_, directXShaderCompiler_.get(), commandList_, device_);
 
+	// スプライト用PSOの生成と初期化
+	spritePSO_ = std::make_unique<OrganizePSOSprite>();
+	spritePSO_->Initialize(logFile_, directXShaderCompiler_.get(), commandList_, device_);
+
 
 	// ビューポートの設定
 	viewport_.Width = static_cast<float>(*kClientWidth_);
@@ -63,12 +67,21 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	resourcesTriangle_ = std::make_unique<ResourcesTriangle>();
 	resourcesTriangle_->Initialize(device_, commandList_);
 
-	// 図形の設定
-	transform_.scale = { 1.0f , 1.0f , 1.0f };
+	// スプライト用リソースの生成と初期化
+	resourceSprite_ = std::make_unique<ResourcesSprite>();
+	resourceSprite_->Initialize(device_, commandList_);
+
+
+	// 図形1の設定
+	transform1_.scale = { 1.0f , 1.0f , 1.0f };
 
 	// カメラの設定
-	camera_.scale = { 1.0f , 1.0f , 1.0f };
-	camera_.translation.z = -5.0f;
+	camera3d_.scale = { 1.0f , 1.0f , 1.0f };
+	camera3d_.translation.z = -5.0f;
+
+
+	// 図形2の設定
+	transform2_.scale = { 1.0f , 1.0f , 1.0f };
 }
 
 
@@ -83,13 +96,13 @@ void DirectXDraw::DrawTriangle(uint32_t textureHandle)
 	------------------*/
 
 	// 回転させる
-	transform_.rotation.y += 0.03f;
+	transform1_.rotation.y += 0.03f;
 
 	// ワールド行列
-	Matrix4x4 worldMatrix = MakeAffineMatrix(transform_.scale, transform_.rotation, transform_.translation);
+	Matrix4x4 worldMatrix = MakeAffineMatrix(transform1_.scale, transform1_.rotation, transform1_.translation);
 
 	// ビュー行列
-	Matrix4x4 viewMatrix = MakeInverseMatrix(MakeAffineMatrix(camera_.scale, camera_.rotation, camera_.translation));
+	Matrix4x4 viewMatrix = MakeInverseMatrix(MakeAffineMatrix(camera3d_.scale, camera3d_.rotation, camera3d_.translation));
 
 	// 透視投影行列
 	Matrix4x4 projectionMatrix = MakePerspectiveFovMatrix(0.45f, float(*kClientWidth_) / float(*kClientHeight_), 0.1f, 100.0f);
@@ -117,6 +130,52 @@ void DirectXDraw::DrawTriangle(uint32_t textureHandle)
 	// 形状の設定
 	commandList_->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	
+	// ドローコール
+	commandList_->DrawInstanced(6, 1, 0, 0);
+}
+
+/// <summary>
+/// スプライトを描画する
+/// </summary>
+/// <param name="textureHandle"></param>
+void DirectXDraw::DrawSprite(uint32_t textureHandle)
+{
+	/*------------------
+		座標変換を行う
+	------------------*/
+
+	// ワールド行列
+	Matrix4x4 worldMatrix = MakeAffineMatrix(transform2_.scale, transform2_.rotation, transform2_.translation);
+
+	// ビュー行列
+	Matrix4x4 viewMatrix = MakeIdentityMatrix();
+
+	// 透視投影行列
+	Matrix4x4 projectionMatrix = MakeOrthographicMatrix(0.0f, 0.0f, static_cast<float>(*kClientWidth_), static_cast<float>(*kClientHeight_), 0.0f, 100.0f);
+
+	*resourceSprite_->transformationData_ = worldMatrix * viewMatrix * projectionMatrix;
+
+
+	/*---------------------------
+		コマンドリストに登録する
+	---------------------------*/
+
+	// ビューポート、シザー矩形の設定
+	commandList_->RSSetViewports(1, &viewport_);
+	commandList_->RSSetScissorRects(1, &scissorRect_);
+
+	// PSOの設定
+	spritePSO_->SetPSOState();
+
+	// リソースの設定
+	resourceSprite_->SetCommandList();
+
+	// テクスチャのSRVを設定する
+	commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(textureHandle));
+
+	// 形状の設定
+	commandList_->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
 	// ドローコール
 	commandList_->DrawInstanced(6, 1, 0, 0);
 }

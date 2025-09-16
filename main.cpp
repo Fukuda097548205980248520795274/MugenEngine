@@ -22,6 +22,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		// 三角形を描画する
 		mugenEngine->DrawTriangle(ghUvChecker);
 
+		// スプライトを描画する
+		mugenEngine->DrawSprite(ghUvChecker);
+
 
 		// 描画後処理
 		mugenEngine->PostDraw();

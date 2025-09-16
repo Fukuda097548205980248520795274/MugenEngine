@@ -442,7 +442,7 @@ Matrix4x4 MakePerspectiveFovMatrix(float fovY, float aspectRatio, float nearClip
 /// <param name="nearClip">近平面の距離</param>
 /// <param name="farClip">遠平面の距離</param>
 /// <returns></returns>
-Matrix4x4 MakeOrthographicMatrix(float left, float right, float top, float bottom, float nearClip, float farClip)
+Matrix4x4 MakeOrthographicMatrix(float left, float top, float right, float bottom, float nearClip, float farClip)
 {
 	// 平行投影行列
 	Matrix4x4 orthographicMatrix;
