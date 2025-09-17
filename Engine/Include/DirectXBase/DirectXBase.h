@@ -44,25 +44,30 @@ public:
 	/// <returns></returns>
 	uint32_t LoadTexture(const std::string& filePath) { return directXDraw_->LoadTexture(filePath); }
 
-	// 三角形を描画する
-	void DrawTrinagle(const WorldTransform3D* worldTransform, const Camera3D* camera, uint32_t textureHandle) 
-	{ directXDraw_->DrawTriangle(worldTransform, camera, textureHandle); }
-
 	// スプライトを描画する
 	void DrawSprite(const WorldTransform2D* worldTransform, const Camera2D* camera, uint32_t textureHandle)
 	{directXDraw_->DrawSprite(worldTransform, camera, textureHandle);}
 
 	/// <summary>
-	/// 球を描画する
+	/// UV球を描画する
 	/// </summary>
 	/// <param name="worldTransform"></param>
 	/// <param name="camera"></param>
 	/// <param name="textureHandle"></param>
 	/// <param name="segment"></param>
 	/// <param name="ring"></param>
-	void DrawSphere(const WorldTransform3D* worldTransform, const Camera3D* camera, uint32_t textureHandle,
+	void DrawUVSphere(const WorldTransform3D* worldTransform, const Camera3D* camera, uint32_t textureHandle,
 		int32_t segment, int32_t ring)
-	{directXDraw_->DrawSphere(worldTransform, camera, textureHandle, segment, ring);}
+	{directXDraw_->DrawUVSphere(worldTransform, camera, textureHandle, segment, ring);}
+
+	/// <summary>
+	/// 立方体を描画する
+	/// </summary>
+	/// <param name="worldTransform"></param>
+	/// <param name="camera"></param>
+	/// <param name="textureHandle"></param>
+	void DrawCube(const WorldTransform3D* worldTransform, const Camera3D* camera, uint32_t textureHandle)
+	{directXDraw_->DrawCube(worldTransform, camera, textureHandle);}
 
 	
 private:

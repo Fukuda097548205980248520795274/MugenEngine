@@ -63,13 +63,14 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 
 
 
-	// 三角形用リソースの生成と初期化
-	resourcesTriangle_ = std::make_unique<ResourcesTriangle>();
-	resourcesTriangle_->Initialize(device_, commandList_);
 
 	// 球用リソースの生成と初期化
-	resourcesSphere_ = std::make_unique<ResourcesSphere>();
-	resourcesSphere_->Initialize(device_, commandList_);
+	resourcesUVSphere_ = std::make_unique<ResourcesUVSphere>();
+	resourcesUVSphere_->Initialize(device_, commandList_);
+
+	// 立方体用リソースの生成と初期化
+	resourcesCube_ = std::make_unique<ResourcesCube>();
+	resourcesCube_->Initialize(device_, commandList_);
 
 	// スプライト用リソースの生成と初期化
 	resourceSprite_ = std::make_unique<ResourcesSprite>();
@@ -77,61 +78,22 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 }
 
 
-
 /// <summary>
-/// 三角形を描画する
-/// </summary>
-void DirectXDraw::DrawTriangle(const WorldTransform3D* worldTransform, const Camera3D* camera, uint32_t textureHandle)
-{
-	/*------------------
-	    座標変換を行う
-	------------------*/
-
-	// 座標変換行列を入力する
-	*resourcesTriangle_->transformationData_ = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
-
-
-	/*---------------------------
-	    コマンドリストに登録する
-	---------------------------*/
-
-	// ビューポート、シザー矩形の設定
-	commandList_->RSSetViewports(1, &viewport_);
-	commandList_->RSSetScissorRects(1, &scissorRect_);
-
-	// PSOの設定
-	primitivePSO_->SetPSOState();
-
-	// リソースの設定
-	resourcesTriangle_->SetCommandList();
-
-	// テクスチャのSRVを設定する
-	commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(textureHandle));
-
-	// 形状の設定
-	commandList_->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-	
-	// ドローコール
-	commandList_->DrawInstanced(6, 1, 0, 0);
-}
-
-
-/// <summary>
-/// 球を描画する
+/// UV球を描画する
 /// </summary>
 /// <param name="worldTransform"></param>
 /// <param name="camera"></param>
 /// <param name="textureHandle"></param>
 /// <param name="segment"></param>
 /// <param name="ring"></param>
-void DirectXDraw::DrawSphere(const WorldTransform3D* worldTransform, const Camera3D* camera, uint32_t textureHandle,
+void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const Camera3D* camera, uint32_t textureHandle,
 	int32_t segment, int32_t ring)
 {
 	// セグメントとリングの数を制限する
-	segment = std::max(segment, resourcesSphere_->GetMinSegment());
-	segment = std::min(segment, resourcesSphere_->GetMaxSegment());
-	ring = std::max(ring, resourcesSphere_->GetMinRing());
-	ring = std::min(ring, resourcesSphere_->GetMaxRing());
+	segment = std::max(segment, resourcesUVSphere_->GetMinSegment());
+	segment = std::min(segment, resourcesUVSphere_->GetMaxSegment());
+	ring = std::max(ring, resourcesUVSphere_->GetMinRing());
+	ring = std::min(ring, resourcesUVSphere_->GetMaxRing());
 
 
 	/*-------------------------------
@@ -147,12 +109,12 @@ void DirectXDraw::DrawSphere(const WorldTransform3D* worldTransform, const Camer
 			int startIndex = (latIndex * segment + lonIndex) * 6;
 			int index = (latIndex * segment + lonIndex) * 4;
 
-			resourcesSphere_->indexData_[startIndex] = index;
-			resourcesSphere_->indexData_[startIndex + 1] = index + 1;
-			resourcesSphere_->indexData_[startIndex + 2] = index + 2;
-			resourcesSphere_->indexData_[startIndex + 3] = index + 1;
-			resourcesSphere_->indexData_[startIndex + 4] = index + 3;
-			resourcesSphere_->indexData_[startIndex + 5] = index + 2;
+			resourcesUVSphere_->indexData_[startIndex] = index;
+			resourcesUVSphere_->indexData_[startIndex + 1] = index + 1;
+			resourcesUVSphere_->indexData_[startIndex + 2] = index + 2;
+			resourcesUVSphere_->indexData_[startIndex + 3] = index + 1;
+			resourcesUVSphere_->indexData_[startIndex + 4] = index + 3;
+			resourcesUVSphere_->indexData_[startIndex + 5] = index + 2;
 
 			indexNum += 6;
 		}
@@ -176,33 +138,33 @@ void DirectXDraw::DrawSphere(const WorldTransform3D* worldTransform, const Camer
 
 			int startIndex = (latIndex * segment + lonIndex) * 4;
 
-			resourcesSphere_->vertexData_[startIndex].position.x = std::cos(lat) * std::cos(lon);
-			resourcesSphere_->vertexData_[startIndex].position.y = std::sin(lat);
-			resourcesSphere_->vertexData_[startIndex].position.z = std::cos(lat) * std::sin(lon);
-			resourcesSphere_->vertexData_[startIndex].position.w = 1.0f;
-			resourcesSphere_->vertexData_[startIndex].texcoord.x = float(lonIndex) / float(segment);
-			resourcesSphere_->vertexData_[startIndex].texcoord.y = 1.0f - (float(latIndex) / float(ring));
+			resourcesUVSphere_->vertexData_[startIndex].position.x = std::cos(lat) * std::cos(lon);
+			resourcesUVSphere_->vertexData_[startIndex].position.y = std::sin(lat);
+			resourcesUVSphere_->vertexData_[startIndex].position.z = std::cos(lat) * std::sin(lon);
+			resourcesUVSphere_->vertexData_[startIndex].position.w = 1.0f;
+			resourcesUVSphere_->vertexData_[startIndex].texcoord.x = float(lonIndex) / float(segment);
+			resourcesUVSphere_->vertexData_[startIndex].texcoord.y = 1.0f - (float(latIndex) / float(ring));
 
-			resourcesSphere_->vertexData_[startIndex + 1].position.x = std::cos(lat + kLatEvery) * std::cos(lon);
-			resourcesSphere_->vertexData_[startIndex + 1].position.y = std::sin(lat + kLatEvery);
-			resourcesSphere_->vertexData_[startIndex + 1].position.z = std::cos(lat + kLatEvery) * std::sin(lon);
-			resourcesSphere_->vertexData_[startIndex + 1].position.w = 1.0f;
-			resourcesSphere_->vertexData_[startIndex + 1].texcoord.x = float(lonIndex) / float(segment);
-			resourcesSphere_->vertexData_[startIndex + 1].texcoord.y = 1.0f - (float(latIndex + 1) / float(ring));
+			resourcesUVSphere_->vertexData_[startIndex + 1].position.x = std::cos(lat + kLatEvery) * std::cos(lon);
+			resourcesUVSphere_->vertexData_[startIndex + 1].position.y = std::sin(lat + kLatEvery);
+			resourcesUVSphere_->vertexData_[startIndex + 1].position.z = std::cos(lat + kLatEvery) * std::sin(lon);
+			resourcesUVSphere_->vertexData_[startIndex + 1].position.w = 1.0f;
+			resourcesUVSphere_->vertexData_[startIndex + 1].texcoord.x = float(lonIndex) / float(segment);
+			resourcesUVSphere_->vertexData_[startIndex + 1].texcoord.y = 1.0f - (float(latIndex + 1) / float(ring));
 
-			resourcesSphere_->vertexData_[startIndex + 2].position.x = std::cos(lat) * std::cos(lon + kLonEvery);
-			resourcesSphere_->vertexData_[startIndex + 2].position.y = std::sin(lat);
-			resourcesSphere_->vertexData_[startIndex + 2].position.z = std::cos(lat) * std::sin(lon + kLonEvery);
-			resourcesSphere_->vertexData_[startIndex + 2].position.w = 1.0f;
-			resourcesSphere_->vertexData_[startIndex + 2].texcoord.x = float(lonIndex + 1) / float(segment);
-			resourcesSphere_->vertexData_[startIndex + 2].texcoord.y = 1.0f - (float(latIndex) / float(ring));
+			resourcesUVSphere_->vertexData_[startIndex + 2].position.x = std::cos(lat) * std::cos(lon + kLonEvery);
+			resourcesUVSphere_->vertexData_[startIndex + 2].position.y = std::sin(lat);
+			resourcesUVSphere_->vertexData_[startIndex + 2].position.z = std::cos(lat) * std::sin(lon + kLonEvery);
+			resourcesUVSphere_->vertexData_[startIndex + 2].position.w = 1.0f;
+			resourcesUVSphere_->vertexData_[startIndex + 2].texcoord.x = float(lonIndex + 1) / float(segment);
+			resourcesUVSphere_->vertexData_[startIndex + 2].texcoord.y = 1.0f - (float(latIndex) / float(ring));
 
-			resourcesSphere_->vertexData_[startIndex + 3].position.x = std::cos(lat + kLatEvery) * std::cos(lon + kLonEvery);
-			resourcesSphere_->vertexData_[startIndex + 3].position.y = std::sin(lat + kLatEvery);
-			resourcesSphere_->vertexData_[startIndex + 3].position.z = std::cos(lat + kLatEvery) * std::sin(lon + kLonEvery);
-			resourcesSphere_->vertexData_[startIndex + 3].position.w = 1.0f;
-			resourcesSphere_->vertexData_[startIndex + 3].texcoord.x = float(lonIndex + 1) / float(segment);
-			resourcesSphere_->vertexData_[startIndex + 3].texcoord.y = 1.0f - (float(latIndex + 1) / float(ring));
+			resourcesUVSphere_->vertexData_[startIndex + 3].position.x = std::cos(lat + kLatEvery) * std::cos(lon + kLonEvery);
+			resourcesUVSphere_->vertexData_[startIndex + 3].position.y = std::sin(lat + kLatEvery);
+			resourcesUVSphere_->vertexData_[startIndex + 3].position.z = std::cos(lat + kLatEvery) * std::sin(lon + kLonEvery);
+			resourcesUVSphere_->vertexData_[startIndex + 3].position.w = 1.0f;
+			resourcesUVSphere_->vertexData_[startIndex + 3].texcoord.x = float(lonIndex + 1) / float(segment);
+			resourcesUVSphere_->vertexData_[startIndex + 3].texcoord.y = 1.0f - (float(latIndex + 1) / float(ring));
 		}
 	}
 
@@ -212,7 +174,7 @@ void DirectXDraw::DrawSphere(const WorldTransform3D* worldTransform, const Camer
 	------------------*/
 
 	// 座標変換行列を取得する
-	*resourcesSphere_->transformationData_ = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
+	*resourcesUVSphere_->transformationData_ = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
 
 
 	/*----------------------------
@@ -227,7 +189,7 @@ void DirectXDraw::DrawSphere(const WorldTransform3D* worldTransform, const Camer
 	primitivePSO_->SetPSOState();
 
 	// リソースの設定
-	resourcesSphere_->SetCommandList();
+	resourcesUVSphere_->SetCommandList();
 
 	// テクスチャのSRVを設定する
 	commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(textureHandle));
@@ -237,6 +199,47 @@ void DirectXDraw::DrawSphere(const WorldTransform3D* worldTransform, const Camer
 
 	// ドローコール
 	commandList_->DrawIndexedInstanced(indexNum, 1, 0, 0, 0);
+}
+
+
+/// <summary>
+/// 立方体を描画する
+/// </summary>
+/// <param name="worldTransform"></param>
+/// <param name="camera"></param>
+/// <param name="textureHandle"></param>
+void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const Camera3D* camera, uint32_t textureHandle)
+{
+	/*-------------
+	    座標変換
+	-------------*/
+
+	// 座標変換用の行列を取得する
+	*resourcesCube_->transformationData_ = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
+
+
+	/*---------------------------------
+	    コマンドリストに設定を登録する
+	---------------------------------*/
+
+	// ビューポート、シザー矩形の設定
+	commandList_->RSSetViewports(1, &viewport_);
+	commandList_->RSSetScissorRects(1, &scissorRect_);
+
+	// PSOの設定
+	primitivePSO_->SetPSOState();
+
+	// リソースの設定
+	resourcesCube_->SetCommandList();
+
+	// テクスチャのSRVを設定する
+	commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(textureHandle));
+
+	// 形状の設定
+	commandList_->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+	// ドローコール
+	commandList_->DrawIndexedInstanced(36, 1, 0, 0, 0);
 }
 
 

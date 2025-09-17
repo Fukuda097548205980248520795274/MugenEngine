@@ -1,0 +1,161 @@
+#include "ResourcesCube.h"
+
+/// <summary>
+/// 初期化
+/// </summary>
+/// <param name="device"></param>
+/// <param name="commandList"></param>
+void ResourcesCube::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* commandList)
+{
+	// nullptrチェック
+	assert(device);
+	assert(commandList);
+
+	// 引数を受け取る
+	device_ = device;
+	commandList_ = commandList;
+
+
+	/*------------------------------
+	    インデックスリソースの生成
+	------------------------------*/
+
+	// リソース生成
+	indexResource_ = CreateBufferResource(device_, sizeof(uint32_t) * (kNumMesh * 6));
+
+	// バッファ設定
+	indexBufferView_.BufferLocation = indexResource_->GetGPUVirtualAddress();
+	indexBufferView_.SizeInBytes = sizeof(uint32_t) * (kNumMesh * 6);
+	indexBufferView_.Format = DXGI_FORMAT_R32_UINT;
+
+	// データを割り当てる
+	indexResource_->Map(0, nullptr, reinterpret_cast<void**>(&indexData_));
+
+	// 番号を与える
+	for (int32_t i = 0; i < kNumMesh; ++i)
+	{
+		int32_t startIndex = i * 6;
+		int32_t index = i * 4;
+
+		indexData_[startIndex] = index;
+		indexData_[startIndex + 1] = index + 1;
+		indexData_[startIndex + 2] = index + 2;
+		indexData_[startIndex + 3] = index + 1;
+		indexData_[startIndex + 4] = index + 3;
+		indexData_[startIndex + 5] = index + 2;
+	}
+
+
+	/*----------------------
+	    頂点リソースの生成
+	----------------------*/
+
+	// リソースの生成
+	vertexResource_ = CreateBufferResource(device_, sizeof(VertexDataModel) * ((kNumMesh) * 4));
+
+	// バッファ設定
+	vertexBufferView_.BufferLocation = vertexResource_->GetGPUVirtualAddress();
+	vertexBufferView_.SizeInBytes = sizeof(VertexDataModel) * ((kNumMesh) * 4);
+	vertexBufferView_.StrideInBytes = sizeof(VertexDataModel);
+
+	// データを割り当てる
+	vertexResource_->Map(0, nullptr, reinterpret_cast<void**>(&vertexData_));
+
+	// ローカル座標を与える
+	vertexData_[0].position = Vector4(-1.0f, -1.0f, -1.0f, 1.0f);
+	vertexData_[0].texcoord = Vector2(0.0f, 1.0f);
+	vertexData_[1].position = Vector4(-1.0f, 1.0f, -1.0f, 1.0f);
+	vertexData_[1].texcoord = Vector2(0.0f, 0.0f);
+	vertexData_[2].position = Vector4(1.0f, -1.0f, -1.0f, 1.0f);
+	vertexData_[2].texcoord = Vector2(1.0f, 1.0f);
+	vertexData_[3].position = Vector4(1.0f, 1.0f, -1.0f, 1.0f);
+	vertexData_[3].texcoord = Vector2(1.0f, 0.0f);
+
+	vertexData_[4].position = Vector4(1.0f, -1.0f, -1.0f, 1.0f);
+	vertexData_[4].texcoord = Vector2(0.0f, 1.0f);
+	vertexData_[5].position = Vector4(1.0f, 1.0f, -1.0f, 1.0f);
+	vertexData_[5].texcoord = Vector2(0.0f, 0.0f);
+	vertexData_[6].position = Vector4(1.0f, -1.0f, 1.0f, 1.0f);
+	vertexData_[6].texcoord = Vector2(1.0f, 1.0f);
+	vertexData_[7].position = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+	vertexData_[7].texcoord = Vector2(1.0f, 0.0f);
+
+	vertexData_[8].position = Vector4(1.0f, -1.0f, 1.0f, 1.0f);
+	vertexData_[8].texcoord = Vector2(0.0f, 1.0f);
+	vertexData_[9].position = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+	vertexData_[9].texcoord = Vector2(0.0f, 0.0f);
+	vertexData_[10].position = Vector4(-1.0f, -1.0f, 1.0f, 1.0f);
+	vertexData_[10].texcoord = Vector2(1.0f, 1.0f);
+	vertexData_[11].position = Vector4(-1.0f, 1.0f, 1.0f, 1.0f);
+	vertexData_[11].texcoord = Vector2(1.0f, 0.0f);
+
+	vertexData_[12].position = Vector4(-1.0f, -1.0f, 1.0f, 1.0f);
+	vertexData_[12].texcoord = Vector2(0.0f, 1.0f);
+	vertexData_[13].position = Vector4(-1.0f, 1.0f, 1.0f, 1.0f);
+	vertexData_[13].texcoord = Vector2(0.0f, 0.0f);
+	vertexData_[14].position = Vector4(-1.0f, -1.0f, -1.0f, 1.0f);
+	vertexData_[14].texcoord = Vector2(1.0f, 1.0f);
+	vertexData_[15].position = Vector4(-1.0f, 1.0f, -1.0f, 1.0f);
+	vertexData_[15].texcoord = Vector2(1.0f, 0.0f);
+
+	vertexData_[16].position = Vector4(-1.0f, 1.0f, -1.0f, 1.0f);
+	vertexData_[16].texcoord = Vector2(0.0f, 1.0f);
+	vertexData_[17].position = Vector4(-1.0f, 1.0f, 1.0f, 1.0f);
+	vertexData_[17].texcoord = Vector2(0.0f, 0.0f);
+	vertexData_[18].position = Vector4(1.0f, 1.0f, -1.0f, 1.0f);
+	vertexData_[18].texcoord = Vector2(1.0f, 1.0f);
+	vertexData_[19].position = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+	vertexData_[19].texcoord = Vector2(1.0f, 0.0f);
+
+	vertexData_[20].position = Vector4(1.0f, -1.0f, -1.0f, 1.0f);
+	vertexData_[20].texcoord = Vector2(0.0f, 1.0f);
+	vertexData_[21].position = Vector4(1.0f, -1.0f, 1.0f, 1.0f);
+	vertexData_[21].texcoord = Vector2(0.0f, 0.0f);
+	vertexData_[22].position = Vector4(-1.0f, -1.0f, -1.0f, 1.0f);
+	vertexData_[22].texcoord = Vector2(1.0f, 1.0f);
+	vertexData_[23].position = Vector4(-1.0f, -1.0f, 1.0f, 1.0f);
+	vertexData_[23].texcoord = Vector2(1.0f, 0.0f);
+
+
+	/*---------------------------
+	    マテリアルリソースの生成
+	---------------------------*/
+
+	// リソース生成
+	materialResource_ = CreateBufferResource(device_, sizeof(Vector4));
+
+	// データを割り当てる
+	materialResource_->Map(0, nullptr, reinterpret_cast<void**>(&materialData_));
+	*materialData_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+
+
+	/*-------------------------
+	    座標変換リソースの生成
+	-------------------------*/
+
+	// リソース生成
+	transformationResource_ = CreateBufferResource(device_, sizeof(Matrix4x4));
+
+	// データを割り当てる
+	transformationResource_->Map(0, nullptr, reinterpret_cast<void**>(&transformationData_));
+	*transformationData_ = MakeIdentityMatrix();
+}
+
+
+/// <summary>
+/// コマンドリストに設定を登録する
+/// </summary>
+void ResourcesCube::SetCommandList()
+{
+	// インデックスリソースの設定
+	commandList_->IASetIndexBuffer(&indexBufferView_);
+
+	// 頂点リソースの設定
+	commandList_->IASetVertexBuffers(0, 1, &vertexBufferView_);
+
+	// マテリアルリソースの設定
+	commandList_->SetGraphicsRootConstantBufferView(0, materialResource_->GetGPUVirtualAddress());
+
+	// 座標変換リソースの設定
+	commandList_->SetGraphicsRootConstantBufferView(1, transformationResource_->GetGPUVirtualAddress());
+}

@@ -16,8 +16,8 @@
 #include "BaseOrganizePSO/OrganizePSOPrimitive/OrganizePSOPrimitive.h"
 #include "BaseOrganizePSO/OrganizePSOSprite/OrganizePSOSprite.h"
 
-#include "ResourcesData/ResourcesTriangle/ResourcesTriangle.h"
-#include "ResourcesData/ResourcesSphere/ResourcesSphere.h"
+#include "ResourcesData/ResourcesUVSphere/ResourcesUVSphere.h"
+#include "ResourcesData/ResourcesCube/ResourcesCube.h"
 #include "ResourcesData/ResourcesSprite/ResourcesSprite.h"
 
 #include "Transform/Transform.h"
@@ -44,21 +44,25 @@ public:
 	/// <returns></returns>
 	uint32_t LoadTexture(const std::string& filePath) { return textureStore_->LoadTexture(filePath); }
 
-	/// <summary>
-	/// 三角形を描画する
-	/// </summary>
-	void DrawTriangle(const WorldTransform3D* worldTransform, const Camera3D* camera, uint32_t textureHandle);
 
 	/// <summary>
-	/// 球を描画する
+	/// UV球を描画する
 	/// </summary>
 	/// <param name="worldTransform"></param>
 	/// <param name="camera"></param>
 	/// <param name="textureHandle"></param>
 	/// <param name="segment"></param>
 	/// <param name="ring"></param>
-	void DrawSphere(const WorldTransform3D* worldTransform, const Camera3D* camera, uint32_t textureHandle,
+	void DrawUVSphere(const WorldTransform3D* worldTransform, const Camera3D* camera, uint32_t textureHandle,
 		int32_t segment, int32_t ring);
+
+	/// <summary>
+	/// 立方体を描画する
+	/// </summary>
+	/// <param name="worldTransform"></param>
+	/// <param name="camera"></param>
+	/// <param name="textureHandle"></param>
+	void DrawCube(const WorldTransform3D* worldTransform, const Camera3D* camera, uint32_t textureHandle);
 
 	/// <summary>
 	/// スプライトを描画する
@@ -111,11 +115,13 @@ private:
 	D3D12_RECT scissorRect_{};
 
 
-	// 三角形用のリソース
-	std::unique_ptr<ResourcesTriangle> resourcesTriangle_ = nullptr;
 
-	// 球用のリソース
-	std::unique_ptr<ResourcesSphere> resourcesSphere_ = nullptr;
+
+	// UV球用のリソース
+	std::unique_ptr<ResourcesUVSphere> resourcesUVSphere_ = nullptr;
+
+	// 立方体用のリソース
+	std::unique_ptr<ResourcesCube> resourcesCube_ = nullptr;
 
 	// スプライト用のリソース
 	std::unique_ptr<ResourcesSprite> resourceSprite_ = nullptr;

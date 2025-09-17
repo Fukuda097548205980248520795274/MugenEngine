@@ -48,8 +48,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		camera3d_->Update();
 
 
-		// 三角形を描画する
-		mugenEngine->DrawSphere(worldTransform3d_.get(), camera3d_.get(), ghUvChecker, 32, 16);
+		// UV球を描画する
+		mugenEngine->DrawUVSphere(worldTransform3d_.get(), camera3d_.get(), ghUvChecker, 32, 16);
 
 		// スプライトを描画する
 		mugenEngine->DrawSprite(worldTransform2d_.get(), camera2d_.get(), ghUvChecker);

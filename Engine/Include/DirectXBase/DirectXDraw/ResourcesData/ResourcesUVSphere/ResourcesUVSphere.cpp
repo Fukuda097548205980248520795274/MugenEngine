@@ -1,11 +1,11 @@
-#include "ResourcesSphere.h"
+#include "ResourcesUVSphere.h"
 
 /// <summary>
 /// 初期化
 /// </summary>
 /// <param name="device"></param>
 /// <param name="commandList"></param>
-void ResourcesSphere::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* commandList)
+void ResourcesUVSphere::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* commandList)
 {
 	// nullptrチェック
 	assert(device);
@@ -75,7 +75,7 @@ void ResourcesSphere::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList
 /// <summary>
 /// コマンドリストに設定を登録する
 /// </summary>
-void ResourcesSphere::SetCommandList()
+void ResourcesUVSphere::SetCommandList()
 {
 	// インデックスリソースを設定
 	commandList_->IASetIndexBuffer(&indexBufferView_);

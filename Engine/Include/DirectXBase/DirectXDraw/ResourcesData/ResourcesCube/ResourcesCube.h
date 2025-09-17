@@ -3,7 +3,7 @@
 #include "../../VertexData/VertexData.h"
 #include "../../../../Math/Matrix4x4/Matrix4x4.h"
 
-class ResourcesSphere
+class ResourcesCube
 {
 public:
 
@@ -18,30 +18,6 @@ public:
 	/// コマンドリストに設定を登録する
 	/// </summary>
 	void SetCommandList();
-
-	/// <summary>
-	/// セグメント最大数のGetter
-	/// </summary>
-	/// <returns></returns>
-	const int32_t GetMaxSegment()const { return kMaxSegment; };
-
-	/// <summary>
-	/// セグメント最小数のGetter
-	/// </summary>
-	/// <returns></returns>
-	const int32_t GetMinSegment()const { return kMinSegment; }
-
-	/// <summary>
-	/// セグメント最大数のGetter
-	/// </summary>
-	/// <returns></returns>
-	const int32_t GetMaxRing()const { return kMaxRing; };
-
-	/// <summary>
-	/// セグメント最小数のGetter
-	/// </summary>
-	/// <returns></returns>
-	const int32_t GetMinRing()const { return kMinRing; }
 
 
 	// インデックスデータ
@@ -59,7 +35,6 @@ public:
 
 private:
 
-
 	// デバイス
 	ID3D12Device* device_ = nullptr;
 
@@ -67,18 +42,8 @@ private:
 	ID3D12GraphicsCommandList* commandList_ = nullptr;
 
 
-	// 最大セグメント数
-	const int32_t kMaxSegment = 32;
-
-	// 最小セグメント数
-	const int32_t kMinSegment = 3;
-
-
-	// 最大リング数
-	const int32_t kMaxRing = 16;
-
-	// 最小リング数
-	const int32_t kMinRing = 3;
+	// 面の数
+	const int32_t kNumMesh = 6;
 
 
 	// インデックスリソース

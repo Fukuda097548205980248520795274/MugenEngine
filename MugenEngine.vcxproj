@@ -102,11 +102,11 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\OrganizePSOPrimitive.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone\SinglePSOPrimitiveNone.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.cpp" />
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSphere\ResourcesSphere.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesCube\ResourcesCube.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesUVSphere\ResourcesUVSphere.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite\ResourcesSprite.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\WorldTransform\WorldTransform.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\ResourcesDepthStencil\ResourcesDepthStencil.cpp" />
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesTriangle\ResourcesTriangle.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\TextureStore\TextureStore.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\Transform\Transform.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\VertexData\VertexData.cpp" />
@@ -149,11 +149,11 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\OrganizePSOPrimitive.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone\SinglePSOPrimitiveNone.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSphere\ResourcesSphere.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesCube\ResourcesCube.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesUVSphere\ResourcesUVSphere.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite\ResourcesSprite.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\WorldTransform\WorldTransform.h" />
     <ClInclude Include="Engine\Include\DirectXBase\ResourcesDepthStencil\ResourcesDepthStencil.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesTriangle\ResourcesTriangle.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\TextureStore\TextureStore.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\Transform\Transform.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\VertexData\VertexData.h" />
