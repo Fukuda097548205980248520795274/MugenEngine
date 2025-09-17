@@ -38,6 +38,18 @@ public:
 	void PostDraw() { directXBase_->PostDraw(); }
 
 	/// <summary>
+	/// スクリーン横幅のGetter
+	/// </summary>
+	/// <returns></returns>
+	int32_t GetScreenWidth()const { return winApp_->GetClientWidth(); }
+
+	/// <summary>
+	/// スクリーン縦幅のGetter
+	/// </summary>
+	/// <returns></returns>
+	int32_t GetScreenHeight()const { return winApp_->GetClientHeight(); }
+
+	/// <summary>
 	/// テクスチャを読み込む
 	/// </summary>
 	/// <param name="filePath"></param>
@@ -45,10 +57,12 @@ public:
 	uint32_t LoadTexture(const std::string& filePath)const { return directXBase_->LoadTexture(filePath); }
 
 	// 三角形を描画する
-	void DrawTriangle(uint32_t textureHandle)const { directXBase_->DrawTrinagle(textureHandle); }
+	void DrawTriangle(const WorldTransform3D* worldTransform, const Camera3D* camera, uint32_t textureHandle)const
+	{ directXBase_->DrawTrinagle(worldTransform,camera, textureHandle); }
 
 	// スプライトを描画する
-	void DrawSprite(uint32_t textureHandle)const { directXBase_->DrawSprite(textureHandle); }
+	void DrawSprite(const WorldTransform2D* worldTransform, const Camera2D* camera, uint32_t textureHandle)const
+	{ directXBase_->DrawSprite(worldTransform,camera, textureHandle); }
 
 
 private:

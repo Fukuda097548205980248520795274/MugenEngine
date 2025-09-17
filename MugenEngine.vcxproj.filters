@@ -139,6 +139,12 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesSprite">
       <UniqueIdentifier>{a6dc0e52-472a-4186-be00-da58d841cef7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\WorldTransform">
+      <UniqueIdentifier>{79e47c0b-77f7-4144-b048-64cb4037419e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\Camera">
+      <UniqueIdentifier>{73cc7a30-8e06-48b1-9bff-4243a41a1482}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -267,6 +273,12 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesSprite\ResourcesSprite.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesSprite</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\WorldTransform\WorldTransform.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\WorldTransform</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\Camera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -394,6 +406,12 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesSprite\ResourcesSprite.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesSprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\WorldTransform\WorldTransform.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\WorldTransform</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\Camera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

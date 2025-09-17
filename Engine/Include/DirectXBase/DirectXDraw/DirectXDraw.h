@@ -8,6 +8,9 @@
 #include "../DirectXHeap/DirectXHeap.h"
 #include "TextureStore/TextureStore.h"
 
+#include "WorldTransform/WorldTransform.h"
+#include "Camera/Camera.h"
+
 #include "BaseOrganizePSO/OrganizePSOPrimitive/OrganizePSOPrimitive.h"
 #include "BaseOrganizePSO/OrganizePSOSprite/OrganizePSOSprite.h"
 
@@ -41,13 +44,13 @@ public:
 	/// <summary>
 	/// 三角形を描画する
 	/// </summary>
-	void DrawTriangle(uint32_t textureHandle);
+	void DrawTriangle(const WorldTransform3D* worldTransform, const Camera3D* camera, uint32_t textureHandle);
 
 	/// <summary>
 	/// スプライトを描画する
 	/// </summary>
 	/// <param name="textureHandle"></param>
-	void DrawSprite(uint32_t textureHandle);
+	void DrawSprite(const WorldTransform2D* worldTransform, const Camera2D* camera, uint32_t textureHandle);
 
 
 private:
@@ -99,19 +102,5 @@ private:
 
 	// スプライト用のリソース
 	std::unique_ptr<ResourcesSprite> resourceSprite_ = nullptr;
-
-
-
-
-	// 図形
-	Transform3D transform1_;
-
-	// カメラ
-	Transform3D camera3d_;
-
-
-
-	// 図形
-	Transform3D transform2_;
 };
 

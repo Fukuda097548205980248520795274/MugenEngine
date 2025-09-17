@@ -70,18 +70,6 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	// スプライト用リソースの生成と初期化
 	resourceSprite_ = std::make_unique<ResourcesSprite>();
 	resourceSprite_->Initialize(device_, commandList_);
-
-
-	// 図形1の設定
-	transform1_.scale = { 1.0f , 1.0f , 1.0f };
-
-	// カメラの設定
-	camera3d_.scale = { 1.0f , 1.0f , 1.0f };
-	camera3d_.translation.z = -5.0f;
-
-
-	// 図形2の設定
-	transform2_.scale = { 1.0f , 1.0f , 1.0f };
 }
 
 
@@ -89,25 +77,14 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 /// <summary>
 /// 三角形を描画する
 /// </summary>
-void DirectXDraw::DrawTriangle(uint32_t textureHandle)
+void DirectXDraw::DrawTriangle(const WorldTransform3D* worldTransform, const Camera3D* camera, uint32_t textureHandle)
 {
 	/*------------------
 	    座標変換を行う
 	------------------*/
 
-	// 回転させる
-	transform1_.rotation.y += 0.03f;
-
-	// ワールド行列
-	Matrix4x4 worldMatrix = MakeAffineMatrix(transform1_.scale, transform1_.rotation, transform1_.translation);
-
-	// ビュー行列
-	Matrix4x4 viewMatrix = MakeInverseMatrix(MakeAffineMatrix(camera3d_.scale, camera3d_.rotation, camera3d_.translation));
-
-	// 透視投影行列
-	Matrix4x4 projectionMatrix = MakePerspectiveFovMatrix(0.45f, float(*kClientWidth_) / float(*kClientHeight_), 0.1f, 100.0f);
-
-	*resourcesTriangle_->transformationData_ = worldMatrix * viewMatrix * projectionMatrix;
+	// 座標変換行列を入力する
+	*resourcesTriangle_->transformationData_ = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
 
 
 	/*---------------------------
@@ -138,22 +115,14 @@ void DirectXDraw::DrawTriangle(uint32_t textureHandle)
 /// スプライトを描画する
 /// </summary>
 /// <param name="textureHandle"></param>
-void DirectXDraw::DrawSprite(uint32_t textureHandle)
+void DirectXDraw::DrawSprite(const WorldTransform2D* worldTransform, const Camera2D* camera, uint32_t textureHandle)
 {
 	/*------------------
 		座標変換を行う
 	------------------*/
 
-	// ワールド行列
-	Matrix4x4 worldMatrix = MakeAffineMatrix(transform2_.scale, transform2_.rotation, transform2_.translation);
-
-	// ビュー行列
-	Matrix4x4 viewMatrix = MakeIdentityMatrix();
-
-	// 透視投影行列
-	Matrix4x4 projectionMatrix = MakeOrthographicMatrix(0.0f, 0.0f, static_cast<float>(*kClientWidth_), static_cast<float>(*kClientHeight_), 0.0f, 100.0f);
-
-	*resourceSprite_->transformationData_ = worldMatrix * viewMatrix * projectionMatrix;
+	// 座標変換行列を入力する
+	*resourceSprite_->transformationData_ = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
 
 
 	/*---------------------------

@@ -27,7 +27,7 @@ public:
 	/// クライアント領域横幅のGetter
 	/// </summary>
 	/// <returns></returns>
-	int32_t GetClientWidth()const { return clientHeight_; }
+	int32_t GetClientWidth()const { return clientWidth_; }
 
 	/// <summary>
 	/// クライアント領域縦幅のGetter
