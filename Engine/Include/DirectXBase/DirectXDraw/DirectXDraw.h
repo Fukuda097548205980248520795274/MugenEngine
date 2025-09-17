@@ -1,8 +1,10 @@
 #pragma once
+#define NOMINMAX
 #include <d3d12.h>
 #include <dxgi1_6.h>
 #include <cassert>
 #include <wrl.h>
+#include <numbers>
 
 #include "DirectXShaderCompile/DirectXShaderCompile.h"
 #include "../DirectXHeap/DirectXHeap.h"
@@ -14,8 +16,9 @@
 #include "BaseOrganizePSO/OrganizePSOPrimitive/OrganizePSOPrimitive.h"
 #include "BaseOrganizePSO/OrganizePSOSprite/OrganizePSOSprite.h"
 
-#include "ResourcesTriangle/ResourcesTriangle.h"
-#include "ResourcesSprite/ResourcesSprite.h"
+#include "ResourcesData/ResourcesTriangle/ResourcesTriangle.h"
+#include "ResourcesData/ResourcesSphere/ResourcesSphere.h"
+#include "ResourcesData/ResourcesSprite/ResourcesSprite.h"
 
 #include "Transform/Transform.h"
 
@@ -45,6 +48,17 @@ public:
 	/// 三角形を描画する
 	/// </summary>
 	void DrawTriangle(const WorldTransform3D* worldTransform, const Camera3D* camera, uint32_t textureHandle);
+
+	/// <summary>
+	/// 球を描画する
+	/// </summary>
+	/// <param name="worldTransform"></param>
+	/// <param name="camera"></param>
+	/// <param name="textureHandle"></param>
+	/// <param name="segment"></param>
+	/// <param name="ring"></param>
+	void DrawSphere(const WorldTransform3D* worldTransform, const Camera3D* camera, uint32_t textureHandle,
+		int32_t segment, int32_t ring);
 
 	/// <summary>
 	/// スプライトを描画する
@@ -99,6 +113,9 @@ private:
 
 	// 三角形用のリソース
 	std::unique_ptr<ResourcesTriangle> resourcesTriangle_ = nullptr;
+
+	// 球用のリソース
+	std::unique_ptr<ResourcesSphere> resourcesSphere_ = nullptr;
 
 	// スプライト用のリソース
 	std::unique_ptr<ResourcesSprite> resourceSprite_ = nullptr;

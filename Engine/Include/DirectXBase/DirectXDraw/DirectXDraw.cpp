@@ -67,6 +67,10 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	resourcesTriangle_ = std::make_unique<ResourcesTriangle>();
 	resourcesTriangle_->Initialize(device_, commandList_);
 
+	// 球用リソースの生成と初期化
+	resourcesSphere_ = std::make_unique<ResourcesSphere>();
+	resourcesSphere_->Initialize(device_, commandList_);
+
 	// スプライト用リソースの生成と初期化
 	resourceSprite_ = std::make_unique<ResourcesSprite>();
 	resourceSprite_->Initialize(device_, commandList_);
@@ -110,6 +114,131 @@ void DirectXDraw::DrawTriangle(const WorldTransform3D* worldTransform, const Cam
 	// ドローコール
 	commandList_->DrawInstanced(6, 1, 0, 0);
 }
+
+
+/// <summary>
+/// 球を描画する
+/// </summary>
+/// <param name="worldTransform"></param>
+/// <param name="camera"></param>
+/// <param name="textureHandle"></param>
+/// <param name="segment"></param>
+/// <param name="ring"></param>
+void DirectXDraw::DrawSphere(const WorldTransform3D* worldTransform, const Camera3D* camera, uint32_t textureHandle,
+	int32_t segment, int32_t ring)
+{
+	// セグメントとリングの数を制限する
+	segment = std::max(segment, resourcesSphere_->GetMinSegment());
+	segment = std::min(segment, resourcesSphere_->GetMaxSegment());
+	ring = std::max(ring, resourcesSphere_->GetMinRing());
+	ring = std::min(ring, resourcesSphere_->GetMaxRing());
+
+
+	/*-------------------------------
+	    インデックスデータを入力する
+	-------------------------------*/
+
+	int indexNum = 0;
+
+	for (int32_t latIndex = 0; latIndex < ring; ++latIndex)
+	{
+		for (int32_t lonIndex = 0; lonIndex < segment; ++lonIndex)
+		{
+			int startIndex = (latIndex * segment + lonIndex) * 6;
+			int index = (latIndex * segment + lonIndex) * 4;
+
+			resourcesSphere_->indexData_[startIndex] = index;
+			resourcesSphere_->indexData_[startIndex + 1] = index + 1;
+			resourcesSphere_->indexData_[startIndex + 2] = index + 2;
+			resourcesSphere_->indexData_[startIndex + 3] = index + 1;
+			resourcesSphere_->indexData_[startIndex + 4] = index + 3;
+			resourcesSphere_->indexData_[startIndex + 5] = index + 2;
+
+			indexNum += 6;
+		}
+	}
+
+
+	/*------------------------
+	    頂点データを入力する
+	------------------------*/
+
+	float kLonEvery = std::numbers::pi_v<float> *2.0f / float(segment);
+	float kLatEvery = std::numbers::pi_v<float> / float(ring);
+
+	for (int32_t latIndex = 0; latIndex < ring; ++latIndex)
+	{
+		float lat = -std::numbers::pi_v<float> / 2.0f + kLatEvery * latIndex;
+
+		for (int32_t lonIndex = 0; lonIndex < segment; ++lonIndex)
+		{
+			float lon = kLonEvery * lonIndex;
+
+			int startIndex = (latIndex * segment + lonIndex) * 4;
+
+			resourcesSphere_->vertexData_[startIndex].position.x = std::cos(lat) * std::cos(lon);
+			resourcesSphere_->vertexData_[startIndex].position.y = std::sin(lat);
+			resourcesSphere_->vertexData_[startIndex].position.z = std::cos(lat) * std::sin(lon);
+			resourcesSphere_->vertexData_[startIndex].position.w = 1.0f;
+			resourcesSphere_->vertexData_[startIndex].texcoord.x = float(lonIndex) / float(segment);
+			resourcesSphere_->vertexData_[startIndex].texcoord.y = 1.0f - (float(latIndex) / float(ring));
+
+			resourcesSphere_->vertexData_[startIndex + 1].position.x = std::cos(lat + kLatEvery) * std::cos(lon);
+			resourcesSphere_->vertexData_[startIndex + 1].position.y = std::sin(lat + kLatEvery);
+			resourcesSphere_->vertexData_[startIndex + 1].position.z = std::cos(lat + kLatEvery) * std::sin(lon);
+			resourcesSphere_->vertexData_[startIndex + 1].position.w = 1.0f;
+			resourcesSphere_->vertexData_[startIndex + 1].texcoord.x = float(lonIndex) / float(segment);
+			resourcesSphere_->vertexData_[startIndex + 1].texcoord.y = 1.0f - (float(latIndex + 1) / float(ring));
+
+			resourcesSphere_->vertexData_[startIndex + 2].position.x = std::cos(lat) * std::cos(lon + kLonEvery);
+			resourcesSphere_->vertexData_[startIndex + 2].position.y = std::sin(lat);
+			resourcesSphere_->vertexData_[startIndex + 2].position.z = std::cos(lat) * std::sin(lon + kLonEvery);
+			resourcesSphere_->vertexData_[startIndex + 2].position.w = 1.0f;
+			resourcesSphere_->vertexData_[startIndex + 2].texcoord.x = float(lonIndex + 1) / float(segment);
+			resourcesSphere_->vertexData_[startIndex + 2].texcoord.y = 1.0f - (float(latIndex) / float(ring));
+
+			resourcesSphere_->vertexData_[startIndex + 3].position.x = std::cos(lat + kLatEvery) * std::cos(lon + kLonEvery);
+			resourcesSphere_->vertexData_[startIndex + 3].position.y = std::sin(lat + kLatEvery);
+			resourcesSphere_->vertexData_[startIndex + 3].position.z = std::cos(lat + kLatEvery) * std::sin(lon + kLonEvery);
+			resourcesSphere_->vertexData_[startIndex + 3].position.w = 1.0f;
+			resourcesSphere_->vertexData_[startIndex + 3].texcoord.x = float(lonIndex + 1) / float(segment);
+			resourcesSphere_->vertexData_[startIndex + 3].texcoord.y = 1.0f - (float(latIndex + 1) / float(ring));
+		}
+	}
+
+
+	/*------------------
+	    座標変換の行列
+	------------------*/
+
+	// 座標変換行列を取得する
+	*resourcesSphere_->transformationData_ = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
+
+
+	/*----------------------------
+	    コマンドリストに設定する
+	----------------------------*/
+
+	// ビューポート、シザー矩形の設定
+	commandList_->RSSetViewports(1, &viewport_);
+	commandList_->RSSetScissorRects(1, &scissorRect_);
+
+	// PSOの設定
+	primitivePSO_->SetPSOState();
+
+	// リソースの設定
+	resourcesSphere_->SetCommandList();
+
+	// テクスチャのSRVを設定する
+	commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(textureHandle));
+
+	// 形状の設定
+	commandList_->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+	// ドローコール
+	commandList_->DrawIndexedInstanced(indexNum, 1, 0, 0, 0);
+}
+
 
 /// <summary>
 /// スプライトを描画する

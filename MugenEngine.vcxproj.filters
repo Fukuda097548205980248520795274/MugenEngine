@@ -82,9 +82,6 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\DirectXShaderCompile">
       <UniqueIdentifier>{743ead50-15d2-441b-8651-b18d09d9c073}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle">
-      <UniqueIdentifier>{180463ce-b918-490a-9ba2-576ebcaf74f0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Include\Func\CreateBufferResource">
       <UniqueIdentifier>{6a780bdc-608b-423b-b4fd-7ee6bc501002}</UniqueIdentifier>
     </Filter>
@@ -136,14 +133,23 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone">
       <UniqueIdentifier>{83596395-1b6f-496d-b05a-66e2ba785cc6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesSprite">
-      <UniqueIdentifier>{a6dc0e52-472a-4186-be00-da58d841cef7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\WorldTransform">
       <UniqueIdentifier>{79e47c0b-77f7-4144-b048-64cb4037419e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\Camera">
       <UniqueIdentifier>{73cc7a30-8e06-48b1-9bff-4243a41a1482}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData">
+      <UniqueIdentifier>{30d49bd3-44fb-4192-a835-5b9539bc3af0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite">
+      <UniqueIdentifier>{a6dc0e52-472a-4186-be00-da58d841cef7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesTriangle">
+      <UniqueIdentifier>{180463ce-b918-490a-9ba2-576ebcaf74f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSphere">
+      <UniqueIdentifier>{e693bb5a-6e98-41e0-b52a-0b5b28dab899}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -216,8 +222,8 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone\SinglePSOPrimitiveNone.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle\ResourcesTriangle.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle</Filter>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesTriangle\ResourcesTriangle.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesTriangle</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Include\Func\CreateBufferResource\CreateBufferResource.cpp">
       <Filter>Engine\Include\Func\CreateBufferResource</Filter>
@@ -270,14 +276,17 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone\SinglePSOSpriteNone.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesSprite\ResourcesSprite.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesSprite</Filter>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite\ResourcesSprite.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\WorldTransform\WorldTransform.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\WorldTransform</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSphere\ResourcesSphere.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSphere</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -347,8 +356,8 @@
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone\SinglePSOPrimitiveNone.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle\ResourcesTriangle.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesTriangle</Filter>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesTriangle\ResourcesTriangle.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesTriangle</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Include\Func\CreateBufferResource\CreateBufferResource.h">
       <Filter>Engine\Include\Func\CreateBufferResource</Filter>
@@ -404,14 +413,17 @@
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone\SinglePSOSpriteNone.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesSprite\ResourcesSprite.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesSprite</Filter>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite\ResourcesSprite.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\WorldTransform\WorldTransform.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\WorldTransform</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSphere\ResourcesSphere.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSphere</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

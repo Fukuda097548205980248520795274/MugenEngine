@@ -1,11 +1,11 @@
 #pragma once
 #include <cassert>
 
-#include "../../../Func/CreateBufferResource/CreateBufferResource.h"
-#include "../VertexData/VertexData.h"
-#include "../../../Math/Matrix4x4/Matrix4x4.h"
+#include "../../../../Func/CreateBufferResource/CreateBufferResource.h"
+#include "../../VertexData/VertexData.h"
+#include "../../../../Math/Matrix4x4/Matrix4x4.h"
 
-class ResourcesSprite
+class ResourcesTriangle
 {
 public:
 
@@ -23,7 +23,7 @@ public:
 
 
 	// 頂点データ
-	VertexDataSprite* vertexData_ = nullptr;
+	VertexDataModel* vertexData_ = nullptr;
 
 	// マテリアルデータ
 	Vector4* materialData_ = nullptr;
@@ -31,7 +31,7 @@ public:
 	// 座標変換データ
 	Matrix4x4* transformationData_ = nullptr;
 
-
+	
 private:
 
 	// デバイス
