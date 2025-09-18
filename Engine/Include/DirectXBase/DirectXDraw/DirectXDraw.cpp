@@ -86,7 +86,7 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 /// <param name="textureHandle"></param>
 /// <param name="segment"></param>
 /// <param name="ring"></param>
-void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const Camera3D* camera, uint32_t textureHandle,
+void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
 	int32_t segment, int32_t ring)
 {
 	// セグメントとリングの数を制限する
@@ -181,6 +181,14 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const Cam
 	}
 
 
+	/*--------------
+	    マテリアル
+	--------------*/
+
+	// UV座標変換用行列
+	resourcesUVSphere_->materialData_->uvTransform_ = uvTransform->affineMatrix_;
+
+
 	/*------------------
 	    座標変換の行列
 	------------------*/
@@ -221,8 +229,16 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const Cam
 /// <param name="worldTransform"></param>
 /// <param name="camera"></param>
 /// <param name="textureHandle"></param>
-void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const Camera3D* camera, uint32_t textureHandle)
+void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle)
 {
+	/*---------------
+	    マテリアル
+	---------------*/
+
+	// UV座標変換用行列
+	resourcesCube_->materialData_->uvTransform_ = uvTransform->affineMatrix_;
+
+
 	/*-------------
 	    座標変換
 	-------------*/

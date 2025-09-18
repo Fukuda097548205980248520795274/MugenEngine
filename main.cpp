@@ -16,18 +16,14 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	std::unique_ptr<WorldTransform3D> worldTransform3d_ = std::make_unique<WorldTransform3D>();
 	worldTransform3d_->Initialize();
 
+	// UVトランスフォーム
+	std::unique_ptr<UVTransform> uvTransform_ = std::make_unique<UVTransform>();
+	uvTransform_->Initialize();
+
 	// 3Dカメラ
 	std::unique_ptr<Camera3D> camera3d_ = std::make_unique<Camera3D>();
 	camera3d_->Initialize(mugenEngine->GetScreenWidth(), mugenEngine->GetScreenHeight());
 	camera3d_->translation_.z = -5.0f;
-
-	// ワールドトランスフォーム2D
-	std::unique_ptr<WorldTransform2D> worldTransform2d_ = std::make_unique<WorldTransform2D>();
-	worldTransform2d_->Initialize();
-
-	// 2Dカメラ
-	std::unique_ptr<Camera2D> camera2d_ = std::make_unique<Camera2D>();
-	camera2d_->Initialize(mugenEngine->GetScreenWidth(), mugenEngine->GetScreenHeight());
 
 
 
@@ -37,22 +33,18 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		// 描画前処理
 		mugenEngine->PreDraw();
 
-		worldTransform3d_->rotation_.y += 0.03f;
+		uvTransform_->rotation_ += 0.03f;
 
 		// ワールドトランスフォームの更新処理
 		worldTransform3d_->Update();
-		worldTransform2d_->Update();
+		uvTransform_->Update();
 
 		// カメラの更新処理
-		camera2d_->Update();
 		camera3d_->Update();
 
 
 		// UV球を描画する
-		mugenEngine->DrawUVSphere(worldTransform3d_.get(), camera3d_.get(), ghUvChecker, 24, 12);
-
-		// スプライトを描画する
-		mugenEngine->DrawSprite(worldTransform2d_.get(), camera2d_.get(), ghUvChecker);
+		mugenEngine->DrawUVSphere(worldTransform3d_.get(),uvTransform_.get(), camera3d_.get(), ghUvChecker, 24, 12);
 
 
 		// 描画後処理
