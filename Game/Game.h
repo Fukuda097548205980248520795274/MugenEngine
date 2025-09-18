@@ -26,5 +26,18 @@ private:
 
 	// エンジン
 	const MugenEngine* engine_ = nullptr;
+
+
+	// ワールドトランスフォーム
+	std::unique_ptr<WorldTransform3D> worldTransform_ = nullptr;
+
+	// UVトランスフォーム
+	std::unique_ptr<UVTransform> uvTransform_ = nullptr;
+
+	// カメラ
+	std::unique_ptr<Camera3D> camera3d_ = nullptr;
+
+	// テクスチャハンドル
+	uint32_t textureHandle_ = 0;
 };
 
