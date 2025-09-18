@@ -113,6 +113,11 @@ public:
 
 private:
 
+	/// <summary>
+	/// 終了処理
+	/// </summary>
+	void Finalize();
+
 	// ログファイル
 	LogFile* logFile_ = nullptr;
 

@@ -20,8 +20,8 @@ AudioData::~AudioData()
 /// </summary>
 AudioStore::~AudioStore()
 {
-	// MFの終了処理
-	MFShutdown();
+	// 終了処理
+	Finalize();
 }
 
 /// <summary>
@@ -49,6 +49,28 @@ void AudioStore::Initialize(LogFile* logFile)
 	hr = xAudio2_->CreateMasteringVoice(&masterVoice_);
 	assert(SUCCEEDED(hr));
 	logFile_->Log("SUCCEEDED : MasterVoice \n");
+}
+
+/// <summary>
+/// 終了処理
+/// </summary>
+void AudioStore::Finalize()
+{
+	// 全ての再生中の音声を停止・破棄する
+	for (std::unique_ptr<PlayData>& playDatum : playData_)
+	{
+		if (playDatum->pSourceVoice)
+		{
+			playDatum->pSourceVoice->Stop(0);
+			playDatum->pSourceVoice->DestroyVoice();
+		}
+	}
+	// playData_ リストが unique_ptr であれば、ここで自動的に要素が解放される
+
+	// MFの終了処理
+	MFShutdown();
+	// XAudio2インスタンスを破棄する
+	xAudio2_.Reset();
 }
 
 /// <summary>
@@ -297,14 +319,12 @@ void AudioStore::DeletePlayAudio()
 
 				if (state.BuffersQueued <= 0)
 				{
-					playDatum.release();
 					return true;
 				}
 			} 
 			else
 			{
 				// 音楽を停止させたとき
-				playDatum.release();
 				return true;
 			}
 
