@@ -57,23 +57,20 @@ void WinApp::Initialize(int32_t clientWidth, int32_t clientHeight, const std::st
 	    ウィンドウクラスを登録する
 	---------------------------*/
 
-	// ウィンドウクラス
-	WNDCLASS wc{};
-
 	// ウィンドウプロシージャ
-	wc.lpfnWndProc = WindowProc;
+	wc_.lpfnWndProc = WindowProc;
 
 	// ウィンドウクラス名
-	wc.lpszClassName = L"Mugen";
+	wc_.lpszClassName = L"Mugen";
 
 	// インスタンスハンドル
-	wc.hInstance = GetModuleHandle(nullptr);
+	wc_.hInstance = GetModuleHandle(nullptr);
 
 	// カーソル
-	wc.hCursor = LoadCursor(nullptr, IDC_ARROW);
+	wc_.hCursor = LoadCursor(nullptr, IDC_ARROW);
 
 	// 登録する
-	RegisterClass(&wc);
+	RegisterClass(&wc_);
 
 
 	/*---------------------------
@@ -94,7 +91,7 @@ void WinApp::Initialize(int32_t clientWidth, int32_t clientHeight, const std::st
 	// ウィンドウの生成
 	hwnd_ = CreateWindow(
 		// 利用するクラス名
-		wc.lpszClassName,
+		wc_.lpszClassName,
 
 		// タイトルバーの文字
 		title_.c_str(),
@@ -121,7 +118,7 @@ void WinApp::Initialize(int32_t clientWidth, int32_t clientHeight, const std::st
 		nullptr,
 
 		// インスタンスハンドル
-		wc.hInstance,
+		wc_.hInstance,
 
 		// オプション
 		nullptr

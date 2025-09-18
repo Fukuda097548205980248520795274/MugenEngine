@@ -48,6 +48,12 @@ public:
 	const int32_t* GetClientHeightP()const { return &clientHeight_; }
 
 	/// <summary>
+	/// ウィンドウクラスのGetter
+	/// </summary>
+	/// <returns></returns>
+	WNDCLASS GetWndClass()const { return wc_; }
+
+	/// <summary>
 	/// ウィンドウハンドルのGetter
 	/// </summary>
 	/// <returns></returns>
@@ -55,6 +61,9 @@ public:
 
 
 private:
+
+	// ウィンドウクラス
+	WNDCLASS wc_{};
 
 	// クライアント領域の横幅
 	int32_t clientWidth_ = 0;

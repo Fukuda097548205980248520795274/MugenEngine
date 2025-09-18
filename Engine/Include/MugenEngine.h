@@ -6,7 +6,22 @@
 #include "LogFile/LogFile.h"
 #include "DirectXBase/DirectXBase.h"
 #include "Func/CrushHandler/CrushHandler.h"
+#include "Input/Input.h"
 
+// マウスボタン
+enum MouseButton
+{
+	// 左ボタン
+	kMouseButtonLeft,
+
+	// 右ボタン
+	kMouseButtonRight,
+
+	// 中央ボタン
+	kMouseButtonCenter
+};
+
+// 無限エンジン
 class MugenEngine
 {
 public:
@@ -37,6 +52,147 @@ public:
 	/// </summary>
 	void PostDraw() { directXBase_->PostDraw(); }
 
+
+
+
+	/// <summary>
+	/// 全ての入力情報を取得する
+	/// </summary>
+	void CheckInputInfo()const { input_->CheckInputInfo(); }
+
+	/// <summary>
+	/// 全ての入力情報をコピーする
+	/// </summary>
+	void CopyInputInfo()const { input_->CopyInputInfo(); }
+
+	/// <summary>
+	/// キー入力（Press）
+	/// </summary>
+	/// <param name="key">キー</param>
+	/// <returns></returns>
+	bool GetKeyPress(BYTE key) const { return input_->GetKeyPress(key); }
+
+	/// <summary>
+	/// キー入力（Trigger）
+	/// </summary>
+	/// <param name="key">キー</param>
+	/// <returns></returns>
+	bool GetKeyTrigger(BYTE key) const { return input_->GetKeyTrigger(key); }
+
+	/// <summary>
+	/// キー入力（Release）
+	/// </summary>
+	/// <param name="key">キー</param>
+	/// <returns></returns>
+	bool GetKeyRelease(BYTE key) const { return input_->GetKeyRelease(key); }
+
+	/// <summary>
+	/// マウスボタン（Press）
+	/// </summary>
+	/// <param name=""></param>
+	/// <returns></returns>
+	bool GetMouseButtonPress(MouseButton mouseButton) const { return input_->GetMousePress(static_cast<uint32_t>(mouseButton)); };
+
+	/// <summary>
+	/// マウスボタン（Trigger）
+	/// </summary>
+	/// <param name=""></param>
+	/// <returns></returns>
+	bool GetMouseButtonTrigger(MouseButton mouseButton) const { return input_->GetMouseTrigger(static_cast<uint32_t>(mouseButton)); };
+
+	/// <summary>
+	/// マウスボタン（Release）
+	/// </summary>
+	/// <param name=""></param>
+	/// <returns></returns>
+	bool GetMouseButtonRelease(MouseButton mouseButton) const { return input_->GetMouseRelease(static_cast<uint32_t>(mouseButton)); };
+
+	/// <summary>
+	/// マウスの移動量のGetter
+	/// </summary>
+	/// <returns></returns>
+	Vector2 GetMouseVelocity() const { return input_->GetMouseVelocity(); }
+
+	/// <summary>
+	/// マウスホイールが上回転しているかどうか
+	/// </summary>
+	/// <returns></returns>
+	bool GetMouseWheelUp() const { return input_->GetMouseWheelUp(); }
+
+	/// <summary>
+	/// マウスホイールが下回転しているかどうか
+	/// </summary>
+	/// <returns></returns>
+	bool GetMouseWheelDown()  const { return input_->GetMouseWheelDown(); }
+
+	/// <summary>
+	/// マウスホイールの回転量のGetter
+	/// </summary>
+	/// <returns></returns>
+	float GetMouseWheelVelocity() const { return input_->GetMouseWheelVelocity(); }
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="gamepadNumber"></param>
+	/// <returns></returns>
+	bool IsGamepadEnable(DWORD gamepadNumber) const { return input_->IsGamepadEnable(gamepadNumber); }
+
+	/// <summary>
+	/// ゲームパッドのボタンの入力情報（Press）
+	/// </summary>
+	/// <param name="gamepadNumber">ゲームパッドの番号</param>
+	/// <param name="wButtons">指定のボタン</param>
+	/// <returns></returns>
+	bool GetGamepadButtonPress(DWORD gamepadNumber, DWORD wButtons) const { return input_->GetGamepadButtonPress(gamepadNumber, wButtons); }
+
+	/// <summary>
+	/// ゲームパッドのボタンの入力情報（Press）
+	/// </summary>
+	/// <param name="gamepadNumber">ゲームパッドの番号</param>
+	/// <param name="wButtons">指定のボタン</param>
+	/// <returns></returns>
+	bool GetGamepadButtonTrigger(DWORD gamepadNumber, DWORD wButtons) const { return input_->GetGamepadButtonTrigger(gamepadNumber, wButtons); }
+
+	/// <summary>
+	/// ゲームパッドのボタンの入力情報（Press）
+	/// </summary>
+	/// <param name="gamepadNumber">ゲームパッドの番号</param>
+	/// <param name="wButtons">指定のボタン</param>
+	/// <returns></returns>
+	bool GetGamepadButtonRelease(DWORD gamepadNumber, DWORD wButtons) const { return input_->GetGamepadButtonRelease(gamepadNumber, wButtons); }
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="gamepadNumber"></param>
+	/// <returns></returns>
+	Vector2 GetGamepadLeftStick(DWORD gamepadNumber) const { return input_->GetGamepadLeftStick(gamepadNumber); }
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="gamepadNumber"></param>
+	/// <returns></returns>
+	Vector2 GetGamepadRightStick(DWORD gamepadNumber) const { return input_->GetGamepadRightStick(gamepadNumber); }
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="gamepadNumber"></param>
+	/// <returns></returns>
+	float GetGamepadLeftTrigger(DWORD gamepadNumber) const { return input_->GetGamepadLeftTrigger(gamepadNumber); }
+
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="gamepadNumber"></param>
+	/// <returns></returns>
+	float GetGamepadRightTrigger(DWORD gamepadNumber) const { return input_->GetGamepadRightTrigger(gamepadNumber); }
+
+
+
+
 	/// <summary>
 	/// スクリーン横幅のGetter
 	/// </summary>
@@ -55,6 +211,8 @@ public:
 	/// <param name="filePath"></param>
 	/// <returns></returns>
 	uint32_t LoadTexture(const std::string& filePath)const { return directXBase_->LoadTexture(filePath); }
+
+
 
 
 	// スプライトを描画する
@@ -100,5 +258,8 @@ private:
 	
 	// DirectXのベース
 	DirectXBase* directXBase_ = nullptr;
+
+	// 入力
+	Input* input_ = nullptr;
 };
 

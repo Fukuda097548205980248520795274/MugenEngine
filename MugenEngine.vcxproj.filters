@@ -160,6 +160,12 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\LightData">
       <UniqueIdentifier>{2f3c0e5d-792d-430a-b878-fac353217578}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{e4555eb9-0b5b-4d70-85f7-68cbff4eb8dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\Input">
+      <UniqueIdentifier>{9bdbdc36-9f25-48d5-aa25-29dbc10666b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -306,6 +312,12 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\LightData\LightData.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\LightData</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\Input\Input.cpp">
+      <Filter>Engine\Include\Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -451,6 +463,12 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\LightData\LightData.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\LightData</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\Input\Input.h">
+      <Filter>Engine\Include\Input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

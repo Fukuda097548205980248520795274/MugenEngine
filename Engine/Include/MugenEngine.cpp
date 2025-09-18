@@ -3,12 +3,17 @@
 #pragma comment(lib,"dxgi.lib")
 #pragma comment(lib, "dxcompiler.lib")
 #pragma comment(lib,"dxguid.lib")
+#pragma comment(lib, "dinput8.lib")
+#pragma comment(lib, "xinput.lib")
 
 /// <summary>
 /// デストラクタ
 /// </summary>
 MugenEngine::~MugenEngine()
 {
+	// 入力
+	delete input_;
+
 	// DirectXベース
 	delete directXBase_;
 
@@ -61,4 +66,8 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 	// DirectXベースの生成と初期化
 	directXBase_ = new DirectXBase();
 	directXBase_->Initialize(logFile_, winApp_->GetHwnd(), kClientWidth_, kClientHeight_);
+
+	// 入力の生成と初期化
+	input_ = new Input();
+	input_->Initialize(logFile_, winApp_->GetWndClass(), winApp_->GetHwnd());
 }

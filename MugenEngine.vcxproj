@@ -121,6 +121,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\Include\Func\CreateBufferResource\CreateBufferResource.cpp" />
     <ClCompile Include="Engine\Include\Func\CrushHandler\CrushHandler.cpp" />
     <ClCompile Include="Engine\Include\Func\LoadTexture\LoadTexture.cpp" />
+    <ClCompile Include="Engine\Include\Input\Input.cpp" />
     <ClCompile Include="Engine\Include\LogFile\LogFile.cpp" />
     <ClCompile Include="Engine\Include\Math\Matrix4x4\Matrix4x4.cpp" />
     <ClCompile Include="Engine\Include\Math\Vector1\Vector1.cpp" />
@@ -136,6 +137,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Externals\ImGui\imgui_impl_win32.cpp" />
     <ClCompile Include="Externals\ImGui\imgui_tables.cpp" />
     <ClCompile Include="Externals\ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +173,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Include\Func\CreateBufferResource\CreateBufferResource.h" />
     <ClInclude Include="Engine\Include\Func\CrushHandler\CrushHandler.h" />
     <ClInclude Include="Engine\Include\Func\LoadTexture\LoadTexture.h" />
+    <ClInclude Include="Engine\Include\Input\Input.h" />
     <ClInclude Include="Engine\Include\LogFile\LogFile.h" />
     <ClInclude Include="Engine\Include\Math\Matrix4x4\Matrix4x4.h" />
     <ClInclude Include="Engine\Include\Math\Vector1\Vector1.h" />
@@ -187,6 +190,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Externals\ImGui\imstb_rectpack.h" />
     <ClInclude Include="Externals\ImGui\imstb_textedit.h" />
     <ClInclude Include="Externals\ImGui\imstb_truetype.h" />
+    <ClInclude Include="Game\Game.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Engine\Shader\Primitive\Primitive.PS.hlsl">
