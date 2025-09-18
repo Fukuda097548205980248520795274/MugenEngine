@@ -89,6 +89,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Include\AudioStore\AudioStore.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXBase.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXBuffering\DirectXBuffering.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXCommand\DirectXCommand.cpp" />
@@ -141,6 +142,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Include\AudioStore\AudioStore.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXBase.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXBuffering\DirectXBuffering.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXCommand\DirectXCommand.h" />

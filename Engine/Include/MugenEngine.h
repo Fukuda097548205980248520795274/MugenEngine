@@ -7,6 +7,7 @@
 #include "DirectXBase/DirectXBase.h"
 #include "Func/CrushHandler/CrushHandler.h"
 #include "Input/Input.h"
+#include "AudioStore/AudioStore.h"
 
 // マウスボタン
 enum MouseButton
@@ -205,6 +206,7 @@ public:
 	/// <returns></returns>
 	int32_t GetScreenHeight()const { return winApp_->GetClientHeight(); }
 
+
 	/// <summary>
 	/// テクスチャを読み込む
 	/// </summary>
@@ -213,6 +215,50 @@ public:
 	uint32_t LoadTexture(const std::string& filePath)const { return directXBase_->LoadTexture(filePath); }
 
 
+	/// <summary>
+	/// 音声データを読み込む
+	/// </summary>
+	/// <param name="filePath"></param>
+	/// <returns></returns>
+	uint32_t LoadAudio(const std::string& filePath) const { return audioStore_->LoadAudio(filePath); }
+
+	/// <summary>
+	/// オーディオストアの更新処理
+	/// </summary>
+	void UpdateAudioStore() { audioStore_->DeletePlayAudio(); };
+
+	/// <summary>
+	/// 音量の設定
+	/// </summary>
+	/// <param name="playHandle"></param>
+	/// <param name="volume"></param>
+	void SetVolume(uint32_t playHandle, float volume) const { audioStore_->SetVolume(playHandle, volume); }
+
+	/// <summary>
+	/// ピッチの設定
+	/// </summary>
+	/// <param name="playHandle"></param>
+	/// <param name="pitch"></param>
+	void SetPitch(uint32_t playHandle, float pitch)const { audioStore_->SetPitch(playHandle, pitch); }
+
+	/// <summary>
+	/// 音声データを再生する
+	/// </summary>
+	/// <param name="soundHandle"></param>
+	uint32_t PlayAudio(uint32_t soundHandle, float volume) const { return audioStore_->PlayAudio(soundHandle, volume); }
+
+	/// <summary>
+	/// 音声データを停止する
+	/// </summary>
+	/// <param name="playHandle"></param>
+	void StopAudio(uint32_t playHandle) const { audioStore_->StopAudio(playHandle); }
+
+	/// <summary>
+	/// 音楽が再生されているかどうか
+	/// </summary>
+	/// <param name="playHandle"></param>
+	/// <returns></returns>
+	bool IsAudioPlay(uint32_t playHandle)const { return audioStore_->IsAudioPlay(playHandle); }
 
 
 	// スプライトを描画する
@@ -261,5 +307,8 @@ private:
 
 	// 入力
 	Input* input_ = nullptr;
+
+	// オーディオ格納場所
+	AudioStore* audioStore_ = nullptr;
 };
 

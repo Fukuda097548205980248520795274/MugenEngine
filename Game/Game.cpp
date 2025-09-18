@@ -28,6 +28,9 @@ void Game::Initialize(const MugenEngine* engine)
 
 	// テクスチャを読み込む
 	textureHandle_ = engine_->LoadTexture("./Resources/Textures/white2x2.png");
+
+	// BGMを読み込む
+	soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/Tukiyo_Ni_Ukabu_Tensyukaku.mp3");
 }
 
 /// <summary>
@@ -35,6 +38,11 @@ void Game::Initialize(const MugenEngine* engine)
 /// </summary>
 void Game::Update()
 {
+	if (!engine_->IsAudioPlay(playHandle_) || playHandle_ == 0)
+	{
+		playHandle_ = engine_->PlayAudio(soundHandle_, 0.5f);
+	}
+
 	// 更新
 	worldTransform_->Update();
 	uvTransform_->Update();

@@ -4,15 +4,17 @@
 /// 初期化
 /// </summary>
 /// <param name="directXHeap"></param>
-void TextureStore::Initialize(DirectXHeap* directXHeap, ID3D12Device* device, ID3D12GraphicsCommandList* commandList)
+void TextureStore::Initialize(DirectXHeap* directXHeap, LogFile* logFile, ID3D12Device* device, ID3D12GraphicsCommandList* commandList)
 {
 	// nullptrチェック
 	assert(directXHeap);
+	assert(logFile);
 	assert(device);
 	assert(commandList);
 
 	// 引数を受け取る
 	directXHeap_ = directXHeap;
+	logFile_ = logFile;
 	device_ = device;
 	commandList_ = commandList;
 }

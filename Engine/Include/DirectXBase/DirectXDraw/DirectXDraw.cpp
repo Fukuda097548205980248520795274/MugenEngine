@@ -34,7 +34,7 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 
 	// テクスチャ格納場所の生成と初期化
 	textureStore_ = std::make_unique<TextureStore>();
-	textureStore_->Initialize(directXHeap_, device_, commandList_);
+	textureStore_->Initialize(directXHeap_, logFile_, device_, commandList_);
 
 
 	// プリミティブ用PSOの生成と初期化

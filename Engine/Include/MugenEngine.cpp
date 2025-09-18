@@ -5,12 +5,20 @@
 #pragma comment(lib,"dxguid.lib")
 #pragma comment(lib, "dinput8.lib")
 #pragma comment(lib, "xinput.lib")
+#pragma comment(lib, "Mf.lib")
+#pragma comment(lib, "mfplat.lib")
+#pragma comment(lib, "Mfreadwrite.lib")
+#pragma comment(lib, "mfuuid.lib")
+#pragma comment(lib , "xaudio2.lib")
 
 /// <summary>
 /// デストラクタ
 /// </summary>
 MugenEngine::~MugenEngine()
 {
+	// オーディオ格納場所
+	delete audioStore_;
+
 	// 入力
 	delete input_;
 
@@ -70,4 +78,8 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 	// 入力の生成と初期化
 	input_ = new Input();
 	input_->Initialize(logFile_, winApp_->GetWndClass(), winApp_->GetHwnd());
+
+	// オーディオ格納場所の生成と初期化
+	audioStore_ = new AudioStore();
+	audioStore_->Initialize(logFile_);
 }

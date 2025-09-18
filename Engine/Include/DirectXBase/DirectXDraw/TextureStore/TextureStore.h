@@ -2,6 +2,7 @@
 #include <functional>
 
 #include "../../../Func/LoadTexture/LoadTexture.h"
+#include "../../../LogFile/LogFile.h"
 #include "../../DirectXHeap/DirectXHeap.h"
 
 class TextureStore
@@ -12,7 +13,7 @@ public:
 	/// 初期化
 	/// </summary>
 	/// <param name="directXHeap"></param>
-	void Initialize(DirectXHeap* directXHeap, ID3D12Device* device, ID3D12GraphicsCommandList* commandList);
+	void Initialize(DirectXHeap* directXHeap, LogFile* logFile, ID3D12Device* device, ID3D12GraphicsCommandList* commandList);
 
 	/// <summary>
 	/// テクスチャを読み込む
@@ -40,6 +41,9 @@ private:
 
 	//  DirectXヒープ
 	DirectXHeap* directXHeap_ = nullptr;
+
+	// ログファイル
+	LogFile* logFile_ = nullptr;
 
 	// デバイス
 	ID3D12Device* device_ = nullptr;

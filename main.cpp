@@ -18,6 +18,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		// 全ての入力情報を取得する
 		mugenEngine->CheckInputInfo();
 
+		// オーディオストアの更新処理
+		mugenEngine->UpdateAudioStore();
+
 		// 描画前処理
 		mugenEngine->PreDraw();
 

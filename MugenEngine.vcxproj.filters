@@ -166,6 +166,9 @@
     <Filter Include="Engine\Include\Input">
       <UniqueIdentifier>{9bdbdc36-9f25-48d5-aa25-29dbc10666b7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\AudioStore">
+      <UniqueIdentifier>{9553d818-a45d-4de5-8f14-6ef028e363c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -318,6 +321,9 @@
     <ClCompile Include="Engine\Include\Input\Input.cpp">
       <Filter>Engine\Include\Input</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\AudioStore\AudioStore.cpp">
+      <Filter>Engine\Include\AudioStore</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -469,6 +475,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\Input\Input.h">
       <Filter>Engine\Include\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\AudioStore\AudioStore.h">
+      <Filter>Engine\Include\AudioStore</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
