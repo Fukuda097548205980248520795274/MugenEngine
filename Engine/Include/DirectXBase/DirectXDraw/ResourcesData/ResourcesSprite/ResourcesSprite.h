@@ -3,7 +3,8 @@
 
 #include "../../../../Func/CreateBufferResource/CreateBufferResource.h"
 #include "../../VertexData/VertexData.h"
-#include "../../../../Math/Matrix4x4/Matrix4x4.h"
+#include "../../MaterialData/MaterialData.h"
+#include "../../TransformationData/TransformationData.h"
 
 class ResourcesSprite
 {

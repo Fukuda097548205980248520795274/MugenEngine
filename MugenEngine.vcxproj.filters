@@ -151,6 +151,15 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesCube">
       <UniqueIdentifier>{1872f6bc-edb8-4431-b57e-7bff483802ed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\MaterialData">
+      <UniqueIdentifier>{4af457a4-93a5-42aa-af9b-786ed1fa97b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\TransformationData">
+      <UniqueIdentifier>{473a4005-89b1-41f1-9e06-0af93bf2d519}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\LightData">
+      <UniqueIdentifier>{2f3c0e5d-792d-430a-b878-fac353217578}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -288,6 +297,15 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesCube\ResourcesCube.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesCube</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\MaterialData\MaterialData.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\MaterialData</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\TransformationData\TransformationData.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\TransformationData</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\LightData\LightData.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\LightData</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -424,6 +442,15 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesCube\ResourcesCube.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesCube</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\MaterialData\MaterialData.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\MaterialData</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\TransformationData\TransformationData.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\TransformationData</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\LightData\LightData.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\LightData</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -144,6 +144,9 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const Cam
 			resourcesUVSphere_->vertexData_[startIndex].position.w = 1.0f;
 			resourcesUVSphere_->vertexData_[startIndex].texcoord.x = float(lonIndex) / float(segment);
 			resourcesUVSphere_->vertexData_[startIndex].texcoord.y = 1.0f - (float(latIndex) / float(ring));
+			resourcesUVSphere_->vertexData_[startIndex].normal.x = resourcesUVSphere_->vertexData_[startIndex].position.x;
+			resourcesUVSphere_->vertexData_[startIndex].normal.y = resourcesUVSphere_->vertexData_[startIndex].position.y;
+			resourcesUVSphere_->vertexData_[startIndex].normal.z = resourcesUVSphere_->vertexData_[startIndex].position.z;
 
 			resourcesUVSphere_->vertexData_[startIndex + 1].position.x = std::cos(lat + kLatEvery) * std::cos(lon);
 			resourcesUVSphere_->vertexData_[startIndex + 1].position.y = std::sin(lat + kLatEvery);
@@ -151,6 +154,9 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const Cam
 			resourcesUVSphere_->vertexData_[startIndex + 1].position.w = 1.0f;
 			resourcesUVSphere_->vertexData_[startIndex + 1].texcoord.x = float(lonIndex) / float(segment);
 			resourcesUVSphere_->vertexData_[startIndex + 1].texcoord.y = 1.0f - (float(latIndex + 1) / float(ring));
+			resourcesUVSphere_->vertexData_[startIndex + 1].normal.x = resourcesUVSphere_->vertexData_[startIndex + 1].position.x;
+			resourcesUVSphere_->vertexData_[startIndex + 1].normal.y = resourcesUVSphere_->vertexData_[startIndex + 1].position.y;
+			resourcesUVSphere_->vertexData_[startIndex + 1].normal.z = resourcesUVSphere_->vertexData_[startIndex + 1].position.z;
 
 			resourcesUVSphere_->vertexData_[startIndex + 2].position.x = std::cos(lat) * std::cos(lon + kLonEvery);
 			resourcesUVSphere_->vertexData_[startIndex + 2].position.y = std::sin(lat);
@@ -158,6 +164,9 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const Cam
 			resourcesUVSphere_->vertexData_[startIndex + 2].position.w = 1.0f;
 			resourcesUVSphere_->vertexData_[startIndex + 2].texcoord.x = float(lonIndex + 1) / float(segment);
 			resourcesUVSphere_->vertexData_[startIndex + 2].texcoord.y = 1.0f - (float(latIndex) / float(ring));
+			resourcesUVSphere_->vertexData_[startIndex + 2].normal.x = resourcesUVSphere_->vertexData_[startIndex + 2].position.x;
+			resourcesUVSphere_->vertexData_[startIndex + 2].normal.y = resourcesUVSphere_->vertexData_[startIndex + 2].position.y;
+			resourcesUVSphere_->vertexData_[startIndex + 2].normal.z = resourcesUVSphere_->vertexData_[startIndex + 2].position.z;
 
 			resourcesUVSphere_->vertexData_[startIndex + 3].position.x = std::cos(lat + kLatEvery) * std::cos(lon + kLonEvery);
 			resourcesUVSphere_->vertexData_[startIndex + 3].position.y = std::sin(lat + kLatEvery);
@@ -165,6 +174,9 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const Cam
 			resourcesUVSphere_->vertexData_[startIndex + 3].position.w = 1.0f;
 			resourcesUVSphere_->vertexData_[startIndex + 3].texcoord.x = float(lonIndex + 1) / float(segment);
 			resourcesUVSphere_->vertexData_[startIndex + 3].texcoord.y = 1.0f - (float(latIndex + 1) / float(ring));
+			resourcesUVSphere_->vertexData_[startIndex + 3].normal.x = resourcesUVSphere_->vertexData_[startIndex + 3].position.x;
+			resourcesUVSphere_->vertexData_[startIndex + 3].normal.y = resourcesUVSphere_->vertexData_[startIndex + 3].position.y;
+			resourcesUVSphere_->vertexData_[startIndex + 3].normal.z = resourcesUVSphere_->vertexData_[startIndex + 3].position.z;
 		}
 	}
 
@@ -174,7 +186,8 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const Cam
 	------------------*/
 
 	// 座標変換行列を取得する
-	*resourcesUVSphere_->transformationData_ = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
+	resourcesUVSphere_->transformationData_->world = worldTransform->worldMatrix_;
+	resourcesUVSphere_->transformationData_->worldViewProjection = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
 
 
 	/*----------------------------
@@ -215,7 +228,8 @@ void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const Camera3
 	-------------*/
 
 	// 座標変換用の行列を取得する
-	*resourcesCube_->transformationData_ = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
+	resourcesCube_->transformationData_->world = worldTransform->worldMatrix_;
+	resourcesCube_->transformationData_->worldViewProjection = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
 
 
 	/*---------------------------------

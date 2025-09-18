@@ -20,8 +20,6 @@
 #include "ResourcesData/ResourcesCube/ResourcesCube.h"
 #include "ResourcesData/ResourcesSprite/ResourcesSprite.h"
 
-#include "Transform/Transform.h"
-
 #include "../../Func/LoadTexture/LoadTexture.h"
 
 class DirectXDraw

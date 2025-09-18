@@ -53,11 +53,12 @@ void ResourcesUVSphere::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 	---------------------------*/
 
 	// リソース生成
-	materialResource_ = CreateBufferResource(device_, sizeof(Vector4));
+	materialResource_ = CreateBufferResource(device_, sizeof(MaterialDataModel));
 
 	// データを割り当てる
 	materialResource_->Map(0, nullptr, reinterpret_cast<void**>(&materialData_));
-	*materialData_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+	materialData_->color_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+	materialData_->enableLighting_ = true;
 
 
 	/*--------------------------
@@ -65,11 +66,26 @@ void ResourcesUVSphere::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 	--------------------------*/
 
 	// リソース生成
-	transformationResource_ = CreateBufferResource(device_, sizeof(Matrix4x4));
+	transformationResource_ = CreateBufferResource(device_, sizeof(TransformationDataModel));
 
 	// データを割り当てる
 	transformationResource_->Map(0, nullptr, reinterpret_cast<void**>(&transformationData_));
-	*transformationData_ = MakeIdentityMatrix();
+	transformationData_->worldViewProjection = MakeIdentityMatrix();
+	transformationData_->world = MakeIdentityMatrix();
+
+
+	/*--------------------------
+	    平行光源リソースの生成
+	--------------------------*/
+
+	// リソース生成
+	directionalLightResource_ = CreateBufferResource(device_, sizeof(DirectionalLight));
+
+	// データを割り当てる
+	directionalLightResource_->Map(0, nullptr, reinterpret_cast<void**>(&directionalLightData_));
+	directionalLightData_->color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+	directionalLightData_->direction = Vector3(0.0f, -1.0f, 0.0f);
+	directionalLightData_->intensity = 1.0f;
 }
 
 /// <summary>
@@ -88,4 +104,7 @@ void ResourcesUVSphere::SetCommandList()
 
 	// 座標変換リソースを設定
 	commandList_->SetGraphicsRootConstantBufferView(1, transformationResource_->GetGPUVirtualAddress());
+
+	// 平行光源リソースを設定
+	commandList_->SetGraphicsRootConstantBufferView(3, directionalLightResource_->GetGPUVirtualAddress());
 }

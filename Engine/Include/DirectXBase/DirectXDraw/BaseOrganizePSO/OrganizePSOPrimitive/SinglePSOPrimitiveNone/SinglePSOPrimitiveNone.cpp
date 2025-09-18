@@ -35,7 +35,7 @@ void SinglePSOPrimitiveNone::Initialize(LogFile* logFile, IDxcBlob* vertexShader
 		ルートパラメータの設定
 	-------------------------*/
 
-	D3D12_ROOT_PARAMETER rootParameter[3];
+	D3D12_ROOT_PARAMETER rootParameter[4];
 
 	// CBV PixelShader b0
 	rootParameter[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
@@ -54,6 +54,12 @@ void SinglePSOPrimitiveNone::Initialize(LogFile* logFile, IDxcBlob* vertexShader
 	rootParameter[2].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 	rootParameter[2].DescriptorTable.pDescriptorRanges = descriptorRange;
 	rootParameter[2].DescriptorTable.NumDescriptorRanges = _countof(descriptorRange);
+
+	// CBV PixelShader b1
+	rootParameter[3].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
+	rootParameter[3].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+	rootParameter[3].Descriptor.RegisterSpace = 0;
+	rootParameter[3].Descriptor.ShaderRegister = 1;
 
 
 	/*--------------------
@@ -115,7 +121,7 @@ void SinglePSOPrimitiveNone::Initialize(LogFile* logFile, IDxcBlob* vertexShader
 	    インプットレイアウトの設定
 	----------------------------*/
 
-	D3D12_INPUT_ELEMENT_DESC inputElementDescs[2] = {};
+	D3D12_INPUT_ELEMENT_DESC inputElementDescs[3] = {};
 
 	// POSITION 0 float4
 	inputElementDescs[0].SemanticName = "POSITION";
@@ -128,6 +134,12 @@ void SinglePSOPrimitiveNone::Initialize(LogFile* logFile, IDxcBlob* vertexShader
 	inputElementDescs[1].SemanticIndex = 0;
 	inputElementDescs[1].Format = DXGI_FORMAT_R32G32_FLOAT;
 	inputElementDescs[1].AlignedByteOffset = D3D12_APPEND_ALIGNED_ELEMENT;
+
+	// NORMAL 0 float3
+	inputElementDescs[2].SemanticName = "NORMAL";
+	inputElementDescs[2].SemanticIndex = 0;
+	inputElementDescs[2].Format = DXGI_FORMAT_R32G32B32_FLOAT;
+	inputElementDescs[2].AlignedByteOffset = D3D12_APPEND_ALIGNED_ELEMENT;
 
 	D3D12_INPUT_LAYOUT_DESC inputLayoutDesc{};
 	inputLayoutDesc.pInputElementDescs = inputElementDescs;

@@ -1,7 +1,9 @@
 #pragma once
 #include "../../../../Func/CreateBufferResource/CreateBufferResource.h"
 #include "../../VertexData/VertexData.h"
-#include "../../../../Math/Matrix4x4/Matrix4x4.h"
+#include "../../MaterialData/MaterialData.h"
+#include "../../TransformationData/TransformationData.h"
+#include "../../LightData/LightData.h"
 
 class ResourcesUVSphere
 {
@@ -51,10 +53,13 @@ public:
 	VertexDataModel* vertexData_ = nullptr;
 
 	// マテリアルデータ
-	Vector4* materialData_ = nullptr;
+	MaterialDataModel* materialData_ = nullptr;
 
 	// 座標変換データ
-	Matrix4x4* transformationData_ = nullptr;
+	TransformationDataModel* transformationData_ = nullptr;
+
+	// 平行光源データ
+	DirectionalLight* directionalLightData_ = nullptr;
 
 
 private:
@@ -101,5 +106,9 @@ private:
 
 	// 座標変換リソース
 	Microsoft::WRL::ComPtr<ID3D12Resource> transformationResource_ = nullptr;
+
+
+	// 平行光源リソース
+	Microsoft::WRL::ComPtr<ID3D12Resource> directionalLightResource_ = nullptr;
 };
 

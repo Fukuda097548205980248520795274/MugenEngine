@@ -64,57 +64,81 @@ void ResourcesCube::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* 
 	// ローカル座標を与える
 	vertexData_[0].position = Vector4(-1.0f, -1.0f, -1.0f, 1.0f);
 	vertexData_[0].texcoord = Vector2(0.0f, 1.0f);
+	vertexData_[0].normal = Vector3(0.0f, 0.0f, -1.0f);
 	vertexData_[1].position = Vector4(-1.0f, 1.0f, -1.0f, 1.0f);
 	vertexData_[1].texcoord = Vector2(0.0f, 0.0f);
+	vertexData_[1].normal = Vector3(0.0f, 0.0f, -1.0f);
 	vertexData_[2].position = Vector4(1.0f, -1.0f, -1.0f, 1.0f);
 	vertexData_[2].texcoord = Vector2(1.0f, 1.0f);
+	vertexData_[2].normal = Vector3(0.0f, 0.0f, -1.0f);
 	vertexData_[3].position = Vector4(1.0f, 1.0f, -1.0f, 1.0f);
 	vertexData_[3].texcoord = Vector2(1.0f, 0.0f);
+	vertexData_[3].normal = Vector3(0.0f, 0.0f, -1.0f);
 
 	vertexData_[4].position = Vector4(1.0f, -1.0f, -1.0f, 1.0f);
 	vertexData_[4].texcoord = Vector2(0.0f, 1.0f);
+	vertexData_[4].normal = Vector3(1.0f, 0.0f, 0.0f);
 	vertexData_[5].position = Vector4(1.0f, 1.0f, -1.0f, 1.0f);
 	vertexData_[5].texcoord = Vector2(0.0f, 0.0f);
+	vertexData_[5].normal = Vector3(1.0f, 0.0f, 0.0f);
 	vertexData_[6].position = Vector4(1.0f, -1.0f, 1.0f, 1.0f);
 	vertexData_[6].texcoord = Vector2(1.0f, 1.0f);
+	vertexData_[6].normal = Vector3(1.0f, 0.0f, 0.0f);
 	vertexData_[7].position = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 	vertexData_[7].texcoord = Vector2(1.0f, 0.0f);
+	vertexData_[7].normal = Vector3(1.0f, 0.0f, 0.0f);
 
 	vertexData_[8].position = Vector4(1.0f, -1.0f, 1.0f, 1.0f);
 	vertexData_[8].texcoord = Vector2(0.0f, 1.0f);
+	vertexData_[8].normal = Vector3(0.0f, 0.0f, 1.0f);
 	vertexData_[9].position = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 	vertexData_[9].texcoord = Vector2(0.0f, 0.0f);
+	vertexData_[9].normal = Vector3(0.0f, 0.0f, 1.0f);
 	vertexData_[10].position = Vector4(-1.0f, -1.0f, 1.0f, 1.0f);
 	vertexData_[10].texcoord = Vector2(1.0f, 1.0f);
+	vertexData_[10].normal = Vector3(0.0f, 0.0f, 1.0f);
 	vertexData_[11].position = Vector4(-1.0f, 1.0f, 1.0f, 1.0f);
 	vertexData_[11].texcoord = Vector2(1.0f, 0.0f);
+	vertexData_[11].normal = Vector3(0.0f, 0.0f, 1.0f);
 
 	vertexData_[12].position = Vector4(-1.0f, -1.0f, 1.0f, 1.0f);
 	vertexData_[12].texcoord = Vector2(0.0f, 1.0f);
+	vertexData_[12].normal = Vector3(-1.0f, 0.0f, 0.0f);
 	vertexData_[13].position = Vector4(-1.0f, 1.0f, 1.0f, 1.0f);
 	vertexData_[13].texcoord = Vector2(0.0f, 0.0f);
+	vertexData_[13].normal = Vector3(-1.0f, 0.0f, 0.0f);
 	vertexData_[14].position = Vector4(-1.0f, -1.0f, -1.0f, 1.0f);
 	vertexData_[14].texcoord = Vector2(1.0f, 1.0f);
+	vertexData_[14].normal = Vector3(-1.0f, 0.0f, 0.0f);
 	vertexData_[15].position = Vector4(-1.0f, 1.0f, -1.0f, 1.0f);
 	vertexData_[15].texcoord = Vector2(1.0f, 0.0f);
+	vertexData_[15].normal = Vector3(-1.0f, 0.0f, 0.0f);
 
 	vertexData_[16].position = Vector4(-1.0f, 1.0f, -1.0f, 1.0f);
 	vertexData_[16].texcoord = Vector2(0.0f, 1.0f);
+	vertexData_[16].normal = Vector3(0.0f, 1.0f, 0.0f);
 	vertexData_[17].position = Vector4(-1.0f, 1.0f, 1.0f, 1.0f);
 	vertexData_[17].texcoord = Vector2(0.0f, 0.0f);
+	vertexData_[17].normal = Vector3(0.0f, 1.0f, 0.0f);
 	vertexData_[18].position = Vector4(1.0f, 1.0f, -1.0f, 1.0f);
 	vertexData_[18].texcoord = Vector2(1.0f, 1.0f);
+	vertexData_[18].normal = Vector3(0.0f, 1.0f, 0.0f);
 	vertexData_[19].position = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 	vertexData_[19].texcoord = Vector2(1.0f, 0.0f);
+	vertexData_[19].normal = Vector3(0.0f, 1.0f, 0.0f);
 
 	vertexData_[20].position = Vector4(1.0f, -1.0f, -1.0f, 1.0f);
 	vertexData_[20].texcoord = Vector2(0.0f, 1.0f);
+	vertexData_[20].normal = Vector3(0.0f, -1.0f, 0.0f);
 	vertexData_[21].position = Vector4(1.0f, -1.0f, 1.0f, 1.0f);
 	vertexData_[21].texcoord = Vector2(0.0f, 0.0f);
+	vertexData_[21].normal = Vector3(0.0f, -1.0f, 0.0f);
 	vertexData_[22].position = Vector4(-1.0f, -1.0f, -1.0f, 1.0f);
 	vertexData_[22].texcoord = Vector2(1.0f, 1.0f);
+	vertexData_[22].normal = Vector3(0.0f, -1.0f, 0.0f);
 	vertexData_[23].position = Vector4(-1.0f, -1.0f, 1.0f, 1.0f);
 	vertexData_[23].texcoord = Vector2(1.0f, 0.0f);
+	vertexData_[23].normal = Vector3(0.0f, -1.0f, 0.0f);
 
 
 	/*---------------------------
@@ -122,11 +146,12 @@ void ResourcesCube::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* 
 	---------------------------*/
 
 	// リソース生成
-	materialResource_ = CreateBufferResource(device_, sizeof(Vector4));
+	materialResource_ = CreateBufferResource(device_, sizeof(MaterialDataModel));
 
 	// データを割り当てる
 	materialResource_->Map(0, nullptr, reinterpret_cast<void**>(&materialData_));
-	*materialData_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+	materialData_->color_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+	materialData_->enableLighting_ = true;
 
 
 	/*-------------------------
@@ -134,11 +159,26 @@ void ResourcesCube::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* 
 	-------------------------*/
 
 	// リソース生成
-	transformationResource_ = CreateBufferResource(device_, sizeof(Matrix4x4));
+	transformationResource_ = CreateBufferResource(device_, sizeof(TransformationDataModel));
 
 	// データを割り当てる
 	transformationResource_->Map(0, nullptr, reinterpret_cast<void**>(&transformationData_));
-	*transformationData_ = MakeIdentityMatrix();
+	transformationData_->worldViewProjection = MakeIdentityMatrix();
+	transformationData_->world = MakeIdentityMatrix();
+
+
+	/*-------------------------
+	    平行光源リソースの生成
+	-------------------------*/
+
+	// リソース生成
+	directionalLightResource_ = CreateBufferResource(device_, sizeof(DirectionalLight));
+
+	// データを割り当てる
+	directionalLightResource_->Map(0, nullptr, reinterpret_cast<void**>(&directionalLightData_));
+	directionalLightData_->color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+	directionalLightData_->direction = Vector3(0.0f, -1.0f, 0.0f);
+	directionalLightData_->intensity = 1.0f;
 }
 
 
@@ -158,4 +198,7 @@ void ResourcesCube::SetCommandList()
 
 	// 座標変換リソースの設定
 	commandList_->SetGraphicsRootConstantBufferView(1, transformationResource_->GetGPUVirtualAddress());
+
+	// 平行光源リソースを設定
+	commandList_->SetGraphicsRootConstantBufferView(3, directionalLightResource_->GetGPUVirtualAddress());
 }
