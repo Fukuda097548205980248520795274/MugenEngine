@@ -59,7 +59,7 @@ void ResourcesUVSphere::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 	materialResource_->Map(0, nullptr, reinterpret_cast<void**>(&materialData_));
 	materialData_->color_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 	materialData_->enableLighting_ = true;
-	materialData_->uvTransform_ = MakeIdentityMatrix();
+	materialData_->uvTransform_ = MakeIdentityMatrix4x4();
 
 
 	/*--------------------------
@@ -71,8 +71,8 @@ void ResourcesUVSphere::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 
 	// データを割り当てる
 	transformationResource_->Map(0, nullptr, reinterpret_cast<void**>(&transformationData_));
-	transformationData_->worldViewProjection = MakeIdentityMatrix();
-	transformationData_->world = MakeIdentityMatrix();
+	transformationData_->worldViewProjection = MakeIdentityMatrix4x4();
+	transformationData_->world = MakeIdentityMatrix4x4();
 
 
 	/*--------------------------

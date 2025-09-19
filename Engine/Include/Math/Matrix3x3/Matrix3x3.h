@@ -198,7 +198,7 @@ Vector2 TransformNormal(const Vector2& vector, const Matrix3x3& matrix);
 /// 単位行列を作成する
 /// </summary>
 /// <returns></returns>
-Matrix3x3 MakeIdentityMatrix();
+Matrix3x3 MakeIdentityMatrix3x3();
 
 /// <summary>
 /// 転置行列を作成する

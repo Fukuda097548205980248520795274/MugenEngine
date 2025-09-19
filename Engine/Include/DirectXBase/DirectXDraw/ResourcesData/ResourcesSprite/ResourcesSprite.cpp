@@ -81,7 +81,7 @@ void ResourcesSprite::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList
 	transformationResource_ = CreateBufferResource(device_, sizeof(Matrix4x4));
 
 	transformationResource_->Map(0, nullptr, reinterpret_cast<void**>(&transformationData_));
-	*transformationData_ = MakeIdentityMatrix();
+	*transformationData_ = MakeIdentityMatrix4x4();
 }
 
 /// <summary>

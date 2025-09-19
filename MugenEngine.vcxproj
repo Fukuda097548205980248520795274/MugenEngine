@@ -97,6 +97,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\Include\Collision\Shape\Plane\Plane.cpp" />
     <ClCompile Include="Engine\Include\Collision\Shape\Ray\Ray.cpp" />
     <ClCompile Include="Engine\Include\Collision\Shape\Segment\Segment.cpp" />
+    <ClCompile Include="Engine\Include\Collision\Shape\Sphere\Sphere.cpp" />
     <ClCompile Include="Engine\Include\Collision\Shape\Triangle\Triangle.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXBase.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXBuffering\DirectXBuffering.cpp" />
@@ -163,6 +164,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Include\Collision\Shape\Plane\Plane.h" />
     <ClInclude Include="Engine\Include\Collision\Shape\Ray\Ray.h" />
     <ClInclude Include="Engine\Include\Collision\Shape\Segment\Segment.h" />
+    <ClInclude Include="Engine\Include\Collision\Shape\Sphere\Sphere.h" />
     <ClInclude Include="Engine\Include\Collision\Shape\Triangle\Triangle.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXBase.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXBuffering\DirectXBuffering.h" />

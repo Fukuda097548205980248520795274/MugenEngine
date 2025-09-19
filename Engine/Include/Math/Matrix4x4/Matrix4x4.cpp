@@ -69,7 +69,7 @@ Vector3 TransformNormal(const Vector3& vector, const Matrix4x4& matrix)
 /// 単位行列を作成する
 /// </summary>
 /// <returns></returns>
-Matrix4x4 MakeIdentityMatrix()
+Matrix4x4 MakeIdentityMatrix4x4()
 {
 	Matrix4x4 identityMatrix;
 

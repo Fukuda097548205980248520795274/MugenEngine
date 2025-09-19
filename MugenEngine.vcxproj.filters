@@ -217,6 +217,9 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera2D">
       <UniqueIdentifier>{360f9516-4a3f-4ad5-a43c-8826380b3acf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\Collision\Shape\Sphere">
+      <UniqueIdentifier>{bb0dfe7f-cd7f-4e1d-aead-bd49db91d363}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -411,6 +414,9 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\Camera\Camera2D</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\Collision\Shape\Sphere\Sphere.cpp">
+      <Filter>Engine\Include\Collision\Shape\Sphere</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -604,6 +610,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\Camera\Camera2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\Collision\Shape\Sphere\Sphere.h">
+      <Filter>Engine\Include\Collision\Shape\Sphere</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
