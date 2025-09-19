@@ -16,6 +16,9 @@
 /// </summary>
 MugenEngine::~MugenEngine()
 {
+	// 衝突判定
+	delete collision_;
+
 	// オーディオ格納場所
 	delete audioStore_;
 
@@ -82,6 +85,10 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 	// オーディオ格納場所の生成と初期化
 	audioStore_ = new AudioStore();
 	audioStore_->Initialize(logFile_);
+
+	// 衝突判定の生成と初期化
+	collision_ = new Collision();
+	collision_->Initialize(this);
 }
 
 /// <summary>

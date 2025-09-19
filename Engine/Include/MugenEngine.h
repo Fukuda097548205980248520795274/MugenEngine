@@ -8,6 +8,7 @@
 #include "Func/CrushHandler/CrushHandler.h"
 #include "Input/Input.h"
 #include "AudioStore/AudioStore.h"
+#include "Collision/Collision.h"
 
 // マウスボタン
 enum MouseButton
@@ -26,6 +27,8 @@ enum MouseButton
 class MugenEngine
 {
 public:
+
+#pragma region メインシステム
 
 	/// <summary>
 	/// デストラクタ
@@ -53,7 +56,9 @@ public:
 	/// </summary>
 	void FrameEnd();
 
+#pragma endregion
 
+#pragma region キーボード入力
 
 	/// <summary>
 	/// キー入力（Press）
@@ -75,6 +80,10 @@ public:
 	/// <param name="key">キー</param>
 	/// <returns></returns>
 	bool GetKeyRelease(BYTE key) const { return input_->GetKeyRelease(key); }
+
+#pragma endregion
+
+#pragma region マウス入力
 
 	/// <summary>
 	/// マウスボタン（Press）
@@ -121,10 +130,14 @@ public:
 	/// <returns></returns>
 	float GetMouseWheelVelocity() const { return input_->GetMouseWheelVelocity(); }
 
+#pragma endregion
+
+#pragma region ゲームパッド入力
+
 	/// <summary>
-	/// 
+	/// ゲームパッドが有効かどうか
 	/// </summary>
-	/// <param name="gamepadNumber"></param>
+	/// <param name="gamepadNumber">ゲームパッドの番号</param>
 	/// <returns></returns>
 	bool IsGamepadEnable(DWORD gamepadNumber) const { return input_->IsGamepadEnable(gamepadNumber); }
 
@@ -153,35 +166,36 @@ public:
 	bool GetGamepadButtonRelease(DWORD gamepadNumber, DWORD wButtons) const { return input_->GetGamepadButtonRelease(gamepadNumber, wButtons); }
 
 	/// <summary>
-	/// 
+	/// ゲームパッドの左スティックの入力情報
 	/// </summary>
-	/// <param name="gamepadNumber"></param>
+	/// <param name="gamepadNumber">ゲームパッドの番号</param>
 	/// <returns></returns>
 	Vector2 GetGamepadLeftStick(DWORD gamepadNumber) const { return input_->GetGamepadLeftStick(gamepadNumber); }
 
 	/// <summary>
-	/// 
+	/// ゲームパッドの右スティックの入力情報
 	/// </summary>
-	/// <param name="gamepadNumber"></param>
+	/// <param name="gamepadNumber">ゲームパッドの番号</param>
 	/// <returns></returns>
 	Vector2 GetGamepadRightStick(DWORD gamepadNumber) const { return input_->GetGamepadRightStick(gamepadNumber); }
 
 	/// <summary>
-	/// 
+	/// ゲームパッドの左トリガーボタンの入力情報
 	/// </summary>
-	/// <param name="gamepadNumber"></param>
+	/// <param name="gamepadNumber">ゲームパッドの番号</param>
 	/// <returns></returns>
 	float GetGamepadLeftTrigger(DWORD gamepadNumber) const { return input_->GetGamepadLeftTrigger(gamepadNumber); }
 
 	/// <summary>
-	/// 
+	/// ゲームパッドの右トリガーボタンの入力情報
 	/// </summary>
-	/// <param name="gamepadNumber"></param>
+	/// <param name="gamepadNumber">ゲームパッドの番号</param>
 	/// <returns></returns>
 	float GetGamepadRightTrigger(DWORD gamepadNumber) const { return input_->GetGamepadRightTrigger(gamepadNumber); }
 
+#pragma endregion
 
-
+#pragma region スクリーンサイズ
 
 	/// <summary>
 	/// スクリーン横幅のGetter
@@ -195,6 +209,9 @@ public:
 	/// <returns></returns>
 	int32_t GetScreenHeight()const { return winApp_->GetClientHeight(); }
 
+#pragma endregion
+
+#pragma region テクスチャ
 
 	/// <summary>
 	/// テクスチャを読み込む
@@ -203,6 +220,9 @@ public:
 	/// <returns></returns>
 	uint32_t LoadTexture(const std::string& filePath)const { return directXBase_->LoadTexture(filePath); }
 
+#pragma endregion
+
+#pragma region オーディオ
 
 	/// <summary>
 	/// 音声データを読み込む
@@ -244,6 +264,9 @@ public:
 	/// <returns></returns>
 	bool IsAudioPlay(uint32_t playHandle)const { return audioStore_->IsAudioPlay(playHandle); }
 
+#pragma endregion
+
+#pragma region 描画処理
 
 	// スプライトを描画する
 	void DrawSprite(const WorldTransform2D* worldTransform, const Camera2D* camera, uint32_t textureHandle)const
@@ -270,6 +293,8 @@ public:
 	void DrawCube(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle) const
 	{directXBase_->DrawCube(worldTransform,uvTransform, camera, textureHandle);}
 
+#pragma endregion
+
 
 private:
 
@@ -294,5 +319,8 @@ private:
 
 	// オーディオ格納場所
 	AudioStore* audioStore_ = nullptr;
+
+	// 衝突判定
+	Collision* collision_ = nullptr;
 };
 

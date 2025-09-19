@@ -28,6 +28,31 @@ Vector3 Transform(const Vector3& vector, const Matrix4x4& matrix)
 /// <param name="vector"></param>
 /// <param name="matrix"></param>
 /// <returns></returns>
+Vector4 Transform(const Vector4& vector, const Matrix4x4& matrix)
+{
+	// 座標変換した結果
+	Vector4 transform;
+
+	transform.x = vector.x * matrix.m[0][0] + vector.y * matrix.m[1][0] + vector.z * matrix.m[2][0] + vector.w * matrix.m[3][0];
+	transform.y = vector.x * matrix.m[0][1] + vector.y * matrix.m[1][1] + vector.z * matrix.m[2][1] + vector.w * matrix.m[3][1];
+	transform.z = vector.x * matrix.m[0][2] + vector.y * matrix.m[1][2] + vector.z * matrix.m[2][2] + vector.w * matrix.m[3][2];
+	transform.w = vector.x * matrix.m[0][3] + vector.y * matrix.m[1][3] + vector.z * matrix.m[2][3] + vector.w * matrix.m[3][3];
+
+	assert(transform.w != 0.0f);
+	transform.x /= transform.w;
+	transform.y /= transform.w;
+	transform.z /= transform.w;
+	transform.w /= transform.w;
+
+	return transform;
+}
+
+/// <summary>
+/// 座標変換を行う
+/// </summary>
+/// <param name="vector"></param>
+/// <param name="matrix"></param>
+/// <returns></returns>
 Vector3 TransformNormal(const Vector3& vector, const Matrix4x4& matrix)
 {
 	// 座標変換した結果

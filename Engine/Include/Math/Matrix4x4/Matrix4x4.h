@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <cmath>
 #include "../Vector3/Vector3.h"
+#include "../Vector4/Vector4.h"
 
 // 4x4行列
 struct Matrix4x4
@@ -190,6 +191,14 @@ namespace
 /// <param name="matrix"></param>
 /// <returns></returns>
 Vector3 Transform(const Vector3& vector, const Matrix4x4& matrix);
+
+/// <summary>
+/// 座標変換を行う
+/// </summary>
+/// <param name="vector"></param>
+/// <param name="matrix"></param>
+/// <returns></returns>
+Vector4 Transform(const Vector4& vector, const Matrix4x4& matrix);
 
 /// <summary>
 /// 座標変換を行う

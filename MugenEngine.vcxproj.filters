@@ -151,17 +151,8 @@
     <Filter Include="Engine\Include\AudioStore">
       <UniqueIdentifier>{9553d818-a45d-4de5-8f14-6ef028e363c9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Include\Shape">
-      <UniqueIdentifier>{0aa2a2a2-88d9-44ab-b8ff-fe771beba344}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Include\Func\IsCollision">
-      <UniqueIdentifier>{339c3f6a-e98a-4f1a-96b9-6c524cc0b809}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh">
       <UniqueIdentifier>{59e41c99-6b00-4a72-98a7-f1d5b3568ea2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform">
-      <UniqueIdentifier>{79e47c0b-77f7-4144-b048-64cb4037419e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\Transform">
       <UniqueIdentifier>{0bebbc86-7cfc-4d47-8ba8-d0ad641818ed}</UniqueIdentifier>
@@ -180,6 +171,51 @@
     </Filter>
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\MaterialData">
       <UniqueIdentifier>{4af457a4-93a5-42aa-af9b-786ed1fa97b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\Collision">
+      <UniqueIdentifier>{d20bfc61-b422-425e-a95a-072c138d2bc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\Collision\Shape">
+      <UniqueIdentifier>{12fdbde9-8f41-486d-aea7-a4de919ebe94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\Collision\Shape\AABB">
+      <UniqueIdentifier>{3f7d40bf-f8c2-4432-9af5-65df6afc6d9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\Collision\Shape\Line">
+      <UniqueIdentifier>{46b647c7-1ce4-4902-899c-8cfd514011a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\Collision\Shape\Ray">
+      <UniqueIdentifier>{4497b8a7-8ae1-49a6-ab56-a616b904097a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\Collision\Shape\Segment">
+      <UniqueIdentifier>{a6c47355-a1d2-416c-ac6e-c4378ab5f143}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\Collision\Shape\OBB">
+      <UniqueIdentifier>{3a401c6e-9552-47b6-913e-5c8d9c63e796}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\Collision\Shape\Plane">
+      <UniqueIdentifier>{84a8c17c-929a-4873-9d24-7bfd1c036b21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\Collision\Shape\Triangle">
+      <UniqueIdentifier>{5bc5a90d-eb03-43fb-8f11-28e2f81be530}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\Math\Matrix3x3">
+      <UniqueIdentifier>{b3bd4a17-db25-4d59-89a8-9f0966b653ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform3D">
+      <UniqueIdentifier>{79e47c0b-77f7-4144-b048-64cb4037419e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform2D">
+      <UniqueIdentifier>{7a7ab8d3-3960-430c-8ec8-75ac19ef2954}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\UVTransform">
+      <UniqueIdentifier>{12780518-5433-46dc-83e6-69c6150fcff4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera3D">
+      <UniqueIdentifier>{928e8cb0-51f0-42b8-8b45-781d10b00abd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera2D">
+      <UniqueIdentifier>{360f9516-4a3f-4ad5-a43c-8826380b3acf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -306,11 +342,8 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite\ResourcesSprite.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform\WorldTransform.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\Camera</Filter>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform3D\WorldTransform3D.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform3D</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesUVSphere\ResourcesUVSphere.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesUVSphere</Filter>
@@ -336,14 +369,47 @@
     <ClCompile Include="Engine\Include\AudioStore\AudioStore.cpp">
       <Filter>Engine\Include\AudioStore</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Shape\Shape.cpp">
-      <Filter>Engine\Include\Shape</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Include\Func\IsCollision\IsCollision.cpp">
-      <Filter>Engine\Include\Func\IsCollision</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\BaseMesh.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\Collision\Collision.cpp">
+      <Filter>Engine\Include\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\Collision\Shape\AABB\AABB.cpp">
+      <Filter>Engine\Include\Collision\Shape\AABB</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\Collision\Shape\Line\Line.cpp">
+      <Filter>Engine\Include\Collision\Shape\Line</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\Collision\Shape\Triangle\Triangle.cpp">
+      <Filter>Engine\Include\Collision\Shape\Triangle</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\Collision\Shape\Ray\Ray.cpp">
+      <Filter>Engine\Include\Collision\Shape\Ray</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\Collision\Shape\Segment\Segment.cpp">
+      <Filter>Engine\Include\Collision\Shape\Segment</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\Collision\Shape\Plane\Plane.cpp">
+      <Filter>Engine\Include\Collision\Shape\Plane</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\Collision\Shape\OBB\OBB.cpp">
+      <Filter>Engine\Include\Collision\Shape\OBB</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\Math\Matrix3x3\Matrix3x3.cpp">
+      <Filter>Engine\Include\Math\Matrix3x3</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform2D\WorldTransform2D.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\UVTransform\UVTransform.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\UVTransform</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera3D\Camera3D.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\Camera\Camera3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\Camera\Camera2D</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -470,11 +536,8 @@
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite\ResourcesSprite.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform\WorldTransform.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\Camera</Filter>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform3D\WorldTransform3D.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform3D</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesUVSphere\ResourcesUVSphere.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesUVSphere</Filter>
@@ -500,14 +563,47 @@
     <ClInclude Include="Engine\Include\AudioStore\AudioStore.h">
       <Filter>Engine\Include\AudioStore</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Shape\Shape.h">
-      <Filter>Engine\Include\Shape</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Include\Func\IsCollision\IsCollision.h">
-      <Filter>Engine\Include\Func\IsCollision</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\BaseMesh.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\Collision\Collision.h">
+      <Filter>Engine\Include\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\Collision\Shape\AABB\AABB.h">
+      <Filter>Engine\Include\Collision\Shape\AABB</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\Collision\Shape\Line\Line.h">
+      <Filter>Engine\Include\Collision\Shape\Line</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\Collision\Shape\Triangle\Triangle.h">
+      <Filter>Engine\Include\Collision\Shape\Triangle</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\Collision\Shape\Ray\Ray.h">
+      <Filter>Engine\Include\Collision\Shape\Ray</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\Collision\Shape\Segment\Segment.h">
+      <Filter>Engine\Include\Collision\Shape\Segment</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\Collision\Shape\Plane\Plane.h">
+      <Filter>Engine\Include\Collision\Shape\Plane</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\Collision\Shape\OBB\OBB.h">
+      <Filter>Engine\Include\Collision\Shape\OBB</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\Math\Matrix3x3\Matrix3x3.h">
+      <Filter>Engine\Include\Math\Matrix3x3</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform2D\WorldTransform2D.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\UVTransform\UVTransform.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\UVTransform</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera3D\Camera3D.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\Camera\Camera3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\Camera\Camera2D</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
