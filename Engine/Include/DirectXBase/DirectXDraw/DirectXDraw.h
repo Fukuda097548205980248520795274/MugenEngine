@@ -10,7 +10,7 @@
 #include "../DirectXHeap/DirectXHeap.h"
 #include "TextureStore/TextureStore.h"
 
-#include "WorldTransform/WorldTransform.h"
+#include "BaseMesh/WorldTransform/WorldTransform.h"
 #include "Camera/Camera.h"
 
 #include "BaseOrganizePSO/OrganizePSOPrimitive/OrganizePSOPrimitive.h"

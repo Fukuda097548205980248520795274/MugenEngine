@@ -31,7 +31,6 @@ void Game::Initialize(const MugenEngine* engine)
 
 	// BGMを読み込む
 	soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/Tukiyo_Ni_Ukabu_Tensyukaku.mp3");
-	soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/Tukiyo_Ni_Ukabu_Tensyukaku.mp3");
 }
 
 /// <summary>
@@ -39,6 +38,11 @@ void Game::Initialize(const MugenEngine* engine)
 /// </summary>
 void Game::Update()
 {
+	ImGui::Begin("UVSphere");
+	ImGui::SliderInt("segment", &segment, 3, 32);
+	ImGui::SliderInt("ring", &ring, 3, 16);
+	ImGui::End();
+
 	if (!engine_->IsAudioPlay(playHandle_) || playHandle_ == 0)
 	{
 		playHandle_ = engine_->PlayAudio(soundHandle_, 0.5f);
@@ -55,5 +59,5 @@ void Game::Update()
 /// </summary>
 void Game::Draw()
 {
-	engine_->DrawCube(worldTransform_.get(), uvTransform_.get(), camera3d_.get(), textureHandle_);
+	engine_->DrawUVSphere(worldTransform_.get(), uvTransform_.get(), camera3d_.get(), textureHandle_, segment, ring);
 }

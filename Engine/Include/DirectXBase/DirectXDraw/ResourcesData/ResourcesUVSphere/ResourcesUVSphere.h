@@ -1,9 +1,10 @@
 #pragma once
 #include "../../../../Func/CreateBufferResource/CreateBufferResource.h"
-#include "../../VertexData/VertexData.h"
-#include "../../MaterialData/MaterialData.h"
-#include "../../TransformationData/TransformationData.h"
-#include "../../LightData/LightData.h"
+
+#include "../../DataForGPU/VertexData/VertexData.h"
+#include "../../DataForGPU/MaterialData/MaterialData.h"
+#include "../../DataForGPU/TransformationData/TransformationData.h"
+#include "../../DataForGPU/LightData/LightData.h"
 
 class ResourcesUVSphere
 {

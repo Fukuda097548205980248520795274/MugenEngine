@@ -40,6 +40,12 @@ private:
 	// テクスチャハンドル
 	uint32_t textureHandle_ = 0;
 
+	// セグメント
+	int32_t segment = 32;
+
+	// リング
+	int32_t ring = 16;
+
 
 	// サウンドハンドル
 	uint32_t soundHandle_ = 0;
