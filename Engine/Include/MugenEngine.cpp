@@ -83,3 +83,30 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 	audioStore_ = new AudioStore();
 	audioStore_->Initialize(logFile_);
 }
+
+/// <summary>
+/// フレーム開始処理
+/// </summary>
+void MugenEngine::FrameStart()
+{
+	// 全ての入力情報を取得する
+	input_->CheckInputInfo();
+
+	// 流れていない音楽を削除する
+	audioStore_->DeletePlayAudio();
+
+	// 描画前処理
+	directXBase_->PreDraw();
+}
+
+/// <summary>
+/// フレーム終了処理
+/// </summary>
+void MugenEngine::FrameEnd()
+{
+	// 描画処理
+	directXBase_->PostDraw();
+
+	// 全ての入力情報をコピーする
+	input_->CopyInputInfo();
+}

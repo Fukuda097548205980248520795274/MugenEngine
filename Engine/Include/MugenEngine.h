@@ -44,27 +44,16 @@ public:
 	bool ProcessMessage() { return winApp_->ProcessMessage(); }
 
 	/// <summary>
-	/// 描画前処理
+	/// フレーム開始処理
 	/// </summary>
-	void PreDraw() { directXBase_->PreDraw(); }
+	void FrameStart();
 
 	/// <summary>
-	/// 描画後処理
+	/// フレーム終了処理
 	/// </summary>
-	void PostDraw() { directXBase_->PostDraw(); }
+	void FrameEnd();
 
 
-
-
-	/// <summary>
-	/// 全ての入力情報を取得する
-	/// </summary>
-	void CheckInputInfo()const { input_->CheckInputInfo(); }
-
-	/// <summary>
-	/// 全ての入力情報をコピーする
-	/// </summary>
-	void CopyInputInfo()const { input_->CopyInputInfo(); }
 
 	/// <summary>
 	/// キー入力（Press）
@@ -221,11 +210,6 @@ public:
 	/// <param name="filePath"></param>
 	/// <returns></returns>
 	uint32_t LoadAudio(const std::string& filePath) const { return audioStore_->LoadAudio(filePath); }
-
-	/// <summary>
-	/// オーディオストアの更新処理
-	/// </summary>
-	void UpdateAudioStore() { audioStore_->DeletePlayAudio(); };
 
 	/// <summary>
 	/// 音量の設定

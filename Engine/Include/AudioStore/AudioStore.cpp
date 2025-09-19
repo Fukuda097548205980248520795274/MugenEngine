@@ -145,10 +145,12 @@ uint32_t AudioStore::LoadAudio(const std::string& filePath)
 
 		pMFMediaBuffer->Unlock();
 
+		// 解放
 		pMFMediaBuffer->Release();
 		pMFSample->Release();
 	}
 
+	// 解放
 	pMFMediaType->Release();
 	pMFSourceReader->Release();
 

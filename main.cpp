@@ -15,26 +15,37 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	// ゲームループ
 	while (mugenEngine->ProcessMessage())
 	{
-		// 全ての入力情報を取得する
-		mugenEngine->CheckInputInfo();
+		// フレーム開始処理
+		mugenEngine->FrameStart();
 
-		// オーディオストアの更新処理
-		mugenEngine->UpdateAudioStore();
 
-		// 描画前処理
-		mugenEngine->PreDraw();
+		///
+		/// ↓ 更新処理ここから
+		/// 
 
 		// ゲームの更新処理
 		game->Update();
 
+		///
+		/// ↑ 更新処理ここまで
+		/// 
+
+
+
+		///
+		/// ↓ 描画処理ここから
+		/// 
+
 		// ゲームの描画処理
 		game->Draw();
 
-		// 描画後処理
-		mugenEngine->PostDraw();
+		///
+		/// ↑ 描画処理ここまで
+		/// 
 
-		// 全ての入力情報をコピーする
-		mugenEngine->CopyInputInfo();
+
+		// フレーム終了処理
+		mugenEngine->FrameEnd();
 	}
 
 	// ゲームの削除

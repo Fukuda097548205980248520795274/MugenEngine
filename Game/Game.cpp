@@ -31,6 +31,7 @@ void Game::Initialize(const MugenEngine* engine)
 
 	// BGMを読み込む
 	soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/Tukiyo_Ni_Ukabu_Tensyukaku.mp3");
+	soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/Tukiyo_Ni_Ukabu_Tensyukaku.mp3");
 }
 
 /// <summary>
