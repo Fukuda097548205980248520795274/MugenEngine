@@ -28,5 +28,5 @@ public:
 	Vector2 translation_{};
 
 	// アフィン変換行列
-	Matrix4x4 affineMatrix_;
+	Matrix4x4 affineMatrix_{};
 };

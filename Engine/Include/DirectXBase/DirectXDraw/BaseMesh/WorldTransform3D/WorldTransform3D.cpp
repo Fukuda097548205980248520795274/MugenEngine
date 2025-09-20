@@ -29,7 +29,7 @@ void WorldTransform3D::Update()
 	// 親がいたら、親子構造の乗算を行う
 	if (parent_ != nullptr)
 	{
-		worldMatrix_ = worldMatrix_ * (*parent_);
+		worldMatrix_ = worldMatrix_ * parent_->worldMatrix_;
 	}
 }
 

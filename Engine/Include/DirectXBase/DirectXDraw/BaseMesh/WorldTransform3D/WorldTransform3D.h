@@ -20,7 +20,7 @@ public:
 	/// 親ワールド行列のSetter
 	/// </summary>
 	/// <param name="parent"></param>
-	void SetParent(const Matrix4x4* parent) { parent_ = parent; };
+	void SetParent(const WorldTransform3D* parent) { parent_ = parent; };
 
 	/// <summary>
 	/// ワールド座標のGetter
@@ -43,6 +43,6 @@ public:
 
 private:
 
-	// 親ワールド行列
-	const Matrix4x4* parent_ = nullptr;
+	// 親ワールドトランスフォーム
+	const WorldTransform3D* parent_ = nullptr;
 };
