@@ -266,6 +266,327 @@ public:
 
 #pragma endregion
 
+#pragma region 衝突判定
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="s1">球</param>
+	/// <param name="s2">球</param>
+	/// <returns></returns>
+	bool IsCollision(const Sphere& s1, const Sphere& s2)const { return collision_->IsCollision(s1, s2); }
+
+
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="aabb1">AABB</param>
+	/// <param name="aabb2">AABB</param>
+	/// <returns></returns>
+	bool IsCollision(const AABB& aabb1, const AABB& aabb2)const { return collision_->IsCollision(aabb1, aabb2); }
+
+
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="obb1">OBB1</param>
+	/// <param name="obb2">OBB2</param>
+	/// <returns></returns>
+	bool IsCollision(const OBB& obb1, const OBB& obb2)const { return collision_->IsCollision(obb1, obb2); }
+
+
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="aabb">AABB</param>
+	/// <param name="sphere">球</param>
+	/// <returns></returns>
+	bool IsCollision(const AABB& aabb, const Sphere& sphere)const { return collision_->IsCollision(aabb, sphere); }
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="sphere">球</param>
+	/// <param name="aabb">AABB</param>
+	/// <returns></returns>
+	bool IsCollision(const Sphere& sphere, const AABB& aabb)const { return collision_->IsCollision(aabb, sphere); }
+
+
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="obb">OBB</param>
+	/// <param name="sphere">球</param>
+	/// <returns></returns>
+	bool IsCollision(const OBB& obb, const Sphere& sphere)const { return collision_->IsCollision(obb, sphere); }
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="sphere">球</param>
+	/// <param name="obb">OBB</param>
+	/// <returns></returns>
+	bool IsCollision(const Sphere& sphere, const OBB& obb)const { return collision_->IsCollision(obb, sphere); }
+
+
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="aabb">AABB</param>
+	/// <param name="obb">OBB</param>
+	/// <returns></returns>
+	bool IsCollision(const AABB& aabb, const OBB& obb)const { return collision_->IsCollision(aabb, obb); }
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="obb">OBB</param>
+	/// <param name="aabb">AABB</param>
+	/// <returns></returns>
+	bool IsCollision(const OBB& obb, const AABB& aabb)const { return collision_->IsCollision(aabb, obb); }
+
+
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="sphere">球</param>
+	/// <param name="plane">平面</param>
+	/// <returns></returns>
+	bool IsCollision(const Sphere& sphere, const Plane& plane)const { return collision_->IsCollision(sphere, plane); }
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="plane">平面</param>
+	/// <param name="sphere">球</param>
+	/// <returns></returns>
+	bool IsCollision(const Plane& plane, const Sphere& sphere)const { return collision_->IsCollision(sphere, plane); }
+
+
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="plane">平面</param>
+	/// <param name="line">直線</param>
+	/// <returns></returns>
+	bool IsCollision(const Plane& plane, const Line& line)const { return collision_->IsCollision(plane, line); }
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="line">直線</param>
+	/// <param name="plane">平面</param>
+	/// <returns></returns>
+	bool IsCollision(const Line& line, const Plane& plane)const { return collision_->IsCollision(plane, line); }
+
+
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="plane">平面</param>
+	/// <param name="ray">半直線</param>
+	/// <returns></returns>
+	bool IsCollision(const Plane& plane, const Ray& ray)const { return collision_->IsCollision(plane, ray); }
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="ray">半直線</param>
+	/// <param name="plane">平面</param>
+	/// <returns></returns>
+	bool IsCollision(const Ray& ray, const Plane& plane)const { return collision_->IsCollision(plane, ray); }
+
+
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="plane">平面</param>
+	/// <param name="segment">線分</param>
+	/// <returns></returns>
+	bool IsCollision(const Plane& plane, const Segment& segment)const { return collision_->IsCollision(plane, segment); }
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="segment">線分</param>
+	/// <param name="plane">平面</param>
+	/// <returns></returns>
+	bool IsCollision(const Segment& segment, const Plane& plane)const { return collision_->IsCollision(plane, segment); }
+
+
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="triangle">三角形</param>
+	/// <param name="line">直線</param>
+	/// <returns></returns>
+	bool IsCollision(const Triangle& triangle, const Line& line)const { return collision_->IsCollision(triangle, line); }
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="line">直線</param>
+	/// <param name="triangle">三角形</param>
+	/// <returns></returns>
+	bool IsCollision(const Line& line, const Triangle& triangle)const { return collision_->IsCollision(triangle, line); }
+
+
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="triangle">三角形</param>
+	/// <param name="ray">半直線</param>
+	/// <returns></returns>
+	bool IsCollision(const Triangle& triangle, const Ray& ray)const { return collision_->IsCollision(triangle, ray); }
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="ray">半直線</param>
+	/// <param name="triangle">三角形</param>
+	/// <returns></returns>
+	bool IsCollision(const Ray& ray, const Triangle& triangle)const { return collision_->IsCollision(triangle, ray); }
+
+
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="triangle">三角形</param>
+	/// <param name="segment">線分</param>
+	/// <returns></returns>
+	bool IsCollision(const Triangle& triangle, const Segment& segment)const { return collision_->IsCollision(triangle, segment); }
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="segment">線分</param>
+	/// <param name="triangle">三角形</param>
+	/// <returns></returns>
+	bool IsCollision(const Segment& segment, const Triangle& triangle)const { return collision_->IsCollision(triangle, segment); }
+
+
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="aabb">AABB</param>
+	/// <param name="line">直線</param>
+	/// <returns></returns>
+	bool IsCollision(const AABB& aabb, const Line& line)const { return collision_->IsCollision(aabb, line); }
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="line">直線</param>
+	/// <param name="aabb">AABB</param>
+	/// <returns></returns>
+	bool IsCollision(const Line& line, const AABB& aabb)const { return collision_->IsCollision(aabb, line); }
+
+
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="aabb">AABB</param>
+	/// <param name="ray">半直線</param>
+	/// <returns></returns>
+	bool IsCollision(const AABB& aabb, const Ray& ray)const { return collision_->IsCollision(aabb, ray); }
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="ray">半直線</param>
+	/// <param name="aabb">AABB</param>
+	/// <returns></returns>
+	bool IsCollision(const Ray& ray, const AABB& aabb)const { return collision_->IsCollision(aabb, ray); }
+
+
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="aabb">AABB</param>
+	/// <param name="segment">線分</param>
+	/// <returns></returns>
+	bool IsCollision(const AABB& aabb, const Segment& segment)const { return collision_->IsCollision(aabb, segment); }
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="segment">線分</param>
+	/// <param name="aabb">AABB</param>
+	/// <returns></returns>
+	bool IsCollision(const Segment& segment, const AABB& aabb)const { return collision_->IsCollision(aabb, segment); }
+
+
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="obb">OBB</param>
+	/// <param name="line">直線</param>
+	/// <returns></returns>
+	bool IsCollision(const OBB& obb, const Line& line)const { return collision_->IsCollision(obb, line); }
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="line">直線</param>
+	/// <param name="obb">OBB</param>
+	/// <returns></returns>
+	bool IsCollision(const Line& line, const OBB& obb)const { return collision_->IsCollision(obb, line); }
+
+
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="obb">OBB</param>
+	/// <param name="ray">半直線</param>
+	/// <returns></returns>
+	bool IsCollision(const OBB& obb, const Ray& ray)const { return collision_->IsCollision(obb, ray); }
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="ray">半直線</param>
+	/// <param name="obb">OBB</param>
+	/// <returns></returns>
+	bool IsCollision(const Ray& ray, const OBB& obb)const { return collision_->IsCollision(obb, ray); }
+
+
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="obb">OBB</param>
+	/// <param name="segment">線分</param>
+	/// <returns></returns>
+	bool IsCollision(const OBB& obb, const Segment& segment)const { return collision_->IsCollision(obb, segment); }
+
+	/// <summary>
+	/// 衝突判定
+	/// </summary>
+	/// <param name="segment">線分</param>
+	/// <param name="obb">OBB</param>
+	/// <returns></returns>
+	bool IsCollision(const Segment& segment, const OBB& obb)const { return collision_->IsCollision(obb, segment); }
+
+
+#pragma endregion
+
 #pragma region 描画処理
 
 	// スプライトを描画する
