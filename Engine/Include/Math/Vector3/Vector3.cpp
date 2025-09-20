@@ -87,3 +87,15 @@ Vector3 Project(const Vector3& point, const Vector3& vector)
 	Vector3 project = Dot(point, normalize) * normalize;
 	return project;
 }
+
+/// <summary>
+/// 反射ベクトルを求める
+/// </summary>
+/// <param name="input">入射ベクトル</param>
+/// <param name="normal">法線</param>
+/// <returns></returns>
+Vector3 Reflect(const Vector3& input, const Vector3& normal)
+{
+	Vector3 reflect = input - (2.0f * (Dot(input, normal) * normal));
+	return reflect;
+}

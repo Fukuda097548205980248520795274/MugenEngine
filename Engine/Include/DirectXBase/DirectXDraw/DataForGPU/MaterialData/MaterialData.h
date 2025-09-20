@@ -11,7 +11,10 @@ struct MaterialDataModel
 	// ライティング有効化
 	int32_t enableLighting_;
 
-	float padding[3];
+	// ハーフランバート有効化
+	int32_t enableHalfLambert_;
+
+	float padding[2];
 
 	// UVトランスフォーム
 	Matrix4x4 uvTransform_;

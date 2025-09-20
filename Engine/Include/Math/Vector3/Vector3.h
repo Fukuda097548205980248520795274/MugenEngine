@@ -172,3 +172,11 @@ Vector3 Cross(const Vector3& v1, const Vector3& v2);
 /// <param name="vector"></param>
 /// <returns></returns>
 Vector3 Project(const Vector3& point, const Vector3& vector);
+
+/// <summary>
+/// 反射ベクトルを求める
+/// </summary>
+/// <param name="input">入射ベクトル</param>
+/// <param name="normal">法線</param>
+/// <returns></returns>
+Vector3 Reflect(const Vector3& input, const Vector3& normal);

@@ -161,3 +161,11 @@ float Cross(const Vector2& v1, const Vector2& v2);
 /// <param name="vector"></param>
 /// <returns></returns>
 Vector2 Project(const Vector2& point, const Vector2& vector);
+
+/// <summary>
+/// 反射ベクトルを求める
+/// </summary>
+/// <param name="input">入射ベクトル</param>
+/// <param name="normal">法線</param>
+/// <returns></returns>
+Vector2 Reflect(const Vector2& input, const Vector2& normal);

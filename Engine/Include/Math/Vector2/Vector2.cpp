@@ -84,3 +84,15 @@ Vector2 Project(const Vector2& point, const Vector2& vector)
 	Vector2 project = Dot(point, normalize) * normalize;
 	return project;
 }
+
+/// <summary>
+/// 反射ベクトルを求める
+/// </summary>
+/// <param name="input">入射ベクトル</param>
+/// <param name="normal">法線</param>
+/// <returns></returns>
+Vector2 Reflect(const Vector2& input, const Vector2& normal)
+{
+	Vector2 reflect = input - (2.0f * (Dot(input, normal) * normal));
+	return reflect;
+}

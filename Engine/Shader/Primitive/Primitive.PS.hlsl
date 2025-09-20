@@ -14,6 +14,9 @@ struct Material
     // ライティング有効化
     int enableLighting;
     
+    // ハーフランバート有効化
+    int enableHalfLambert;
+    
     // UVトランスフォーム
     float4x4 uvTransform;
 };
@@ -51,10 +54,25 @@ PixelShaderOutput main(VertexShaderOutput input)
     // ライティング有効
     if (gMaterial.enableLighting != 0)
     {
-        float NdotL = dot(normalize(input.normal), -gDirectionalLight.direction);
-        float cos = pow(NdotL * 0.5f + 0.5f, 2.0f);
-        output.color = gMaterial.color * textureColor * gDirectionalLight.color * cos * gDirectionalLight.intensity;
-
+        if (gMaterial.enableHalfLambert != 0)
+        {
+            // ハーフランバート有効
+            
+            // 光と法線の内積
+            float NdotL = dot(normalize(input.normal), -gDirectionalLight.direction);
+            
+            // なだらかにする
+            float cos = pow(NdotL * 0.5f + 0.5f, 2.0f);
+            output.color = gMaterial.color * textureColor * gDirectionalLight.color * cos * gDirectionalLight.intensity;
+        }
+        else
+        {
+            // ハーフランバート無効
+            
+            // 光と法線の方向が近ければ明るい
+            float cos = saturate(dot(normalize(input.normal), -gDirectionalLight.direction));
+            output.color = gMaterial.color * textureColor * gDirectionalLight.color * cos * gDirectionalLight.intensity;
+        }
     }
     else
     {
