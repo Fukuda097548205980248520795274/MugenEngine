@@ -77,6 +77,15 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	resourceSprite_->Initialize(device_, commandList_);
 }
 
+/// <summary>
+/// ブレンドモードをリセットする
+/// </summary>
+void DirectXDraw::ResetBlendMode()
+{
+	primitivePSO_->ResetBlendMode();
+	spritePSO_->ResetBlendMode();
+}
+
 
 /// <summary>
 /// UV球を描画する

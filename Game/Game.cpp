@@ -34,10 +34,6 @@ void Game::Update()
 	// カメラの更新処理
 	camera3d_->Update();
 
-	ImGui::Begin("UVSphere");
-	ImGui::ColorEdit4("color", &uvSphere_->color_.x);
-	ImGui::End();
-
 	if (!engine_->IsAudioPlay(playHandle_) || playHandle_ == 0)
 	{
 		playHandle_ = engine_->PlayAudio(soundHandle_, 0.5f);

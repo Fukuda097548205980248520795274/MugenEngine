@@ -100,6 +100,8 @@ void DirectXBase::PreDraw()
 	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
 
+	// ブレンドモードをリセットする
+	directXDraw_->ResetBlendMode();
 
 	// バックバッファのインデックスを取得する
 	UINT backBufferIndex = directXBuffering_->GetSwapChain()->GetCurrentBackBufferIndex();

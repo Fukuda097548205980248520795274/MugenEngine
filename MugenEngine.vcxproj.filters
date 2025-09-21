@@ -244,6 +244,18 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere">
       <UniqueIdentifier>{b38b14f2-9ea7-40c7-93da-da2daab009c5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveAdd">
+      <UniqueIdentifier>{02e3e603-e298-4e2c-874e-6821c0eea8a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveSubtract">
+      <UniqueIdentifier>{08ac57c8-a33d-4c1f-b91f-96879d3eef54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveMultiply">
+      <UniqueIdentifier>{fbb488a3-9cb1-4934-b7b6-448d834c0f6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveScreen">
+      <UniqueIdentifier>{58f78c58-ac87-465d-b677-48b95d65d621}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -462,6 +474,18 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere\MeshUVSphere.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveAdd\SinglePSOPrimitiveAdd.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveAdd</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveSubtract\SinglePSOPrimitiveSubtract.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveSubtract</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveMultiply\SinglePSOPrimitiveMultiply.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveMultiply</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveScreen\SinglePSOPrimitiveScreen.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveScreen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -679,6 +703,18 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere\MeshUVSphere.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveAdd\SinglePSOPrimitiveAdd.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveAdd</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveSubtract\SinglePSOPrimitiveSubtract.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveSubtract</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveMultiply\SinglePSOPrimitiveMultiply.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveMultiply</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveScreen\SinglePSOPrimitiveScreen.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveScreen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

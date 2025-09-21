@@ -628,6 +628,16 @@ public:
 
 #pragma endregion
 
+#pragma region ブレンドモード
+
+	/// <summary>
+	/// プリミティブのブレンドモードを設定する
+	/// </summary>
+	/// <param name="blendMode"></param>
+	void SetBlendModePrimitive(BlendMode blendMode)const { directXBase_->SetBlendModePrimitive(blendMode); }
+
+#pragma endregion
+
 
 private:
 

@@ -19,6 +19,11 @@ public:
 	/// </summary>
 	void SetPSOState() override { pso_->SetPSOState(); }
 
+	/// <summary>
+	/// ブレンドモードをリセットする
+	/// </summary>
+	void ResetBlendMode() override { blendMode_ = static_cast<int>(BlendMode::kNormal); }
+
 
 private:
 

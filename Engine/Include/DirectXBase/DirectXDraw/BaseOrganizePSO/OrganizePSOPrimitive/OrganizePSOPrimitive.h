@@ -3,6 +3,10 @@
 #include "../EnumBlendMode/EnumBlendMode.h"
 #include "SinglePSOPrimitiveNone/SinglePSOPrimitiveNone.h"
 #include "SinglePSOPrimitiveNormal/SinglePSOPrimitiveNormal.h"
+#include "SinglePSOPrimitiveAdd/SinglePSOPrimitiveAdd.h"
+#include "SinglePSOPrimitiveSubtract/SinglePSOPrimitiveSubtract.h"
+#include "SinglePSOPrimitiveMultiply/SinglePSOPrimitiveMultiply.h"
+#include "SinglePSOPrimitiveScreen/SinglePSOPrimitiveScreen.h"
 
 class OrganizePSOPrimitive : public BaseOrganizePSO
 {
@@ -22,18 +26,14 @@ public:
 	void SetPSOState() override { pso_[blendMode_]->SetPSOState(); }
 
 	/// <summary>
-	/// ブレンドモードのSetter
+	/// ブレンドモードをリセットする
 	/// </summary>
-	/// <param name="blendMode"></param>
-	void SetBlendMode(BlendMode blendMode) { blendMode_ = static_cast<int>(blendMode); }
+	void ResetBlendMode() override { blendMode_ = static_cast<int>(BlendMode::kNormal); }
 
 
 private:
 
 	// PSO
 	std::unique_ptr<BaseSinglePSO> pso_[static_cast<int>(BlendMode::kNumBlendMode)] = { nullptr };
-
-	// 現在のブレンドモード
-	int blendMode_ = static_cast<int>(BlendMode::kNormal);
 };
 

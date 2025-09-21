@@ -11,6 +11,9 @@ void OrganizePSOPrimitive::Initialize(LogFile* logFile, DirectXShaderCompile* di
 	// 基底クラスの初期化
 	BaseOrganizePSO::Initialize(logFile, directXShaderCompile, commandList, device);
 
+	// 初期ブレンドモード
+	blendMode_ = static_cast<int>(BlendMode::kNormal);
+
 
 	// 頂点シェーダのバイナリデータを取得する
 	vertexShaderBlob_ = directXShaderCompile_->CompilerShader(L"./Engine/Shader/Primitive/Primitive.VS.hlsl", L"vs_6_0");
@@ -32,4 +35,20 @@ void OrganizePSOPrimitive::Initialize(LogFile* logFile, DirectXShaderCompile* di
 	// ノーマル
 	pso_[static_cast<int>(BlendMode::kNormal)] = std::make_unique<SinglePSOPrimitiveNormal>();
 	pso_[static_cast<int>(BlendMode::kNormal)]->Initialize(logFile_, vertexShaderBlob_.Get(), pixelShaderBlob_.Get(), device_, commandList_);
+
+	// 加算合成
+	pso_[static_cast<int>(BlendMode::kAdd)] = std::make_unique<SinglePSOPrimitiveAdd>();
+	pso_[static_cast<int>(BlendMode::kAdd)]->Initialize(logFile_, vertexShaderBlob_.Get(), pixelShaderBlob_.Get(), device_, commandList_);
+
+	// 減算合成
+	pso_[static_cast<int>(BlendMode::kSubtract)] = std::make_unique<SinglePSOPrimitiveSubtract>();
+	pso_[static_cast<int>(BlendMode::kSubtract)]->Initialize(logFile_, vertexShaderBlob_.Get(), pixelShaderBlob_.Get(), device_, commandList_);
+
+	// 乗算合成
+	pso_[static_cast<int>(BlendMode::kMultiply)] = std::make_unique<SinglePSOPrimitiveMultiply>();
+	pso_[static_cast<int>(BlendMode::kMultiply)]->Initialize(logFile_, vertexShaderBlob_.Get(), pixelShaderBlob_.Get(), device_, commandList_);
+
+	// スクリーン合成
+	pso_[static_cast<int>(BlendMode::kScreen)] = std::make_unique<SinglePSOPrimitiveScreen>();
+	pso_[static_cast<int>(BlendMode::kScreen)]->Initialize(logFile_, vertexShaderBlob_.Get(), pixelShaderBlob_.Get(), device_, commandList_);
 }

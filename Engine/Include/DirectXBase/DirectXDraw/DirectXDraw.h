@@ -46,6 +46,17 @@ public:
 	/// <returns></returns>
 	uint32_t LoadTexture(const std::string& filePath) { return textureStore_->LoadTexture(filePath); }
 
+	/// <summary>
+	/// プリミティブのブレンドモードを設定する
+	/// </summary>
+	/// <param name="blendMode"></param>
+	void SetBlendModePrimitive(BlendMode blendMode) { primitivePSO_->SetBlendMode(blendMode); }
+
+	/// <summary>
+	/// ブレンドモードをリセットする
+	/// </summary>
+	void ResetBlendMode();
+
 
 	/// <summary>
 	/// UV球を描画する

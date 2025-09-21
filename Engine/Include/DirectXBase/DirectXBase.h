@@ -49,6 +49,12 @@ public:
 	{directXDraw_->DrawSprite(worldTransform, camera, textureHandle);}
 
 	/// <summary>
+	/// プリミティブのブレンドモードを設定する
+	/// </summary>
+	/// <param name="blendMode"></param>
+	void SetBlendModePrimitive(BlendMode blendMode) { directXDraw_->SetBlendModePrimitive(blendMode); }
+
+	/// <summary>
 	/// UV球を描画する
 	/// </summary>
 	/// <param name="worldTransform"></param>

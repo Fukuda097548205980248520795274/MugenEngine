@@ -111,7 +111,11 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO\BaseSinglePSO.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\EnumBlendMode\EnumBlendMode.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveAdd\SinglePSOPrimitiveAdd.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveMultiply\SinglePSOPrimitiveMultiply.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal\SinglePSOPrimitiveNormal.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveScreen\SinglePSOPrimitiveScreen.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveSubtract\SinglePSOPrimitiveSubtract.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone\SinglePSOSpriteNone.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera3D\Camera3D.cpp" />
@@ -185,7 +189,11 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO\BaseSinglePSO.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\EnumBlendMode\EnumBlendMode.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveAdd\SinglePSOPrimitiveAdd.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveMultiply\SinglePSOPrimitiveMultiply.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal\SinglePSOPrimitiveNormal.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveScreen\SinglePSOPrimitiveScreen.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveSubtract\SinglePSOPrimitiveSubtract.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone\SinglePSOSpriteNone.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera3D\Camera3D.h" />

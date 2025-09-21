@@ -5,6 +5,7 @@
 #include <wrl.h>
 
 #include "../DirectXShaderCompile/DirectXShaderCompile.h"
+#include "EnumBlendMode/EnumBlendMode.h"
 
 class BaseOrganizePSO
 {
@@ -22,6 +23,17 @@ public:
 	/// PSOの設定をコマンドリストの登録する
 	/// </summary>
 	virtual void SetPSOState() = 0;
+
+	/// <summary>
+	/// ブレンドモードのSetter
+	/// </summary>
+	/// <param name="blendMode"></param>
+	void SetBlendMode(BlendMode blendMode) { blendMode_ = static_cast<int>(blendMode); }
+
+	/// <summary>
+	/// ブレンドモードをリセットする
+	/// </summary>
+	virtual void ResetBlendMode() = 0;
 
 
 protected:
@@ -45,5 +57,8 @@ protected:
 
 	// ピクセルシェーダのバイナリデータ
 	Microsoft::WRL::ComPtr<IDxcBlob> pixelShaderBlob_ = nullptr;
+
+	// 現在のブレンドモード
+	int blendMode_ = static_cast<int>(BlendMode::kNone);
 };
 
