@@ -25,6 +25,11 @@ void OrganizePSOPrimitive::Initialize(LogFile* logFile, DirectXShaderCompile* di
 
 
 	// PSOの生成と初期化
-	pso_ = std::make_unique<SinglePSOPrimitiveNone>();
-	pso_->Initialize(logFile_, vertexShaderBlob_.Get(), pixelShaderBlob_.Get(), device_, commandList_);
+	// 合成なし
+	pso_[static_cast<int>(BlendMode::kNone)] = std::make_unique<SinglePSOPrimitiveNone>();
+	pso_[static_cast<int>(BlendMode::kNone)]->Initialize(logFile_, vertexShaderBlob_.Get(), pixelShaderBlob_.Get(), device_, commandList_);
+
+	// ノーマル
+	pso_[static_cast<int>(BlendMode::kNormal)] = std::make_unique<SinglePSOPrimitiveNormal>();
+	pso_[static_cast<int>(BlendMode::kNormal)]->Initialize(logFile_, vertexShaderBlob_.Get(), pixelShaderBlob_.Get(), device_, commandList_);
 }

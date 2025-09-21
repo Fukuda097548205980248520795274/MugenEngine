@@ -195,7 +195,7 @@ public:
 
 #pragma endregion
 
-#pragma region スクリーンサイズ
+#pragma region ゲッター
 
 	/// <summary>
 	/// スクリーン横幅のGetter
@@ -208,6 +208,12 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	int32_t GetScreenHeight()const { return winApp_->GetClientHeight(); }
+
+	/// <summary>
+	/// デルタタイムのGetter
+	/// </summary>
+	/// <returns></returns>
+	float GetDeltaTime()const { return deltaTime_; }
 
 #pragma endregion
 
@@ -597,13 +603,19 @@ public:
 	/// UV球を描画する
 	/// </summary>
 	/// <param name="worldTransform"></param>
+	/// <param name="uvTransform"></param>
 	/// <param name="camera"></param>
 	/// <param name="textureHandle"></param>
+	/// <param name="color"></param>
+	/// <param name="enableLighting"></param>
+	/// <param name="enableHalfLanbert"></param>
 	/// <param name="segment"></param>
 	/// <param name="ring"></param>
 	void DrawUVSphere(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
-		int32_t segment, int32_t ring) const
-	{directXBase_->DrawUVSphere(worldTransform,uvTransform, camera, textureHandle, segment, ring);}
+		const Vector4& color, bool enableLighting, bool enableHalfLanbert, int32_t segment, int32_t ring) const
+	{
+		directXBase_->DrawUVSphere(worldTransform, uvTransform, camera, textureHandle, color, enableLighting, enableHalfLanbert, segment, ring);
+	}
 
 	/// <summary>
 	/// 立方体を描画する
@@ -643,5 +655,8 @@ private:
 
 	// 衝突判定
 	Collision* collision_ = nullptr;
+
+	// デルタタイム
+	float deltaTime_ = 1.0f / 60.0f;
 };
 

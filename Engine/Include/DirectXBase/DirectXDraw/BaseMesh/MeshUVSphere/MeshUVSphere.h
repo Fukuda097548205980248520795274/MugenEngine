@@ -1,0 +1,27 @@
+#pragma once
+#include "../BaseMesh.h"
+
+class MeshUVSphere : public BaseMesh
+{
+public:
+
+	/// <summary>
+	/// 初期化
+	/// </summary>
+	/// <param name="engine"></param>
+	/// <param name="camera3d"></param>
+	/// <param name="textureHandle"></param>
+	void Initialize(const MugenEngine* engine, const Camera3D* camera3d, uint32_t textureHandle) override;
+
+	/// <summary>
+	/// 描画処理
+	/// </summary>
+	void Draw() override;
+
+	// セグメント
+	int32_t segment_ = 24;
+
+	// リング
+	int32_t ring_ = 12;
+};
+

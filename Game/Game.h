@@ -27,24 +27,12 @@ private:
 	// エンジン
 	const MugenEngine* engine_ = nullptr;
 
-
-	// ワールドトランスフォーム
-	std::unique_ptr<WorldTransform3D> worldTransform_ = nullptr;
-
-	// UVトランスフォーム
-	std::unique_ptr<UVTransform> uvTransform_ = nullptr;
-
 	// カメラ
 	std::unique_ptr<Camera3D> camera3d_ = nullptr;
 
-	// テクスチャハンドル
-	uint32_t textureHandle_ = 0;
-
-	// セグメント
-	int32_t segment = 32;
-
-	// リング
-	int32_t ring = 16;
+	
+	// UV球
+	std::unique_ptr<MeshUVSphere> uvSphere_ = nullptr;
 
 
 	// サウンドハンドル

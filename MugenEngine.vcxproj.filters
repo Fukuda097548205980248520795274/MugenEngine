@@ -220,6 +220,30 @@
     <Filter Include="Engine\Include\Collision\Shape\Sphere">
       <UniqueIdentifier>{bb0dfe7f-cd7f-4e1d-aead-bd49db91d363}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore">
+      <UniqueIdentifier>{885f4ad6-736d-4110-86fd-229051e35c82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData">
+      <UniqueIdentifier>{640c65b4-7de3-48a2-bde1-843b72faac69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\Physics">
+      <UniqueIdentifier>{bf3c0dc4-4f3d-4633-93b1-a23e39d824d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\Physics\AirDrag">
+      <UniqueIdentifier>{ef9c3b5c-03c7-4b6d-8d6c-1816424e11e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\Physics\Friction">
+      <UniqueIdentifier>{dce6610e-af40-4215-ab6d-03aabad568ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal">
+      <UniqueIdentifier>{0d116557-1200-493e-aa1b-b53ce6bdd90e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\EnumBlendMode">
+      <UniqueIdentifier>{a0cbc922-5cb7-4e25-93a6-c0822015409d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere">
+      <UniqueIdentifier>{b38b14f2-9ea7-40c7-93da-da2daab009c5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -417,6 +441,27 @@
     <ClCompile Include="Engine\Include\Collision\Shape\Sphere\Sphere.cpp">
       <Filter>Engine\Include\Collision\Shape\Sphere</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelStore.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\ModelData.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\Physics\AirDrag\AirDrag.cpp">
+      <Filter>Engine\Include\Physics\AirDrag</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\Physics\Friction\Friction.cpp">
+      <Filter>Engine\Include\Physics\Friction</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal\SinglePSOPrimitiveNormal.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\EnumBlendMode\EnumBlendMode.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\EnumBlendMode</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere\MeshUVSphere.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -613,6 +658,27 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\Collision\Shape\Sphere\Sphere.h">
       <Filter>Engine\Include\Collision\Shape\Sphere</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelStore.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\ModelData.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\Physics\AirDrag\AirDrag.h">
+      <Filter>Engine\Include\Physics\AirDrag</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\Physics\Friction\Friction.h">
+      <Filter>Engine\Include\Physics\Friction</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal\SinglePSOPrimitiveNormal.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\EnumBlendMode\EnumBlendMode.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\EnumBlendMode</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere\MeshUVSphere.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

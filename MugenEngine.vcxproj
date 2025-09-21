@@ -105,10 +105,13 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDebug\DirectXDebug.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\BaseMesh.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere\MeshUVSphere.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\UVTransform\UVTransform.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform2D\WorldTransform2D.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO\BaseSinglePSO.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\EnumBlendMode\EnumBlendMode.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal\SinglePSOPrimitiveNormal.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone\SinglePSOSpriteNone.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera3D\Camera3D.cpp" />
@@ -118,6 +121,8 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\LightData\LightData.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\MaterialData\MaterialData.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\ModelData.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelStore.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesCube\ResourcesCube.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesUVSphere\ResourcesUVSphere.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite\ResourcesSprite.cpp" />
@@ -144,6 +149,8 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\Include\Math\Vector3\Vector3.cpp" />
     <ClCompile Include="Engine\Include\Math\Vector4\Vector4.cpp" />
     <ClCompile Include="Engine\Include\MugenEngine.cpp" />
+    <ClCompile Include="Engine\Include\Physics\AirDrag\AirDrag.cpp" />
+    <ClCompile Include="Engine\Include\Physics\Friction\Friction.cpp" />
     <ClCompile Include="Engine\Include\WinApp\WinApp.cpp" />
     <ClCompile Include="Externals\ImGui\imgui.cpp" />
     <ClCompile Include="Externals\ImGui\imgui_demo.cpp" />
@@ -172,10 +179,13 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDebug\DirectXDebug.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\BaseMesh.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere\MeshUVSphere.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\UVTransform\UVTransform.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform2D\WorldTransform2D.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO\BaseSinglePSO.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\EnumBlendMode\EnumBlendMode.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal\SinglePSOPrimitiveNormal.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone\SinglePSOSpriteNone.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera3D\Camera3D.h" />
@@ -185,6 +195,8 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\LightData\LightData.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\MaterialData\MaterialData.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\ModelData.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelStore.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesCube\ResourcesCube.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesUVSphere\ResourcesUVSphere.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite\ResourcesSprite.h" />
@@ -211,6 +223,8 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Include\Math\Vector3\Vector3.h" />
     <ClInclude Include="Engine\Include\Math\Vector4\Vector4.h" />
     <ClInclude Include="Engine\Include\MugenEngine.h" />
+    <ClInclude Include="Engine\Include\Physics\AirDrag\AirDrag.h" />
+    <ClInclude Include="Engine\Include\Physics\Friction\Friction.h" />
     <ClInclude Include="Engine\Include\WinApp\WinApp.h" />
     <ClInclude Include="Externals\ImGui\imconfig.h" />
     <ClInclude Include="Externals\ImGui\imgui.h" />

@@ -12,22 +12,15 @@ void Game::Initialize(const MugenEngine* engine)
 	// 引数を受け取る
 	engine_ = engine;
 
-
-	// ワールドトランスフォームの生成と初期化
-	worldTransform_ = std::make_unique<WorldTransform3D>();
-	worldTransform_->Initialize();
-
-	// UVトランスフォームの生成と初期化
-	uvTransform_ = std::make_unique<UVTransform>();
-	uvTransform_->Initialize();
-
 	// カメラの生成と初期化
 	camera3d_ = std::make_unique<Camera3D>();
 	camera3d_->Initialize(engine_->GetScreenWidth(), engine_->GetScreenHeight());
 	camera3d_->translation_.z = -20.0f;
 
-	// テクスチャを読み込む
-	textureHandle_ = engine_->LoadTexture("./Resources/Textures/white2x2.png");
+	// UV球の初期化と生成
+	uvSphere_ = std::make_unique<MeshUVSphere>();
+	uvSphere_->Initialize(engine_, camera3d_.get(), engine_->LoadTexture("./Resources/Textures/uvChecker.png"));
+	uvSphere_->enableHalfLambert_ = true;
 
 	// BGMを読み込む
 	soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/Tukiyo_Ni_Ukabu_Tensyukaku.mp3");
@@ -38,9 +31,11 @@ void Game::Initialize(const MugenEngine* engine)
 /// </summary>
 void Game::Update()
 {
+	// カメラの更新処理
+	camera3d_->Update();
+
 	ImGui::Begin("UVSphere");
-	ImGui::SliderInt("segment", &segment, 3, 32);
-	ImGui::SliderInt("ring", &ring, 3, 16);
+	ImGui::ColorEdit4("color", &uvSphere_->color_.x);
 	ImGui::End();
 
 	if (!engine_->IsAudioPlay(playHandle_) || playHandle_ == 0)
@@ -48,10 +43,8 @@ void Game::Update()
 		playHandle_ = engine_->PlayAudio(soundHandle_, 0.5f);
 	}
 
-	// 更新
-	worldTransform_->Update();
-	uvTransform_->Update();
-	camera3d_->Update();
+	// UVの更新処理
+	uvSphere_->Update();
 }
 
 /// <summary>
@@ -59,5 +52,6 @@ void Game::Update()
 /// </summary>
 void Game::Draw()
 {
-	engine_->DrawUVSphere(worldTransform_.get(), uvTransform_.get(), camera3d_.get(), textureHandle_, segment, ring);
+	// UVの描画
+	uvSphere_->Draw();
 }

@@ -87,7 +87,7 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 /// <param name="segment"></param>
 /// <param name="ring"></param>
 void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
-	int32_t segment, int32_t ring)
+	const Vector4& color, bool enableLighting, bool enableHalfLanbert, int32_t segment, int32_t ring)
 {
 	// セグメントとリングの数を制限する
 	segment = std::max(segment, resourcesUVSphere_->GetMinSegment());
@@ -184,6 +184,11 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVT
 	/*--------------
 	    マテリアル
 	--------------*/
+
+	// 色やライティング
+	resourcesUVSphere_->materialData_->color_ = color;
+	resourcesUVSphere_->materialData_->enableLighting_ = static_cast<int32_t>(enableLighting);
+	resourcesUVSphere_->materialData_->enableHalfLambert_ = static_cast<int32_t>(enableHalfLanbert);
 
 	// UV座標変換用行列
 	resourcesUVSphere_->materialData_->uvTransform_ = uvTransform->affineMatrix_;

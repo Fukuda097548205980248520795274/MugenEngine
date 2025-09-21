@@ -63,7 +63,9 @@ PixelShaderOutput main(VertexShaderOutput input)
             
             // なだらかにする
             float cos = pow(NdotL * 0.5f + 0.5f, 2.0f);
-            output.color = gMaterial.color * textureColor * gDirectionalLight.color * cos * gDirectionalLight.intensity;
+            output.color.rgb = gMaterial.color.rgb * textureColor.rgb * gDirectionalLight.color.rgb * cos * gDirectionalLight.intensity;
+            output.color.a = gMaterial.color.a * textureColor.a;
+
         }
         else
         {
@@ -71,7 +73,8 @@ PixelShaderOutput main(VertexShaderOutput input)
             
             // 光と法線の方向が近ければ明るい
             float cos = saturate(dot(normalize(input.normal), -gDirectionalLight.direction));
-            output.color = gMaterial.color * textureColor * gDirectionalLight.color * cos * gDirectionalLight.intensity;
+            output.color.rgb = gMaterial.color.rgb * textureColor.rgb * gDirectionalLight.color.rgb * cos * gDirectionalLight.intensity;
+            output.color.a = gMaterial.color.a * textureColor.a;
         }
     }
     else
