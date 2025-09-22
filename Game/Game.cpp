@@ -17,10 +17,10 @@ void Game::Initialize(const MugenEngine* engine)
 	camera3d_->Initialize(engine_->GetScreenWidth(), engine_->GetScreenHeight());
 	camera3d_->translation_.z = -20.0f;
 
-	// UV球の初期化と生成
-	uvSphere_ = std::make_unique<MeshUVSphere>();
-	uvSphere_->Initialize(engine_, camera3d_.get(), engine_->LoadTexture("./Resources/Textures/uvChecker.png"));
-	uvSphere_->enableHalfLambert_ = true;
+	// 立方体の初期化と生成
+	cube_ = std::make_unique<MeshCube>();
+	cube_->Initialize(engine_, camera3d_.get(), engine_->LoadTexture("./Resources/Textures/uvChecker.png"));
+	cube_->enableHalfLambert_ = true;
 
 	// BGMを読み込む
 	soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/Tukiyo_Ni_Ukabu_Tensyukaku.mp3");
@@ -39,8 +39,8 @@ void Game::Update()
 		playHandle_ = engine_->PlayAudio(soundHandle_, 0.5f);
 	}
 
-	// UVの更新処理
-	uvSphere_->Update();
+	// 立方体の更新処理
+	cube_->Update();
 }
 
 /// <summary>
@@ -48,6 +48,6 @@ void Game::Update()
 /// </summary>
 void Game::Draw()
 {
-	// UVの描画
-	uvSphere_->Draw();
+	// 立方体の描画
+	cube_->Draw();
 }

@@ -243,7 +243,8 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVT
 /// <param name="worldTransform"></param>
 /// <param name="camera"></param>
 /// <param name="textureHandle"></param>
-void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle)
+void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
+	const Vector4& color, bool enableLighting, bool enableHalfLanbert)
 {
 	/*---------------
 	    マテリアル
@@ -251,6 +252,11 @@ void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTrans
 
 	// UV座標変換用行列
 	resourcesCube_->materialData_->uvTransform_ = uvTransform->affineMatrix_;
+	
+	// 色やライティング
+	resourcesCube_->materialData_->color_ = color;
+	resourcesCube_->materialData_->enableLighting_ = static_cast<int32_t>(enableLighting);
+	resourcesCube_->materialData_->enableHalfLambert_ = static_cast<int32_t>(enableHalfLanbert);
 
 
 	/*-------------

@@ -105,6 +105,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDebug\DirectXDebug.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\BaseMesh.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshCube\MeshCube.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere\MeshUVSphere.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\UVTransform\UVTransform.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform2D\WorldTransform2D.cpp" />
@@ -183,6 +184,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDebug\DirectXDebug.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\BaseMesh.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshCube\MeshCube.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere\MeshUVSphere.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\UVTransform\UVTransform.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform2D\WorldTransform2D.h" />

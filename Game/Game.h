@@ -31,8 +31,8 @@ private:
 	std::unique_ptr<Camera3D> camera3d_ = nullptr;
 
 	
-	// UV球
-	std::unique_ptr<MeshUVSphere> uvSphere_ = nullptr;
+	// 立方体
+	std::unique_ptr<MeshCube> cube_ = nullptr;
 
 
 	// サウンドハンドル

@@ -621,10 +621,17 @@ public:
 	/// 立方体を描画する
 	/// </summary>
 	/// <param name="worldTransform"></param>
+	/// <param name="uvTransform"></param>
 	/// <param name="camera"></param>
 	/// <param name="textureHandle"></param>
-	void DrawCube(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle) const
-	{directXBase_->DrawCube(worldTransform,uvTransform, camera, textureHandle);}
+	/// <param name="color"></param>
+	/// <param name="enableLighting"></param>
+	/// <param name="enableHalfLanbert"></param>
+	void DrawCube(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
+		const Vector4& color, bool enableLighting, bool enableHalfLanbert) const
+	{
+		directXBase_->DrawCube(worldTransform, uvTransform, camera, textureHandle, color, enableLighting, enableHalfLanbert);
+	}
 
 #pragma endregion
 

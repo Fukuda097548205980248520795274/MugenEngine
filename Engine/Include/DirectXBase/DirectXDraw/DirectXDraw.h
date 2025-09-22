@@ -11,6 +11,7 @@
 #include "TextureStore/TextureStore.h"
 
 #include "BaseMesh/MeshUVSphere/MeshUVSphere.h"
+#include "BaseMesh/MeshCube/MeshCube.h"
 
 #include "BaseMesh/WorldTransform2D/WorldTransform2D.h"
 
@@ -77,9 +78,14 @@ public:
 	/// 立方体を描画する
 	/// </summary>
 	/// <param name="worldTransform"></param>
+	/// <param name="uvTransform"></param>
 	/// <param name="camera"></param>
 	/// <param name="textureHandle"></param>
-	void DrawCube(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle);
+	/// <param name="color"></param>
+	/// <param name="enableLighting"></param>
+	/// <param name="enableHalfLanbert"></param>
+	void DrawCube(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
+		const Vector4& color, bool enableLighting, bool enableHalfLanbert);
 
 	/// <summary>
 	/// スプライトを描画する
