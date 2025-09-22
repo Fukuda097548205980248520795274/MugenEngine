@@ -41,10 +41,6 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	primitivePSO_ = std::make_unique<OrganizePSOPrimitive>();
 	primitivePSO_->Initialize(logFile_, directXShaderCompiler_.get(), commandList_, device_);
 
-	// スプライト用PSOの生成と初期化
-	spritePSO_ = std::make_unique<OrganizePSOSprite>();
-	spritePSO_->Initialize(logFile_, directXShaderCompiler_.get(), commandList_, device_);
-
 
 	// ビューポートの設定
 	viewport_.Width = static_cast<float>(*kClientWidth_);
@@ -83,7 +79,6 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 void DirectXDraw::ResetBlendMode()
 {
 	primitivePSO_->ResetBlendMode();
-	spritePSO_->ResetBlendMode();
 }
 
 
@@ -297,7 +292,8 @@ void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTrans
 /// スプライトを描画する
 /// </summary>
 /// <param name="textureHandle"></param>
-void DirectXDraw::DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3& p2, const Vector3& p3, const Camera2D* camera, uint32_t textureHandle)
+void DirectXDraw::DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3& p2, const Vector3& p3,
+	const UVTransform* uvTransform, const Camera2D* camera, uint32_t textureHandle, const Vector4& color)
 {
 	/*------------------------
 	    頂点データを入力する
@@ -315,17 +311,20 @@ void DirectXDraw::DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3
 	resourceSprite_->vertexData_[2].position = Vector4(p3.x, p3.y, p3.z, 1.0f);
 	resourceSprite_->vertexData_[2].texcoord = Vector2(1.0f, 1.0f);
 
-	// 左上
-	resourceSprite_->vertexData_[3].position = Vector4(p0.x, p0.y, p0.z, 1.0f);
-	resourceSprite_->vertexData_[3].texcoord = Vector2(0.0f, 0.0f);
-
 	// 右上
-	resourceSprite_->vertexData_[4].position = Vector4(p1.x, p1.y, p1.z, 1.0f);
-	resourceSprite_->vertexData_[4].texcoord = Vector2(1.0f, 0.0f);
+	resourceSprite_->vertexData_[3].position = Vector4(p1.x, p1.y, p1.z, 1.0f);
+	resourceSprite_->vertexData_[3].texcoord = Vector2(1.0f, 0.0f);
 
-	// 右下
-	resourceSprite_->vertexData_[5].position = Vector4(p3.x, p3.y, p3.z, 1.0f);
-	resourceSprite_->vertexData_[5].texcoord = Vector2(1.0f, 1.0f);
+
+	/*-------------------
+	    マテリアル設定
+	-------------------*/
+
+	// 色
+	resourceSprite_->materialData_->color_ = color;
+
+	// UVトランスフォーム
+	resourceSprite_->materialData_->uvTransform_ = uvTransform->affineMatrix_;
 
 
 	/*------------------
@@ -333,7 +332,7 @@ void DirectXDraw::DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3
 	------------------*/
 
 	// 座標変換行列を入力する
-	*resourceSprite_->transformationData_ = MakeIdentityMatrix4x4() * camera->viewMatrix_ * camera->projectionMatrix_;
+	resourceSprite_->transformationData_->worldViewProjection = camera->viewMatrix_ * camera->projectionMatrix_;
 
 
 	/*---------------------------
@@ -345,7 +344,7 @@ void DirectXDraw::DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3
 	commandList_->RSSetScissorRects(1, &scissorRect_);
 
 	// PSOの設定
-	spritePSO_->SetPSOState();
+	primitivePSO_->SetPSOState();
 
 	// リソースの設定
 	resourceSprite_->SetCommandList();
@@ -357,5 +356,5 @@ void DirectXDraw::DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3
 	commandList_->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 	// ドローコール
-	commandList_->DrawInstanced(6, 1, 0, 0);
+	commandList_->DrawIndexedInstanced(6, 1, 0, 0, 0);
 }

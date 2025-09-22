@@ -53,9 +53,10 @@ public:
 	/// <param name="p3"></param>
 	/// <param name="camera"></param>
 	/// <param name="textureHandle"></param>
-	void DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3& p2, const Vector3& p3, const Camera2D* camera, uint32_t textureHandle)
+	void DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3& p2, const Vector3& p3,
+		const UVTransform* uvTransform, const Camera2D* camera, uint32_t textureHandle, const Vector4& color)
 	{
-		directXDraw_->DrawSprite(p0, p1, p2, p3, camera, textureHandle);
+		directXDraw_->DrawSprite(p0, p1, p2, p3, uvTransform, camera, textureHandle, color);
 	}
 
 	/// <summary>

@@ -124,7 +124,8 @@ void MugenEngine::FrameEnd()
 /// <param name="worldTransform"></param>
 /// <param name="camera"></param>
 /// <param name="textureHandle"></param>
-void MugenEngine::DrawSprite(const WorldTransform2D* worldTransform, const Vector2& anchor, const Camera2D* camera, uint32_t textureHandle)const
+void MugenEngine::DrawSprite(const WorldTransform2D* worldTransform, const Vector2& anchor, const UVTransform* uvTransform, const Camera2D* camera,
+	uint32_t textureHandle, const Vector4& color)const
 {
 	// ワールドビュープロジェクション行列
 	Matrix4x4 worldViewProjectionMatrix = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
@@ -145,5 +146,5 @@ void MugenEngine::DrawSprite(const WorldTransform2D* worldTransform, const Vecto
 		Vector3(vertecies[1].x, vertecies[1].y, worldTransform->translation_.z),
 		Vector3(vertecies[2].x, vertecies[2].y, worldTransform->translation_.z),
 		Vector3(vertecies[3].x, vertecies[3].y, worldTransform->translation_.z),
-		camera, textureHandle);
+		uvTransform, camera, textureHandle, color);
 }

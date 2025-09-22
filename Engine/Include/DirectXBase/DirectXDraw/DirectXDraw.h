@@ -15,7 +15,6 @@
 #include "BaseMesh/MeshSprite/MeshSprite.h"
 
 #include "BaseOrganizePSO/OrganizePSOPrimitive/OrganizePSOPrimitive.h"
-#include "BaseOrganizePSO/OrganizePSOSprite/OrganizePSOSprite.h"
 
 #include "ResourcesData/ResourcesUVSphere/ResourcesUVSphere.h"
 #include "ResourcesData/ResourcesCube/ResourcesCube.h"
@@ -92,7 +91,8 @@ public:
 	/// <param name="p3"></param>
 	/// <param name="camera"></param>
 	/// <param name="textureHandle"></param>
-	void DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3& p2, const Vector3& p3, const Camera2D* camera, uint32_t textureHandle);
+	void DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3& p2, const Vector3& p3,
+		const UVTransform* uvTransform, const Camera2D* camera, uint32_t textureHandle, const Vector4& color);
 
 
 private:
@@ -127,9 +127,6 @@ private:
 
 	// プリミティブ用PSO
 	std::unique_ptr<OrganizePSOPrimitive> primitivePSO_ = nullptr;
-
-	// スプライト用PSO
-	std::unique_ptr<OrganizePSOSprite> spritePSO_ = nullptr;
 
 
 	// ビューポート

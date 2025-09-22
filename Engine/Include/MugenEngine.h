@@ -602,7 +602,8 @@ public:
 	/// <param name="worldTransform"></param>
 	/// <param name="camera"></param>
 	/// <param name="textureHandle"></param>
-	void DrawSprite(const WorldTransform2D* worldTransform, const Vector2& anchor, const Camera2D* camera, uint32_t textureHandle)const;
+	void DrawSprite(const WorldTransform2D* worldTransform, const Vector2& anchor, const UVTransform* uvTransform, const Camera2D* camera,
+		uint32_t textureHandle, const Vector4& color)const;
 
 	/// <summary>
 	/// UV球を描画する

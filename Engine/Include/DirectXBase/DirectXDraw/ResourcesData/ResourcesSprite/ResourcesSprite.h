@@ -4,6 +4,7 @@
 #include "../../DataForGPU/VertexData/VertexData.h"
 #include "../../DataForGPU/MaterialData/MaterialData.h"
 #include "../../DataForGPU/TransformationData/TransformationData.h"
+#include "../../DataForGPU/LightData/LightData.h"
 
 class ResourcesSprite
 {
@@ -22,14 +23,17 @@ public:
 	void SetCommandList();
 
 
+	// インデックスデータ
+	uint32_t* indexData_ = nullptr;
+
 	// 頂点データ
-	VertexDataSpriteForGPU* vertexData_ = nullptr;
+	VertexDataModelForGPU* vertexData_ = nullptr;
 
 	// マテリアルデータ
-	Vector4* materialData_ = nullptr;
+	MaterialDataModelForGPU* materialData_ = nullptr;
 
 	// 座標変換データ
-	Matrix4x4* transformationData_ = nullptr;
+	TransformationDataModelForGPU* transformationData_ = nullptr;
 
 
 private:
@@ -39,6 +43,13 @@ private:
 
 	// コマンドリスト
 	ID3D12GraphicsCommandList* commandList_ = nullptr;
+
+
+	// インデックスリソース
+	Microsoft::WRL::ComPtr<ID3D12Resource> indexResource_ = nullptr;
+
+	// インデックスバッファビュー
+	D3D12_INDEX_BUFFER_VIEW indexBufferView_{};
 
 
 	// 頂点リソース

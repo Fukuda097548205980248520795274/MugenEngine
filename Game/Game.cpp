@@ -44,6 +44,11 @@ void Game::Update()
 		playHandle_ = engine_->PlayAudio(soundHandle_, 0.5f);
 	}
 
+	ImGui::Begin("sprite");
+	ImGui::DragFloat2("uvTransform", &sprite_->uvTransform_->translation_.x, 0.1f);
+	ImGui::ColorEdit4("color", &sprite_->color_.x);
+	ImGui::End();
+
 	// スプライトの更新処理
 	sprite_->Update();
 }

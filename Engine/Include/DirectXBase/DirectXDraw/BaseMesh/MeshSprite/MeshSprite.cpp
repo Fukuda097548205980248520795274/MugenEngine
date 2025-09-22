@@ -42,5 +42,5 @@ void MeshSprite::Update()
 /// </summary>
 void MeshSprite::Draw()
 {
-	engine_->DrawSprite(worldTransform_.get(),anchor_, camera2d_, textureHandle_);
+	engine_->DrawSprite(worldTransform_.get(), anchor_, uvTransform_.get(), camera2d_, textureHandle_, color_);
 }
