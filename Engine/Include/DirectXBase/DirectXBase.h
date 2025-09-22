@@ -44,9 +44,19 @@ public:
 	/// <returns></returns>
 	uint32_t LoadTexture(const std::string& filePath) { return directXDraw_->LoadTexture(filePath); }
 
-	// スプライトを描画する
-	void DrawSprite(const WorldTransform2D* worldTransform, const Camera2D* camera, uint32_t textureHandle)
-	{directXDraw_->DrawSprite(worldTransform, camera, textureHandle);}
+	/// <summary>
+	/// スプライトを描画する
+	/// </summary>
+	/// <param name="p0"></param>
+	/// <param name="p1"></param>
+	/// <param name="p2"></param>
+	/// <param name="p3"></param>
+	/// <param name="camera"></param>
+	/// <param name="textureHandle"></param>
+	void DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3& p2, const Vector3& p3, const Camera2D* camera, uint32_t textureHandle)
+	{
+		directXDraw_->DrawSprite(p0, p1, p2, p3, camera, textureHandle);
+	}
 
 	/// <summary>
 	/// プリミティブのブレンドモードを設定する

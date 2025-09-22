@@ -297,14 +297,43 @@ void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTrans
 /// スプライトを描画する
 /// </summary>
 /// <param name="textureHandle"></param>
-void DirectXDraw::DrawSprite(const WorldTransform2D* worldTransform, const Camera2D* camera, uint32_t textureHandle)
+void DirectXDraw::DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3& p2, const Vector3& p3, const Camera2D* camera, uint32_t textureHandle)
 {
+	/*------------------------
+	    頂点データを入力する
+	------------------------*/
+
+	// 左下
+	resourceSprite_->vertexData_[0].position = Vector4(p2.x, p2.y, p2.z, 1.0f);
+	resourceSprite_->vertexData_[0].texcoord = Vector2(0.0f, 1.0f);
+
+	// 左上
+	resourceSprite_->vertexData_[1].position = Vector4(p0.x, p0.y, p0.z, 1.0f);
+	resourceSprite_->vertexData_[1].texcoord = Vector2(0.0f, 0.0f);
+
+	// 右下
+	resourceSprite_->vertexData_[2].position = Vector4(p3.x, p3.y, p3.z, 1.0f);
+	resourceSprite_->vertexData_[2].texcoord = Vector2(1.0f, 1.0f);
+
+	// 左上
+	resourceSprite_->vertexData_[3].position = Vector4(p0.x, p0.y, p0.z, 1.0f);
+	resourceSprite_->vertexData_[3].texcoord = Vector2(0.0f, 0.0f);
+
+	// 右上
+	resourceSprite_->vertexData_[4].position = Vector4(p1.x, p1.y, p1.z, 1.0f);
+	resourceSprite_->vertexData_[4].texcoord = Vector2(1.0f, 0.0f);
+
+	// 右下
+	resourceSprite_->vertexData_[5].position = Vector4(p3.x, p3.y, p3.z, 1.0f);
+	resourceSprite_->vertexData_[5].texcoord = Vector2(1.0f, 1.0f);
+
+
 	/*------------------
 		座標変換を行う
 	------------------*/
 
 	// 座標変換行列を入力する
-	*resourceSprite_->transformationData_ = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
+	*resourceSprite_->transformationData_ = MakeIdentityMatrix4x4() * camera->viewMatrix_ * camera->projectionMatrix_;
 
 
 	/*---------------------------

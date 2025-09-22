@@ -1,4 +1,5 @@
 #pragma once
+#define NOMINMAX
 #include <memory>
 #include <dxgidebug.h>
 
@@ -595,9 +596,13 @@ public:
 
 #pragma region 描画処理
 
-	// スプライトを描画する
-	void DrawSprite(const WorldTransform2D* worldTransform, const Camera2D* camera, uint32_t textureHandle)const
-	{ directXBase_->DrawSprite(worldTransform,camera, textureHandle); }
+	/// <summary>
+	/// スプライトを描画する
+	/// </summary>
+	/// <param name="worldTransform"></param>
+	/// <param name="camera"></param>
+	/// <param name="textureHandle"></param>
+	void DrawSprite(const WorldTransform2D* worldTransform, const Vector2& anchor, const Camera2D* camera, uint32_t textureHandle)const;
 
 	/// <summary>
 	/// UV球を描画する

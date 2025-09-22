@@ -12,11 +12,7 @@
 
 #include "BaseMesh/MeshUVSphere/MeshUVSphere.h"
 #include "BaseMesh/MeshCube/MeshCube.h"
-
-#include "BaseMesh/WorldTransform2D/WorldTransform2D.h"
-
-#include "Camera/Camera2D/Camera2D.h"
-#include "Camera/Camera3D/Camera3D.h"
+#include "BaseMesh/MeshSprite/MeshSprite.h"
 
 #include "BaseOrganizePSO/OrganizePSOPrimitive/OrganizePSOPrimitive.h"
 #include "BaseOrganizePSO/OrganizePSOSprite/OrganizePSOSprite.h"
@@ -90,8 +86,13 @@ public:
 	/// <summary>
 	/// スプライトを描画する
 	/// </summary>
+	/// <param name="p0"></param>
+	/// <param name="p1"></param>
+	/// <param name="p2"></param>
+	/// <param name="p3"></param>
+	/// <param name="camera"></param>
 	/// <param name="textureHandle"></param>
-	void DrawSprite(const WorldTransform2D* worldTransform, const Camera2D* camera, uint32_t textureHandle);
+	void DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3& p2, const Vector3& p3, const Camera2D* camera, uint32_t textureHandle);
 
 
 private:

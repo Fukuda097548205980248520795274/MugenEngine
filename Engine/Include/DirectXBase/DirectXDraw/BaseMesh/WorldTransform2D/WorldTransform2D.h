@@ -36,7 +36,7 @@ public:
 	float rotation_{};
 
 	// 移動
-	Vector2 translation_{};
+	Vector3 translation_{};
 
 	// ワールド行列
 	Matrix4x4 worldMatrix_{};

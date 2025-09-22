@@ -259,6 +259,12 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshCube">
       <UniqueIdentifier>{f65186f7-7813-40b2-8a5a-19dd61900e31}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Shader\PrimitiveInstancing">
+      <UniqueIdentifier>{f481510c-3d8f-4c3f-9448-419fae9e1414}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite">
+      <UniqueIdentifier>{39009ab9-c8b9-4ad9-9e80-a82f53d86374}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -491,6 +497,9 @@
     </ClCompile>
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshCube\MeshCube.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshCube</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite\MeshSprite.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -725,6 +734,9 @@
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshCube\MeshCube.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshCube</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite\MeshSprite.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Engine\Shader\Primitive\Primitive.VS.hlsl">
@@ -739,6 +751,12 @@
     <FxCompile Include="Engine\Shader\Sprite\Sprite.PS.hlsl">
       <Filter>Engine\Shader\Sprite</Filter>
     </FxCompile>
+    <FxCompile Include="Engine\Shader\PrimitiveInstancing\PrimitiveInstancing.VS.hlsl">
+      <Filter>Engine\Shader\PrimitiveInstancing</Filter>
+    </FxCompile>
+    <FxCompile Include="Engine\Shader\PrimitiveInstancing\PrimitiveInstancing.PS.hlsl">
+      <Filter>Engine\Shader\PrimitiveInstancing</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Shader\Primitive\Primitive.hlsli">
@@ -746,6 +764,9 @@
     </None>
     <None Include="Engine\Shader\Sprite\Sprite.hlsli">
       <Filter>Engine\Shader\Sprite</Filter>
+    </None>
+    <None Include="Engine\Shader\PrimitiveInstancing\PrimitiveInstancing.hlsli">
+      <Filter>Engine\Shader\PrimitiveInstancing</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

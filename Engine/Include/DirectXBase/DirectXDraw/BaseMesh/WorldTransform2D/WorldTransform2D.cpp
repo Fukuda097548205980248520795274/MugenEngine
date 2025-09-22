@@ -12,10 +12,10 @@ void WorldTransform2D::Initialize()
 	rotation_ = 0.0f;
 
 	// 移動
-	translation_ = Vector2(0.0f, 0.0f);
+	translation_ = Vector3(0.0f, 0.0f, 0.0f);
 
 	// ワールド行列
-	worldMatrix_ = MakeAffineMatrix(Vector3(scale_.x, scale_.y, 0.0f), Vector3(0.0f, 0.0f, rotation_), Vector3(translation_.x, translation_.y, 0.0f));
+	worldMatrix_ = MakeAffineMatrix(Vector3(scale_.x, scale_.y, 0.0f), Vector3(0.0f, 0.0f, rotation_), translation_);
 }
 
 /// <summary>
@@ -24,7 +24,7 @@ void WorldTransform2D::Initialize()
 void WorldTransform2D::Update()
 {
 	// ワールド行列
-	worldMatrix_ = MakeAffineMatrix(Vector3(scale_.x, scale_.y, 0.0f), Vector3(0.0f, 0.0f, rotation_), Vector3(translation_.x, translation_.y, 0.0f));
+	worldMatrix_ = MakeAffineMatrix(Vector3(scale_.x, scale_.y, 0.0f), Vector3(0.0f, 0.0f, rotation_), translation_);
 
 	// 親がいたら、親子構造の乗算を行う
 	if (parent_ != nullptr)

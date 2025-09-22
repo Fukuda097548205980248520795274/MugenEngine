@@ -30,9 +30,12 @@ private:
 	// カメラ
 	std::unique_ptr<Camera3D> camera3d_ = nullptr;
 
+	// 2Dカメラ
+	std::unique_ptr<Camera2D> camera2d_ = nullptr;
+
 	
-	// 立方体
-	std::unique_ptr<MeshCube> cube_ = nullptr;
+	// スプライト
+	std::unique_ptr<MeshSprite> sprite_ = nullptr;
 
 
 	// サウンドハンドル

@@ -117,3 +117,33 @@ void MugenEngine::FrameEnd()
 	// 全ての入力情報をコピーする
 	input_->CopyInputInfo();
 }
+
+/// <summary>
+/// スプライトを描画する
+/// </summary>
+/// <param name="worldTransform"></param>
+/// <param name="camera"></param>
+/// <param name="textureHandle"></param>
+void MugenEngine::DrawSprite(const WorldTransform2D* worldTransform, const Vector2& anchor, const Camera2D* camera, uint32_t textureHandle)const
+{
+	// ワールドビュープロジェクション行列
+	Matrix4x4 worldViewProjectionMatrix = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
+
+	// ビューポート変換行列
+	Matrix4x4 viewportMatrix = MakeViewportMatrix(0.0f, 0.0f, camera->screenWidth_, camera->screenHeight_, 0.0f, 1.0f);
+
+	Vector3 vertecies[4] =
+	{
+		Transform(Transform(Vector3(-anchor.x ,-anchor.y , 0.0f) , worldViewProjectionMatrix), viewportMatrix),
+		Transform(Transform(Vector3(1.0f - anchor.x  , -anchor.y , 0.0f) , worldViewProjectionMatrix), viewportMatrix),
+		Transform(Transform(Vector3(-anchor.x  ,1.0f - anchor.y , 0.0f) , worldViewProjectionMatrix), viewportMatrix),
+		Transform(Transform(Vector3(1.0f - anchor.x  , 1.0f - anchor.y , 0.0f) , worldViewProjectionMatrix), viewportMatrix)
+	};
+
+	directXBase_->DrawSprite(
+		Vector3(vertecies[0].x, vertecies[0].y, worldTransform->translation_.z),
+		Vector3(vertecies[1].x, vertecies[1].y, worldTransform->translation_.z),
+		Vector3(vertecies[2].x, vertecies[2].y, worldTransform->translation_.z),
+		Vector3(vertecies[3].x, vertecies[3].y, worldTransform->translation_.z),
+		camera, textureHandle);
+}

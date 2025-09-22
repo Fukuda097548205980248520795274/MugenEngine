@@ -1,0 +1,46 @@
+#include "MeshSprite.h"
+#include "../../../../MugenEngine.h"
+
+/// <summary>
+/// 初期化
+/// </summary>
+/// <param name="engine"></param>
+/// <param name="camera2d"></param>
+/// <param name="textureHandle"></param>
+void MeshSprite::Initialize(const MugenEngine* engine, const Camera2D* camera2d, uint32_t textureHandle)
+{
+	// nullptrチェック
+	assert(engine);
+	assert(camera2d);
+
+	// 引数を受け取る
+	engine_ = engine;
+	camera2d_ = camera2d;
+	textureHandle_ = textureHandle;
+
+	// ワールドトランスフォームの生成と初期化
+	worldTransform_ = std::make_unique<WorldTransform2D>();
+	worldTransform_->Initialize();
+
+	// UVトランスフォームの生成と初期化
+	uvTransform_ = std::make_unique<UVTransform>();
+	uvTransform_->Initialize();
+}
+
+/// <summary>
+/// 更新処理
+/// </summary>
+void MeshSprite::Update()
+{
+	// トランスフォームの更新
+	worldTransform_->Update();
+	uvTransform_->Update();
+}
+
+/// <summary>
+/// 描画処理
+/// </summary>
+void MeshSprite::Draw()
+{
+	engine_->DrawSprite(worldTransform_.get(),anchor_, camera2d_, textureHandle_);
+}

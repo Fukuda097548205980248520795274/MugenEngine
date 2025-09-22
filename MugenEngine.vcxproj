@@ -106,6 +106,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\BaseMesh.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshCube\MeshCube.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite\MeshSprite.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere\MeshUVSphere.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\UVTransform\UVTransform.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform2D\WorldTransform2D.cpp" />
@@ -185,6 +186,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\BaseMesh.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshCube\MeshCube.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite\MeshSprite.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere\MeshUVSphere.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\UVTransform\UVTransform.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform2D\WorldTransform2D.h" />
@@ -247,6 +249,18 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Game\Game.h" />
   </ItemGroup>
   <ItemGroup>
+    <FxCompile Include="Engine\Shader\PrimitiveInstancing\PrimitiveInstancing.PS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Engine\Shader\PrimitiveInstancing\PrimitiveInstancing.VS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
     <FxCompile Include="Engine\Shader\Primitive\Primitive.PS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
@@ -273,6 +287,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Engine\Shader\PrimitiveInstancing\PrimitiveInstancing.hlsli" />
     <None Include="Engine\Shader\Primitive\Primitive.hlsli" />
     <None Include="Engine\Shader\Sprite\Sprite.hlsli" />
   </ItemGroup>
