@@ -20,7 +20,7 @@ void ResourcesSprite::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList
 	    頂点リソースの生成
 	----------------------*/
 
-	vertexResource_ = CreateBufferResource(device_, sizeof(VertexDataSprite) * 6);
+	vertexResource_ = CreateBufferResource(device_, sizeof(VertexDataSpriteForGPU) * 6);
 
 
 	/*---------------------------
@@ -29,8 +29,8 @@ void ResourcesSprite::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList
 
 	// リソースの先頭のアドレスから使う
 	vertexBufferView_.BufferLocation = vertexResource_->GetGPUVirtualAddress();
-	vertexBufferView_.SizeInBytes = sizeof(VertexDataSprite) * 6;
-	vertexBufferView_.StrideInBytes = sizeof(VertexDataSprite);
+	vertexBufferView_.SizeInBytes = sizeof(VertexDataSpriteForGPU) * 6;
+	vertexBufferView_.StrideInBytes = sizeof(VertexDataSpriteForGPU);
 
 
 	/*----------------------------------

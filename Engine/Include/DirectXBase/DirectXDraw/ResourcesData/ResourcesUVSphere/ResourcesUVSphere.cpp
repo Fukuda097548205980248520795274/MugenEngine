@@ -37,12 +37,12 @@ void ResourcesUVSphere::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 	-------------------------------------*/
 
 	// リソースの生成
-	vertexResource_ = CreateBufferResource(device_, sizeof(VertexDataModel) * (kMaxSegment * kMaxRing * 4));
+	vertexResource_ = CreateBufferResource(device_, sizeof(VertexDataModelForGPU) * (kMaxSegment * kMaxRing * 4));
 
 	// バッファ設定
 	vertexBufferView_.BufferLocation = vertexResource_->GetGPUVirtualAddress();
-	vertexBufferView_.SizeInBytes = sizeof(VertexDataModel) * (kMaxSegment * kMaxRing * 4);
-	vertexBufferView_.StrideInBytes = sizeof(VertexDataModel);
+	vertexBufferView_.SizeInBytes = sizeof(VertexDataModelForGPU) * (kMaxSegment * kMaxRing * 4);
+	vertexBufferView_.StrideInBytes = sizeof(VertexDataModelForGPU);
 
 	// データを割り当てる
 	vertexResource_->Map(0, nullptr, reinterpret_cast<void**>(&vertexData_));
@@ -53,7 +53,7 @@ void ResourcesUVSphere::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 	---------------------------*/
 
 	// リソース生成
-	materialResource_ = CreateBufferResource(device_, sizeof(MaterialDataModel));
+	materialResource_ = CreateBufferResource(device_, sizeof(MaterialDataModelForGPU));
 
 	// データを割り当てる
 	materialResource_->Map(0, nullptr, reinterpret_cast<void**>(&materialData_));
@@ -68,7 +68,7 @@ void ResourcesUVSphere::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 	--------------------------*/
 
 	// リソース生成
-	transformationResource_ = CreateBufferResource(device_, sizeof(TransformationDataModel));
+	transformationResource_ = CreateBufferResource(device_, sizeof(TransformationDataModelForGPU));
 
 	// データを割り当てる
 	transformationResource_->Map(0, nullptr, reinterpret_cast<void**>(&transformationData_));
@@ -81,7 +81,7 @@ void ResourcesUVSphere::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 	--------------------------*/
 
 	// リソース生成
-	directionalLightResource_ = CreateBufferResource(device_, sizeof(DirectionalLight));
+	directionalLightResource_ = CreateBufferResource(device_, sizeof(DirectionalLightForGPU));
 
 	// データを割り当てる
 	directionalLightResource_->Map(0, nullptr, reinterpret_cast<void**>(&directionalLightData_));

@@ -2,8 +2,8 @@
 #include "../../../../Math/Vector4/Vector4.h"
 #include "../../../../Math/Vector3/Vector3.h"
 
-// 平行光源
-struct DirectionalLight
+// GPUに送る平行光源データ
+struct DirectionalLightForGPU
 {
 	// 色
 	Vector4 color;

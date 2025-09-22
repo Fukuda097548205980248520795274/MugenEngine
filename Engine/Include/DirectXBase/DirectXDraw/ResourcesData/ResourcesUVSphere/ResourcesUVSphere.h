@@ -51,16 +51,16 @@ public:
 	uint32_t* indexData_ = nullptr;
 
 	// 頂点データ
-	VertexDataModel* vertexData_ = nullptr;
+	VertexDataModelForGPU* vertexData_ = nullptr;
 
 	// マテリアルデータ
-	MaterialDataModel* materialData_ = nullptr;
+	MaterialDataModelForGPU* materialData_ = nullptr;
 
 	// 座標変換データ
-	TransformationDataModel* transformationData_ = nullptr;
+	TransformationDataModelForGPU* transformationData_ = nullptr;
 
 	// 平行光源データ
-	DirectionalLight* directionalLightData_ = nullptr;
+	DirectionalLightForGPU* directionalLightData_ = nullptr;
 
 
 private:

@@ -23,7 +23,7 @@ public:
 
 
 	// 頂点データ
-	VertexDataSprite* vertexData_ = nullptr;
+	VertexDataSpriteForGPU* vertexData_ = nullptr;
 
 	// マテリアルデータ
 	Vector4* materialData_ = nullptr;

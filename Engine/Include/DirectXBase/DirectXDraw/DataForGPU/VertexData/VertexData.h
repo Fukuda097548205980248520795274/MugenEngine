@@ -3,8 +3,8 @@
 #include "../../../../Math/Vector3/Vector3.h"
 #include "../../../../Math/Vector4/Vector4.h"
 
-// モデル用の頂点データ
-struct VertexDataModel
+// GPUに送るモデル用の頂点データ
+struct VertexDataModelForGPU
 {
 	// 位置
 	Vector4 position;
@@ -16,8 +16,8 @@ struct VertexDataModel
 	Vector3 normal;
 };
 
-// スプライトの頂点データ
-struct VertexDataSprite
+// GPUに送るスプライトの頂点データ
+struct VertexDataSpriteForGPU
 {
 	// 位置
 	Vector4 position;

@@ -15,7 +15,7 @@ struct MaterialData
 struct ModelData
 {
 	// 頂点データ
-	std::vector<VertexDataModel> vertices;
+	std::vector<VertexDataModelForGPU> vertices;
 
 	// マテリアルデータ
 	MaterialData material;
