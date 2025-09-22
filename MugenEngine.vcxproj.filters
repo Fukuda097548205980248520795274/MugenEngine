@@ -106,26 +106,17 @@
     <Filter Include="Engine\Include\DirectXBase\ResourcesDepthStencil">
       <UniqueIdentifier>{820a6ebe-7db8-4569-a78d-ebd623ca873e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Shader\Sprite">
-      <UniqueIdentifier>{4a81b3b3-6e4c-4ef2-9145-6c2c68b7f732}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO">
       <UniqueIdentifier>{b7227316-3fef-4d71-bed1-5286622f6847}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive">
       <UniqueIdentifier>{f76cd2d4-5835-4c57-a408-b774176981bd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite">
-      <UniqueIdentifier>{ef725885-152a-4cc0-8c80-12888c7d55c7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO">
       <UniqueIdentifier>{be4f900c-b83d-45e9-bcee-ba858a050aca}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone">
       <UniqueIdentifier>{d4d2cf54-b4bc-4214-b048-846f9408e0d0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone">
-      <UniqueIdentifier>{83596395-1b6f-496d-b05a-66e2ba785cc6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\Camera">
       <UniqueIdentifier>{73cc7a30-8e06-48b1-9bff-4243a41a1482}</UniqueIdentifier>
@@ -259,9 +250,6 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshCube">
       <UniqueIdentifier>{f65186f7-7813-40b2-8a5a-19dd61900e31}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Shader\PrimitiveInstancing">
-      <UniqueIdentifier>{f481510c-3d8f-4c3f-9448-419fae9e1414}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite">
       <UniqueIdentifier>{39009ab9-c8b9-4ad9-9e80-a82f53d86374}</UniqueIdentifier>
     </Filter>
@@ -378,14 +366,8 @@
     <ClCompile Include="Engine\Include\DirectXBase\ResourcesDepthStencil\ResourcesDepthStencil.cpp">
       <Filter>Engine\Include\DirectXBase\ResourcesDepthStencil</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone\SinglePSOSpriteNone.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite\ResourcesSprite.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite</Filter>
@@ -614,14 +596,8 @@
     <ClInclude Include="Engine\Include\DirectXBase\ResourcesDepthStencil\ResourcesDepthStencil.h">
       <Filter>Engine\Include\DirectXBase\ResourcesDepthStencil</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone\SinglePSOSpriteNone.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite\ResourcesSprite.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite</Filter>
@@ -745,28 +721,10 @@
     <FxCompile Include="Engine\Shader\Primitive\Primitive.PS.hlsl">
       <Filter>Engine\Shader\Primitive</Filter>
     </FxCompile>
-    <FxCompile Include="Engine\Shader\Sprite\Sprite.VS.hlsl">
-      <Filter>Engine\Shader\Sprite</Filter>
-    </FxCompile>
-    <FxCompile Include="Engine\Shader\Sprite\Sprite.PS.hlsl">
-      <Filter>Engine\Shader\Sprite</Filter>
-    </FxCompile>
-    <FxCompile Include="Engine\Shader\PrimitiveInstancing\PrimitiveInstancing.VS.hlsl">
-      <Filter>Engine\Shader\PrimitiveInstancing</Filter>
-    </FxCompile>
-    <FxCompile Include="Engine\Shader\PrimitiveInstancing\PrimitiveInstancing.PS.hlsl">
-      <Filter>Engine\Shader\PrimitiveInstancing</Filter>
-    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Shader\Primitive\Primitive.hlsli">
       <Filter>Engine\Shader\Primitive</Filter>
-    </None>
-    <None Include="Engine\Shader\Sprite\Sprite.hlsli">
-      <Filter>Engine\Shader\Sprite</Filter>
-    </None>
-    <None Include="Engine\Shader\PrimitiveInstancing\PrimitiveInstancing.hlsli">
-      <Filter>Engine\Shader\PrimitiveInstancing</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

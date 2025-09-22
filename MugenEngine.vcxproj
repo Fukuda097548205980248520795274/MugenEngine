@@ -118,13 +118,11 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal\SinglePSOPrimitiveNormal.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveScreen\SinglePSOPrimitiveScreen.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveSubtract\SinglePSOPrimitiveSubtract.cpp" />
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone\SinglePSOSpriteNone.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera3D\Camera3D.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DirectXDraw.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\OrganizePSOPrimitive.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone\SinglePSOPrimitiveNone.cpp" />
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\LightData\LightData.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\MaterialData\MaterialData.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\ModelData.cpp" />
@@ -198,13 +196,11 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal\SinglePSOPrimitiveNormal.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveScreen\SinglePSOPrimitiveScreen.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveSubtract\SinglePSOPrimitiveSubtract.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone\SinglePSOSpriteNone.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera3D\Camera3D.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DirectXDraw.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\OrganizePSOPrimitive.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone\SinglePSOPrimitiveNone.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\LightData\LightData.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\MaterialData\MaterialData.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\ModelData.h" />
@@ -249,18 +245,6 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Game\Game.h" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Engine\Shader\PrimitiveInstancing\PrimitiveInstancing.PS.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </FxCompile>
-    <FxCompile Include="Engine\Shader\PrimitiveInstancing\PrimitiveInstancing.VS.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </FxCompile>
     <FxCompile Include="Engine\Shader\Primitive\Primitive.PS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
@@ -273,23 +257,9 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
-    <FxCompile Include="Engine\Shader\Sprite\Sprite.PS.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </FxCompile>
-    <FxCompile Include="Engine\Shader\Sprite\Sprite.VS.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </FxCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Engine\Shader\PrimitiveInstancing\PrimitiveInstancing.hlsli" />
     <None Include="Engine\Shader\Primitive\Primitive.hlsli" />
-    <None Include="Engine\Shader\Sprite\Sprite.hlsli" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Externals\ImGui\LICENSE.txt" />
