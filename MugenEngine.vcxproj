@@ -127,6 +127,9 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\MaterialData\MaterialData.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\ModelData.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelStore.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ParticleEmitter\ParticleEmitter.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ParticleEmitter\Particle\Particle.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ParticleStore\ParticleStore.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesCube\ResourcesCube.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesUVSphere\ResourcesUVSphere.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite\ResourcesSprite.cpp" />
@@ -205,6 +208,9 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\MaterialData\MaterialData.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\ModelData.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelStore.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ParticleEmitter\ParticleEmitter.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ParticleEmitter\Particle\Particle.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ParticleStore\ParticleStore.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesCube\ResourcesCube.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesUVSphere\ResourcesUVSphere.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite\ResourcesSprite.h" />

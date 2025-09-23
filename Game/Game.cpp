@@ -21,10 +21,12 @@ void Game::Initialize(const MugenEngine* engine)
 	camera2d_ = std::make_unique<Camera2D>();
 	camera2d_->Initialize(engine_->GetScreenWidth(), engine_->GetScreenHeight());
 
-	// スプライトの初期化と生成
-	sprite_ = std::make_unique<MeshSprite>();
-	sprite_->Initialize(engine_, camera2d_.get(), engine_->LoadTexture("./Resources/Textures/uvChecker.png"));
-	sprite_->worldTransform_->scale_ = Vector2(256.0f, 256.0f);
+	// パーティクルエミッターの生成と初期化
+	particleEmitterType_ = std::make_unique<ParticleEmitter>();
+	particleEmitterType_->Initialize(engine_, camera3d_.get(), "Particle", 20, Vector3(0.0f, 0.0f, 0.0f), 1, 0.5f);
+
+	phParticleEmitter_ = engine_->LoadParticle(particleEmitterType_.get());
+	particleEmitter_ = engine_->GetParticleEmitter(phParticleEmitter_);
 
 	// BGMを読み込む
 	soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/Tukiyo_Ni_Ukabu_Tensyukaku.mp3");
@@ -44,13 +46,11 @@ void Game::Update()
 		playHandle_ = engine_->PlayAudio(soundHandle_, 0.5f);
 	}
 
-	ImGui::Begin("sprite");
-	ImGui::DragFloat2("uvTransform", &sprite_->uvTransform_->translation_.x, 0.1f);
-	ImGui::ColorEdit4("color", &sprite_->color_.x);
-	ImGui::End();
+	// 放出
+	particleEmitter_->Emit();
 
 	// スプライトの更新処理
-	sprite_->Update();
+	particleEmitter_->Update();
 }
 
 /// <summary>
@@ -59,5 +59,5 @@ void Game::Update()
 void Game::Draw()
 {
 	// スプライトの描画
-	sprite_->Draw();
+	particleEmitter_->Draw();
 }

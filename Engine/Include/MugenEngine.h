@@ -229,6 +229,24 @@ public:
 
 #pragma endregion
 
+#pragma region パーティクル
+
+	/// <summary>
+	/// パーティクルを読み込む
+	/// </summary>
+	/// <param name="particleEmitter"></param>
+	/// <returns></returns>
+	uint32_t LoadParticle(ParticleEmitter* particleEmitter)const { return directXBase_->LoadParticle(particleEmitter); }
+
+	/// <summary>
+	/// パーティクルエミッターのGetter
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	/// <returns></returns>
+	ParticleEmitter* GetParticleEmitter(uint32_t particleHandle)const { return directXBase_->GetParticleEmitter(particleHandle); }
+
+#pragma endregion
+
 #pragma region オーディオ
 
 	/// <summary>

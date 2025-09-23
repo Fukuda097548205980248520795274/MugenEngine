@@ -45,6 +45,20 @@ public:
 	uint32_t LoadTexture(const std::string& filePath) { return directXDraw_->LoadTexture(filePath); }
 
 	/// <summary>
+	/// パーティクルを読み込む
+	/// </summary>
+	/// <param name="particleEmitter"></param>
+	/// <returns></returns>
+	uint32_t LoadParticle(ParticleEmitter* particleEmitter) { return directXDraw_->LoadParticle(particleEmitter); }
+
+	/// <summary>
+	/// パーティクルエミッターのGetter
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	/// <returns></returns>
+	ParticleEmitter* GetParticleEmitter(uint32_t particleHandle) { return directXDraw_->GetParticleEmitter(particleHandle); }
+
+	/// <summary>
 	/// スプライトを描画する
 	/// </summary>
 	/// <param name="p0"></param>

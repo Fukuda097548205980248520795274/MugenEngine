@@ -36,6 +36,10 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	textureStore_ = std::make_unique<TextureStore>();
 	textureStore_->Initialize(directXHeap_, logFile_, device_, commandList_);
 
+	// パーティクル格納場所の生成と初期化
+	particleStore_ = std::make_unique<ParticleStore>();
+	particleStore_->Initialize(directXHeap_);
+
 
 	// プリミティブ用PSOの生成と初期化
 	primitivePSO_ = std::make_unique<OrganizePSOPrimitive>();

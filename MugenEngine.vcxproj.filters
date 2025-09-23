@@ -253,6 +253,15 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite">
       <UniqueIdentifier>{39009ab9-c8b9-4ad9-9e80-a82f53d86374}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ParticleEmitter">
+      <UniqueIdentifier>{768fe442-1aed-4a53-b464-7075580c52cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ParticleEmitter\Particle">
+      <UniqueIdentifier>{f47e0871-3ded-4195-a312-4450c4adfa79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ParticleStore">
+      <UniqueIdentifier>{983ef7f3-c8cd-4f54-b1b8-9cb4deb2ab96}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -483,6 +492,15 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite\MeshSprite.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ParticleEmitter\ParticleEmitter.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ParticleEmitter</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ParticleEmitter\Particle\Particle.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ParticleEmitter\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ParticleStore\ParticleStore.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ParticleStore</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -712,6 +730,15 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite\MeshSprite.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ParticleEmitter\ParticleEmitter.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ParticleEmitter</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ParticleEmitter\Particle\Particle.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ParticleEmitter\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ParticleStore\ParticleStore.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ParticleStore</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

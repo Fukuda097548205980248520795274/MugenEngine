@@ -14,6 +14,9 @@
 #include "BaseMesh/MeshCube/MeshCube.h"
 #include "BaseMesh/MeshSprite/MeshSprite.h"
 
+#include "ParticleStore/ParticleStore.h"
+#include "ParticleEmitter/ParticleEmitter.h"
+
 #include "BaseOrganizePSO/OrganizePSOPrimitive/OrganizePSOPrimitive.h"
 
 #include "ResourcesData/ResourcesUVSphere/ResourcesUVSphere.h"
@@ -41,6 +44,20 @@ public:
 	/// <param name="filePath"></param>
 	/// <returns></returns>
 	uint32_t LoadTexture(const std::string& filePath) { return textureStore_->LoadTexture(filePath); }
+
+	/// <summary>
+	/// パーティクルを読み込む
+	/// </summary>
+	/// <param name="particleEmitter"></param>
+	/// <returns></returns>
+	uint32_t LoadParticle(ParticleEmitter* particleEmitter) { return particleStore_->LoadParticle(particleEmitter); }
+
+	/// <summary>
+	/// パーティクルエミッターのGetter
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	/// <returns></returns>
+	ParticleEmitter* GetParticleEmitter(uint32_t particleHandle) { return particleStore_->GetParticleEmitter(particleHandle); }
 
 	/// <summary>
 	/// プリミティブのブレンドモードを設定する
@@ -123,6 +140,9 @@ private:
 
 	// テクスチャ格納場所
 	std::unique_ptr<TextureStore> textureStore_ = nullptr;
+
+	// パーティクル格納場所
+	std::unique_ptr<ParticleStore> particleStore_ = nullptr;
 
 
 	// プリミティブ用PSO

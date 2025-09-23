@@ -34,8 +34,10 @@ private:
 	std::unique_ptr<Camera2D> camera2d_ = nullptr;
 
 	
-	// スプライト
-	std::unique_ptr<MeshSprite> sprite_ = nullptr;
+	// パーティクルエミッター
+	std::unique_ptr<ParticleEmitter> particleEmitterType_ = nullptr;
+	uint32_t phParticleEmitter_ = 0;
+	ParticleEmitter* particleEmitter_ = nullptr;
 
 
 	// サウンドハンドル
