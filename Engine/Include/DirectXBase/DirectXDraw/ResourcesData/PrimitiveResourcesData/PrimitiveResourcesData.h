@@ -4,9 +4,8 @@
 #include "../../DataForGPU/VertexData/VertexData.h"
 #include "../../DataForGPU/MaterialData/MaterialData.h"
 #include "../../DataForGPU/TransformationData/TransformationData.h"
-#include "../../DataForGPU/LightData/LightData.h"
 
-class ResourcesSprite
+class PrimitiveResourcesData
 {
 public:
 
@@ -15,28 +14,40 @@ public:
 	/// </summary>
 	/// <param name="device"></param>
 	/// <param name="commandList"></param>
-	void Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* commandList);
+	virtual void Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* commandList);
 
 	/// <summary>
-	/// コマンドリストに設定を登録する
+	/// 登録する
 	/// </summary>
-	void SetCommandList();
+	virtual void Register() = 0;
+
+	/// <summary>
+	/// インデックスリソースを生成する
+	/// </summary>
+	void CreateIndexResource(uint32_t numIndex);
+
+	/// <summary>
+	/// 頂点リソースを生成する
+	/// </summary>
+	/// <param name="numVertex"></param>
+	void CreateVertexResource(uint32_t numVertex);
+
+
 
 
 	// インデックスデータ
 	uint32_t* indexData_ = nullptr;
 
 	// 頂点データ
-	VertexDataModelForGPU* vertexData_ = nullptr;
+	VertexDataForGPU* vertexData_ = nullptr;
 
 	// マテリアルデータ
-	MaterialDataModelForGPU* materialData_ = nullptr;
+	MaterialDataForGPU* materialData_ = nullptr;
 
 	// 座標変換データ
-	TransformationDataModelForGPU* transformationData_ = nullptr;
+	TransformationDataForGPU* transformationData_ = nullptr;
 
-
-private:
+protected:
 
 	// デバイス
 	ID3D12Device* device_ = nullptr;

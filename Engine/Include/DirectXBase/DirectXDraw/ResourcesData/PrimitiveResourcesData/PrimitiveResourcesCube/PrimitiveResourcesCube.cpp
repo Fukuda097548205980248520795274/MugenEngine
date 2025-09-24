@@ -1,35 +1,25 @@
-#include "ResourcesCube.h"
+#include "PrimitiveResourcesCube.h"
 
 /// <summary>
 /// 初期化
 /// </summary>
 /// <param name="device"></param>
 /// <param name="commandList"></param>
-void ResourcesCube::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* commandList)
+void PrimitiveResourcesCube::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* commandList)
 {
-	// nullptrチェック
-	assert(device);
-	assert(commandList);
+	// 基底クラスを初期化する
+	PrimitiveResourcesData::Initialize(device, commandList);
 
-	// 引数を受け取る
-	device_ = device;
-	commandList_ = commandList;
+	// インデックスリソースを生成する
+	CreateIndexResource(kNumMesh * 6);
+
+	// 頂点リソースを生成する
+	CreateVertexResource(kNumMesh * 4);
 
 
-	/*------------------------------
-	    インデックスリソースの生成
-	------------------------------*/
-
-	// リソース生成
-	indexResource_ = CreateBufferResource(device_, sizeof(uint32_t) * (kNumMesh * 6));
-
-	// バッファ設定
-	indexBufferView_.BufferLocation = indexResource_->GetGPUVirtualAddress();
-	indexBufferView_.SizeInBytes = sizeof(uint32_t) * (kNumMesh * 6);
-	indexBufferView_.Format = DXGI_FORMAT_R32_UINT;
-
-	// データを割り当てる
-	indexResource_->Map(0, nullptr, reinterpret_cast<void**>(&indexData_));
+	/*-----------------------------
+	    インデックスの番号を与える
+	-----------------------------*/
 
 	// 番号を与える
 	for (int32_t i = 0; i < kNumMesh; ++i)
@@ -46,20 +36,9 @@ void ResourcesCube::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* 
 	}
 
 
-	/*----------------------
-	    頂点リソースの生成
-	----------------------*/
-
-	// リソースの生成
-	vertexResource_ = CreateBufferResource(device_, sizeof(VertexDataModelForGPU) * ((kNumMesh) * 4));
-
-	// バッファ設定
-	vertexBufferView_.BufferLocation = vertexResource_->GetGPUVirtualAddress();
-	vertexBufferView_.SizeInBytes = sizeof(VertexDataModelForGPU) * ((kNumMesh) * 4);
-	vertexBufferView_.StrideInBytes = sizeof(VertexDataModelForGPU);
-
-	// データを割り当てる
-	vertexResource_->Map(0, nullptr, reinterpret_cast<void**>(&vertexData_));
+	/*------------------------
+	    頂点データを入力する
+	------------------------*/
 
 	// ローカル座標を与える
 	vertexData_[0].position = Vector4(-1.0f, -1.0f, -1.0f, 1.0f);
@@ -139,55 +118,12 @@ void ResourcesCube::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* 
 	vertexData_[23].position = Vector4(-1.0f, -1.0f, 1.0f, 1.0f);
 	vertexData_[23].texcoord = Vector2(1.0f, 0.0f);
 	vertexData_[23].normal = Vector3(0.0f, -1.0f, 0.0f);
-
-
-	/*---------------------------
-	    マテリアルリソースの生成
-	---------------------------*/
-
-	// リソース生成
-	materialResource_ = CreateBufferResource(device_, sizeof(MaterialDataModelForGPU));
-
-	// データを割り当てる
-	materialResource_->Map(0, nullptr, reinterpret_cast<void**>(&materialData_));
-	materialData_->color_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-	materialData_->enableLighting_ = true;
-	materialData_->enableHalfLambert_ = true;
-	materialData_->uvTransform_ = MakeIdentityMatrix4x4();
-
-
-	/*-------------------------
-	    座標変換リソースの生成
-	-------------------------*/
-
-	// リソース生成
-	transformationResource_ = CreateBufferResource(device_, sizeof(TransformationDataModelForGPU));
-
-	// データを割り当てる
-	transformationResource_->Map(0, nullptr, reinterpret_cast<void**>(&transformationData_));
-	transformationData_->worldViewProjection = MakeIdentityMatrix4x4();
-	transformationData_->world = MakeIdentityMatrix4x4();
-
-
-	/*-------------------------
-	    平行光源リソースの生成
-	-------------------------*/
-
-	// リソース生成
-	directionalLightResource_ = CreateBufferResource(device_, sizeof(DirectionalLightForGPU));
-
-	// データを割り当てる
-	directionalLightResource_->Map(0, nullptr, reinterpret_cast<void**>(&directionalLightData_));
-	directionalLightData_->color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-	directionalLightData_->direction = Vector3(0.0f, -1.0f, 0.0f);
-	directionalLightData_->intensity = 1.0f;
 }
 
-
 /// <summary>
-/// コマンドリストに設定を登録する
+/// コマンドリストに登録する
 /// </summary>
-void ResourcesCube::SetCommandList()
+void PrimitiveResourcesCube::Register()
 {
 	// インデックスリソースの設定
 	commandList_->IASetIndexBuffer(&indexBufferView_);
@@ -200,7 +136,4 @@ void ResourcesCube::SetCommandList()
 
 	// 座標変換リソースの設定
 	commandList_->SetGraphicsRootConstantBufferView(1, transformationResource_->GetGPUVirtualAddress());
-
-	// 平行光源リソースを設定
-	commandList_->SetGraphicsRootConstantBufferView(3, directionalLightResource_->GetGPUVirtualAddress());
 }

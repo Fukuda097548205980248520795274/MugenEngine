@@ -16,9 +16,11 @@
 
 #include "BaseOrganizePSO/OrganizePSOPrimitive/OrganizePSOPrimitive.h"
 
-#include "ResourcesData/ResourcesUVSphere/ResourcesUVSphere.h"
-#include "ResourcesData/ResourcesCube/ResourcesCube.h"
-#include "ResourcesData/ResourcesSprite/ResourcesSprite.h"
+#include "ResourcesData/PrimitiveResourcesData/PrimitiveResourcesCube/PrimitiveResourcesCube.h"
+#include "ResourcesData/PrimitiveResourcesData/PrimitiveResourcesSprite/PrimitiveResourcesSprite.h"
+#include "ResourcesData/PrimitiveResourcesData/PrimitiveResourcesUVSphere/PrimitiveResourcesUVSphere.h"
+
+#include "ResourcesData/DirectionalLightResourcesData/DirectionalLightResourcesData.h"
 
 #include "../../Func/LoadTexture/LoadTexture.h"
 
@@ -139,12 +141,16 @@ private:
 
 
 	// UV球用のリソース
-	std::unique_ptr<ResourcesUVSphere> resourcesUVSphere_ = nullptr;
+	std::unique_ptr<PrimitiveResourcesUVSphere> resourcesUVSphere_ = nullptr;
 
 	// 立方体用のリソース
-	std::unique_ptr<ResourcesCube> resourcesCube_ = nullptr;
+	std::unique_ptr<PrimitiveResourcesCube> resourcesCube_ = nullptr;
 
 	// スプライト用のリソース
-	std::unique_ptr<ResourcesSprite> resourceSprite_ = nullptr;
+	std::unique_ptr<PrimitiveResourcesSprite> resourceSprite_ = nullptr;
+
+
+	// 平行光源リソース
+	std::unique_ptr<DirectionalLightResourcesData> resourcesDirectionalLight_ = nullptr;
 };
 
