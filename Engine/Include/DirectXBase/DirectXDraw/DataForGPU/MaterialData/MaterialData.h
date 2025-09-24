@@ -3,7 +3,7 @@
 #include "../../../../Math/Matrix4x4/Matrix4x4.h"
 
 // GPUに送るモデル用のマテリアルデータ
-struct MaterialDataModelForGPU
+struct MaterialDataForGPU
 {
 	// 色
 	Vector4 color_;

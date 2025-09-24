@@ -34,8 +34,8 @@ private:
 	std::unique_ptr<Camera2D> camera2d_ = nullptr;
 
 	
-	// スプライト
-	std::unique_ptr<MeshSprite> sprite_ = nullptr;
+	// UV球
+	std::unique_ptr<MeshUVSphere> uvSphere_ = nullptr;
 
 
 	// サウンドハンドル

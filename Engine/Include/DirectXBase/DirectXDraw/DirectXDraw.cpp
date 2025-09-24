@@ -61,16 +61,21 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 
 
 	// 球用リソースの生成と初期化
-	resourcesUVSphere_ = std::make_unique<ResourcesUVSphere>();
+	resourcesUVSphere_ = std::make_unique<PrimitiveResourcesUVSphere>();
 	resourcesUVSphere_->Initialize(device_, commandList_);
 
 	// 立方体用リソースの生成と初期化
-	resourcesCube_ = std::make_unique<ResourcesCube>();
+	resourcesCube_ = std::make_unique<PrimitiveResourcesCube>();
 	resourcesCube_->Initialize(device_, commandList_);
 
 	// スプライト用リソースの生成と初期化
-	resourceSprite_ = std::make_unique<ResourcesSprite>();
+	resourceSprite_ = std::make_unique<PrimitiveResourcesSprite>();
 	resourceSprite_->Initialize(device_, commandList_);
+
+
+	// 平行光源リソースの生成と初期化
+	resourcesDirectionalLight_ = std::make_unique<DirectionalLightResourcesData>();
+	resourcesDirectionalLight_->Initialize(device_, commandList_);
 }
 
 /// <summary>
@@ -218,8 +223,11 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVT
 	// PSOの設定
 	primitivePSO_->SetPSOState();
 
-	// リソースの設定
-	resourcesUVSphere_->SetCommandList();
+	// UV球リソースの設定
+	resourcesUVSphere_->Register();
+
+	// 平行光源リソースの設定
+	resourcesDirectionalLight_->Register(3);
 
 	// テクスチャのSRVを設定する
 	commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(textureHandle));
@@ -274,8 +282,11 @@ void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTrans
 	// PSOの設定
 	primitivePSO_->SetPSOState();
 
-	// リソースの設定
-	resourcesCube_->SetCommandList();
+	// 立方体リソースの設定
+	resourcesCube_->Register();
+
+	// 平行光源リソースの設定
+	resourcesDirectionalLight_->Register(3);
 
 	// テクスチャのSRVを設定する
 	commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(textureHandle));
@@ -346,8 +357,8 @@ void DirectXDraw::DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3
 	// PSOの設定
 	primitivePSO_->SetPSOState();
 
-	// リソースの設定
-	resourceSprite_->SetCommandList();
+	// スプライトリソースの設定
+	resourceSprite_->Register();
 
 	// テクスチャのSRVを設定する
 	commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(textureHandle));

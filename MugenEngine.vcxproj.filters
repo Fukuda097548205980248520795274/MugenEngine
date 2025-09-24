@@ -124,15 +124,6 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData">
       <UniqueIdentifier>{30d49bd3-44fb-4192-a835-5b9539bc3af0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite">
-      <UniqueIdentifier>{a6dc0e52-472a-4186-be00-da58d841cef7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesUVSphere">
-      <UniqueIdentifier>{e693bb5a-6e98-41e0-b52a-0b5b28dab899}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesCube">
-      <UniqueIdentifier>{1872f6bc-edb8-4431-b57e-7bff483802ed}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game">
       <UniqueIdentifier>{e4555eb9-0b5b-4d70-85f7-68cbff4eb8dc}</UniqueIdentifier>
     </Filter>
@@ -253,6 +244,21 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite">
       <UniqueIdentifier>{39009ab9-c8b9-4ad9-9e80-a82f53d86374}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData">
+      <UniqueIdentifier>{1dcc48f9-d56b-4177-ab20-19aafd71f92f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesCube">
+      <UniqueIdentifier>{ae757ede-0616-4a7e-8b81-0533c52274de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesSprite">
+      <UniqueIdentifier>{90781b82-c6b9-47bd-bb1e-23e31627384e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesUVSphere">
+      <UniqueIdentifier>{ed31136d-ef53-4ff5-ba6f-fa0199dd230b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData">
+      <UniqueIdentifier>{a26a2470-ca39-425c-8c79-684a6fbe7330}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -369,17 +375,8 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite\ResourcesSprite.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform3D\WorldTransform3D.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform3D</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesUVSphere\ResourcesUVSphere.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesUVSphere</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesCube\ResourcesCube.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesCube</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\MaterialData\MaterialData.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\DataForGPU\MaterialData</Filter>
@@ -482,6 +479,21 @@
     </ClCompile>
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite\MeshSprite.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesData.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesCube\PrimitiveResourcesCube.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesCube</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesSprite\PrimitiveResourcesSprite.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesSprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesUVSphere\PrimitiveResourcesUVSphere.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesUVSphere</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData\DirectionalLightResourcesData.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -599,17 +611,8 @@
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite\ResourcesSprite.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesSprite</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform3D\WorldTransform3D.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform3D</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesUVSphere\ResourcesUVSphere.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesUVSphere</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesCube\ResourcesCube.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesCube</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\MaterialData\MaterialData.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\DataForGPU\MaterialData</Filter>
@@ -712,6 +715,21 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite\MeshSprite.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesData.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesCube\PrimitiveResourcesCube.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesCube</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesSprite\PrimitiveResourcesSprite.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesSprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesUVSphere\PrimitiveResourcesUVSphere.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesUVSphere</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData\DirectionalLightResourcesData.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
