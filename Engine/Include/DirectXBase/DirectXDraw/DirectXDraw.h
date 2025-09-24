@@ -18,10 +18,13 @@
 #include "ParticleEmitter/ParticleEmitter.h"
 
 #include "BaseOrganizePSO/OrganizePSOPrimitive/OrganizePSOPrimitive.h"
+#include "BaseOrganizePSO/OrganizePSOParticle/OrganizePSOParticle.h"
 
 #include "ResourcesData/ResourcesUVSphere/ResourcesUVSphere.h"
 #include "ResourcesData/ResourcesCube/ResourcesCube.h"
 #include "ResourcesData/ResourcesSprite/ResourcesSprite.h"
+
+#include "ResourcesData/ResourcesParticleCube/ResourcesParticleCube.h"
 
 #include "../../Func/LoadTexture/LoadTexture.h"
 
@@ -53,11 +56,22 @@ public:
 	uint32_t LoadParticle(ParticleEmitter* particleEmitter) { return particleStore_->LoadParticle(particleEmitter); }
 
 	/// <summary>
-	/// パーティクルエミッターのGetter
+	/// パーティクルの放出処理
 	/// </summary>
 	/// <param name="particleHandle"></param>
-	/// <returns></returns>
-	ParticleEmitter* GetParticleEmitter(uint32_t particleHandle) { return particleStore_->GetParticleEmitter(particleHandle); }
+	void EmitParticle(uint32_t particleHandle) { particleStore_->EmitParticle(particleHandle); }
+
+	/// <summary>
+	/// パーティクルの更新処理
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	void UpdateParticle(uint32_t particleHandle) { particleStore_->UpdateParticle(particleHandle); }
+
+	/// <summary>
+	/// パーティクルの描画処理
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	void DrawParticle(uint32_t particleHandle) { particleStore_->DrawParticle(particleHandle); }
 
 	/// <summary>
 	/// プリミティブのブレンドモードを設定する
@@ -70,6 +84,7 @@ public:
 	/// </summary>
 	void ResetBlendMode();
 
+#pragma region プリミティブ描画処理
 
 	/// <summary>
 	/// UV球を描画する
@@ -111,6 +126,20 @@ public:
 	void DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3& p2, const Vector3& p3,
 		const UVTransform* uvTransform, const Camera2D* camera, uint32_t textureHandle, const Vector4& color);
 
+#pragma endregion
+
+#pragma region パーティクル描画処理
+
+	/// <summary>
+	/// 立方体パーティクルを描画する
+	/// </summary>
+	/// <param name="particles_"></param>
+	/// <param name="camera3d"></param>
+	void DrawParticleCube(const std::list<std::unique_ptr<Particle>>& particles, const ResourcesParticleCube* resourcesParticleCube,
+		const Camera3D* camera3d, uint32_t textureHandle);
+
+#pragma endregion
+
 
 private:
 
@@ -147,6 +176,9 @@ private:
 
 	// プリミティブ用PSO
 	std::unique_ptr<OrganizePSOPrimitive> primitivePSO_ = nullptr;
+
+	// パーティクル用PSO
+	std::unique_ptr<OrganizePSOParticle> particlePSO_ = nullptr;
 
 
 	// ビューポート

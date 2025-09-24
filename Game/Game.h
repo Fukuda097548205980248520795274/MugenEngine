@@ -37,7 +37,6 @@ private:
 	// パーティクルエミッター
 	std::unique_ptr<ParticleEmitter> particleEmitterType_ = nullptr;
 	uint32_t phParticleEmitter_ = 0;
-	ParticleEmitter* particleEmitter_ = nullptr;
 
 
 	// サウンドハンドル

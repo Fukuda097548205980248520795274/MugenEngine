@@ -38,12 +38,16 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 
 	// パーティクル格納場所の生成と初期化
 	particleStore_ = std::make_unique<ParticleStore>();
-	particleStore_->Initialize(directXHeap_);
+	particleStore_->Initialize(this, directXHeap_, device_, commandList_);
 
 
 	// プリミティブ用PSOの生成と初期化
 	primitivePSO_ = std::make_unique<OrganizePSOPrimitive>();
 	primitivePSO_->Initialize(logFile_, directXShaderCompiler_.get(), commandList_, device_);
+
+	// パーティクル用PSO生成と初期化
+	particlePSO_ = std::make_unique<OrganizePSOParticle>();
+	particlePSO_->Initialize(logFile_, directXShaderCompiler_.get(), commandList_, device_);
 
 
 	// ビューポートの設定
@@ -85,6 +89,8 @@ void DirectXDraw::ResetBlendMode()
 	primitivePSO_->ResetBlendMode();
 }
 
+
+#pragma region プリミティブ描画処理
 
 /// <summary>
 /// UV球を描画する
@@ -362,3 +368,57 @@ void DirectXDraw::DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3
 	// ドローコール
 	commandList_->DrawIndexedInstanced(6, 1, 0, 0, 0);
 }
+
+#pragma endregion
+
+#pragma region パーティクル描画処理
+
+/// <summary>
+/// 立方体パーティクルを描画する
+/// </summary>
+/// <param name="particles_"></param>
+/// <param name="camera3d"></param>
+void DirectXDraw::DrawParticleCube(const std::list<std::unique_ptr<Particle>>& particles, const ResourcesParticleCube* resourcesParticleCube,
+	const Camera3D* camera3d, uint32_t textureHandle)
+{
+	/*----------------------------
+	    座標変換データを入力する
+	----------------------------*/
+
+	int32_t index = 0;
+	for (const std::unique_ptr<Particle>& particle : particles)
+	{
+		Matrix4x4 worldMatrix = MakeAffineMatrix(particle->GetScale(), particle->GetRotation(), particle->GetTranslation());
+
+		resourcesCube_->transformationData_[index].world = worldMatrix;
+		resourcesCube_->transformationData_[index].worldViewProjection = worldMatrix * camera3d->viewMatrix_ * camera3d->projectionMatrix_;
+
+		index++;
+	}
+
+
+	/*---------------------------
+		コマンドリストに登録する
+	---------------------------*/
+
+	// ビューポート、シザー矩形の設定
+	commandList_->RSSetViewports(1, &viewport_);
+	commandList_->RSSetScissorRects(1, &scissorRect_);
+
+	// PSOの設定
+	particlePSO_->SetPSOState();
+
+	// リソースの設定
+	resourcesParticleCube->SetCommandList();
+
+	// テクスチャのSRVを設定する
+	commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(textureHandle));
+
+	// 形状の設定
+	commandList_->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+	// ドローコール
+	commandList_->DrawIndexedInstanced(36, static_cast<UINT>(particles.size()), 0, 0, 0);
+}
+
+#pragma endregion

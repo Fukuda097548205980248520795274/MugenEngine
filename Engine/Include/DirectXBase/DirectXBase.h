@@ -52,11 +52,25 @@ public:
 	uint32_t LoadParticle(ParticleEmitter* particleEmitter) { return directXDraw_->LoadParticle(particleEmitter); }
 
 	/// <summary>
-	/// パーティクルエミッターのGetter
+	/// パーティクルの放出処理
 	/// </summary>
 	/// <param name="particleHandle"></param>
-	/// <returns></returns>
-	ParticleEmitter* GetParticleEmitter(uint32_t particleHandle) { return directXDraw_->GetParticleEmitter(particleHandle); }
+	void EmitParticle(uint32_t particleHandle) { directXDraw_->EmitParticle(particleHandle); }
+
+	/// <summary>
+	/// パーティクルの更新処理
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	void UpdateParticle(uint32_t particleHandle) { directXDraw_->UpdateParticle(particleHandle); }
+
+	/// <summary>
+	/// パーティクルの描画処理
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	void DrawParticle(uint32_t particleHandle) { directXDraw_->DrawParticle(particleHandle); }
+
+
+#pragma region プリミティブ描画処理
 
 	/// <summary>
 	/// スプライトを描画する
@@ -112,6 +126,23 @@ public:
 	{
 		directXDraw_->DrawCube(worldTransform, uvTransform, camera, textureHandle, color, enableLighting, enableHalfLanbert);
 	}
+
+#pragma endregion
+
+#pragma region パーティクル描画処理
+
+	/// <summary>
+	/// 立方体パーティクルを描画する
+	/// </summary>
+	/// <param name="particles_"></param>
+	/// <param name="camera3d"></param>
+	void DrawParticleCube(const std::list<std::unique_ptr<Particle>>& particles, const ResourcesParticleCube* resourcesParticleCube,
+		const Camera3D* camera3d, uint32_t textureHandle)
+	{
+		directXDraw_->DrawParticleCube(particles, resourcesParticleCube, camera3d, textureHandle);
+	}
+
+#pragma endregion
 
 	
 private:

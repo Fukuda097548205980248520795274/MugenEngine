@@ -239,11 +239,22 @@ public:
 	uint32_t LoadParticle(ParticleEmitter* particleEmitter)const { return directXBase_->LoadParticle(particleEmitter); }
 
 	/// <summary>
-	/// パーティクルエミッターのGetter
+	/// パーティクルの放出処理
 	/// </summary>
 	/// <param name="particleHandle"></param>
-	/// <returns></returns>
-	ParticleEmitter* GetParticleEmitter(uint32_t particleHandle)const { return directXBase_->GetParticleEmitter(particleHandle); }
+	void EmitParticle(uint32_t particleHandle)const { directXBase_->EmitParticle(particleHandle); }
+
+	/// <summary>
+	/// パーティクルの更新処理
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	void UpdateParticle(uint32_t particleHandle)const { directXBase_->UpdateParticle(particleHandle); }
+
+	/// <summary>
+	/// パーティクルの描画処理
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	void DrawParticle(uint32_t particleHandle)const { directXBase_->DrawParticle(particleHandle); }
 
 #pragma endregion
 
@@ -612,7 +623,7 @@ public:
 
 #pragma endregion
 
-#pragma region 描画処理
+#pragma region プリミティブ描画処理
 
 	/// <summary>
 	/// スプライトを描画する
@@ -655,6 +666,21 @@ public:
 		const Vector4& color, bool enableLighting, bool enableHalfLanbert) const
 	{
 		directXBase_->DrawCube(worldTransform, uvTransform, camera, textureHandle, color, enableLighting, enableHalfLanbert);
+	}
+
+#pragma endregion
+
+#pragma region パーティクル描画
+
+	/// <summary>
+	/// 立方体パーティクルを描画する
+	/// </summary>
+	/// <param name="particles_"></param>
+	/// <param name="camera3d"></param>
+	void DrawParticleCube(const std::list<std::unique_ptr<Particle>>& particles, const ResourcesParticleCube* resourcesParticleCube,
+		const Camera3D* camera3d, uint32_t textureHandle) const
+	{
+		directXBase_->DrawParticleCube(particles, resourcesParticleCube, camera3d, textureHandle);
 	}
 
 #pragma endregion

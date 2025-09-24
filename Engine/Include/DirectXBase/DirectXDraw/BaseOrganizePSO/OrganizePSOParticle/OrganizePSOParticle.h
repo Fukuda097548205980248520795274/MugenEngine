@@ -1,13 +1,8 @@
 #pragma once
 #include "../BaseOrganizePSO.h"
-#include "SinglePSOPrimitiveNone/SinglePSOPrimitiveNone.h"
-#include "SinglePSOPrimitiveNormal/SinglePSOPrimitiveNormal.h"
-#include "SinglePSOPrimitiveAdd/SinglePSOPrimitiveAdd.h"
-#include "SinglePSOPrimitiveSubtract/SinglePSOPrimitiveSubtract.h"
-#include "SinglePSOPrimitiveMultiply/SinglePSOPrimitiveMultiply.h"
-#include "SinglePSOPrimitiveScreen/SinglePSOPrimitiveScreen.h"
+#include "SinglePSOParticleNormal/SinglePSOParticleNormal.h"
 
-class OrganizePSOPrimitive : public BaseOrganizePSO
+class OrganizePSOParticle : public BaseOrganizePSO
 {
 public:
 

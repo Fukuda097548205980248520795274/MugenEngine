@@ -262,6 +262,18 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ParticleStore">
       <UniqueIdentifier>{983ef7f3-c8cd-4f54-b1b8-9cb4deb2ab96}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Shader\Particle">
+      <UniqueIdentifier>{b47fb16f-012c-4be4-8415-cf86125b314f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle">
+      <UniqueIdentifier>{a7089521-ad5c-4a47-8ddd-f72181d955c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNormal">
+      <UniqueIdentifier>{ac5644d2-8552-4d0f-81b4-2fbad27a2c64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesParticleCube">
+      <UniqueIdentifier>{a168eadf-ba85-43b9-b837-63b5cf82d54c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -500,6 +512,15 @@
     </ClCompile>
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ParticleStore\ParticleStore.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ParticleStore</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\OrganizePSOParticle.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNormal\SinglePSOParticleNormal.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNormal</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesParticleCube\ResourcesParticleCube.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesParticleCube</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -740,6 +761,15 @@
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ParticleStore\ParticleStore.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ParticleStore</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\OrganizePSOParticle.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNormal\SinglePSOParticleNormal.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNormal</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesParticleCube\ResourcesParticleCube.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\ResourcesParticleCube</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Engine\Shader\Primitive\Primitive.VS.hlsl">
@@ -748,10 +778,19 @@
     <FxCompile Include="Engine\Shader\Primitive\Primitive.PS.hlsl">
       <Filter>Engine\Shader\Primitive</Filter>
     </FxCompile>
+    <FxCompile Include="Engine\Shader\Particle\Particle.VS.hlsl">
+      <Filter>Engine\Shader\Particle</Filter>
+    </FxCompile>
+    <FxCompile Include="Engine\Shader\Particle\Particle.PS.hlsl">
+      <Filter>Engine\Shader\Particle</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Shader\Primitive\Primitive.hlsli">
       <Filter>Engine\Shader\Primitive</Filter>
+    </None>
+    <None Include="Engine\Shader\Particle\Particle.hlsli">
+      <Filter>Engine\Shader\Particle</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

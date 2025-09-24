@@ -27,6 +27,24 @@ public:
 	/// <returns></returns>
 	bool IsFinished()const { return IsFinished_; }
 
+	/// <summary>
+	/// 拡縮のGetter
+	/// </summary>
+	/// <returns></returns>
+	Vector3 GetScale()const { return transform_.scale; }
+
+	/// <summary>
+	/// 回転のGetter
+	/// </summary>
+	/// <returns></returns>
+	Vector3 GetRotation()const { return transform_.rotation; }
+
+	/// <summary>
+	/// 移動のGetter
+	/// </summary>
+	/// <returns></returns>
+	Vector3 GetTranslation()const { return transform_.translation; }
+
 
 private:
 

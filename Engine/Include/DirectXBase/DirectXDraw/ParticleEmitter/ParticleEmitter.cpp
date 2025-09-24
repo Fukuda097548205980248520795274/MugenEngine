@@ -6,8 +6,8 @@
 /// </summary>
 /// <param name="engine"></param>
 /// <param name="camera3d"></param>
-void ParticleEmitter::Initialize(const MugenEngine* engine, const Camera3D* camera3d, const std::string& name, uint32_t maxNumParticles, const Vector3& center,
-	uint32_t count, float emitTime)
+void ParticleEmitter::Initialize(const MugenEngine* engine, const Camera3D* camera3d, const std::string& name, uint32_t maxNumParticles, uint32_t textureHandle,
+	const Vector3& center, uint32_t count, float emitTime)
 {
 	// nullptrチェック
 	assert(engine);
@@ -17,6 +17,7 @@ void ParticleEmitter::Initialize(const MugenEngine* engine, const Camera3D* came
 	engine_ = engine;
 	camera3d_ = camera3d;
 	maxNumParticles_ = maxNumParticles;
+	textureHandle_ = textureHandle;
 	center_ = center;
 	count_ = count;
 	emitTime_ = emitTime;
@@ -72,12 +73,4 @@ void ParticleEmitter::Update()
 			return false;
 		}
 	);
-}
-
-/// <summary>
-/// 描画処理
-/// </summary>
-void ParticleEmitter::Draw()
-{
-
 }
