@@ -29,13 +29,21 @@ void SinglePSOPrimitiveSubtract::Initialize(LogFile* logFile, IDxcBlob* vertexSh
 	descriptorRange[0].RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;
 	descriptorRange[0].OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;
 
+	// 平行光源
+	D3D12_DESCRIPTOR_RANGE descriptorRangeDirectionalLight[1];
+	descriptorRangeDirectionalLight[0].BaseShaderRegister = 1;
+	descriptorRangeDirectionalLight[0].RegisterSpace = 0;
+	descriptorRangeDirectionalLight[0].NumDescriptors = 1;
+	descriptorRangeDirectionalLight[0].RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;
+	descriptorRangeDirectionalLight[0].OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;
+
 
 
 	/*-------------------------
 		ルートパラメータの設定
 	-------------------------*/
 
-	D3D12_ROOT_PARAMETER rootParameter[4];
+	D3D12_ROOT_PARAMETER rootParameter[5];
 
 	// CBV PixelShader b0
 	rootParameter[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
@@ -49,17 +57,23 @@ void SinglePSOPrimitiveSubtract::Initialize(LogFile* logFile, IDxcBlob* vertexSh
 	rootParameter[1].Descriptor.RegisterSpace = 0;
 	rootParameter[1].Descriptor.ShaderRegister = 0;
 
-	// DescriptorTable PixelShader
+	// DescriptorTable PixelShader t0
 	rootParameter[2].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;
 	rootParameter[2].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 	rootParameter[2].DescriptorTable.pDescriptorRanges = descriptorRange;
 	rootParameter[2].DescriptorTable.NumDescriptorRanges = _countof(descriptorRange);
 
-	// CBV PixelShader b1
-	rootParameter[3].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
+	// DescriptorTable PixelShade t1
+	rootParameter[3].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;
 	rootParameter[3].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
-	rootParameter[3].Descriptor.RegisterSpace = 0;
-	rootParameter[3].Descriptor.ShaderRegister = 1;
+	rootParameter[3].DescriptorTable.pDescriptorRanges = descriptorRangeDirectionalLight;
+	rootParameter[3].DescriptorTable.NumDescriptorRanges = _countof(descriptorRangeDirectionalLight);
+
+	// CBV PixelShader  b1
+	rootParameter[4].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
+	rootParameter[4].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+	rootParameter[4].Descriptor.RegisterSpace = 0;
+	rootParameter[4].Descriptor.ShaderRegister = 1;
 
 
 	/*--------------------

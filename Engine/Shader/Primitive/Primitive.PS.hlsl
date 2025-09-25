@@ -22,6 +22,10 @@ struct Material
 };
 ConstantBuffer<Material> gMaterial : register(b0);
 
+Texture2D<float4> gTexture : register(t0);
+SamplerState gSampler : register(s0);
+
+
 // 平行光源設定
 struct DirectionalLight
 {
@@ -34,10 +38,15 @@ struct DirectionalLight
     // 輝度
     float intensity;
 };
-ConstantBuffer<DirectionalLight> gDirectionalLight : register(b1);
+StructuredBuffer<DirectionalLight> gDirectionalLight : register(t1);
 
-Texture2D<float4> gTexture : register(t0);
-SamplerState gSampler : register(s0);
+// 平行光源数
+struct NumDirectionalLight
+{
+    // 数
+    uint num;
+};
+ConstantBuffer<NumDirectionalLight> gNumDirectionalLight : register(b1);
 
 
 
@@ -54,28 +63,44 @@ PixelShaderOutput main(VertexShaderOutput input)
     // ライティング有効
     if (gMaterial.enableLighting != 0)
     {
+        // 平行光源の合計
+        float3 directionalLightResult = float3(0.0f, 0.0f, 0.0f);
+        
         if (gMaterial.enableHalfLambert != 0)
         {
             // ハーフランバート有効
             
-            // 光と法線の内積
-            float NdotL = dot(normalize(input.normal), -gDirectionalLight.direction);
+            for (uint directionalLightIndex = 0; directionalLightIndex < gNumDirectionalLight.num; ++directionalLightIndex)
+            {
+                // 光と法線の内積
+                float NdotL = dot(normalize(input.normal), -gDirectionalLight[directionalLightIndex].direction);
             
-            // なだらかにする
-            float cos = pow(NdotL * 0.5f + 0.5f, 2.0f);
-            output.color.rgb = gMaterial.color.rgb * textureColor.rgb * gDirectionalLight.color.rgb * cos * gDirectionalLight.intensity;
-            output.color.a = gMaterial.color.a * textureColor.a;
+                // なだらかにする
+                float cos = pow(NdotL * 0.5f + 0.5f, 2.0f);
+                
+                // 光を加算する
+                directionalLightResult += gDirectionalLight[directionalLightIndex].color.rgb * cos * gDirectionalLight[directionalLightIndex].intensity;
+
+            }
 
         }
         else
         {
             // ハーフランバート無効
             
-            // 光と法線の方向が近ければ明るい
-            float cos = saturate(dot(normalize(input.normal), -gDirectionalLight.direction));
-            output.color.rgb = gMaterial.color.rgb * textureColor.rgb * gDirectionalLight.color.rgb * cos * gDirectionalLight.intensity;
-            output.color.a = gMaterial.color.a * textureColor.a;
+            for (uint directionalLightIndex = 0; directionalLightIndex < gNumDirectionalLight.num; ++directionalLightIndex)
+            {
+                // なだらかにする
+                float cos = saturate(dot(normalize(input.normal), -gDirectionalLight[directionalLightIndex].direction));
+                
+                // 光を加算する
+                directionalLightResult += gDirectionalLight[directionalLightIndex].color.rgb * cos * gDirectionalLight[directionalLightIndex].intensity;
+            }
         }
+        
+         // 色を合成する
+        output.color.rgb = gMaterial.color.rgb * textureColor.rgb * directionalLightResult;
+        output.color.a = gMaterial.color.a * textureColor.a;
     }
     else
     {

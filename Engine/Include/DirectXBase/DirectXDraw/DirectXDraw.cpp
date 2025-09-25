@@ -75,7 +75,25 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 
 	// 平行光源リソースの生成と初期化
 	resourcesDirectionalLight_ = std::make_unique<DirectionalLightResourcesData>();
-	resourcesDirectionalLight_->Initialize(device_, commandList_);
+	resourcesDirectionalLight_->Initialize(directXHeap_, device_, commandList_, 512);
+
+	resourcesDirectionalLight_->lightData_[0].direction = Vector3(0.0f, -1.0f, 0.0f);
+	resourcesDirectionalLight_->lightData_[0].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+	resourcesDirectionalLight_->lightData_[0].intensity = 1.0f;
+
+	resourcesDirectionalLight_->lightData_[1].direction = Vector3(0.0f, 1.0f, 0.0f);
+	resourcesDirectionalLight_->lightData_[1].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+	resourcesDirectionalLight_->lightData_[1].intensity = 1.0f;
+
+	resourcesDirectionalLight_->lightData_[2].direction = Vector3(1.0f, 0.0f, 0.0f);
+	resourcesDirectionalLight_->lightData_[2].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
+	resourcesDirectionalLight_->lightData_[2].intensity = 1.0f;
+
+	resourcesDirectionalLight_->lightData_[3].direction = Vector3(-1.0f, 0.0f, 0.0f);
+	resourcesDirectionalLight_->lightData_[3].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
+	resourcesDirectionalLight_->lightData_[3].intensity = 1.0f;
+
+	*resourcesDirectionalLight_->numLightData_ = 4;
 }
 
 /// <summary>
@@ -227,7 +245,7 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVT
 	resourcesUVSphere_->Register();
 
 	// 平行光源リソースの設定
-	resourcesDirectionalLight_->Register(3);
+	resourcesDirectionalLight_->Register(3, 4);
 
 	// テクスチャのSRVを設定する
 	commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(textureHandle));
@@ -286,7 +304,7 @@ void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTrans
 	resourcesCube_->Register();
 
 	// 平行光源リソースの設定
-	resourcesDirectionalLight_->Register(3);
+	resourcesDirectionalLight_->Register(3, 4);
 
 	// テクスチャのSRVを設定する
 	commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(textureHandle));
