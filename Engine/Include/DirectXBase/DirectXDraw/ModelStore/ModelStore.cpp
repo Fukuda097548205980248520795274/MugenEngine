@@ -24,23 +24,15 @@ void ModelInfoDatum::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList*
 	materialData_->uvTransform_ = MakeIdentityMatrix4x4();
 	materialData_->enableLighting_ = true;
 	materialData_->enableHalfLambert_ = false;
-
-	transformationResource_ = CreateBufferResource(device_, sizeof(TransformationDataForGPU));
-	transformationResource_->Map(0, nullptr, reinterpret_cast<void**>(&transformationData_));
-	transformationData_->world = MakeIdentityMatrix4x4();
-	transformationData_->worldViewProjection = MakeIdentityMatrix4x4();
 }
 
 /// <summary>
 /// コマンドリストに登録する
 /// </summary>
-void ModelInfoDatum::Register(UINT materialRootParameterIndex, UINT transformationRootParameterIndex)
+void ModelInfoDatum::Register(UINT materialRootParameterIndex)
 {
 	// マテリアル
 	commandList_->SetGraphicsRootConstantBufferView(materialRootParameterIndex, materialResource_->GetGPUVirtualAddress());
-
-	// 座標変換
-	commandList_->SetGraphicsRootConstantBufferView(transformationRootParameterIndex, transformationResource_->GetGPUVirtualAddress());
 }
 
 
@@ -88,6 +80,10 @@ uint32_t ModelStore::LoadModel(const std::string& directoryPath, const std::stri
 	// モデルを読み込む
 	modelInfoDatum->modelData_ = LoadObjFile(directoryPath, filename);
 
+	// ノード情報を取得する
+	modelInfoDatum->rootNode_ = GetReadNode(directoryPath, filename);
+	NodeWorldMatrix(modelInfoDatum->rootNode_, MakeIdentityMatrix4x4());
+
 	// ハンドルを取得する
 	uint32_t handle = static_cast<uint32_t>(modelInfoData_.size());
 	modelInfoDatum->modelHandle_ = handle;
@@ -124,7 +120,7 @@ uint32_t ModelStore::LoadModel(const std::string& directoryPath, const std::stri
 		----------------------*/
 
 		// 生成と初期化
-		std::unique_ptr<IndexVertexData> indexVertexResource = std::make_unique<IndexVertexData>();
+		std::unique_ptr<IndexVertexResourcesData> indexVertexResource = std::make_unique<IndexVertexResourcesData>();
 		indexVertexResource->Initialize(device_, commandList_,
 			static_cast<uint32_t>(modelInfoDatum->modelData_[modelIndex].indices.size()),
 			static_cast<uint32_t>(modelInfoDatum->modelData_[modelIndex].vertices.size()));
@@ -136,6 +132,19 @@ uint32_t ModelStore::LoadModel(const std::string& directoryPath, const std::stri
 		// 頂点データを入力する
 		std::memcpy(indexVertexResource->vertexData_, modelInfoDatum->modelData_[modelIndex].vertices.data(),
 			sizeof(VertexDataForGPU) * modelInfoDatum->modelData_[modelIndex].vertices.size());
+
+
+		/*--------------------
+			座標変換リソース
+		--------------------*/
+
+		std::unique_ptr<TransformationResourcesDataCBV> transformationResource =
+			std::make_unique<TransformationResourcesDataCBV>();
+
+		transformationResource->Initialize(device_, commandList_);
+
+		modelInfoDatum->transformationResources_.push_back(std::move(transformationResource));
+
 
 		// 登録する
 		modelInfoDatum->indexVertexResource_.push_back(std::move(indexVertexResource));

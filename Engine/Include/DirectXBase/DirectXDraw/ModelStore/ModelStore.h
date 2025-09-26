@@ -4,7 +4,8 @@
 #include "../TextureStore/TextureStore.h"
 #include "../DataForGPU/MaterialData/MaterialData.h"
 #include "../DataForGPU/TransformationData/TransformationData.h"
-#include "../ResourcesData/IndexVertexData/IndexVertexData.h"
+#include "../ResourcesData/IndexVertexResourcesData/IndexVertexResourcesData.h"
+#include "../ResourcesData/TransformationResourcesDataCBV/TransformationResourcesDataCBV.h"
 
 // 格納されたモデルデータ
 class ModelInfoDatum
@@ -21,10 +22,13 @@ public:
 	/// <summary>
 	/// コマンドリストに登録する
 	/// </summary>
-	void Register(UINT materialRootParameterIndex , UINT transformationRootParameterIndex);
+	void Register(UINT materialRootParameterIndex);
 
 	// モデルデータ
 	std::vector<ModelData> modelData_{};
+
+	// ルートノード
+	Node rootNode_;
 
 	// モデルハンドル
 	uint32_t modelHandle_;
@@ -35,14 +39,14 @@ public:
 	// テクスチャハンドル
 	std::vector<uint32_t> textureHandle_;
 
-	// インデックスと頂点のデータ
-	std::vector<std::unique_ptr<IndexVertexData>> indexVertexResource_{};
+	// インデックスと頂点のリソース
+	std::vector<std::unique_ptr<IndexVertexResourcesData>> indexVertexResource_{};
 
 	// マテリアルデータ
 	MaterialDataForGPU* materialData_ = nullptr;
 
-	// 座標変換データ
-	TransformationDataForGPU* transformationData_ = nullptr;
+	// 座標変換リソース
+	std::vector<std::unique_ptr<TransformationResourcesDataCBV>> transformationResources_;
 
 
 private:
@@ -56,9 +60,6 @@ private:
 
 	// マテリアルリソース
 	Microsoft::WRL::ComPtr<ID3D12Resource> materialResource_ = nullptr;
-
-	// 座標変換リソース
-	Microsoft::WRL::ComPtr<ID3D12Resource> transformationResource_ = nullptr;
 };
 
 

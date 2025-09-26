@@ -119,7 +119,7 @@ void DirectXDraw::ResetBlendMode()
 /// <param name="color"></param>
 /// <param name="enableLighting"></param>
 /// <param name="enableHalfLanbert"></param>
-void DirectXDraw::DrawMode(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t modelHandle,
+void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t modelHandle,
 	const Vector4& color, bool enableLighting, bool enableHalfLanbert)
 {
 	// モデル情報を取得する
@@ -136,17 +136,26 @@ void DirectXDraw::DrawMode(const WorldTransform3D* worldTransform, const UVTrans
 	modelInfo->materialData_->enableHalfLambert_ = static_cast<int32_t>(enableHalfLanbert);
 
 
-	/*--------------------------
-		座標変換データを入力する
-	--------------------------*/
+	// wvp行列
+	Matrix4x4 worldViewProjectionMatrix = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
 
-	modelInfo->transformationData_->world = worldTransform->worldMatrix_;
-	modelInfo->transformationData_->worldViewProjection = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
-
+	Node rootNode = modelInfo->rootNode_;
+	std::vector<Matrix4x4> nodeWorldMatrix;
+	GetNodeWorldMatrix(nodeWorldMatrix, rootNode);
+	
 
 	// モデルデータの数を描画する
 	for (uint32_t modelIndex = 0; modelIndex < modelInfo->modelData_.size(); ++modelIndex)
 	{
+		/*----------------------------
+		    座標変換データを入力する
+		----------------------------*/
+
+		modelInfo->transformationResources_[modelIndex]->data_->world = worldTransform->worldMatrix_;
+		modelInfo->transformationResources_[modelIndex]->data_->worldViewProjection =
+			nodeWorldMatrix[1 + modelIndex] * worldViewProjectionMatrix;
+
+
 		// ビューポート、シザー矩形の設定
 		commandList_->RSSetViewports(1, &viewport_);
 		commandList_->RSSetScissorRects(1, &scissorRect_);
@@ -158,7 +167,8 @@ void DirectXDraw::DrawMode(const WorldTransform3D* worldTransform, const UVTrans
 		modelInfo->indexVertexResource_[modelIndex]->Register();
 
 		// CBVの設定
-		modelInfo->Register(0, 1);
+		modelInfo->Register(0);
+		modelInfo->transformationResources_[modelIndex]->Register(1);
 
 		// 平行光源リソースの設定
 		resourcesDirectionalLight_->Register(3, 4);

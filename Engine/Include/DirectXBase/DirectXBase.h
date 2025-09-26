@@ -65,7 +65,7 @@ public:
 	void DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t modelHandle,
 		const Vector4& color, bool enableLighting, bool enableHalfLanbert)
 	{
-		directXDraw_->DrawMode(worldTransform, uvTransform, camera, modelHandle, color, enableLighting, enableHalfLanbert);
+		directXDraw_->DrawModel(worldTransform, uvTransform, camera, modelHandle, color, enableLighting, enableHalfLanbert);
 	}
 
 	/// <summary>

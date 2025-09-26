@@ -262,11 +262,17 @@
     <Filter Include="Engine\Include\Func\LoadModel">
       <UniqueIdentifier>{59681325-f505-4564-8832-1de225bc2ee5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexData">
-      <UniqueIdentifier>{3ee9378c-620d-4919-b4bd-0a259ba0c617}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel">
       <UniqueIdentifier>{17fcaea7-f009-46b5-ac48-03041b69fa6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData">
+      <UniqueIdentifier>{3ee9378c-620d-4919-b4bd-0a259ba0c617}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MaterialResourcesDataCBV">
+      <UniqueIdentifier>{8884de02-bb17-4e15-8d21-597d0845bdea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV">
+      <UniqueIdentifier>{e9c15c28-5eee-4405-af81-9378787b7faf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -507,11 +513,17 @@
     <ClCompile Include="Engine\Include\Func\LoadModel\LoadModel.cpp">
       <Filter>Engine\Include\Func\LoadModel</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexData\IndexVertexData.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexData</Filter>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData\IndexVertexResourcesData.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel\MeshModel.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MaterialResourcesDataCBV\MaterialResourcesDataCBV.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MaterialResourcesDataCBV</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV\TransformationResourcesDataCBV.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -752,11 +764,17 @@
     <ClInclude Include="Engine\Include\Func\LoadModel\LoadModel.h">
       <Filter>Engine\Include\Func\LoadModel</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexData\IndexVertexData.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexData</Filter>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData\IndexVertexResourcesData.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel\MeshModel.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MaterialResourcesDataCBV\MaterialResourcesDataCBV.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MaterialResourcesDataCBV</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV\TransformationResourcesDataCBV.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

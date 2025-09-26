@@ -23,7 +23,7 @@ void Game::Initialize(const MugenEngine* engine)
 
 
 	// モデルハンドル
-	modelHandle_ = engine_->LoadModel("./Resources/Models/multiMaterial", "multiMaterial.obj");
+	modelHandle_ = engine_->LoadModel("./Resources/Models/node", "node.gltf");
 
 	// モデルの初期化と生成
 	model_ = std::make_unique<MeshModel>();

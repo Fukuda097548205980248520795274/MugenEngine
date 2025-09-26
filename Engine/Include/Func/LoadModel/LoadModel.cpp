@@ -39,6 +39,92 @@ MaterialData LoadMaterialTemplateFile(const std::string& directoryPath, const st
 	return materialData;
 }
 
+/// <summary>
+/// ノードにワールド行列を生成する
+/// </summary>
+/// <param name="node"></param>
+/// <param name="parentWorldMatrix"></param>
+void NodeWorldMatrix(Node& node, const Matrix4x4& parentWorldMatrix)
+{
+	// ワールド行列
+	node.worldMatrix = parentWorldMatrix * node.localMatrix;
+
+	// 再帰処理で子ノードに対して処理
+	for (Node& child : node.children)
+	{
+		NodeWorldMatrix(child, node.worldMatrix);
+	}
+}
+
+/// <summary>
+/// ノード情報を取得する
+/// </summary>
+/// <param name="directoryPath"></param>
+/// <param name="filename"></param>
+/// <returns></returns>
+Node GetReadNode(const std::string& directoryPath, const std::string& filename)
+{
+	// assimpでファイルを開く
+	Assimp::Importer importer;
+	std::string filePath = directoryPath + "/" + filename;
+
+	// シーンのデータ
+	const aiScene* scene = importer.ReadFile(filePath.c_str(), aiProcess_FlipWindingOrder | aiProcess_FlipUVs | aiProcess_JoinIdenticalVertices);
+
+	return ReadNode(scene->mRootNode);
+}
+
+/// <summary>
+/// ノード情報を読む
+/// </summary>
+/// <param name="node"></param>
+/// <returns></returns>
+Node ReadNode(aiNode* node)
+{
+	// 総括
+	Node result;
+
+	// ノードのローカル行列を取得する
+	aiMatrix4x4 aiLocalMatrix = node->mTransformation;
+
+	// 列ベクトルを行ベクトルに転置する
+	aiLocalMatrix.Transpose();
+
+	result.localMatrix.m[0][0] = aiLocalMatrix[0][0];
+	result.localMatrix.m[0][1] = aiLocalMatrix[0][1];
+	result.localMatrix.m[0][2] = aiLocalMatrix[0][2];
+	result.localMatrix.m[0][3] = aiLocalMatrix[0][3];
+
+	result.localMatrix.m[1][0] = aiLocalMatrix[1][0];
+	result.localMatrix.m[1][1] = aiLocalMatrix[1][1];
+	result.localMatrix.m[1][2] = aiLocalMatrix[1][2];
+	result.localMatrix.m[1][3] = aiLocalMatrix[1][3];
+
+	result.localMatrix.m[2][0] = aiLocalMatrix[2][0];
+	result.localMatrix.m[2][1] = aiLocalMatrix[2][1];
+	result.localMatrix.m[2][2] = aiLocalMatrix[2][2];
+	result.localMatrix.m[2][3] = aiLocalMatrix[2][3];
+
+	result.localMatrix.m[3][0] = aiLocalMatrix[3][0];
+	result.localMatrix.m[3][1] = aiLocalMatrix[3][1];
+	result.localMatrix.m[3][2] = aiLocalMatrix[3][2];
+	result.localMatrix.m[3][3] = aiLocalMatrix[3][3];
+
+	// ノード名を格納
+	result.name = node->mName.C_Str();
+
+	// 子供の数だけ確保
+	result.children.resize(node->mNumChildren);
+
+	// 再帰的に読んで階層構造を作っていく
+	for (uint32_t childIndex = 0; childIndex < node->mNumChildren; ++childIndex)
+	{
+		result.children[childIndex] = ReadNode(node->mChildren[childIndex]);
+	}
+
+	return result;
+}
+
 
 /// <summary>
 /// オブジェファイルを読み込む
@@ -139,4 +225,19 @@ std::vector<ModelData> LoadObjFile(const std::string& directoryPath, const std::
 	}
 
 	return modelData;
+}
+
+/// <summary>
+/// ノードのワールド行列
+/// </summary>
+/// <param name="rootNode"></param>
+/// <returns></returns>
+void GetNodeWorldMatrix(std::vector<Matrix4x4>& worldMatrices, const Node& rootNode)
+{
+	worldMatrices.push_back(rootNode.worldMatrix);
+
+	for (const Node& node : rootNode.children)
+	{
+		GetNodeWorldMatrix(worldMatrices, node);
+	}
 }

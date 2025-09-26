@@ -2,7 +2,7 @@
 #include "../../../../Func/CreateBufferResource/CreateBufferResource.h"
 #include "../../DataForGPU/VertexData/VertexData.h"
 
-class IndexVertexData
+class IndexVertexResourcesData
 {
 public:
 

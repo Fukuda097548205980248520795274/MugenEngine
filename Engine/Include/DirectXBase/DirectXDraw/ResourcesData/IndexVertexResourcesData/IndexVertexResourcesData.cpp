@@ -1,4 +1,4 @@
-#include "IndexVertexData.h"
+#include "IndexVertexResourcesData.h"
 
 
 /// <summary>
@@ -8,7 +8,7 @@
 /// <param name="commandList"></param>
 /// <param name="indexNum"></param>
 /// <param name="vertexNum"></param>
-void IndexVertexData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* commandList, uint32_t indexNum, uint32_t vertexNum)
+void IndexVertexResourcesData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* commandList, uint32_t indexNum, uint32_t vertexNum)
 {
 	// nullptrチェック
 	assert(device);
@@ -56,7 +56,7 @@ void IndexVertexData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList
 /// <summary>
 /// コマンドリストに登録する
 /// </summary>
-void IndexVertexData::Register()
+void IndexVertexResourcesData::Register()
 {
 	// インデックス
 	commandList_->IASetIndexBuffer(&indexBufferView_);
