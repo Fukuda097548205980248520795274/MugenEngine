@@ -45,6 +45,30 @@ public:
 	uint32_t LoadTexture(const std::string& filePath) { return directXDraw_->LoadTexture(filePath); }
 
 	/// <summary>
+	/// モデルを読み込む
+	/// </summary>
+	/// <param name="directory"></param>
+	/// <param name="fileName"></param>
+	/// <returns></returns>
+	uint32_t LoadModel(const std::string& directory, const std::string& fileName) { return directXDraw_->LoadModel(directory, fileName); }
+
+	/// <summary>
+	/// モデルを描画する
+	/// </summary>
+	/// <param name="worldTransform"></param>
+	/// <param name="uvTransform"></param>
+	/// <param name="camera"></param>
+	/// <param name="modelHandle"></param>
+	/// <param name="color"></param>
+	/// <param name="enableLighting"></param>
+	/// <param name="enableHalfLanbert"></param>
+	void DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t modelHandle,
+		const Vector4& color, bool enableLighting, bool enableHalfLanbert)
+	{
+		directXDraw_->DrawMode(worldTransform, uvTransform, camera, modelHandle, color, enableLighting, enableHalfLanbert);
+	}
+
+	/// <summary>
 	/// スプライトを描画する
 	/// </summary>
 	/// <param name="p0"></param>

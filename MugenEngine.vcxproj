@@ -54,12 +54,15 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <TreatWarningAsError>true</TreatWarningAsError>
+      <AdditionalIncludeDirectories>$(ProjectDir)Externals\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
-      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/ignore:4049 /ignore:4098 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalLibraryDirectories>$(ProjectDir)Externals\assimp\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>assimp-vc143-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxcompiler.dll" "$(TargetDir)dxcompiler.dll"
@@ -78,10 +81,13 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(ProjectDir)Externals\assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(ProjectDir)Externals\assimp\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxcompiler.dll" "$(TargetDir)dxcompiler.dll"
@@ -106,6 +112,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\BaseMesh.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshCube\MeshCube.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel\MeshModel.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite\MeshSprite.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere\MeshUVSphere.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\UVTransform\UVTransform.cpp" />
@@ -128,6 +135,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\ModelData.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelStore.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData\DirectionalLightResourcesData.cpp" />
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexData\IndexVertexData.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesCube\PrimitiveResourcesCube.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesData.cpp" />
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesSprite\PrimitiveResourcesSprite.cpp" />
@@ -145,6 +153,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\Include\Func\ConvertString\ConvertString.cpp" />
     <ClCompile Include="Engine\Include\Func\CreateBufferResource\CreateBufferResource.cpp" />
     <ClCompile Include="Engine\Include\Func\CrushHandler\CrushHandler.cpp" />
+    <ClCompile Include="Engine\Include\Func\LoadModel\LoadModel.cpp" />
     <ClCompile Include="Engine\Include\Func\LoadTexture\LoadTexture.cpp" />
     <ClCompile Include="Engine\Include\Input\Input.cpp" />
     <ClCompile Include="Engine\Include\LogFile\LogFile.cpp" />
@@ -186,6 +195,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\BaseMesh.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshCube\MeshCube.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel\MeshModel.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite\MeshSprite.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere\MeshUVSphere.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\UVTransform\UVTransform.h" />
@@ -208,6 +218,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\ModelData.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelStore.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData\DirectionalLightResourcesData.h" />
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexData\IndexVertexData.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesCube\PrimitiveResourcesCube.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesData.h" />
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesSprite\PrimitiveResourcesSprite.h" />
@@ -225,6 +236,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Include\Func\ConvertString\ConvertString.h" />
     <ClInclude Include="Engine\Include\Func\CreateBufferResource\CreateBufferResource.h" />
     <ClInclude Include="Engine\Include\Func\CrushHandler\CrushHandler.h" />
+    <ClInclude Include="Engine\Include\Func\LoadModel\LoadModel.h" />
     <ClInclude Include="Engine\Include\Func\LoadTexture\LoadTexture.h" />
     <ClInclude Include="Engine\Include\Input\Input.h" />
     <ClInclude Include="Engine\Include\LogFile\LogFile.h" />

@@ -9,10 +9,12 @@
 #include "DirectXShaderCompile/DirectXShaderCompile.h"
 #include "../DirectXHeap/DirectXHeap.h"
 #include "TextureStore/TextureStore.h"
+#include "ModelStore/ModelStore.h"
 
 #include "BaseMesh/MeshUVSphere/MeshUVSphere.h"
 #include "BaseMesh/MeshCube/MeshCube.h"
 #include "BaseMesh/MeshSprite/MeshSprite.h"
+#include "BaseMesh/MeshModel/MeshModel.h"
 
 #include "BaseOrganizePSO/OrganizePSOPrimitive/OrganizePSOPrimitive.h"
 
@@ -21,8 +23,6 @@
 #include "ResourcesData/PrimitiveResourcesData/PrimitiveResourcesUVSphere/PrimitiveResourcesUVSphere.h"
 
 #include "ResourcesData/DirectionalLightResourcesData/DirectionalLightResourcesData.h"
-
-#include "../../Func/LoadTexture/LoadTexture.h"
 
 class DirectXDraw
 {
@@ -45,6 +45,14 @@ public:
 	uint32_t LoadTexture(const std::string& filePath) { return textureStore_->LoadTexture(filePath); }
 
 	/// <summary>
+	/// モデルを読み込む
+	/// </summary>
+	/// <param name="directory"></param>
+	/// <param name="fileName"></param>
+	/// <returns></returns>
+	uint32_t LoadModel(const std::string& directory, const std::string& fileName) { return modelStore_->LoadModel(directory, fileName); }
+
+	/// <summary>
 	/// プリミティブのブレンドモードを設定する
 	/// </summary>
 	/// <param name="blendMode"></param>
@@ -55,6 +63,19 @@ public:
 	/// </summary>
 	void ResetBlendMode();
 
+
+	/// <summary>
+	/// モデルを描画する
+	/// </summary>
+	/// <param name="worldTransform"></param>
+	/// <param name="uvTransform"></param>
+	/// <param name="camera"></param>
+	/// <param name="modelHandle"></param>
+	/// <param name="color"></param>
+	/// <param name="enableLighting"></param>
+	/// <param name="enableHalfLanbert"></param>
+	void DrawMode(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t modelHandle,
+		const Vector4& color, bool enableLighting, bool enableHalfLanbert);
 
 	/// <summary>
 	/// UV球を描画する
@@ -125,6 +146,9 @@ private:
 
 	// テクスチャ格納場所
 	std::unique_ptr<TextureStore> textureStore_ = nullptr;
+
+	// モデル格納場所
+	std::unique_ptr<ModelStore> modelStore_ = nullptr;
 
 
 	// プリミティブ用PSO

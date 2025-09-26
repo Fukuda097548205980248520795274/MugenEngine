@@ -21,10 +21,14 @@ void Game::Initialize(const MugenEngine* engine)
 	camera2d_ = std::make_unique<Camera2D>();
 	camera2d_->Initialize(engine_->GetScreenWidth(), engine_->GetScreenHeight());
 
-	// UV球の初期化と生成
-	uvSphere_ = std::make_unique<MeshUVSphere>();
-	uvSphere_->Initialize(engine_, camera3d_.get(), engine_->LoadTexture("./Resources/Textures/uvChecker.png"));
-	uvSphere_->enableHalfLambert_ = false;
+
+	// モデルハンドル
+	modelHandle_ = engine_->LoadModel("./Resources/Models/multiMaterial", "multiMaterial.obj");
+
+	// モデルの初期化と生成
+	model_ = std::make_unique<MeshModel>();
+	model_->Initialize(engine_, camera3d_.get(), modelHandle_);
+	model_->enableHalfLambert_ = true;
 
 	// BGMを読み込む
 	soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/Tukiyo_Ni_Ukabu_Tensyukaku.mp3");
@@ -39,10 +43,9 @@ void Game::Update()
 	camera3d_->Update();
 	camera2d_->Update();
 
-	ImGui::Begin("UVSphere");
-	ImGui::DragFloat3("rotation", &uvSphere_->worldTransform_->rotation_.x, 0.01f);
-	ImGui::SliderInt("Segment", &uvSphere_->segment_, 3, 32);
-	ImGui::SliderInt("Ring", &uvSphere_->ring_, 3, 16);
+	ImGui::Begin("Model");
+	ImGui::DragFloat3("rotation", &model_->worldTransform_->rotation_.x, 0.01f);
+	ImGui::DragFloat2("uvTransform", &model_->uvTransform_->translation_.x, 0.1f);
 	ImGui::End();
 
 	if (!engine_->IsAudioPlay(playHandle_) || playHandle_ == 0)
@@ -50,8 +53,8 @@ void Game::Update()
 		playHandle_ = engine_->PlayAudio(soundHandle_, 0.5f);
 	}
 
-	// UV球の更新処理
-	uvSphere_->Update();
+	// モデルの更新処理
+	model_->Update();
 }
 
 /// <summary>
@@ -59,6 +62,6 @@ void Game::Update()
 /// </summary>
 void Game::Draw()
 {
-	// UV球の描画
-	uvSphere_->Draw();
+	// モデルの描画
+	model_->Draw();
 }

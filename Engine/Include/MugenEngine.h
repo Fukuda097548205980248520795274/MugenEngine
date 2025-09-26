@@ -229,6 +229,18 @@ public:
 
 #pragma endregion
 
+#pragma region モデル
+
+	/// <summary>
+	/// モデルを読み込む
+	/// </summary>
+	/// <param name="directory"></param>
+	/// <param name="fileName"></param>
+	/// <returns></returns>
+	uint32_t LoadModel(const std::string& directory, const std::string& fileName)const { return directXBase_->LoadModel(directory, fileName); }
+
+#pragma endregion
+
 #pragma region オーディオ
 
 	/// <summary>
@@ -595,6 +607,22 @@ public:
 #pragma endregion
 
 #pragma region 描画処理
+
+	/// <summary>
+	/// モデルを描画する
+	/// </summary>
+	/// <param name="worldTransform"></param>
+	/// <param name="uvTransform"></param>
+	/// <param name="camera"></param>
+	/// <param name="modelHandle"></param>
+	/// <param name="color"></param>
+	/// <param name="enableLighting"></param>
+	/// <param name="enableHalfLanbert"></param>
+	void DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t modelHandle,
+		const Vector4& color, bool enableLighting, bool enableHalfLanbert) const
+	{
+		directXBase_->DrawModel(worldTransform, uvTransform, camera, modelHandle, color, enableLighting, enableHalfLanbert);
+	}
 
 	/// <summary>
 	/// スプライトを描画する

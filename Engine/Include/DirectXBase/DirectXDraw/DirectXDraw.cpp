@@ -36,6 +36,10 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	textureStore_ = std::make_unique<TextureStore>();
 	textureStore_->Initialize(directXHeap_, logFile_, device_, commandList_);
 
+	// モデル格納場所の生成と初期化
+	modelStore_ = std::make_unique<ModelStore>();
+	modelStore_->Initialize(textureStore_.get(), device_ , commandList_);
+
 
 	// プリミティブ用PSOの生成と初期化
 	primitivePSO_ = std::make_unique<OrganizePSOPrimitive>();
@@ -104,6 +108,71 @@ void DirectXDraw::ResetBlendMode()
 	primitivePSO_->ResetBlendMode();
 }
 
+
+/// <summary>
+/// モデルを描画する
+/// </summary>
+/// <param name="worldTransform"></param>
+/// <param name="uvTransform"></param>
+/// <param name="camera"></param>
+/// <param name="modelHandle"></param>
+/// <param name="color"></param>
+/// <param name="enableLighting"></param>
+/// <param name="enableHalfLanbert"></param>
+void DirectXDraw::DrawMode(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t modelHandle,
+	const Vector4& color, bool enableLighting, bool enableHalfLanbert)
+{
+	// モデル情報を取得する
+	ModelInfoDatum* modelInfo = modelStore_->GetModelInfo(modelHandle);
+
+
+	/*-----------------------------
+		マテリアルデータを入力する
+	-----------------------------*/
+
+	modelInfo->materialData_->color_ = color;
+	modelInfo->materialData_->uvTransform_ = uvTransform->affineMatrix_;
+	modelInfo->materialData_->enableLighting_ = static_cast<int32_t>(enableLighting);
+	modelInfo->materialData_->enableHalfLambert_ = static_cast<int32_t>(enableHalfLanbert);
+
+
+	/*--------------------------
+		座標変換データを入力する
+	--------------------------*/
+
+	modelInfo->transformationData_->world = worldTransform->worldMatrix_;
+	modelInfo->transformationData_->worldViewProjection = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
+
+
+	// モデルデータの数を描画する
+	for (uint32_t modelIndex = 0; modelIndex < modelInfo->modelData_.size(); ++modelIndex)
+	{
+		// ビューポート、シザー矩形の設定
+		commandList_->RSSetViewports(1, &viewport_);
+		commandList_->RSSetScissorRects(1, &scissorRect_);
+
+		// PSOの設定
+		primitivePSO_->SetPSOState();
+
+		// モデルリソースの設定
+		modelInfo->indexVertexResource_[modelIndex]->Register();
+
+		// CBVの設定
+		modelInfo->Register(0, 1);
+
+		// 平行光源リソースの設定
+		resourcesDirectionalLight_->Register(3, 4);
+
+		// テクスチャのSRVを設定する
+		commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(modelInfo->textureHandle_[modelIndex]));
+
+		// 形状の設定
+		commandList_->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+		// ドローコール
+		commandList_->DrawIndexedInstanced(UINT(modelInfo->modelData_[modelIndex].indices.size()), 1, 0, 0, 0);
+	}
+}
 
 /// <summary>
 /// UV球を描画する

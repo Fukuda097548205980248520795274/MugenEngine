@@ -259,6 +259,15 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData">
       <UniqueIdentifier>{a26a2470-ca39-425c-8c79-684a6fbe7330}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\Func\LoadModel">
+      <UniqueIdentifier>{59681325-f505-4564-8832-1de225bc2ee5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexData">
+      <UniqueIdentifier>{3ee9378c-620d-4919-b4bd-0a259ba0c617}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel">
+      <UniqueIdentifier>{17fcaea7-f009-46b5-ac48-03041b69fa6c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -495,6 +504,15 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData\DirectionalLightResourcesData.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\Func\LoadModel\LoadModel.cpp">
+      <Filter>Engine\Include\Func\LoadModel</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexData\IndexVertexData.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexData</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel\MeshModel.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -730,6 +748,15 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData\DirectionalLightResourcesData.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\Func\LoadModel\LoadModel.h">
+      <Filter>Engine\Include\Func\LoadModel</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexData\IndexVertexData.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexData</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel\MeshModel.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

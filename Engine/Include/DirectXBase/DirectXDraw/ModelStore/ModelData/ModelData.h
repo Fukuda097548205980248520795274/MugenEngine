@@ -14,6 +14,9 @@ struct MaterialData
 // モデルデータ
 struct ModelData
 {
+	// インデックスデータ
+	std::vector<uint32_t> indices;
+
 	// 頂点データ
 	std::vector<VertexDataForGPU> vertices;
 
