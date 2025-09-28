@@ -65,6 +65,65 @@ struct Camera
 ConstantBuffer<Camera> gCamera : register(b2);
 
 
+// 平行光源の拡散反射
+float3 CreateDirectionalLightDiffuse(uint directionalLightIndex, VertexShaderOutput input)
+{
+    // ハーフランバート有効
+    if (gMaterial.enableHalfLambert != 0)
+    {
+        // 光と法線の内積
+        float NdotL = dot(normalize(input.normal), -gDirectionalLight[directionalLightIndex].direction);
+            
+        // なだらかにする
+        float cos = pow(NdotL * 0.5f + 0.5f, 2.0f);
+                
+        // 光の拡散反射を加算する
+        return gDirectionalLight[directionalLightIndex].color.rgb * cos * gDirectionalLight[directionalLightIndex].intensity;
+    }
+    else
+    {
+        // なだらかにする
+        float cos = saturate(dot(normalize(input.normal), -gDirectionalLight[directionalLightIndex].direction));
+                
+        // 光の拡散反射を加算する
+        return gDirectionalLight[directionalLightIndex].color.rgb * cos * gDirectionalLight[directionalLightIndex].intensity;
+    }
+}
+
+// 平行光源の鏡面反射
+float3 CreateDirectionalLightSpecular(uint directionalLightIndex , float3 toEye , VertexShaderOutput input)
+{
+    // 反射の強度
+    float specularPow = 0.0f;
+                    
+    // ブリンフォン有効
+    if (gMaterial.enableBlinnPhong != 0)
+    {
+        // ハーフベクトル
+        float3 halfVector = normalize(-gDirectionalLight[directionalLightIndex].direction + toEye);
+
+        // 法線とハーフベクトルの内積
+        float NdotH = dot(normalize(input.normal), halfVector);
+
+        specularPow = pow(saturate(NdotH), gMaterial.shininess);
+
+    }
+    else
+    {
+        // ブリンフォン無効
+        
+        // 入射光の反射ベクトル
+        float3 reflectLight = reflect(gDirectionalLight[directionalLightIndex].direction, normalize(input.normal));
+
+        // カメラと反射ベクトルの内積
+        float RdotE = dot(reflectLight, toEye);
+
+        specularPow = pow(saturate(RdotE), gMaterial.shininess);
+    }
+
+    return gDirectionalLight[directionalLightIndex].color.rgb * gDirectionalLight[directionalLightIndex].intensity * specularPow * float3(1.0f, 1.0f, 1.0f);
+}
+
 
 PixelShaderOutput main(VertexShaderOutput input)
 {
@@ -88,109 +147,18 @@ PixelShaderOutput main(VertexShaderOutput input)
         
         // 平行光源の鏡面反射
         float3 directionalLightSpecular = float3(0.0f, 0.0f, 0.0f);
-        
-        
-        // ハーフランバート有効
-        if (gMaterial.enableHalfLambert != 0)
+
+        // 使用している平行光源から値を取得する
+        for (uint directionalLightIndex = 0; directionalLightIndex < gNumDirectionalLight.num; ++directionalLightIndex)
         {
-            for (uint directionalLightIndex = 0; directionalLightIndex < gNumDirectionalLight.num; ++directionalLightIndex)
+            // 光の拡散反射を加算する
+            directionalLightDiffuse += CreateDirectionalLightDiffuse(directionalLightIndex, input);
+                
+            // スペキュラー有効
+            if (gMaterial.enableSpecular != 0)
             {
-                // 光と法線の内積
-                float NdotL = dot(normalize(input.normal), -gDirectionalLight[directionalLightIndex].direction);
-            
-                // なだらかにする
-                float cos = pow(NdotL * 0.5f + 0.5f, 2.0f);
-                
-                // 光の拡散反射を加算する
-                directionalLightDiffuse += gDirectionalLight[directionalLightIndex].color.rgb * cos * gDirectionalLight[directionalLightIndex].intensity;
-                
-                // スペキュラー有効
-                if (gMaterial.enableSpecular != 0)
-                {
-                    // 反射の強度
-                    float specularPow = 0.0f;
-                    
-                    // ブリンフォン有効
-                    if (gMaterial.enableBlinnPhong != 0)
-                    {
-                        // ハーフベクトル
-                        float3 halfVector = normalize(-gDirectionalLight[directionalLightIndex].direction + toEye);
-
-                        // 法線とハーフベクトルの内積
-                        float NdotH = dot(normalize(input.normal), halfVector);
-
-                        specularPow = pow(saturate(NdotH), gMaterial.shininess);
-
-                    }
-                    else
-                    {
-                        // ブリンフォン無効
-                        
-                        // 入射光の反射ベクトル
-                        float3 reflectLight = reflect(gDirectionalLight[directionalLightIndex].direction, normalize(input.normal));
-
-                        // カメラと反射ベクトルの内積
-                        float RdotE = dot(reflectLight, toEye);
-
-                        specularPow = pow(saturate(RdotE), gMaterial.shininess);
-                    }
-                    
-                    // 光の鏡面反射を加算する
-                    directionalLightSpecular +=
-                    gDirectionalLight[directionalLightIndex].color.rgb * gDirectionalLight[directionalLightIndex].intensity * specularPow * float3(1.0f, 1.0f, 1.0f);
-
-                }
-            }
-
-        }
-        else
-        {
-            // ハーフランバート無効
-            
-            for (uint directionalLightIndex = 0; directionalLightIndex < gNumDirectionalLight.num; ++directionalLightIndex)
-            {
-                // なだらかにする
-                float cos = saturate(dot(normalize(input.normal), -gDirectionalLight[directionalLightIndex].direction));
-                
-                // 光の拡散反射を加算する
-                directionalLightDiffuse += gDirectionalLight[directionalLightIndex].color.rgb * cos * gDirectionalLight[directionalLightIndex].intensity;
-                
-                 // スペキュラー有効
-                if (gMaterial.enableSpecular != 0)
-                {
-                    // 反射の強度
-                    float specularPow = 0.0f;
-                    
-                    // ブリンフォン有効
-                    if (gMaterial.enableBlinnPhong != 0)
-                    {
-                        // ハーフベクトル
-                        float3 halfVector = normalize(-gDirectionalLight[directionalLightIndex].direction + toEye);
-
-                        // 法線とハーフベクトルの内積
-                        float NdotH = dot(normalize(input.normal), halfVector);
-
-                        specularPow = pow(saturate(NdotH), gMaterial.shininess);
-
-                    }
-                    else
-                    {
-                        // ブリンフォン無効
-                        
-                        // 入射光の反射ベクトル
-                        float3 reflectLight = reflect(gDirectionalLight[directionalLightIndex].direction, normalize(input.normal));
-
-                        // カメラと反射ベクトルの内積
-                        float RdotE = dot(reflectLight, toEye);
-
-                        specularPow = pow(saturate(RdotE), gMaterial.shininess);
-                    }
-                    
-                    // 光の鏡面反射を加算する
-                    directionalLightSpecular +=
-                    gDirectionalLight[directionalLightIndex].color.rgb * gDirectionalLight[directionalLightIndex].intensity * specularPow * float3(1.0f, 1.0f, 1.0f);
-
-                }
+                // 光の鏡面反射を加算する
+                directionalLightSpecular += CreateDirectionalLightSpecular(directionalLightIndex, toEye, input);
             }
         }
         
