@@ -136,9 +136,6 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh">
       <UniqueIdentifier>{59e41c99-6b00-4a72-98a7-f1d5b3568ea2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\Transform">
-      <UniqueIdentifier>{0bebbc86-7cfc-4d47-8ba8-d0ad641818ed}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU">
       <UniqueIdentifier>{fed8f1fe-7418-40f8-8409-02e4dfa673fb}</UniqueIdentifier>
     </Filter>
@@ -183,15 +180,6 @@
     </Filter>
     <Filter Include="Engine\Include\Math\Matrix3x3">
       <UniqueIdentifier>{b3bd4a17-db25-4d59-89a8-9f0966b653ea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform3D">
-      <UniqueIdentifier>{79e47c0b-77f7-4144-b048-64cb4037419e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform2D">
-      <UniqueIdentifier>{7a7ab8d3-3960-430c-8ec8-75ac19ef2954}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\UVTransform">
-      <UniqueIdentifier>{12780518-5433-46dc-83e6-69c6150fcff4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera3D">
       <UniqueIdentifier>{928e8cb0-51f0-42b8-8b45-781d10b00abd}</UniqueIdentifier>
@@ -280,6 +268,24 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU">
       <UniqueIdentifier>{d9cfbcdc-174b-46f6-b132-33798544d0ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions">
+      <UniqueIdentifier>{6ffb319e-0ad7-4fab-9c6f-949c474097f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Material">
+      <UniqueIdentifier>{61d8dba2-13cd-4f3e-9197-8cc539eb3af2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform3D">
+      <UniqueIdentifier>{79e47c0b-77f7-4144-b048-64cb4037419e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform2D">
+      <UniqueIdentifier>{7a7ab8d3-3960-430c-8ec8-75ac19ef2954}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\UVTransform">
+      <UniqueIdentifier>{12780518-5433-46dc-83e6-69c6150fcff4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Transform">
+      <UniqueIdentifier>{0bebbc86-7cfc-4d47-8ba8-d0ad641818ed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -357,8 +363,8 @@
     <ClCompile Include="Engine\Include\Math\Matrix4x4\Matrix4x4.cpp">
       <Filter>Engine\Include\Math\Matrix4x4</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\Transform\Transform.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\Transform</Filter>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Transform\Transform.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Transform</Filter>
     </ClCompile>
     <ClCompile Include="Externals\ImGui\imgui.cpp">
       <Filter>Externals\ImGui</Filter>
@@ -396,8 +402,8 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform3D\WorldTransform3D.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform3D</Filter>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform3D\WorldTransform3D.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform3D</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\MaterialData\MaterialData.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\DataForGPU\MaterialData</Filter>
@@ -447,11 +453,11 @@
     <ClCompile Include="Engine\Include\Math\Matrix3x3\Matrix3x3.cpp">
       <Filter>Engine\Include\Math\Matrix3x3</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform2D\WorldTransform2D.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform2D</Filter>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform2D\WorldTransform2D.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform2D</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\UVTransform\UVTransform.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\UVTransform</Filter>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\UVTransform\UVTransform.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\UVTransform</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera3D\Camera3D.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\Camera\Camera3D</Filter>
@@ -537,6 +543,9 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU\CameraDataForGPU.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Material\Material.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Material</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -611,8 +620,8 @@
     <ClInclude Include="Engine\Include\Math\Matrix4x4\Matrix4x4.h">
       <Filter>Engine\Include\Math\Matrix4x4</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\Transform\Transform.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\Transform</Filter>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Transform\Transform.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Transform</Filter>
     </ClInclude>
     <ClInclude Include="Externals\ImGui\imconfig.h">
       <Filter>Externals\ImGui</Filter>
@@ -653,8 +662,8 @@
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform3D\WorldTransform3D.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform3D</Filter>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform3D\WorldTransform3D.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform3D</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\MaterialData\MaterialData.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\DataForGPU\MaterialData</Filter>
@@ -704,11 +713,11 @@
     <ClInclude Include="Engine\Include\Math\Matrix3x3\Matrix3x3.h">
       <Filter>Engine\Include\Math\Matrix3x3</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform2D\WorldTransform2D.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\WorldTransform2D</Filter>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform2D\WorldTransform2D.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform2D</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\UVTransform\UVTransform.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\UVTransform</Filter>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\UVTransform\UVTransform.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\UVTransform</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera3D\Camera3D.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\Camera\Camera3D</Filter>
@@ -793,6 +802,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU\CameraDataForGPU.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Material\Material.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Material</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

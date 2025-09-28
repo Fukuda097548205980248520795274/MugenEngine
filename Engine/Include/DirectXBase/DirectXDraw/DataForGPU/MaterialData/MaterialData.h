@@ -17,8 +17,13 @@ struct MaterialDataForGPU
 	// スペキュラー有効化
 	int32_t enableSpecular_;
 
+	// ブリンフォン有効化
+	int32_t enableBlinnPhong_;
+
 	// 光沢度
 	float shininess_;
+
+	float padding[3];
 
 	// UVトランスフォーム
 	Matrix4x4 uvTransform_;

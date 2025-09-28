@@ -77,7 +77,7 @@ public:
 	/// <param name="enableLighting"></param>
 	/// <param name="enableHalfLanbert"></param>
 	void DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t modelHandle,
-		const Vector4& color, bool enableLighting, bool enableHalfLanbert, bool enableSpecular, float shininess);
+		const Material* material);
 
 	/// <summary>
 	/// UV球を描画する
@@ -92,7 +92,7 @@ public:
 	/// <param name="segment"></param>
 	/// <param name="ring"></param>
 	void DrawUVSphere(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
-		const Vector4& color, bool enableLighting, bool enableHalfLanbert, bool enableSpecular, float shininess, int32_t segment, int32_t ring);
+		const Material* material, int32_t segment, int32_t ring);
 
 	/// <summary>
 	/// 立方体を描画する
@@ -105,7 +105,7 @@ public:
 	/// <param name="enableLighting"></param>
 	/// <param name="enableHalfLanbert"></param>
 	void DrawCube(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
-		const Vector4& color, bool enableLighting, bool enableHalfLanbert, bool enableSpecular, float shininess);
+		const Material* material);
 
 	/// <summary>
 	/// スプライトを描画する

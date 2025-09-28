@@ -1,7 +1,8 @@
 #pragma once
 #include <memory>
-#include "WorldTransform3D/WorldTransform3D.h"
-#include "UVTransform/UVTransform.h"
+#include "MeshOptions/WorldTransform3D/WorldTransform3D.h"
+#include "MeshOptions/UVTransform/UVTransform.h"
+#include "MeshOptions/Material/Material.h"
 #include "../Camera/Camera3D/Camera3D.h"
 
 // 前方宣言
@@ -38,22 +39,8 @@ public:
 	// テクスチャハンドル
 	uint32_t textureHandle_ = 0;
 
-	// 色
-	Vector4 color_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-
-
-	// ライティング有効化
-	bool enableLighting_ = true;
-
-	// ハーフランバート有効化
-	bool enableHalfLambert_ = false;
-
-
-	// スペキュラー有効化
-	bool enableSpecular_ = false;
-
-	// 光沢度
-	float shininess_ = 15.0f;
+	// マテリアル
+	std::unique_ptr<Material> material_ = nullptr;
 
 
 protected:

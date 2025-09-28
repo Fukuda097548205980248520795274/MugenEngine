@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
-#include "../WorldTransform2D/WorldTransform2D.h"
-#include "../UVTransform/UVTransform.h"
+#include "../MeshOptions/WorldTransform2D/WorldTransform2D.h"
+#include "../MeshOptions/UVTransform/UVTransform.h"
 #include "../../Camera/Camera2D/Camera2D.h"
 
 // 前方宣言

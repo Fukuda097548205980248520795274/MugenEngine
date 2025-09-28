@@ -116,7 +116,7 @@ void DirectXDraw::ResetBlendMode()
 /// <param name="enableLighting"></param>
 /// <param name="enableHalfLanbert"></param>
 void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t modelHandle,
-	const Vector4& color, bool enableLighting, bool enableHalfLanbert, bool enableSpecular, float shininess)
+	const Material* material)
 {
 	// モデル情報を取得する
 	ModelInfoDatum* modelInfo = modelStore_->GetModelInfo(modelHandle);
@@ -128,12 +128,20 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 		マテリアルデータを入力する
 	-----------------------------*/
 
-	modelInfo->materialData_->color_ = color;
-	modelInfo->materialData_->shininess_ = shininess;
+	// UV座標
 	modelInfo->materialData_->uvTransform_ = uvTransform->affineMatrix_;
-	modelInfo->materialData_->enableLighting_ = static_cast<int32_t>(enableLighting);
-	modelInfo->materialData_->enableHalfLambert_ = static_cast<int32_t>(enableHalfLanbert);
-	modelInfo->materialData_->enableSpecular_ = static_cast<int32_t>(enableSpecular);
+
+	// マテリアル
+	modelInfo->materialData_->color_ = material->color_;
+	
+	// 拡散反射
+	modelInfo->materialData_->enableLighting_ = static_cast<int32_t>(material->enableLighting_);
+	modelInfo->materialData_->enableHalfLambert_ = static_cast<int32_t>(material->enableHalfLambert_);
+
+	// 鏡面反射
+	modelInfo->materialData_->enableSpecular_ = static_cast<int32_t>(material->enableSpecular_);
+	modelInfo->materialData_->enableBlinnPhong_ = static_cast<int32_t>(material->enableBlinnPhong_);
+	modelInfo->materialData_->shininess_ = material->shininess_;
 
 
 	// wvp行列
@@ -196,7 +204,7 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 /// <param name="segment"></param>
 /// <param name="ring"></param>
 void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
-	const Vector4& color, bool enableLighting, bool enableHalfLanbert, bool enableSpecular, float shininess, int32_t segment, int32_t ring)
+	const Material* material ,int32_t segment, int32_t ring)
 {
 	// セグメントとリングの数を制限する
 	segment = std::max(segment, resourcesUVSphere_->GetMinSegment());
@@ -292,19 +300,24 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVT
 	}
 
 
-	/*--------------
-	    マテリアル
-	--------------*/
+	/*-----------------------------
+	    マテリアルデータを入力する
+	-----------------------------*/
 
-	// 色やライティング
-	resourcesUVSphere_->materialData_->color_ = color;
-	resourcesUVSphere_->materialData_->shininess_ = shininess;
-	resourcesUVSphere_->materialData_->enableLighting_ = static_cast<int32_t>(enableLighting);
-	resourcesUVSphere_->materialData_->enableHalfLambert_ = static_cast<int32_t>(enableHalfLanbert);
-	resourcesUVSphere_->materialData_->enableSpecular_ = static_cast<int32_t>(enableSpecular);
-
-	// UV座標変換用行列
+	// UV座標
 	resourcesUVSphere_->materialData_->uvTransform_ = uvTransform->affineMatrix_;
+
+	// 色
+	resourcesUVSphere_->materialData_->color_ = material->color_;
+	
+	// 拡散反射
+	resourcesUVSphere_->materialData_->enableLighting_ = static_cast<int32_t>(material->enableLighting_);
+	resourcesUVSphere_->materialData_->enableHalfLambert_ = static_cast<int32_t>(material->enableHalfLambert_);
+
+	// 鏡面反射
+	resourcesUVSphere_->materialData_->enableSpecular_ = static_cast<int32_t>(material->enableSpecular_);
+	resourcesUVSphere_->materialData_->enableBlinnPhong_ = static_cast<int32_t>(material->enableBlinnPhong_);
+	resourcesUVSphere_->materialData_->shininess_ = material->shininess_;
 
 
 	/*------------------
@@ -354,24 +367,29 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVT
 /// <param name="camera"></param>
 /// <param name="textureHandle"></param>
 void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
-	const Vector4& color, bool enableLighting, bool enableHalfLanbert, bool enableSpecular, float shininess)
+	const Material* material)
 {
 	// カメラの値を取得する
 	resourcesMainCamera_->data_->worldPosition = camera->GetWorldPosition();
 
-	/*---------------
-	    マテリアル
-	---------------*/
+	/*------------------------------
+	    マテリアルデータを入力する
+	------------------------------*/
 
-	// UV座標変換用行列
+	// UV座標
 	resourcesCube_->materialData_->uvTransform_ = uvTransform->affineMatrix_;
+
+	// 色
+	resourcesCube_->materialData_->color_ = material->color_;
 	
-	// 色やライティング
-	resourcesCube_->materialData_->color_ = color;
-	resourcesCube_->materialData_->shininess_ = shininess;
-	resourcesCube_->materialData_->enableLighting_ = static_cast<int32_t>(enableLighting);
-	resourcesCube_->materialData_->enableHalfLambert_ = static_cast<int32_t>(enableHalfLanbert);
-	resourcesCube_->materialData_->enableSpecular_ = static_cast<int32_t>(enableSpecular);
+	// 拡散反射
+	resourcesCube_->materialData_->enableLighting_ = static_cast<int32_t>(material->enableLighting_);
+	resourcesCube_->materialData_->enableHalfLambert_ = static_cast<int32_t>(material->enableHalfLambert_);
+
+	// 鏡面反射
+	resourcesCube_->materialData_->enableSpecular_ = static_cast<int32_t>(material->enableSpecular_);
+	resourcesCube_->materialData_->enableBlinnPhong_ = static_cast<int32_t>(material->enableBlinnPhong_);
+	resourcesCube_->materialData_->shininess_ = material->shininess_;
 
 
 	/*-------------

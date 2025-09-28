@@ -24,7 +24,8 @@ void MaterialResourcesDataCBV::Initialize(ID3D12Device* device, ID3D12GraphicsCo
 	data_->uvTransform_ = MakeIdentityMatrix4x4();
 	data_->enableLighting_ = true;
 	data_->enableHalfLambert_ = false;
-	data_->enableSpecular_ = true;
+	data_->enableSpecular_ = false;
+	data_->enableBlinnPhong_ = false;
 	data_->shininess_ = 15.0f;
 }
 

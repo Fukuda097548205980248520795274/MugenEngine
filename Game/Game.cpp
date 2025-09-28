@@ -28,8 +28,9 @@ void Game::Initialize(const MugenEngine* engine)
 	// UV球の初期化と生成
 	uvSphere_ = std::make_unique<MeshUVSphere>();
 	uvSphere_->Initialize(engine_, camera3d_.get(), textureHandle_);
-	uvSphere_->enableSpecular_ = true;
-	uvSphere_->color_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+	uvSphere_->material_->enableHalfLambert_ = true;
+	uvSphere_->material_->enableSpecular_ = true;
+	uvSphere_->material_->enableBlinnPhong_ = true;
 
 	// BGMを読み込む
 	soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/Tukiyo_Ni_Ukabu_Tensyukaku.mp3");
@@ -43,10 +44,6 @@ void Game::Update()
 	// カメラの更新処理
 	camera3d_->Update();
 	camera2d_->Update();
-
-	ImGui::Begin("UVSphere");
-	ImGui::SliderFloat("shininess", &uvSphere_->shininess_, 0.0f , 30.0f);
-	ImGui::End();
 
 	if (!engine_->IsAudioPlay(playHandle_) || playHandle_ == 0)
 	{

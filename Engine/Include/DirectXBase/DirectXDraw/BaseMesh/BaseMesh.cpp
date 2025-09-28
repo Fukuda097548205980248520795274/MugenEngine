@@ -24,6 +24,10 @@ void BaseMesh::Initialize(const MugenEngine* engine, const Camera3D* camera3d, u
 	// UVトランスフォームの生成と初期化
 	uvTransform_ = std::make_unique<UVTransform>();
 	uvTransform_->Initialize();
+
+	// マテリアルの生成と初期化
+	material_ = std::make_unique<Material>();
+	material_->Initialize();
 }
 
 /// <summary>
@@ -31,8 +35,8 @@ void BaseMesh::Initialize(const MugenEngine* engine, const Camera3D* camera3d, u
 /// </summary>
 void BaseMesh::Update()
 {
-	// 光沢度の範囲を指定する
-	shininess_ = std::max(shininess_, 1.0f);
+	// マテリアルの更新処理
+	material_->Update();
 
 	// ワールドトランスフォームの更新
 	worldTransform_->Update();

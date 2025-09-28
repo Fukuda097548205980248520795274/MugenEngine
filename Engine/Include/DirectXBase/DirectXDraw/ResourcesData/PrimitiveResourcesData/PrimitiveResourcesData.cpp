@@ -23,7 +23,8 @@ void PrimitiveResourcesData::Initialize(ID3D12Device* device, ID3D12GraphicsComm
 	materialData_->uvTransform_ = MakeIdentityMatrix4x4();
 	materialData_->enableLighting_ = true;
 	materialData_->enableHalfLambert_ = false;
-	materialData_->enableSpecular_ = true;
+	materialData_->enableSpecular_ = false;
+	materialData_->enableBlinnPhong_ = false;
 	materialData_->shininess_ = 15.0f;
 
 	// 座標変換

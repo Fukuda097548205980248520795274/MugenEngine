@@ -19,6 +19,5 @@ void MeshUVSphere::Initialize(const MugenEngine* engine, const Camera3D* camera3
 void MeshUVSphere::Draw()
 {
 	// UV球を描画する
-	engine_->DrawUVSphere(worldTransform_.get(), uvTransform_.get(), camera3d_, textureHandle_,
-		color_, enableLighting_, enableHalfLambert_, enableSpecular_, shininess_, segment_, ring_);
+	engine_->DrawUVSphere(worldTransform_.get(), uvTransform_.get(), camera3d_, textureHandle_, material_.get(), segment_, ring_);
 }

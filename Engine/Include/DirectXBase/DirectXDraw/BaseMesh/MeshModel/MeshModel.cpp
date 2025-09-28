@@ -24,6 +24,10 @@ void MeshModel::Initialize(const MugenEngine* engine, const Camera3D* camera3d, 
 	// UVトランスフォームの生成と初期化
 	uvTransform_ = std::make_unique<UVTransform>();
 	uvTransform_->Initialize();
+
+	// マテリアルの生成と初期化
+	material_ = std::make_unique<Material>();
+	material_->Initialize();
 }
 
 /// <summary>
@@ -31,8 +35,8 @@ void MeshModel::Initialize(const MugenEngine* engine, const Camera3D* camera3d, 
 /// </summary>
 void MeshModel::Update()
 {
-	// 光沢度の範囲を指定する
-	shininess_ = std::max(shininess_, 1.0f);
+	// マテリアルの更新処理
+	material_->Update();
 
 	// ワールドトランスフォームの更新
 	worldTransform_->Update();
@@ -47,6 +51,5 @@ void MeshModel::Update()
 void MeshModel::Draw()
 {
 	// モデルを描画する
-	engine_->DrawModel(worldTransform_.get(), uvTransform_.get(), camera3d_, modelHandle_, color_,
-		enableLighting_, enableHalfLambert_, enableSpecular_, shininess_);
+	engine_->DrawModel(worldTransform_.get(), uvTransform_.get(), camera3d_, modelHandle_, material_.get());
 }
