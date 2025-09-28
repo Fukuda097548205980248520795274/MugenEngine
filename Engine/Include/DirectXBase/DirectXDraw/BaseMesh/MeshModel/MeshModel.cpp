@@ -31,6 +31,9 @@ void MeshModel::Initialize(const MugenEngine* engine, const Camera3D* camera3d, 
 /// </summary>
 void MeshModel::Update()
 {
+	// 光沢度の範囲を指定する
+	shininess_ = std::max(shininess_, 1.0f);
+
 	// ワールドトランスフォームの更新
 	worldTransform_->Update();
 
@@ -44,5 +47,6 @@ void MeshModel::Update()
 void MeshModel::Draw()
 {
 	// モデルを描画する
-	engine_->DrawModel(worldTransform_.get(), uvTransform_.get(), camera3d_, modelHandle_, color_, enableLighting_, enableHalfLambert_);
+	engine_->DrawModel(worldTransform_.get(), uvTransform_.get(), camera3d_, modelHandle_, color_,
+		enableLighting_, enableHalfLambert_, enableSpecular_, shininess_);
 }

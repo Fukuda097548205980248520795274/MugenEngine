@@ -116,7 +116,7 @@ void DirectXDraw::ResetBlendMode()
 /// <param name="enableLighting"></param>
 /// <param name="enableHalfLanbert"></param>
 void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t modelHandle,
-	const Vector4& color, bool enableLighting, bool enableHalfLanbert)
+	const Vector4& color, bool enableLighting, bool enableHalfLanbert, bool enableSpecular, float shininess)
 {
 	// モデル情報を取得する
 	ModelInfoDatum* modelInfo = modelStore_->GetModelInfo(modelHandle);
@@ -129,9 +129,11 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 	-----------------------------*/
 
 	modelInfo->materialData_->color_ = color;
+	modelInfo->materialData_->shininess_ = shininess;
 	modelInfo->materialData_->uvTransform_ = uvTransform->affineMatrix_;
 	modelInfo->materialData_->enableLighting_ = static_cast<int32_t>(enableLighting);
 	modelInfo->materialData_->enableHalfLambert_ = static_cast<int32_t>(enableHalfLanbert);
+	modelInfo->materialData_->enableSpecular_ = static_cast<int32_t>(enableSpecular);
 
 
 	// wvp行列
@@ -194,7 +196,7 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 /// <param name="segment"></param>
 /// <param name="ring"></param>
 void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
-	const Vector4& color, bool enableLighting, bool enableHalfLanbert, int32_t segment, int32_t ring)
+	const Vector4& color, bool enableLighting, bool enableHalfLanbert, bool enableSpecular, float shininess, int32_t segment, int32_t ring)
 {
 	// セグメントとリングの数を制限する
 	segment = std::max(segment, resourcesUVSphere_->GetMinSegment());
@@ -296,8 +298,10 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVT
 
 	// 色やライティング
 	resourcesUVSphere_->materialData_->color_ = color;
+	resourcesUVSphere_->materialData_->shininess_ = shininess;
 	resourcesUVSphere_->materialData_->enableLighting_ = static_cast<int32_t>(enableLighting);
 	resourcesUVSphere_->materialData_->enableHalfLambert_ = static_cast<int32_t>(enableHalfLanbert);
+	resourcesUVSphere_->materialData_->enableSpecular_ = static_cast<int32_t>(enableSpecular);
 
 	// UV座標変換用行列
 	resourcesUVSphere_->materialData_->uvTransform_ = uvTransform->affineMatrix_;
@@ -350,7 +354,7 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVT
 /// <param name="camera"></param>
 /// <param name="textureHandle"></param>
 void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
-	const Vector4& color, bool enableLighting, bool enableHalfLanbert)
+	const Vector4& color, bool enableLighting, bool enableHalfLanbert, bool enableSpecular, float shininess)
 {
 	// カメラの値を取得する
 	resourcesMainCamera_->data_->worldPosition = camera->GetWorldPosition();
@@ -364,8 +368,10 @@ void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTrans
 	
 	// 色やライティング
 	resourcesCube_->materialData_->color_ = color;
+	resourcesCube_->materialData_->shininess_ = shininess;
 	resourcesCube_->materialData_->enableLighting_ = static_cast<int32_t>(enableLighting);
 	resourcesCube_->materialData_->enableHalfLambert_ = static_cast<int32_t>(enableHalfLanbert);
+	resourcesCube_->materialData_->enableSpecular_ = static_cast<int32_t>(enableSpecular);
 
 
 	/*-------------

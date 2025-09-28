@@ -19,5 +19,6 @@ void MeshCube::Initialize(const MugenEngine* engine, const Camera3D* camera3d, u
 void MeshCube::Draw()
 {
 	// 立方体を描画する
-	engine_->DrawCube(worldTransform_.get(), uvTransform_.get(), camera3d_, textureHandle_, color_, enableLighting_, enableHalfLambert_);
+	engine_->DrawCube(worldTransform_.get(), uvTransform_.get(), camera3d_, textureHandle_, color_,
+		enableLighting_, enableHalfLambert_, enableSpecular_, shininess_);
 }

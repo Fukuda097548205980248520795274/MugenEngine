@@ -31,6 +31,9 @@ void BaseMesh::Initialize(const MugenEngine* engine, const Camera3D* camera3d, u
 /// </summary>
 void BaseMesh::Update()
 {
+	// 光沢度の範囲を指定する
+	shininess_ = std::max(shininess_, 1.0f);
+
 	// ワールドトランスフォームの更新
 	worldTransform_->Update();
 

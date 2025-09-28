@@ -47,6 +47,12 @@ public:
 	// ハーフランバート有効化
 	bool enableHalfLambert_ = false;
 
+	// スペキュラー有効化
+	bool enableSpecular_ = false;
+
+	// 光沢度
+	float shininess_ = 15.0f;
+
 
 private:
 

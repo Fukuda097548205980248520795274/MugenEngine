@@ -20,5 +20,5 @@ void MeshUVSphere::Draw()
 {
 	// UV球を描画する
 	engine_->DrawUVSphere(worldTransform_.get(), uvTransform_.get(), camera3d_, textureHandle_,
-		color_, enableLighting_, enableHalfLambert_, segment_, ring_);
+		color_, enableLighting_, enableHalfLambert_, enableSpecular_, shininess_, segment_, ring_);
 }

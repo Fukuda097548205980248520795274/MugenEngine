@@ -41,11 +41,19 @@ public:
 	// 色
 	Vector4 color_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 
+
 	// ライティング有効化
 	bool enableLighting_ = true;
 
 	// ハーフランバート有効化
 	bool enableHalfLambert_ = false;
+
+
+	// スペキュラー有効化
+	bool enableSpecular_ = false;
+
+	// 光沢度
+	float shininess_ = 15.0f;
 
 
 protected:

@@ -619,9 +619,9 @@ public:
 	/// <param name="enableLighting"></param>
 	/// <param name="enableHalfLanbert"></param>
 	void DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t modelHandle,
-		const Vector4& color, bool enableLighting, bool enableHalfLanbert) const
+		const Vector4& color, bool enableLighting, bool enableHalfLanbert, bool enableSpecular, float shininess) const
 	{
-		directXBase_->DrawModel(worldTransform, uvTransform, camera, modelHandle, color, enableLighting, enableHalfLanbert);
+		directXBase_->DrawModel(worldTransform, uvTransform, camera, modelHandle, color, enableLighting, enableHalfLanbert, enableSpecular, shininess);
 	}
 
 	/// <summary>
@@ -646,9 +646,10 @@ public:
 	/// <param name="segment"></param>
 	/// <param name="ring"></param>
 	void DrawUVSphere(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
-		const Vector4& color, bool enableLighting, bool enableHalfLanbert, int32_t segment, int32_t ring) const
+		const Vector4& color, bool enableLighting, bool enableHalfLanbert, bool enableSpecular, float shininess, int32_t segment, int32_t ring) const
 	{
-		directXBase_->DrawUVSphere(worldTransform, uvTransform, camera, textureHandle, color, enableLighting, enableHalfLanbert, segment, ring);
+		directXBase_->DrawUVSphere(worldTransform, uvTransform, camera, textureHandle, color,
+			enableLighting, enableHalfLanbert, enableSpecular, shininess, segment, ring);
 	}
 
 	/// <summary>
@@ -662,9 +663,9 @@ public:
 	/// <param name="enableLighting"></param>
 	/// <param name="enableHalfLanbert"></param>
 	void DrawCube(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
-		const Vector4& color, bool enableLighting, bool enableHalfLanbert) const
+		const Vector4& color, bool enableLighting, bool enableHalfLanbert, bool enableSpecular, float shininess) const
 	{
-		directXBase_->DrawCube(worldTransform, uvTransform, camera, textureHandle, color, enableLighting, enableHalfLanbert);
+		directXBase_->DrawCube(worldTransform, uvTransform, camera, textureHandle, color, enableLighting, enableHalfLanbert, enableSpecular, shininess);
 	}
 
 #pragma endregion

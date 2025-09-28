@@ -58,6 +58,7 @@ void PrimitiveResourcesSprite::Initialize(ID3D12Device* device, ID3D12GraphicsCo
 	// ライティングは無効にする
 	materialData_->enableLighting_ = false;
 	materialData_->enableHalfLambert_ = false;
+	materialData_->enableSpecular_ = false;
 }
 
 /// <summary>

@@ -28,7 +28,7 @@ void Game::Initialize(const MugenEngine* engine)
 	// UV球の初期化と生成
 	uvSphere_ = std::make_unique<MeshUVSphere>();
 	uvSphere_->Initialize(engine_, camera3d_.get(), textureHandle_);
-	uvSphere_->enableHalfLambert_ = true;
+	uvSphere_->enableSpecular_ = true;
 	uvSphere_->color_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 
 	// BGMを読み込む
@@ -45,7 +45,7 @@ void Game::Update()
 	camera2d_->Update();
 
 	ImGui::Begin("UVSphere");
-	ImGui::DragFloat3("translation", &uvSphere_->worldTransform_->translation_.x, 0.1f);
+	ImGui::SliderFloat("shininess", &uvSphere_->shininess_, 0.0f , 30.0f);
 	ImGui::End();
 
 	if (!engine_->IsAudioPlay(playHandle_) || playHandle_ == 0)
