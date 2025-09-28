@@ -14,7 +14,11 @@ struct MaterialDataForGPU
 	// ハーフランバート有効化
 	int32_t enableHalfLambert_;
 
-	float padding[2];
+	// スペキュラー有効化
+	int32_t enableSpecular_;
+
+	// 光沢度
+	float shininess_;
 
 	// UVトランスフォーム
 	Matrix4x4 uvTransform_;

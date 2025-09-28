@@ -22,13 +22,14 @@ void Game::Initialize(const MugenEngine* engine)
 	camera2d_->Initialize(engine_->GetScreenWidth(), engine_->GetScreenHeight());
 
 
-	// モデルハンドル
-	modelHandle_ = engine_->LoadModel("./Resources/Models/node", "node.gltf");
+	// テクスチャを読み込む
+	textureHandle_ = engine_->LoadTexture("./Resources/Textures/white2x2.png");
 
-	// モデルの初期化と生成
-	model_ = std::make_unique<MeshModel>();
-	model_->Initialize(engine_, camera3d_.get(), modelHandle_);
-	model_->enableHalfLambert_ = true;
+	// UV球の初期化と生成
+	uvSphere_ = std::make_unique<MeshUVSphere>();
+	uvSphere_->Initialize(engine_, camera3d_.get(), textureHandle_);
+	uvSphere_->enableHalfLambert_ = true;
+	uvSphere_->color_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 
 	// BGMを読み込む
 	soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/Tukiyo_Ni_Ukabu_Tensyukaku.mp3");
@@ -43,9 +44,8 @@ void Game::Update()
 	camera3d_->Update();
 	camera2d_->Update();
 
-	ImGui::Begin("Model");
-	ImGui::DragFloat3("rotation", &model_->worldTransform_->rotation_.x, 0.01f);
-	ImGui::DragFloat2("uvTransform", &model_->uvTransform_->translation_.x, 0.1f);
+	ImGui::Begin("UVSphere");
+	ImGui::DragFloat3("translation", &uvSphere_->worldTransform_->translation_.x, 0.1f);
 	ImGui::End();
 
 	if (!engine_->IsAudioPlay(playHandle_) || playHandle_ == 0)
@@ -53,8 +53,8 @@ void Game::Update()
 		playHandle_ = engine_->PlayAudio(soundHandle_, 0.5f);
 	}
 
-	// モデルの更新処理
-	model_->Update();
+	// UV球の更新処理
+	uvSphere_->Update();
 }
 
 /// <summary>
@@ -62,6 +62,6 @@ void Game::Update()
 /// </summary>
 void Game::Draw()
 {
-	// モデルの描画
-	model_->Draw();
+	// UV球の描画
+	uvSphere_->Draw();
 }

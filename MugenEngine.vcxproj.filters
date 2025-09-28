@@ -274,6 +274,12 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV">
       <UniqueIdentifier>{e9c15c28-5eee-4405-af81-9378787b7faf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MainCameraResourcesDataCBV">
+      <UniqueIdentifier>{c8918cb2-0e0d-4db3-8a82-b7c584bdef42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU">
+      <UniqueIdentifier>{d9cfbcdc-174b-46f6-b132-33798544d0ca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -525,6 +531,12 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV\TransformationResourcesDataCBV.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MainCameraResourcesDataCBV\MainCameraResourcesDataCBV.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MainCameraResourcesDataCBV</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU\CameraDataForGPU.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -775,6 +787,12 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV\TransformationResourcesDataCBV.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MainCameraResourcesDataCBV\MainCameraResourcesDataCBV.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MainCameraResourcesDataCBV</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU\CameraDataForGPU.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

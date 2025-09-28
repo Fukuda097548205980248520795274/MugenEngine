@@ -29,5 +29,8 @@ VertexShaderOutput main(VertexShaderInput input)
     // 法線をワールド座標に変換する
     output.normal = normalize(mul(input.normal, (float3x3) gTransformationMatrix.world));
     
+    // オブジェクトのワールド座標
+    output.worldPosition = mul(input.position, gTransformationMatrix.world).xyz;
+    
     return output;
 }

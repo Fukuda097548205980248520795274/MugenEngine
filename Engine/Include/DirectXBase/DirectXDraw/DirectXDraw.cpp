@@ -85,19 +85,15 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	resourcesDirectionalLight_->lightData_[0].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 	resourcesDirectionalLight_->lightData_[0].intensity = 1.0f;
 
-	resourcesDirectionalLight_->lightData_[1].direction = Vector3(0.0f, 1.0f, 0.0f);
-	resourcesDirectionalLight_->lightData_[1].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+	resourcesDirectionalLight_->lightData_[1].direction = Normalize(Vector3(-1.0f, 1.0f, 0.0f));
+	resourcesDirectionalLight_->lightData_[1].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
 	resourcesDirectionalLight_->lightData_[1].intensity = 1.0f;
 
-	resourcesDirectionalLight_->lightData_[2].direction = Vector3(1.0f, 0.0f, 0.0f);
-	resourcesDirectionalLight_->lightData_[2].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
-	resourcesDirectionalLight_->lightData_[2].intensity = 1.0f;
+	*resourcesDirectionalLight_->numLightData_ = 2;
 
-	resourcesDirectionalLight_->lightData_[3].direction = Vector3(-1.0f, 0.0f, 0.0f);
-	resourcesDirectionalLight_->lightData_[3].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
-	resourcesDirectionalLight_->lightData_[3].intensity = 1.0f;
-
-	*resourcesDirectionalLight_->numLightData_ = 4;
+	// メインカメラリソースの生成と初期化
+	resourcesMainCamera_ = std::make_unique<MainCameraResourcesDataCBV>();
+	resourcesMainCamera_->Initialize(device_, commandList_);
 }
 
 /// <summary>
@@ -125,6 +121,8 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 	// モデル情報を取得する
 	ModelInfoDatum* modelInfo = modelStore_->GetModelInfo(modelHandle);
 
+	// カメラの値を取得する
+	resourcesMainCamera_->data_->worldPosition = camera->GetWorldPosition();
 
 	/*-----------------------------
 		マテリアルデータを入力する
@@ -170,6 +168,9 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 		modelInfo->Register(0);
 		modelInfo->transformationResources_[modelIndex]->Register(1);
 
+		// メインカメラリソースの設定
+		resourcesMainCamera_->Register(5);
+
 		// 平行光源リソースの設定
 		resourcesDirectionalLight_->Register(3, 4);
 
@@ -201,6 +202,8 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVT
 	ring = std::max(ring, resourcesUVSphere_->GetMinRing());
 	ring = std::min(ring, resourcesUVSphere_->GetMaxRing());
 
+	// カメラの値を取得する
+	resourcesMainCamera_->data_->worldPosition = camera->GetWorldPosition();
 
 	/*-------------------------------
 	    インデックスデータを入力する
@@ -323,6 +326,9 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVT
 	// UV球リソースの設定
 	resourcesUVSphere_->Register();
 
+	// メインカメラリソースの設定
+	resourcesMainCamera_->Register(5);
+
 	// 平行光源リソースの設定
 	resourcesDirectionalLight_->Register(3, 4);
 
@@ -346,6 +352,9 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVT
 void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
 	const Vector4& color, bool enableLighting, bool enableHalfLanbert)
 {
+	// カメラの値を取得する
+	resourcesMainCamera_->data_->worldPosition = camera->GetWorldPosition();
+
 	/*---------------
 	    マテリアル
 	---------------*/
@@ -381,6 +390,9 @@ void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTrans
 
 	// 立方体リソースの設定
 	resourcesCube_->Register();
+
+	// メインカメラリソースの設定
+	resourcesMainCamera_->Register(5);
 
 	// 平行光源リソースの設定
 	resourcesDirectionalLight_->Register(3, 4);

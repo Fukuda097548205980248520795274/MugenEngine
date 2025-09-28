@@ -24,6 +24,8 @@
 
 #include "ResourcesData/DirectionalLightResourcesData/DirectionalLightResourcesData.h"
 
+#include "ResourcesData/MainCameraResourcesDataCBV/MainCameraResourcesDataCBV.h"
+
 class DirectXDraw
 {
 public:
@@ -176,5 +178,8 @@ private:
 
 	// 平行光源リソース
 	std::unique_ptr<DirectionalLightResourcesData> resourcesDirectionalLight_ = nullptr;
+
+	// メインカメラリソース
+	std::unique_ptr<MainCameraResourcesDataCBV> resourcesMainCamera_ = nullptr;
 };
 

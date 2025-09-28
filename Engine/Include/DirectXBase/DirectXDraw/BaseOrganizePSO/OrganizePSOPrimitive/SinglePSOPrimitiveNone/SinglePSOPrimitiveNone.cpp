@@ -43,7 +43,7 @@ void SinglePSOPrimitiveNone::Initialize(LogFile* logFile, IDxcBlob* vertexShader
 		ルートパラメータの設定
 	-------------------------*/
 
-	D3D12_ROOT_PARAMETER rootParameter[5];
+	D3D12_ROOT_PARAMETER rootParameter[6];
 
 	// CBV PixelShader b0
 	rootParameter[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
@@ -74,6 +74,12 @@ void SinglePSOPrimitiveNone::Initialize(LogFile* logFile, IDxcBlob* vertexShader
 	rootParameter[4].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 	rootParameter[4].Descriptor.RegisterSpace = 0;
 	rootParameter[4].Descriptor.ShaderRegister = 1;
+
+	// CBV PixelShader b2 カメラデータ
+	rootParameter[5].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
+	rootParameter[5].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+	rootParameter[5].Descriptor.RegisterSpace = 0;
+	rootParameter[5].Descriptor.ShaderRegister = 2;
 
 
 	/*--------------------
