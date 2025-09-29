@@ -11,8 +11,14 @@ struct VertexShaderInput
 // 座標変換行列
 struct TransformationMatrix
 {
+    // WVP行列
     float4x4 worldViewProjection;
+    
+    // ワールド行列
     float4x4 world;
+    
+    // ワールド行列の逆転置行列
+    float4x4 worldInverseTranspose;
 };
 ConstantBuffer<TransformationMatrix> gTransformationMatrix : register(b0);
 
@@ -27,7 +33,7 @@ VertexShaderOutput main(VertexShaderInput input)
     output.texcoord = input.texcoord;
     
     // 法線をワールド座標に変換する
-    output.normal = normalize(mul(input.normal, (float3x3) gTransformationMatrix.world));
+    output.normal = normalize(mul(input.normal, (float3x3) gTransformationMatrix.worldInverseTranspose));
     
     // オブジェクトのワールド座標
     output.worldPosition = mul(input.position, gTransformationMatrix.world).xyz;

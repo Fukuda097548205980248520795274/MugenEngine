@@ -9,4 +9,7 @@ struct TransformationDataForGPU
 
 	// ワールド行列
 	Matrix4x4 world;
+
+	// ワールド行列の逆転置行列
+	Matrix4x4 worldInverseTranspose;
 };

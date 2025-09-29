@@ -31,6 +31,7 @@ void PrimitiveResourcesData::Initialize(ID3D12Device* device, ID3D12GraphicsComm
 	transformationResource_ = CreateBufferResource(device_, sizeof(TransformationDataForGPU));
 	transformationResource_->Map(0, nullptr, reinterpret_cast<void**>(&transformationData_));
 	transformationData_->world = MakeIdentityMatrix4x4();
+	transformationData_->worldInverseTranspose = MakeIdentityMatrix4x4();
 	transformationData_->worldViewProjection = MakeIdentityMatrix4x4();
 }
 

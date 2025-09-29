@@ -25,15 +25,14 @@ void Game::Initialize(const MugenEngine* engine)
 	// テクスチャを読み込む
 	textureHandle_ = engine_->LoadTexture("./Resources/Textures/white2x2.png");
 
-	// UV球の初期化と生成
+	// モデルの初期化と生成
 	uvSphere_ = std::make_unique<MeshUVSphere>();
 	uvSphere_->Initialize(engine_, camera3d_.get(), textureHandle_);
-	uvSphere_->material_->enableHalfLambert_ = true;
 	uvSphere_->material_->enableSpecular_ = true;
 	uvSphere_->material_->enableBlinnPhong_ = true;
 
 	// BGMを読み込む
-	soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/Tukiyo_Ni_Ukabu_Tensyukaku.mp3");
+	soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/forget_me_not.mp3");
 }
 
 /// <summary>
@@ -41,6 +40,16 @@ void Game::Initialize(const MugenEngine* engine)
 /// </summary>
 void Game::Update()
 {
+	ImGui::Begin("Camera");
+	ImGui::DragFloat3("rotation", &camera3d_->rotation_.x, 0.01f);
+	ImGui::DragFloat3("translation", &camera3d_->translation_.x, 0.1f);
+	ImGui::End();
+
+	ImGui::Begin("UVSphere");
+	ImGui::DragFloat3("scale", &uvSphere_->worldTransform_->scale_.x, 0.01f);
+	ImGui::End();
+
+
 	// カメラの更新処理
 	camera3d_->Update();
 	camera2d_->Update();
@@ -50,7 +59,7 @@ void Game::Update()
 		playHandle_ = engine_->PlayAudio(soundHandle_, 0.5f);
 	}
 
-	// UV球の更新処理
+	// モデルの更新処理
 	uvSphere_->Update();
 }
 
@@ -59,6 +68,6 @@ void Game::Update()
 /// </summary>
 void Game::Draw()
 {
-	// UV球の描画
+	// モデルの描画
 	uvSphere_->Draw();
 }

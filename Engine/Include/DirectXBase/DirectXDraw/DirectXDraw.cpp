@@ -85,11 +85,7 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	resourcesDirectionalLight_->lightData_[0].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 	resourcesDirectionalLight_->lightData_[0].intensity = 1.0f;
 
-	resourcesDirectionalLight_->lightData_[1].direction = Normalize(Vector3(-1.0f, 1.0f, 0.0f));
-	resourcesDirectionalLight_->lightData_[1].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
-	resourcesDirectionalLight_->lightData_[1].intensity = 1.0f;
-
-	*resourcesDirectionalLight_->numLightData_ = 2;
+	*resourcesDirectionalLight_->numLightData_ = 1;
 
 	// メインカメラリソースの生成と初期化
 	resourcesMainCamera_ = std::make_unique<MainCameraResourcesDataCBV>();
@@ -160,6 +156,8 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 		----------------------------*/
 
 		modelInfo->transformationResources_[modelIndex]->data_->world = worldTransform->worldMatrix_;
+		modelInfo->transformationResources_[modelIndex]->data_->worldInverseTranspose =
+			MakeInverseMatrix(MakeTransposeMatrix(worldTransform->worldMatrix_));
 		modelInfo->transformationResources_[modelIndex]->data_->worldViewProjection =
 			nodeWorldMatrix[1 + modelIndex] * worldViewProjectionMatrix;
 
@@ -326,6 +324,7 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVT
 
 	// 座標変換行列を取得する
 	resourcesUVSphere_->transformationData_->world = worldTransform->worldMatrix_;
+	resourcesUVSphere_->transformationData_->worldInverseTranspose = MakeInverseMatrix(MakeTransposeMatrix(worldTransform->worldMatrix_));
 	resourcesUVSphere_->transformationData_->worldViewProjection = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
 
 
@@ -398,6 +397,7 @@ void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTrans
 
 	// 座標変換用の行列を取得する
 	resourcesCube_->transformationData_->world = worldTransform->worldMatrix_;
+	resourcesCube_->transformationData_->worldInverseTranspose = MakeInverseMatrix(MakeTransposeMatrix(worldTransform->worldMatrix_));
 	resourcesCube_->transformationData_->worldViewProjection = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
 
 
@@ -476,6 +476,8 @@ void DirectXDraw::DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3
 	------------------*/
 
 	// 座標変換行列を入力する
+	resourceSprite_->transformationData_->world = MakeIdentityMatrix4x4();
+	resourceSprite_->transformationData_->worldInverseTranspose = MakeIdentityMatrix4x4();
 	resourceSprite_->transformationData_->worldViewProjection = camera->viewMatrix_ * camera->projectionMatrix_;
 
 
