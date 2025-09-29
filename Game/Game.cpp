@@ -22,14 +22,29 @@ void Game::Initialize(const MugenEngine* engine)
 	camera2d_->Initialize(engine_->GetScreenWidth(), engine_->GetScreenHeight());
 
 
-	// テクスチャを読み込む
-	textureHandle_ = engine_->LoadTexture("./Resources/Textures/white2x2.png");
+	// モデルを読み込む
+	modelHandle_ = engine_->LoadModel("./Resources/Models/terrain", "terrain.obj");
 
 	// モデルの初期化と生成
+	model_ = std::make_unique<MeshModel>();
+	model_->Initialize(engine_, camera3d_.get(), modelHandle_);
+	model_->material_->enableHalfLambert_ = true;
+	model_->material_->enableSpecular_ = true;
+	model_->material_->enableBlinnPhong_ = true;
+	model_->material_->shininess_ = 50.0f;
+
+
+	// テクスチャハンドル
+	textureHandle_ = engine_->LoadTexture("./Resources/Textures/white2x2.png");
+
+	// UV球の初期化と生成
 	uvSphere_ = std::make_unique<MeshUVSphere>();
 	uvSphere_->Initialize(engine_, camera3d_.get(), textureHandle_);
+	uvSphere_->material_->enableHalfLambert_ = true;
 	uvSphere_->material_->enableSpecular_ = true;
 	uvSphere_->material_->enableBlinnPhong_ = true;
+	uvSphere_->material_->shininess_ = 50.0f;
+
 
 	// BGMを読み込む
 	soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/forget_me_not.mp3");
@@ -45,10 +60,6 @@ void Game::Update()
 	ImGui::DragFloat3("translation", &camera3d_->translation_.x, 0.1f);
 	ImGui::End();
 
-	ImGui::Begin("UVSphere");
-	ImGui::DragFloat3("scale", &uvSphere_->worldTransform_->scale_.x, 0.01f);
-	ImGui::End();
-
 
 	// カメラの更新処理
 	camera3d_->Update();
@@ -60,6 +71,9 @@ void Game::Update()
 	}
 
 	// モデルの更新処理
+	model_->Update();
+
+	// UV球の更新処理
 	uvSphere_->Update();
 }
 
@@ -69,5 +83,8 @@ void Game::Update()
 void Game::Draw()
 {
 	// モデルの描画
+	model_->Draw();
+
+	// UV球の描画処理
 	uvSphere_->Draw();
 }

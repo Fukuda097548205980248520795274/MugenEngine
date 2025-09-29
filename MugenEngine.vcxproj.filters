@@ -286,6 +286,9 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Transform">
       <UniqueIdentifier>{0bebbc86-7cfc-4d47-8ba8-d0ad641818ed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PointLightResourcesData">
+      <UniqueIdentifier>{85d04012-b5f4-4343-85cb-c1b5cb5046f1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -546,6 +549,9 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Material\Material.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Material</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PointLightResourcesData\PointLightResourcesData.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PointLightResourcesData</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -805,6 +811,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Material\Material.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PointLightResourcesData\PointLightResourcesData.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PointLightResourcesData</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

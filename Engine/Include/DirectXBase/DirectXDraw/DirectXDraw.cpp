@@ -81,11 +81,25 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	resourcesDirectionalLight_ = std::make_unique<DirectionalLightResourcesData>();
 	resourcesDirectionalLight_->Initialize(directXHeap_, device_, commandList_, 512);
 
-	resourcesDirectionalLight_->lightData_[0].direction = Vector3(0.0f, -1.0f, 0.0f);
-	resourcesDirectionalLight_->lightData_[0].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-	resourcesDirectionalLight_->lightData_[0].intensity = 1.0f;
 
-	*resourcesDirectionalLight_->numLightData_ = 1;
+	// ポイントライトリソースの生成と初期化
+	resourcesPointLight_ = std::make_unique<PointLightResourcesData>();
+	resourcesPointLight_->Initialize(directXHeap_, device_, commandList_, 512);
+
+	resourcesPointLight_->lightData_[0].position = Vector3(2.0f, 2.0f, 0.0f);
+	resourcesPointLight_->lightData_[0].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+	resourcesPointLight_->lightData_[0].intensity = 1.0f;
+	resourcesPointLight_->lightData_[0].radius = 4.0f;
+	resourcesPointLight_->lightData_[0].decay = 2.0f;
+
+	resourcesPointLight_->lightData_[1].position = Vector3(-3.0f, 1.0f, 0.0f);
+	resourcesPointLight_->lightData_[1].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+	resourcesPointLight_->lightData_[1].intensity = 1.0f;
+	resourcesPointLight_->lightData_[1].radius = 8.0f;
+	resourcesPointLight_->lightData_[1].decay = 2.0f;
+
+	*resourcesPointLight_->numLightData_ = 2;
+
 
 	// メインカメラリソースの生成と初期化
 	resourcesMainCamera_ = std::make_unique<MainCameraResourcesDataCBV>();
@@ -181,6 +195,9 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 
 		// 平行光源リソースの設定
 		resourcesDirectionalLight_->Register(3, 4);
+
+		// ポイントライトリソースの設定
+		resourcesPointLight_->Register(6, 7);
 
 		// テクスチャのSRVを設定する
 		commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(modelInfo->textureHandle_[modelIndex]));
@@ -348,6 +365,9 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVT
 	// 平行光源リソースの設定
 	resourcesDirectionalLight_->Register(3, 4);
 
+	// ポイントライトリソースの設定
+	resourcesPointLight_->Register(6, 7);
+
 	// テクスチャのSRVを設定する
 	commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(textureHandle));
 
@@ -420,6 +440,9 @@ void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTrans
 
 	// 平行光源リソースの設定
 	resourcesDirectionalLight_->Register(3, 4);
+
+	// ポイントライトリソースの設定
+	resourcesPointLight_->Register(6, 7);
 
 	// テクスチャのSRVを設定する
 	commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(textureHandle));

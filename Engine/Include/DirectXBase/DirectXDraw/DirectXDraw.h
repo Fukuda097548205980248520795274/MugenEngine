@@ -23,6 +23,7 @@
 #include "ResourcesData/PrimitiveResourcesData/PrimitiveResourcesUVSphere/PrimitiveResourcesUVSphere.h"
 
 #include "ResourcesData/DirectionalLightResourcesData/DirectionalLightResourcesData.h"
+#include "ResourcesData/PointLightResourcesData/PointLightResourcesData.h"
 
 #include "ResourcesData/MainCameraResourcesDataCBV/MainCameraResourcesDataCBV.h"
 
@@ -178,6 +179,9 @@ private:
 
 	// 平行光源リソース
 	std::unique_ptr<DirectionalLightResourcesData> resourcesDirectionalLight_ = nullptr;
+
+	// ポイントライトリソース
+	std::unique_ptr<PointLightResourcesData> resourcesPointLight_ = nullptr;
 
 	// メインカメラリソース
 	std::unique_ptr<MainCameraResourcesDataCBV> resourcesMainCamera_ = nullptr;

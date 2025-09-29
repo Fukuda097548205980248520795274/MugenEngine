@@ -37,13 +37,21 @@ void SinglePSOPrimitiveMultiply::Initialize(LogFile* logFile, IDxcBlob* vertexSh
 	descriptorRangeDirectionalLight[0].RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;
 	descriptorRangeDirectionalLight[0].OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;
 
+	// ポイントライト
+	D3D12_DESCRIPTOR_RANGE descriptorRangePointLight[1];
+	descriptorRangePointLight[0].BaseShaderRegister = 2;
+	descriptorRangePointLight[0].RegisterSpace = 0;
+	descriptorRangePointLight[0].NumDescriptors = 1;
+	descriptorRangePointLight[0].RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;
+	descriptorRangePointLight[0].OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;
+
 
 
 	/*-------------------------
 		ルートパラメータの設定
 	-------------------------*/
 
-	D3D12_ROOT_PARAMETER rootParameter[6];
+	D3D12_ROOT_PARAMETER rootParameter[8];
 
 	// CBV PixelShader b0
 	rootParameter[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
@@ -63,13 +71,13 @@ void SinglePSOPrimitiveMultiply::Initialize(LogFile* logFile, IDxcBlob* vertexSh
 	rootParameter[2].DescriptorTable.pDescriptorRanges = descriptorRange;
 	rootParameter[2].DescriptorTable.NumDescriptorRanges = _countof(descriptorRange);
 
-	// DescriptorTable PixelShade t1
+	// DescriptorTable PixelShade t1 平行光源
 	rootParameter[3].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;
 	rootParameter[3].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 	rootParameter[3].DescriptorTable.pDescriptorRanges = descriptorRangeDirectionalLight;
 	rootParameter[3].DescriptorTable.NumDescriptorRanges = _countof(descriptorRangeDirectionalLight);
 
-	// CBV PixelShader  b1
+	// CBV PixelShader  b1 平行光源の数
 	rootParameter[4].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
 	rootParameter[4].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 	rootParameter[4].Descriptor.RegisterSpace = 0;
@@ -80,6 +88,18 @@ void SinglePSOPrimitiveMultiply::Initialize(LogFile* logFile, IDxcBlob* vertexSh
 	rootParameter[5].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
 	rootParameter[5].Descriptor.RegisterSpace = 0;
 	rootParameter[5].Descriptor.ShaderRegister = 2;
+
+	// DescriptorTable PixelShader t2 ポイントライト
+	rootParameter[6].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;
+	rootParameter[6].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+	rootParameter[6].DescriptorTable.pDescriptorRanges = descriptorRangePointLight;
+	rootParameter[6].DescriptorTable.NumDescriptorRanges = _countof(descriptorRangePointLight);
+
+	// CBV PixelShader b3 ポイントライトの数
+	rootParameter[7].ParameterType = D3D12_ROOT_PARAMETER_TYPE_CBV;
+	rootParameter[7].ShaderVisibility = D3D12_SHADER_VISIBILITY_PIXEL;
+	rootParameter[7].Descriptor.RegisterSpace = 0;
+	rootParameter[7].Descriptor.ShaderRegister = 3;
 
 
 	/*--------------------

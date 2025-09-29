@@ -64,6 +64,36 @@ struct Camera
 };
 ConstantBuffer<Camera> gCamera : register(b2);
 
+// ポイントライト設定
+struct PointLight
+{
+    // 色
+    float4 color;
+    
+    // 位置
+    float3 position;
+    
+    // 輝度
+    float intensity;
+    
+    // ライトの届く最大距離
+    float radius;
+    
+    // 減衰率
+    float decay;
+};
+StructuredBuffer<PointLight> gPointLight : register(t2);
+
+// ポイントライト数
+struct NumPointLight
+{
+    // 数
+    uint num;
+};
+ConstantBuffer<NumPointLight> gNumPointLight : register(b3);
+
+
+
 
 // 平行光源の拡散反射
 float3 CreateDirectionalLightDiffuse(uint directionalLightIndex, VertexShaderOutput input)
@@ -77,7 +107,7 @@ float3 CreateDirectionalLightDiffuse(uint directionalLightIndex, VertexShaderOut
         // なだらかにする
         float cos = pow(NdotL * 0.5f + 0.5f, 2.0f);
                 
-        // 光の拡散反射を加算する
+        // 光の拡散反射を返却する
         return gDirectionalLight[directionalLightIndex].color.rgb * cos * gDirectionalLight[directionalLightIndex].intensity;
     }
     else
@@ -85,7 +115,7 @@ float3 CreateDirectionalLightDiffuse(uint directionalLightIndex, VertexShaderOut
         // なだらかにする
         float cos = saturate(dot(normalize(input.normal), -gDirectionalLight[directionalLightIndex].direction));
                 
-        // 光の拡散反射を加算する
+        // 光の拡散反射を返却する
         return gDirectionalLight[directionalLightIndex].color.rgb * cos * gDirectionalLight[directionalLightIndex].intensity;
     }
 }
@@ -122,6 +152,65 @@ float3 CreateDirectionalLightSpecular(uint directionalLightIndex , float3 toEye 
     }
 
     return gDirectionalLight[directionalLightIndex].color.rgb * gDirectionalLight[directionalLightIndex].intensity * specularPow * float3(1.0f, 1.0f, 1.0f);
+}
+
+// ポイントライトの拡散反射
+float3 CreatePointLightDiffuse(uint pointLightIndex, float3 pointLightDirection, VertexShaderOutput input)
+{    
+    // ハーフランバート有効
+    if (gMaterial.enableHalfLambert != 0)
+    {
+        // 光と法線の内積
+        float NdotL = dot(normalize(input.normal), -pointLightDirection);
+            
+        // なだらかにする
+        float cos = pow(NdotL * 0.5f + 0.5f, 2.0f);
+                
+        // 光の拡散反射を返却する
+        return gPointLight[pointLightIndex].color.rgb * cos * gPointLight[pointLightIndex].intensity;
+    }
+    else
+    {
+        // なだらかにする
+        float cos = saturate(dot(normalize(input.normal), -pointLightDirection));
+                
+        // 光の拡散反射を返却する
+        return gPointLight[pointLightIndex].color.rgb * cos * gPointLight[pointLightIndex].intensity;
+    }
+}
+
+// ポイントライトの鏡面反射
+float3 CreatePointLightSpecular(uint pointLightIndex, float3 pointLightDirection, float3 toEye , VertexShaderOutput input)
+{
+    // 反射の強度
+    float specularPow = 0.0f;
+                    
+    // ブリンフォン有効
+    if (gMaterial.enableBlinnPhong != 0)
+    {
+        // ハーフベクトル
+        float3 halfVector = normalize(-pointLightDirection + toEye);
+
+        // 法線とハーフベクトルの内積
+        float NdotH = dot(normalize(input.normal), halfVector);
+
+        specularPow = pow(saturate(NdotH), gMaterial.shininess);
+
+    }
+    else
+    {
+        // ブリンフォン無効
+        
+        // 入射光の反射ベクトル
+        float3 reflectLight = reflect(-pointLightDirection, normalize(input.normal));
+
+        // カメラと反射ベクトルの内積
+        float RdotE = dot(reflectLight, toEye);
+
+        specularPow = pow(saturate(RdotE), gMaterial.shininess);
+    }
+
+    return gPointLight[pointLightIndex].color.rgb * gPointLight[pointLightIndex].intensity * specularPow * float3(1.0f, 1.0f, 1.0f);
 }
 
 
@@ -163,8 +252,44 @@ PixelShaderOutput main(VertexShaderOutput input)
         }
         
         
+        
+        // ポイントライトの拡散反射
+        float3 pointLightDiffuse = float3(0.0f, 0.0f, 0.0f);
+        
+        // ポイントライトの鏡面反射
+        float3 pointLightSpecular = float3(0.0f, 0.0f, 0.0f);
+        
+        // 使用しているポイントライトから値を取得する
+        for (uint pointLightIndex = 0; pointLightIndex < gNumPointLight.num; ++pointLightIndex)
+        {
+            // ポイントライトの光の向きを取得する
+            float3 pointLightDirection = normalize(input.worldPosition - gPointLight[pointLightIndex].position);
+            
+            // ポイントライトの距離
+            float distance = length(gPointLight[pointLightIndex].position - input.worldPosition);
+            
+            // 逆二乗則による減衰係数
+            float factor = pow(saturate(-distance / gPointLight[pointLightIndex].radius + 1.0f), gPointLight[pointLightIndex].decay);
+            
+            // 拡散反射を加算する
+            pointLightDiffuse += CreatePointLightDiffuse(pointLightIndex, pointLightDirection, input) * factor;
+
+            // スペキュラー有効
+            if (gMaterial.enableSpecular != 0)
+            {
+                // 鏡面反射を加算する
+                pointLightSpecular += CreatePointLightSpecular(pointLightIndex, pointLightDirection, toEye, input) * factor;
+
+            }
+        }
+        
+        
+        
+        
         // 色を合成する
-        output.color.rgb = gMaterial.color.rgb * textureColor.rgb * (directionalLightDiffuse + directionalLightSpecular);
+        output.color.rgb = gMaterial.color.rgb * textureColor.rgb *
+        (directionalLightDiffuse + directionalLightSpecular + pointLightDiffuse + pointLightSpecular);
+        
         output.color.a = gMaterial.color.a * textureColor.a;
     }
     else
