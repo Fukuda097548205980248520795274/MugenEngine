@@ -98,16 +98,16 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	resourcesSpotLight_->lightData_[0].intensity = 1.0f;
 	resourcesSpotLight_->lightData_[0].decay = 2.0f;
 	resourcesSpotLight_->lightData_[0].cosFalloffStart = 1.0f;
-	resourcesSpotLight_->lightData_[0].cosAngle = std::cos(std::numbers::pi_v<float> / 6.0f);
+	resourcesSpotLight_->lightData_[0].cosAngle = std::cos(std::numbers::pi_v<float> / 5.0f);
 
 	resourcesSpotLight_->lightData_[1].color = Vector4(1.0f, 1.0f, 0.0f, 1.0f);
 	resourcesSpotLight_->lightData_[1].position = Vector3(-0.3f, 2.5f, 0.0f);
 	resourcesSpotLight_->lightData_[1].distance = 7.0f;
 	resourcesSpotLight_->lightData_[1].direction = Normalize(Vector3(0.0f, -1.0f, 0.0f));
 	resourcesSpotLight_->lightData_[1].intensity = 1.0f;
-	resourcesSpotLight_->lightData_[1].decay = 2.0f;
+	resourcesSpotLight_->lightData_[1].decay = 4.0f;
 	resourcesSpotLight_->lightData_[1].cosFalloffStart = 1.0f;
-	resourcesSpotLight_->lightData_[1].cosAngle = std::cos(std::numbers::pi_v<float> / 6.0f);
+	resourcesSpotLight_->lightData_[1].cosAngle = std::cos(std::numbers::pi_v<float> / 5.0f);
 
 	*resourcesSpotLight_->numLightData_ = 2;
 

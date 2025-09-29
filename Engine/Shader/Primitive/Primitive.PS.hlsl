@@ -403,6 +403,7 @@ PixelShaderOutput main(VertexShaderOutput input)
             // スポットライトの光の向きを取得する
             float3 spotLightDirectionOnSurface = normalize(input.worldPosition - gSpotLight[spotLightIndex].position);
             
+            
             // 光の当たる角度
             float cosAngle = dot(spotLightDirectionOnSurface, gSpotLight[spotLightIndex].direction);
             
@@ -410,14 +411,21 @@ PixelShaderOutput main(VertexShaderOutput input)
             float falloffFactor =
             saturate((cosAngle - gSpotLight[spotLightIndex].cosAngle) / (gSpotLight[spotLightIndex].cosFalloffStart - gSpotLight[spotLightIndex].cosAngle));
             
+            
+            // ポイントライトの距離
+            float distance = length(gSpotLight[spotLightIndex].position - input.worldPosition);
+            
+            // 逆二乗則による減衰係数
+            float factor = pow(saturate(-distance / gSpotLight[spotLightIndex].distance + 1.0f), gSpotLight[spotLightIndex].decay);
+            
             // 拡散反射を加算する
-            spotLightDiffuse += CreateSpotLightDiffuse(spotLightIndex, spotLightDirectionOnSurface, input) * falloffFactor;
+            spotLightDiffuse += CreateSpotLightDiffuse(spotLightIndex, spotLightDirectionOnSurface, input) * factor * falloffFactor;
             
             // スペキュラー有効
             if (gMaterial.enableSpecular != 0)
             {
                 // 鏡面反射の加算する
-                spotLightSpecular += CreateSpotLightSpecular(spotLightIndex, spotLightDirectionOnSurface, toEye, input) * falloffFactor;
+                spotLightSpecular += CreateSpotLightSpecular(spotLightIndex, spotLightDirectionOnSurface, toEye, input) * factor * falloffFactor;
             }
         }
         
