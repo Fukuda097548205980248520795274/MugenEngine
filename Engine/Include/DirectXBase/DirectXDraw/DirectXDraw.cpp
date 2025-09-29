@@ -86,19 +86,30 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	resourcesPointLight_ = std::make_unique<PointLightResourcesData>();
 	resourcesPointLight_->Initialize(directXHeap_, device_, commandList_, 512);
 
-	resourcesPointLight_->lightData_[0].position = Vector3(2.0f, 2.0f, 0.0f);
-	resourcesPointLight_->lightData_[0].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-	resourcesPointLight_->lightData_[0].intensity = 1.0f;
-	resourcesPointLight_->lightData_[0].radius = 4.0f;
-	resourcesPointLight_->lightData_[0].decay = 2.0f;
 
-	resourcesPointLight_->lightData_[1].position = Vector3(-3.0f, 1.0f, 0.0f);
-	resourcesPointLight_->lightData_[1].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
-	resourcesPointLight_->lightData_[1].intensity = 1.0f;
-	resourcesPointLight_->lightData_[1].radius = 8.0f;
-	resourcesPointLight_->lightData_[1].decay = 2.0f;
+	// スポットライトリソースの生成と初期化
+	resourcesSpotLight_ = std::make_unique<SpotLightResourcesData>();
+	resourcesSpotLight_->Initialize(directXHeap_, device_, commandList_, 512);
 
-	*resourcesPointLight_->numLightData_ = 2;
+	resourcesSpotLight_->lightData_[0].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+	resourcesSpotLight_->lightData_[0].position = Vector3(5.0f, 5.0f, 0.0f);
+	resourcesSpotLight_->lightData_[0].distance = 7.0f;
+	resourcesSpotLight_->lightData_[0].direction = Normalize(Vector3(0.0f, -1.0f, 0.0f));
+	resourcesSpotLight_->lightData_[0].intensity = 1.0f;
+	resourcesSpotLight_->lightData_[0].decay = 2.0f;
+	resourcesSpotLight_->lightData_[0].cosFalloffStart = 1.0f;
+	resourcesSpotLight_->lightData_[0].cosAngle = std::cos(std::numbers::pi_v<float> / 6.0f);
+
+	resourcesSpotLight_->lightData_[1].color = Vector4(1.0f, 1.0f, 0.0f, 1.0f);
+	resourcesSpotLight_->lightData_[1].position = Vector3(-0.3f, 2.5f, 0.0f);
+	resourcesSpotLight_->lightData_[1].distance = 7.0f;
+	resourcesSpotLight_->lightData_[1].direction = Normalize(Vector3(0.0f, -1.0f, 0.0f));
+	resourcesSpotLight_->lightData_[1].intensity = 1.0f;
+	resourcesSpotLight_->lightData_[1].decay = 2.0f;
+	resourcesSpotLight_->lightData_[1].cosFalloffStart = 1.0f;
+	resourcesSpotLight_->lightData_[1].cosAngle = std::cos(std::numbers::pi_v<float> / 6.0f);
+
+	*resourcesSpotLight_->numLightData_ = 2;
 
 
 	// メインカメラリソースの生成と初期化
@@ -198,6 +209,9 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 
 		// ポイントライトリソースの設定
 		resourcesPointLight_->Register(6, 7);
+
+		// スポットライトリソースの設定
+		resourcesSpotLight_->Register(8, 9);
 
 		// テクスチャのSRVを設定する
 		commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(modelInfo->textureHandle_[modelIndex]));
@@ -368,6 +382,9 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVT
 	// ポイントライトリソースの設定
 	resourcesPointLight_->Register(6, 7);
 
+	// スポットライトリソースの設定
+	resourcesSpotLight_->Register(8, 9);
+
 	// テクスチャのSRVを設定する
 	commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(textureHandle));
 
@@ -443,6 +460,9 @@ void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTrans
 
 	// ポイントライトリソースの設定
 	resourcesPointLight_->Register(6, 7);
+
+	// スポットライトリソースの設定
+	resourcesSpotLight_->Register(8, 9);
 
 	// テクスチャのSRVを設定する
 	commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(textureHandle));

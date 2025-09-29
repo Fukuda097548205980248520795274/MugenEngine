@@ -24,6 +24,7 @@
 
 #include "ResourcesData/DirectionalLightResourcesData/DirectionalLightResourcesData.h"
 #include "ResourcesData/PointLightResourcesData/PointLightResourcesData.h"
+#include "ResourcesData/SpotLightResourcesData/SpotLightResourcesData.h"
 
 #include "ResourcesData/MainCameraResourcesDataCBV/MainCameraResourcesDataCBV.h"
 
@@ -182,6 +183,10 @@ private:
 
 	// ポイントライトリソース
 	std::unique_ptr<PointLightResourcesData> resourcesPointLight_ = nullptr;
+
+	// スポットライトリソース
+	std::unique_ptr<SpotLightResourcesData> resourcesSpotLight_ = nullptr;
+
 
 	// メインカメラリソース
 	std::unique_ptr<MainCameraResourcesDataCBV> resourcesMainCamera_ = nullptr;

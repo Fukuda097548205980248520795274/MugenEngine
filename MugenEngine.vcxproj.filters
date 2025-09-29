@@ -289,6 +289,9 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PointLightResourcesData">
       <UniqueIdentifier>{85d04012-b5f4-4343-85cb-c1b5cb5046f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData">
+      <UniqueIdentifier>{fa2a88e9-96af-4113-b8d4-395b2a8a7e3f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -552,6 +555,9 @@
     <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PointLightResourcesData\PointLightResourcesData.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PointLightResourcesData</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData\SpotLightResourcesData.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Include\MugenEngine.h">
@@ -814,6 +820,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PointLightResourcesData\PointLightResourcesData.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PointLightResourcesData</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData\SpotLightResourcesData.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

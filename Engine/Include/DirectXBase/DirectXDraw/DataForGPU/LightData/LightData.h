@@ -35,7 +35,29 @@ struct PointLightForGPU
 };
 
 // GPUに送るスポットライトデータ
-struct PointLightSpotLight
+struct SpotLightForGPU
 {
+	// 色
+	Vector4 color;
 
+	// 位置
+	Vector3 position;
+
+	// 輝度
+	float intensity;
+
+	// 方向
+	Vector3 direction;
+
+	// ライトの届く距離
+	float distance;
+
+	// 減衰率
+	float decay;
+
+	// 光の当たる角度
+	float cosAngle;
+
+	// フォールオフ開始場所
+	float cosFalloffStart;
 };
