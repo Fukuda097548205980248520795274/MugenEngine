@@ -1,5 +1,5 @@
 #pragma once
-#include "../Engine/Include/MugenEngine.h"
+#include "MugenEngine.h"
 
 class Game
 {
