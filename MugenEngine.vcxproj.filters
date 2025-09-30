@@ -826,15 +826,15 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Engine\Shader\Primitive\Primitive.VS.hlsl">
+    <FxCompile Include="Resources\Shader\Primitive\Primitive.VS.hlsl">
       <Filter>Engine\Shader\Primitive</Filter>
     </FxCompile>
-    <FxCompile Include="Engine\Shader\Primitive\Primitive.PS.hlsl">
+    <FxCompile Include="Resources\Shader\Primitive\Primitive.PS.hlsl">
       <Filter>Engine\Shader\Primitive</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Engine\Shader\Primitive\Primitive.hlsli">
+    <None Include="Resources\Shader\Primitive\Primitive.hlsli">
       <Filter>Engine\Shader\Primitive</Filter>
     </None>
   </ItemGroup>

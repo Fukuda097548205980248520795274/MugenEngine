@@ -1,5 +1,5 @@
-#include "Engine/Include/MugenEngine.h"
-#include "Game/Game.h"
+#include "MugenEngine.h"
+#include "Game.h"
 
 // Windowsアプリでの main関数
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)

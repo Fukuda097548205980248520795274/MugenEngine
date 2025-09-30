@@ -16,11 +16,11 @@ void OrganizePSOPrimitive::Initialize(LogFile* logFile, DirectXShaderCompile* di
 
 
 	// 頂点シェーダのバイナリデータを取得する
-	vertexShaderBlob_ = directXShaderCompile_->CompilerShader(L"./Engine/Shader/Primitive/Primitive.VS.hlsl", L"vs_6_0");
+	vertexShaderBlob_ = directXShaderCompile_->CompilerShader(L"./Resources/Shader/Primitive/Primitive.VS.hlsl", L"vs_6_0");
 	assert(vertexShaderBlob_ != nullptr);
 
 	// ピクセルシェーダのバイナリデータを取得する
-	pixelShaderBlob_ = directXShaderCompile_->CompilerShader(L"./Engine/Shader/Primitive/Primitive.PS.hlsl", L"ps_6_0");
+	pixelShaderBlob_ = directXShaderCompile_->CompilerShader(L"./Resources/Shader/Primitive/Primitive.PS.hlsl", L"ps_6_0");
 	assert(pixelShaderBlob_ != nullptr);
 
 	// Shaderを読み込めた旨のログを出力
