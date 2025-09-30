@@ -453,34 +453,6 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui.cpp">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
-      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_demo.cpp">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
-      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_draw.cpp">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
-      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_impl_dx12.cpp">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
-      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_impl_win32.cpp">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
-      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_tables.cpp">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
-      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_widgets.cpp">
-      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
-      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
-    </ClCompile>
     <ClCompile Include="Game\Game.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">Disabled</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">false</WholeProgramOptimization>
@@ -570,14 +542,6 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Include\Physics\AirDrag\AirDrag.h" />
     <ClInclude Include="Engine\Include\Physics\Friction\Friction.h" />
     <ClInclude Include="Engine\Include\WinApp\WinApp.h" />
-    <ClInclude Include="Externals\ImGui\imconfig.h" />
-    <ClInclude Include="Externals\ImGui\imgui.h" />
-    <ClInclude Include="Externals\ImGui\imgui_impl_dx12.h" />
-    <ClInclude Include="Externals\ImGui\imgui_impl_win32.h" />
-    <ClInclude Include="Externals\ImGui\imgui_internal.h" />
-    <ClInclude Include="Externals\ImGui\imstb_rectpack.h" />
-    <ClInclude Include="Externals\ImGui\imstb_textedit.h" />
-    <ClInclude Include="Externals\ImGui\imstb_truetype.h" />
     <ClInclude Include="Game\Game.h" />
   </ItemGroup>
   <ItemGroup>
@@ -600,9 +564,6 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shader\Primitive\Primitive.hlsli" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Externals\ImGui\LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Externals\DirectXTex\DirectXTex_Desktop_2022_Win10.vcxproj">
