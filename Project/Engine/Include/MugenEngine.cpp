@@ -54,7 +54,7 @@ MugenEngine::~MugenEngine()
 void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const std::string& title)
 {
 	// 出力用のディレクトリを掘る
-	std::filesystem::create_directories("./Engine/Output");
+	std::filesystem::create_directories("../build/outputs");
 
 	// COMの初期化
 	CoInitializeEx(0, COINIT_MULTITHREADED);
