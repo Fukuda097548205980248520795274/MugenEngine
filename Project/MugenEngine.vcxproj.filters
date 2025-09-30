@@ -297,79 +297,79 @@
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\MugenEngine.cpp">
+    <ClCompile Include="Engine\MugenEngine.cpp">
       <Filter>Engine\Include</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\WinApp\WinApp.cpp">
+    <ClCompile Include="Engine\WinApp\WinApp.cpp">
       <Filter>Engine\Include\WinApp</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Func\ConvertString\ConvertString.cpp">
+    <ClCompile Include="Engine\Func\ConvertString\ConvertString.cpp">
       <Filter>Engine\Include\Func\ConvertString</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\LogFile\LogFile.cpp">
+    <ClCompile Include="Engine\LogFile\LogFile.cpp">
       <Filter>Engine\Include\LogFile</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Math\Vector2\Vector2.cpp">
+    <ClCompile Include="Engine\Math\Vector2\Vector2.cpp">
       <Filter>Engine\Include\Math\Vector2</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Math\Vector3\Vector3.cpp">
+    <ClCompile Include="Engine\Math\Vector3\Vector3.cpp">
       <Filter>Engine\Include\Math\Vector3</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Math\Vector1\Vector1.cpp">
+    <ClCompile Include="Engine\Math\Vector1\Vector1.cpp">
       <Filter>Engine\Include\Math\Vector1</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Math\Vector4\Vector4.cpp">
+    <ClCompile Include="Engine\Math\Vector4\Vector4.cpp">
       <Filter>Engine\Include\Math\Vector4</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXBase.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXBase.cpp">
       <Filter>Engine\Include\DirectXBase</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDevice\DirectXDevice.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDevice</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Func\CrushHandler\CrushHandler.cpp">
+    <ClCompile Include="Engine\Func\CrushHandler\CrushHandler.cpp">
       <Filter>Engine\Include\Func\CrushHandler</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXCommand\DirectXCommand.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXCommand\DirectXCommand.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXCommand</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXHeap\DirectXHeap.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXHeap\DirectXHeap.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXHeap</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXBuffering\DirectXBuffering.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXBuffering\DirectXBuffering.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXBuffering</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDebug\DirectXDebug.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDebug\DirectXDebug.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDebug</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Func\DirectXTransitionBarrier\DirectXTransitionBarrier.cpp">
+    <ClCompile Include="Engine\Func\DirectXTransitionBarrier\DirectXTransitionBarrier.cpp">
       <Filter>Engine\Include\Func\DirectXTransitionBarrier</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXFence\DirectXFence.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXFence\DirectXFence.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXFence</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DirectXShaderCompile\DirectXShaderCompile.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\DirectXShaderCompile\DirectXShaderCompile.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\DirectXShaderCompile</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DirectXDraw.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\DirectXDraw.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\OrganizePSOPrimitive.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\OrganizePSOPrimitive.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO\BaseSinglePSO.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO\BaseSinglePSO.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone\SinglePSOPrimitiveNone.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone\SinglePSOPrimitiveNone.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Func\CreateBufferResource\CreateBufferResource.cpp">
+    <ClCompile Include="Engine\Func\CreateBufferResource\CreateBufferResource.cpp">
       <Filter>Engine\Include\Func\CreateBufferResource</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Math\Matrix4x4\Matrix4x4.cpp">
+    <ClCompile Include="Engine\Math\Matrix4x4\Matrix4x4.cpp">
       <Filter>Engine\Include\Math\Matrix4x4</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Transform\Transform.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Transform\Transform.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Transform</Filter>
     </ClCompile>
     <ClCompile Include="Externals\ImGui\imgui.cpp">
@@ -393,246 +393,246 @@
     <ClCompile Include="Externals\ImGui\imgui_widgets.cpp">
       <Filter>Externals\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Func\LoadTexture\LoadTexture.cpp">
+    <ClCompile Include="Engine\Func\LoadTexture\LoadTexture.cpp">
       <Filter>Engine\Include\Func\LoadTexture</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\VertexData\VertexData.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\DataForGPU\VertexData\VertexData.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\DataForGPU\VertexData</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\TextureStore\TextureStore.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\TextureStore\TextureStore.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\TextureStore</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\ResourcesDepthStencil\ResourcesDepthStencil.cpp">
+    <ClCompile Include="Engine\DirectXBase\ResourcesDepthStencil\ResourcesDepthStencil.cpp">
       <Filter>Engine\Include\DirectXBase\ResourcesDepthStencil</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform3D\WorldTransform3D.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform3D\WorldTransform3D.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform3D</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\MaterialData\MaterialData.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\DataForGPU\MaterialData\MaterialData.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\DataForGPU\MaterialData</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\TransformationData\TransformationData.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\DataForGPU\TransformationData\TransformationData.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\DataForGPU\TransformationData</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\LightData\LightData.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\DataForGPU\LightData\LightData.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\DataForGPU\LightData</Filter>
     </ClCompile>
     <ClCompile Include="Game\Game.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Input\Input.cpp">
+    <ClCompile Include="Engine\Input\Input.cpp">
       <Filter>Engine\Include\Input</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\AudioStore\AudioStore.cpp">
+    <ClCompile Include="Engine\AudioStore\AudioStore.cpp">
       <Filter>Engine\Include\AudioStore</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\BaseMesh.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\BaseMesh.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Collision\Collision.cpp">
+    <ClCompile Include="Engine\Collision\Collision.cpp">
       <Filter>Engine\Include\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Collision\Shape\AABB\AABB.cpp">
+    <ClCompile Include="Engine\Collision\Shape\AABB\AABB.cpp">
       <Filter>Engine\Include\Collision\Shape\AABB</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Collision\Shape\Line\Line.cpp">
+    <ClCompile Include="Engine\Collision\Shape\Line\Line.cpp">
       <Filter>Engine\Include\Collision\Shape\Line</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Collision\Shape\Triangle\Triangle.cpp">
+    <ClCompile Include="Engine\Collision\Shape\Triangle\Triangle.cpp">
       <Filter>Engine\Include\Collision\Shape\Triangle</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Collision\Shape\Ray\Ray.cpp">
+    <ClCompile Include="Engine\Collision\Shape\Ray\Ray.cpp">
       <Filter>Engine\Include\Collision\Shape\Ray</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Collision\Shape\Segment\Segment.cpp">
+    <ClCompile Include="Engine\Collision\Shape\Segment\Segment.cpp">
       <Filter>Engine\Include\Collision\Shape\Segment</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Collision\Shape\Plane\Plane.cpp">
+    <ClCompile Include="Engine\Collision\Shape\Plane\Plane.cpp">
       <Filter>Engine\Include\Collision\Shape\Plane</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Collision\Shape\OBB\OBB.cpp">
+    <ClCompile Include="Engine\Collision\Shape\OBB\OBB.cpp">
       <Filter>Engine\Include\Collision\Shape\OBB</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Math\Matrix3x3\Matrix3x3.cpp">
+    <ClCompile Include="Engine\Math\Matrix3x3\Matrix3x3.cpp">
       <Filter>Engine\Include\Math\Matrix3x3</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform2D\WorldTransform2D.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform2D\WorldTransform2D.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform2D</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\UVTransform\UVTransform.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\UVTransform\UVTransform.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\UVTransform</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera3D\Camera3D.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\Camera\Camera3D\Camera3D.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\Camera\Camera3D</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\Camera\Camera2D</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Collision\Shape\Sphere\Sphere.cpp">
+    <ClCompile Include="Engine\Collision\Shape\Sphere\Sphere.cpp">
       <Filter>Engine\Include\Collision\Shape\Sphere</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelStore.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelStore.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\ModelData.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\ModelData.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Physics\AirDrag\AirDrag.cpp">
+    <ClCompile Include="Engine\Physics\AirDrag\AirDrag.cpp">
       <Filter>Engine\Include\Physics\AirDrag</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Physics\Friction\Friction.cpp">
+    <ClCompile Include="Engine\Physics\Friction\Friction.cpp">
       <Filter>Engine\Include\Physics\Friction</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal\SinglePSOPrimitiveNormal.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal\SinglePSOPrimitiveNormal.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\EnumBlendMode\EnumBlendMode.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\EnumBlendMode\EnumBlendMode.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\EnumBlendMode</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere\MeshUVSphere.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere\MeshUVSphere.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveAdd\SinglePSOPrimitiveAdd.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveAdd\SinglePSOPrimitiveAdd.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveAdd</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveSubtract\SinglePSOPrimitiveSubtract.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveSubtract\SinglePSOPrimitiveSubtract.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveSubtract</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveMultiply\SinglePSOPrimitiveMultiply.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveMultiply\SinglePSOPrimitiveMultiply.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveMultiply</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveScreen\SinglePSOPrimitiveScreen.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveScreen\SinglePSOPrimitiveScreen.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveScreen</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshCube\MeshCube.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshCube\MeshCube.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshCube</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite\MeshSprite.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshSprite\MeshSprite.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesData.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesData.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesCube\PrimitiveResourcesCube.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesCube\PrimitiveResourcesCube.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesCube</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesSprite\PrimitiveResourcesSprite.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesSprite\PrimitiveResourcesSprite.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesSprite</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesUVSphere\PrimitiveResourcesUVSphere.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesUVSphere\PrimitiveResourcesUVSphere.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesUVSphere</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData\DirectionalLightResourcesData.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData\DirectionalLightResourcesData.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Func\LoadModel\LoadModel.cpp">
+    <ClCompile Include="Engine\Func\LoadModel\LoadModel.cpp">
       <Filter>Engine\Include\Func\LoadModel</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData\IndexVertexResourcesData.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData\IndexVertexResourcesData.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel\MeshModel.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshModel\MeshModel.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MaterialResourcesDataCBV\MaterialResourcesDataCBV.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\MaterialResourcesDataCBV\MaterialResourcesDataCBV.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MaterialResourcesDataCBV</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV\TransformationResourcesDataCBV.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV\TransformationResourcesDataCBV.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MainCameraResourcesDataCBV\MainCameraResourcesDataCBV.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\MainCameraResourcesDataCBV\MainCameraResourcesDataCBV.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MainCameraResourcesDataCBV</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU\CameraDataForGPU.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU\CameraDataForGPU.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Material\Material.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Material\Material.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Material</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PointLightResourcesData\PointLightResourcesData.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PointLightResourcesData\PointLightResourcesData.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PointLightResourcesData</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData\SpotLightResourcesData.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData\SpotLightResourcesData.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine\Include\MugenEngine.h">
+    <ClInclude Include="Engine\MugenEngine.h">
       <Filter>Engine\Include</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\WinApp\WinApp.h">
+    <ClInclude Include="Engine\WinApp\WinApp.h">
       <Filter>Engine\Include\WinApp</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Func\ConvertString\ConvertString.h">
+    <ClInclude Include="Engine\Func\ConvertString\ConvertString.h">
       <Filter>Engine\Include\Func\ConvertString</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\LogFile\LogFile.h">
+    <ClInclude Include="Engine\LogFile\LogFile.h">
       <Filter>Engine\Include\LogFile</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Math\Vector2\Vector2.h">
+    <ClInclude Include="Engine\Math\Vector2\Vector2.h">
       <Filter>Engine\Include\Math\Vector2</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Math\Vector3\Vector3.h">
+    <ClInclude Include="Engine\Math\Vector3\Vector3.h">
       <Filter>Engine\Include\Math\Vector3</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Math\Vector1\Vector1.h">
+    <ClInclude Include="Engine\Math\Vector1\Vector1.h">
       <Filter>Engine\Include\Math\Vector1</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Math\Vector4\Vector4.h">
+    <ClInclude Include="Engine\Math\Vector4\Vector4.h">
       <Filter>Engine\Include\Math\Vector4</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXBase.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXBase.h">
       <Filter>Engine\Include\DirectXBase</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDevice\DirectXDevice.h">
       <Filter>Engine\Include\DirectXBase\DirectXDevice</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Func\CrushHandler\CrushHandler.h">
+    <ClInclude Include="Engine\Func\CrushHandler\CrushHandler.h">
       <Filter>Engine\Include\Func\CrushHandler</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXCommand\DirectXCommand.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXCommand\DirectXCommand.h">
       <Filter>Engine\Include\DirectXBase\DirectXCommand</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXHeap\DirectXHeap.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXHeap\DirectXHeap.h">
       <Filter>Engine\Include\DirectXBase\DirectXHeap</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXBuffering\DirectXBuffering.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXBuffering\DirectXBuffering.h">
       <Filter>Engine\Include\DirectXBase\DirectXBuffering</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDebug\DirectXDebug.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDebug\DirectXDebug.h">
       <Filter>Engine\Include\DirectXBase\DirectXDebug</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Func\DirectXTransitionBarrier\DirectXTransitionBarrier.h">
+    <ClInclude Include="Engine\Func\DirectXTransitionBarrier\DirectXTransitionBarrier.h">
       <Filter>Engine\Include\Func\DirectXTransitionBarrier</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXFence\DirectXFence.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXFence\DirectXFence.h">
       <Filter>Engine\Include\DirectXBase\DirectXFence</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DirectXShaderCompile\DirectXShaderCompile.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\DirectXShaderCompile\DirectXShaderCompile.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\DirectXShaderCompile</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DirectXDraw.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\DirectXDraw.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\OrganizePSOPrimitive.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\OrganizePSOPrimitive.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO\BaseSinglePSO.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO\BaseSinglePSO.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone\SinglePSOPrimitiveNone.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone\SinglePSOPrimitiveNone.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Func\CreateBufferResource\CreateBufferResource.h">
+    <ClInclude Include="Engine\Func\CreateBufferResource\CreateBufferResource.h">
       <Filter>Engine\Include\Func\CreateBufferResource</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Math\Matrix4x4\Matrix4x4.h">
+    <ClInclude Include="Engine\Math\Matrix4x4\Matrix4x4.h">
       <Filter>Engine\Include\Math\Matrix4x4</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Transform\Transform.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Transform\Transform.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Transform</Filter>
     </ClInclude>
     <ClInclude Include="Externals\ImGui\imconfig.h">
@@ -659,169 +659,169 @@
     <ClInclude Include="Externals\ImGui\imstb_truetype.h">
       <Filter>Externals\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Func\LoadTexture\LoadTexture.h">
+    <ClInclude Include="Engine\Func\LoadTexture\LoadTexture.h">
       <Filter>Engine\Include\Func\LoadTexture</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\VertexData\VertexData.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\DataForGPU\VertexData\VertexData.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\DataForGPU\VertexData</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\TextureStore\TextureStore.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\TextureStore\TextureStore.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\TextureStore</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\ResourcesDepthStencil\ResourcesDepthStencil.h">
+    <ClInclude Include="Engine\DirectXBase\ResourcesDepthStencil\ResourcesDepthStencil.h">
       <Filter>Engine\Include\DirectXBase\ResourcesDepthStencil</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform3D\WorldTransform3D.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform3D\WorldTransform3D.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform3D</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\MaterialData\MaterialData.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\DataForGPU\MaterialData\MaterialData.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\DataForGPU\MaterialData</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\TransformationData\TransformationData.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\DataForGPU\TransformationData\TransformationData.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\DataForGPU\TransformationData</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\LightData\LightData.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\DataForGPU\LightData\LightData.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\DataForGPU\LightData</Filter>
     </ClInclude>
     <ClInclude Include="Game\Game.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Input\Input.h">
+    <ClInclude Include="Engine\Input\Input.h">
       <Filter>Engine\Include\Input</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\AudioStore\AudioStore.h">
+    <ClInclude Include="Engine\AudioStore\AudioStore.h">
       <Filter>Engine\Include\AudioStore</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\BaseMesh.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\BaseMesh.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Collision\Collision.h">
+    <ClInclude Include="Engine\Collision\Collision.h">
       <Filter>Engine\Include\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Collision\Shape\AABB\AABB.h">
+    <ClInclude Include="Engine\Collision\Shape\AABB\AABB.h">
       <Filter>Engine\Include\Collision\Shape\AABB</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Collision\Shape\Line\Line.h">
+    <ClInclude Include="Engine\Collision\Shape\Line\Line.h">
       <Filter>Engine\Include\Collision\Shape\Line</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Collision\Shape\Triangle\Triangle.h">
+    <ClInclude Include="Engine\Collision\Shape\Triangle\Triangle.h">
       <Filter>Engine\Include\Collision\Shape\Triangle</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Collision\Shape\Ray\Ray.h">
+    <ClInclude Include="Engine\Collision\Shape\Ray\Ray.h">
       <Filter>Engine\Include\Collision\Shape\Ray</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Collision\Shape\Segment\Segment.h">
+    <ClInclude Include="Engine\Collision\Shape\Segment\Segment.h">
       <Filter>Engine\Include\Collision\Shape\Segment</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Collision\Shape\Plane\Plane.h">
+    <ClInclude Include="Engine\Collision\Shape\Plane\Plane.h">
       <Filter>Engine\Include\Collision\Shape\Plane</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Collision\Shape\OBB\OBB.h">
+    <ClInclude Include="Engine\Collision\Shape\OBB\OBB.h">
       <Filter>Engine\Include\Collision\Shape\OBB</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Math\Matrix3x3\Matrix3x3.h">
+    <ClInclude Include="Engine\Math\Matrix3x3\Matrix3x3.h">
       <Filter>Engine\Include\Math\Matrix3x3</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform2D\WorldTransform2D.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform2D\WorldTransform2D.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform2D</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\UVTransform\UVTransform.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\UVTransform\UVTransform.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\UVTransform</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera3D\Camera3D.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\Camera\Camera3D\Camera3D.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\Camera\Camera3D</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\Camera\Camera2D</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Collision\Shape\Sphere\Sphere.h">
+    <ClInclude Include="Engine\Collision\Shape\Sphere\Sphere.h">
       <Filter>Engine\Include\Collision\Shape\Sphere</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelStore.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelStore.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\ModelData.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\ModelData.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Physics\AirDrag\AirDrag.h">
+    <ClInclude Include="Engine\Physics\AirDrag\AirDrag.h">
       <Filter>Engine\Include\Physics\AirDrag</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Physics\Friction\Friction.h">
+    <ClInclude Include="Engine\Physics\Friction\Friction.h">
       <Filter>Engine\Include\Physics\Friction</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal\SinglePSOPrimitiveNormal.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal\SinglePSOPrimitiveNormal.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\EnumBlendMode\EnumBlendMode.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\EnumBlendMode\EnumBlendMode.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\EnumBlendMode</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere\MeshUVSphere.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere\MeshUVSphere.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveAdd\SinglePSOPrimitiveAdd.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveAdd\SinglePSOPrimitiveAdd.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveAdd</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveSubtract\SinglePSOPrimitiveSubtract.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveSubtract\SinglePSOPrimitiveSubtract.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveSubtract</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveMultiply\SinglePSOPrimitiveMultiply.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveMultiply\SinglePSOPrimitiveMultiply.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveMultiply</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveScreen\SinglePSOPrimitiveScreen.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveScreen\SinglePSOPrimitiveScreen.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveScreen</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshCube\MeshCube.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshCube\MeshCube.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshCube</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite\MeshSprite.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshSprite\MeshSprite.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesData.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesData.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesCube\PrimitiveResourcesCube.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesCube\PrimitiveResourcesCube.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesCube</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesSprite\PrimitiveResourcesSprite.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesSprite\PrimitiveResourcesSprite.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesSprite</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesUVSphere\PrimitiveResourcesUVSphere.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesUVSphere\PrimitiveResourcesUVSphere.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesUVSphere</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData\DirectionalLightResourcesData.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData\DirectionalLightResourcesData.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\Func\LoadModel\LoadModel.h">
+    <ClInclude Include="Engine\Func\LoadModel\LoadModel.h">
       <Filter>Engine\Include\Func\LoadModel</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData\IndexVertexResourcesData.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData\IndexVertexResourcesData.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel\MeshModel.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshModel\MeshModel.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MaterialResourcesDataCBV\MaterialResourcesDataCBV.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\MaterialResourcesDataCBV\MaterialResourcesDataCBV.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MaterialResourcesDataCBV</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV\TransformationResourcesDataCBV.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV\TransformationResourcesDataCBV.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MainCameraResourcesDataCBV\MainCameraResourcesDataCBV.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\MainCameraResourcesDataCBV\MainCameraResourcesDataCBV.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MainCameraResourcesDataCBV</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU\CameraDataForGPU.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU\CameraDataForGPU.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Material\Material.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Material\Material.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Material</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PointLightResourcesData\PointLightResourcesData.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PointLightResourcesData\PointLightResourcesData.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PointLightResourcesData</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData\SpotLightResourcesData.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData\SpotLightResourcesData.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData</Filter>
     </ClInclude>
   </ItemGroup>

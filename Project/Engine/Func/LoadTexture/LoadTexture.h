@@ -3,8 +3,8 @@
 #include <wrl.h>
 #include <vector>
 
-#include "../../../../Externals/DirectXTex/DirectXTex.h"
-#include "../../../../Externals/DirectXTex/d3dx12.h"
+#include "../Externals/DirectXTex/DirectXTex.h"
+#include "../Externals/DirectXTex/d3dx12.h"
 #include "../ConvertString/ConvertString.h"
 #include "../CreateBufferResource/CreateBufferResource.h"
 
@@ -30,7 +30,7 @@ Microsoft::WRL::ComPtr<ID3D12Resource> CreateTextureResource(ID3D12Device* devic
 /// <param name="width"></param>
 /// <param name="height"></param>
 /// <returns></returns>
-Microsoft::WRL::ComPtr<ID3D12Resource> CreateDepthStencilTextureResource(ID3D12Device* device, int32_t width, int height);
+Microsoft::WRL::ComPtr<ID3D12Resource> CreateDepthStencilTextureResource(ID3D12Device* device, int32_t width, int32_t height);
 
 /// <summary>
 /// テクスチャデータをGPUに転送するためのリソースを生成する

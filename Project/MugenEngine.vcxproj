@@ -80,7 +80,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <AdditionalIncludeDirectories>$(ProjectDir)Externals\assimp\include;$(ProjectDir)Engine\include;$(ProjectDir)Game;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Externals\assimp\include;$(ProjectDir)Engine;$(ProjectDir)Game;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -107,7 +107,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(ProjectDir)Externals\assimp\include;$(ProjectDir)Engine\include;$(ProjectDir)Game;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Externals\assimp\include;$(ProjectDir)Engine;$(ProjectDir)Game;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -132,7 +132,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>$(ProjectDir)Externals\assimp\include;$(ProjectDir)Engine\include;$(ProjectDir)Game;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Externals\assimp\include;$(ProjectDir)Engine;$(ProjectDir)Game;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <WholeProgramOptimization>false</WholeProgramOptimization>
     </ClCompile>
@@ -149,319 +149,319 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Engine\Include\AudioStore\AudioStore.cpp">
+    <ClCompile Include="Engine\AudioStore\AudioStore.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Collision\Collision.cpp">
+    <ClCompile Include="Engine\Collision\Collision.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Collision\Shape\AABB\AABB.cpp">
+    <ClCompile Include="Engine\Collision\Shape\AABB\AABB.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Collision\Shape\Line\Line.cpp">
+    <ClCompile Include="Engine\Collision\Shape\Line\Line.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Collision\Shape\OBB\OBB.cpp">
+    <ClCompile Include="Engine\Collision\Shape\OBB\OBB.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Collision\Shape\Plane\Plane.cpp">
+    <ClCompile Include="Engine\Collision\Shape\Plane\Plane.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Collision\Shape\Ray\Ray.cpp">
+    <ClCompile Include="Engine\Collision\Shape\Ray\Ray.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Collision\Shape\Segment\Segment.cpp">
+    <ClCompile Include="Engine\Collision\Shape\Segment\Segment.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Collision\Shape\Sphere\Sphere.cpp">
+    <ClCompile Include="Engine\Collision\Shape\Sphere\Sphere.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Collision\Shape\Triangle\Triangle.cpp">
+    <ClCompile Include="Engine\Collision\Shape\Triangle\Triangle.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXBase.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXBase.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXBuffering\DirectXBuffering.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXBuffering\DirectXBuffering.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXCommand\DirectXCommand.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXCommand\DirectXCommand.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDebug\DirectXDebug.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDebug\DirectXDebug.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDevice\DirectXDevice.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\BaseMesh.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\BaseMesh.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Material\Material.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Material\Material.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshCube\MeshCube.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshCube\MeshCube.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel\MeshModel.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshModel\MeshModel.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite\MeshSprite.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshSprite\MeshSprite.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere\MeshUVSphere.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere\MeshUVSphere.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\UVTransform\UVTransform.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\UVTransform\UVTransform.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform2D\WorldTransform2D.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform2D\WorldTransform2D.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO\BaseSinglePSO.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO\BaseSinglePSO.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\EnumBlendMode\EnumBlendMode.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\EnumBlendMode\EnumBlendMode.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveAdd\SinglePSOPrimitiveAdd.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveAdd\SinglePSOPrimitiveAdd.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveMultiply\SinglePSOPrimitiveMultiply.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveMultiply\SinglePSOPrimitiveMultiply.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal\SinglePSOPrimitiveNormal.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal\SinglePSOPrimitiveNormal.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveScreen\SinglePSOPrimitiveScreen.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveScreen\SinglePSOPrimitiveScreen.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveSubtract\SinglePSOPrimitiveSubtract.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveSubtract\SinglePSOPrimitiveSubtract.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera3D\Camera3D.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\Camera\Camera3D\Camera3D.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU\CameraDataForGPU.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU\CameraDataForGPU.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DirectXDraw.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\DirectXDraw.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\OrganizePSOPrimitive.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\OrganizePSOPrimitive.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone\SinglePSOPrimitiveNone.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone\SinglePSOPrimitiveNone.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\LightData\LightData.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\DataForGPU\LightData\LightData.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\MaterialData\MaterialData.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\DataForGPU\MaterialData\MaterialData.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\ModelData.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\ModelData.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelStore.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelStore.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData\DirectionalLightResourcesData.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData\DirectionalLightResourcesData.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData\IndexVertexResourcesData.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData\IndexVertexResourcesData.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MainCameraResourcesDataCBV\MainCameraResourcesDataCBV.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\MainCameraResourcesDataCBV\MainCameraResourcesDataCBV.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MaterialResourcesDataCBV\MaterialResourcesDataCBV.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\MaterialResourcesDataCBV\MaterialResourcesDataCBV.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PointLightResourcesData\PointLightResourcesData.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PointLightResourcesData\PointLightResourcesData.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesCube\PrimitiveResourcesCube.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesCube\PrimitiveResourcesCube.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesData.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesData.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesSprite\PrimitiveResourcesSprite.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesSprite\PrimitiveResourcesSprite.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesUVSphere\PrimitiveResourcesUVSphere.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesUVSphere\PrimitiveResourcesUVSphere.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\TransformationData\TransformationData.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\DataForGPU\TransformationData\TransformationData.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform3D\WorldTransform3D.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform3D\WorldTransform3D.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData\SpotLightResourcesData.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData\SpotLightResourcesData.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV\TransformationResourcesDataCBV.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV\TransformationResourcesDataCBV.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\ResourcesDepthStencil\ResourcesDepthStencil.cpp">
+    <ClCompile Include="Engine\DirectXBase\ResourcesDepthStencil\ResourcesDepthStencil.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\TextureStore\TextureStore.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\TextureStore\TextureStore.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Transform\Transform.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Transform\Transform.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\VertexData\VertexData.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\DataForGPU\VertexData\VertexData.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXFence\DirectXFence.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXFence\DirectXFence.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXHeap\DirectXHeap.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXHeap\DirectXHeap.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\DirectXBase\DirectXDraw\DirectXShaderCompile\DirectXShaderCompile.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\DirectXShaderCompile\DirectXShaderCompile.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Func\DirectXTransitionBarrier\DirectXTransitionBarrier.cpp">
+    <ClCompile Include="Engine\Func\DirectXTransitionBarrier\DirectXTransitionBarrier.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Func\ConvertString\ConvertString.cpp">
+    <ClCompile Include="Engine\Func\ConvertString\ConvertString.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Func\CreateBufferResource\CreateBufferResource.cpp">
+    <ClCompile Include="Engine\Func\CreateBufferResource\CreateBufferResource.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Func\CrushHandler\CrushHandler.cpp">
+    <ClCompile Include="Engine\Func\CrushHandler\CrushHandler.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Func\LoadModel\LoadModel.cpp">
+    <ClCompile Include="Engine\Func\LoadModel\LoadModel.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Func\LoadTexture\LoadTexture.cpp">
+    <ClCompile Include="Engine\Func\LoadTexture\LoadTexture.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Input\Input.cpp">
+    <ClCompile Include="Engine\Input\Input.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\LogFile\LogFile.cpp">
+    <ClCompile Include="Engine\LogFile\LogFile.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Math\Matrix3x3\Matrix3x3.cpp">
+    <ClCompile Include="Engine\Math\Matrix3x3\Matrix3x3.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Math\Matrix4x4\Matrix4x4.cpp">
+    <ClCompile Include="Engine\Math\Matrix4x4\Matrix4x4.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Math\Vector1\Vector1.cpp">
+    <ClCompile Include="Engine\Math\Vector1\Vector1.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Math\Vector2\Vector2.cpp">
+    <ClCompile Include="Engine\Math\Vector2\Vector2.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Math\Vector3\Vector3.cpp">
+    <ClCompile Include="Engine\Math\Vector3\Vector3.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Math\Vector4\Vector4.cpp">
+    <ClCompile Include="Engine\Math\Vector4\Vector4.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\MugenEngine.cpp">
+    <ClCompile Include="Engine\MugenEngine.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Physics\AirDrag\AirDrag.cpp">
+    <ClCompile Include="Engine\Physics\AirDrag\AirDrag.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\Physics\Friction\Friction.cpp">
+    <ClCompile Include="Engine\Physics\Friction\Friction.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Include\WinApp\WinApp.cpp">
+    <ClCompile Include="Engine\WinApp\WinApp.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
@@ -510,85 +510,85 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine\Include\AudioStore\AudioStore.h" />
-    <ClInclude Include="Engine\Include\Collision\Collision.h" />
-    <ClInclude Include="Engine\Include\Collision\Shape\AABB\AABB.h" />
-    <ClInclude Include="Engine\Include\Collision\Shape\Line\Line.h" />
-    <ClInclude Include="Engine\Include\Collision\Shape\OBB\OBB.h" />
-    <ClInclude Include="Engine\Include\Collision\Shape\Plane\Plane.h" />
-    <ClInclude Include="Engine\Include\Collision\Shape\Ray\Ray.h" />
-    <ClInclude Include="Engine\Include\Collision\Shape\Segment\Segment.h" />
-    <ClInclude Include="Engine\Include\Collision\Shape\Sphere\Sphere.h" />
-    <ClInclude Include="Engine\Include\Collision\Shape\Triangle\Triangle.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXBase.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXBuffering\DirectXBuffering.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXCommand\DirectXCommand.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDebug\DirectXDebug.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDevice\DirectXDevice.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\BaseMesh.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Material\Material.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshCube\MeshCube.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel\MeshModel.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshSprite\MeshSprite.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere\MeshUVSphere.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\UVTransform\UVTransform.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform2D\WorldTransform2D.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO\BaseSinglePSO.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\EnumBlendMode\EnumBlendMode.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveAdd\SinglePSOPrimitiveAdd.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveMultiply\SinglePSOPrimitiveMultiply.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal\SinglePSOPrimitiveNormal.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveScreen\SinglePSOPrimitiveScreen.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveSubtract\SinglePSOPrimitiveSubtract.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\Camera\Camera3D\Camera3D.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU\CameraDataForGPU.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DirectXDraw.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\OrganizePSOPrimitive.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone\SinglePSOPrimitiveNone.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\LightData\LightData.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\MaterialData\MaterialData.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\ModelData.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelStore.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData\DirectionalLightResourcesData.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData\IndexVertexResourcesData.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MainCameraResourcesDataCBV\MainCameraResourcesDataCBV.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MaterialResourcesDataCBV\MaterialResourcesDataCBV.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PointLightResourcesData\PointLightResourcesData.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesCube\PrimitiveResourcesCube.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesData.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesSprite\PrimitiveResourcesSprite.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesUVSphere\PrimitiveResourcesUVSphere.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\TransformationData\TransformationData.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform3D\WorldTransform3D.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData\SpotLightResourcesData.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV\TransformationResourcesDataCBV.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\ResourcesDepthStencil\ResourcesDepthStencil.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\TextureStore\TextureStore.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Transform\Transform.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\VertexData\VertexData.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXFence\DirectXFence.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXHeap\DirectXHeap.h" />
-    <ClInclude Include="Engine\Include\DirectXBase\DirectXDraw\DirectXShaderCompile\DirectXShaderCompile.h" />
-    <ClInclude Include="Engine\Include\Func\DirectXTransitionBarrier\DirectXTransitionBarrier.h" />
-    <ClInclude Include="Engine\Include\Func\ConvertString\ConvertString.h" />
-    <ClInclude Include="Engine\Include\Func\CreateBufferResource\CreateBufferResource.h" />
-    <ClInclude Include="Engine\Include\Func\CrushHandler\CrushHandler.h" />
-    <ClInclude Include="Engine\Include\Func\LoadModel\LoadModel.h" />
-    <ClInclude Include="Engine\Include\Func\LoadTexture\LoadTexture.h" />
-    <ClInclude Include="Engine\Include\Input\Input.h" />
-    <ClInclude Include="Engine\Include\LogFile\LogFile.h" />
-    <ClInclude Include="Engine\Include\Math\Matrix3x3\Matrix3x3.h" />
-    <ClInclude Include="Engine\Include\Math\Matrix4x4\Matrix4x4.h" />
-    <ClInclude Include="Engine\Include\Math\Vector1\Vector1.h" />
-    <ClInclude Include="Engine\Include\Math\Vector2\Vector2.h" />
-    <ClInclude Include="Engine\Include\Math\Vector3\Vector3.h" />
-    <ClInclude Include="Engine\Include\Math\Vector4\Vector4.h" />
-    <ClInclude Include="Engine\Include\MugenEngine.h" />
-    <ClInclude Include="Engine\Include\Physics\AirDrag\AirDrag.h" />
-    <ClInclude Include="Engine\Include\Physics\Friction\Friction.h" />
-    <ClInclude Include="Engine\Include\WinApp\WinApp.h" />
+    <ClInclude Include="Engine\AudioStore\AudioStore.h" />
+    <ClInclude Include="Engine\Collision\Collision.h" />
+    <ClInclude Include="Engine\Collision\Shape\AABB\AABB.h" />
+    <ClInclude Include="Engine\Collision\Shape\Line\Line.h" />
+    <ClInclude Include="Engine\Collision\Shape\OBB\OBB.h" />
+    <ClInclude Include="Engine\Collision\Shape\Plane\Plane.h" />
+    <ClInclude Include="Engine\Collision\Shape\Ray\Ray.h" />
+    <ClInclude Include="Engine\Collision\Shape\Segment\Segment.h" />
+    <ClInclude Include="Engine\Collision\Shape\Sphere\Sphere.h" />
+    <ClInclude Include="Engine\Collision\Shape\Triangle\Triangle.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXBase.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXBuffering\DirectXBuffering.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXCommand\DirectXCommand.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDebug\DirectXDebug.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDevice\DirectXDevice.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\BaseMesh.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Material\Material.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshCube\MeshCube.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshModel\MeshModel.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshSprite\MeshSprite.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshUVSphere\MeshUVSphere.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\UVTransform\UVTransform.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform2D\WorldTransform2D.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO\BaseSinglePSO.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\EnumBlendMode\EnumBlendMode.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveAdd\SinglePSOPrimitiveAdd.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveMultiply\SinglePSOPrimitiveMultiply.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal\SinglePSOPrimitiveNormal.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveScreen\SinglePSOPrimitiveScreen.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveSubtract\SinglePSOPrimitiveSubtract.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\Camera\Camera3D\Camera3D.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU\CameraDataForGPU.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\DirectXDraw.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\OrganizePSOPrimitive.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone\SinglePSOPrimitiveNone.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\DataForGPU\LightData\LightData.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\DataForGPU\MaterialData\MaterialData.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\ModelData.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelStore.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData\DirectionalLightResourcesData.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData\IndexVertexResourcesData.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\MainCameraResourcesDataCBV\MainCameraResourcesDataCBV.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\MaterialResourcesDataCBV\MaterialResourcesDataCBV.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PointLightResourcesData\PointLightResourcesData.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesCube\PrimitiveResourcesCube.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesData.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesSprite\PrimitiveResourcesSprite.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesUVSphere\PrimitiveResourcesUVSphere.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\DataForGPU\TransformationData\TransformationData.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform3D\WorldTransform3D.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData\SpotLightResourcesData.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV\TransformationResourcesDataCBV.h" />
+    <ClInclude Include="Engine\DirectXBase\ResourcesDepthStencil\ResourcesDepthStencil.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\TextureStore\TextureStore.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Transform\Transform.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\DataForGPU\VertexData\VertexData.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXFence\DirectXFence.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXHeap\DirectXHeap.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\DirectXShaderCompile\DirectXShaderCompile.h" />
+    <ClInclude Include="Engine\Func\DirectXTransitionBarrier\DirectXTransitionBarrier.h" />
+    <ClInclude Include="Engine\Func\ConvertString\ConvertString.h" />
+    <ClInclude Include="Engine\Func\CreateBufferResource\CreateBufferResource.h" />
+    <ClInclude Include="Engine\Func\CrushHandler\CrushHandler.h" />
+    <ClInclude Include="Engine\Func\LoadModel\LoadModel.h" />
+    <ClInclude Include="Engine\Func\LoadTexture\LoadTexture.h" />
+    <ClInclude Include="Engine\Input\Input.h" />
+    <ClInclude Include="Engine\LogFile\LogFile.h" />
+    <ClInclude Include="Engine\Math\Matrix3x3\Matrix3x3.h" />
+    <ClInclude Include="Engine\Math\Matrix4x4\Matrix4x4.h" />
+    <ClInclude Include="Engine\Math\Vector1\Vector1.h" />
+    <ClInclude Include="Engine\Math\Vector2\Vector2.h" />
+    <ClInclude Include="Engine\Math\Vector3\Vector3.h" />
+    <ClInclude Include="Engine\Math\Vector4\Vector4.h" />
+    <ClInclude Include="Engine\MugenEngine.h" />
+    <ClInclude Include="Engine\Physics\AirDrag\AirDrag.h" />
+    <ClInclude Include="Engine\Physics\Friction\Friction.h" />
+    <ClInclude Include="Engine\WinApp\WinApp.h" />
     <ClInclude Include="Externals\ImGui\imconfig.h" />
     <ClInclude Include="Externals\ImGui\imgui.h" />
     <ClInclude Include="Externals\ImGui\imgui_impl_dx12.h" />
