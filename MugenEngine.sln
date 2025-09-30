@@ -12,6 +12,30 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ソリューション項目
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DirectXTex", "Externals\DirectXTex\DirectXTex_Desktop_2022_Win10.vcxproj", "{371B9FA9-4C90-4AC6-A123-ACED756D6C77}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Externals", "Externals", "{DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ImGui", "ImGui", "{3579A718-AD2C-4442-A6E0-E7EE6D6D78B9}"
+	ProjectSection(SolutionItems) = preProject
+		Externals\ImGui\imconfig.h = Externals\ImGui\imconfig.h
+		Externals\ImGui\imgui.cpp = Externals\ImGui\imgui.cpp
+		Externals\ImGui\imgui.h = Externals\ImGui\imgui.h
+		Externals\ImGui\imgui_demo.cpp = Externals\ImGui\imgui_demo.cpp
+		Externals\ImGui\imgui_draw.cpp = Externals\ImGui\imgui_draw.cpp
+		Externals\ImGui\imgui_impl_dx12.cpp = Externals\ImGui\imgui_impl_dx12.cpp
+		Externals\ImGui\imgui_impl_dx12.h = Externals\ImGui\imgui_impl_dx12.h
+		Externals\ImGui\imgui_impl_win32.cpp = Externals\ImGui\imgui_impl_win32.cpp
+		Externals\ImGui\imgui_impl_win32.h = Externals\ImGui\imgui_impl_win32.h
+		Externals\ImGui\imgui_internal.h = Externals\ImGui\imgui_internal.h
+		Externals\ImGui\imgui_tables.cpp = Externals\ImGui\imgui_tables.cpp
+		Externals\ImGui\imgui_widgets.cpp = Externals\ImGui\imgui_widgets.cpp
+		Externals\ImGui\imstb_rectpack.h = Externals\ImGui\imstb_rectpack.h
+		Externals\ImGui\imstb_textedit.h = Externals\ImGui\imstb_textedit.h
+		Externals\ImGui\imstb_truetype.h = Externals\ImGui\imstb_truetype.h
+		Externals\ImGui\LICENSE.txt = Externals\ImGui\LICENSE.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assimp", "assimp", "{A6220F1A-6949-4A16-B7F4-4C961F5022C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -34,6 +58,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{371B9FA9-4C90-4AC6-A123-ACED756D6C77} = {DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}
+		{3579A718-AD2C-4442-A6E0-E7EE6D6D78B9} = {DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}
+		{A6220F1A-6949-4A16-B7F4-4C961F5022C8} = {DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6B3DA032-57E8-407B-859D-7DD36D53822D}
