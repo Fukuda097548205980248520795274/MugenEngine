@@ -30,6 +30,7 @@ bld/
 [Ll]og/
 [Ll]ogs/
 build/
+Project/imgui.ini
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -90,7 +91,6 @@ StyleCopReport.xml
 *.tmp_proj
 *_wpftmp.csproj
 *.log
-*.ini
 *.dmp
 *.vspscc
 *.vssscc
