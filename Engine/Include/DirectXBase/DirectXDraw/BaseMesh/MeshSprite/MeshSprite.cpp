@@ -1,5 +1,5 @@
 #include "MeshSprite.h"
-#include "../../../../MugenEngine.h"
+#include "MugenEngine.h"
 
 /// <summary>
 /// 初期化
