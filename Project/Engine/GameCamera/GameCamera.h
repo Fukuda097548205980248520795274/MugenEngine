@@ -27,6 +27,13 @@ public:
 	Camera3D GetCamera3D()const { return *camera3d_.get(); }
 
 
+	// ピボットポイント
+	Vector3 pivotPoint_ = Vector3(0.0f, 0.0f, 0.0f);
+
+	// ピボットポイントとの距離
+	float pointLength_ = 50.0f;
+
+
 protected:
 
 	// エンジン
@@ -35,13 +42,6 @@ protected:
 
 	// 3Dカメラ
 	std::unique_ptr<Camera3D> camera3d_ = nullptr;
-
-
-	// ピボットポイント
-	Vector3 pivotPoint_ = Vector3(0.0f, 0.0f, 0.0f);
-
-	// ピボットポイントとの距離
-	float pointLength_ = 50.0f;
 
 
 };

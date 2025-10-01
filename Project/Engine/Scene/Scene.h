@@ -31,12 +31,11 @@ protected:
 	// 3Dカメラ
 	std::unique_ptr<Camera3D> camera3d_ = nullptr;
 
-
-private:
-
-
 	// メインカメラ
 	std::unique_ptr<MainCamera> mainCamera_ = nullptr;
+
+
+private:
 
 	// デバッグカメラ
 	std::unique_ptr<DebugCamera> debugCamera_ = nullptr;

@@ -9,11 +9,11 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	void Initialize(const MugenEngine* engine);
+	void Initialize(const MugenEngine* engine) override;
 
 	/// <summary>
 	/// 更新処理
 	/// </summary>
-	void Update();
+	void Update() override;
 };
 

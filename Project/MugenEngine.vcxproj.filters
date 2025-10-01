@@ -292,6 +292,21 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData">
       <UniqueIdentifier>{fa2a88e9-96af-4113-b8d4-395b2a8a7e3f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\GameCamera">
+      <UniqueIdentifier>{47ea0057-3e8f-491f-856c-a6dd0a98e60e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\GameCamera\DebugCamera">
+      <UniqueIdentifier>{d299e00d-393a-4f8a-ada2-90d2ca325913}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\GameCamera\MainCamera">
+      <UniqueIdentifier>{507e4eb9-42cf-4326-a0a4-c57e1c3263be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\Scene">
+      <UniqueIdentifier>{49bde8c0-aa9d-409e-90b0-dd058c08ee93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene">
+      <UniqueIdentifier>{a03b6311-6f2c-45f0-86fe-ca46e1e0ff10}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -558,20 +573,20 @@
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData\SpotLightResourcesData.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\GameCamera\GameCamera.cpp">
+      <Filter>Engine\Include\GameCamera</Filter>
+    </ClCompile>
     <ClCompile Include="Engine\GameCamera\MainCamera\MainCamera.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>Engine\Include\GameCamera\MainCamera</Filter>
     </ClCompile>
     <ClCompile Include="Engine\GameCamera\DebugCamera\DebugCamera.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>Engine\Include\GameCamera\DebugCamera</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Scene\Scene.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\GameCamera\GameCamera.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>Engine\Include\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Game\GameScene\GameScene.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>Game\GameScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -839,20 +854,20 @@
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData\SpotLightResourcesData.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\GameCamera\GameCamera.h">
+      <Filter>Engine\Include\GameCamera</Filter>
+    </ClInclude>
     <ClInclude Include="Engine\GameCamera\MainCamera\MainCamera.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>Engine\Include\GameCamera\MainCamera</Filter>
     </ClInclude>
     <ClInclude Include="Engine\GameCamera\DebugCamera\DebugCamera.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>Engine\Include\GameCamera\DebugCamera</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Scene\Scene.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\GameCamera\GameCamera.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>Engine\Include\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Game\GameScene\GameScene.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>Game\GameScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -49,6 +49,8 @@ void Scene::Update()
 
 #endif
 
+	// メインカメラの更新処理
+	mainCamera_->Update();
 
 	// デバッグモード有効
 	if (enableDebug_)
@@ -59,7 +61,6 @@ void Scene::Update()
 	else
 	{
 		// デバッグモード無効
-		mainCamera_->Update();
 		*camera3d_.get() = mainCamera_->GetCamera3D();
 	}
 }

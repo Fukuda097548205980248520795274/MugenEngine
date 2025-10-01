@@ -35,7 +35,6 @@ void GameScene::Initialize(const MugenEngine* engine)
 	uvSphere_->material_->shininess_ = 50.0f;
 
 
-
 	// BGMを読み込む
 	soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/forget_me_not.mp3");
 }
@@ -47,7 +46,6 @@ void GameScene::Update()
 {
 	// 基底クラスの更新処理
 	Scene::Update();
-
 
 	// 音楽ループ
 	if (!engine_->IsAudioPlay(playHandle_) || playHandle_ == 0)
