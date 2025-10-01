@@ -1,6 +1,5 @@
 #pragma once
 #define NOMINMAX
-#include <memory>
 #include <dxgidebug.h>
 
 #include "WinApp/WinApp.h"
