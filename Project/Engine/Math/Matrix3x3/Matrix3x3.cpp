@@ -138,6 +138,31 @@ Matrix3x3 Make2DScaleMatrix3x3(const Vector2& scale)
 }
 
 /// <summary>
+/// 拡大縮小行列を作成する
+/// </summary>
+/// <param name="scale"></param>
+/// <returns></returns>
+Matrix3x3 Make3DScaleMatrix3x3(const Vector3& scale)
+{
+	// 拡大縮小行列
+	Matrix3x3 scaleMatrix;
+
+	scaleMatrix.m[0][0] = scale.x;
+	scaleMatrix.m[0][1] = 0.0f;
+	scaleMatrix.m[0][2] = 0.0f;
+
+	scaleMatrix.m[1][0] = 0.0f;
+	scaleMatrix.m[1][1] = scale.y;
+	scaleMatrix.m[1][2] = 0.0f;
+
+	scaleMatrix.m[2][0] = 0.0f;
+	scaleMatrix.m[2][1] = 0.0f;
+	scaleMatrix.m[2][2] = scale.z;
+
+	return scaleMatrix;
+}
+
+/// <summary>
 /// 回転行列を作成する
 /// </summary>
 /// <param name="radian"></param>

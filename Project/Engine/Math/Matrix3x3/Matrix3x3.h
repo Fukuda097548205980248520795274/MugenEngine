@@ -215,6 +215,13 @@ Matrix3x3 MakeTransposeMatrix3x3(const Matrix3x3& matrix);
 Matrix3x3 Make2DScaleMatrix3x3(const Vector2& scale);
 
 /// <summary>
+/// 拡大縮小行列を作成する
+/// </summary>
+/// <param name="scale"></param>
+/// <returns></returns>
+Matrix3x3 Make3DScaleMatrix3x3(const Vector3& scale);
+
+/// <summary>
 /// 回転行列を作成する
 /// </summary>
 /// <param name="radian"></param>
