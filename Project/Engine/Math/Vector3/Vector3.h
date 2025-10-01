@@ -180,3 +180,12 @@ Vector3 Project(const Vector3& point, const Vector3& vector);
 /// <param name="normal">法線</param>
 /// <returns></returns>
 Vector3 Reflect(const Vector3& input, const Vector3& normal);
+
+/// <summary>
+/// 球面座標系を求める
+/// </summary>
+/// <param name="radius">半径</param>
+/// <param name="theta"></param>
+/// <param name="phi"></param>
+/// <returns></returns>
+Vector3 SphericalCoordinate(float radius, float theta, float phi);

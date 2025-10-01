@@ -417,6 +417,9 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
+    <ClCompile Include="Engine\GameCamera\DebugCamera\DebugCamera.cpp" />
+    <ClCompile Include="Engine\GameCamera\GameCamera.cpp" />
+    <ClCompile Include="Engine\GameCamera\MainCamera\MainCamera.cpp" />
     <ClCompile Include="Engine\Input\Input.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -461,6 +464,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
+    <ClCompile Include="Engine\Scene\Scene.cpp" />
     <ClCompile Include="Engine\WinApp\WinApp.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -504,6 +508,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">Disabled</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">false</WholeProgramOptimization>
     </ClCompile>
+    <ClCompile Include="Game\GameScene\GameScene.cpp" />
     <ClCompile Include="main.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -577,6 +582,9 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Func\CrushHandler\CrushHandler.h" />
     <ClInclude Include="Engine\Func\LoadModel\LoadModel.h" />
     <ClInclude Include="Engine\Func\LoadTexture\LoadTexture.h" />
+    <ClInclude Include="Engine\GameCamera\DebugCamera\DebugCamera.h" />
+    <ClInclude Include="Engine\GameCamera\GameCamera.h" />
+    <ClInclude Include="Engine\GameCamera\MainCamera\MainCamera.h" />
     <ClInclude Include="Engine\Input\Input.h" />
     <ClInclude Include="Engine\LogFile\LogFile.h" />
     <ClInclude Include="Engine\Math\Matrix3x3\Matrix3x3.h" />
@@ -588,6 +596,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\MugenEngine.h" />
     <ClInclude Include="Engine\Physics\AirDrag\AirDrag.h" />
     <ClInclude Include="Engine\Physics\Friction\Friction.h" />
+    <ClInclude Include="Engine\Scene\Scene.h" />
     <ClInclude Include="Engine\WinApp\WinApp.h" />
     <ClInclude Include="Externals\ImGui\imconfig.h" />
     <ClInclude Include="Externals\ImGui\imgui.h" />
@@ -598,6 +607,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Externals\ImGui\imstb_textedit.h" />
     <ClInclude Include="Externals\ImGui\imstb_truetype.h" />
     <ClInclude Include="Game\Game.h" />
+    <ClInclude Include="Game\GameScene\GameScene.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Resources\Shader\Primitive\Primitive.PS.hlsl">

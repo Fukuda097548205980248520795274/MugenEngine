@@ -1,6 +1,8 @@
 #pragma once
 #include "MugenEngine.h"
 
+#include "GameScene/GameScene.h"
+
 class Game
 {
 public:
@@ -27,31 +29,8 @@ private:
 	// エンジン
 	const MugenEngine* engine_ = nullptr;
 
-	// カメラ
-	std::unique_ptr<Camera3D> camera3d_ = nullptr;
 
-	// 2Dカメラ
-	std::unique_ptr<Camera2D> camera2d_ = nullptr;
-
-	
-	// モデル
-	std::unique_ptr<MeshModel> model_ = nullptr;
-
-	// モデルハンドル
-	uint32_t modelHandle_ = 0;
-
-
-	// UV球
-	std::unique_ptr<MeshUVSphere> uvSphere_ = nullptr;
-
-	// テクスチャハンドル
-	uint32_t textureHandle_ = 0;
-
-
-	// サウンドハンドル
-	uint32_t soundHandle_ = 0;
-
-	// プレイハンドル
-	uint32_t playHandle_ = 0;
+	// ゲームシーン
+	std::unique_ptr<Scene> scene_ = nullptr;
 };
 
