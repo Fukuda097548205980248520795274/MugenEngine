@@ -205,28 +205,28 @@ Matrix3x3 MakeIdentityMatrix3x3();
 /// </summary>
 /// <param name="matrix"></param>
 /// <returns></returns>
-Matrix3x3 MakeTransposeMatrix(const Matrix3x3& matrix);
+Matrix3x3 MakeTransposeMatrix3x3(const Matrix3x3& matrix);
 
 /// <summary>
 /// 拡大縮小行列を作成する
 /// </summary>
 /// <param name="scale"></param>
 /// <returns></returns>
-Matrix3x3 MakeScaleMatrix(const Vector2& scale);
+Matrix3x3 Make2DScaleMatrix3x3(const Vector2& scale);
 
 /// <summary>
 /// 回転行列を作成する
 /// </summary>
 /// <param name="radian"></param>
 /// <returns></returns>
-Matrix3x3 MakeRotateMatrix(float radian);
+Matrix3x3 Make2DRotateMatrix3x3(float radian);
 
 /// <summary>
 /// 平行移動行列を作成する
 /// </summary>
 /// <param name="translation"></param>
 /// <returns></returns>
-Matrix3x3 MakeTranslateMatrix(const Vector2& translation);
+Matrix3x3 Make2DTranslateMatrix3x3(const Vector2& translation);
 
 /// <summary>
 /// アフィン変換行列を作成する
@@ -235,14 +235,14 @@ Matrix3x3 MakeTranslateMatrix(const Vector2& translation);
 /// <param name="radian"></param>
 /// <param name="translation"></param>
 /// <returns></returns>
-Matrix3x3 MakeAffineMatrix(const Vector2& scale, float radian, const Vector2& translation);
+Matrix3x3 Make2DAffineMatrix3x3(const Vector2& scale, float radian, const Vector2& translation);
 
 /// <summary>
 /// 逆行列を作成する
 /// </summary>
 /// <param name="m"></param>
 /// <returns></returns>
-Matrix3x3 MakeInverseMatrix(const Matrix3x3& m);
+Matrix3x3 MakeInverseMatrix3x3(const Matrix3x3& m);
 
 /// <summary>
 /// 平行投影行列を作成する
@@ -252,7 +252,7 @@ Matrix3x3 MakeInverseMatrix(const Matrix3x3& m);
 /// <param name="right"></param>
 /// <param name="bottom"></param>
 /// <returns></returns>
-Matrix3x3 MakeOrthographicMatrix(float left, float top, float right, float bottom);
+Matrix3x3 MakeOrthographicMatrix3x3(float left, float top, float right, float bottom);
 
 /// <summary>
 /// ビューポート変換行列を作成する
@@ -262,4 +262,4 @@ Matrix3x3 MakeOrthographicMatrix(float left, float top, float right, float botto
 /// <param name="width"></param>
 /// <param name="height"></param>
 /// <returns></returns>
-Matrix3x3 MakeViewportMatrix(float left, float top, float width, float height);
+Matrix3x3 MakeViewportMatrix3x3(float left, float top, float width, float height);

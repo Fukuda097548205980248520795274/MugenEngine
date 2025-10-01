@@ -92,7 +92,7 @@ Matrix3x3 MakeIdentityMatrix3x3()
 /// </summary>
 /// <param name="matrix"></param>
 /// <returns></returns>
-Matrix3x3 MakeTransposeMatrix(const Matrix3x3& matrix)
+Matrix3x3 MakeTransposeMatrix3x3(const Matrix3x3& matrix)
 {
 	// 転置行列
 	Matrix3x3 transposeMatrix;
@@ -117,7 +117,7 @@ Matrix3x3 MakeTransposeMatrix(const Matrix3x3& matrix)
 /// </summary>
 /// <param name="scale"></param>
 /// <returns></returns>
-Matrix3x3 MakeScaleMatrix(const Vector2& scale)
+Matrix3x3 Make2DScaleMatrix3x3(const Vector2& scale)
 {
 	// 拡大縮小行列
 	Matrix3x3 scaleMatrix;
@@ -142,7 +142,7 @@ Matrix3x3 MakeScaleMatrix(const Vector2& scale)
 /// </summary>
 /// <param name="radian"></param>
 /// <returns></returns>
-Matrix3x3 MakeRotateMatrix(float radian)
+Matrix3x3 Make2DRotateMatrix3x3(float radian)
 {
 	// 回転行列
 	Matrix3x3 rotateMatrix;
@@ -167,7 +167,7 @@ Matrix3x3 MakeRotateMatrix(float radian)
 /// </summary>
 /// <param name="translation"></param>
 /// <returns></returns>
-Matrix3x3 MakeTranslateMatrix(const Vector2& translation)
+Matrix3x3 Make2DTranslateMatrix3x3(const Vector2& translation)
 {
 	// 平行移動行列
 	Matrix3x3 translateMatrix;
@@ -194,10 +194,10 @@ Matrix3x3 MakeTranslateMatrix(const Vector2& translation)
 /// <param name="radian"></param>
 /// <param name="translation"></param>
 /// <returns></returns>
-Matrix3x3 MakeAffineMatrix(const Vector2& scale, float radian, const Vector2& translation)
+Matrix3x3 Make2DAffineMatrix3x3(const Vector2& scale, float radian, const Vector2& translation)
 {
 	// アフィン変換行列
-	Matrix3x3 affineMatrix = MakeScaleMatrix(scale) * MakeRotateMatrix(radian) * MakeTranslateMatrix(translation);
+	Matrix3x3 affineMatrix = Make2DScaleMatrix3x3(scale) * Make2DRotateMatrix3x3(radian) * Make2DTranslateMatrix3x3(translation);
 	return affineMatrix;
 }
 
@@ -206,7 +206,7 @@ Matrix3x3 MakeAffineMatrix(const Vector2& scale, float radian, const Vector2& tr
 /// </summary>
 /// <param name="m"></param>
 /// <returns></returns>
-Matrix3x3 MakeInverseMatrix(const Matrix3x3& m)
+Matrix3x3 MakeInverseMatrix3x3(const Matrix3x3& m)
 {
 	// 行列式
 	float determinant =
@@ -247,7 +247,7 @@ Matrix3x3 MakeInverseMatrix(const Matrix3x3& m)
 /// <param name="right"></param>
 /// <param name="bottom"></param>
 /// <returns></returns>
-Matrix3x3 MakeOrthographicMatrix(float left, float top, float right, float bottom)
+Matrix3x3 MakeOrthographicMatrix3x3(float left, float top, float right, float bottom)
 {
 	// 平行投影行列
 	Matrix3x3 orthographicMatrix;
@@ -275,7 +275,7 @@ Matrix3x3 MakeOrthographicMatrix(float left, float top, float right, float botto
 /// <param name="width"></param>
 /// <param name="height"></param>
 /// <returns></returns>
-Matrix3x3 MakeViewportMatrix(float left, float top, float width, float height)
+Matrix3x3 MakeViewportMatrix3x3(float left, float top, float width, float height)
 {
 	// ビューポート変換行列
 	Matrix3x3 viewportMatrix;

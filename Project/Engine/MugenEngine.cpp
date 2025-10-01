@@ -131,7 +131,7 @@ void MugenEngine::DrawSprite(const WorldTransform2D* worldTransform, const Vecto
 	Matrix4x4 worldViewProjectionMatrix = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
 
 	// ビューポート変換行列
-	Matrix4x4 viewportMatrix = MakeViewportMatrix(0.0f, 0.0f, camera->screenWidth_, camera->screenHeight_, 0.0f, 1.0f);
+	Matrix4x4 viewportMatrix = MakeViewportMatrix4x4(0.0f, 0.0f, camera->screenWidth_, camera->screenHeight_, 0.0f, 1.0f);
 
 	Vector3 vertecies[4] =
 	{

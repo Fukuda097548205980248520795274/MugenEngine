@@ -310,6 +310,9 @@
     <Filter Include="Engine\Include\Math\Probability">
       <UniqueIdentifier>{acef7c9a-0e24-4e95-b188-ce6cde94469f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\Math\Quaternion">
+      <UniqueIdentifier>{eaa7d3db-9bb0-49fc-8e7c-697aed4c44d2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -594,6 +597,9 @@
     <ClCompile Include="Engine\Math\Probability\Probability.cpp">
       <Filter>Engine\Include\Math\Probability</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Math\Quaternion\Quaternion.cpp">
+      <Filter>Engine\Include\Math\Quaternion</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MugenEngine.h">
@@ -877,6 +883,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Math\Probability\Probability.h">
       <Filter>Engine\Include\Math\Probability</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\Quaternion\Quaternion.h">
+      <Filter>Engine\Include\Math\Quaternion</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

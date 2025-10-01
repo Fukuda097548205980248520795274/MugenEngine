@@ -182,7 +182,7 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 
 		modelInfo->transformationResources_[modelIndex]->data_->world = worldTransform->worldMatrix_;
 		modelInfo->transformationResources_[modelIndex]->data_->worldInverseTranspose =
-			MakeInverseMatrix(MakeTransposeMatrix(worldTransform->worldMatrix_));
+			MakeInverseMatrix4x4(MakeTransposeMatrix4x4(worldTransform->worldMatrix_));
 		modelInfo->transformationResources_[modelIndex]->data_->worldViewProjection =
 			nodeWorldMatrix[1 + modelIndex] * worldViewProjectionMatrix;
 
@@ -355,7 +355,7 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVT
 
 	// 座標変換行列を取得する
 	resourcesUVSphere_->transformationData_->world = worldTransform->worldMatrix_;
-	resourcesUVSphere_->transformationData_->worldInverseTranspose = MakeInverseMatrix(MakeTransposeMatrix(worldTransform->worldMatrix_));
+	resourcesUVSphere_->transformationData_->worldInverseTranspose = MakeInverseMatrix4x4(MakeTransposeMatrix4x4(worldTransform->worldMatrix_));
 	resourcesUVSphere_->transformationData_->worldViewProjection = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
 
 
@@ -434,7 +434,7 @@ void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTrans
 
 	// 座標変換用の行列を取得する
 	resourcesCube_->transformationData_->world = worldTransform->worldMatrix_;
-	resourcesCube_->transformationData_->worldInverseTranspose = MakeInverseMatrix(MakeTransposeMatrix(worldTransform->worldMatrix_));
+	resourcesCube_->transformationData_->worldInverseTranspose = MakeInverseMatrix4x4(MakeTransposeMatrix4x4(worldTransform->worldMatrix_));
 	resourcesCube_->transformationData_->worldViewProjection = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
 
 

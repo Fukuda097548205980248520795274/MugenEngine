@@ -437,6 +437,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
     <ClCompile Include="Engine\Math\Probability\Probability.cpp" />
+    <ClCompile Include="Engine\Math\Quaternion\Quaternion.cpp" />
     <ClCompile Include="Engine\Math\Vector1\Vector1.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -591,6 +592,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Math\Matrix3x3\Matrix3x3.h" />
     <ClInclude Include="Engine\Math\Matrix4x4\Matrix4x4.h" />
     <ClInclude Include="Engine\Math\Probability\Probability.h" />
+    <ClInclude Include="Engine\Math\Quaternion\Quaternion.h" />
     <ClInclude Include="Engine\Math\Vector1\Vector1.h" />
     <ClInclude Include="Engine\Math\Vector2\Vector2.h" />
     <ClInclude Include="Engine\Math\Vector3\Vector3.h" />

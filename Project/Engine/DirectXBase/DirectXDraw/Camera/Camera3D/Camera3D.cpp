@@ -23,13 +23,13 @@ void Camera3D::Initialize(int32_t screenWidth, int32_t screenHeight)
 
 
 	// ワールド行列
-	worldMatrix_ = MakeAffineMatrix(scale_, rotation_, translation_);
+	worldMatrix_ = Make3DAffineMatrix4x4(scale_, rotation_, translation_);
 
 	// ビュー行列
-	viewMatrix_ = MakeInverseMatrix(worldMatrix_);
+	viewMatrix_ = MakeInverseMatrix4x4(worldMatrix_);
 
 	// 正射影行列
-	projectionMatrix_ = MakePerspectiveFovMatrix(fov_, screenWidth_ / screenHeight_, nearClip_, farClip_);
+	projectionMatrix_ = MakePerspectiveFovMatrix4x4(fov_, screenWidth_ / screenHeight_, nearClip_, farClip_);
 }
 
 /// <summary>
@@ -38,7 +38,7 @@ void Camera3D::Initialize(int32_t screenWidth, int32_t screenHeight)
 void Camera3D::Update()
 {
 	// ワールド行列
-	worldMatrix_ = MakeAffineMatrix(scale_, rotation_, translation_);
+	worldMatrix_ = Make3DAffineMatrix4x4(scale_, rotation_, translation_);
 
 	// 親がいたら乗算する
 	if (parent_ != nullptr)
@@ -47,10 +47,10 @@ void Camera3D::Update()
 	}
 
 	// ビュー行列
-	viewMatrix_ = MakeInverseMatrix(worldMatrix_);
+	viewMatrix_ = MakeInverseMatrix4x4(worldMatrix_);
 
 	// 正射影行列
-	projectionMatrix_ = MakePerspectiveFovMatrix(fov_, screenWidth_ / screenHeight_, nearClip_, farClip_);
+	projectionMatrix_ = MakePerspectiveFovMatrix4x4(fov_, screenWidth_ / screenHeight_, nearClip_, farClip_);
 }
 
 /// <summary>

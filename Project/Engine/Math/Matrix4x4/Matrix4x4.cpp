@@ -96,7 +96,7 @@ Matrix4x4 MakeIdentityMatrix4x4()
 /// </summary>
 /// <param name="scale"></param>
 /// <returns></returns>
-Matrix4x4 MakeScaleMatrix(const Vector3& scale)
+Matrix4x4 Make3DScaleMatrix4x4(const Vector3& scale)
 {
 	Matrix4x4 scaleMatrix;
 
@@ -128,7 +128,7 @@ Matrix4x4 MakeScaleMatrix(const Vector3& scale)
 /// </summary>
 /// <param name="radian"></param>
 /// <returns></returns>
-Matrix4x4 MakeRotateXMatrix(float radian)
+Matrix4x4 Make3DRotateXMatrix4x4(float radian)
 {
 	// X軸回転行列
 	Matrix4x4 rotateXMatrix;
@@ -161,7 +161,7 @@ Matrix4x4 MakeRotateXMatrix(float radian)
 /// </summary>
 /// <param name="radian"></param>
 /// <returns></returns>
-Matrix4x4 MakeRotateYMatrix(float radian)
+Matrix4x4 Make3DRotateYMatrix4x4(float radian)
 {
 	// Y軸回転行列
 	Matrix4x4 rotateYMatrix;
@@ -194,7 +194,7 @@ Matrix4x4 MakeRotateYMatrix(float radian)
 /// </summary>
 /// <param name="radian"></param>
 /// <returns></returns>
-Matrix4x4 MakeRotateZMatrix(float radian)
+Matrix4x4 Make3DRotateZMatrix4x4(float radian)
 {
 	// Z軸回転行列
 	Matrix4x4 rotateZMatrix;
@@ -227,11 +227,11 @@ Matrix4x4 MakeRotateZMatrix(float radian)
 /// </summary>
 /// <param name="rotation"></param>
 /// <returns></returns>
-Matrix4x4 MakeRotateMatrix(const Vector3& rotation)
+Matrix4x4 Make3DRotateMatrix4x4(const Vector3& rotation)
 {
 	// 回転行列
 	Matrix4x4 rotateMatrix;
-	rotateMatrix = MakeRotateXMatrix(rotation.x) * MakeRotateYMatrix(rotation.y) * MakeRotateZMatrix(rotation.z);
+	rotateMatrix = Make3DRotateXMatrix4x4(rotation.x) * Make3DRotateYMatrix4x4(rotation.y) * Make3DRotateZMatrix4x4(rotation.z);
 	return rotateMatrix;
 }
 
@@ -240,7 +240,7 @@ Matrix4x4 MakeRotateMatrix(const Vector3& rotation)
 /// </summary>
 /// <param name="translation"></param>
 /// <returns></returns>
-Matrix4x4 MakeTranslateMatrix(const Vector3& translation)
+Matrix4x4 Make3DTranslateMatrix4x4(const Vector3& translation)
 {
 	// 平行移動行列
 	Matrix4x4 translateMatrix;
@@ -275,11 +275,11 @@ Matrix4x4 MakeTranslateMatrix(const Vector3& translation)
 /// <param name="rotation"></param>
 /// <param name="translation"></param>
 /// <returns></returns>
-Matrix4x4 MakeAffineMatrix(const Vector3& scale, const Vector3& rotation, const Vector3& translation)
+Matrix4x4 Make3DAffineMatrix4x4(const Vector3& scale, const Vector3& rotation, const Vector3& translation)
 {
 	// アフィン変換行列
 	Matrix4x4 affineMatrix;
-	affineMatrix = MakeScaleMatrix(scale) * MakeRotateMatrix(rotation) * MakeTranslateMatrix(translation);
+	affineMatrix = Make3DScaleMatrix4x4(scale) * Make3DRotateMatrix4x4(rotation) * Make3DTranslateMatrix4x4(translation);
 
 	return affineMatrix;
 }
@@ -289,7 +289,7 @@ Matrix4x4 MakeAffineMatrix(const Vector3& scale, const Vector3& rotation, const 
 /// </summary>
 /// <param name="m"></param>
 /// <returns></returns>
-Matrix4x4 MakeInverseMatrix(const Matrix4x4& m)
+Matrix4x4 MakeInverseMatrix4x4(const Matrix4x4& m)
 {
 	// 行列式
 	float determinant =
@@ -393,7 +393,7 @@ Matrix4x4 MakeInverseMatrix(const Matrix4x4& m)
 /// </summary>
 /// <param name="m"></param>
 /// <returns></returns>
-Matrix4x4 MakeTransposeMatrix(const Matrix4x4& m)
+Matrix4x4 MakeTransposeMatrix4x4(const Matrix4x4& m)
 {
 	// 転置行列
 	Matrix4x4 transposeMatrix;
@@ -429,7 +429,7 @@ Matrix4x4 MakeTransposeMatrix(const Matrix4x4& m)
 /// <param name="nearClip"></param>
 /// <param name="farClip"></param>
 /// <returns></returns>
-Matrix4x4 MakePerspectiveFovMatrix(float fovY, float aspectRatio, float nearClip, float farClip)
+Matrix4x4 MakePerspectiveFovMatrix4x4(float fovY, float aspectRatio, float nearClip, float farClip)
 {
 	// 透視投影行列
 	Matrix4x4 perspectiveFovMatrix;
@@ -467,7 +467,7 @@ Matrix4x4 MakePerspectiveFovMatrix(float fovY, float aspectRatio, float nearClip
 /// <param name="nearClip">近平面の距離</param>
 /// <param name="farClip">遠平面の距離</param>
 /// <returns></returns>
-Matrix4x4 MakeOrthographicMatrix(float left, float top, float right, float bottom, float nearClip, float farClip)
+Matrix4x4 MakeOrthographicMatrix4x4(float left, float top, float right, float bottom, float nearClip, float farClip)
 {
 	// 平行投影行列
 	Matrix4x4 orthographicMatrix;
@@ -505,7 +505,7 @@ Matrix4x4 MakeOrthographicMatrix(float left, float top, float right, float botto
 /// <param name="minDepth"></param>
 /// <param name="maxDepth"></param>
 /// <returns></returns>
-Matrix4x4 MakeViewportMatrix(float left, float top, float width, float height, float minDepth, float maxDepth)
+Matrix4x4 MakeViewportMatrix4x4(float left, float top, float width, float height, float minDepth, float maxDepth)
 {
 	// ビューポート変換行列
 	Matrix4x4 viewportMatrix;

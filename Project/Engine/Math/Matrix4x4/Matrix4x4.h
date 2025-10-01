@@ -219,42 +219,42 @@ Matrix4x4 MakeIdentityMatrix4x4();
 /// </summary>
 /// <param name="scale"></param>
 /// <returns></returns>
-Matrix4x4 MakeScaleMatrix(const Vector3& scale);
+Matrix4x4 Make3DScaleMatrix4x4(const Vector3& scale);
 
 /// <summary>
 /// X軸回転行列を作成する
 /// </summary>
 /// <param name="radian"></param>
 /// <returns></returns>
-Matrix4x4 MakeRotateXMatrix(float radian);
+Matrix4x4 Make3DRotateXMatrix4x4(float radian);
 
 /// <summary>
 /// Y軸回転行列を作成する
 /// </summary>
 /// <param name="radian"></param>
 /// <returns></returns>
-Matrix4x4 MakeRotateYMatrix(float radian);
+Matrix4x4 Make3DRotateYMatrix4x4(float radian);
 
 /// <summary>
 /// Z軸回転行列を作成する
 /// </summary>
 /// <param name="radian"></param>
 /// <returns></returns>
-Matrix4x4 MakeRotateZMatrix(float radian);
+Matrix4x4 Make3DRotateZMatrix4x4(float radian);
 
 /// <summary>
 /// 回転行列を作成する
 /// </summary>
 /// <param name="rotation"></param>
 /// <returns></returns>
-Matrix4x4 MakeRotateMatrix(const Vector3& rotation);
+Matrix4x4 Make3DRotateMatrix4x4(const Vector3& rotation);
 
 /// <summary>
 /// 平行移動行列を作成する
 /// </summary>
 /// <param name="translation"></param>
 /// <returns></returns>
-Matrix4x4 MakeTranslateMatrix(const Vector3& translation);
+Matrix4x4 Make3DTranslateMatrix4x4(const Vector3& translation);
 
 /// <summary>
 /// アフィン変換行列を作成する
@@ -263,21 +263,21 @@ Matrix4x4 MakeTranslateMatrix(const Vector3& translation);
 /// <param name="rotation"></param>
 /// <param name="translation"></param>
 /// <returns></returns>
-Matrix4x4 MakeAffineMatrix(const Vector3& scale, const Vector3& rotation, const Vector3& translation);
+Matrix4x4 Make3DAffineMatrix4x4(const Vector3& scale, const Vector3& rotation, const Vector3& translation);
 
 /// <summary>
 /// 逆行列を作成する
 /// </summary>
 /// <param name="m"></param>
 /// <returns></returns>
-Matrix4x4 MakeInverseMatrix(const Matrix4x4& m);
+Matrix4x4 MakeInverseMatrix4x4(const Matrix4x4& m);
 
 /// <summary>
 /// 転置行列を作成する
 /// </summary>
 /// <param name="m"></param>
 /// <returns></returns>
-Matrix4x4 MakeTransposeMatrix(const Matrix4x4& m);
+Matrix4x4 MakeTransposeMatrix4x4(const Matrix4x4& m);
 
 /// <summary>
 /// 透視投影行列を作成する
@@ -287,7 +287,7 @@ Matrix4x4 MakeTransposeMatrix(const Matrix4x4& m);
 /// <param name="nearClip"></param>
 /// <param name="farClip"></param>
 /// <returns></returns>
-Matrix4x4 MakePerspectiveFovMatrix(float fovY, float aspectRatio, float nearClip, float farClip);
+Matrix4x4 MakePerspectiveFovMatrix4x4(float fovY, float aspectRatio, float nearClip, float farClip);
 
 /// <summary>
 /// 平行投影行列を作成する
@@ -299,7 +299,7 @@ Matrix4x4 MakePerspectiveFovMatrix(float fovY, float aspectRatio, float nearClip
 /// <param name="nearClip">近平面の距離</param>
 /// <param name="farClip">遠平面の距離</param>
 /// <returns></returns>
-Matrix4x4 MakeOrthographicMatrix(float left, float top, float right, float bottom, float nearClip, float farClip);
+Matrix4x4 MakeOrthographicMatrix4x4(float left, float top, float right, float bottom, float nearClip, float farClip);
 
 /// <summary>
 /// ビューポート変換行列を作成する
@@ -311,4 +311,4 @@ Matrix4x4 MakeOrthographicMatrix(float left, float top, float right, float botto
 /// <param name="minDepth"></param>
 /// <param name="maxDepth"></param>
 /// <returns></returns>
-Matrix4x4 MakeViewportMatrix(float left, float top, float width, float height, float minDepth, float maxDepth);
+Matrix4x4 MakeViewportMatrix4x4(float left, float top, float width, float height, float minDepth, float maxDepth);

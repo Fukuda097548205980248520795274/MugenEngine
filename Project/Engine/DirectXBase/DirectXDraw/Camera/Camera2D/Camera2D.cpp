@@ -23,13 +23,13 @@ void Camera2D::Initialize(int32_t screenWidth, int32_t screenHeight)
 
 
 	// ワールド行列
-	worldMatrix_ = MakeAffineMatrix(Vector3(scale_.x, scale_.y, 1.0f), Vector3(0.0f, 0.0f, rotation_), Vector3(translation_.x, translation_.y, 0.0f));
+	worldMatrix_ = Make3DAffineMatrix4x4(Vector3(scale_.x, scale_.y, 1.0f), Vector3(0.0f, 0.0f, rotation_), Vector3(translation_.x, translation_.y, 0.0f));
 
 	// ビュー行列
-	viewMatrix_ = MakeInverseMatrix(worldMatrix_);
+	viewMatrix_ = MakeInverseMatrix4x4(worldMatrix_);
 
 	// 正射影行列
-	projectionMatrix_ = MakeOrthographicMatrix(0.0f, 0.0f, screenWidth_, screenHeight_, 0.0f, 100.0f);
+	projectionMatrix_ = MakeOrthographicMatrix4x4(0.0f, 0.0f, screenWidth_, screenHeight_, 0.0f, 100.0f);
 }
 
 /// <summary>
@@ -38,11 +38,11 @@ void Camera2D::Initialize(int32_t screenWidth, int32_t screenHeight)
 void Camera2D::Update()
 {
 	// ワールド行列
-	worldMatrix_ = MakeAffineMatrix(Vector3(scale_.x, scale_.y, 1.0f), Vector3(0.0f, 0.0f, rotation_), Vector3(translation_.x, translation_.y, 0.0f));
+	worldMatrix_ = Make3DAffineMatrix4x4(Vector3(scale_.x, scale_.y, 1.0f), Vector3(0.0f, 0.0f, rotation_), Vector3(translation_.x, translation_.y, 0.0f));
 
 	// ビュー行列
-	viewMatrix_ = MakeInverseMatrix(worldMatrix_);
+	viewMatrix_ = MakeInverseMatrix4x4(worldMatrix_);
 
 	// 正射影行列
-	projectionMatrix_ = MakeOrthographicMatrix(0.0f, 0.0f, screenWidth_, screenHeight_, 0.0f, 100.0f);
+	projectionMatrix_ = MakeOrthographicMatrix4x4(0.0f, 0.0f, screenWidth_, screenHeight_, 0.0f, 100.0f);
 }

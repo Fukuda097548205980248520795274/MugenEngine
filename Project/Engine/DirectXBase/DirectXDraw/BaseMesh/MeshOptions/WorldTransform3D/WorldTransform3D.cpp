@@ -15,7 +15,7 @@ void WorldTransform3D::Initialize()
 	translation_ = Vector3(0.0f, 0.0f, 0.0f);
 
 	// ワールド行列
-	worldMatrix_ = MakeAffineMatrix(scale_, rotation_, translation_);
+	worldMatrix_ = Make3DAffineMatrix4x4(scale_, rotation_, translation_);
 }
 
 /// <summary>
@@ -24,7 +24,7 @@ void WorldTransform3D::Initialize()
 void WorldTransform3D::Update()
 {
 	// ワールド行列
-	worldMatrix_ = MakeAffineMatrix(scale_, rotation_, translation_);
+	worldMatrix_ = Make3DAffineMatrix4x4(scale_, rotation_, translation_);
 
 	// 親がいたら、親子構造の乗算を行う
 	if (parent_ != nullptr)

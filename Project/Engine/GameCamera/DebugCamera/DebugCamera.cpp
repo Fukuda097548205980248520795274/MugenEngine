@@ -43,7 +43,7 @@ void DebugCamera::Update()
 		const float kSpeedController = mouseVectorLength * 0.01f;
 
 		// 回転行列で進む方向を取得する
-		Matrix4x4 rotateMatrix = MakeRotateMatrix(camera3d_->rotation_);
+		Matrix4x4 rotateMatrix = Make3DRotateMatrix4x4(camera3d_->rotation_);
 		Vector3 velocity = TransformNormal({ -mouseVector.x , mouseVector.y , 0.0f }, rotateMatrix);
 
 		// 移動する

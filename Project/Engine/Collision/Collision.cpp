@@ -1210,7 +1210,7 @@ bool Collision::IsCollision(const OBB& obb, const Sphere& sphere)
 
 
 	// OBBのワールド逆行列
-	Matrix4x4 inverseMatrix = MakeInverseMatrix(obbWorld);
+	Matrix4x4 inverseMatrix = MakeInverseMatrix4x4(obbWorld);
 
 	// 球をOBBの座標に持ち込む
 	Vector3 centerInOBBLocalSpace = Transform(sphere.center, inverseMatrix);
@@ -1669,7 +1669,7 @@ bool Collision::IsCollision(const OBB& obb, const Line& line)
 
 
 	// 逆行列
-	Matrix4x4 obbInverse = MakeInverseMatrix(obbWorld);
+	Matrix4x4 obbInverse = MakeInverseMatrix4x4(obbWorld);
 
 	// OBBのワールド座標に持ち込む
 	Vector3 localOrigin = Transform(line.origin, obbInverse);
@@ -1724,7 +1724,7 @@ bool Collision::IsCollision(const OBB& obb, const Ray& ray)
 
 
 	// 逆行列
-	Matrix4x4 obbInverse = MakeInverseMatrix(obbWorld);
+	Matrix4x4 obbInverse = MakeInverseMatrix4x4(obbWorld);
 
 	// OBBのワールド座標に持ち込む
 	Vector3 localOrigin = Transform(ray.origin, obbInverse);
@@ -1779,7 +1779,7 @@ bool Collision::IsCollision(const OBB& obb, const Segment& segment)
 
 
 	// 逆行列
-	Matrix4x4 obbInverse = MakeInverseMatrix(obbWorld);
+	Matrix4x4 obbInverse = MakeInverseMatrix4x4(obbWorld);
 
 	// OBBのワールド座標に持ち込む
 	Vector3 localOrigin = Transform(segment.origin, obbInverse);

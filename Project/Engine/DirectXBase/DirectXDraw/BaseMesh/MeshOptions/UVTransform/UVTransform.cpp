@@ -15,7 +15,7 @@ void UVTransform::Initialize()
 	translation_ = Vector2(0.0f, 0.0f);
 
 	// アフィン変換行列
-	affineMatrix_ = MakeAffineMatrix(Vector3(scale_.x, scale_.y, 0.0f), Vector3(0.0f, 0.0f, rotation_), Vector3(translation_.x, translation_.y, 0.0f));
+	affineMatrix_ = Make3DAffineMatrix4x4(Vector3(scale_.x, scale_.y, 0.0f), Vector3(0.0f, 0.0f, rotation_), Vector3(translation_.x, translation_.y, 0.0f));
 }
 
 /// <summary>
@@ -24,5 +24,5 @@ void UVTransform::Initialize()
 void UVTransform::Update()
 {
 	// アフィン変換行列
-	affineMatrix_ = MakeAffineMatrix(Vector3(scale_.x, scale_.y, 0.0f), Vector3(0.0f, 0.0f, rotation_), Vector3(translation_.x, translation_.y, 0.0f));
+	affineMatrix_ = Make3DAffineMatrix4x4(Vector3(scale_.x, scale_.y, 0.0f), Vector3(0.0f, 0.0f, rotation_), Vector3(translation_.x, translation_.y, 0.0f));
 }
