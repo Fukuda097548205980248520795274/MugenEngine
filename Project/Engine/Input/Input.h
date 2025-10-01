@@ -154,8 +154,6 @@ public:
 	/// <returns></returns>
 	float GetGamepadRightTrigger(DWORD gamepadNumber);
 
-
-
 private:
 
 	// ウィンドウクラス

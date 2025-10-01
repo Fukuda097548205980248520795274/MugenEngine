@@ -47,6 +47,7 @@ void GameScene::Update()
 	// 基底クラスの更新処理
 	Scene::Update();
 
+
 	// 音楽ループ
 	if (!engine_->IsAudioPlay(playHandle_) || playHandle_ == 0)
 	{

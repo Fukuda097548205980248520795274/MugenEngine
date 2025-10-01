@@ -11,6 +11,7 @@
 #include "Collision/Collision.h"
 #include "Scene/Scene.h"
 #include "Math/Probability/Probability.h"
+#include "Math/Quaternion/Quaternion.h"
 
 // マウスボタン
 enum MouseButton
