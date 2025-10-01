@@ -11,6 +11,8 @@
 #pragma comment(lib, "mfuuid.lib")
 #pragma comment(lib , "xaudio2.lib")
 
+// ci/co意味わからん
+
 /// <summary>
 /// デストラクタ
 /// </summary>
