@@ -53,6 +53,8 @@ void GameScene::Update()
 		playHandle_ = engine_->PlayAudio(soundHandle_, 0.5f);
 	}
 
+	uint32_t a = Combination(5,3);
+
 	// モデルの更新処理
 	model_->Update();
 

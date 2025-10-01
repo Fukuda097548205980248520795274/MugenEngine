@@ -11,6 +11,7 @@
 #include "AudioStore/AudioStore.h"
 #include "Collision/Collision.h"
 #include "Scene/Scene.h"
+#include "Math/Probability/Probability.h"
 
 // マウスボタン
 enum MouseButton

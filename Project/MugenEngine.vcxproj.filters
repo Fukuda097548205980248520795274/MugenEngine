@@ -307,6 +307,9 @@
     <Filter Include="Game\GameScene">
       <UniqueIdentifier>{a03b6311-6f2c-45f0-86fe-ca46e1e0ff10}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\Math\Probability">
+      <UniqueIdentifier>{acef7c9a-0e24-4e95-b188-ce6cde94469f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -588,6 +591,9 @@
     <ClCompile Include="Game\GameScene\GameScene.cpp">
       <Filter>Game\GameScene</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Math\Probability\Probability.cpp">
+      <Filter>Engine\Include\Math\Probability</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MugenEngine.h">
@@ -868,6 +874,9 @@
     </ClInclude>
     <ClInclude Include="Game\GameScene\GameScene.h">
       <Filter>Game\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\Probability\Probability.h">
+      <Filter>Engine\Include\Math\Probability</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
