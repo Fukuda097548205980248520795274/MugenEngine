@@ -34,6 +34,9 @@ public:
 	/// <returns></returns>
 	ID3D12GraphicsCommandList* GetCommandList()const { return commandList_.Get(); }
 
+	// Microsoft::WRL 省略
+	template<class T> using ComPtr = Microsoft::WRL::ComPtr<T>;
+
 
 private:
 
@@ -45,12 +48,12 @@ private:
 
 
 	// コマンドキュー
-	Microsoft::WRL::ComPtr<ID3D12CommandQueue> commandQueue_ = nullptr;
+	ComPtr<ID3D12CommandQueue> commandQueue_ = nullptr;
 
 	// コマンドアロケータ
-	Microsoft::WRL::ComPtr<ID3D12CommandAllocator> commandAllocator_ = nullptr;
+	ComPtr<ID3D12CommandAllocator> commandAllocator_ = nullptr;
 
 	// コマンドリスト
-	Microsoft::WRL::ComPtr<ID3D12GraphicsCommandList> commandList_ = nullptr;
+	ComPtr<ID3D12GraphicsCommandList> commandList_ = nullptr;
 };
 

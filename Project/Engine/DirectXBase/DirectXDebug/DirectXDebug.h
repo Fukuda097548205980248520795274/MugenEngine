@@ -22,6 +22,9 @@ public:
 	/// <param name="device"></param>
 	void Stop(ID3D12Device* device);
 
+	// Microsoft::WRL 省略
+	template<class T> using ComPtr = Microsoft::WRL::ComPtr<T>;
+
 
 private:
 
@@ -30,6 +33,6 @@ private:
 
 
 	// デバッグコントローラ
-	Microsoft::WRL::ComPtr<ID3D12Debug1> debugController_ = nullptr;
+	ComPtr<ID3D12Debug1> debugController_ = nullptr;
 };
 

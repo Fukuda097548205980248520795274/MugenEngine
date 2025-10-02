@@ -1,4 +1,7 @@
 #pragma once
+#include <chrono>
+#include <thread>
+
 #include "DirectXDevice/DirectXDevice.h"
 #include "DirectXCommand/DirectXCommand.h"
 #include "DirectXHeap/DirectXHeap.h"
@@ -8,6 +11,7 @@
 #include "DirectXFence/DirectXFence.h"
 #include "DirectXDraw/DirectXDraw.h"
 #include "ResourcesDepthStencil/ResourcesDepthStencil.h"
+#include "WinApp/WinApp.h"
 
 #include "../../../Externals/ImGui/imgui.h"
 #include "../../../Externals/ImGui/imgui_impl_dx12.h"
@@ -25,7 +29,7 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	void Initialize(LogFile* logFile, HWND hwnd, const int32_t* kClientWidth, const int32_t* kClientHeight);
+	void Initialize(LogFile* logFile, const WinApp* winApp, const int32_t* kClientWidth, const int32_t* kClientHeight);
 
 	/// <summary>
 	/// 描画前処理
@@ -130,13 +134,27 @@ private:
 	LogFile* logFile_ = nullptr;
 
 	// ウィンドウハンドル
-	HWND hwnd_{};
+	const WinApp* winApp_ = nullptr;
 
 	// 画面の横幅
 	const int32_t* kClientWidth_ = nullptr;
 
 	// 画面の縦幅
 	const int32_t* kClientHeight_ = nullptr;
+
+
+	/// <summary>
+	/// FPS固定初期化
+	/// </summary>
+	void InitializeFixFPS();
+
+	/// <summary>
+	/// FPS固定更新処理
+	/// </summary>
+	void UpdateFixFPS();
+
+	// 記録時間（FPS固定用）
+	std::chrono::steady_clock::time_point reference_;
 
 
 
@@ -162,7 +180,7 @@ private:
 	std::unique_ptr<ResourcesDepthStencil> resourceDepthStencil_ = nullptr;
 
 
-
+	
 #ifdef _DEBUG
 
 	// DirectXデバッグ

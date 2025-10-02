@@ -27,6 +27,9 @@ public:
 	/// </summary>
 	void SetPSOState();
 
+	// Microsoft::WRL の省略
+	template<class T> using ComPtr = Microsoft::WRL::ComPtr<T>;
+
 
 protected:
 
@@ -48,15 +51,15 @@ protected:
 
 
 	// シグネチャのバイナリデータ
-	Microsoft::WRL::ComPtr<ID3DBlob> signatureBlob_ = nullptr;
+	ComPtr<ID3DBlob> signatureBlob_ = nullptr;
 
 	// エラーのバイナリデータ
-	Microsoft::WRL::ComPtr<ID3DBlob> errorBlob_ = nullptr;
+	ComPtr<ID3DBlob> errorBlob_ = nullptr;
 
 	// ルートシグネチャ
-	Microsoft::WRL::ComPtr<ID3D12RootSignature> rootSignature_ = nullptr;
+	ComPtr<ID3D12RootSignature> rootSignature_ = nullptr;
 
 	// PSO
-	Microsoft::WRL::ComPtr<ID3D12PipelineState> graphicsPipelineState_ = nullptr;
+	ComPtr<ID3D12PipelineState> graphicsPipelineState_ = nullptr;
 };
 

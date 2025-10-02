@@ -16,18 +16,23 @@ DirectXBase::~DirectXBase()
 /// <summary>
 /// 初期化
 /// </summary>
-void DirectXBase::Initialize(LogFile* logFile, HWND hwnd, const int32_t* kClientWidth, const int32_t* kClientHeight)
+void DirectXBase::Initialize(LogFile* logFile, const WinApp* winApp, const int32_t* kClientWidth, const int32_t* kClientHeight)
 {
 	// nullptrチェック
 	assert(logFile);
+	assert(winApp);
 	assert(kClientWidth);
 	assert(kClientHeight);
 
 	// 引数を受け取る
 	logFile_ = logFile;
-	hwnd_ = hwnd;
+	winApp_ = winApp;
 	kClientWidth_ = kClientWidth;
 	kClientHeight_ = kClientHeight;
+
+
+	// FPS固定初期化
+	InitializeFixFPS();
 
 
 #ifdef _DEBUG
@@ -63,7 +68,7 @@ void DirectXBase::Initialize(LogFile* logFile, HWND hwnd, const int32_t* kClient
 	// DirectXバッファリングの生成と初期化
 	directXBuffering_ = std::make_unique<DirectXBuffering>();
 	directXBuffering_->Initialize(logFile_, directXHeap_.get(), directXDevice_->GetDXGIfactory(), directXDevice_->GetDevice(),
-		hwnd_, kClientWidth_, kClientHeight_, directXCommand_->GetCommandQueue());
+		winApp_->GetHwnd(), kClientWidth_, kClientHeight_, directXCommand_->GetCommandQueue());
 
 	// DirectXフェンスの生成と初期化
 	directXFence_ = std::make_unique<DirectXFence>();
@@ -82,7 +87,7 @@ void DirectXBase::Initialize(LogFile* logFile, HWND hwnd, const int32_t* kClient
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImGui::StyleColorsDark();
-	ImGui_ImplWin32_Init(hwnd_);
+	ImGui_ImplWin32_Init(winApp_->GetHwnd());
 	ImGui_ImplDX12_Init(directXDevice_->GetDevice(), directXBuffering_->GetSwapChainDesc().BufferCount,
 		directXBuffering_->GetRtvDesc().Format, directXHeap_->GetSrvDescriptorHeap(),
 		directXHeap_->GetSrvDescriptorHeap()->GetCPUDescriptorHandleForHeapStart(), directXHeap_->GetSrvDescriptorHeap()->GetGPUDescriptorHandleForHeapStart());
@@ -178,10 +183,60 @@ void DirectXBase::PostDraw()
 	// フェンスの値を確認してGPUを待つ
 	directXFence_->WaitGPU();
 
+	// FPS固定更新処理
+	UpdateFixFPS();
+
 	// 次のフレーム用のコマンドリストを準備
 	hr = directXCommand_->GetCommandAllocator()->Reset();
 	assert(SUCCEEDED(hr));
 
 	hr = directXCommand_->GetCommandList()->Reset(directXCommand_->GetCommandAllocator(), nullptr);
 	assert(SUCCEEDED(hr));
+}
+
+
+
+
+/// <summary>
+/// FPS固定初期化
+/// </summary>
+void DirectXBase::InitializeFixFPS()
+{
+	// 現在時間を初期化する
+	reference_ = std::chrono::steady_clock::now();
+}
+
+/// <summary>
+/// FPS固定更新処理
+/// </summary>
+void DirectXBase::UpdateFixFPS()
+{
+	// 1/60 秒ぴったりの時間
+	const std::chrono::microseconds kMinTime(uint64_t(1000000.0f / 60.0f));
+
+	// 1/60 秒よりわずかに短い時間
+	const std::chrono::microseconds kMinCheckTime(uint64_t(1000000.0f / 65.0f));
+
+
+	// 現在時間を取得する
+	std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
+
+	// 前回の記録から経過時間を取得する
+	std::chrono::microseconds elapsed =
+		std::chrono::duration_cast<std::chrono::microseconds>(now - reference_);
+
+
+	// 1/60 秒、経過していない場合
+	if (elapsed < kMinCheckTime)
+	{
+		// 1/60 秒経過するまで微小なスリープを繰り返す
+		while (std::chrono::steady_clock::now() - reference_ < kMinTime)
+		{
+			// 1マイクロ秒スリープ
+			std::this_thread::sleep_for(std::chrono::microseconds(1));
+		}
+	}
+
+	// 現在の時間を記録する
+	reference_ = std::chrono::steady_clock::now();
 }

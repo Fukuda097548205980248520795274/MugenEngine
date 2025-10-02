@@ -29,6 +29,9 @@ public:
 	/// <returns></returns>
 	IDXGIFactory7* GetDXGIfactory()const { return dxgiFactory_.Get(); }
 
+	// Microsoft::WRL 省略
+	template<class T> using ComPtr = Microsoft::WRL::ComPtr<T>;
+
 
 private:
 
@@ -36,12 +39,12 @@ private:
 	LogFile* logFile_ = nullptr;
 
 	// DXGIファクトリー
-	Microsoft::WRL::ComPtr<IDXGIFactory7> dxgiFactory_ = nullptr;
+	ComPtr<IDXGIFactory7> dxgiFactory_ = nullptr;
 
 	// アダプタ
-	Microsoft::WRL::ComPtr<IDXGIAdapter4> useAdapter_ = nullptr;
+	ComPtr<IDXGIAdapter4> useAdapter_ = nullptr;
 
 	// デバイス
-	Microsoft::WRL::ComPtr<ID3D12Device> device_ = nullptr;
+	ComPtr<ID3D12Device> device_ = nullptr;
 };
 

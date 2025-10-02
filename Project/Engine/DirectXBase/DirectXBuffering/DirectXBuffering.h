@@ -55,6 +55,9 @@ public:
 	D3D12_RENDER_TARGET_VIEW_DESC GetRtvDesc()const { return rtvDesc_; }
 
 
+	// Microsoft::WRL 省略
+	template<class T> using ComPtr = Microsoft::WRL::ComPtr<T>;
+
 private:
 
 	// ログファイル
@@ -87,10 +90,10 @@ private:
 	DXGI_SWAP_CHAIN_DESC1 swapChainDesc_{};
 
 	// スワップチェーン
-	Microsoft::WRL::ComPtr<IDXGISwapChain4> swapChain_ = nullptr;
+	ComPtr<IDXGISwapChain4> swapChain_ = nullptr;
 
 	// スワップチェーンのリソース
-	Microsoft::WRL::ComPtr<ID3D12Resource> swapChainResource_[2] = { nullptr };
+	ComPtr<ID3D12Resource> swapChainResource_[2] = { nullptr };
 
 	// CPUハンドル
 	D3D12_CPU_DESCRIPTOR_HANDLE rtvCPUHandle_[2]{};
