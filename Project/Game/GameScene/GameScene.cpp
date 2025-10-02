@@ -18,16 +18,8 @@ void GameScene::Initialize(const MugenEngine* engine)
 	uvSphere1_->material_->enableHalfLambert_ = true;
 	uvSphere1_->material_->enableSpecular_ = true;
 	uvSphere1_->material_->enableBlinnPhong_ = true;
+	uvSphere1_->worldTransform_->translation_.z = 30.0f;
 	uvSphere1_->material_->shininess_ = 50.0f;
-
-	// UV球の初期化と生成
-	uvSphere2_ = std::make_unique<MeshUVSphere>();
-	uvSphere2_->Initialize(engine_, camera3d_.get(), textureHandle_);
-	uvSphere2_->material_->enableHalfLambert_ = true;
-	uvSphere2_->material_->enableSpecular_ = true;
-	uvSphere2_->material_->enableBlinnPhong_ = true;
-	uvSphere2_->material_->shininess_ = 50.0f;
-	uvSphere2_->worldTransform_->translation_.x = 30.0f;
 
 
 	// BGMを読み込む
@@ -52,7 +44,6 @@ void GameScene::Update()
 
 	// UV球の更新処理
 	uvSphere1_->Update();
-	uvSphere2_->Update();
 }
 
 /// <summary>
@@ -62,7 +53,6 @@ void GameScene::Draw()
 {
 	// UV球の描画処理
 	uvSphere1_->Draw();
-	uvSphere2_->Draw();
 
 
 	// 基底クラスの描画処理

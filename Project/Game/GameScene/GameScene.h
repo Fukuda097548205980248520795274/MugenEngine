@@ -27,7 +27,6 @@ public:
 
 	// UV球
 	std::unique_ptr<MeshUVSphere> uvSphere1_ = nullptr;
-	std::unique_ptr<MeshUVSphere> uvSphere2_ = nullptr;
 
 	// テクスチャハンドル
 	uint32_t textureHandle_ = 0;
