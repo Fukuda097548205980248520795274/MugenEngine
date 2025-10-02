@@ -8,6 +8,19 @@ class WinApp
 public:
 
 	/// <summary>
+	/// ウィンドウプロシージャ
+	/// </summary>
+	/// <param name="hwnd"></param>
+	/// <param name="msg"></param>
+	/// <param name="wparam"></param>
+	/// <param name="lparam"></param>
+	/// <returns></returns>
+	static LRESULT CALLBACK WindowProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
+
+
+public:
+
+	/// <summary>
 	/// デストラクタ
 	/// </summary>
 	~WinApp();

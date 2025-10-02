@@ -4,18 +4,18 @@
 /// 初期化
 /// </summary>
 /// <param name="hwnd">ウィンドウハンドル</param>
-void Input::Initialize(LogFile* logFile, WNDCLASS wc, HWND hwnd)
+void Input::Initialize(LogFile* logFile, const WinApp* winApp)
 {
 	// nullptrチェック
 	assert(logFile);
+	assert(winApp);
 
 	// 引数を受け取る
 	logFile_ = logFile;
-	wc_ = wc;
-	hwnd_ = hwnd;
+	winApp_ = winApp;
 
 	// DirectInputを初期化する
-	HRESULT hr = DirectInput8Create(wc_.hInstance, DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)&directInput_, nullptr);
+	HRESULT hr = DirectInput8Create(winApp_->GetWndClass().hInstance, DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)&directInput_, nullptr);
 	assert(SUCCEEDED(hr));
 	logFile_->Log("SUCCEEDED : DirectInput \n");
 
@@ -35,7 +35,7 @@ void Input::Initialize(LogFile* logFile, WNDCLASS wc, HWND hwnd)
 	logFile_->Log("SUCCEEDED : KeyboardFormat \n");
 
 	// 排他制御レベルのセット
-	hr = keyboard_->SetCooperativeLevel(hwnd_, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE | DISCL_NOWINKEY);
+	hr = keyboard_->SetCooperativeLevel(winApp_->GetHwnd(), DISCL_FOREGROUND | DISCL_NONEXCLUSIVE | DISCL_NOWINKEY);
 	assert(SUCCEEDED(hr));
 	logFile_->Log("SUCCEEDED : KeyboardCooperativeLevel \n");
 
@@ -55,7 +55,7 @@ void Input::Initialize(LogFile* logFile, WNDCLASS wc, HWND hwnd)
 	logFile_->Log("SUCCEEDED : MouseFormat \n");
 
 	// 排他制御レベルのセット
-	hr = mouse_->SetCooperativeLevel(hwnd_, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE);
+	hr = mouse_->SetCooperativeLevel(winApp_->GetHwnd(), DISCL_FOREGROUND | DISCL_NONEXCLUSIVE);
 	assert(SUCCEEDED(hr));
 	logFile_->Log("SUCCEEDED : MouseCooperativeLevel \n");
 }
