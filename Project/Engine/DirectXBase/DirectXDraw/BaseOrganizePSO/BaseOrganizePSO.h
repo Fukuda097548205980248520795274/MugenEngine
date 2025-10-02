@@ -35,6 +35,8 @@ public:
 	/// </summary>
 	virtual void ResetBlendMode() = 0;
 
+	// Microsoft::WRL の省略
+	template<class T> using ComPtr = Microsoft::WRL::ComPtr<T>;
 
 protected:
 
@@ -53,10 +55,10 @@ protected:
 
 
 	// 頂点シェーダのバイナリデータ
-	Microsoft::WRL::ComPtr<IDxcBlob> vertexShaderBlob_ = nullptr;
+	ComPtr<IDxcBlob> vertexShaderBlob_ = nullptr;
 
 	// ピクセルシェーダのバイナリデータ
-	Microsoft::WRL::ComPtr<IDxcBlob> pixelShaderBlob_ = nullptr;
+	ComPtr<IDxcBlob> pixelShaderBlob_ = nullptr;
 
 	// 現在のブレンドモード
 	int blendMode_ = static_cast<int>(BlendMode::kNone);

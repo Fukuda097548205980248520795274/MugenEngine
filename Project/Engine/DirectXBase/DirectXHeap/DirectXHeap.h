@@ -62,6 +62,9 @@ public:
 	/// <returns></returns>
 	D3D12_GPU_DESCRIPTOR_HANDLE GetDsvGPUDescriptorHandle();
 
+	// Microsoft::WRL 省略
+	template<class T> using ComPtr = Microsoft::WRL::ComPtr<T>;
+
 
 private:
 
@@ -69,7 +72,7 @@ private:
 	/// ディスクリプタヒープを生成する
 	/// </summary>
 	/// <returns></returns>
-	Microsoft::WRL::ComPtr<ID3D12DescriptorHeap> CreateDescriptorHeap(D3D12_DESCRIPTOR_HEAP_TYPE heapType, UINT descriptorNum, bool shaderVisible);
+	ComPtr<ID3D12DescriptorHeap> CreateDescriptorHeap(D3D12_DESCRIPTOR_HEAP_TYPE heapType, UINT descriptorNum, bool shaderVisible);
 
 	// デバイス
 	ID3D12Device* device_ = nullptr;
@@ -79,7 +82,7 @@ private:
 
 
 	// RTV用ディスクリプタヒープ
-	Microsoft::WRL::ComPtr<ID3D12DescriptorHeap> rtvDescriptorHeap_ = nullptr;
+	ComPtr<ID3D12DescriptorHeap> rtvDescriptorHeap_ = nullptr;
 
 	// RTV用ディスクリプタ数
 	UINT rtvDescriptorNum_ = 2;

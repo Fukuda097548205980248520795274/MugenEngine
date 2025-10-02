@@ -9,7 +9,8 @@
 #pragma comment(lib, "mfplat.lib")
 #pragma comment(lib, "Mfreadwrite.lib")
 #pragma comment(lib, "mfuuid.lib")
-#pragma comment(lib , "xaudio2.lib")
+#pragma comment(lib, "xaudio2.lib")
+#pragma comment(lib, "winmm.lib")
 
 /// <summary>
 /// デストラクタ
@@ -76,7 +77,7 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 
 	// DirectXベースの生成と初期化
 	directXBase_ = new DirectXBase();
-	directXBase_->Initialize(logFile_, winApp_->GetHwnd(), kClientWidth_, kClientHeight_);
+	directXBase_->Initialize(logFile_, winApp_, kClientWidth_, kClientHeight_);
 
 	// 入力の生成と初期化
 	input_ = new Input();

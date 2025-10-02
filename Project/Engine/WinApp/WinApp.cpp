@@ -50,6 +50,9 @@ void WinApp::Initialize(int32_t clientWidth, int32_t clientHeight, const std::st
 	clientHeight_ = clientHeight;
 	title_ = ConvertString(title);
 
+	// システムタイマーの分解能を上げる
+	timeBeginPeriod(1);
+
 
 	/*---------------------------
 	    ウィンドウクラスを登録する

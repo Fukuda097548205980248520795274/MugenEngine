@@ -33,11 +33,14 @@ public:
 	/// </summary>
 	void WaitGPU();
 
+	// Microsoft::WRL 省略
+	template<class T> using ComPtr = Microsoft::WRL::ComPtr<T>;
+
 
 private:
 
 	// フェンス
-	Microsoft::WRL::ComPtr<ID3D12Fence> fence_ = nullptr;
+	ComPtr<ID3D12Fence> fence_ = nullptr;
 
 	// フェンスの値
 	uint64_t fenceValue_ = 0;

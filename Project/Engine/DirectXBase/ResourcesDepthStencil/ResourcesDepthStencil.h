@@ -18,6 +18,9 @@ public:
 	/// <returns></returns>
 	D3D12_CPU_DESCRIPTOR_HANDLE GetDsvCPUDescriptorHandle()const { return cpuHandle_; }
 
+	// Microsoft::WRL 省略
+	template<class T> using ComPtr = Microsoft::WRL::ComPtr<T>;
+
 
 private:
 
@@ -36,7 +39,7 @@ private:
 
 
 	// 振動情報リソース
-	Microsoft::WRL::ComPtr<ID3D12Resource> depthStencilResource_ = nullptr;
+	ComPtr<ID3D12Resource> depthStencilResource_ = nullptr;
 
 	// CPUハンドル
 	D3D12_CPU_DESCRIPTOR_HANDLE cpuHandle_{};
