@@ -428,6 +428,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
+    <ClCompile Include="Engine\Math\Easing\Easing.cpp" />
     <ClCompile Include="Engine\Math\Matrix3x3\Matrix3x3.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -589,6 +590,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\GameCamera\MainCamera\MainCamera.h" />
     <ClInclude Include="Engine\Input\Input.h" />
     <ClInclude Include="Engine\LogFile\LogFile.h" />
+    <ClInclude Include="Engine\Math\Easing\Easing.h" />
     <ClInclude Include="Engine\Math\Matrix3x3\Matrix3x3.h" />
     <ClInclude Include="Engine\Math\Matrix4x4\Matrix4x4.h" />
     <ClInclude Include="Engine\Math\Probability\Probability.h" />

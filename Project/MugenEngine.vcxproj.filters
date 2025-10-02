@@ -313,6 +313,9 @@
     <Filter Include="Engine\Include\Math\Quaternion">
       <UniqueIdentifier>{eaa7d3db-9bb0-49fc-8e7c-697aed4c44d2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\Math\Easing">
+      <UniqueIdentifier>{1d868a8c-dc3c-44f1-8a94-4838912f9aab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -600,6 +603,9 @@
     <ClCompile Include="Engine\Math\Quaternion\Quaternion.cpp">
       <Filter>Engine\Include\Math\Quaternion</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Math\Easing\Easing.cpp">
+      <Filter>Engine\Include\Math\Easing</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MugenEngine.h">
@@ -886,6 +892,9 @@
     </ClInclude>
     <ClInclude Include="Engine\Math\Quaternion\Quaternion.h">
       <Filter>Engine\Include\Math\Quaternion</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Math\Easing\Easing.h">
+      <Filter>Engine\Include\Math\Easing</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
