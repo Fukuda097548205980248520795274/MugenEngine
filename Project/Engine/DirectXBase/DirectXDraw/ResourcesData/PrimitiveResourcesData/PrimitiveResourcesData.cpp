@@ -14,25 +14,6 @@ void PrimitiveResourcesData::Initialize(ID3D12Device* device, ID3D12GraphicsComm
 	// 引数を受け取る
 	device_ = device;
 	commandList_ = commandList;
-
-
-	// マテリアル
-	materialResource_ = CreateBufferResource(device_, sizeof(MaterialDataForGPU));
-	materialResource_->Map(0, nullptr, reinterpret_cast<void**>(&materialData_));
-	materialData_->color_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-	materialData_->uvTransform_ = MakeIdentityMatrix4x4();
-	materialData_->enableLighting_ = true;
-	materialData_->enableHalfLambert_ = false;
-	materialData_->enableSpecular_ = false;
-	materialData_->enableBlinnPhong_ = false;
-	materialData_->shininess_ = 15.0f;
-
-	// 座標変換
-	transformationResource_ = CreateBufferResource(device_, sizeof(TransformationDataForGPU));
-	transformationResource_->Map(0, nullptr, reinterpret_cast<void**>(&transformationData_));
-	transformationData_->world = MakeIdentityMatrix4x4();
-	transformationData_->worldInverseTranspose = MakeIdentityMatrix4x4();
-	transformationData_->worldViewProjection = MakeIdentityMatrix4x4();
 }
 
 /// <summary>

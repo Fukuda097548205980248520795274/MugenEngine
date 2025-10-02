@@ -16,23 +16,15 @@ void ModelInfoDatum::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList*
 	// 引数を受け取る
 	device_ = device;
 	commandList_ = commandList;
-
-
-	materialResource_ = CreateBufferResource(device_, sizeof(MaterialDataForGPU));
-	materialResource_->Map(0, nullptr, reinterpret_cast<void**>(&materialData_));
-	materialData_->color_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-	materialData_->uvTransform_ = MakeIdentityMatrix4x4();
-	materialData_->enableLighting_ = true;
-	materialData_->enableHalfLambert_ = false;
 }
 
 /// <summary>
-/// コマンドリストに登録する
+/// インデックスと頂点の
 /// </summary>
-void ModelInfoDatum::Register(UINT materialRootParameterIndex)
+/// <param name="modelIndex"></param>
+void ModelInfoDatum::Register(uint32_t modelIndex)
 {
-	// マテリアル
-	commandList_->SetGraphicsRootConstantBufferView(materialRootParameterIndex, materialResource_->GetGPUVirtualAddress());
+	indexVertexResource_[modelIndex]->Register();
 }
 
 
@@ -132,19 +124,6 @@ uint32_t ModelStore::LoadModel(const std::string& directoryPath, const std::stri
 		// 頂点データを入力する
 		std::memcpy(indexVertexResource->vertexData_, modelInfoDatum->modelData_[modelIndex].vertices.data(),
 			sizeof(VertexDataForGPU) * modelInfoDatum->modelData_[modelIndex].vertices.size());
-
-
-		/*--------------------
-			座標変換リソース
-		--------------------*/
-
-		std::unique_ptr<TransformationResourcesDataCBV> transformationResource =
-			std::make_unique<TransformationResourcesDataCBV>();
-
-		transformationResource->Initialize(device_, commandList_);
-
-		modelInfoDatum->transformationResources_.push_back(std::move(transformationResource));
-
 
 		// 登録する
 		modelInfoDatum->indexVertexResource_.push_back(std::move(indexVertexResource));

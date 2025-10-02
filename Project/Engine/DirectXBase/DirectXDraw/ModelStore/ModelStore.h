@@ -6,6 +6,7 @@
 #include "../DataForGPU/TransformationData/TransformationData.h"
 #include "../ResourcesData/IndexVertexResourcesData/IndexVertexResourcesData.h"
 #include "../ResourcesData/TransformationResourcesDataCBV/TransformationResourcesDataCBV.h"
+#include "../ResourcesData/MaterialResourcesDataCBV/MaterialResourcesDataCBV.h"
 
 // 格納されたモデルデータ
 class ModelInfoDatum
@@ -20,9 +21,10 @@ public:
 	void Initialize(ID3D12Device* device_, ID3D12GraphicsCommandList* commandList);
 
 	/// <summary>
-	/// コマンドリストに登録する
+	/// インデックスと頂点の
 	/// </summary>
-	void Register(UINT materialRootParameterIndex);
+	/// <param name="modelIndex"></param>
+	void Register(uint32_t modelIndex);
 
 	// モデルデータ
 	std::vector<ModelData> modelData_{};
@@ -42,12 +44,6 @@ public:
 	// インデックスと頂点のリソース
 	std::vector<std::unique_ptr<IndexVertexResourcesData>> indexVertexResource_{};
 
-	// マテリアルデータ
-	MaterialDataForGPU* materialData_ = nullptr;
-
-	// 座標変換リソース
-	std::vector<std::unique_ptr<TransformationResourcesDataCBV>> transformationResources_;
-
 
 private:
 
@@ -56,10 +52,6 @@ private:
 
 	// コマンドリスト
 	ID3D12GraphicsCommandList* commandList_;
-
-
-	// マテリアルリソース
-	Microsoft::WRL::ComPtr<ID3D12Resource> materialResource_ = nullptr;
 };
 
 

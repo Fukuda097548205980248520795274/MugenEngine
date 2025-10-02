@@ -9,30 +9,25 @@ void GameScene::Initialize(const MugenEngine* engine)
 	// 基底クラスの初期化
 	Scene::Initialize(engine);
 
-
-	// モデルを読み込む
-	modelHandle_ = engine_->LoadModel("./Resources/Models/terrain", "terrain.obj");
-
-	// モデルの初期化と生成
-	model_ = std::make_unique<MeshModel>();
-	model_->Initialize(engine_, camera3d_.get(), modelHandle_);
-	model_->material_->enableHalfLambert_ = true;
-	model_->material_->enableSpecular_ = true;
-	model_->material_->enableBlinnPhong_ = true;
-	model_->material_->shininess_ = 50.0f;
-
-
-
 	// テクスチャハンドル
 	textureHandle_ = engine_->LoadTexture("./Resources/Textures/white2x2.png");
 
 	// UV球の初期化と生成
-	uvSphere_ = std::make_unique<MeshUVSphere>();
-	uvSphere_->Initialize(engine_, camera3d_.get(), textureHandle_);
-	uvSphere_->material_->enableHalfLambert_ = true;
-	uvSphere_->material_->enableSpecular_ = true;
-	uvSphere_->material_->enableBlinnPhong_ = true;
-	uvSphere_->material_->shininess_ = 50.0f;
+	uvSphere1_ = std::make_unique<MeshUVSphere>();
+	uvSphere1_->Initialize(engine_, camera3d_.get(), textureHandle_);
+	uvSphere1_->material_->enableHalfLambert_ = true;
+	uvSphere1_->material_->enableSpecular_ = true;
+	uvSphere1_->material_->enableBlinnPhong_ = true;
+	uvSphere1_->material_->shininess_ = 50.0f;
+
+	// UV球の初期化と生成
+	uvSphere2_ = std::make_unique<MeshUVSphere>();
+	uvSphere2_->Initialize(engine_, camera3d_.get(), textureHandle_);
+	uvSphere2_->material_->enableHalfLambert_ = true;
+	uvSphere2_->material_->enableSpecular_ = true;
+	uvSphere2_->material_->enableBlinnPhong_ = true;
+	uvSphere2_->material_->shininess_ = 50.0f;
+	uvSphere2_->worldTransform_->translation_.x = 30.0f;
 
 
 	// BGMを読み込む
@@ -54,11 +49,10 @@ void GameScene::Update()
 		playHandle_ = engine_->PlayAudio(soundHandle_, 0.5f);
 	}
 
-	// モデルの更新処理
-	model_->Update();
 
 	// UV球の更新処理
-	uvSphere_->Update();
+	uvSphere1_->Update();
+	uvSphere2_->Update();
 }
 
 /// <summary>
@@ -66,11 +60,9 @@ void GameScene::Update()
 /// </summary>
 void GameScene::Draw()
 {
-	// モデルの描画
-	model_->Draw();
-
 	// UV球の描画処理
-	uvSphere_->Draw();
+	uvSphere1_->Draw();
+	uvSphere2_->Draw();
 
 
 	// 基底クラスの描画処理

@@ -41,11 +41,6 @@ public:
 	// 頂点データ
 	VertexDataForGPU* vertexData_ = nullptr;
 
-	// マテリアルデータ
-	MaterialDataForGPU* materialData_ = nullptr;
-
-	// 座標変換データ
-	TransformationDataForGPU* transformationData_ = nullptr;
 
 protected:
 
@@ -68,13 +63,5 @@ protected:
 
 	// 頂点バッファビュー
 	D3D12_VERTEX_BUFFER_VIEW vertexBufferView_{};
-
-
-	// マテリアルリソース
-	Microsoft::WRL::ComPtr<ID3D12Resource> materialResource_ = nullptr;
-
-
-	// 座標変換リソース
-	Microsoft::WRL::ComPtr<ID3D12Resource> transformationResource_ = nullptr;
 };
 

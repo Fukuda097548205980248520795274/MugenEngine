@@ -77,6 +77,22 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	resourceSprite_->Initialize(device_, commandList_);
 
 
+	// プリミティブ用のCBVリソースを生成する
+	for (uint32_t i = 0; i < kDrawPrimitiveNum; ++i)
+	{
+		// マテリアルリソース
+		std::unique_ptr<MaterialResourcesDataCBV> materialResource = std::make_unique<MaterialResourcesDataCBV>();
+		materialResource->Initialize(device_, commandList_);
+		primitiveMaterialResources_.push_back(std::move(materialResource));
+
+		// 座標変換リソース
+		std::unique_ptr<TransformationResourcesDataCBV> transformationResource = std::make_unique<TransformationResourcesDataCBV>();
+		transformationResource->Initialize(device_, commandList_);
+		primitiveTransformationResources_.push_back(std::move(transformationResource));
+	}
+
+
+
 	// 平行光源リソースの生成と初期化
 	resourcesDirectionalLight_ = std::make_unique<DirectionalLightResourcesData>();
 	resourcesDirectionalLight_->Initialize(directXHeap_, device_, commandList_, 512);
@@ -145,25 +161,6 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 	// カメラの値を取得する
 	resourcesMainCamera_->data_->worldPosition = camera->GetWorldPosition();
 
-	/*-----------------------------
-		マテリアルデータを入力する
-	-----------------------------*/
-
-	// UV座標
-	modelInfo->materialData_->uvTransform_ = uvTransform->affineMatrix_;
-
-	// マテリアル
-	modelInfo->materialData_->color_ = material->color_;
-	
-	// 拡散反射
-	modelInfo->materialData_->enableLighting_ = static_cast<int32_t>(material->enableLighting_);
-	modelInfo->materialData_->enableHalfLambert_ = static_cast<int32_t>(material->enableHalfLambert_);
-
-	// 鏡面反射
-	modelInfo->materialData_->enableSpecular_ = static_cast<int32_t>(material->enableSpecular_);
-	modelInfo->materialData_->enableBlinnPhong_ = static_cast<int32_t>(material->enableBlinnPhong_);
-	modelInfo->materialData_->shininess_ = material->shininess_;
-
 
 	// wvp行列
 	Matrix4x4 worldViewProjectionMatrix = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
@@ -176,14 +173,34 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 	// モデルデータの数を描画する
 	for (uint32_t modelIndex = 0; modelIndex < modelInfo->modelData_.size(); ++modelIndex)
 	{
+		/*-----------------------------
+			マテリアルデータを入力する
+		-----------------------------*/
+	
+		// UV座標
+		primitiveMaterialResources_[drawPrimitiveCount_]->data_->uvTransform_ = uvTransform->affineMatrix_;
+
+		// マテリアル
+		primitiveMaterialResources_[drawPrimitiveCount_]->data_->color_ = material->color_;
+
+		// 拡散反射
+		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableLighting_ = static_cast<int32_t>(material->enableLighting_);
+		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableHalfLambert_ = static_cast<int32_t>(material->enableHalfLambert_);
+
+		// 鏡面反射
+		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableSpecular_ = static_cast<int32_t>(material->enableSpecular_);
+		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableBlinnPhong_ = static_cast<int32_t>(material->enableBlinnPhong_);
+		primitiveMaterialResources_[drawPrimitiveCount_]->data_->shininess_ = material->shininess_;
+
+
 		/*----------------------------
 		    座標変換データを入力する
 		----------------------------*/
 
-		modelInfo->transformationResources_[modelIndex]->data_->world = worldTransform->worldMatrix_;
-		modelInfo->transformationResources_[modelIndex]->data_->worldInverseTranspose =
+		primitiveTransformationResources_[drawPrimitiveCount_]->data_->world = worldTransform->worldMatrix_;
+		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldInverseTranspose =
 			MakeInverseMatrix4x4(MakeTransposeMatrix4x4(worldTransform->worldMatrix_));
-		modelInfo->transformationResources_[modelIndex]->data_->worldViewProjection =
+		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldViewProjection =
 			nodeWorldMatrix[1 + modelIndex] * worldViewProjectionMatrix;
 
 
@@ -194,12 +211,13 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 		// PSOの設定
 		primitivePSO_->SetPSOState();
 
-		// モデルリソースの設定
-		modelInfo->indexVertexResource_[modelIndex]->Register();
+		modelInfo->Register(modelIndex);
 
-		// CBVの設定
-		modelInfo->Register(0);
-		modelInfo->transformationResources_[modelIndex]->Register(1);
+		// モデルリソースの設定
+		primitiveMaterialResources_[drawPrimitiveCount_]->Register(0);
+
+		// 座標変換リソースの設定
+		primitiveTransformationResources_[drawPrimitiveCount_]->Register(1);
 
 		// メインカメラリソースの設定
 		resourcesMainCamera_->Register(5);
@@ -221,6 +239,10 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 
 		// ドローコール
 		commandList_->DrawIndexedInstanced(UINT(modelInfo->modelData_[modelIndex].indices.size()), 1, 0, 0, 0);
+
+		
+		// 描画したプリミティブをカウントする
+		CountDrawPrimitive();
 	}
 }
 
@@ -334,19 +356,19 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVT
 	-----------------------------*/
 
 	// UV座標
-	resourcesUVSphere_->materialData_->uvTransform_ = uvTransform->affineMatrix_;
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->uvTransform_ = uvTransform->affineMatrix_;
 
 	// 色
-	resourcesUVSphere_->materialData_->color_ = material->color_;
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->color_ = material->color_;
 	
 	// 拡散反射
-	resourcesUVSphere_->materialData_->enableLighting_ = static_cast<int32_t>(material->enableLighting_);
-	resourcesUVSphere_->materialData_->enableHalfLambert_ = static_cast<int32_t>(material->enableHalfLambert_);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableLighting_ = static_cast<int32_t>(material->enableLighting_);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableHalfLambert_ = static_cast<int32_t>(material->enableHalfLambert_);
 
 	// 鏡面反射
-	resourcesUVSphere_->materialData_->enableSpecular_ = static_cast<int32_t>(material->enableSpecular_);
-	resourcesUVSphere_->materialData_->enableBlinnPhong_ = static_cast<int32_t>(material->enableBlinnPhong_);
-	resourcesUVSphere_->materialData_->shininess_ = material->shininess_;
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableSpecular_ = static_cast<int32_t>(material->enableSpecular_);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableBlinnPhong_ = static_cast<int32_t>(material->enableBlinnPhong_);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->shininess_ = material->shininess_;
 
 
 	/*------------------
@@ -354,9 +376,13 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVT
 	------------------*/
 
 	// 座標変換行列を取得する
-	resourcesUVSphere_->transformationData_->world = worldTransform->worldMatrix_;
-	resourcesUVSphere_->transformationData_->worldInverseTranspose = MakeInverseMatrix4x4(MakeTransposeMatrix4x4(worldTransform->worldMatrix_));
-	resourcesUVSphere_->transformationData_->worldViewProjection = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
+	primitiveTransformationResources_[drawPrimitiveCount_]->data_->world = worldTransform->worldMatrix_;
+
+	primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldInverseTranspose =
+		MakeInverseMatrix4x4(MakeTransposeMatrix4x4(worldTransform->worldMatrix_));
+
+	primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldViewProjection =
+		worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
 
 
 	/*----------------------------
@@ -370,8 +396,14 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVT
 	// PSOの設定
 	primitivePSO_->SetPSOState();
 
-	// UV球リソースの設定
+	// UV球の設定
 	resourcesUVSphere_->Register();
+
+	// マテリアルリソースの設定
+	primitiveMaterialResources_[drawPrimitiveCount_]->Register(0);
+
+	// 座標変換リソースの設定
+	primitiveTransformationResources_[drawPrimitiveCount_]->Register(1);
 
 	// メインカメラリソースの設定
 	resourcesMainCamera_->Register(5);
@@ -393,6 +425,10 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVT
 
 	// ドローコール
 	commandList_->DrawIndexedInstanced(indexNum, 1, 0, 0, 0);
+
+
+	// 描画したプリミティブをカウントする
+	CountDrawPrimitive();
 }
 
 
@@ -413,19 +449,19 @@ void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTrans
 	------------------------------*/
 
 	// UV座標
-	resourcesCube_->materialData_->uvTransform_ = uvTransform->affineMatrix_;
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->uvTransform_ = uvTransform->affineMatrix_;
 
 	// 色
-	resourcesCube_->materialData_->color_ = material->color_;
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->color_ = material->color_;
 	
 	// 拡散反射
-	resourcesCube_->materialData_->enableLighting_ = static_cast<int32_t>(material->enableLighting_);
-	resourcesCube_->materialData_->enableHalfLambert_ = static_cast<int32_t>(material->enableHalfLambert_);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableLighting_ = static_cast<int32_t>(material->enableLighting_);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableHalfLambert_ = static_cast<int32_t>(material->enableHalfLambert_);
 
 	// 鏡面反射
-	resourcesCube_->materialData_->enableSpecular_ = static_cast<int32_t>(material->enableSpecular_);
-	resourcesCube_->materialData_->enableBlinnPhong_ = static_cast<int32_t>(material->enableBlinnPhong_);
-	resourcesCube_->materialData_->shininess_ = material->shininess_;
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableSpecular_ = static_cast<int32_t>(material->enableSpecular_);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableBlinnPhong_ = static_cast<int32_t>(material->enableBlinnPhong_);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->shininess_ = material->shininess_;
 
 
 	/*-------------
@@ -433,9 +469,13 @@ void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTrans
 	-------------*/
 
 	// 座標変換用の行列を取得する
-	resourcesCube_->transformationData_->world = worldTransform->worldMatrix_;
-	resourcesCube_->transformationData_->worldInverseTranspose = MakeInverseMatrix4x4(MakeTransposeMatrix4x4(worldTransform->worldMatrix_));
-	resourcesCube_->transformationData_->worldViewProjection = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
+	primitiveTransformationResources_[drawPrimitiveCount_]->data_->world = worldTransform->worldMatrix_;
+
+	primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldInverseTranspose =
+		MakeInverseMatrix4x4(MakeTransposeMatrix4x4(worldTransform->worldMatrix_));
+
+	primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldViewProjection =
+		worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
 
 
 	/*---------------------------------
@@ -449,8 +489,14 @@ void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTrans
 	// PSOの設定
 	primitivePSO_->SetPSOState();
 
-	// 立方体リソースの設定
+	// 立方体の設定
 	resourcesCube_->Register();
+
+	// マテリアルリソースの設定
+	primitiveMaterialResources_[drawPrimitiveCount_]->Register(0);
+
+	// 座標変換リソースの設定
+	primitiveTransformationResources_[drawPrimitiveCount_]->Register(1);
 
 	// メインカメラリソースの設定
 	resourcesMainCamera_->Register(5);
@@ -472,6 +518,10 @@ void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTrans
 
 	// ドローコール
 	commandList_->DrawIndexedInstanced(36, 1, 0, 0, 0);
+
+
+	// 描画したプリミティブをカウントする
+	CountDrawPrimitive();
 }
 
 
@@ -507,11 +557,18 @@ void DirectXDraw::DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3
 	    マテリアル設定
 	-------------------*/
 
-	// 色
-	resourceSprite_->materialData_->color_ = color;
+	// UV座標
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->uvTransform_ = uvTransform->affineMatrix_;
 
-	// UVトランスフォーム
-	resourceSprite_->materialData_->uvTransform_ = uvTransform->affineMatrix_;
+	// 色
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->color_ = color;
+
+	// ライティングは行わない
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableLighting_ = static_cast<int32_t>(false);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableHalfLambert_ = static_cast<int32_t>(false);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableSpecular_ = static_cast<int32_t>(false);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableBlinnPhong_ = static_cast<int32_t>(false);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->shininess_ = 1.0f;
 
 
 	/*------------------
@@ -519,9 +576,9 @@ void DirectXDraw::DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3
 	------------------*/
 
 	// 座標変換行列を入力する
-	resourceSprite_->transformationData_->world = MakeIdentityMatrix4x4();
-	resourceSprite_->transformationData_->worldInverseTranspose = MakeIdentityMatrix4x4();
-	resourceSprite_->transformationData_->worldViewProjection = camera->viewMatrix_ * camera->projectionMatrix_;
+	primitiveTransformationResources_[drawPrimitiveCount_]->data_->world = MakeIdentityMatrix4x4();
+	primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldInverseTranspose = MakeIdentityMatrix4x4();
+	primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldViewProjection = camera->viewMatrix_ * camera->projectionMatrix_;
 
 
 	/*---------------------------
@@ -535,8 +592,14 @@ void DirectXDraw::DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3
 	// PSOの設定
 	primitivePSO_->SetPSOState();
 
-	// スプライトリソースの設定
+	// スプライトの設定
 	resourceSprite_->Register();
+
+	// マテリアルリソースの設定
+	primitiveMaterialResources_[drawPrimitiveCount_]->Register(0);
+
+	// 座標変換リソースの設定
+	primitiveTransformationResources_[drawPrimitiveCount_]->Register(1);
 
 	// テクスチャのSRVを設定する
 	commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(textureHandle));
@@ -546,4 +609,8 @@ void DirectXDraw::DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3
 
 	// ドローコール
 	commandList_->DrawIndexedInstanced(6, 1, 0, 0, 0);
+
+
+	// 描画したプリミティブをカウントする
+	CountDrawPrimitive();
 }

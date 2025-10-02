@@ -130,10 +130,4 @@ void PrimitiveResourcesCube::Register()
 
 	// 頂点リソースの設定
 	commandList_->IASetVertexBuffers(0, 1, &vertexBufferView_);
-
-	// マテリアルリソースの設定
-	commandList_->SetGraphicsRootConstantBufferView(0, materialResource_->GetGPUVirtualAddress());
-
-	// 座標変換リソースの設定
-	commandList_->SetGraphicsRootConstantBufferView(1, transformationResource_->GetGPUVirtualAddress());
 }

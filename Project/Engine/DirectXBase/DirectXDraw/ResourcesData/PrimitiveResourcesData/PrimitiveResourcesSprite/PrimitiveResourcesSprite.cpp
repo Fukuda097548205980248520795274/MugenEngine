@@ -53,12 +53,6 @@ void PrimitiveResourcesSprite::Initialize(ID3D12Device* device, ID3D12GraphicsCo
 	vertexData_[3].position = Vector4(0.0f, 0.0f, 0.0f, 1.0f);
 	vertexData_[3].texcoord = Vector2(1.0f, 0.0f);
 	vertexData_[3].normal = Vector3(0.0f, 0.0f, -1.0f);
-
-
-	// ライティングは無効にする
-	materialData_->enableLighting_ = false;
-	materialData_->enableHalfLambert_ = false;
-	materialData_->enableSpecular_ = false;
 }
 
 /// <summary>
@@ -71,10 +65,4 @@ void PrimitiveResourcesSprite::Register()
 
 	// 頂点リソースの設定
 	commandList_->IASetVertexBuffers(0, 1, &vertexBufferView_);
-
-	// マテリアルリソースの設定
-	commandList_->SetGraphicsRootConstantBufferView(0, materialResource_->GetGPUVirtualAddress());
-
-	// 座標変換リソースの設定
-	commandList_->SetGraphicsRootConstantBufferView(1, transformationResource_->GetGPUVirtualAddress());
 }

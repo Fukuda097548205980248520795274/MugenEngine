@@ -103,6 +103,9 @@ void DirectXBase::PreDraw()
 	// ブレンドモードをリセットする
 	directXDraw_->ResetBlendMode();
 
+	// プリミティブカウントを初期化する
+	directXDraw_->InitializeDrawPrimitiveNum();
+
 	// バックバッファのインデックスを取得する
 	UINT backBufferIndex = directXBuffering_->GetSwapChain()->GetCurrentBackBufferIndex();
 

@@ -42,6 +42,16 @@ public:
 		ID3D12GraphicsCommandList* commandList, ID3D12Device* device);
 
 	/// <summary>
+	/// 描画したプリミティブのカウントを初期化する
+	/// </summary>
+	void InitializeDrawPrimitiveNum() { drawPrimitiveCount_ = 0; }
+
+	/// <summary>
+	/// 描画したプリミティブをカウントする
+	/// </summary>
+	void CountDrawPrimitive() { drawPrimitiveCount_++; }
+
+	/// <summary>
 	/// テクスチャを読み込む
 	/// </summary>
 	/// <param name="filePath"></param>
@@ -176,6 +186,22 @@ private:
 
 	// スプライト用のリソース
 	std::unique_ptr<PrimitiveResourcesSprite> resourceSprite_ = nullptr;
+
+
+
+	// 描画できるプリミティブの数
+	const uint32_t kDrawPrimitiveNum = 1024;
+
+	// 描画したプリミティブのカウント
+	uint32_t drawPrimitiveCount_ = 0;
+
+
+	// プリミティブ用のマテリアルリソース
+	std::vector<std::unique_ptr<MaterialResourcesDataCBV>> primitiveMaterialResources_;
+
+	// プリミティブ用の座標変換リソース
+	std::vector<std::unique_ptr<TransformationResourcesDataCBV>> primitiveTransformationResources_;
+
 
 
 	// 平行光源リソース
