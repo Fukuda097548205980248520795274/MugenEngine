@@ -154,6 +154,9 @@ public:
 	/// <returns></returns>
 	float GetGamepadRightTrigger(DWORD gamepadNumber);
 
+	// Microsft::WRLを省略する
+	template<class T> using ComPtr = Microsoft::WRL::ComPtr<T>;
+
 private:
 
 	// ウィンドウクラス
@@ -167,13 +170,13 @@ private:
 	
 
 	// DirectInput
-	Microsoft::WRL::ComPtr<IDirectInput8> directInput_ = nullptr;
+	ComPtr<IDirectInput8> directInput_ = nullptr;
 
 
 	/*   キーボード   */
 
 	// キーボードデバイス
-	Microsoft::WRL::ComPtr<IDirectInputDevice8> keyboard_ = nullptr;
+	ComPtr<IDirectInputDevice8> keyboard_ = nullptr;
 
 	// キー
 	BYTE keys_[256];
