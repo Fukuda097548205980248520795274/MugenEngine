@@ -35,6 +35,36 @@ void GameScene::Update()
 	Scene::Update();
 
 
+	// キーの操作
+	if (engine_->GetKeyPress(DIK_W))
+	{
+		uvSphere1_->worldTransform_->translation_.y += 0.1f;
+	}
+
+	if (engine_->GetKeyPress(DIK_A))
+	{
+		uvSphere1_->worldTransform_->translation_.x -= 0.1f;
+	}
+
+	if (engine_->GetKeyPress(DIK_S))
+	{
+		uvSphere1_->worldTransform_->translation_.y -= 0.1f;
+	}
+
+	if (engine_->GetKeyPress(DIK_D))
+	{
+		uvSphere1_->worldTransform_->translation_.x += 0.1f;
+	}
+
+	if (engine_->IsGamepadEnable(0))
+	{
+		Vector2 gamepadVel = engine_->GetGamepadLeftStick(0);
+
+		uvSphere1_->worldTransform_->translation_.x += gamepadVel.x * 0.1f;
+		uvSphere1_->worldTransform_->translation_.y += gamepadVel.y * 0.1f;
+	}
+
+
 	// 音楽ループ
 	if (!engine_->IsAudioPlay(playHandle_) || playHandle_ == 0)
 	{
