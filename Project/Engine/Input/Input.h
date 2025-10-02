@@ -8,6 +8,7 @@
 #include "../Math/Vector3/Vector3.h"
 #include "../Math/Vector2/Vector2.h"
 #include "../LogFile/LogFile.h"
+#include "WinApp/WinApp.h"
 
 class Input
 {
@@ -17,7 +18,7 @@ public:
 	/// 初期化
 	/// </summary>
 	/// <param name="hwnd">ウィンドウハンドル</param>
-	void Initialize(LogFile* logFile, WNDCLASS wc, HWND hwnd);
+	void Initialize(LogFile* logFile, const WinApp* winApp);
 
 	/// <summary>
 	/// 全ての入力情報を取得する
@@ -159,11 +160,8 @@ public:
 
 private:
 
-	// ウィンドウクラス
-	WNDCLASS wc_;
-
-	// ウィンドウハンドル
-	HWND hwnd_;
+	// ウィンドウズアプリケーション
+	const WinApp* winApp_ = nullptr;
 
 	// ログファイル
 	LogFile* logFile_ = nullptr;

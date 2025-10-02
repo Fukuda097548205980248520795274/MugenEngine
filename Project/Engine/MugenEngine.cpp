@@ -80,7 +80,7 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 
 	// 入力の生成と初期化
 	input_ = new Input();
-	input_->Initialize(logFile_, winApp_->GetWndClass(), winApp_->GetHwnd());
+	input_->Initialize(logFile_, winApp_);
 
 	// オーディオ格納場所の生成と初期化
 	audioStore_ = new AudioStore();
