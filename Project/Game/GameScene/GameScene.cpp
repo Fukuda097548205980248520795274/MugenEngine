@@ -10,33 +10,17 @@ void GameScene::Initialize(const MugenEngine* engine)
 	Scene::Initialize(engine);
 
 
-	// モデルを読み込む
-	modelHandle_ = engine_->LoadModel("./Resources/Models/terrain", "terrain.obj");
-
-	// モデルの初期化と生成
-	model_ = std::make_unique<MeshModel>();
-	model_->Initialize(engine_, camera3d_.get(), modelHandle_);
-	model_->material_->enableHalfLambert_ = true;
-	model_->material_->enableSpecular_ = true;
-	model_->material_->enableBlinnPhong_ = true;
-	model_->material_->shininess_ = 50.0f;
-
-
-
 	// テクスチャハンドル
 	textureHandle_ = engine_->LoadTexture("./Resources/Textures/white2x2.png");
 
 	// UV球の初期化と生成
 	uvSphere_ = std::make_unique<MeshUVSphere>();
 	uvSphere_->Initialize(engine_, camera3d_.get(), textureHandle_);
+	uvSphere_->worldTransform_->translation_.z = 35.0f;
 	uvSphere_->material_->enableHalfLambert_ = true;
 	uvSphere_->material_->enableSpecular_ = true;
 	uvSphere_->material_->enableBlinnPhong_ = true;
 	uvSphere_->material_->shininess_ = 50.0f;
-
-
-	// BGMを読み込む
-	soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/forget_me_not.mp3");
 }
 
 /// <summary>
@@ -48,14 +32,22 @@ void GameScene::Update()
 	Scene::Update();
 
 
-	// 音楽ループ
-	if (!engine_->IsAudioPlay(playHandle_) || playHandle_ == 0)
-	{
-		playHandle_ = engine_->PlayAudio(soundHandle_, 0.5f);
-	}
+	if (engine_->GetKeyPress(DIK_W))
+		uvSphere_->worldTransform_->translation_.y += 0.1f;
 
-	// モデルの更新処理
-	model_->Update();
+	if (engine_->GetKeyPress(DIK_A))
+		uvSphere_->worldTransform_->translation_.x -= 0.1f;
+
+	if (engine_->GetKeyPress(DIK_S))
+		uvSphere_->worldTransform_->translation_.y -= 0.1f;
+
+	if (engine_->GetKeyPress(DIK_D))
+		uvSphere_->worldTransform_->translation_.x += 0.1f;
+
+	if (engine_->IsGamepadEnable(0))
+	{
+
+	}
 
 	// UV球の更新処理
 	uvSphere_->Update();
@@ -66,8 +58,6 @@ void GameScene::Update()
 /// </summary>
 void GameScene::Draw()
 {
-	// モデルの描画
-	model_->Draw();
 
 	// UV球の描画処理
 	uvSphere_->Draw();

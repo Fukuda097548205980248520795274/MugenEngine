@@ -24,24 +24,10 @@ public:
 
 public:
 
-	// モデル
-	std::unique_ptr<MeshModel> model_ = nullptr;
-
-	// モデルハンドル
-	uint32_t modelHandle_ = 0;
-
-
 	// UV球
 	std::unique_ptr<MeshUVSphere> uvSphere_ = nullptr;
 
 	// テクスチャハンドル
 	uint32_t textureHandle_ = 0;
-
-
-	// サウンドハンドル
-	uint32_t soundHandle_ = 0;
-
-	// プレイハンドル
-	uint32_t playHandle_ = 0;
 };
 

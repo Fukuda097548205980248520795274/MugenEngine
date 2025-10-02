@@ -81,6 +81,12 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	resourcesDirectionalLight_ = std::make_unique<DirectionalLightResourcesData>();
 	resourcesDirectionalLight_->Initialize(directXHeap_, device_, commandList_, 512);
 
+	resourcesDirectionalLight_->lightData_[0].direction = Vector3(0.0f, -1.0f, 0.0f);
+	resourcesDirectionalLight_->lightData_[0].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+	resourcesDirectionalLight_->lightData_[0].intensity = 1.0f;
+
+	*resourcesDirectionalLight_->numLightData_ = 1;
+
 
 	// ポイントライトリソースの生成と初期化
 	resourcesPointLight_ = std::make_unique<PointLightResourcesData>();
@@ -90,26 +96,6 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	// スポットライトリソースの生成と初期化
 	resourcesSpotLight_ = std::make_unique<SpotLightResourcesData>();
 	resourcesSpotLight_->Initialize(directXHeap_, device_, commandList_, 512);
-
-	resourcesSpotLight_->lightData_[0].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-	resourcesSpotLight_->lightData_[0].position = Vector3(5.0f, 5.0f, 0.0f);
-	resourcesSpotLight_->lightData_[0].distance = 7.0f;
-	resourcesSpotLight_->lightData_[0].direction = Normalize(Vector3(0.0f, -1.0f, 0.0f));
-	resourcesSpotLight_->lightData_[0].intensity = 1.0f;
-	resourcesSpotLight_->lightData_[0].decay = 2.0f;
-	resourcesSpotLight_->lightData_[0].cosFalloffStart = 1.0f;
-	resourcesSpotLight_->lightData_[0].cosAngle = std::cos(std::numbers::pi_v<float> / 5.0f);
-
-	resourcesSpotLight_->lightData_[1].color = Vector4(1.0f, 1.0f, 0.0f, 1.0f);
-	resourcesSpotLight_->lightData_[1].position = Vector3(-0.3f, 2.5f, 0.0f);
-	resourcesSpotLight_->lightData_[1].distance = 7.0f;
-	resourcesSpotLight_->lightData_[1].direction = Normalize(Vector3(0.0f, -1.0f, 0.0f));
-	resourcesSpotLight_->lightData_[1].intensity = 1.0f;
-	resourcesSpotLight_->lightData_[1].decay = 4.0f;
-	resourcesSpotLight_->lightData_[1].cosFalloffStart = 1.0f;
-	resourcesSpotLight_->lightData_[1].cosAngle = std::cos(std::numbers::pi_v<float> / 5.0f);
-
-	*resourcesSpotLight_->numLightData_ = 2;
 
 
 	// メインカメラリソースの生成と初期化
