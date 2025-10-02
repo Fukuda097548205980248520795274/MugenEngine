@@ -32,6 +32,7 @@ public:
 	uint32_t textureHandle_ = 0;
 
 
+
 	// サウンドハンドル
 	uint32_t soundHandle_ = 0;
 
