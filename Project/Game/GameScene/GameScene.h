@@ -25,18 +25,10 @@ public:
 public:
 
 
-	// UV球
-	std::unique_ptr<MeshUVSphere> uvSphere1_ = nullptr;
+	// スプライト
+	std::unique_ptr<MeshSprite> sprite_ = nullptr;
 
 	// テクスチャハンドル
 	uint32_t textureHandle_ = 0;
-
-
-
-	// サウンドハンドル
-	uint32_t soundHandle_ = 0;
-
-	// プレイハンドル
-	uint32_t playHandle_ = 0;
 };
 

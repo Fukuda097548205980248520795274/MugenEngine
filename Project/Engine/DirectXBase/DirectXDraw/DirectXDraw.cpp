@@ -525,28 +525,38 @@ void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTrans
 /// スプライトを描画する
 /// </summary>
 /// <param name="textureHandle"></param>
-void DirectXDraw::DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3& p2, const Vector3& p3,
+void DirectXDraw::DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3& p2, const Vector3& p3,const Vector2& textureLeftTop, const Vector2& textureSize,
 	const UVTransform* uvTransform, const Camera2D* camera, uint32_t textureHandle, const Vector4& color)
 {
 	/*------------------------
 	    頂点データを入力する
 	------------------------*/
 
+	// テクスチャの幅
+	float textureWidth = textureStore_->GetTextureWidth(textureHandle);
+	float textureHeight = textureStore_->GetTextureHeight(textureHandle);
+
+	float tex_left = textureLeftTop.x / textureWidth;
+	float tex_right = (textureLeftTop.x + textureSize.x) / textureWidth;
+	float tex_top = textureLeftTop.y / textureHeight;
+	float tex_bottom = (textureLeftTop.y + textureSize.y) / textureHeight;
+	
+
 	// 左下
 	resourceSprite_->vertexData_[0].position = Vector4(p2.x, p2.y, p2.z, 1.0f);
-	resourceSprite_->vertexData_[0].texcoord = Vector2(0.0f, 1.0f);
+	resourceSprite_->vertexData_[0].texcoord = Vector2(tex_left, tex_bottom);
 
 	// 左上
 	resourceSprite_->vertexData_[1].position = Vector4(p0.x, p0.y, p0.z, 1.0f);
-	resourceSprite_->vertexData_[1].texcoord = Vector2(0.0f, 0.0f);
+	resourceSprite_->vertexData_[1].texcoord = Vector2(tex_left, tex_top);
 
 	// 右下
 	resourceSprite_->vertexData_[2].position = Vector4(p3.x, p3.y, p3.z, 1.0f);
-	resourceSprite_->vertexData_[2].texcoord = Vector2(1.0f, 1.0f);
+	resourceSprite_->vertexData_[2].texcoord = Vector2(tex_right, tex_bottom);
 
 	// 右上
 	resourceSprite_->vertexData_[3].position = Vector4(p1.x, p1.y, p1.z, 1.0f);
-	resourceSprite_->vertexData_[3].texcoord = Vector2(1.0f, 0.0f);
+	resourceSprite_->vertexData_[3].texcoord = Vector2(tex_right, tex_top);
 
 
 	/*-------------------

@@ -49,6 +49,20 @@ public:
 	uint32_t LoadTexture(const std::string& filePath) { return directXDraw_->LoadTexture(filePath); }
 
 	/// <summary>
+	/// テクスチャの横幅を取得する
+	/// </summary>
+	/// <param name="textureHandle"></param>
+	/// <returns></returns>
+	float GetTextureWidth(uint32_t textureHandle)const { return directXDraw_->GetTextureWidth(textureHandle); }
+
+	/// <summary>
+	/// テクスチャの縦幅を取得する
+	/// </summary>
+	/// <param name="textureHandle"></param>
+	/// <returns></returns>
+	float GetTextureHeight(uint32_t textureHandle)const { return directXDraw_->GetTextureHeight(textureHandle); }
+
+	/// <summary>
 	/// モデルを読み込む
 	/// </summary>
 	/// <param name="directory"></param>
@@ -81,10 +95,10 @@ public:
 	/// <param name="p3"></param>
 	/// <param name="camera"></param>
 	/// <param name="textureHandle"></param>
-	void DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3& p2, const Vector3& p3,
+	void DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3& p2, const Vector3& p3,const Vector2& textureLeftTop, const Vector2& textureSize,
 		const UVTransform* uvTransform, const Camera2D* camera, uint32_t textureHandle, const Vector4& color)
 	{
-		directXDraw_->DrawSprite(p0, p1, p2, p3, uvTransform, camera, textureHandle, color);
+		directXDraw_->DrawSprite(p0, p1, p2, p3, textureLeftTop, textureSize, uvTransform, camera, textureHandle, color);
 	}
 
 	/// <summary>

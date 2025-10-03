@@ -41,6 +41,20 @@ public:
 	D3D12_GPU_DESCRIPTOR_HANDLE GetGPUDescriptorHandle(uint32_t textureHandle)const { return dataCollection_[textureHandle]->gpuHandle_; }
 
 	/// <summary>
+	/// テクスチャの横幅を取得する
+	/// </summary>
+	/// <param name="textureHandle"></param>
+	/// <returns></returns>
+	float GetTextureWidth(uint32_t textureHandle)const { return static_cast<float>(dataCollection_[textureHandle]->mipImages_.GetMetadata().width); }
+
+	/// <summary>
+	/// テクスチャの縦幅を取得する
+	/// </summary>
+	/// <param name="textureHandle"></param>
+	/// <returns></returns>
+	float GetTextureHeight(uint32_t textureHandle)const { return static_cast<float>(dataCollection_[textureHandle]->mipImages_.GetMetadata().height); }
+
+	/// <summary>
 	/// テクスチャのハッシュ値を計算する
 	/// </summary>
 	/// <param name="image"></param>
