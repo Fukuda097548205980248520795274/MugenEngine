@@ -182,7 +182,7 @@ private:
 	TextureStore* textureStore_ = nullptr;
 
 	// モデル格納場所
-	std::unique_ptr<ModelStore> modelStore_ = nullptr;
+	ModelStore* modelStore_ = nullptr;
 
 
 	// プリミティブ用PSO

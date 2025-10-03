@@ -29,6 +29,22 @@ void ModelInfoDatum::Register(uint32_t modelIndex)
 
 
 
+// インスタンスの初期化
+ModelStore* ModelStore::instance_ = nullptr;
+
+/// <summary>
+/// インスタンスを取得する
+/// </summary>
+/// <returns></returns>
+ModelStore* ModelStore::GetInstance()
+{
+	if (instance_ == nullptr)
+	{
+		instance_ = new ModelStore();
+	}
+
+	return instance_;
+}
 
 /// <summary>
 /// 初期化
@@ -45,6 +61,14 @@ void ModelStore::Initialize(TextureStore* textureStore, ID3D12Device* device, ID
 	textureStore_ = textureStore;
 	device_ = device;
 	commandList_ = commandList;
+}
+
+/// <summary>
+/// 終了処理
+/// </summary>
+void ModelStore::Finalize()
+{
+	delete instance_;
 }
 
 /// <summary>

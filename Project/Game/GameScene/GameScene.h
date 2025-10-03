@@ -25,10 +25,10 @@ public:
 public:
 
 
-	// スプライト
-	std::unique_ptr<MeshSprite> sprite_ = nullptr;
+	// モデル
+	std::unique_ptr<MeshModel> model_ = nullptr;
 
-	// テクスチャハンドル
-	uint32_t textureHandle_ = 0;
+	// モデルハンドル
+	uint32_t modelHandle_ = 0;
 };
 

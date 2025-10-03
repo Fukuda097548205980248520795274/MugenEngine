@@ -47,6 +47,8 @@ public:
 
 private:
 
+
+
 	// デバイス
 	ID3D12Device* device_;
 
@@ -60,10 +62,21 @@ class ModelStore
 public:
 
 	/// <summary>
+	/// インスタンスを取得する
+	/// </summary>
+	/// <returns></returns>
+	static ModelStore* GetInstance();
+
+	/// <summary>
 	/// 初期化
 	/// </summary>
 	/// <param name="textureStore"></param>
 	void Initialize(TextureStore* textureStore, ID3D12Device* device, ID3D12GraphicsCommandList* commandList);
+
+	/// <summary>
+	/// 終了処理
+	/// </summary>
+	void Finalize();
 
 	/// <summary>
 	/// モデルを読み込む
@@ -91,6 +104,16 @@ private:
 
 	// コマンドリスト
 	ID3D12GraphicsCommandList* commandList_ = nullptr;
+
+
+	// インスタンス
+	static ModelStore* instance_;
+
+	// シングルトンを使うため、コンストラクタなどは使わない
+	ModelStore() = default;
+	~ModelStore() = default;
+	ModelStore(ModelStore&) = delete;
+	ModelStore& operator=(ModelStore&) = delete;
 
 
 	// 格納されたモデルデータ

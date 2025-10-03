@@ -9,14 +9,17 @@ void GameScene::Initialize(const MugenEngine* engine)
 	// 基底クラスの初期化
 	Scene::Initialize(engine);
 
-	// テクスチャハンドル
-	textureHandle_ = engine_->LoadTexture("./Resources/Textures/uvChecker.png");
+	// モデルを読み込む
+	modelHandle_ = engine_->LoadModel("./Resources/Models/multiMaterial", "multiMaterial.obj");
 
-	// スプライトの生成と初期化
-	sprite_ = std::make_unique<MeshSprite>();
-	sprite_->Initialize(engine_, camera2d_.get(), textureHandle_);
-	sprite_->worldTransform_->translation_ = Vector3(300.0f, 300.0f, 0.0f);
-	sprite_->worldTransform_->scale_ = Vector2(128.0f, 128.0f);
+	// モデルの生成と初期化
+	model_ = std::make_unique<MeshModel>();
+	model_->Initialize(engine_, camera3d_.get(), modelHandle_);
+	model_->worldTransform_->translation_.z = 30.0f;
+	model_->material_->enableHalfLambert_ = true;
+	model_->material_->enableSpecular_ = true;
+	model_->material_->enableBlinnPhong_ = true;
+	model_->material_->shininess_ = 30.0f;
 }
 
 /// <summary>
@@ -28,8 +31,8 @@ void GameScene::Update()
 	Scene::Update();
 
 
-	// スプライトの更新処理
-	sprite_->Update();
+	// モデルの更新処理
+	model_->Update();
 }
 
 /// <summary>
@@ -37,8 +40,8 @@ void GameScene::Update()
 /// </summary>
 void GameScene::Draw()
 {
-	// スプライトの描画処理
-	sprite_->Draw();
+	// モデルの描画処理
+	model_->Draw();
 
 
 	// 基底クラスの描画処理
