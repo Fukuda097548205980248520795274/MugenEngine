@@ -1,4 +1,4 @@
-#include "SinglePSOPrimitiveNone.h"
+#include "SinglePSOSpriteNormal.h"
 
 /// <summary>
 /// 初期化
@@ -7,7 +7,7 @@
 /// <param name="vertexShaderBlob"></param>
 /// <param name="pixelShaderBlob"></param>
 /// <param name="device"></param>
-void SinglePSOPrimitiveNone::Initialize(LogFile* logFile, IDxcBlob* vertexShaderBlob, IDxcBlob* pixelShaderBlob,
+void SinglePSOSpriteNormal::Initialize(LogFile* logFile, IDxcBlob* vertexShaderBlob, IDxcBlob* pixelShaderBlob,
 	ID3D12Device* device, ID3D12GraphicsCommandList* commandList)
 {
 	// 基底クラスの初期化
@@ -123,7 +123,7 @@ void SinglePSOPrimitiveNone::Initialize(LogFile* logFile, IDxcBlob* vertexShader
 
 
 	/*--------------------
-	    サンプラーの設定
+		サンプラーの設定
 	--------------------*/
 
 	D3D12_STATIC_SAMPLER_DESC staticSamplers[1] = {};
@@ -139,7 +139,7 @@ void SinglePSOPrimitiveNone::Initialize(LogFile* logFile, IDxcBlob* vertexShader
 
 
 	/*---------------------------------------
-	    ルートシグネチャのバイナリデータの生成
+		ルートシグネチャのバイナリデータの生成
 	---------------------------------------*/
 
 	D3D12_ROOT_SIGNATURE_DESC descriptionRootSignature{};
@@ -165,20 +165,20 @@ void SinglePSOPrimitiveNone::Initialize(LogFile* logFile, IDxcBlob* vertexShader
 		assert(false);
 	}
 
-	
+
 
 	/*-------------------------
-	    ルートシグネチャの生成
+		ルートシグネチャの生成
 	-------------------------*/
 
 	// バイナリを元に生成
-	hr = device_->CreateRootSignature(0, 
+	hr = device_->CreateRootSignature(0,
 		signatureBlob_->GetBufferPointer(), signatureBlob_->GetBufferSize(), IID_PPV_ARGS(&rootSignature_));
 	assert(SUCCEEDED(hr));
 
 
 	/*----------------------------
-	    インプットレイアウトの設定
+		インプットレイアウトの設定
 	----------------------------*/
 
 	D3D12_INPUT_ELEMENT_DESC inputElementDescs[3] = {};
@@ -207,31 +207,37 @@ void SinglePSOPrimitiveNone::Initialize(LogFile* logFile, IDxcBlob* vertexShader
 
 
 	/*-------------------------
-	    ブレンドステートの設定
+		ブレンドステートの設定
 	-------------------------*/
 
 	D3D12_BLEND_DESC blendDesc{};
 
 	// 全ての色要素を書き込む
-	blendDesc.RenderTarget[0].RenderTargetWriteMask =
-		D3D12_COLOR_WRITE_ENABLE_ALL;
+	blendDesc.RenderTarget[0].RenderTargetWriteMask = D3D12_COLOR_WRITE_ENABLE_ALL;
+	blendDesc.RenderTarget[0].BlendEnable = TRUE;
+	blendDesc.RenderTarget[0].SrcBlend = D3D12_BLEND_SRC_ALPHA;
+	blendDesc.RenderTarget[0].BlendOp = D3D12_BLEND_OP_ADD;
+	blendDesc.RenderTarget[0].DestBlend = D3D12_BLEND_INV_SRC_ALPHA;
+	blendDesc.RenderTarget[0].SrcBlendAlpha = D3D12_BLEND_ONE;
+	blendDesc.RenderTarget[0].BlendOpAlpha = D3D12_BLEND_OP_ADD;
+	blendDesc.RenderTarget[0].DestBlendAlpha = D3D12_BLEND_ZERO;
 
 
 	/*-----------------------------
-	    ラスタライザステートの設定
+		ラスタライザステートの設定
 	-----------------------------*/
 
 	D3D12_RASTERIZER_DESC rasterizerDesc{};
 
 	// カリングを行わない
-	rasterizerDesc.CullMode = D3D12_CULL_MODE_BACK;
+	rasterizerDesc.CullMode = D3D12_CULL_MODE_NONE;
 
 	// 三角形の中を塗りつぶす
 	rasterizerDesc.FillMode = D3D12_FILL_MODE_SOLID;
 
 
 	/*----------------------
-	    深度ステートの設定
+		深度ステートの設定
 	----------------------*/
 
 	D3D12_DEPTH_STENCIL_DESC depthStencilDesc{};
@@ -247,7 +253,7 @@ void SinglePSOPrimitiveNone::Initialize(LogFile* logFile, IDxcBlob* vertexShader
 
 
 	/*------------------
-	    PSOを生成する
+		PSOを生成する
 	------------------*/
 
 	D3D12_GRAPHICS_PIPELINE_STATE_DESC graphicsPipelineStateDesc{};
@@ -278,7 +284,7 @@ void SinglePSOPrimitiveNone::Initialize(LogFile* logFile, IDxcBlob* vertexShader
 	assert(SUCCEEDED(hr));
 
 	// PSO生成成功のログ
-	logFile_->Log("SUCCEEDED : Primitive None PSO \n");
+	logFile_->Log("SUCCEEDED : Sprite Normal PSO \n");
 
 
 	logFile_->Log("\n");

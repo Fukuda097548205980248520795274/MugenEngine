@@ -230,7 +230,7 @@ void SinglePSOPrimitiveAdd::Initialize(LogFile* logFile, IDxcBlob* vertexShaderB
 	D3D12_RASTERIZER_DESC rasterizerDesc{};
 
 	// カリングを行わない
-	rasterizerDesc.CullMode = D3D12_CULL_MODE_NONE;
+	rasterizerDesc.CullMode = D3D12_CULL_MODE_BACK;
 
 	// 三角形の中を塗りつぶす
 	rasterizerDesc.FillMode = D3D12_FILL_MODE_SOLID;

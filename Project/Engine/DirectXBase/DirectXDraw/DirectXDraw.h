@@ -17,6 +17,7 @@
 #include "BaseMesh/MeshModel/MeshModel.h"
 
 #include "BaseOrganizePSO/OrganizePSOPrimitive/OrganizePSOPrimitive.h"
+#include "BaseOrganizePSO/OrganizePSOSprite/OrganizePSOSprite.h"
 
 #include "ResourcesData/PrimitiveResourcesData/PrimitiveResourcesCube/PrimitiveResourcesCube.h"
 #include "ResourcesData/PrimitiveResourcesData/PrimitiveResourcesSprite/PrimitiveResourcesSprite.h"
@@ -186,6 +187,9 @@ private:
 
 	// プリミティブ用PSO
 	std::unique_ptr<OrganizePSOPrimitive> primitivePSO_ = nullptr;
+
+	// スプライト用PSO
+	std::unique_ptr<OrganizePSOSprite> spritePSO_ = nullptr;
 
 
 	// ビューポート

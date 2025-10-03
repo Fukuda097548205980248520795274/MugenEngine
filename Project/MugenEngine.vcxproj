@@ -273,6 +273,13 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteAdd\SinglePSOSpriteAdd.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteMultiply\SinglePSOSpriteMultiply.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone\SinglePSOSpriteNone.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNormal\SinglePSOSpriteNormal.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteScreen\SinglePSOSpriteScreen.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteSubtract\SinglePSOSpriteSubtract.cpp" />
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -549,6 +556,13 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal\SinglePSOPrimitiveNormal.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveScreen\SinglePSOPrimitiveScreen.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveSubtract\SinglePSOPrimitiveSubtract.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteAdd\SinglePSOSpriteAdd.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteMultiply\SinglePSOSpriteMultiply.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone\SinglePSOSpriteNone.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNormal\SinglePSOSpriteNormal.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteScreen\SinglePSOSpriteScreen.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteSubtract\SinglePSOSpriteSubtract.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\Camera\Camera3D\Camera3D.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU\CameraDataForGPU.h" />

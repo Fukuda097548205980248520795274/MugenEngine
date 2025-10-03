@@ -55,6 +55,10 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	primitivePSO_ = std::make_unique<OrganizePSOPrimitive>();
 	primitivePSO_->Initialize(logFile_, directXShaderCompiler_.get(), commandList_, device_);
 
+	// スプライト用PSOの生成と初期化
+	spritePSO_ = std::make_unique<OrganizePSOSprite>();
+	spritePSO_->Initialize(logFile_, directXShaderCompiler_.get(), commandList_, device_);
+
 
 	// ビューポートの設定
 	viewport_.Width = static_cast<float>(*kClientWidth_);
@@ -596,7 +600,7 @@ void DirectXDraw::DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3
 	commandList_->RSSetScissorRects(1, &scissorRect_);
 
 	// PSOの設定
-	primitivePSO_->SetPSOState();
+	spritePSO_->SetPSOState();
 
 	// スプライトの設定
 	resourceSprite_->Register();
