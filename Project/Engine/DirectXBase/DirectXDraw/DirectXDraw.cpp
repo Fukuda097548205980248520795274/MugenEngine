@@ -3,6 +3,15 @@
 #pragma comment(lib,"dxgi.lib")
 
 /// <summary>
+/// デストラクタ
+/// </summary>
+DirectXDraw::~DirectXDraw()
+{
+	// TextureStoreを終了する
+	textureStore_->Finalize();
+}
+
+/// <summary>
 /// 初期化
 /// </summary>
 /// <param name="logFile"></param>
@@ -33,12 +42,13 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	directXShaderCompiler_->Initialize(logFile_);
 
 	// テクスチャ格納場所の生成と初期化
-	textureStore_ = std::make_unique<TextureStore>();
+	textureStore_ = TextureStore::GetInstance();
 	textureStore_->Initialize(directXHeap_, logFile_, device_, commandList_);
+
 
 	// モデル格納場所の生成と初期化
 	modelStore_ = std::make_unique<ModelStore>();
-	modelStore_->Initialize(textureStore_.get(), device_ , commandList_);
+	modelStore_->Initialize(textureStore_, device_ , commandList_);
 
 
 	// プリミティブ用PSOの生成と初期化

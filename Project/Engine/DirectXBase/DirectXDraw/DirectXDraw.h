@@ -33,6 +33,11 @@ class DirectXDraw
 public:
 
 	/// <summary>
+	/// デストラクタ
+	/// </summary>
+	~DirectXDraw();
+
+	/// <summary>
 	/// 初期化
 	/// </summary>
 	/// <param name="logFile"></param>
@@ -159,7 +164,7 @@ private:
 	std::unique_ptr<DirectXShaderCompile> directXShaderCompiler_ = nullptr;
 
 	// テクスチャ格納場所
-	std::unique_ptr<TextureStore> textureStore_ = nullptr;
+	TextureStore* textureStore_ = nullptr;
 
 	// モデル格納場所
 	std::unique_ptr<ModelStore> modelStore_ = nullptr;

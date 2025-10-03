@@ -10,10 +10,21 @@ class TextureStore
 public:
 
 	/// <summary>
+	/// シングルトンインスタンスを取得する
+	/// </summary>
+	/// <returns></returns>
+	static TextureStore* GetInstance();
+
+	/// <summary>
 	/// 初期化
 	/// </summary>
 	/// <param name="directXHeap"></param>
 	void Initialize(DirectXHeap* directXHeap, LogFile* logFile, ID3D12Device* device, ID3D12GraphicsCommandList* commandList);
+
+	/// <summary>
+	/// 終了処理
+	/// </summary>
+	void Finalize();
 
 	/// <summary>
 	/// テクスチャを読み込む
@@ -38,6 +49,16 @@ public:
 
 
 private:
+
+	// 静的メンバ変数のポインタ
+	static TextureStore* instance;
+
+	// シングルトンを使うため、コンストラクタなどを使えないようにする
+	TextureStore() = default;
+	~TextureStore() = default;
+	TextureStore(TextureStore&) = delete;
+	TextureStore& operator=(TextureStore&) = delete;
+
 
 	//  DirectXヒープ
 	DirectXHeap* directXHeap_ = nullptr;
