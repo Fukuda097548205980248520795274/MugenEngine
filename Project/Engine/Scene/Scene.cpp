@@ -25,6 +25,10 @@ void Scene::Initialize(const MugenEngine* engine)
 	// 3Dカメラの生成と初期化
 	camera3d_ = std::make_unique<Camera3D>();
 	camera3d_->Initialize(engine_->GetScreenWidth(), engine_->GetScreenHeight());
+
+	// 2Dカメラの生成と初期化
+	camera2d_ = std::make_unique<Camera2D>();
+	camera2d_->Initialize(engine_->GetScreenWidth(), engine_->GetScreenHeight());
 }
 
 /// <summary>
@@ -51,6 +55,9 @@ void Scene::Update()
 
 	// メインカメラの更新処理
 	mainCamera_->Update();
+
+	// 2Dカメラの更新処理
+	camera2d_->Update();
 
 	// デバッグモード有効
 	if (enableDebug_)

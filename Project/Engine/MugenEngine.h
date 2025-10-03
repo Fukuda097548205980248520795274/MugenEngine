@@ -229,6 +229,20 @@ public:
 	/// <returns></returns>
 	uint32_t LoadTexture(const std::string& filePath)const { return directXBase_->LoadTexture(filePath); }
 
+	/// <summary>
+	/// テクスチャの横幅を取得する
+	/// </summary>
+	/// <param name="textureHandle"></param>
+	/// <returns></returns>
+	float GetTextureWidth(uint32_t textureHandle)const { return directXBase_->GetTextureWidth(textureHandle); }
+
+	/// <summary>
+	/// テクスチャの縦幅を取得する
+	/// </summary>
+	/// <param name="textureHandle"></param>
+	/// <returns></returns>
+	float GetTextureHeight(uint32_t textureHandle)const { return directXBase_->GetTextureHeight(textureHandle); }
+
 #pragma endregion
 
 #pragma region モデル
@@ -632,8 +646,8 @@ public:
 	/// <param name="worldTransform"></param>
 	/// <param name="camera"></param>
 	/// <param name="textureHandle"></param>
-	void DrawSprite(const WorldTransform2D* worldTransform, const Vector2& anchor, const UVTransform* uvTransform, const Camera2D* camera,
-		uint32_t textureHandle, const Vector4& color)const;
+	void DrawSprite(const WorldTransform2D* worldTransform, const Vector2& anchor, const Vector2& textureLeftTop, const Vector2& textureSize,
+		const UVTransform* uvTransform, const Camera2D* camera, uint32_t textureHandle, const Vector4& color, bool isFlipX, bool isFlipY)const;
 
 	/// <summary>
 	/// UV球を描画する

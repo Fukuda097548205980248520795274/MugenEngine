@@ -1,5 +1,22 @@
 #include "TextureStore.h"
 
+// インスタンス
+TextureStore* TextureStore::instance = nullptr;
+
+/// <summary>
+/// シングルトンインスタンスを取得する
+/// </summary>
+/// <returns></returns>
+TextureStore* TextureStore::GetInstance()
+{
+	if (instance == nullptr)
+	{
+		instance = new TextureStore();
+	}
+
+	return instance;
+}
+
 /// <summary>
 /// 初期化
 /// </summary>
@@ -17,6 +34,14 @@ void TextureStore::Initialize(DirectXHeap* directXHeap, LogFile* logFile, ID3D12
 	logFile_ = logFile;
 	device_ = device;
 	commandList_ = commandList;
+}
+
+/// <summary>
+/// 終了処理
+/// </summary>
+void TextureStore::Finalize()
+{
+	delete instance;
 }
 
 /// <summary>

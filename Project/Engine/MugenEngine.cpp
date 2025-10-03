@@ -125,8 +125,8 @@ void MugenEngine::FrameEnd()
 /// <param name="worldTransform"></param>
 /// <param name="camera"></param>
 /// <param name="textureHandle"></param>
-void MugenEngine::DrawSprite(const WorldTransform2D* worldTransform, const Vector2& anchor, const UVTransform* uvTransform, const Camera2D* camera,
-	uint32_t textureHandle, const Vector4& color)const
+void MugenEngine::DrawSprite(const WorldTransform2D* worldTransform, const Vector2& anchor, const Vector2& textureLeftTop, const Vector2& textureSize,
+	const UVTransform* uvTransform, const Camera2D* camera, uint32_t textureHandle, const Vector4& color, bool isFlipX, bool isFlipY)const
 {
 	// ワールドビュープロジェクション行列
 	Matrix4x4 worldViewProjectionMatrix = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
@@ -134,12 +134,30 @@ void MugenEngine::DrawSprite(const WorldTransform2D* worldTransform, const Vecto
 	// ビューポート変換行列
 	Matrix4x4 viewportMatrix = MakeViewportMatrix4x4(0.0f, 0.0f, camera->screenWidth_, camera->screenHeight_, 0.0f, 1.0f);
 
+	float left = -anchor.x;
+	float right = 1.0f - anchor.x;
+	float top = -anchor.y;
+	float bottom = 1.0f - anchor.y;
+
+	// フリップする
+	if (isFlipX)
+	{
+		left *= -1.0f;
+		right *= -1.0f;
+	}
+
+	if (isFlipY)
+	{
+		top *= -1.0f;
+		bottom *= -1.0f;
+	}
+
 	Vector3 vertecies[4] =
 	{
-		Transform(Transform(Vector3(-anchor.x ,-anchor.y , 0.0f) , worldViewProjectionMatrix), viewportMatrix),
-		Transform(Transform(Vector3(1.0f - anchor.x  , -anchor.y , 0.0f) , worldViewProjectionMatrix), viewportMatrix),
-		Transform(Transform(Vector3(-anchor.x  ,1.0f - anchor.y , 0.0f) , worldViewProjectionMatrix), viewportMatrix),
-		Transform(Transform(Vector3(1.0f - anchor.x  , 1.0f - anchor.y , 0.0f) , worldViewProjectionMatrix), viewportMatrix)
+		Transform(Transform(Vector3(left ,top , 0.0f) , worldViewProjectionMatrix), viewportMatrix),
+		Transform(Transform(Vector3(right  , top , 0.0f) , worldViewProjectionMatrix), viewportMatrix),
+		Transform(Transform(Vector3(left  ,bottom , 0.0f) , worldViewProjectionMatrix), viewportMatrix),
+		Transform(Transform(Vector3(right  , bottom , 0.0f) , worldViewProjectionMatrix), viewportMatrix)
 	};
 
 	directXBase_->DrawSprite(
@@ -147,5 +165,5 @@ void MugenEngine::DrawSprite(const WorldTransform2D* worldTransform, const Vecto
 		Vector3(vertecies[1].x, vertecies[1].y, worldTransform->translation_.z),
 		Vector3(vertecies[2].x, vertecies[2].y, worldTransform->translation_.z),
 		Vector3(vertecies[3].x, vertecies[3].y, worldTransform->translation_.z),
-		uvTransform, camera, textureHandle, color);
+		textureLeftTop, textureSize, uvTransform, camera, textureHandle, color);
 }

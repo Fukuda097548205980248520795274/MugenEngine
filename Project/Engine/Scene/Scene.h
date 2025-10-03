@@ -1,4 +1,5 @@
 #pragma once
+#include "DirectXBase/DirectXDraw/Camera/Camera2D/Camera2D.h"
 #include "GameCamera/MainCamera/MainCamera.h"
 #include "GameCamera/DebugCamera/DebugCamera.h"
 
@@ -30,6 +31,9 @@ protected:
 
 	// 3Dカメラ
 	std::unique_ptr<Camera3D> camera3d_ = nullptr;
+
+	// 2Dカメラ
+	std::unique_ptr<Camera2D> camera2d_ = nullptr;
 
 	// メインカメラ
 	std::unique_ptr<MainCamera> mainCamera_ = nullptr;

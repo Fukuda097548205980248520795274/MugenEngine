@@ -33,6 +33,11 @@ class DirectXDraw
 public:
 
 	/// <summary>
+	/// デストラクタ
+	/// </summary>
+	~DirectXDraw();
+
+	/// <summary>
 	/// 初期化
 	/// </summary>
 	/// <param name="logFile"></param>
@@ -65,6 +70,20 @@ public:
 	/// <param name="fileName"></param>
 	/// <returns></returns>
 	uint32_t LoadModel(const std::string& directory, const std::string& fileName) { return modelStore_->LoadModel(directory, fileName); }
+
+	/// <summary>
+	/// テクスチャの横幅を取得する
+	/// </summary>
+	/// <param name="textureHandle"></param>
+	/// <returns></returns>
+	float GetTextureWidth(uint32_t textureHandle)const { return textureStore_->GetTextureWidth(textureHandle); }
+
+	/// <summary>
+	/// テクスチャの縦幅を取得する
+	/// </summary>
+	/// <param name="textureHandle"></param>
+	/// <returns></returns>
+	float GetTextureHeight(uint32_t textureHandle)const { return textureStore_->GetTextureHeight(textureHandle); }
 
 	/// <summary>
 	/// プリミティブのブレンドモードを設定する
@@ -128,7 +147,7 @@ public:
 	/// <param name="p3"></param>
 	/// <param name="camera"></param>
 	/// <param name="textureHandle"></param>
-	void DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3& p2, const Vector3& p3,
+	void DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3& p2, const Vector3& p3, const Vector2& textureLeftTop, const Vector2& size,
 		const UVTransform* uvTransform, const Camera2D* camera, uint32_t textureHandle, const Vector4& color);
 
 
@@ -159,7 +178,7 @@ private:
 	std::unique_ptr<DirectXShaderCompile> directXShaderCompiler_ = nullptr;
 
 	// テクスチャ格納場所
-	std::unique_ptr<TextureStore> textureStore_ = nullptr;
+	TextureStore* textureStore_ = nullptr;
 
 	// モデル格納場所
 	std::unique_ptr<ModelStore> modelStore_ = nullptr;
