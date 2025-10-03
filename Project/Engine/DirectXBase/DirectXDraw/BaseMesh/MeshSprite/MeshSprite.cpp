@@ -40,19 +40,6 @@ void MeshSprite::Initialize(const MugenEngine* engine, const Camera2D* camera2d,
 /// </summary>
 void MeshSprite::Update()
 {
-#ifdef _DEBUG
-
-	ImGui::Begin("Sprite");
-	ImGui::DragFloat2("Scale", &worldTransform_->scale_.x, 1.0f);
-	ImGui::DragFloat("rotation", &worldTransform_->rotation_, 0.01f);
-	ImGui::DragFloat3("translation", &worldTransform_->translation_.x, 1.0f);
-	ImGui::DragFloat2("Anchor", &anchor_.x, 0.1f);
-	ImGui::DragFloat2("textureLeftTop", &textureLeftTop_.x, 1.0f);
-	ImGui::DragFloat2("textureSize", &textureSize_.x, 1.0f);
-	ImGui::End();
-
-#endif
-
 	// トランスフォームの更新
 	worldTransform_->Update();
 	uvTransform_->Update();

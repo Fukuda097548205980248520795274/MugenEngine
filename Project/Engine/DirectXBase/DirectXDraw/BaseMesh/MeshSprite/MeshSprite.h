@@ -48,31 +48,6 @@ public:
 	void FlipY(bool isFlip) { isFlipY_ = isFlip; }
 
 
-	/// <summary>
-	/// テクスチャ左上のGetter
-	/// </summary>
-	/// <returns></returns>
-	Vector2 GetTextureLeftUp()const { return textureLeftTop_; }
-
-	/// <summary>
-	/// テクスチャ左上のSetter
-	/// </summary>
-	/// <param name="textureLeftTop"></param>
-	void SetTextureLeftUp(Vector2 textureLeftTop) { textureLeftTop_ = textureLeftTop; }
-
-	/// <summary>
-	/// テクスチャ切り出しサイズのGetter
-	/// </summary>
-	/// <returns></returns>
-	Vector2 GetTextureSize()const { return textureSize_; }
-
-	/// <summary>
-	/// テクスチャ切り出しサイズのSetter
-	/// </summary>
-	/// <param name="textureSize"></param>
-	void SetTextureSize(Vector2 textureSize) { textureSize_ = textureSize; }
-
-
 	// ワールドトランスフォーム
 	std::unique_ptr<WorldTransform2D> worldTransform_ = nullptr;
 
@@ -84,6 +59,12 @@ public:
 
 	// 色
 	Vector4 color_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+
+	// テクスチャ座標左上
+	Vector2 textureLeftTop_ = { 0.0f, 0.0f };
+
+	// テクスチャ切り出しサイズ
+	Vector2 textureSize_{ 0.0f, 0.0f };
 
 	
 
@@ -105,11 +86,5 @@ private:
 
 	// 上下フリップ
 	bool isFlipY_ = false;
-
-	// テクスチャ座標左上
-	Vector2 textureLeftTop_ = { 0.0f, 0.0f };
-
-	// テクスチャ切り出しサイズ
-	Vector2 textureSize_{ 0.0f, 0.0f };
 };
 
