@@ -38,5 +38,9 @@ public:
 
 	// モデルハンドル1
 	uint32_t modelHandle1_ = 0;
+
+
+	// タイマー
+	float timer_ = 0.0f;
 };
 

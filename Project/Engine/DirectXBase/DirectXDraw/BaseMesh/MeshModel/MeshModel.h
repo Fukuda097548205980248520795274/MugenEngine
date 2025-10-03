@@ -29,15 +29,18 @@ public:
 	/// </summary>
 	void Draw();
 
+	/// <summary>
+	/// モデルハンドルのSetter
+	/// </summary>
+	/// <param name="modelHandle"></param>
+	void SetModelHandle(uint32_t modelHandle) { modelHandle_ = modelHandle; }
+
 
 	// ワールドトランスフォーム
 	std::unique_ptr<WorldTransform3D> worldTransform_ = nullptr;
 
 	// UVトランスフォーム
 	std::unique_ptr<UVTransform> uvTransform_ = nullptr;
-
-	// モデルハンドル
-	uint32_t modelHandle_ = 0;
 
 	// マテリアル
 	std::unique_ptr<Material> material_ = nullptr;
@@ -50,5 +53,8 @@ private:
 
 	// カメラ
 	const Camera3D* camera3d_ = nullptr;
+
+	// モデルハンドル
+	uint32_t modelHandle_ = 0;
 };
 

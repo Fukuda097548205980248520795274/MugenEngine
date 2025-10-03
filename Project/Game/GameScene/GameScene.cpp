@@ -10,8 +10,8 @@ void GameScene::Initialize(const MugenEngine* engine)
 	Scene::Initialize(engine);
 
 	// モデルを読み込む
-	modelHandle1_ = engine_->LoadModel("./Resources/Models/suzanne", "suzanne.obj");
-	modelHandle2_ = engine_->LoadModel("./Resources/Models/suzanneUV", "suzanneUV.obj");
+	modelHandle1_ = engine_->LoadModel("./Resources/Models/suzanneUV", "suzanneUV.obj");
+	modelHandle2_ = engine_->LoadModel("./Resources/Models/node", "node.gltf");
 
 	// モデルの生成と初期化
 	model1_ = std::make_unique<MeshModel>();
@@ -44,6 +44,21 @@ void GameScene::Update()
 
 	model2_->worldTransform_->rotation_.z += 0.01f;
 	model2_->worldTransform_->rotation_.y += 0.01f;
+
+	timer_ += engine_->GetDeltaTime();
+
+	if (timer_ <= 1.0f)
+	{
+		model2_->SetModelHandle(modelHandle1_);
+	}
+	else if (timer_ <= 2.0f)
+	{
+		model2_->SetModelHandle(modelHandle2_);
+	}
+	else
+	{
+		timer_ = 0.0f;
+	}
 
 	// モデルの更新処理
 	model1_->Update();

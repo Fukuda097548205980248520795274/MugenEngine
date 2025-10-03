@@ -204,7 +204,7 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldInverseTranspose =
 			MakeInverseMatrix4x4(MakeTransposeMatrix4x4(worldTransform->worldMatrix_));
 		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldViewProjection =
-			nodeWorldMatrix[1 + modelIndex] * worldViewProjectionMatrix;
+			nodeWorldMatrix[modelIndex] * worldViewProjectionMatrix;
 
 
 		// ビューポート、シザー矩形の設定
