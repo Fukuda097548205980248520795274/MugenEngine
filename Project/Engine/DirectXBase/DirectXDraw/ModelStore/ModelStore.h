@@ -1,6 +1,7 @@
 #pragma once
 #include "../../../Func/CreateBufferResource/CreateBufferResource.h"
 #include "../../../Func/LoadModel/LoadModel.h"
+#include "Animation/Animation.h"
 #include "../TextureStore/TextureStore.h"
 #include "../DataForGPU/MaterialData/MaterialData.h"
 #include "../DataForGPU/TransformationData/TransformationData.h"
@@ -44,10 +45,15 @@ public:
 	// インデックスと頂点のリソース
 	std::vector<std::unique_ptr<IndexVertexResourcesData>> indexVertexResource_{};
 
+	
+	// アニメーション時間
+	float animationTime_ = 0.0f;
+
+	// アニメーション
+	Animation animation_{};
+
 
 private:
-
-
 
 	// デバイス
 	ID3D12Device* device_;

@@ -316,6 +316,9 @@
     <Filter Include="Externals\ImGui">
       <UniqueIdentifier>{0cfd3b97-fbb3-4efa-9f34-4e218483a5cf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\Animation">
+      <UniqueIdentifier>{554f2084-1768-471b-8c82-9f8a2ea23245}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -627,6 +630,9 @@
     <ClCompile Include="Externals\ImGui\imgui_widgets.cpp">
       <Filter>Externals\ImGui</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\Animation\Animation.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\Animation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MugenEngine.h">
@@ -937,6 +943,9 @@
     </ClInclude>
     <ClInclude Include="Externals\ImGui\imstb_truetype.h">
       <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\Animation\Animation.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\Animation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

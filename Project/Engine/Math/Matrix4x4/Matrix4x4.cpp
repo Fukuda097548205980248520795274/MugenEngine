@@ -235,6 +235,39 @@ Matrix4x4 Make3DRotateMatrix4x4(const Vector3& rotation)
 	return rotateMatrix;
 }
 
+
+/// <summary>
+/// クォータニオンによる回転行列を作成する
+/// </summary>
+/// <param name="quaternion"></param>
+/// <returns></returns>
+Matrix4x4 MakeRotateMatrixQuaternion(const Quaternion& quaternion)
+{
+	Matrix4x4 rotateMatrix;
+
+	rotateMatrix.m[0][0] = std::powf(quaternion.w, 2.0f) + std::powf(quaternion.x, 2.0f) - std::powf(quaternion.y, 2.0f) - std::powf(quaternion.z, 2.0f);
+	rotateMatrix.m[0][1] = 2.0f * (quaternion.x * quaternion.y + quaternion.w * quaternion.z);
+	rotateMatrix.m[0][2] = 2.0f * (quaternion.x * quaternion.z - quaternion.w * quaternion.y);
+	rotateMatrix.m[0][3] = 0.0f;
+
+	rotateMatrix.m[1][0] = 2.0f * (quaternion.x * quaternion.y - quaternion.w * quaternion.z);
+	rotateMatrix.m[1][1] = std::powf(quaternion.w, 2.0f) - std::powf(quaternion.x, 2.0f) + std::powf(quaternion.y, 2.0f) - std::powf(quaternion.z, 2.0f);
+	rotateMatrix.m[1][2] = 2.0f * (quaternion.y * quaternion.z + quaternion.w * quaternion.x);
+	rotateMatrix.m[1][3] = 0.0f;
+
+	rotateMatrix.m[2][0] = 2.0f * (quaternion.x * quaternion.z + quaternion.w * quaternion.y);
+	rotateMatrix.m[2][1] = 2.0f * (quaternion.y * quaternion.z - quaternion.w * quaternion.x);
+	rotateMatrix.m[2][2] = std::powf(quaternion.w, 2.0f) - std::powf(quaternion.x, 2.0f) - std::powf(quaternion.y, 2.0f) + std::powf(quaternion.z, 2.0f);
+	rotateMatrix.m[2][3] = 0.0f;
+
+	rotateMatrix.m[3][0] = 0.0f;
+	rotateMatrix.m[3][1] = 0.0f;
+	rotateMatrix.m[3][2] = 0.0f;
+	rotateMatrix.m[3][3] = 1.0f;
+
+	return rotateMatrix;
+}
+
 /// <summary>
 /// 平行移動行列を作成する
 /// </summary>
@@ -280,6 +313,22 @@ Matrix4x4 Make3DAffineMatrix4x4(const Vector3& scale, const Vector3& rotation, c
 	// アフィン変換行列
 	Matrix4x4 affineMatrix;
 	affineMatrix = Make3DScaleMatrix4x4(scale) * Make3DRotateMatrix4x4(rotation) * Make3DTranslateMatrix4x4(translation);
+
+	return affineMatrix;
+}
+
+/// <summary>
+/// アフィン変換行列を作成する
+/// </summary>
+/// <param name="scale"></param>
+/// <param name="rotation"></param>
+/// <param name="translation"></param>
+/// <returns></returns>
+Matrix4x4 Make3DAffineMatrix4x4(const Vector3& scale, const Quaternion& rotation, const Vector3& translation)
+{
+	// アフィン変換行列
+	Matrix4x4 affineMatrix;
+	affineMatrix = Make3DScaleMatrix4x4(scale) * MakeRotateMatrixQuaternion(rotation) * Make3DTranslateMatrix4x4(translation);
 
 	return affineMatrix;
 }

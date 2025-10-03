@@ -4,6 +4,7 @@
 #include <cmath>
 #include "../Vector3/Vector3.h"
 #include "../Vector4/Vector4.h"
+#include "../Quaternion/Quaternion.h"
 
 // 4x4行列
 struct Matrix4x4
@@ -250,6 +251,13 @@ Matrix4x4 Make3DRotateZMatrix4x4(float radian);
 Matrix4x4 Make3DRotateMatrix4x4(const Vector3& rotation);
 
 /// <summary>
+/// クォータニオンによる回転行列を作成する
+/// </summary>
+/// <param name="quaternion"></param>
+/// <returns></returns>
+Matrix4x4 MakeRotateMatrixQuaternion(const Quaternion& quaternion);
+
+/// <summary>
 /// 平行移動行列を作成する
 /// </summary>
 /// <param name="translation"></param>
@@ -264,6 +272,15 @@ Matrix4x4 Make3DTranslateMatrix4x4(const Vector3& translation);
 /// <param name="translation"></param>
 /// <returns></returns>
 Matrix4x4 Make3DAffineMatrix4x4(const Vector3& scale, const Vector3& rotation, const Vector3& translation);
+
+/// <summary>
+/// アフィン変換行列を作成する
+/// </summary>
+/// <param name="scale"></param>
+/// <param name="rotation"></param>
+/// <param name="translation"></param>
+/// <returns></returns>
+Matrix4x4 Make3DAffineMatrix4x4(const Vector3& scale, const Quaternion& rotation, const Vector3& translation);
 
 /// <summary>
 /// 逆行列を作成する

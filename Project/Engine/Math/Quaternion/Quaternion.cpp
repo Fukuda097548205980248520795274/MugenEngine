@@ -76,3 +76,49 @@ Quaternion MakeInverseQuaternion(const Quaternion& quaternion)
 {
 	return MakeConjugateQuaternion(quaternion) / std::powf(Length(quaternion), 2.0f);
 }
+
+/// <summary>
+/// 内積を求める
+/// </summary>
+/// <param name="q1"></param>
+/// <param name="q2"></param>
+/// <returns></returns>
+float Dot(const Quaternion& q1, const Quaternion& q2)
+{
+	float dot = q1.x * q2.x + q1.y * q2.y + q1.z * q2.z + q1.w * q2.w;
+	return dot;
+}
+
+/// <summary>
+/// 球面線形補間を行う
+/// </summary>
+/// <param name="q1"></param>
+/// <param name="q2"></param>
+/// <param name="t"></param>
+/// <returns></returns>
+Quaternion Slerp(const Quaternion& q0, const Quaternion& q1, float t)
+{
+	// 片方のクォータニオンのコピー
+	Quaternion q0Copy = q0;
+
+	// 内積
+	float dot = Dot(q0Copy, q1);
+
+	if (dot < 0.0f)
+	{
+		q0Copy = -q0Copy;
+		dot = -dot;
+	}
+
+	// なす角を求める
+	float theta = std::acos(dot);
+
+	// 補間 0.0f
+	float scale0 = std::sin((1.0f - t) * theta) / std::sin(theta);
+
+	// 補間 1.0f
+	float scale1 = std::sin(t * theta) / std::sin(theta);
+
+	// 保管した値を返却する
+	return scale0 * q0Copy + scale1 * q1;
+}

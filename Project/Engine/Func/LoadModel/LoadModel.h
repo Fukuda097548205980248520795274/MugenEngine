@@ -6,7 +6,8 @@
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
-#include "../../DirectXBase/DirectXDraw/ModelStore/ModelData/ModelData.h"
+#include "DirectXBase/DirectXDraw/ModelStore/ModelData/ModelData.h"
+#include "DirectXBase/DirectXDraw/ModelStore/Animation/Animation.h"
 
 /// <summary>
 /// mtlファイルを読み込む
@@ -52,3 +53,11 @@ Node ReadNode(aiNode* node);
 /// <param name="rootNode"></param>
 /// <returns></returns>
 void GetNodeWorldMatrix(std::vector<Matrix4x4>& worldMatrices, const Node& rootNode);
+
+/// <summary>
+/// アニメーションファイルを読み込む
+/// </summary>
+/// <param name="directoryPath"></param>
+/// <param name="filename"></param>
+/// <returns></returns>
+Animation LoadAnimationFile(const std::string& directoryPath, const std::string& filename);

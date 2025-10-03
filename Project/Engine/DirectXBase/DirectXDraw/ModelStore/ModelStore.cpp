@@ -100,6 +100,9 @@ uint32_t ModelStore::LoadModel(const std::string& directoryPath, const std::stri
 	modelInfoDatum->rootNode_ = GetReadNode(directoryPath, filename);
 	NodeWorldMatrix(modelInfoDatum->rootNode_, MakeIdentityMatrix4x4());
 
+	// アニメーション情報を取得する
+	modelInfoDatum->animation_ = LoadAnimationFile(directoryPath, filename);
+
 	// ハンドルを取得する
 	uint32_t handle = static_cast<uint32_t>(modelInfoData_.size());
 	modelInfoDatum->modelHandle_ = handle;

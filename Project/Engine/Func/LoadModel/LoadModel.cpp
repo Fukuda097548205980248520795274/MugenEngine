@@ -242,3 +242,79 @@ void GetNodeWorldMatrix(std::vector<Matrix4x4>& worldMatrices, const Node& rootN
 		GetNodeWorldMatrix(worldMatrices, node);
 	}
 }
+
+
+/// <summary>
+/// アニメーションファイルを読み込む
+/// </summary>
+/// <param name="directoryPath"></param>
+/// <param name="filename"></param>
+/// <returns></returns>
+Animation LoadAnimationFile(const std::string& directoryPath, const std::string& filename)
+{
+	Animation animation;
+
+	Assimp::Importer importer;
+	std::string filePath = directoryPath + "/" + filename;
+	const aiScene* scene = importer.ReadFile(filePath.c_str(), 0);
+
+	// アニメーションがないといけいない
+	assert(scene->mNumAnimations != 0);
+
+	// 最初のアニメーションだけ採用
+	aiAnimation* animationAssimp = scene->mAnimations[0];
+
+	// 時間の単位を秒に変換
+	animation.duration = float(animationAssimp->mDuration / animationAssimp->mTicksPerSecond);
+
+	for (uint32_t channelIndex = 0; channelIndex < animationAssimp->mNumChannels; ++channelIndex)
+	{
+		aiNodeAnim* nodeAnimationAssimp = animationAssimp->mChannels[channelIndex];
+
+		NodeAnimation& nodeAnimation = animation.nodeAnimations[nodeAnimationAssimp->mNodeName.C_Str()];
+
+		for (uint32_t keyIndex = 0; keyIndex < nodeAnimationAssimp->mNumPositionKeys; ++keyIndex)
+		{
+			aiVectorKey& keyAssimp = nodeAnimationAssimp->mPositionKeys[keyIndex];
+
+			KeyFrameVector3 keyframe;
+
+			// 秒に変換
+			keyframe.time = float(keyAssimp.mTime / animationAssimp->mTicksPerSecond);
+
+			// 右手 -> 左手
+			keyframe.value = { -keyAssimp.mValue.x, keyAssimp.mValue.y,keyAssimp.mValue.z };
+			nodeAnimation.translate.push_back(keyframe);
+		}
+
+		for (uint32_t keyIndex = 0; keyIndex < nodeAnimationAssimp->mNumRotationKeys; ++keyIndex)
+		{
+			aiQuatKey& keyAssimp = nodeAnimationAssimp->mRotationKeys[keyIndex];
+
+			KeyFrameQuaternion keyframe;
+
+			// 秒に変換
+			keyframe.time = float(keyAssimp.mTime / animationAssimp->mTicksPerSecond);
+
+			// 右手 -> 左手
+			keyframe.value = { keyAssimp.mValue.x, -keyAssimp.mValue.y, -keyAssimp.mValue.z , keyAssimp.mValue.w };
+			nodeAnimation.rotate.push_back(keyframe);
+		}
+
+		for (uint32_t keyIndex = 0; keyIndex < nodeAnimationAssimp->mNumScalingKeys; ++keyIndex)
+		{
+			aiVectorKey& keyAssimp = nodeAnimationAssimp->mScalingKeys[keyIndex];
+
+			KeyFrameVector3 keyframe;
+
+			// 秒に変換
+			keyframe.time = float(keyAssimp.mTime / animationAssimp->mTicksPerSecond);
+
+			// そのまま
+			keyframe.value = { keyAssimp.mValue.x, keyAssimp.mValue.y,keyAssimp.mValue.z };
+			nodeAnimation.scale.push_back(keyframe);
+		}
+	}
+
+	return animation;
+}

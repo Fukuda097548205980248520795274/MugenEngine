@@ -312,6 +312,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\Animation\Animation.cpp" />
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\ModelData.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -543,6 +544,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone\SinglePSOPrimitiveNone.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\DataForGPU\LightData\LightData.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\DataForGPU\MaterialData\MaterialData.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\Animation\Animation.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\ModelData.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelStore.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData\DirectionalLightResourcesData.h" />

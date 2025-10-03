@@ -165,6 +165,18 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 	resourcesMainCamera_->data_->worldPosition = camera->GetWorldPosition();
 
 
+	// アニメーションタイマーを進める
+	modelInfo->animationTime_ += 1.0f / 60.0f;
+	modelInfo->animationTime_ = std::fmod(modelInfo->animationTime_, modelInfo->animation_.duration);
+	NodeAnimation& rootNodeAnimation = modelInfo->animation_.nodeAnimations[modelInfo->rootNode_.name];
+
+	Vector3 translate = CalcuateValue(rootNodeAnimation.translate, modelInfo->animationTime_);
+	Quaternion rotate = CalcuateValue(rootNodeAnimation.rotate, modelInfo->animationTime_);
+	Vector3 scale = CalcuateValue(rootNodeAnimation.scale, modelInfo->animationTime_);
+
+	Matrix4x4 localMatrix = Make3DAffineMatrix4x4(scale, rotate, translate);
+
+
 	// wvp行列
 	Matrix4x4 worldViewProjectionMatrix = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
 
@@ -200,11 +212,13 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 		    座標変換データを入力する
 		----------------------------*/
 
-		primitiveTransformationResources_[drawPrimitiveCount_]->data_->world = worldTransform->worldMatrix_;
+		primitiveTransformationResources_[drawPrimitiveCount_]->data_->world = localMatrix * worldTransform->worldMatrix_;
+
 		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldInverseTranspose =
 			MakeInverseMatrix4x4(MakeTransposeMatrix4x4(worldTransform->worldMatrix_));
+
 		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldViewProjection =
-			nodeWorldMatrix[modelIndex] * worldViewProjectionMatrix;
+			localMatrix * nodeWorldMatrix[modelIndex] * worldViewProjectionMatrix;
 
 
 		// ビューポート、シザー矩形の設定
