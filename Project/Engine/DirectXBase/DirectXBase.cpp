@@ -100,6 +100,7 @@ void DirectXBase::Initialize(LogFile* logFile, const WinApp* winApp, const int32
 /// </summary>
 void DirectXBase::PreDraw()
 {
+
 	// フレームの開始をImGuiに伝える
 	ImGui_ImplDX12_NewFrame();
 	ImGui_ImplWin32_NewFrame();

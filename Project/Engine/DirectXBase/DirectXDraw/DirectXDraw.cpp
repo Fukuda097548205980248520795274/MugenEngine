@@ -7,6 +7,9 @@
 /// </summary>
 DirectXDraw::~DirectXDraw()
 {
+	// ModelStoreを終了する
+	modelStore_->Finalize();
+
 	// TextureStoreを終了する
 	textureStore_->Finalize();
 }
@@ -47,8 +50,8 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 
 
 	// モデル格納場所の生成と初期化
-	modelStore_ = std::make_unique<ModelStore>();
-	modelStore_->Initialize(textureStore_, device_ , commandList_);
+	modelStore_ = ModelStore::GetInstance();
+	modelStore_->Initialize(textureStore_, device_, commandList_);
 
 
 	// プリミティブ用PSOの生成と初期化
@@ -201,7 +204,7 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldInverseTranspose =
 			MakeInverseMatrix4x4(MakeTransposeMatrix4x4(worldTransform->worldMatrix_));
 		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldViewProjection =
-			nodeWorldMatrix[1 + modelIndex] * worldViewProjectionMatrix;
+			nodeWorldMatrix[modelIndex] * worldViewProjectionMatrix;
 
 
 		// ビューポート、シザー矩形の設定

@@ -91,9 +91,6 @@
     <Filter Include="Externals">
       <UniqueIdentifier>{8a6493c2-3ccb-4d89-ad3f-6ec691f985bb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Externals\ImGui">
-      <UniqueIdentifier>{b6c82092-a6ac-477c-9d62-c7a122222239}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Include\Func\DirectXTransitionBarrier">
       <UniqueIdentifier>{76721cd8-d9aa-49f4-a033-67bcd75cd194}</UniqueIdentifier>
     </Filter>
@@ -316,6 +313,9 @@
     <Filter Include="Engine\Include\Math\Easing">
       <UniqueIdentifier>{1d868a8c-dc3c-44f1-8a94-4838912f9aab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Externals\ImGui">
+      <UniqueIdentifier>{0cfd3b97-fbb3-4efa-9f34-4e218483a5cf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -395,27 +395,6 @@
     </ClCompile>
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Transform\Transform.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Transform</Filter>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_demo.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_draw.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_impl_dx12.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_impl_win32.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_tables.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_widgets.cpp">
-      <Filter>Externals\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Func\LoadTexture\LoadTexture.cpp">
       <Filter>Engine\Include\Func\LoadTexture</Filter>
@@ -627,6 +606,27 @@
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteSubtract\SinglePSOSpriteSubtract.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Externals\ImGui\imgui.cpp">
+      <Filter>Externals\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Externals\ImGui\imgui_demo.cpp">
+      <Filter>Externals\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Externals\ImGui\imgui_draw.cpp">
+      <Filter>Externals\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Externals\ImGui\imgui_impl_dx12.cpp">
+      <Filter>Externals\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Externals\ImGui\imgui_impl_win32.cpp">
+      <Filter>Externals\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Externals\ImGui\imgui_tables.cpp">
+      <Filter>Externals\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Externals\ImGui\imgui_widgets.cpp">
+      <Filter>Externals\ImGui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MugenEngine.h">
@@ -703,30 +703,6 @@
     </ClInclude>
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Transform\Transform.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Transform</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imconfig.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imgui.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imgui_impl_dx12.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imgui_impl_win32.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imgui_internal.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imstb_rectpack.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imstb_textedit.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imstb_truetype.h">
-      <Filter>Externals\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Func\LoadTexture\LoadTexture.h">
       <Filter>Engine\Include\Func\LoadTexture</Filter>
@@ -937,6 +913,30 @@
     </ClInclude>
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteSubtract\SinglePSOSpriteSubtract.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Externals\ImGui\imconfig.h">
+      <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Externals\ImGui\imgui.h">
+      <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Externals\ImGui\imgui_impl_dx12.h">
+      <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Externals\ImGui\imgui_impl_win32.h">
+      <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Externals\ImGui\imgui_internal.h">
+      <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Externals\ImGui\imstb_rectpack.h">
+      <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Externals\ImGui\imstb_textedit.h">
+      <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Externals\ImGui\imstb_truetype.h">
+      <Filter>Externals\ImGui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

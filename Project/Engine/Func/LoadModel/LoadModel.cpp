@@ -139,7 +139,8 @@ std::vector<ModelData> LoadObjFile(const std::string& directoryPath, const std::
 	std::string filePath = directoryPath + "/" + filename;
 
 	// シーンのデータ
-	const aiScene* scene = importer.ReadFile(filePath.c_str(), aiProcess_FlipWindingOrder | aiProcess_FlipUVs | aiProcess_JoinIdenticalVertices);
+	const aiScene* scene = importer.ReadFile(filePath.c_str(), aiProcess_FlipWindingOrder | aiProcess_FlipUVs | aiProcess_JoinIdenticalVertices |
+		aiProcess_RemoveRedundantMaterials);
 
 	// メッシュがないのは対応しない
 	assert(scene->HasMeshes());
