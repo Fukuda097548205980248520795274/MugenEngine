@@ -51,7 +51,7 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 
 	// モデル格納場所の生成と初期化
 	modelStore_ = ModelStore::GetInstance();
-	modelStore_->Initialize(textureStore_, device_, commandList_);
+	modelStore_->Initialize(textureStore_,directXHeap_,  device_, commandList_);
 
 
 	// プリミティブ用PSOの生成と初期化
@@ -61,6 +61,10 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	// スプライト用PSOの生成と初期化
 	spritePSO_ = std::make_unique<OrganizePSOSprite>();
 	spritePSO_->Initialize(logFile_, directXShaderCompiler_.get(), commandList_, device_);
+
+	// スキニングモデル用PSOの生成と初期化
+	skinningModelPSO_ = std::make_unique<OrgnaizePSOSkiningModel>();
+	skinningModelPSO_->Initialize(logFile_, directXShaderCompiler_.get(), commandList_, device_);
 
 
 	// ビューポートの設定
@@ -168,13 +172,12 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 	// アニメーションタイマーを進める
 	modelInfo->animationTime_ += 1.0f / 60.0f;
 	modelInfo->animationTime_ = std::fmod(modelInfo->animationTime_, modelInfo->animation_.duration);
-	NodeAnimation& rootNodeAnimation = modelInfo->animation_.nodeAnimations[modelInfo->rootNode_.name];
 
-	Vector3 translate = CalcuateValue(rootNodeAnimation.translate, modelInfo->animationTime_);
-	Quaternion rotate = CalcuateValue(rootNodeAnimation.rotate, modelInfo->animationTime_);
-	Vector3 scale = CalcuateValue(rootNodeAnimation.scale, modelInfo->animationTime_);
+	// アニメーションの更新
+	ApplayAnimation(modelInfo->skeleton_, modelInfo->animation_, modelInfo->animationTime_);
 
-	Matrix4x4 localMatrix = Make3DAffineMatrix4x4(scale, rotate, translate);
+	// スケルトンの更新
+	UpdateSkeleton(modelInfo->skeleton_);
 
 
 	// wvp行列
@@ -188,6 +191,9 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 	// モデルデータの数を描画する
 	for (uint32_t modelIndex = 0; modelIndex < modelInfo->modelData_.size(); ++modelIndex)
 	{
+		// スキンクラスターの更新処理
+		UpdateSkinCluster(modelInfo->skinCluster_[modelIndex], modelInfo->skeleton_);
+
 		/*-----------------------------
 			マテリアルデータを入力する
 		-----------------------------*/
@@ -212,13 +218,13 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 		    座標変換データを入力する
 		----------------------------*/
 
-		primitiveTransformationResources_[drawPrimitiveCount_]->data_->world = localMatrix * worldTransform->worldMatrix_;
+		primitiveTransformationResources_[drawPrimitiveCount_]->data_->world = worldTransform->worldMatrix_;
 
 		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldInverseTranspose =
 			MakeInverseMatrix4x4(MakeTransposeMatrix4x4(worldTransform->worldMatrix_));
 
 		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldViewProjection =
-			localMatrix * nodeWorldMatrix[modelIndex] * worldViewProjectionMatrix;
+			nodeWorldMatrix[modelIndex] * worldViewProjectionMatrix;
 
 
 		// ビューポート、シザー矩形の設定
@@ -226,11 +232,11 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 		commandList_->RSSetScissorRects(1, &scissorRect_);
 
 		// PSOの設定
-		primitivePSO_->SetPSOState();
+		skinningModelPSO_->SetPSOState();
 
 		modelInfo->Register(modelIndex);
 
-		// モデルリソースの設定
+		// マテリアルリソースの設定
 		primitiveMaterialResources_[drawPrimitiveCount_]->Register(0);
 
 		// 座標変換リソースの設定

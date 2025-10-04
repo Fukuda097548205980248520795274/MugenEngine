@@ -2,12 +2,14 @@
 #include "../../../Func/CreateBufferResource/CreateBufferResource.h"
 #include "../../../Func/LoadModel/LoadModel.h"
 #include "Animation/Animation.h"
+#include "Skeleton/Skeleton.h"
 #include "../TextureStore/TextureStore.h"
 #include "../DataForGPU/MaterialData/MaterialData.h"
 #include "../DataForGPU/TransformationData/TransformationData.h"
 #include "../ResourcesData/IndexVertexResourcesData/IndexVertexResourcesData.h"
 #include "../ResourcesData/TransformationResourcesDataCBV/TransformationResourcesDataCBV.h"
 #include "../ResourcesData/MaterialResourcesDataCBV/MaterialResourcesDataCBV.h"
+#include "DirectXBase/DirectXHeap/DirectXHeap.h"
 
 // 格納されたモデルデータ
 class ModelInfoDatum
@@ -42,8 +44,34 @@ public:
 	// テクスチャハンドル
 	std::vector<uint32_t> textureHandle_;
 
-	// インデックスと頂点のリソース
-	std::vector<std::unique_ptr<IndexVertexResourcesData>> indexVertexResource_{};
+
+	struct ModelIndex
+	{
+		// インデックスリソース
+		Microsoft::WRL::ComPtr<ID3D12Resource> indexResource_ = nullptr;
+
+		// インデックスバッファビュー
+		D3D12_INDEX_BUFFER_VIEW indexBufferView_{};
+
+		// インデックスデータ
+		uint32_t* indexData_ = nullptr;
+	};
+
+	struct ModelVertex
+	{
+		// 頂点リソース
+		Microsoft::WRL::ComPtr<ID3D12Resource> vertexResource_ = nullptr;
+
+		// 頂点バッファビュー
+		D3D12_VERTEX_BUFFER_VIEW vertexBufferView_{};
+
+		// 頂点データ
+		VertexDataForGPU* vertexData_ = nullptr;
+	};
+
+	std::vector<ModelVertex> modelVertex_;
+	std::vector<ModelIndex> modelIndex_;
+
 
 	
 	// アニメーション時間
@@ -51,6 +79,12 @@ public:
 
 	// アニメーション
 	Animation animation_{};
+
+	// スケルトン
+	Skeleton skeleton_{};
+
+	// スキンクラスター
+	std::vector<SkinCluster> skinCluster_{};
 
 
 private:
@@ -77,7 +111,7 @@ public:
 	/// 初期化
 	/// </summary>
 	/// <param name="textureStore"></param>
-	void Initialize(TextureStore* textureStore, ID3D12Device* device, ID3D12GraphicsCommandList* commandList);
+	void Initialize(TextureStore* textureStore, DirectXHeap* directXHeap, ID3D12Device* device, ID3D12GraphicsCommandList* commandList);
 
 	/// <summary>
 	/// 終了処理
@@ -104,6 +138,9 @@ private:
 
 	// テクスチャストア
 	TextureStore* textureStore_ = nullptr;
+
+	// DirectXヒープ
+	DirectXHeap* directXHeap_ = nullptr;
 
 	// デバイス
 	ID3D12Device* device_ = nullptr;

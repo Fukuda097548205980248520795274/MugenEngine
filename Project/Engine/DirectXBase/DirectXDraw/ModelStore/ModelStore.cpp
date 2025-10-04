@@ -24,7 +24,12 @@ void ModelInfoDatum::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList*
 /// <param name="modelIndex"></param>
 void ModelInfoDatum::Register(uint32_t modelIndex)
 {
-	indexVertexResource_[modelIndex]->Register();
+	commandList_->IASetIndexBuffer(&modelIndex_[modelIndex].indexBufferView_);
+
+	D3D12_VERTEX_BUFFER_VIEW vbvs[2] = { modelVertex_[modelIndex].vertexBufferView_, skinCluster_[modelIndex].influenceBufferView };
+	commandList_->IASetVertexBuffers(0, 2, vbvs);
+
+	commandList_->SetGraphicsRootDescriptorTable(10, skinCluster_[modelIndex].paletteSrvHandle.second);
 }
 
 
@@ -50,17 +55,19 @@ ModelStore* ModelStore::GetInstance()
 /// 初期化
 /// </summary>
 /// <param name="textureStore"></param>
-void ModelStore::Initialize(TextureStore* textureStore, ID3D12Device* device, ID3D12GraphicsCommandList* commandList)
+void ModelStore::Initialize(TextureStore* textureStore, DirectXHeap* directXHeap, ID3D12Device* device, ID3D12GraphicsCommandList* commandList)
 {
 	// nullptrチェック
 	assert(textureStore);
 	assert(device);
 	assert(commandList);
+	assert(directXHeap);
 
 	// 引数を受け取る
 	textureStore_ = textureStore;
 	device_ = device;
 	commandList_ = commandList;
+	directXHeap_ = directXHeap;
 }
 
 /// <summary>
@@ -103,6 +110,9 @@ uint32_t ModelStore::LoadModel(const std::string& directoryPath, const std::stri
 	// アニメーション情報を取得する
 	modelInfoDatum->animation_ = LoadAnimationFile(directoryPath, filename);
 
+	// スケルトン情報を取得する
+	modelInfoDatum->skeleton_ = CreateSkeleton(modelInfoDatum->rootNode_);
+
 	// ハンドルを取得する
 	uint32_t handle = static_cast<uint32_t>(modelInfoData_.size());
 	modelInfoDatum->modelHandle_ = handle;
@@ -111,6 +121,13 @@ uint32_t ModelStore::LoadModel(const std::string& directoryPath, const std::stri
 	// モデルデータの数に合わせてデータを作成する
 	for (uint32_t modelIndex = 0; modelIndex < modelInfoDatum->modelData_.size(); ++modelIndex)
 	{
+		/*----------------------------
+		    スキンクラスターを生成する
+		----------------------------*/
+
+		modelInfoDatum->skinCluster_.push_back(CreateSkinCluster(device_, modelInfoDatum->skeleton_, modelInfoDatum->modelData_[modelIndex], directXHeap_));
+
+
 		/*---------------
 		    テクスチャ
 		---------------*/
@@ -134,26 +151,60 @@ uint32_t ModelStore::LoadModel(const std::string& directoryPath, const std::stri
 		modelInfoDatum->textureHandle_.push_back(textureHandle);
 
 
-		/*----------------------
-		    インデックスと頂点
-		----------------------*/
+		/*-----------------------------
+			インデックスリソースの準備
+		-----------------------------*/
 
-		// 生成と初期化
-		std::unique_ptr<IndexVertexResourcesData> indexVertexResource = std::make_unique<IndexVertexResourcesData>();
-		indexVertexResource->Initialize(device_, commandList_,
-			static_cast<uint32_t>(modelInfoDatum->modelData_[modelIndex].indices.size()),
-			static_cast<uint32_t>(modelInfoDatum->modelData_[modelIndex].vertices.size()));
+		UINT indexNum = static_cast<UINT>(modelInfoDatum->modelData_[modelIndex].indices.size());
+
+		UINT vertexNum = static_cast<UINT>(modelInfoDatum->modelData_[modelIndex].vertices.size());
+
+		ModelInfoDatum::ModelIndex index;
+
+		// リソース生成
+		index.indexResource_ =
+			CreateBufferResource(device_, sizeof(uint32_t) * indexNum);
+
+		// ビューの設定
+		index.indexBufferView_.BufferLocation = index.indexResource_->GetGPUVirtualAddress();
+		index.indexBufferView_.SizeInBytes = sizeof(uint32_t) * indexNum;
+		index.indexBufferView_.Format = DXGI_FORMAT_R32_UINT;
+
+		// データを割り当てる
+		index.indexResource_->Map(0, nullptr, reinterpret_cast<void**>(&index.indexData_));
 
 		// インデックスデータを入力する
-		std::memcpy(indexVertexResource->indexData_, modelInfoDatum->modelData_[modelIndex].indices.data(),
+		std::memcpy(index.indexData_, modelInfoDatum->modelData_[modelIndex].indices.data(),
 			sizeof(uint32_t) * modelInfoDatum->modelData_[modelIndex].indices.size());
 
+		// 登録する
+		modelInfoDatum->modelIndex_.push_back(index);
+
+
+		/*----------------------
+			頂点リソースの準備
+		----------------------*/
+
+		ModelInfoDatum::ModelVertex vertex;
+
+		// リソース生成
+		vertex.vertexResource_ = CreateBufferResource(device_, sizeof(VertexDataForGPU) * vertexNum);
+
+		// ビューの設定
+		vertex.vertexBufferView_.BufferLocation = vertex.vertexResource_->GetGPUVirtualAddress();
+		vertex.vertexBufferView_.SizeInBytes = sizeof(VertexDataForGPU) * vertexNum;
+		vertex.vertexBufferView_.StrideInBytes = sizeof(VertexDataForGPU);
+
+		// データを割り当てる
+		vertex.vertexResource_->Map(0, nullptr, reinterpret_cast<void**>(&vertex.vertexData_));
+
 		// 頂点データを入力する
-		std::memcpy(indexVertexResource->vertexData_, modelInfoDatum->modelData_[modelIndex].vertices.data(),
-			sizeof(VertexDataForGPU) * modelInfoDatum->modelData_[modelIndex].vertices.size());
+		std::memcpy(vertex.vertexData_, modelInfoDatum->modelData_[modelIndex].vertices.data(),
+			sizeof(VertexDataForGPU)* modelInfoDatum->modelData_[modelIndex].vertices.size());
+
 
 		// 登録する
-		modelInfoDatum->indexVertexResource_.push_back(std::move(indexVertexResource));
+		modelInfoDatum->modelVertex_.push_back(vertex);
 	}
 
 

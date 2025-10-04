@@ -280,6 +280,8 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNormal\SinglePSOSpriteNormal.cpp" />
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteScreen\SinglePSOSpriteScreen.cpp" />
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteSubtract\SinglePSOSpriteSubtract.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSkiningModel\OrgnaizePSOSkiningModel.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSkiningModel\SinglePSOSkiningModelNormal\SinglePSOSkiningModelNormal.cpp" />
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -321,6 +323,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\Skeleton\Skeleton.cpp" />
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData\DirectionalLightResourcesData.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -536,6 +539,8 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNormal\SinglePSOSpriteNormal.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteScreen\SinglePSOSpriteScreen.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteSubtract\SinglePSOSpriteSubtract.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSkiningModel\OrgnaizePSOSkiningModel.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSkiningModel\SinglePSOSkiningModelNormal\SinglePSOSkiningModelNormal.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\Camera\Camera3D\Camera3D.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU\CameraDataForGPU.h" />
@@ -547,6 +552,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\Animation\Animation.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\ModelData.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelStore.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\Skeleton\Skeleton.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData\DirectionalLightResourcesData.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData\IndexVertexResourcesData.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\MainCameraResourcesDataCBV\MainCameraResourcesDataCBV.h" />
@@ -619,6 +625,14 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Resources\Shader\SkiningModel\SkiningModel.VS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Development|x64'">Vertex</ShaderType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>

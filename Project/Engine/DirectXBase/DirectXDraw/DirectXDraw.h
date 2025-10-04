@@ -18,6 +18,7 @@
 
 #include "BaseOrganizePSO/OrganizePSOPrimitive/OrganizePSOPrimitive.h"
 #include "BaseOrganizePSO/OrganizePSOSprite/OrganizePSOSprite.h"
+#include "BaseOrganizePSO/OrgnaizePSOSkiningModel/OrgnaizePSOSkiningModel.h"
 
 #include "ResourcesData/PrimitiveResourcesData/PrimitiveResourcesCube/PrimitiveResourcesCube.h"
 #include "ResourcesData/PrimitiveResourcesData/PrimitiveResourcesSprite/PrimitiveResourcesSprite.h"
@@ -190,6 +191,9 @@ private:
 
 	// スプライト用PSO
 	std::unique_ptr<OrganizePSOSprite> spritePSO_ = nullptr;
+
+	// スキニングモデル用PSO
+	std::unique_ptr<OrgnaizePSOSkiningModel> skinningModelPSO_ = nullptr;
 
 
 	// ビューポート

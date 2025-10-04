@@ -319,6 +319,18 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\Animation">
       <UniqueIdentifier>{554f2084-1768-471b-8c82-9f8a2ea23245}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\Skeleton">
+      <UniqueIdentifier>{9bb662a1-6f43-47c8-9df2-0de06738101f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Shader\SkiningModel">
+      <UniqueIdentifier>{df0790d3-ec92-4b65-b023-1fb0e43f90de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSkiningModel">
+      <UniqueIdentifier>{20abe02b-fe70-453e-a918-fcb61f058a8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSkiningModel\SinglePSOSkiningModelNormal">
+      <UniqueIdentifier>{05753d27-fcd3-48e1-97f5-77486b9a2029}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -632,6 +644,15 @@
     </ClCompile>
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\Animation\Animation.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\Skeleton\Skeleton.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\Skeleton</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSkiningModel\OrgnaizePSOSkiningModel.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSkiningModel</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSkiningModel\SinglePSOSkiningModelNormal\SinglePSOSkiningModelNormal.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSkiningModel\SinglePSOSkiningModelNormal</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -947,6 +968,15 @@
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\Animation\Animation.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\Animation</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\Skeleton\Skeleton.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\Skeleton</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSkiningModel\OrgnaizePSOSkiningModel.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSkiningModel</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSkiningModel\SinglePSOSkiningModelNormal\SinglePSOSkiningModelNormal.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSkiningModel\SinglePSOSkiningModelNormal</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Resources\Shader\Primitive\Primitive.VS.hlsl">
@@ -954,6 +984,9 @@
     </FxCompile>
     <FxCompile Include="Resources\Shader\Primitive\Primitive.PS.hlsl">
       <Filter>Engine\Shader\Primitive</Filter>
+    </FxCompile>
+    <FxCompile Include="Resources\Shader\SkiningModel\SkiningModel.VS.hlsl">
+      <Filter>Engine\Shader\SkiningModel</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
