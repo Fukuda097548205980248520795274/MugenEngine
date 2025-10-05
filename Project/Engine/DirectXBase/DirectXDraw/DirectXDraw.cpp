@@ -142,6 +142,7 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 void DirectXDraw::ResetBlendMode()
 {
 	primitivePSO_->ResetBlendMode();
+	spritePSO_->ResetBlendMode();
 }
 
 
