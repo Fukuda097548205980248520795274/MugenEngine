@@ -229,7 +229,7 @@ void SinglePSOPrimitiveScreen::Initialize(LogFile* logFile, IDxcBlob* vertexShad
 
 	D3D12_RASTERIZER_DESC rasterizerDesc{};
 
-	// カリングを行わない
+	// 裏面をカリングする
 	rasterizerDesc.CullMode = D3D12_CULL_MODE_BACK;
 
 	// 三角形の中を塗りつぶす

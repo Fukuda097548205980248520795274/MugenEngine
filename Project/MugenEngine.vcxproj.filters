@@ -316,6 +316,27 @@
     <Filter Include="Externals\ImGui">
       <UniqueIdentifier>{0cfd3b97-fbb3-4efa-9f34-4e218483a5cf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite">
+      <UniqueIdentifier>{63842fed-9077-48f0-b340-465f290d37bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite\SinglePSOSpriteAdd">
+      <UniqueIdentifier>{d91d1659-6008-4664-9d18-8a168687357b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite\SinglePSOSpriteMultiply">
+      <UniqueIdentifier>{53122930-3ab4-48d6-87a3-a6056f9a0065}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite\SinglePSOSpriteNone">
+      <UniqueIdentifier>{9a0606a9-651d-4371-b71f-1df4242a6c68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite\SinglePSOSpriteNormal">
+      <UniqueIdentifier>{5145c6f1-5ad2-4876-b0f9-e8f9b6fe5ff2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite\SinglePSOSpriteSubtract">
+      <UniqueIdentifier>{a3e5f605-4670-484f-a42e-76e3a89119d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite\SinglePSOSpriteScreen">
+      <UniqueIdentifier>{71f48e07-98aa-48cc-a544-705c3d1f20ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -585,27 +606,6 @@
     <ClCompile Include="Engine\Math\Easing\Easing.cpp">
       <Filter>Engine\Include\Math\Easing</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteAdd\SinglePSOSpriteAdd.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteMultiply\SinglePSOSpriteMultiply.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone\SinglePSOSpriteNone.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNormal\SinglePSOSpriteNormal.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteScreen\SinglePSOSpriteScreen.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteSubtract\SinglePSOSpriteSubtract.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Externals\ImGui\imgui.cpp">
       <Filter>Externals\ImGui</Filter>
     </ClCompile>
@@ -626,6 +626,27 @@
     </ClCompile>
     <ClCompile Include="Externals\ImGui\imgui_widgets.cpp">
       <Filter>Externals\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteSubtract\SinglePSOSpriteSubtract.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite\SinglePSOSpriteSubtract</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteScreen\SinglePSOSpriteScreen.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite\SinglePSOSpriteScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNormal\SinglePSOSpriteNormal.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite\SinglePSOSpriteNormal</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone\SinglePSOSpriteNone.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite\SinglePSOSpriteNone</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteMultiply\SinglePSOSpriteMultiply.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite\SinglePSOSpriteMultiply</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteAdd\SinglePSOSpriteAdd.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite\SinglePSOSpriteAdd</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -893,27 +914,6 @@
     <ClInclude Include="Engine\Math\Easing\Easing.h">
       <Filter>Engine\Include\Math\Easing</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteAdd\SinglePSOSpriteAdd.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteMultiply\SinglePSOSpriteMultiply.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone\SinglePSOSpriteNone.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNormal\SinglePSOSpriteNormal.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteScreen\SinglePSOSpriteScreen.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteSubtract\SinglePSOSpriteSubtract.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Externals\ImGui\imconfig.h">
       <Filter>Externals\ImGui</Filter>
     </ClInclude>
@@ -937,6 +937,27 @@
     </ClInclude>
     <ClInclude Include="Externals\ImGui\imstb_truetype.h">
       <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteSubtract\SinglePSOSpriteSubtract.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite\SinglePSOSpriteSubtract</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteScreen\SinglePSOSpriteScreen.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite\SinglePSOSpriteScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNormal\SinglePSOSpriteNormal.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite\SinglePSOSpriteNormal</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone\SinglePSOSpriteNone.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite\SinglePSOSpriteNone</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteMultiply\SinglePSOSpriteMultiply.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite\SinglePSOSpriteMultiply</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteAdd\SinglePSOSpriteAdd.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite\SinglePSOSpriteAdd</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
