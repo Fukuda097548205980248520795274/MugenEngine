@@ -20,12 +20,13 @@ DirectXDraw::~DirectXDraw()
 /// <param name="logFile"></param>
 /// <param name="commandList"></param>
 /// <param name="device"></param>
-void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const int32_t* kClientWidth, const int32_t* kClientHeight,
+void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, DirectXBuffering* directXBuffering, const int32_t* kClientWidth, const int32_t* kClientHeight,
 	ID3D12GraphicsCommandList* commandList, ID3D12Device* device)
 {
 	// nullptrチェック
 	assert(logFile);
 	assert(directXHeap);
+	assert(directXBuffering);
 	assert(kClientWidth);
 	assert(kClientHeight);
 	assert(commandList);
@@ -34,6 +35,7 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	// 引数を受け取る
 	logFile_ = logFile;
 	directXHeap_ = directXHeap;
+	directXBuffering_ = directXBuffering;
 	kClientWidth_ = kClientWidth;
 	kClientHeight_ = kClientHeight;
 	commandList_ = commandList;
@@ -52,6 +54,11 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	// モデル格納場所の生成と初期化
 	modelStore_ = ModelStore::GetInstance();
 	modelStore_->Initialize(textureStore_, device_, commandList_);
+
+
+	// オフスクリーン描画の生成と初期化
+	offscreenDraw_ = std::make_unique<OffscreenDraw>();
+	offscreenDraw_->Initialize(device_, commandList_, logFile_, directXBuffering_, directXHeap_, directXShaderCompiler_.get());
 
 
 	// プリミティブ用PSOの生成と初期化
@@ -109,7 +116,6 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, const i
 	}
 
 
-
 	// 平行光源リソースの生成と初期化
 	resourcesDirectionalLight_ = std::make_unique<DirectionalLightResourcesData>();
 	resourcesDirectionalLight_->Initialize(directXHeap_, device_, commandList_, 512);
@@ -143,6 +149,14 @@ void DirectXDraw::ResetBlendMode()
 {
 	primitivePSO_->ResetBlendMode();
 	spritePSO_->ResetBlendMode();
+}
+
+/// <summary>
+/// オフスクリーンをクリアする
+/// </summary>
+void DirectXDraw::OffscreenClear(D3D12_CPU_DESCRIPTOR_HANDLE dsvHandle)
+{
+	offscreenDraw_->ClearOffscree(dsvHandle);
 }
 
 

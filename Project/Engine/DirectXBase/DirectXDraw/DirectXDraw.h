@@ -8,8 +8,10 @@
 
 #include "DirectXShaderCompile/DirectXShaderCompile.h"
 #include "../DirectXHeap/DirectXHeap.h"
+#include "DirectXBase/DirectXBuffering/DirectXBuffering.h"
 #include "TextureStore/TextureStore.h"
 #include "ModelStore/ModelStore.h"
+#include "OffscreenDraw/OffscreenDraw.h"
 
 #include "BaseMesh/MeshUVSphere/MeshUVSphere.h"
 #include "BaseMesh/MeshCube/MeshCube.h"
@@ -44,13 +46,13 @@ public:
 	/// <param name="logFile"></param>
 	/// <param name="commandList"></param>
 	/// <param name="device"></param>
-	void Initialize(LogFile* logFile,DirectXHeap* directXHeap, const int32_t* kClientWidth, const int32_t* kClientHeight,
+	void Initialize(LogFile* logFile,DirectXHeap* directXHeap, DirectXBuffering* directXBuffering, const int32_t* kClientWidth, const int32_t* kClientHeight,
 		ID3D12GraphicsCommandList* commandList, ID3D12Device* device);
 
 	/// <summary>
 	/// 描画したプリミティブのカウントを初期化する
 	/// </summary>
-	void InitializeDrawPrimitiveNum() { drawPrimitiveCount_ = 0; }
+	void InitializeDrawNum() { drawPrimitiveCount_ = 0; offscreenDraw_->ResetNumOffscreen(); }
 
 	/// <summary>
 	/// 描画したプリミティブをカウントする
@@ -97,6 +99,19 @@ public:
 	/// </summary>
 	void ResetBlendMode();
 
+
+	/// <summary>
+	/// オフスクリーンをクリアする
+	/// </summary>
+	void OffscreenClear(D3D12_CPU_DESCRIPTOR_HANDLE dsvHandle);
+
+	/// <summary>
+	/// 最終的なオフスクリーンをスワップチェーンにコピーする
+	/// </summary>
+	void DrawRtvToSwapChain() { offscreenDraw_->DrawRtvToSwapChain(); };
+
+
+#pragma region 描画処理
 
 	/// <summary>
 	/// モデルを描画する
@@ -151,6 +166,14 @@ public:
 	void DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3& p2, const Vector3& p3, const Vector2& textureLeftTop, const Vector2& size,
 		const UVTransform* uvTransform, const Camera2D* camera, uint32_t textureHandle, const Vector4& color);
 
+#pragma endregion
+
+#pragma region ポストエフェクト
+
+	
+
+#pragma endregion
+
 
 private:
 
@@ -159,6 +182,9 @@ private:
 
 	// DirectXヒープ
 	DirectXHeap* directXHeap_ = nullptr;
+
+	// DirectXバッファリング
+	DirectXBuffering* directXBuffering_ = nullptr;
 
 	// クライアント領域の横幅
 	const int32_t* kClientWidth_ = nullptr;
@@ -183,6 +209,9 @@ private:
 
 	// モデル格納場所
 	ModelStore* modelStore_ = nullptr;
+
+	// オフスクリーン描画
+	std::unique_ptr<OffscreenDraw> offscreenDraw_ = nullptr;
 
 
 	// プリミティブ用PSO
@@ -209,7 +238,6 @@ private:
 
 	// スプライト用のリソース
 	std::unique_ptr<PrimitiveResourcesSprite> resourceSprite_ = nullptr;
-
 
 
 	// 描画できるプリミティブの数

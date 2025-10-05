@@ -4,11 +4,11 @@
 #include <dxcapi.h>
 #include <cassert>
 #include <wrl.h>
+#include "DirectXBase/DirectXDraw/DirectXShaderCompile/DirectXShaderCompile.h"
 
 #include "LogFile/LogFile.h"
 
-
-class BaseSinglePSO
+class BasePSOPostEffect
 {
 public:
 
@@ -19,13 +19,12 @@ public:
 	/// <param name="vertexShaderBlob"></param>
 	/// <param name="pixelShaderBlob"></param>
 	/// <param name="device"></param>
-	virtual void Initialize(LogFile* logFile, IDxcBlob* vertexShaderBlob, IDxcBlob* pixelShaderBlob, 
-		ID3D12Device* device, ID3D12GraphicsCommandList* commandList);
+	virtual void Initialize(LogFile* logFile, DirectXShaderCompile* directXShaderCompile, IDxcBlob* vertexShaderBlob, ID3D12Device* device, ID3D12GraphicsCommandList* commandList);
 
 	/// <summary>
 	/// PSOをコマンドリストのセットする
 	/// </summary>
-	void SetPSOState();
+	void RegisterPSO();
 
 	// Microsoft::WRL の省略
 	template<class T> using ComPtr = Microsoft::WRL::ComPtr<T>;
@@ -36,11 +35,11 @@ protected:
 	// ログファイル
 	LogFile* logFile_ = nullptr;
 
+	// シェーダコンパイル
+	DirectXShaderCompile* directXShaderCompile_ = nullptr;
+
 	// 頂点シェーダのバイナリデータ
 	IDxcBlob* vertexShaderBlob_ = nullptr;
-
-	// ピクセルシェーダのバイナリデータ
-	IDxcBlob* pixelShaderBlob_ = nullptr;
 
 	// デバイス
 	ID3D12Device* device_ = nullptr;
@@ -49,6 +48,9 @@ protected:
 	ID3D12GraphicsCommandList* commandList_ = nullptr;
 
 
+
+	// ピクセルシェーダのバイナリデータ
+	ComPtr<IDxcBlob> pixelShaderBlob_ = nullptr;
 
 	// シグネチャのバイナリデータ
 	ComPtr<ID3DBlob> signatureBlob_ = nullptr;

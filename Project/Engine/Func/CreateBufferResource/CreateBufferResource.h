@@ -3,6 +3,7 @@
 #include <dxgi1_6.h>
 #include <wrl.h>
 #include <cassert>
+#include <cstdint>
 
 /// <summary>
 /// バッファリソースを作成する

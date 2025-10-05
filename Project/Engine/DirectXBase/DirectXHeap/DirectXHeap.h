@@ -85,7 +85,7 @@ private:
 	ComPtr<ID3D12DescriptorHeap> rtvDescriptorHeap_ = nullptr;
 
 	// RTV用ディスクリプタ数
-	UINT rtvDescriptorNum_ = 2;
+	UINT rtvDescriptorNum_ = 512;
 
 	// RTV用CPUディスクリプタ使用数
 	int32_t useRtvCPUDescriptor_ = 0;
@@ -96,7 +96,7 @@ private:
 	Microsoft::WRL::ComPtr<ID3D12DescriptorHeap> srvDescriptorHeap_ = nullptr;
 
 	// SRV用ディスクリプタ数
-	UINT srvDescriptorNum_ = 128;
+	UINT srvDescriptorNum_ = 512;
 
 	// SRV用CPUディスクリプタ使用数
 	int32_t useSrvCPUDescriptor_ = 1;

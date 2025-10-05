@@ -25,7 +25,11 @@ public:
 public:
 
 
+	// UV球
+	std::unique_ptr<MeshUVSphere> uvSphere_ = nullptr;
 
+	// テクスチャハンドル
+	uint32_t textureHandle_ = 0;
 	
 };
 

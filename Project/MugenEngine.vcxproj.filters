@@ -337,6 +337,24 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite\SinglePSOSpriteScreen">
       <UniqueIdentifier>{71f48e07-98aa-48cc-a544-705c3d1f20ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\RenderTargetResources">
+      <UniqueIdentifier>{e66031f8-1601-4a20-80d0-c473cc304d87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Shader\PostEffect">
+      <UniqueIdentifier>{62d4bbe4-e713-425e-af08-d35148455a96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Shader\PostEffect\CopyImage">
+      <UniqueIdentifier>{485d939b-0a7c-4d76-8e23-e74af9d4abc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\OffscreenDraw">
+      <UniqueIdentifier>{96b363a8-9442-44d3-b8bd-39a6b66ee7d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\OffscreenDraw\BasePSOPostEffect">
+      <UniqueIdentifier>{4c2774a7-7166-4759-970e-eaf98efb1e66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\OffscreenDraw\BasePSOPostEffect\PSOCopyImage">
+      <UniqueIdentifier>{885803fb-2f39-4a9d-94d3-740134671e43}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -647,6 +665,18 @@
     </ClCompile>
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteAdd\SinglePSOSpriteAdd.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite\SinglePSOSpriteAdd</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\RenderTargetResources\RenderTargetResources.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\RenderTargetResources</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\OffscreenDraw\OffscreenDraw.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\OffscreenDraw</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\OffscreenDraw\BasePSOPostEffect\BasePSOPostEffect.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\OffscreenDraw\BasePSOPostEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\OffscreenDraw\BasePSOPostEffect\PSOCopyImage\PSOCopyImage.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\OffscreenDraw\BasePSOPostEffect\PSOCopyImage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -959,6 +989,18 @@
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteAdd\SinglePSOSpriteAdd.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite\SinglePSOSpriteAdd</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\RenderTargetResources\RenderTargetResources.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\RenderTargetResources</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\OffscreenDraw\OffscreenDraw.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\OffscreenDraw</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\OffscreenDraw\BasePSOPostEffect\BasePSOPostEffect.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\OffscreenDraw\BasePSOPostEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\OffscreenDraw\BasePSOPostEffect\PSOCopyImage\PSOCopyImage.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\OffscreenDraw\BasePSOPostEffect\PSOCopyImage</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Resources\Shader\Primitive\Primitive.VS.hlsl">
@@ -967,10 +1009,19 @@
     <FxCompile Include="Resources\Shader\Primitive\Primitive.PS.hlsl">
       <Filter>Engine\Shader\Primitive</Filter>
     </FxCompile>
+    <FxCompile Include="Resources\Shader\PostEffect\Fullscreen.VS.hlsl">
+      <Filter>Engine\Shader\PostEffect</Filter>
+    </FxCompile>
+    <FxCompile Include="Resources\Shader\PostEffect\CopyImage\CopyImage.PS.hlsl">
+      <Filter>Engine\Shader\PostEffect\CopyImage</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shader\Primitive\Primitive.hlsli">
       <Filter>Engine\Shader\Primitive</Filter>
+    </None>
+    <None Include="Resources\Shader\PostEffect\Fullscreen.hlsli">
+      <Filter>Engine\Shader\PostEffect</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

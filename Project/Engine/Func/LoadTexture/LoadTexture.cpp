@@ -85,6 +85,76 @@ Microsoft::WRL::ComPtr<ID3D12Resource> CreateTextureResource(ID3D12Device* devic
 
 
 /// <summary>
+/// 書き込み可能なテクスチャリソースを作成する
+/// </summary>
+/// <param name="device"></param>
+/// <param name="width"></param>
+/// <param name="height"></param>
+/// <returns></returns>
+Microsoft::WRL::ComPtr<ID3D12Resource> CreateRenderTextureResource(ID3D12Device* device, uint32_t width, uint32_t height,
+	DXGI_FORMAT resourceFormat, DXGI_FORMAT clearValueFormat, Vector4 clearColor)
+{
+	/*-----------------------
+	    リソースの設定を行う
+	-----------------------*/
+
+	D3D12_RESOURCE_DESC resourceDesc{};
+
+	resourceDesc.Width = UINT(width);
+	resourceDesc.Height = UINT(height);
+	resourceDesc.Format = resourceFormat;
+
+	// 書き込める設定
+	resourceDesc.Flags = D3D12_RESOURCE_FLAG_ALLOW_RENDER_TARGET;
+
+	resourceDesc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;
+	resourceDesc.DepthOrArraySize = 1;
+	resourceDesc.MipLevels = 1;
+	resourceDesc.SampleDesc.Count = 1;
+	resourceDesc.Layout = D3D12_TEXTURE_LAYOUT_UNKNOWN;
+
+
+	/*----------------------
+	    ヒープの設定を行う
+	----------------------*/
+
+	D3D12_HEAP_PROPERTIES heapProperties{};
+
+	heapProperties.Type = D3D12_HEAP_TYPE_DEFAULT;
+
+
+	/*----------------------
+	    クリア最適値の設定
+	----------------------*/
+
+	D3D12_CLEAR_VALUE clearValue;
+	clearValue.Format = clearValueFormat;
+	clearValue.Color[0] = clearColor.x;
+	clearValue.Color[1] = clearColor.y;
+	clearValue.Color[2] = clearColor.z;
+	clearValue.Color[3] = clearColor.w;
+
+
+	/*-------------------
+	    リソースの生成
+	-------------------*/
+
+	Microsoft::WRL::ComPtr<ID3D12Resource> resource;
+	HRESULT hr = device->CreateCommittedResource(
+		&heapProperties,
+		D3D12_HEAP_FLAG_NONE,
+		&resourceDesc,
+		D3D12_RESOURCE_STATE_RENDER_TARGET,
+		&clearValue,
+		IID_PPV_ARGS(&resource)
+	);
+	assert(SUCCEEDED(hr));
+
+	return resource;
+}
+
+
+/// <summary>
 /// 深度情報テクスチャリソースを作成する
 /// </summary>
 /// <param name="device"></param>
