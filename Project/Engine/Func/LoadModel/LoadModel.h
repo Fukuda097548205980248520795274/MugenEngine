@@ -25,13 +25,6 @@ MaterialData LoadMaterialTemplateFile(const std::string& directoryPath, const st
 std::vector<ModelData> LoadObjFile(const std::string& directoryPath, const std::string& filename);
 
 /// <summary>
-/// ノードにワールド行列を生成する
-/// </summary>
-/// <param name="node"></param>
-/// <param name="parentWorldMatrix"></param>
-void NodeWorldMatrix(Node& node, const Matrix4x4& parentWorldMatrix);
-
-/// <summary>
 /// ノード情報を取得する
 /// </summary>
 /// <param name="directoryPath"></param>
@@ -44,7 +37,7 @@ Node GetReadNode(const std::string& directoryPath, const std::string& filename);
 /// </summary>
 /// <param name="node"></param>
 /// <returns></returns>
-Node ReadNode(aiNode* node);
+Node ReadNode(aiNode* node, const Matrix4x4& parentWorldMatrix);
 
 /// <summary>
 /// ノードのワールド行列

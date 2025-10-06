@@ -8,6 +8,7 @@
 		{
 			"name":"Scene",
 			"nodes":[
+				0,
 				1
 			]
 		}
@@ -15,59 +16,26 @@
 	"nodes":[
 		{
 			"mesh":0,
-			"name":"\u7acb\u65b9\u4f53.001",
-			"translation":[
-				-3.690760612487793,
-				1.7147338390350342,
-				0.8165403604507446
-			]
-		},
-		{
-			"children":[
-				0
-			],
-			"mesh":1,
 			"name":"\u7acb\u65b9\u4f53",
 			"translation":[
-				1.551425814628601,
-				0.538916289806366,
-				-0.8165400624275208
+				-2.2863121032714844,
+				1.6167489290237427,
+				0
 			]
-		}
-	],
-	"materials":[
-		{
-			"doubleSided":true,
-			"name":"\u30de\u30c6\u30ea\u30a2\u30eb",
-			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.800000011920929,
-					0.800000011920929,
-					0.800000011920929,
-					1
-				],
-				"metallicFactor":0,
-				"roughnessFactor":0.5
-			}
 		},
 		{
-			"doubleSided":true,
-			"name":"Material",
-			"pbrMetallicRoughness":{
-				"baseColorFactor":[
-					0.800000011920929,
-					0.800000011920929,
-					0.800000011920929,
-					1
-				],
-				"metallicFactor":0,
-				"roughnessFactor":0.5
-			}
+			"mesh":1,
+			"name":"\u7acb\u65b9\u4f53.001",
+			"translation":[
+				2.0413498878479004,
+				1.551425814628601,
+				0
+			]
 		}
 	],
 	"meshes":[
 		{
-			"name":"\u7acb\u65b9\u4f53.001",
+			"name":"\u7acb\u65b9\u4f53.002",
 			"primitives":[
 				{
 					"attributes":{
@@ -75,13 +43,12 @@
 						"NORMAL":1,
 						"TEXCOORD_0":2
 					},
-					"indices":3,
-					"material":0
+					"indices":3
 				}
 			]
 		},
 		{
-			"name":"\u7acb\u65b9\u4f53",
+			"name":"\u7acb\u65b9\u4f53.003",
 			"primitives":[
 				{
 					"attributes":{
@@ -89,8 +56,7 @@
 						"NORMAL":5,
 						"TEXCOORD_0":6
 					},
-					"indices":3,
-					"material":1
+					"indices":3
 				}
 			]
 		}

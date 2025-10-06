@@ -98,7 +98,6 @@ uint32_t ModelStore::LoadModel(const std::string& directoryPath, const std::stri
 
 	// ノード情報を取得する
 	modelInfoDatum->rootNode_ = GetReadNode(directoryPath, filename);
-	NodeWorldMatrix(modelInfoDatum->rootNode_, MakeIdentityMatrix4x4());
 
 	// ハンドルを取得する
 	uint32_t handle = static_cast<uint32_t>(modelInfoData_.size());
