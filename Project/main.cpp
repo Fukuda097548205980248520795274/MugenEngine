@@ -6,7 +6,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
 	// 無限エンジンの生成と初期化
 	MugenEngine* mugenEngine = new MugenEngine();
-	mugenEngine->Initialize(1280, 720, "LE2A_11_フクダ_ソウワ");
+	mugenEngine->Initialize(1280, 720, "LE2A_12_フクダ_ソウワ");
 
 	// ゲームの生成と初期化
 	Game* game = new Game();
