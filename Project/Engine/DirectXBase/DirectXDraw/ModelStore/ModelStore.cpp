@@ -1,34 +1,6 @@
 #include "ModelStore.h"
 
 
-
-/// <summary>
-/// 初期化
-/// </summary>
-/// <param name="device_"></param>
-/// <param name="commandList"></param>
-void ModelInfoDatum::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* commandList)
-{
-	// nullptrチェック
-	assert(device);
-	assert(commandList);
-
-	// 引数を受け取る
-	device_ = device;
-	commandList_ = commandList;
-}
-
-/// <summary>
-/// インデックスと頂点の
-/// </summary>
-/// <param name="modelIndex"></param>
-void ModelInfoDatum::Register(uint32_t modelIndex)
-{
-	indexVertexResource_[modelIndex]->Register();
-}
-
-
-
 // インスタンスの初期化
 ModelStore* ModelStore::instance_ = nullptr;
 
@@ -83,78 +55,46 @@ uint32_t ModelStore::LoadModel(const std::string& directoryPath, const std::stri
 	std::string filePath = directoryPath + "/" + filename;
 
 	// 同一のファイルパスがあったら、そのハンドルを返す
-	for (std::unique_ptr<ModelInfoDatum>& datum : modelInfoData_)
+	for (std::unique_ptr<BaseModelResources>& resource : modelResources_)
 	{
-		if (strcmp(filePath.c_str(), datum->filePath_.c_str()) == 0)
-			return datum->modelHandle_;
+		if (strcmp(filePath.c_str(), resource->GetFilePath().c_str()) == 0)
+			return resource->GetModelHandle();
 	}
 
-	// モデルデータを生成する
-	std::unique_ptr<ModelInfoDatum> modelInfoDatum = std::make_unique<ModelInfoDatum>();
-	modelInfoDatum->Initialize(device_, commandList_);
-
-	// モデルを読み込む
-	modelInfoDatum->modelData_ = LoadObjFile(directoryPath, filename);
-
-	// ノード情報を取得する
-	modelInfoDatum->rootNode_ = GetReadNode(directoryPath, filename);
 
 	// ハンドルを取得する
-	uint32_t handle = static_cast<uint32_t>(modelInfoData_.size());
-	modelInfoDatum->modelHandle_ = handle;
-	modelInfoDatum->filePath_ = filePath;
+	uint32_t handle = static_cast<uint32_t>(modelResources_.size());
 
-	// モデルデータの数に合わせてデータを作成する
-	for (uint32_t modelIndex = 0; modelIndex < modelInfoDatum->modelData_.size(); ++modelIndex)
+	// モデルリソースを用意する
+	std::unique_ptr<ObjModelResources> objModelResource = nullptr;
+	std::unique_ptr<GltfModelResources> gltfModelResource = nullptr;
+
+	// 拡張子を取得する
+	std::filesystem::path p(filename);
+	std::string extName = p.extension().string();
+
+	// 拡張子に合わせて処理を変える
+	// objファイル
+	if (extName.find(".obj") == 0)
 	{
-		/*---------------
-		    テクスチャ
-		---------------*/
-
-		// テクスチャハンドル
-		uint32_t textureHandle = 0;
-
-		// ファイルパスがなかったら白いテクスチャで代替する
-		if (modelInfoDatum->modelData_[modelIndex].material.textureFilePath == "")
-		{
-			// テクスチャを読み込む
-			textureHandle = textureStore_->LoadTexture("./Resources/Textures/white2x2.png");
-		} 
-		else
-		{
-			// テクスチャを読み込む
-			textureHandle = textureStore_->LoadTexture(modelInfoDatum->modelData_[modelIndex].material.textureFilePath);
-		}
+		// モデルの生成と初期化
+		objModelResource = std::make_unique<ObjModelResources>();
+		objModelResource->Initialize(device_, commandList_, textureStore_, directoryPath, filename, extName, handle);
 
 		// 登録する
-		modelInfoDatum->textureHandle_.push_back(textureHandle);
-
-
-		/*----------------------
-		    インデックスと頂点
-		----------------------*/
-
-		// 生成と初期化
-		std::unique_ptr<IndexVertexResourcesData> indexVertexResource = std::make_unique<IndexVertexResourcesData>();
-		indexVertexResource->Initialize(device_, commandList_,
-			static_cast<uint32_t>(modelInfoDatum->modelData_[modelIndex].indices.size()),
-			static_cast<uint32_t>(modelInfoDatum->modelData_[modelIndex].vertices.size()));
-
-		// インデックスデータを入力する
-		std::memcpy(indexVertexResource->indexData_, modelInfoDatum->modelData_[modelIndex].indices.data(),
-			sizeof(uint32_t) * modelInfoDatum->modelData_[modelIndex].indices.size());
-
-		// 頂点データを入力する
-		std::memcpy(indexVertexResource->vertexData_, modelInfoDatum->modelData_[modelIndex].vertices.data(),
-			sizeof(VertexDataForGPU) * modelInfoDatum->modelData_[modelIndex].vertices.size());
-
-		// 登録する
-		modelInfoDatum->indexVertexResource_.push_back(std::move(indexVertexResource));
+		modelResources_.push_back(std::move(objModelResource));
 	}
 
+	// gltfファイル
+	if (extName.find(".gltf") == 0)
+	{
+		// モデルの生成と初期化
+		gltfModelResource = std::make_unique<GltfModelResources>();
+		gltfModelResource->Initialize(device_, commandList_, textureStore_, directoryPath, filename, extName, handle);
 
-	// 登録する
-	modelInfoData_.push_back(std::move(modelInfoDatum));
+		// 登録する
+		modelResources_.push_back(std::move(gltfModelResource));
+	}
 
 	return handle;
 }

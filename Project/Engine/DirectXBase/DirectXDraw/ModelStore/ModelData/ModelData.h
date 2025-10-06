@@ -28,8 +28,8 @@ struct Node
 	std::vector<Node> children;
 };
 
-// モデルデータ
-struct ModelData
+// メッシュデータ
+struct MeshData
 {
 	// インデックスデータ
 	std::vector<uint32_t> indices;
@@ -39,4 +39,11 @@ struct ModelData
 
 	// マテリアルデータ
 	MaterialData material;
+};
+
+// モデルデータ
+struct ModelData
+{
+	// メッシュデータ
+	std::vector<MeshData> meshData;
 };

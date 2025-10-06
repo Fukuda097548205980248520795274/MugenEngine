@@ -355,6 +355,15 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\OffscreenDraw\BasePSOPostEffect\PSOCopyImage">
       <UniqueIdentifier>{885803fb-2f39-4a9d-94d3-740134671e43}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\BaseModelResources">
+      <UniqueIdentifier>{f62dfac1-cb77-4a9f-938e-3caecced66a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\ObjModelResources">
+      <UniqueIdentifier>{2bb26951-0779-48dd-9f54-f9466b99c062}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\GltfModelResources">
+      <UniqueIdentifier>{5c1176bf-c0d1-40cd-ab54-45ed435ad42f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -678,6 +687,15 @@
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\OffscreenDraw\BasePSOPostEffect\PSOCopyImage\PSOCopyImage.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\OffscreenDraw\BasePSOPostEffect\PSOCopyImage</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\BaseModelResources.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\BaseModelResources</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\ObjModelResources\ObjModelResources.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\ObjModelResources</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\GltfModelResources\GltfModelResources.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\GltfModelResources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MugenEngine.h">
@@ -1000,6 +1018,15 @@
     </ClInclude>
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\OffscreenDraw\BasePSOPostEffect\PSOCopyImage\PSOCopyImage.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\OffscreenDraw\BasePSOPostEffect\PSOCopyImage</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\BaseModelResources.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\BaseModelResources</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\ObjModelResources\ObjModelResources.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\ObjModelResources</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\GltfModelResources\GltfModelResources.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\GltfModelResources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

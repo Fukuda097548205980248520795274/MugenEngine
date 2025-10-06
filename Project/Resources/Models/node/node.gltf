@@ -8,7 +8,6 @@
 		{
 			"name":"Scene",
 			"nodes":[
-				0,
 				1
 			]
 		}
@@ -16,26 +15,29 @@
 	"nodes":[
 		{
 			"mesh":0,
-			"name":"\u7acb\u65b9\u4f53",
+			"name":"\u7acb\u65b9\u4f53.001",
 			"translation":[
-				-2.2863121032714844,
-				1.6167489290237427,
-				0
+				-4.082699775695801,
+				1.5840872526168823,
+				-1.5024335384368896
 			]
 		},
 		{
-			"mesh":1,
-			"name":"\u7acb\u65b9\u4f53.001",
-			"translation":[
-				2.0413498878479004,
-				1.551425814628601,
+			"children":[
 				0
+			],
+			"mesh":1,
+			"name":"\u7acb\u65b9\u4f53",
+			"translation":[
+				2.008688449859619,
+				1.4207793474197388,
+				0.6369014978408813
 			]
 		}
 	],
 	"meshes":[
 		{
-			"name":"\u7acb\u65b9\u4f53.002",
+			"name":"\u7acb\u65b9\u4f53.001",
 			"primitives":[
 				{
 					"attributes":{
@@ -48,7 +50,7 @@
 			]
 		},
 		{
-			"name":"\u7acb\u65b9\u4f53.003",
+			"name":"\u7acb\u65b9\u4f53",
 			"primitives":[
 				{
 					"attributes":{

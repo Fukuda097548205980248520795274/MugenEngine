@@ -22,7 +22,7 @@ MaterialData LoadMaterialTemplateFile(const std::string& directoryPath, const st
 /// <param name="directoryPath"></param>
 /// <param name="filename"></param>
 /// <returns></returns>
-std::vector<ModelData> LoadObjFile(const std::string& directoryPath, const std::string& filename);
+ModelData LoadObjFile(const std::string& directoryPath, const std::string& filename);
 
 /// <summary>
 /// ノード情報を取得する

@@ -29,6 +29,9 @@
 #include "ResourcesData/PointLightResourcesData/PointLightResourcesData.h"
 #include "ResourcesData/SpotLightResourcesData/SpotLightResourcesData.h"
 
+#include "ResourcesData/TransformationResourcesDataCBV/TransformationResourcesDataCBV.h"
+#include "ResourcesData/MaterialResourcesDataCBV/MaterialResourcesDataCBV.h"
+
 #include "ResourcesData/MainCameraResourcesDataCBV/MainCameraResourcesDataCBV.h"
 
 class DirectXDraw
@@ -120,11 +123,37 @@ public:
 	/// <param name="uvTransform"></param>
 	/// <param name="camera"></param>
 	/// <param name="modelHandle"></param>
+	/// <param name="material"></param>
+	void DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t modelHandle,
+		const Material* material);
+
+private:
+
+	/// <summary>
+	/// モデルを描画する
+	/// </summary>
+	/// <param name="worldTransform"></param>
+	/// <param name="uvTransform"></param>
+	/// <param name="camera"></param>
+	/// <param name="modelHandle"></param>
 	/// <param name="color"></param>
 	/// <param name="enableLighting"></param>
 	/// <param name="enableHalfLanbert"></param>
-	void DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t modelHandle,
+	void DrawGltfModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
 		const Material* material);
+
+	/// <summary>
+	/// Objファイルのモデルを描画する
+	/// </summary>
+	/// <param name="worldTransform"></param>
+	/// <param name="uvTransform"></param>
+	/// <param name="camera"></param>
+	/// <param name="modelHandle"></param>
+	/// <param name="material"></param>
+	void DrawObjModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
+		const Material* material);
+
+public:
 
 	/// <summary>
 	/// UV球を描画する

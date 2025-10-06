@@ -1,60 +1,16 @@
 #pragma once
-#include "../../../Func/CreateBufferResource/CreateBufferResource.h"
-#include "../../../Func/LoadModel/LoadModel.h"
+#include <filesystem>
+
+#include "BaseModelResources/GltfModelResources/GltfModelResources.h"
+#include "BaseModelResources/ObjModelResources/ObjModelResources.h"
+
+#include "Func/CreateBufferResource/CreateBufferResource.h"
+#include "Func/LoadModel/LoadModel.h"
 #include "../TextureStore/TextureStore.h"
 #include "../DataForGPU/MaterialData/MaterialData.h"
 #include "../DataForGPU/TransformationData/TransformationData.h"
 #include "../ResourcesData/IndexVertexResourcesData/IndexVertexResourcesData.h"
-#include "../ResourcesData/TransformationResourcesDataCBV/TransformationResourcesDataCBV.h"
-#include "../ResourcesData/MaterialResourcesDataCBV/MaterialResourcesDataCBV.h"
 
-// 格納されたモデルデータ
-class ModelInfoDatum
-{
-public:
-
-	/// <summary>
-	/// 初期化
-	/// </summary>
-	/// <param name="device_"></param>
-	/// <param name="commandList"></param>
-	void Initialize(ID3D12Device* device_, ID3D12GraphicsCommandList* commandList);
-
-	/// <summary>
-	/// インデックスと頂点の
-	/// </summary>
-	/// <param name="modelIndex"></param>
-	void Register(uint32_t modelIndex);
-
-	// モデルデータ
-	std::vector<ModelData> modelData_{};
-
-	// ルートノード
-	Node rootNode_;
-
-	// モデルハンドル
-	uint32_t modelHandle_;
-
-	// ファイルパス
-	std::string filePath_;
-
-	// テクスチャハンドル
-	std::vector<uint32_t> textureHandle_;
-
-	// インデックスと頂点のリソース
-	std::vector<std::unique_ptr<IndexVertexResourcesData>> indexVertexResource_{};
-
-
-private:
-
-
-
-	// デバイス
-	ID3D12Device* device_;
-
-	// コマンドリスト
-	ID3D12GraphicsCommandList* commandList_;
-};
 
 
 class ModelStore
@@ -91,7 +47,7 @@ public:
 	/// </summary>
 	/// <param name="modelHandle"></param>
 	/// <returns></returns>
-	ModelInfoDatum* GetModelInfo(uint32_t modelHandle)const { return modelInfoData_[modelHandle].get(); }
+	BaseModelResources* GetModelInfo(uint32_t modelHandle)const { return modelResources_[modelHandle].get(); }
 
 
 private:
@@ -117,6 +73,6 @@ private:
 
 
 	// 格納されたモデルデータ
-	std::vector<std::unique_ptr<ModelInfoDatum>> modelInfoData_;
+	std::vector<std::unique_ptr<BaseModelResources>> modelResources_;
 };
 

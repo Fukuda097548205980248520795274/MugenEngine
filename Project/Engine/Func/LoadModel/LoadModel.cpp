@@ -118,7 +118,7 @@ Node ReadNode(aiNode* node, const Matrix4x4& parentWorldMatrix)
 /// <param name="directoryPath"></param>
 /// <param name="filename"></param>
 /// <returns></returns>
-std::vector<ModelData> LoadObjFile(const std::string& directoryPath, const std::string& filename)
+ModelData LoadObjFile(const std::string& directoryPath, const std::string& filename)
 {
 	// assimpでファイルを開く
 	Assimp::Importer importer;
@@ -132,7 +132,7 @@ std::vector<ModelData> LoadObjFile(const std::string& directoryPath, const std::
 	assert(scene->HasMeshes());
 
 	// モデルデータ
-	std::vector<ModelData> modelData;
+	ModelData modelData;
 
 	// 頂点データ
 	Vector4 position = Vector4(0.0f, 0.0f, 0.0f, 1.0f);
@@ -143,8 +143,8 @@ std::vector<ModelData> LoadObjFile(const std::string& directoryPath, const std::
 	// メッシュ
 	for (uint32_t meshIndex = 0; meshIndex < scene->mNumMeshes; ++meshIndex)
 	{
-		// モデルデータ
-		ModelData modelDatum;
+		// メッシュデータ
+		MeshData meshData;
 
 		// メッシュのデータ
 		aiMesh* mesh = scene->mMeshes[meshIndex];
@@ -174,7 +174,7 @@ std::vector<ModelData> LoadObjFile(const std::string& directoryPath, const std::
 			vertex.normal.x *= -1.0f;
 
 			// データに登録
-			modelDatum.vertices.push_back(vertex);
+			meshData.vertices.push_back(vertex);
 		}
 
 		// インデックスデータを登録する
@@ -189,7 +189,7 @@ std::vector<ModelData> LoadObjFile(const std::string& directoryPath, const std::
 			// インデックスを登録
 			for (uint32_t i = 0; i < face.mNumIndices; ++i)
 			{
-				modelDatum.indices.push_back(face.mIndices[i]);
+				meshData.indices.push_back(face.mIndices[i]);
 			}
 		}
 
@@ -204,11 +204,11 @@ std::vector<ModelData> LoadObjFile(const std::string& directoryPath, const std::
 		{
 			aiString textureFilePath;
 			material->GetTexture(aiTextureType_DIFFUSE, 0, &textureFilePath);
-			modelDatum.material.textureFilePath = directoryPath + "/" + textureFilePath.C_Str();
+			meshData.material.textureFilePath = directoryPath + "/" + textureFilePath.C_Str();
 		}
 
 		// 登録する
-		modelData.push_back(modelDatum);
+		modelData.meshData.push_back(meshData);
 	}
 
 	return modelData;
