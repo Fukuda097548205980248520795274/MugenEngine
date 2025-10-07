@@ -30,6 +30,9 @@ struct MeshData
 
 	// スキンクラスターデータ
 	std::map<std::string, JointWeightData> skinClusterData;
+
+	// スキンクラスター
+	SkinCluster skinCluster;
 };
 
 // モデルデータ
@@ -37,4 +40,10 @@ struct ModelData
 {
 	// メッシュデータ
 	std::vector<MeshData> meshData;
+
+	// アニメーション有効化
+	bool isAnimation = false;
+
+	// スキニング有効化
+	bool isSkinning = false;
 };

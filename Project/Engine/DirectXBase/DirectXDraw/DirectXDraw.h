@@ -20,6 +20,7 @@
 
 #include "BaseOrganizePSO/OrganizePSOPrimitive/OrganizePSOPrimitive.h"
 #include "BaseOrganizePSO/OrganizePSOSprite/OrganizePSOSprite.h"
+#include "BaseOrganizePSO/OrganizePSOSkinningModel/OrganizePSOSkinningModel.h"
 
 #include "ResourcesData/PrimitiveResourcesData/PrimitiveResourcesCube/PrimitiveResourcesCube.h"
 #include "ResourcesData/PrimitiveResourcesData/PrimitiveResourcesSprite/PrimitiveResourcesSprite.h"
@@ -143,6 +144,28 @@ private:
 		const Material* material);
 
 	/// <summary>
+	/// Gltfファイルのアニメーション付きのモデルを描画する
+	/// </summary>
+	/// <param name="worldTransform"></param>
+	/// <param name="uvTransform"></param>
+	/// <param name="camera"></param>
+	/// <param name="modelResource"></param>
+	/// <param name="material"></param>
+	void DrawGltfAnimationModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
+		const Material* material);
+
+	/// <summary>
+	/// Gltfファイルのスキニングを行うモデルを描画する
+	/// </summary>
+	/// <param name="worldTransform"></param>
+	/// <param name="uvTransform"></param>
+	/// <param name="camera"></param>
+	/// <param name="modelResource"></param>
+	/// <param name="material"></param>
+	void DrawGltfSkinningModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
+		const Material* material);
+
+	/// <summary>
 	/// Objファイルのモデルを描画する
 	/// </summary>
 	/// <param name="worldTransform"></param>
@@ -248,6 +271,9 @@ private:
 
 	// スプライト用PSO
 	std::unique_ptr<OrganizePSOSprite> spritePSO_ = nullptr;
+
+	// スキニングモデル用PSO
+	std::unique_ptr<OrganizePSOSkinningModel> skinningModelPSO_ = nullptr;
 
 
 	// ビューポート

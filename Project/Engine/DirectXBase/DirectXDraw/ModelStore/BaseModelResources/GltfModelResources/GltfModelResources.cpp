@@ -13,10 +13,17 @@ void GltfModelResources::Initialize(ID3D12Device* device, ID3D12GraphicsCommandL
 
 
 	// モデルデータを取得する
-	modelData_ = LoadObjFile(fileDirectory, fileName);
+	modelData_ = LoadGltfFileWidthBone(fileDirectory, fileName);
 
 	// ノードを取得する
 	rootNode_ = GetReadNode(fileDirectory, fileName);
+
+	// アニメーションのデータを取得する
+	animation_ = LoadAnimationFile(fileDirectory, fileName, modelData_);
+
+	// スキニングする（ボーンがある）可能性があるときのみ、スケルトン情報を取得する
+	if(modelData_.isSkinning)
+		skeleton_ = CreateSkeleton(rootNode_);
 
 	// メッシュデータの数に合わせて生成する
 	for (MeshData meshDatum : modelData_.meshData)
@@ -30,6 +37,9 @@ void GltfModelResources::Initialize(ID3D12Device* device, ID3D12GraphicsCommandL
 		// データ
 		std::pair<uint32_t*, VertexDataForGPU*> data;
 
+		// スキニングする可能性があるときのみ、スキンクラスターを生成する
+		if (modelData_.isSkinning)
+			meshDatum.skinCluster = CreateSkinCluster(device_, skeleton_, meshDatum, directXHeap_);
 
 		/*------------------------
 			テクスチャを読み取る

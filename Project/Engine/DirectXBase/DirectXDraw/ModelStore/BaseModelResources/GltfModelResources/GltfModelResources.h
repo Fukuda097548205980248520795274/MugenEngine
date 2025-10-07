@@ -14,6 +14,12 @@ public:
 		const std::string& fileDirectory, const std::string& fileName, const std::string& extName, uint32_t modelHandle) override;
 
 	/// <summary>
+	/// DirectXヒープのSetter
+	/// </summary>
+	/// <param name="directXHeap"></param>
+	void SetDirectXHeap(DirectXHeap* directXHeap) { directXHeap_ = directXHeap; }
+
+	/// <summary>
 	/// 頂点とインデックスをコマンドリストに登録する
 	/// </summary>
 	/// <param name="meshIndex"></param>
@@ -28,7 +34,17 @@ public:
 
 public:
 
+	// DirectXヒープ
+	DirectXHeap* directXHeap_ = nullptr;
+
+
 	// ルートノード
 	Node rootNode_{};
+
+	// アニメーション
+	Animation animation_{};
+
+	// スケルトン
+	Skeleton skeleton_{};
 };
 

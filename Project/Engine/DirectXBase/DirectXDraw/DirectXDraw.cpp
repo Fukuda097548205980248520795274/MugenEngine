@@ -53,7 +53,7 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, DirectX
 
 	// モデル格納場所の生成と初期化
 	modelStore_ = ModelStore::GetInstance();
-	modelStore_->Initialize(textureStore_, device_, commandList_);
+	modelStore_->Initialize(textureStore_, device_, commandList_, directXHeap_);
 
 
 	// オフスクリーン描画の生成と初期化
@@ -68,6 +68,10 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, DirectX
 	// スプライト用PSOの生成と初期化
 	spritePSO_ = std::make_unique<OrganizePSOSprite>();
 	spritePSO_->Initialize(logFile_, directXShaderCompiler_.get(), commandList_, device_);
+
+	// スキニングモデル用PSOの生成と初期化
+	skinningModelPSO_ = std::make_unique<OrganizePSOSkinningModel>();
+	skinningModelPSO_->Initialize(logFile_, directXShaderCompiler_.get(), commandList_, device_);
 
 
 	// ビューポートの設定
@@ -175,6 +179,9 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 	// モデル情報を取得する
 	BaseModelResources* modelResource = modelStore_->GetModelInfo(modelHandle);
 
+	// モデルデータを取得する
+	ModelData modelData = modelResource->GetModelData();
+
 
 	// 拡張子名で描画方法を変える
 	
@@ -187,7 +194,21 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 	// gltfファイル
 	if (modelResource->GetExtName().find(".gltf") == 0)
 	{
-		DrawGltfModel(worldTransform, uvTransform, camera, modelResource, material);
+		// スキニングのアニメーションを行う
+		if (modelData.isSkinning && modelData.isAnimation)
+		{
+			DrawGltfSkinningModel(worldTransform, uvTransform, camera, modelResource, material);
+		}
+		else if(modelData.isAnimation)
+		{
+			// アニメーションのみを行う
+			DrawGltfAnimationModel(worldTransform, uvTransform, camera, modelResource, material);
+		}
+		else
+		{
+			// そのまま描画する
+			DrawGltfModel(worldTransform, uvTransform, camera, modelResource, material);
+		}
 	}
 }
 
@@ -288,6 +309,205 @@ void DirectXDraw::DrawGltfModel(const WorldTransform3D* worldTransform, const UV
 		commandList_->DrawIndexedInstanced(modelResource->GetNumIndex(meshIndex), 1, 0, 0, 0);
 
 		
+		// 描画したプリミティブをカウントする
+		CountDrawPrimitive();
+	}
+}
+
+/// <summary>
+/// Gltfファイルのアニメーション付きのモデルを描画する
+/// </summary>
+/// <param name="worldTransform"></param>
+/// <param name="uvTransform"></param>
+/// <param name="camera"></param>
+/// <param name="modelResource"></param>
+/// <param name="material"></param>
+void DirectXDraw::DrawGltfAnimationModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
+	const Material* material)
+{
+	// カメラの値を取得する
+	resourcesMainCamera_->data_->worldPosition = camera->GetWorldPosition();
+
+	// wvp行列
+	Matrix4x4 worldViewProjectionMatrix = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
+
+	Node rootNode = modelResource->GetRootNode();
+	std::vector<Matrix4x4> nodeWorldMatrix;
+	GetNodeWorldMatrix(nodeWorldMatrix, rootNode);
+
+
+	// メッシュの数を描画する
+	for (uint32_t meshIndex = 0; meshIndex < modelResource->GetNumMesh(); ++meshIndex)
+	{
+		/*-----------------------------
+			マテリアルデータを入力する
+		-----------------------------*/
+
+		// UV座標
+		primitiveMaterialResources_[drawPrimitiveCount_]->data_->uvTransform_ = uvTransform->affineMatrix_;
+
+		// マテリアル
+		primitiveMaterialResources_[drawPrimitiveCount_]->data_->color_ = material->color_;
+
+		// 拡散反射
+		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableLighting_ = static_cast<int32_t>(material->enableLighting_);
+		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableHalfLambert_ = static_cast<int32_t>(material->enableHalfLambert_);
+
+		// 鏡面反射
+		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableSpecular_ = static_cast<int32_t>(material->enableSpecular_);
+		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableBlinnPhong_ = static_cast<int32_t>(material->enableBlinnPhong_);
+		primitiveMaterialResources_[drawPrimitiveCount_]->data_->shininess_ = material->shininess_;
+
+
+		/*----------------------------
+			座標変換データを入力する
+		----------------------------*/
+
+		primitiveTransformationResources_[drawPrimitiveCount_]->data_->world = worldTransform->worldMatrix_;
+		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldInverseTranspose =
+			MakeInverseMatrix4x4(MakeTransposeMatrix4x4(worldTransform->worldMatrix_));
+		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldViewProjection =
+			nodeWorldMatrix[meshIndex] * worldViewProjectionMatrix;
+
+
+		// ビューポート、シザー矩形の設定
+		commandList_->RSSetViewports(1, &viewport_);
+		commandList_->RSSetScissorRects(1, &scissorRect_);
+
+		// PSOの設定
+		primitivePSO_->SetPSOState();
+
+		// モデルの頂点、インデックスの設定
+		modelResource->Register(meshIndex);
+
+		// モデルリソースの設定
+		primitiveMaterialResources_[drawPrimitiveCount_]->Register(0);
+
+		// 座標変換リソースの設定
+		primitiveTransformationResources_[drawPrimitiveCount_]->Register(1);
+
+		// メインカメラリソースの設定
+		resourcesMainCamera_->Register(5);
+
+		// 平行光源リソースの設定
+		resourcesDirectionalLight_->Register(3, 4);
+
+		// ポイントライトリソースの設定
+		resourcesPointLight_->Register(6, 7);
+
+		// スポットライトリソースの設定
+		resourcesSpotLight_->Register(8, 9);
+
+		// テクスチャのSRVを設定する
+		commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(modelResource->GetTextureHandle(meshIndex)));
+
+		// 形状の設定
+		commandList_->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+		// ドローコール
+		commandList_->DrawIndexedInstanced(modelResource->GetNumIndex(meshIndex), 1, 0, 0, 0);
+
+
+		// 描画したプリミティブをカウントする
+		CountDrawPrimitive();
+	}
+}
+
+/// <summary>
+/// Gltfファイルのスキニングを行うモデルを描画する
+/// </summary>
+/// <param name="worldTransform"></param>
+/// <param name="uvTransform"></param>
+/// <param name="camera"></param>
+/// <param name="modelResource"></param>
+/// <param name="material"></param>
+void DirectXDraw::DrawGltfSkinningModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
+	const Material* material)
+{
+	// カメラの値を取得する
+	resourcesMainCamera_->data_->worldPosition = camera->GetWorldPosition();
+
+
+	// wvp行列
+	Matrix4x4 worldViewProjectionMatrix = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
+
+	Node rootNode = modelResource->GetRootNode();
+	std::vector<Matrix4x4> nodeWorldMatrix;
+	GetNodeWorldMatrix(nodeWorldMatrix, rootNode);
+
+
+	// メッシュの数を描画する
+	for (uint32_t meshIndex = 0; meshIndex < modelResource->GetNumMesh(); ++meshIndex)
+	{
+		/*-----------------------------
+			マテリアルデータを入力する
+		-----------------------------*/
+
+		// UV座標
+		primitiveMaterialResources_[drawPrimitiveCount_]->data_->uvTransform_ = uvTransform->affineMatrix_;
+
+		// マテリアル
+		primitiveMaterialResources_[drawPrimitiveCount_]->data_->color_ = material->color_;
+
+		// 拡散反射
+		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableLighting_ = static_cast<int32_t>(material->enableLighting_);
+		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableHalfLambert_ = static_cast<int32_t>(material->enableHalfLambert_);
+
+		// 鏡面反射
+		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableSpecular_ = static_cast<int32_t>(material->enableSpecular_);
+		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableBlinnPhong_ = static_cast<int32_t>(material->enableBlinnPhong_);
+		primitiveMaterialResources_[drawPrimitiveCount_]->data_->shininess_ = material->shininess_;
+
+
+		/*----------------------------
+			座標変換データを入力する
+		----------------------------*/
+
+		primitiveTransformationResources_[drawPrimitiveCount_]->data_->world = worldTransform->worldMatrix_;
+		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldInverseTranspose =
+			MakeInverseMatrix4x4(MakeTransposeMatrix4x4(worldTransform->worldMatrix_));
+		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldViewProjection =
+			nodeWorldMatrix[meshIndex] * worldViewProjectionMatrix;
+
+
+		// ビューポート、シザー矩形の設定
+		commandList_->RSSetViewports(1, &viewport_);
+		commandList_->RSSetScissorRects(1, &scissorRect_);
+
+		// PSOの設定
+		primitivePSO_->SetPSOState();
+
+		// モデルの頂点、インデックスの設定
+		modelResource->Register(meshIndex);
+
+		// モデルリソースの設定
+		primitiveMaterialResources_[drawPrimitiveCount_]->Register(0);
+
+		// 座標変換リソースの設定
+		primitiveTransformationResources_[drawPrimitiveCount_]->Register(1);
+
+		// メインカメラリソースの設定
+		resourcesMainCamera_->Register(5);
+
+		// 平行光源リソースの設定
+		resourcesDirectionalLight_->Register(3, 4);
+
+		// ポイントライトリソースの設定
+		resourcesPointLight_->Register(6, 7);
+
+		// スポットライトリソースの設定
+		resourcesSpotLight_->Register(8, 9);
+
+		// テクスチャのSRVを設定する
+		commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(modelResource->GetTextureHandle(meshIndex)));
+
+		// 形状の設定
+		commandList_->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+		// ドローコール
+		commandList_->DrawIndexedInstanced(modelResource->GetNumIndex(meshIndex), 1, 0, 0, 0);
+
+
 		// 描画したプリミティブをカウントする
 		CountDrawPrimitive();
 	}

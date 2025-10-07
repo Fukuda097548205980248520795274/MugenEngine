@@ -41,6 +41,12 @@ public:
 	uint32_t GetModelHandle()const { return modelHandle_; }
 
 	/// <summary>
+	/// モデルデータのGetter
+	/// </summary>
+	/// <returns></returns>
+	ModelData GetModelData()const { return modelData_; }
+
+	/// <summary>
 	/// テクスチャハンドルのGetter
 	/// </summary>
 	/// <param name="meshIndex"></param>
@@ -52,6 +58,18 @@ public:
 	/// </summary>
 	/// <returns></returns>
 	virtual Node GetRootNode()const = 0;
+
+	/// <summary>
+	/// アニメーションフラグのGetter
+	/// </summary>
+	/// <returns></returns>
+	bool IsAnimation()const { return modelData_.isAnimation; }
+
+	/// <summary>
+	/// スキニングフラグのGetter
+	/// </summary>
+	/// <returns></returns>
+	bool IsSkinning()const { return modelData_.isSkinning; }
 
 	/// <summary>
 	/// メッシュ数の

@@ -22,17 +22,19 @@ ModelStore* ModelStore::GetInstance()
 /// 初期化
 /// </summary>
 /// <param name="textureStore"></param>
-void ModelStore::Initialize(TextureStore* textureStore, ID3D12Device* device, ID3D12GraphicsCommandList* commandList)
+void ModelStore::Initialize(TextureStore* textureStore, ID3D12Device* device, ID3D12GraphicsCommandList* commandList, DirectXHeap* directXHeap)
 {
 	// nullptrチェック
 	assert(textureStore);
 	assert(device);
 	assert(commandList);
+	assert(directXHeap);
 
 	// 引数を受け取る
 	textureStore_ = textureStore;
 	device_ = device;
 	commandList_ = commandList;
+	directXHeap_ = directXHeap;
 }
 
 /// <summary>
@@ -90,6 +92,7 @@ uint32_t ModelStore::LoadModel(const std::string& directoryPath, const std::stri
 	{
 		// モデルの生成と初期化
 		gltfModelResource = std::make_unique<GltfModelResources>();
+		gltfModelResource->SetDirectXHeap(directXHeap_);
 		gltfModelResource->Initialize(device_, commandList_, textureStore_, directoryPath, filename, extName, handle);
 
 		// 登録する

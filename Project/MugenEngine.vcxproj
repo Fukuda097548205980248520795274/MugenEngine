@@ -274,6 +274,13 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\OrganizePSOSkinningModel.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelAdd\SinglePSOSkinningModelAdd.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelMultiply\SinglePSOSkinningModelMultiply.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelNone\SinglePSOSkinningModelNone.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelNormal\SinglePSOSkinningModelNormal.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelScreen\SinglePSOSkinningModelScreen.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelSubtract\SinglePSOSkinningModelSubtract.cpp" />
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.cpp" />
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteAdd\SinglePSOSpriteAdd.cpp" />
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteMultiply\SinglePSOSpriteMultiply.cpp" />
@@ -543,6 +550,13 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal\SinglePSOPrimitiveNormal.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveScreen\SinglePSOPrimitiveScreen.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveSubtract\SinglePSOPrimitiveSubtract.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\OrganizePSOSkinningModel.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelAdd\SinglePSOSkinningModelAdd.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelMultiply\SinglePSOSkinningModelMultiply.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelNone\SinglePSOSkinningModelNone.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelNormal\SinglePSOSkinningModelNormal.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelScreen\SinglePSOSkinningModelScreen.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelSubtract\SinglePSOSkinningModelSubtract.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteAdd\SinglePSOSpriteAdd.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteMultiply\SinglePSOSpriteMultiply.h" />

@@ -63,7 +63,7 @@ void GetNodeWorldMatrix(std::vector<Matrix4x4>& worldMatrices, const Node& rootN
 /// <param name="directoryPath"></param>
 /// <param name="filename"></param>
 /// <returns></returns>
-Animation LoadAnimationFile(const std::string& directoryPath, const std::string& filename);
+Animation LoadAnimationFile(const std::string& directoryPath, const std::string& filename, ModelData& modelData);
 
 
 /// <summary>

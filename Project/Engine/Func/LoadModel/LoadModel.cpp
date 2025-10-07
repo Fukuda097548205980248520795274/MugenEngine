@@ -300,6 +300,9 @@ ModelData LoadGltfFileWidthBone(const std::string& directoryPath, const std::str
 		// ボーンデータを登録する
 		for (uint32_t boneIndex = 0; boneIndex < mesh->mNumBones; ++boneIndex)
 		{
+			// ボーンがあるならスキニングする可能性がある
+			modelData.isSkinning = true;
+
 			// ボーンのデータ
 			aiBone* bone = mesh->mBones[boneIndex];
 			std::string jointName = bone->mName.C_Str();
@@ -371,7 +374,7 @@ void GetNodeWorldMatrix(std::vector<Matrix4x4>& worldMatrices, const Node& rootN
 /// <param name="directoryPath"></param>
 /// <param name="filename"></param>
 /// <returns></returns>
-Animation LoadAnimationFile(const std::string& directoryPath, const std::string& filename)
+Animation LoadAnimationFile(const std::string& directoryPath, const std::string& filename, ModelData& modelData)
 {
 	Animation animation;
 
@@ -380,7 +383,13 @@ Animation LoadAnimationFile(const std::string& directoryPath, const std::string&
 	const aiScene* scene = importer.ReadFile(filePath.c_str(), 0);
 
 	// アニメーションがないといけいない
-	assert(scene->mNumAnimations != 0);
+	if (scene->mNumAnimations == 0)
+	{
+		return animation;
+	}
+
+	// アニメーションフラグが立つ
+	modelData.isAnimation = true;
 
 	// 最初のアニメーションだけ採用
 	aiAnimation* animationAssimp = scene->mAnimations[0];

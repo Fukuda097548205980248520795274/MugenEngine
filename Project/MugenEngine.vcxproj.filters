@@ -388,6 +388,27 @@
     <Filter Include="Engine\Shader\SkinningModel">
       <UniqueIdentifier>{7cb8cd93-bfb1-415d-b746-dd445dfaf80b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel">
+      <UniqueIdentifier>{ab5d1c07-a856-4b3a-b173-cf4e4e9bacfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelAdd">
+      <UniqueIdentifier>{6bb8221c-ff1d-4678-b2ad-c24f4eba15d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelNone">
+      <UniqueIdentifier>{88228083-3bf8-48d6-b843-2836eb81b66f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelNormal">
+      <UniqueIdentifier>{c873e391-b38e-4494-a9ba-e5b4c806fbf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelSubtract">
+      <UniqueIdentifier>{02dac4b2-aceb-4f09-bbb0-46c4de266cf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelMultiply">
+      <UniqueIdentifier>{9210f734-2517-4bca-afa5-7d2bc819a036}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelScreen">
+      <UniqueIdentifier>{cf09232b-7179-42f9-9eb9-8a48cb165dc4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -741,6 +762,27 @@
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\SkinCluster\SkinCluster.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\SkinCluster</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\OrganizePSOSkinningModel.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelNone\SinglePSOSkinningModelNone.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelNone</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelNormal\SinglePSOSkinningModelNormal.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelNormal</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelAdd\SinglePSOSkinningModelAdd.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelAdd</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelSubtract\SinglePSOSkinningModelSubtract.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelSubtract</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelMultiply\SinglePSOSkinningModelMultiply.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelMultiply</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelScreen\SinglePSOSkinningModelScreen.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelScreen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MugenEngine.h">
@@ -1093,6 +1135,27 @@
     </ClInclude>
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\SkinCluster\SkinCluster.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\SkinCluster</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\OrganizePSOSkinningModel.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelNone\SinglePSOSkinningModelNone.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelNone</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelNormal\SinglePSOSkinningModelNormal.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelNormal</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelAdd\SinglePSOSkinningModelAdd.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelAdd</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelSubtract\SinglePSOSkinningModelSubtract.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelSubtract</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelMultiply\SinglePSOSkinningModelMultiply.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelMultiply</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelScreen\SinglePSOSkinningModelScreen.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelScreen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

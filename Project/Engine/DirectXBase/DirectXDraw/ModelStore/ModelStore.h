@@ -27,7 +27,7 @@ public:
 	/// 初期化
 	/// </summary>
 	/// <param name="textureStore"></param>
-	void Initialize(TextureStore* textureStore, ID3D12Device* device, ID3D12GraphicsCommandList* commandList);
+	void Initialize(TextureStore* textureStore, ID3D12Device* device, ID3D12GraphicsCommandList* commandList, DirectXHeap* directXHeap);
 
 	/// <summary>
 	/// 終了処理
@@ -60,6 +60,9 @@ private:
 
 	// コマンドリスト
 	ID3D12GraphicsCommandList* commandList_ = nullptr;
+
+	// DirectXヒープ
+	DirectXHeap* directXHeap_ = nullptr;
 
 
 	// インスタンス
