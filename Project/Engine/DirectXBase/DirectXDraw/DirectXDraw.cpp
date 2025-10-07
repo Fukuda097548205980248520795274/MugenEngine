@@ -41,7 +41,6 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, DirectX
 	commandList_ = commandList;
 	device_ = device;
 
-
 	// DirectXシェーダコンパイラの生成と初期化
 	directXShaderCompiler_ = std::make_unique<DirectXShaderCompile>();
 	directXShaderCompiler_->Initialize(logFile_);

@@ -26,10 +26,9 @@ public:
 
 
 	// モデル
-	std::unique_ptr<MeshModel> model_ = nullptr;
-
-	// モデルハンドル
-	uint32_t modelHandle_ = 0;
+	std::unique_ptr<MeshModel> model0_ = nullptr;
+	std::unique_ptr<MeshModel> model1_ = nullptr;
+	std::unique_ptr<MeshModel> model2_ = nullptr;
 	
 };
 
