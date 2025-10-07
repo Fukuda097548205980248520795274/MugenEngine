@@ -45,7 +45,7 @@ MaterialData LoadMaterialTemplateFile(const std::string& directoryPath, const st
 /// <param name="directoryPath"></param>
 /// <param name="filename"></param>
 /// <returns></returns>
-Node GetReadNode(const std::string& directoryPath, const std::string& filename)
+Node GetReadNode(const std::string& directoryPath, const std::string& filename, const Matrix4x4& parentMatrix)
 {
 	// assimpでファイルを開く
 	Assimp::Importer importer;
@@ -54,7 +54,7 @@ Node GetReadNode(const std::string& directoryPath, const std::string& filename)
 	// シーンのデータ
 	const aiScene* scene = importer.ReadFile(filePath.c_str(), aiProcess_FlipWindingOrder | aiProcess_FlipUVs | aiProcess_JoinIdenticalVertices);
 
-	return ReadNode(scene->mRootNode);
+	return ReadNode(scene->mRootNode, parentMatrix);
 }
 
 /// <summary>
@@ -62,7 +62,7 @@ Node GetReadNode(const std::string& directoryPath, const std::string& filename)
 /// </summary>
 /// <param name="node"></param>
 /// <returns></returns>
-Node ReadNode(aiNode* node)
+Node ReadNode(aiNode* node,const Matrix4x4& parentMatrix)
 {
 	// トランスフォームに格納する
 	aiVector3D scale, translate;
@@ -83,6 +83,9 @@ Node ReadNode(aiNode* node)
 	// ローカル行列に変換
 	result.localMatrix = Make3DAffineMatrix4x4(result.transform.scale, result.transform.rotate, result.transform.translate);
 
+	// ワールド行列を求める
+	result.worldMatrix = parentMatrix * result.localMatrix;
+
 	// ノード名を格納
 	result.name = node->mName.C_Str();
 
@@ -92,7 +95,7 @@ Node ReadNode(aiNode* node)
 	// 再帰的に読んで階層構造を作っていく
 	for (uint32_t childIndex = 0; childIndex < node->mNumChildren; ++childIndex)
 	{
-		result.children[childIndex] = ReadNode(node->mChildren[childIndex]);
+		result.children[childIndex] = ReadNode(node->mChildren[childIndex], result.worldMatrix);
 	}
 
 	return result;

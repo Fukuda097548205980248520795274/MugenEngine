@@ -16,7 +16,7 @@ void GltfModelResources::Initialize(ID3D12Device* device, ID3D12GraphicsCommandL
 	modelData_ = LoadGltfFileWidthBone(fileDirectory, fileName);
 
 	// ノードを取得する
-	rootNode_ = GetReadNode(fileDirectory, fileName);
+	rootNode_ = GetReadNode(fileDirectory, fileName, MakeIdentityMatrix4x4());
 
 	// アニメーションのデータを取得する
 	animation_ = LoadAnimationFile(fileDirectory, fileName, modelData_);

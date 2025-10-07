@@ -41,14 +41,14 @@ ModelData LoadGltfFileWidthBone(const std::string& directoryPath, const std::str
 /// <param name="directoryPath"></param>
 /// <param name="filename"></param>
 /// <returns></returns>
-Node GetReadNode(const std::string& directoryPath, const std::string& filename);
+Node GetReadNode(const std::string& directoryPath, const std::string& filename, const Matrix4x4& parentMatrix);
 
 /// <summary>
 /// ノード情報を読む
 /// </summary>
 /// <param name="node"></param>
 /// <returns></returns>
-Node ReadNode(aiNode* node);
+Node ReadNode(aiNode* node, const Matrix4x4& parentMatrix);
 
 /// <summary>
 /// ノードのワールド行列

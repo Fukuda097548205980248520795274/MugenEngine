@@ -264,11 +264,16 @@ void DirectXDraw::DrawGltfModel(const WorldTransform3D* worldTransform, const UV
 		    座標変換データを入力する
 		----------------------------*/
 
-		primitiveTransformationResources_[drawPrimitiveCount_]->data_->world = worldTransform->worldMatrix_;
+		// ワールド行列
+		primitiveTransformationResources_[drawPrimitiveCount_]->data_->world = nodeWorldMatrix[meshIndex] * worldTransform->worldMatrix_;
+
+		// 逆転置ワールド行列
 		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldInverseTranspose =
-			MakeInverseMatrix4x4(MakeTransposeMatrix4x4(worldTransform->worldMatrix_));
+			MakeInverseMatrix4x4(MakeTransposeMatrix4x4(primitiveTransformationResources_[drawPrimitiveCount_]->data_->world));
+
+		// WVP行列
 		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldViewProjection =
-			worldViewProjectionMatrix;
+			nodeWorldMatrix[meshIndex] * worldViewProjectionMatrix;
 
 
 		// ビューポート、シザー矩形の設定
@@ -378,11 +383,17 @@ void DirectXDraw::DrawGltfAnimationModel(const WorldTransform3D* worldTransform,
 			座標変換データを入力する
 		----------------------------*/
 
-		primitiveTransformationResources_[drawPrimitiveCount_]->data_->world = localMatrix * worldTransform->worldMatrix_;
+		// ワールド行列
+		primitiveTransformationResources_[drawPrimitiveCount_]->data_->world = localMatrix * nodeWorldMatrix[meshIndex] * worldTransform->worldMatrix_;
+
+		// 逆転置ワールド行列
 		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldInverseTranspose =
-			MakeInverseMatrix4x4(MakeTransposeMatrix4x4(worldTransform->worldMatrix_));
+			MakeInverseMatrix4x4(MakeTransposeMatrix4x4(primitiveTransformationResources_[drawPrimitiveCount_]->data_->world));
+
+		// WVP行列
 		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldViewProjection =
-			localMatrix * worldViewProjectionMatrix;
+			localMatrix * nodeWorldMatrix[meshIndex] * worldViewProjectionMatrix;
+
 
 
 		// ビューポート、シザー矩形の設定
@@ -451,10 +462,6 @@ void DirectXDraw::DrawGltfSkinningModel(const WorldTransform3D* worldTransform, 
 	// wvp行列
 	Matrix4x4 worldViewProjectionMatrix = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
 
-	Node rootNode = modelResource->GetRootNode();
-	std::vector<Matrix4x4> nodeWorldMatrix;
-	GetNodeWorldMatrix(nodeWorldMatrix, rootNode);
-
 	// アニメーションタイマーを進める
 	modelResource->ApplyAnimation();
 	modelResource->ApplyBoneAnimation();
@@ -491,11 +498,15 @@ void DirectXDraw::DrawGltfSkinningModel(const WorldTransform3D* worldTransform, 
 			座標変換データを入力する
 		----------------------------*/
 
+		// ワールド行列
 		primitiveTransformationResources_[drawPrimitiveCount_]->data_->world = worldTransform->worldMatrix_;
+
+		// 逆転置ワールド行列
 		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldInverseTranspose =
-			MakeInverseMatrix4x4(MakeTransposeMatrix4x4(worldTransform->worldMatrix_));
-		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldViewProjection =
-			worldViewProjectionMatrix;
+			MakeInverseMatrix4x4(MakeTransposeMatrix4x4(primitiveTransformationResources_[drawPrimitiveCount_]->data_->world));
+
+		// WVP行列
+		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldViewProjection = worldViewProjectionMatrix;
 
 
 		// ビューポート、シザー矩形の設定

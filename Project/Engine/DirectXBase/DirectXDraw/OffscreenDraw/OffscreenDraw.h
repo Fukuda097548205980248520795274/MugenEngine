@@ -68,7 +68,7 @@ private:
 	uint32_t numUsesOffscreen_ = 0;
 
 	// 最大オフスクリーン数
-	const uint32_t kNumMaxOffscreen = 256;
+	const uint32_t kNumMaxOffscreen = 16;
 
 	// レンダーテクスチャ
 	std::vector<std::unique_ptr<RenderTargetResources>> renderTargetResources_;
