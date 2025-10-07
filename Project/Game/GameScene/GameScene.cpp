@@ -11,7 +11,7 @@ void GameScene::Initialize(const MugenEngine* engine)
 
 
 	// モデルを読み込む
-	modelHandle_ = engine_->LoadModel("./Resources/Models/Character", "Character.gltf");
+	modelHandle_ = engine_->LoadModel("./Resources/Models/walk", "walk.gltf");
 
 	// モデルの生成と初期化
 	model_ = std::make_unique<MeshModel>();
