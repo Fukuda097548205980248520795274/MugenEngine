@@ -16,7 +16,7 @@ void GameScene::Initialize(const MugenEngine* engine)
 	// モデルの生成と初期化
 	model_ = std::make_unique<MeshModel>();
 	model_->Initialize(engine_, camera3d_.get(), modelHandle_);
-	model_->worldTransform_->translation_.z = 20.0f;
+	model_->worldTransform_->translation_ = Vector3(0.0f, -2.0f, 20.0f);
 	model_->material_->enableHalfLambert_ = true;
 }
 

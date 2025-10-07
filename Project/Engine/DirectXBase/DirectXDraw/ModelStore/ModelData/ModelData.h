@@ -1,31 +1,19 @@
 #pragma once
-#include <string>
-#include <vector>
+
+#include "Node/Node.h"
+#include "AnimationData/AnimationData.h"
+#include "SkeletonData/SkeletonData.h"
+#include "WeightData/WeightData.h"
+#include "Influence/Influence.h"
+#include "SkinCluster/SkinCluster.h"
 
 #include "../../DataForGPU/VertexData/VertexData.h"
-#include "../../../../Math/Matrix4x4/Matrix4x4.h"
 
 // マテリアルデータ
 struct MaterialData
 {
 	// テクスチャファイルパス
 	std::string textureFilePath;
-};
-
-// ノード
-struct Node
-{
-	// ローカル行列
-	Matrix4x4 localMatrix;
-
-	// ワールド行列
-	Matrix4x4 worldMatrix;
-
-	// 名前
-	std::string name;
-
-	// 子
-	std::vector<Node> children;
 };
 
 // メッシュデータ
@@ -39,6 +27,9 @@ struct MeshData
 
 	// マテリアルデータ
 	MaterialData material;
+
+	// スキンクラスターデータ
+	std::map<std::string, JointWeightData> skinClusterData;
 };
 
 // モデルデータ

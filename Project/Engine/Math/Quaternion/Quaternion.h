@@ -153,3 +153,20 @@ Quaternion Normalize(const Quaternion& quaternion);
 /// <param name="quaternion"></param>
 /// <returns></returns>
 Quaternion MakeInverseQuaternion(const Quaternion& quaternion);
+
+/// <summary>
+/// 内積を求める
+/// </summary>
+/// <param name="q1"></param>
+/// <param name="q2"></param>
+/// <returns></returns>
+float Dot(const Quaternion& q1, const Quaternion& q2);
+
+/// <summary>
+/// 球面線形補間を行う
+/// </summary>
+/// <param name="q1"></param>
+/// <param name="q2"></param>
+/// <param name="t"></param>
+/// <returns></returns>
+Quaternion Slerp(const Quaternion& q0, const Quaternion& q1, float t);

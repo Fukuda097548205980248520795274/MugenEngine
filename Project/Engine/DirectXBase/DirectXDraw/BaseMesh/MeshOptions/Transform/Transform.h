@@ -1,6 +1,7 @@
 #pragma once
 #include "../../../../../Math/Vector2/Vector2.h"
 #include "../../../../../Math/Vector3/Vector3.h"
+#include "Math/Quaternion/Quaternion.h"
 
 // 2Dトランスフォーム
 struct Transform2D
@@ -15,15 +16,28 @@ struct Transform2D
 	Vector2 translation;
 };
 
-// 3Dトランスフォーム
-struct Transform3D
+// オイラー角の3Dトランスフォーム
+struct EulerTransform3D
 {
 	// 拡縮
 	Vector3 scale;
 
 	// 回転
-	Vector3 rotation;
+	Vector3 rotate;
 
 	// 移動
-	Vector3 translation;
+	Vector3 translate;
+};
+
+// クォータニオンの3Dトランスフォーム
+struct QuaternionTransform3D
+{
+	// 拡縮
+	Vector3 scale;
+
+	// 回転
+	Quaternion rotate;
+
+	// 移動
+	Vector3 translate;
 };

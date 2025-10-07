@@ -364,6 +364,27 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\GltfModelResources">
       <UniqueIdentifier>{5c1176bf-c0d1-40cd-ab54-45ed435ad42f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\Node">
+      <UniqueIdentifier>{dabe4922-bb3a-4ffa-bcef-15f172740842}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\AnimationData">
+      <UniqueIdentifier>{57acf184-fe02-434b-be87-045e938a64a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshAnimationModel">
+      <UniqueIdentifier>{87fc6099-b156-4101-bf37-3c21e363f688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\SkeletonData">
+      <UniqueIdentifier>{e9b2f8a2-6266-4566-9905-ae82ae3c9687}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\WeightData">
+      <UniqueIdentifier>{b658a93c-c415-4268-a4cd-faae9ab7bb17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\Influence">
+      <UniqueIdentifier>{0f8e7c39-21bc-4786-b001-bd8062e33cb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\SkinCluster">
+      <UniqueIdentifier>{439245fc-2254-47ce-bc45-f44b7e5bf76a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -696,6 +717,27 @@
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\GltfModelResources\GltfModelResources.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\GltfModelResources</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\Node\Node.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\Node</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\AnimationData\AnimationData.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\AnimationData</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshAnimationModel\MeshAnimationModel.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshAnimationModel</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\SkeletonData\SkeletonData.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\SkeletonData</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\WeightData\WeightData.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\WeightData</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\Influence\Influence.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\Influence</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\SkinCluster\SkinCluster.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\SkinCluster</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MugenEngine.h">
@@ -1027,6 +1069,27 @@
     </ClInclude>
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\GltfModelResources\GltfModelResources.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\GltfModelResources</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\Node\Node.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\AnimationData\AnimationData.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\AnimationData</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshAnimationModel\MeshAnimationModel.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshAnimationModel</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\SkeletonData\SkeletonData.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\SkeletonData</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\WeightData\WeightData.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\WeightData</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\Influence\Influence.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\Influence</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\SkinCluster\SkinCluster.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\SkinCluster</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
