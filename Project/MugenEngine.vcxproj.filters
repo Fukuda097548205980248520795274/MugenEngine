@@ -385,6 +385,9 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\SkinCluster">
       <UniqueIdentifier>{439245fc-2254-47ce-bc45-f44b7e5bf76a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Shader\SkinningModel">
+      <UniqueIdentifier>{7cb8cd93-bfb1-415d-b746-dd445dfaf80b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -1104,6 +1107,9 @@
     </FxCompile>
     <FxCompile Include="Resources\Shader\PostEffect\CopyImage\CopyImage.PS.hlsl">
       <Filter>Engine\Shader\PostEffect\CopyImage</Filter>
+    </FxCompile>
+    <FxCompile Include="Resources\Shader\SkinningModel\SkinningModel.VS.hlsl">
+      <Filter>Engine\Shader\SkinningModel</Filter>
     </FxCompile>
   </ItemGroup>
   <ItemGroup>

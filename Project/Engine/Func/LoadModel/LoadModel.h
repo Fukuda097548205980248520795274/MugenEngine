@@ -71,7 +71,7 @@ Animation LoadAnimationFile(const std::string& directoryPath, const std::string&
 /// </summary>
 /// <param name="rootNode"></param>
 /// <returns></returns>
-Skeleton CreateSkeleton(const Node& rootBoneNode);
+Skeleton CreateSkeleton(const Node& rootNode);
 
 /// <summary>
 /// ジョイントを作成する
@@ -80,7 +80,7 @@ Skeleton CreateSkeleton(const Node& rootBoneNode);
 /// <param name="parent"></param>
 /// <param name="joints"></param>
 /// <returns></returns>
-int32_t CreateJoint(const Node& boneNode, const std::optional<int32_t>& parent, std::vector<Joint>& joints);
+int32_t CreateJoint(const Node& node, const std::optional<int32_t>& parent, std::vector<Joint>& joints);
 
 /// <summary>
 /// スキンクラスターを作成する
