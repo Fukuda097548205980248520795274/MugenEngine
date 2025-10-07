@@ -104,18 +104,19 @@ Quaternion Slerp(const Quaternion& q0, const Quaternion& q1, float t)
 	// 内積
 	float dot = Dot(q0Copy, q1);
 
+	// 最短経路を確保
 	if (dot < 0.0f)
 	{
 		q0Copy = -q0Copy;
 		dot = -dot;
 	}
 
-	// 許容誤差を定義する
-	float dotThreshould = 1.0f - 1e-4f;
+	// 許容誤差（イプシロン）を定義。例えば 1e-6f など。
+	const float DOT_THRESHOLD = 1.0f - 1e-4f; // 例として 0.9999f
 
 	// クォータニオンが非常に近い場合（thetaが非常に小さい場合）
 	// 線形補間（Lerp）にフォールバックして、ゼロ除算を防ぐ
-	if (dot > dotThreshould)
+	if (dot > DOT_THRESHOLD)
 	{
 		// 単純な線形補間を実行（後で正規化が必要）
 		Quaternion result = (1.0f - t) * q0Copy + t * q1;
@@ -123,8 +124,12 @@ Quaternion Slerp(const Quaternion& q0, const Quaternion& q1, float t)
 		return Normalize(result); // Normalize関数があるとして
 	}
 
+	// --- 通常の Slerp 処理 ---
+
 	// なす角を求める
 	float theta = std::acos(dot);
+
+	// std::sin(theta) がゼロになることは、上の Lerp 処理で回避済み
 
 	// 補間 0.0f
 	float scale0 = std::sin((1.0f - t) * theta) / std::sin(theta);
@@ -132,6 +137,6 @@ Quaternion Slerp(const Quaternion& q0, const Quaternion& q1, float t)
 	// 補間 1.0f
 	float scale1 = std::sin(t * theta) / std::sin(theta);
 
-	// 保管した値を返却する
+	// 補間した値を返却する
 	return scale0 * q0Copy + scale1 * q1;
 }

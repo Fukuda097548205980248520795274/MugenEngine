@@ -30,6 +30,13 @@ public:
 
 	// モデルハンドル
 	uint32_t modelHandle_ = 0;
+
+
+	// モデル
+	std::unique_ptr<MeshModel> model2_ = nullptr;
+
+	// モデルハンドル
+	uint32_t modelHandle2_ = 0;
 	
 };
 

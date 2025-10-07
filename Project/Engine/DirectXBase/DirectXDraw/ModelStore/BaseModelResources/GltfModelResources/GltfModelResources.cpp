@@ -26,7 +26,7 @@ void GltfModelResources::Initialize(ID3D12Device* device, ID3D12GraphicsCommandL
 		skeleton_ = CreateSkeleton(rootNode_);
 
 	// メッシュデータの数に合わせて生成する
-	for (MeshData meshDatum : modelData_.meshData)
+	for (MeshData& meshDatum : modelData_.meshData)
 	{
 		// リソース
 		std::pair<ComPtr<ID3D12Resource>, ComPtr<ID3D12Resource>> resource;
@@ -39,7 +39,9 @@ void GltfModelResources::Initialize(ID3D12Device* device, ID3D12GraphicsCommandL
 
 		// スキニングする可能性があるときのみ、スキンクラスターを生成する
 		if (modelData_.isSkinning)
+		{
 			meshDatum.skinCluster = CreateSkinCluster(device_, skeleton_, meshDatum, directXHeap_);
+		}
 
 		/*------------------------
 			テクスチャを読み取る
@@ -107,6 +109,8 @@ void GltfModelResources::Initialize(ID3D12Device* device, ID3D12GraphicsCommandL
 		bufferView_.push_back(bufferView);
 		data_.push_back(data);
 	}
+
+	return;
 }
 
 /// <summary>
@@ -115,9 +119,25 @@ void GltfModelResources::Initialize(ID3D12Device* device, ID3D12GraphicsCommandL
 /// <param name="meshIndex"></param>
 void GltfModelResources::Register(uint32_t meshIndex)
 {
-	// インデックスの設定
-	commandList_->IASetIndexBuffer(&bufferView_[meshIndex].first);
+	// スキニング時と処理を変える
+	if (modelData_.isSkinning && modelData_.isAnimation)
+	{
+		// インデックスの設定
+		commandList_->IASetIndexBuffer(&bufferView_[meshIndex].first);
 
-	// 頂点の設定
-	commandList_->IASetVertexBuffers(0, 1, &bufferView_[meshIndex].second);
+
+
+		D3D12_VERTEX_BUFFER_VIEW vbvs[2] = { bufferView_[meshIndex].second, modelData_.meshData[meshIndex].skinCluster.influenceBufferView };
+		commandList_->IASetVertexBuffers(0, 2, vbvs);
+
+		commandList_->SetGraphicsRootDescriptorTable(10, modelData_.meshData[meshIndex].skinCluster.paletteSrvHandle.second);
+	}
+	else
+	{
+		// インデックスの設定
+		commandList_->IASetIndexBuffer(&bufferView_[meshIndex].first);
+
+		// 頂点の設定
+		commandList_->IASetVertexBuffers(0, 1, &bufferView_[meshIndex].second);
+	}
 }

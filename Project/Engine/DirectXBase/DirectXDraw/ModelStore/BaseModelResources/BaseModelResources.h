@@ -23,6 +23,28 @@ public:
 	virtual void Register(uint32_t meshIndex) = 0;
 
 	/// <summary>
+	/// ボーンのアニメーションを再生する
+	/// </summary>
+	virtual void ApplyBoneAnimation() = 0;
+
+	/// <summary>
+	/// アニメーションを再生する
+	/// </summary>
+	virtual void ApplyAnimation() = 0;
+
+	/// <summary>
+	/// ボーンの更新処理
+	/// </summary>
+	virtual void UpdateBone() = 0;
+
+	/// <summary>
+	/// MatrixPaletteを更新する
+	/// </summary>
+	/// <param name="meshIndex"></param>
+	virtual void UpdateMatrixPalette(uint32_t meshIndex) = 0;
+
+
+	/// <summary>
 	/// ファイルパスのGetter
 	/// </summary>
 	/// <returns></returns>
@@ -54,12 +76,6 @@ public:
 	uint32_t GetTextureHandle(uint32_t meshIndex)const { return textureHandle_[meshIndex]; }
 
 	/// <summary>
-	/// ルートノードのGetter
-	/// </summary>
-	/// <returns></returns>
-	virtual Node GetRootNode()const = 0;
-
-	/// <summary>
 	/// アニメーションフラグのGetter
 	/// </summary>
 	/// <returns></returns>
@@ -84,9 +100,30 @@ public:
 	/// <returns></returns>
 	UINT GetNumIndex(uint32_t meshIndex)const { return static_cast<UINT>(modelData_.meshData[meshIndex].indices.size()); }
 
+	/// <summary>
+	/// ルートノードのGetter
+	/// </summary>
+	/// <returns></returns>
+	Node GetRootNode()const { return rootNode_; }
+
+	/// <summary>
+	/// アニメーションのGetter
+	/// </summary>
+	/// <returns></returns>
+	Animation GetAnimation()const { return animation_; }
+
+	/// <summary>
+	/// スケルトンのGetter
+	/// </summary>
+	/// <returns></returns>
+	Skeleton GetSkeleton() const { return skeleton_; }
+
 
 	// Microsoft::WRL 省略
 	template<class T> using ComPtr = Microsoft::WRL::ComPtr<T>;
+
+	// アニメーションタイマー
+	float animationTimer_ = 0.0f;
 
 
 protected:
@@ -130,5 +167,15 @@ protected:
 
 	// データ
 	std::vector<std::pair<uint32_t*, VertexDataForGPU*>> data_;
+
+
+	// ルートノード
+	Node rootNode_{};
+
+	// アニメーション
+	Animation animation_{};
+
+	// スケルトン
+	Skeleton skeleton_{};
 };
 

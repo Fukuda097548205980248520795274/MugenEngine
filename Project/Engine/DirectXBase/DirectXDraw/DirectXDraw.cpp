@@ -213,7 +213,7 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 }
 
 /// <summary>
-/// モデルを描画する
+/// gltfファイルのモデルをそのまま描画する
 /// </summary>
 /// <param name="worldTransform"></param>
 /// <param name="uvTransform"></param>
@@ -268,7 +268,7 @@ void DirectXDraw::DrawGltfModel(const WorldTransform3D* worldTransform, const UV
 		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldInverseTranspose =
 			MakeInverseMatrix4x4(MakeTransposeMatrix4x4(worldTransform->worldMatrix_));
 		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldViewProjection =
-			nodeWorldMatrix[meshIndex] * worldViewProjectionMatrix;
+			worldViewProjectionMatrix;
 
 
 		// ビューポート、シザー矩形の設定
@@ -328,12 +328,27 @@ void DirectXDraw::DrawGltfAnimationModel(const WorldTransform3D* worldTransform,
 	// カメラの値を取得する
 	resourcesMainCamera_->data_->worldPosition = camera->GetWorldPosition();
 
+	// アニメーションを取得する
+	Animation animation = modelResource->GetAnimation();
+
+	// モデルデータを取得する
+	Node modelData = modelResource->GetRootNode();
+
 	// wvp行列
 	Matrix4x4 worldViewProjectionMatrix = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
 
 	Node rootNode = modelResource->GetRootNode();
 	std::vector<Matrix4x4> nodeWorldMatrix;
 	GetNodeWorldMatrix(nodeWorldMatrix, rootNode);
+
+
+	// アニメーションタイマーを進める
+	modelResource->ApplyAnimation();
+	NodeAnimation& rootNodeAnimation = animation.nodeAnimations[rootNode.name];
+	Vector3 translate = CalcuateValue(rootNodeAnimation.translate, modelResource->animationTimer_);
+	Quaternion rotate = CalcuateValue(rootNodeAnimation.rotate, modelResource->animationTimer_);
+	Vector3 scale = CalcuateValue(rootNodeAnimation.scale, modelResource->animationTimer_);
+	Matrix4x4 localMatrix = Make3DAffineMatrix4x4(scale, rotate, translate);
 
 
 	// メッシュの数を描画する
@@ -363,11 +378,11 @@ void DirectXDraw::DrawGltfAnimationModel(const WorldTransform3D* worldTransform,
 			座標変換データを入力する
 		----------------------------*/
 
-		primitiveTransformationResources_[drawPrimitiveCount_]->data_->world = worldTransform->worldMatrix_;
+		primitiveTransformationResources_[drawPrimitiveCount_]->data_->world = localMatrix * worldTransform->worldMatrix_;
 		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldInverseTranspose =
 			MakeInverseMatrix4x4(MakeTransposeMatrix4x4(worldTransform->worldMatrix_));
 		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldViewProjection =
-			nodeWorldMatrix[meshIndex] * worldViewProjectionMatrix;
+			localMatrix * worldViewProjectionMatrix;
 
 
 		// ビューポート、シザー矩形の設定
@@ -427,6 +442,11 @@ void DirectXDraw::DrawGltfSkinningModel(const WorldTransform3D* worldTransform, 
 	// カメラの値を取得する
 	resourcesMainCamera_->data_->worldPosition = camera->GetWorldPosition();
 
+	// アニメーションを取得する
+	Animation animation = modelResource->GetAnimation();
+
+	// モデルデータを取得する
+	Node modelData = modelResource->GetRootNode();
 
 	// wvp行列
 	Matrix4x4 worldViewProjectionMatrix = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
@@ -435,10 +455,18 @@ void DirectXDraw::DrawGltfSkinningModel(const WorldTransform3D* worldTransform, 
 	std::vector<Matrix4x4> nodeWorldMatrix;
 	GetNodeWorldMatrix(nodeWorldMatrix, rootNode);
 
+	// アニメーションタイマーを進める
+	modelResource->ApplyAnimation();
+	modelResource->ApplyBoneAnimation();
+	modelResource->UpdateBone();
+
 
 	// メッシュの数を描画する
 	for (uint32_t meshIndex = 0; meshIndex < modelResource->GetNumMesh(); ++meshIndex)
 	{
+		// MatrixPaletteを更新する
+		modelResource->UpdateMatrixPalette(meshIndex);
+
 		/*-----------------------------
 			マテリアルデータを入力する
 		-----------------------------*/
@@ -467,7 +495,7 @@ void DirectXDraw::DrawGltfSkinningModel(const WorldTransform3D* worldTransform, 
 		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldInverseTranspose =
 			MakeInverseMatrix4x4(MakeTransposeMatrix4x4(worldTransform->worldMatrix_));
 		primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldViewProjection =
-			nodeWorldMatrix[meshIndex] * worldViewProjectionMatrix;
+			worldViewProjectionMatrix;
 
 
 		// ビューポート、シザー矩形の設定
@@ -475,12 +503,12 @@ void DirectXDraw::DrawGltfSkinningModel(const WorldTransform3D* worldTransform, 
 		commandList_->RSSetScissorRects(1, &scissorRect_);
 
 		// PSOの設定
-		primitivePSO_->SetPSOState();
+		skinningModelPSO_->SetPSOState();
 
 		// モデルの頂点、インデックスの設定
 		modelResource->Register(meshIndex);
 
-		// モデルリソースの設定
+		// マテリアルリソースの設定
 		primitiveMaterialResources_[drawPrimitiveCount_]->Register(0);
 
 		// 座標変換リソースの設定

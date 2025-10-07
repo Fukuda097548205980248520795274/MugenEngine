@@ -26,25 +26,30 @@ public:
 	void Register(uint32_t meshIndex) override;
 
 	/// <summary>
-	/// ルートノードのGetter
+	/// ボーンのアニメーションを再生する
 	/// </summary>
-	/// <returns></returns>
-	Node GetRootNode()const override { return rootNode_; }
+	void ApplyBoneAnimation() override { ApplayBoneAnimation(skeleton_, animation_, animationTimer_); }
+
+	// <summary>
+	/// アニメーションを再生する
+	/// </summary>
+	void ApplyAnimation() override { animationTimer_ += 1.0f / 60.0f; animationTimer_ = std::fmod(animationTimer_, animation_.duration); }
+
+	/// <summary>
+	/// ボーンの更新処理
+	/// </summary>
+	void UpdateBone() override { UpdateSkeleton(skeleton_); }
+
+	/// <summary>
+	/// MatrixPaletteを更新する
+	/// </summary>
+	/// <param name="meshIndex"></param>
+	void UpdateMatrixPalette(uint32_t meshIndex) override { UpdateSkinCluster(modelData_.meshData[meshIndex].skinCluster, skeleton_); }
 
 
 public:
 
 	// DirectXヒープ
 	DirectXHeap* directXHeap_ = nullptr;
-
-
-	// ルートノード
-	Node rootNode_{};
-
-	// アニメーション
-	Animation animation_{};
-
-	// スケルトン
-	Skeleton skeleton_{};
 };
 

@@ -20,9 +20,24 @@ public:
 	void Register(uint32_t meshIndex) override;
 
 	/// <summary>
-	/// ルートノードのGetter
+	/// ボーンのアニメーションを再生する
 	/// </summary>
-	/// <returns></returns>
-	Node GetRootNode()const override { Node node; return node; }
+	void ApplyBoneAnimation() override{}
+
+	// <summary>
+	/// アニメーションを再生する
+	/// </summary>
+	void ApplyAnimation() override {}
+
+	/// <summary>
+	/// ボーンの更新処理
+	/// </summary>
+	void UpdateBone() override {}
+
+	/// <summary>
+	/// MatrixPaletteを更新する
+	/// </summary>
+	/// <param name="meshIndex"></param>
+	void UpdateMatrixPalette(uint32_t meshIndex) override {}
 };
 

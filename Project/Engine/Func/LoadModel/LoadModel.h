@@ -48,7 +48,7 @@ Node GetReadNode(const std::string& directoryPath, const std::string& filename);
 /// </summary>
 /// <param name="node"></param>
 /// <returns></returns>
-Node ReadNode(aiNode* node, const Matrix4x4& parentWorldMatrix);
+Node ReadNode(aiNode* node);
 
 /// <summary>
 /// ノードのワールド行列
