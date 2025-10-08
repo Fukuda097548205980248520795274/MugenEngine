@@ -213,7 +213,6 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshAnimationModel\MeshAnimationModel.cpp" />
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Material\Material.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -534,7 +533,6 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\DirectXBase\DirectXDebug\DirectXDebug.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDevice\DirectXDevice.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\BaseMesh.h" />
-    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshAnimationModel\MeshAnimationModel.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Material\Material.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshCube\MeshCube.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshModel\MeshModel.h" />

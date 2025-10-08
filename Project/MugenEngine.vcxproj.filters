@@ -370,9 +370,6 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\AnimationData">
       <UniqueIdentifier>{57acf184-fe02-434b-be87-045e938a64a5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshAnimationModel">
-      <UniqueIdentifier>{87fc6099-b156-4101-bf37-3c21e363f688}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\SkeletonData">
       <UniqueIdentifier>{e9b2f8a2-6266-4566-9905-ae82ae3c9687}</UniqueIdentifier>
     </Filter>
@@ -747,9 +744,6 @@
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\AnimationData\AnimationData.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\AnimationData</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshAnimationModel\MeshAnimationModel.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshAnimationModel</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\SkeletonData\SkeletonData.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\SkeletonData</Filter>
     </ClCompile>
@@ -1120,9 +1114,6 @@
     </ClInclude>
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\AnimationData\AnimationData.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\AnimationData</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshAnimationModel\MeshAnimationModel.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshAnimationModel</Filter>
     </ClInclude>
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\SkeletonData\SkeletonData.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ModelStore\ModelData\SkeletonData</Filter>
