@@ -122,6 +122,20 @@ public:
 	void SetBlendModePrimitive(BlendMode blendMode) { directXDraw_->SetBlendModePrimitive(blendMode); }
 
 	/// <summary>
+	/// 平面を描画する
+	/// </summary>
+	/// <param name="worldTransform"></param>
+	/// <param name="uvTransform"></param>
+	/// <param name="camera"></param>
+	/// <param name="textureHandle"></param>
+	/// <param name="material"></param>
+	void DrawPlane(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
+		const Material* material)
+	{
+		directXDraw_->DrawPlane(worldTransform, uvTransform, camera, textureHandle, material);
+	}
+
+	/// <summary>
 	/// UV球を描画する
 	/// </summary>
 	/// <param name="worldTransform"></param>

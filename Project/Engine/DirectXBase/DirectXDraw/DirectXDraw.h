@@ -14,6 +14,7 @@
 #include "OffscreenDraw/OffscreenDraw.h"
 
 #include "BaseMesh/MeshUVSphere/MeshUVSphere.h"
+#include "BaseMesh/MeshPlane/MeshPlane.h"
 #include "BaseMesh/MeshCube/MeshCube.h"
 #include "BaseMesh/MeshSprite/MeshSprite.h"
 #include "BaseMesh/MeshModel/MeshModel.h"
@@ -22,6 +23,7 @@
 #include "BaseOrganizePSO/OrganizePSOSprite/OrganizePSOSprite.h"
 #include "BaseOrganizePSO/OrganizePSOSkinningModel/OrganizePSOSkinningModel.h"
 
+#include "ResourcesData/PrimitiveResourcesData/PrimitiveResourcesPlane/PrimitiveResourcesPlane.h"
 #include "ResourcesData/PrimitiveResourcesData/PrimitiveResourcesCube/PrimitiveResourcesCube.h"
 #include "ResourcesData/PrimitiveResourcesData/PrimitiveResourcesSprite/PrimitiveResourcesSprite.h"
 #include "ResourcesData/PrimitiveResourcesData/PrimitiveResourcesUVSphere/PrimitiveResourcesUVSphere.h"
@@ -193,6 +195,17 @@ private:
 public:
 
 	/// <summary>
+	/// 平面を描画する
+	/// </summary>
+	/// <param name="worldTransform"></param>
+	/// <param name="uvTransform"></param>
+	/// <param name="camera"></param>
+	/// <param name="textureHandle"></param>
+	/// <param name="material"></param>
+	void DrawPlane(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
+		const Material* material);
+
+	/// <summary>
 	/// UV球を描画する
 	/// </summary>
 	/// <param name="worldTransform"></param>
@@ -298,6 +311,8 @@ private:
 
 
 
+	// 平面用のリソース
+	std::unique_ptr<PrimitiveResourcesPlane> resourcesPlane_ = nullptr;
 
 	// UV球用のリソース
 	std::unique_ptr<PrimitiveResourcesUVSphere> resourcesUVSphere_ = nullptr;

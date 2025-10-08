@@ -25,8 +25,8 @@ public:
 public:
 
 
-	// モデル
-	std::unique_ptr<MeshModel> model0_ = nullptr;
+	// 平面
+	std::unique_ptr<MeshPlane> plane_ = nullptr;
 	
 };
 

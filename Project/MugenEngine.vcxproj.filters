@@ -250,9 +250,6 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel">
       <UniqueIdentifier>{17fcaea7-f009-46b5-ac48-03041b69fa6c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData">
-      <UniqueIdentifier>{3ee9378c-620d-4919-b4bd-0a259ba0c617}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MaterialResourcesDataCBV">
       <UniqueIdentifier>{8884de02-bb17-4e15-8d21-597d0845bdea}</UniqueIdentifier>
     </Filter>
@@ -405,6 +402,12 @@
     </Filter>
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelScreen">
       <UniqueIdentifier>{cf09232b-7179-42f9-9eb9-8a48cb165dc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesPlane">
+      <UniqueIdentifier>{3dc1a697-506c-446b-8077-cedf6c45d0a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshPlane">
+      <UniqueIdentifier>{fc5764a0-2452-4062-a97e-169df50c8d17}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -624,9 +627,6 @@
     <ClCompile Include="Engine\Func\LoadModel\LoadModel.cpp">
       <Filter>Engine\Include\Func\LoadModel</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData\IndexVertexResourcesData.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshModel\MeshModel.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel</Filter>
     </ClCompile>
@@ -776,6 +776,12 @@
     </ClCompile>
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelScreen\SinglePSOSkinningModelScreen.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesPlane\PrimitiveResourcesPlane.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesPlane</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshPlane\MeshPlane.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshPlane</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -992,9 +998,6 @@
     <ClInclude Include="Engine\Func\LoadModel\LoadModel.h">
       <Filter>Engine\Include\Func\LoadModel</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData\IndexVertexResourcesData.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshModel\MeshModel.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel</Filter>
     </ClInclude>
@@ -1147,6 +1150,12 @@
     </ClInclude>
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelScreen\SinglePSOSkinningModelScreen.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesPlane\PrimitiveResourcesPlane.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesPlane</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshPlane\MeshPlane.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshPlane</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
