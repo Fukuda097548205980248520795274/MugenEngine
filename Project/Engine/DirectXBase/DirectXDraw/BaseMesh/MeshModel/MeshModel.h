@@ -30,6 +30,12 @@ public:
 	void Draw();
 
 	/// <summary>
+	/// 親ワールドトランスフォームのSetter
+	/// </summary>
+	/// <param name="worldTransform"></param>
+	void SetParent(const WorldTransform3D* worldTransform) { worldTransform_->SetParent(worldTransform); }
+
+	/// <summary>
 	/// モデルハンドルのSetter
 	/// </summary>
 	/// <param name="modelHandle"></param>

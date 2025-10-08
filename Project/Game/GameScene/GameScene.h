@@ -1,6 +1,8 @@
 #pragma once
 #include "MugenEngine.h"
 
+#include "BaseCharacter/Player/Player.h"
+
 class GameScene : public Scene
 {
 public:
@@ -24,9 +26,8 @@ public:
 
 public:
 
-
-	// 平面
-	std::unique_ptr<MeshPlane> plane_ = nullptr;
 	
+	// プレイヤー
+	std::unique_ptr<Player> player_ = nullptr;
 };
 

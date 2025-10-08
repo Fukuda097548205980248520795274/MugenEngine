@@ -409,6 +409,33 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshPlane">
       <UniqueIdentifier>{fc5764a0-2452-4062-a97e-169df50c8d17}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\GameScene\BaseCharacter">
+      <UniqueIdentifier>{ea5e56f7-9349-42aa-9cc1-aaaaf4c2cbe3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\BaseCharacter\Player">
+      <UniqueIdentifier>{d864256c-4f65-4b58-bab0-1c0296e49552}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem">
+      <UniqueIdentifier>{2b013102-eb90-477d-a4d2-866049c3ce1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\InputHandler">
+      <UniqueIdentifier>{5ee09737-aa53-4df2-a57e-cb8ff7ca1b3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\MovementLogic">
+      <UniqueIdentifier>{379aa51a-27a7-4815-b2c5-5cf8c5f5ef40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\MovementLogic\LogicMove">
+      <UniqueIdentifier>{a6dc33e2-b575-4f22-a7b3-925fbe780e59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\InputHandler\InputMoveKey">
+      <UniqueIdentifier>{02a21eb6-a00b-4421-85a2-42d613bea0bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\InputHandler\InputMoveGamepad">
+      <UniqueIdentifier>{140d5141-56f4-4569-be1d-5e565c10d77d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\MovementLogic\LogicMoveSpeed">
+      <UniqueIdentifier>{8bfdd96f-83a9-4762-9625-293a412b7d5f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -783,6 +810,24 @@
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshPlane\MeshPlane.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshPlane</Filter>
     </ClCompile>
+    <ClCompile Include="Game\GameScene\BaseCharacter\BaseCharacter.cpp">
+      <Filter>Game\GameScene\BaseCharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameScene\GameSystem\InputHandler\InputMoveKey\InputMoveKey.cpp">
+      <Filter>Game\GameScene\GameSystem\InputHandler\InputMoveKey</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameScene\GameSystem\MovementLogic\LogicMove\LogicMove.cpp">
+      <Filter>Game\GameScene\GameSystem\MovementLogic\LogicMove</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameScene\GameSystem\InputHandler\InputMoveGamepad\InputMoveGamepad.cpp">
+      <Filter>Game\GameScene\GameSystem\InputHandler\InputMoveGamepad</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameScene\GameSystem\MovementLogic\LogicMoveSpeed\LogicMoveSpeed.cpp">
+      <Filter>Game\GameScene\GameSystem\MovementLogic\LogicMoveSpeed</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameScene\BaseCharacter\Player\Player.cpp">
+      <Filter>Game\GameScene\BaseCharacter\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MugenEngine.h">
@@ -1156,6 +1201,24 @@
     </ClInclude>
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshPlane\MeshPlane.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshPlane</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameScene\BaseCharacter\BaseCharacter.h">
+      <Filter>Game\GameScene\BaseCharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameScene\GameSystem\InputHandler\InputMoveKey\InputMoveKey.h">
+      <Filter>Game\GameScene\GameSystem\InputHandler\InputMoveKey</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameScene\GameSystem\MovementLogic\LogicMove\LogicMove.h">
+      <Filter>Game\GameScene\GameSystem\MovementLogic\LogicMove</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameScene\GameSystem\InputHandler\InputMoveGamepad\InputMoveGamepad.h">
+      <Filter>Game\GameScene\GameSystem\InputHandler\InputMoveGamepad</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameScene\GameSystem\MovementLogic\LogicMoveSpeed\LogicMoveSpeed.h">
+      <Filter>Game\GameScene\GameSystem\MovementLogic\LogicMoveSpeed</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameScene\BaseCharacter\Player\Player.h">
+      <Filter>Game\GameScene\BaseCharacter\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

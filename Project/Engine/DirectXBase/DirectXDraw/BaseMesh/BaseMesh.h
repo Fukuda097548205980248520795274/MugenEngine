@@ -29,6 +29,12 @@ public:
 	/// </summary>
 	virtual void Draw() = 0;
 
+	/// <summary>
+	/// 親ワールドトランスフォームのSetter
+	/// </summary>
+	/// <param name="worldTransform"></param>
+	void SetParent(const WorldTransform3D* worldTransform) { worldTransform_->SetParent(worldTransform); }
+
 
 	// ワールドトランスフォーム
 	std::unique_ptr<WorldTransform3D> worldTransform_ = nullptr;

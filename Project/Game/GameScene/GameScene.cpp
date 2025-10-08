@@ -10,14 +10,9 @@ void GameScene::Initialize(const MugenEngine* engine)
 	Scene::Initialize(engine);
 
 
-	// 平面の初期化
-	plane_ = std::make_unique<MeshPlane>();
-	plane_->Initialize(engine_, camera3d_.get(), engine_->LoadTexture("./Resources/Textures/uvChecker.png"));
-	plane_->material_->enableHalfLambert_ = true;
-	plane_->material_->enableSpecular_ = true;
-	plane_->material_->enableBlinnPhong_ = true;
-	plane_->worldTransform_->scale_ = Vector3(256.0f, 1.0f, 256.0f);
-
+	// プレイヤーの生成と初期化
+	player_ = std::make_unique<Player>();
+	player_->Initialize(engine_, camera3d_.get(), Vector3(0.0f, 0.0f, 0.0f));
 }
 
 /// <summary>
@@ -28,8 +23,8 @@ void GameScene::Update()
 	// 基底クラスの更新処理
 	Scene::Update();
 
-	// 平面の更新処理
-	plane_->Update();
+	// プレイヤーの更新処理
+	player_->Update();
 }
 
 /// <summary>
@@ -37,8 +32,9 @@ void GameScene::Update()
 /// </summary>
 void GameScene::Draw()
 {
-	// 平面の描画処理
-	plane_->Draw();
+
+	// プレイヤーの描画処理
+	player_->Draw();
 
 	// 基底クラスの描画処理
 	Scene::Draw();
