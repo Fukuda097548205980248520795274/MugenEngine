@@ -59,6 +59,10 @@ uint32_t ModelStore::LoadModel(const std::string& directoryPath, const std::stri
 	// 同一のファイルパスがあったら、そのハンドルを返す
 	for (std::unique_ptr<BaseModelResources>& resource : modelResources_)
 	{
+		// スキニングのモデルは同じパスでもハンドルを返さない
+		if (resource->IsSkinning())
+			continue;
+
 		if (strcmp(filePath.c_str(), resource->GetFilePath().c_str()) == 0)
 			return resource->GetModelHandle();
 	}

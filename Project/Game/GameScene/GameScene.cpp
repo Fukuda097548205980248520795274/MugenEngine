@@ -32,7 +32,7 @@ void GameScene::Initialize(const MugenEngine* engine)
 	model2_->material_->enableSpecular_ = true;
 	model2_->material_->enableBlinnPhong_ = true;
 
-	model2_->SetAnimationSpeed(0.0f);
+	model2_->SetAnimationSpeed(2.0f);
 }
 
 /// <summary>
