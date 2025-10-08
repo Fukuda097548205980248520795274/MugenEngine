@@ -1,11 +1,6 @@
 #pragma once
 #include "MugenEngine.h"
 
-#include "GameScene/GameSystem/InputHandler/InputMoveGamepad/InputMoveGamepad.h"
-#include "GameScene/GameSystem/InputHandler/InputMoveKey/InputMoveKey.h"
-#include "GameScene/GameSystem/MovementLogic/LogicMove/LogicMove.h"
-#include "GameScene/GameSystem/MovementLogic/LogicMoveSpeed/LogicMoveSpeed.h"
-
 class BaseCharacter
 {
 public:

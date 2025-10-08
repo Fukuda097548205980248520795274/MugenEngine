@@ -421,20 +421,38 @@
     <Filter Include="Game\GameScene\GameSystem\InputHandler">
       <UniqueIdentifier>{5ee09737-aa53-4df2-a57e-cb8ff7ca1b3e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\GameScene\GameSystem\MovementLogic">
-      <UniqueIdentifier>{379aa51a-27a7-4815-b2c5-5cf8c5f5ef40}</UniqueIdentifier>
+    <Filter Include="Game\GameScene\GameSystem\InputHandler\Gamepad">
+      <UniqueIdentifier>{0ec8c679-3be9-4692-a6e3-b729c5ddab84}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\GameScene\GameSystem\MovementLogic\LogicMove">
-      <UniqueIdentifier>{a6dc33e2-b575-4f22-a7b3-925fbe780e59}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\GameScene\GameSystem\InputHandler\InputMoveKey">
-      <UniqueIdentifier>{02a21eb6-a00b-4421-85a2-42d613bea0bc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\GameScene\GameSystem\InputHandler\InputMoveGamepad">
+    <Filter Include="Game\GameScene\GameSystem\InputHandler\Gamepad\InputMoveGamepad">
       <UniqueIdentifier>{140d5141-56f4-4569-be1d-5e565c10d77d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\GameScene\GameSystem\MovementLogic\LogicMoveSpeed">
+    <Filter Include="Game\GameScene\GameSystem\InputHandler\Keyboard">
+      <UniqueIdentifier>{6f851041-a338-45e2-94a6-ecf2a900ba8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\InputHandler\Keyboard\InputMoveKey">
+      <UniqueIdentifier>{02a21eb6-a00b-4421-85a2-42d613bea0bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\InputHandler\Gamepad\InputDashGamepad">
+      <UniqueIdentifier>{53d49591-1f99-4690-9f5f-62797646e2a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\InputHandler\Keyboard\InputDashKey">
+      <UniqueIdentifier>{b6c0a96c-8055-42f0-9683-d39e8777b90b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\SystemLogic">
+      <UniqueIdentifier>{379aa51a-27a7-4815-b2c5-5cf8c5f5ef40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\SystemLogic\LogicMove">
+      <UniqueIdentifier>{a6dc33e2-b575-4f22-a7b3-925fbe780e59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\SystemLogic\LogicMoveSpeed">
       <UniqueIdentifier>{8bfdd96f-83a9-4762-9625-293a412b7d5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\SystemController">
+      <UniqueIdentifier>{164353df-9b65-45c6-b8b3-437a49934aab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\SystemController\MoveController">
+      <UniqueIdentifier>{a764a332-ac9c-4221-a91a-c54f9770f79a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -813,20 +831,29 @@
     <ClCompile Include="Game\GameScene\BaseCharacter\BaseCharacter.cpp">
       <Filter>Game\GameScene\BaseCharacter</Filter>
     </ClCompile>
-    <ClCompile Include="Game\GameScene\GameSystem\InputHandler\InputMoveKey\InputMoveKey.cpp">
-      <Filter>Game\GameScene\GameSystem\InputHandler\InputMoveKey</Filter>
+    <ClCompile Include="Game\GameScene\GameSystem\InputHandler\Keyboard\InputMoveKey\InputMoveKey.cpp">
+      <Filter>Game\GameScene\GameSystem\InputHandler\Keyboard\InputMoveKey</Filter>
     </ClCompile>
-    <ClCompile Include="Game\GameScene\GameSystem\MovementLogic\LogicMove\LogicMove.cpp">
-      <Filter>Game\GameScene\GameSystem\MovementLogic\LogicMove</Filter>
+    <ClCompile Include="Game\GameScene\GameSystem\SystemLogic\LogicMove\LogicMove.cpp">
+      <Filter>Game\GameScene\GameSystem\SystemLogic\LogicMove</Filter>
     </ClCompile>
-    <ClCompile Include="Game\GameScene\GameSystem\InputHandler\InputMoveGamepad\InputMoveGamepad.cpp">
-      <Filter>Game\GameScene\GameSystem\InputHandler\InputMoveGamepad</Filter>
+    <ClCompile Include="Game\GameScene\GameSystem\InputHandler\Gamepad\InputMoveGamepad\InputMoveGamepad.cpp">
+      <Filter>Game\GameScene\GameSystem\InputHandler\Gamepad\InputMoveGamepad</Filter>
     </ClCompile>
-    <ClCompile Include="Game\GameScene\GameSystem\MovementLogic\LogicMoveSpeed\LogicMoveSpeed.cpp">
-      <Filter>Game\GameScene\GameSystem\MovementLogic\LogicMoveSpeed</Filter>
+    <ClCompile Include="Game\GameScene\GameSystem\SystemLogic\LogicMoveSpeed\LogicMoveSpeed.cpp">
+      <Filter>Game\GameScene\GameSystem\SystemLogic\LogicMoveSpeed</Filter>
     </ClCompile>
     <ClCompile Include="Game\GameScene\BaseCharacter\Player\Player.cpp">
       <Filter>Game\GameScene\BaseCharacter\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameScene\GameSystem\InputHandler\Gamepad\InputDashGamepad\InputDashGamepad.cpp">
+      <Filter>Game\GameScene\GameSystem\InputHandler\Gamepad\InputDashGamepad</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameScene\GameSystem\InputHandler\Keyboard\InputDashKey\InputDashKey.cpp">
+      <Filter>Game\GameScene\GameSystem\InputHandler\Keyboard\InputDashKey</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameScene\GameSystem\SystemController\MoveController\MoveController.cpp">
+      <Filter>Game\GameScene\GameSystem\SystemController\MoveController</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1205,20 +1232,29 @@
     <ClInclude Include="Game\GameScene\BaseCharacter\BaseCharacter.h">
       <Filter>Game\GameScene\BaseCharacter</Filter>
     </ClInclude>
-    <ClInclude Include="Game\GameScene\GameSystem\InputHandler\InputMoveKey\InputMoveKey.h">
-      <Filter>Game\GameScene\GameSystem\InputHandler\InputMoveKey</Filter>
+    <ClInclude Include="Game\GameScene\GameSystem\InputHandler\Keyboard\InputMoveKey\InputMoveKey.h">
+      <Filter>Game\GameScene\GameSystem\InputHandler\Keyboard\InputMoveKey</Filter>
     </ClInclude>
-    <ClInclude Include="Game\GameScene\GameSystem\MovementLogic\LogicMove\LogicMove.h">
-      <Filter>Game\GameScene\GameSystem\MovementLogic\LogicMove</Filter>
+    <ClInclude Include="Game\GameScene\GameSystem\SystemLogic\LogicMove\LogicMove.h">
+      <Filter>Game\GameScene\GameSystem\SystemLogic\LogicMove</Filter>
     </ClInclude>
-    <ClInclude Include="Game\GameScene\GameSystem\InputHandler\InputMoveGamepad\InputMoveGamepad.h">
-      <Filter>Game\GameScene\GameSystem\InputHandler\InputMoveGamepad</Filter>
+    <ClInclude Include="Game\GameScene\GameSystem\InputHandler\Gamepad\InputMoveGamepad\InputMoveGamepad.h">
+      <Filter>Game\GameScene\GameSystem\InputHandler\Gamepad\InputMoveGamepad</Filter>
     </ClInclude>
-    <ClInclude Include="Game\GameScene\GameSystem\MovementLogic\LogicMoveSpeed\LogicMoveSpeed.h">
-      <Filter>Game\GameScene\GameSystem\MovementLogic\LogicMoveSpeed</Filter>
+    <ClInclude Include="Game\GameScene\GameSystem\SystemLogic\LogicMoveSpeed\LogicMoveSpeed.h">
+      <Filter>Game\GameScene\GameSystem\SystemLogic\LogicMoveSpeed</Filter>
     </ClInclude>
     <ClInclude Include="Game\GameScene\BaseCharacter\Player\Player.h">
       <Filter>Game\GameScene\BaseCharacter\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameScene\GameSystem\InputHandler\Gamepad\InputDashGamepad\InputDashGamepad.h">
+      <Filter>Game\GameScene\GameSystem\InputHandler\Gamepad\InputDashGamepad</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameScene\GameSystem\InputHandler\Keyboard\InputDashKey\InputDashKey.h">
+      <Filter>Game\GameScene\GameSystem\InputHandler\Keyboard\InputDashKey</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameScene\GameSystem\SystemController\MoveController\MoveController.h">
+      <Filter>Game\GameScene\GameSystem\SystemController\MoveController</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

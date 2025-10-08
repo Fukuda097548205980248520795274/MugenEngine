@@ -7,6 +7,7 @@
 void LogicMoveSpeed::Initialize(float speed)
 {
 	speed_ = speed;
+	maxSpeed_ = speed;
 }
 
 /// <summary>
@@ -17,6 +18,9 @@ Vector3 LogicMoveSpeed::GetSpeedVector(const Vector3& moveVector)
 {
 	// 速度ベクトル
 	Vector3 speedVector = Vector3(0.0f, 0.0f, 0.0f);
+
+	// 補間でなだらかに最大速度になるようにする
+	speed_ = Lerp(speed_, maxSpeed_, 0.1f);
 
 	// 移動速度を乗算する
 	speedVector = speed_ * moveVector;
