@@ -51,7 +51,7 @@ private:
 	std::unique_ptr<InputDashGamepad> inputDashGamepad_ = nullptr;
 
 	// 走り速度
-	float dashSpeed_ = 0.2f;
+	float dashSpeed_ = 0.125f;
 
 
 
