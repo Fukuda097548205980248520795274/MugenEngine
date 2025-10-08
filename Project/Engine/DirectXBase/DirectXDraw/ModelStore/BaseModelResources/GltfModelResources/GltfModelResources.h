@@ -28,12 +28,7 @@ public:
 	/// <summary>
 	/// ボーンのアニメーションを再生する
 	/// </summary>
-	void ApplyBoneAnimation() override { ApplayBoneAnimation(skeleton_, animation_, animationTimer_); }
-
-	// <summary>
-	/// アニメーションを再生する
-	/// </summary>
-	void ApplyAnimation() override { animationTimer_ += 1.0f / 60.0f; animationTimer_ = std::fmod(animationTimer_, animation_.duration); }
+	void ApplyBoneAnimation(float animationTiemer) override { ApplayBoneAnimation(skeleton_, animation_, animationTiemer); }
 
 	/// <summary>
 	/// ボーンの更新処理

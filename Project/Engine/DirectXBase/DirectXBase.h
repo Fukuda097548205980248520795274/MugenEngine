@@ -71,6 +71,20 @@ public:
 	uint32_t LoadModel(const std::string& directory, const std::string& fileName) { return directXDraw_->LoadModel(directory, fileName); }
 
 	/// <summary>
+	/// アニメーションフラグのGetter
+	/// </summary>
+	/// <param name="modelHandle"></param>
+	/// <returns></returns>
+	bool IsAnimation(uint32_t modelHandle)const { return directXDraw_->IsAnimation(modelHandle); }
+
+	/// <summary>
+	/// アニメーション時間のGetter
+	/// </summary>
+	/// <param name="modelHandle"></param>
+	/// <returns></returns>
+	float GetAnimationDuration(uint32_t modelHandle)const { return directXDraw_->GetAnimationDuration(modelHandle); }
+
+	/// <summary>
 	/// モデルを描画する
 	/// </summary>
 	/// <param name="worldTransform"></param>
@@ -81,9 +95,9 @@ public:
 	/// <param name="enableLighting"></param>
 	/// <param name="enableHalfLanbert"></param>
 	void DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t modelHandle,
-		const Material* material)
+		const Material* material, float animationTimer)
 	{
-		directXDraw_->DrawModel(worldTransform, uvTransform, camera, modelHandle, material);
+		directXDraw_->DrawModel(worldTransform, uvTransform, camera, modelHandle, material, animationTimer);
 	}
 
 	/// <summary>

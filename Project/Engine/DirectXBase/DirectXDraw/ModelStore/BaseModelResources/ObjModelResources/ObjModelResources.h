@@ -22,12 +22,7 @@ public:
 	/// <summary>
 	/// ボーンのアニメーションを再生する
 	/// </summary>
-	void ApplyBoneAnimation() override{}
-
-	// <summary>
-	/// アニメーションを再生する
-	/// </summary>
-	void ApplyAnimation() override {}
+	void ApplyBoneAnimation(float animationTiemer) override {}
 
 	/// <summary>
 	/// ボーンの更新処理

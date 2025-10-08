@@ -43,7 +43,7 @@ struct NodeAnimation
 struct Animation
 {
 	// アニメーション全体の尺
-	float duration;
+	float duration = 0.0f;
 
 	// ノードアニメーションの集合体
 	std::map<std::string, NodeAnimation> nodeAnimations;

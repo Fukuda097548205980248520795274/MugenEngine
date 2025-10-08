@@ -25,12 +25,7 @@ public:
 	/// <summary>
 	/// ボーンのアニメーションを再生する
 	/// </summary>
-	virtual void ApplyBoneAnimation() = 0;
-
-	/// <summary>
-	/// アニメーションを再生する
-	/// </summary>
-	virtual void ApplyAnimation() = 0;
+	virtual void ApplyBoneAnimation(float animationTiemer) = 0;
 
 	/// <summary>
 	/// ボーンの更新処理
@@ -121,9 +116,6 @@ public:
 
 	// Microsoft::WRL 省略
 	template<class T> using ComPtr = Microsoft::WRL::ComPtr<T>;
-
-	// アニメーションタイマー
-	float animationTimer_ = 0.0f;
 
 
 protected:

@@ -28,6 +28,13 @@ void MeshModel::Initialize(const MugenEngine* engine, const Camera3D* camera3d, 
 	// マテリアルの生成と初期化
 	material_ = std::make_unique<Material>();
 	material_->Initialize();
+
+	// アニメーションが有効かどうか
+	isAnimation_ = engine_->IsAnimation(modelHandle_);
+
+	// アニメーション時間を取得する
+	if (isAnimation_)
+		duration_ = engine_->GetAnimationDuration(modelHandle_);
 }
 
 /// <summary>
@@ -35,6 +42,10 @@ void MeshModel::Initialize(const MugenEngine* engine, const Camera3D* camera3d, 
 /// </summary>
 void MeshModel::Update()
 {
+	// アニメーションの更新処理
+	if (isAnimation_)
+		UpdateAnimation();
+
 	// マテリアルの更新処理
 	material_->Update();
 
@@ -51,5 +62,17 @@ void MeshModel::Update()
 void MeshModel::Draw()
 {
 	// モデルを描画する
-	engine_->DrawModel(worldTransform_.get(), uvTransform_.get(), camera3d_, modelHandle_, material_.get());
+	engine_->DrawModel(worldTransform_.get(), uvTransform_.get(), camera3d_, modelHandle_, material_.get(), animationTimer_);
+}
+
+/// <summary>
+/// アニメーションの更新処理
+/// </summary>
+void MeshModel::UpdateAnimation()
+{
+	// アニメーションタイマーを進める
+	animationTimer_ += engine_->GetDeltaTime() * animationSpeed_;
+
+	// 時間を越えらた周回する
+	animationTimer_ = std::fmod(animationTimer_, duration_);
 }

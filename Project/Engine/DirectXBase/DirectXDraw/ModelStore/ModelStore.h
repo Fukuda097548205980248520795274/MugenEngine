@@ -49,6 +49,20 @@ public:
 	/// <returns></returns>
 	BaseModelResources* GetModelInfo(uint32_t modelHandle)const { return modelResources_[modelHandle].get(); }
 
+	/// <summary>
+	/// アニメーションフラグのGetter
+	/// </summary>
+	/// <param name="modelHandle"></param>
+	/// <returns></returns>
+	bool IsAnimation(uint32_t modelHandle)const { return modelResources_[modelHandle]->IsAnimation(); }
+
+	/// <summary>
+	/// アニメーション時間のGetter
+	/// </summary>
+	/// <param name="modelHandle"></param>
+	/// <returns></returns>
+	float GetAnimationDuration(uint32_t modelHandle)const { return modelResources_[modelHandle]->GetAnimation().duration; }
+
 
 private:
 

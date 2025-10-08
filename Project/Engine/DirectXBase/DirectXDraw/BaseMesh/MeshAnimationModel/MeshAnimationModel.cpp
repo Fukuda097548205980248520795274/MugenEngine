@@ -50,6 +50,5 @@ void MeshAnimationModel::Update()
 /// </summary>
 void MeshAnimationModel::Draw()
 {
-	// モデルを描画する
-	engine_->DrawModel(worldTransform_.get(), uvTransform_.get(), camera3d_, modelHandle_, material_.get());
+	
 }

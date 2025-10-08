@@ -255,6 +255,20 @@ public:
 	/// <returns></returns>
 	uint32_t LoadModel(const std::string& directory, const std::string& fileName)const { return directXBase_->LoadModel(directory, fileName); }
 
+	/// <summary>
+	/// アニメーションフラグのGetter
+	/// </summary>
+	/// <param name="modelHandle"></param>
+	/// <returns></returns>
+	bool IsAnimation(uint32_t modelHandle)const { return directXBase_->IsAnimation(modelHandle); }
+
+	/// <summary>
+	/// アニメーション時間のGetter
+	/// </summary>
+	/// <param name="modelHandle"></param>
+	/// <returns></returns>
+	float GetAnimationDuration(uint32_t modelHandle)const { return directXBase_->GetAnimationDuration(modelHandle); }
+
 #pragma endregion
 
 #pragma region オーディオ
@@ -635,9 +649,9 @@ public:
 	/// <param name="enableLighting"></param>
 	/// <param name="enableHalfLanbert"></param>
 	void DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t modelHandle,
-		const Material* material) const
+		const Material* material, float animationTimer) const
 	{
-		directXBase_->DrawModel(worldTransform, uvTransform, camera, modelHandle, material);
+		directXBase_->DrawModel(worldTransform, uvTransform, camera, modelHandle, material, animationTimer);
 	}
 
 	/// <summary>

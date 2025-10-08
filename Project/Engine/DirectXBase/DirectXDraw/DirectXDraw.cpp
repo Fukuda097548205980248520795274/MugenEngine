@@ -173,7 +173,7 @@ void DirectXDraw::OffscreenClear(D3D12_CPU_DESCRIPTOR_HANDLE dsvHandle)
 /// <param name="modelHandle"></param>
 /// <param name="material"></param>
 void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t modelHandle,
-	const Material* material)
+	const Material* material, float animationTimer)
 {
 	// モデル情報を取得する
 	BaseModelResources* modelResource = modelStore_->GetModelInfo(modelHandle);
@@ -196,12 +196,12 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 		// スキニングのアニメーションを行う
 		if (modelData.isSkinning && modelData.isAnimation)
 		{
-			DrawGltfSkinningModel(worldTransform, uvTransform, camera, modelResource, material);
+			DrawGltfSkinningModel(worldTransform, uvTransform, camera, modelResource, material, animationTimer);
 		}
 		else if(modelData.isAnimation)
 		{
 			// アニメーションのみを行う
-			DrawGltfAnimationModel(worldTransform, uvTransform, camera, modelResource, material);
+			DrawGltfAnimationModel(worldTransform, uvTransform, camera, modelResource, material, animationTimer);
 		}
 		else
 		{
@@ -327,7 +327,7 @@ void DirectXDraw::DrawGltfModel(const WorldTransform3D* worldTransform, const UV
 /// <param name="modelResource"></param>
 /// <param name="material"></param>
 void DirectXDraw::DrawGltfAnimationModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
-	const Material* material)
+	const Material* material, float animationTimer)
 {
 	// カメラの値を取得する
 	resourcesMainCamera_->data_->worldPosition = camera->GetWorldPosition();
@@ -347,11 +347,10 @@ void DirectXDraw::DrawGltfAnimationModel(const WorldTransform3D* worldTransform,
 
 
 	// アニメーションタイマーを進める
-	modelResource->ApplyAnimation();
 	NodeAnimation& rootNodeAnimation = animation.nodeAnimations[rootNode.name];
-	Vector3 translate = CalcuateValue(rootNodeAnimation.translate, modelResource->animationTimer_);
-	Quaternion rotate = CalcuateValue(rootNodeAnimation.rotate, modelResource->animationTimer_);
-	Vector3 scale = CalcuateValue(rootNodeAnimation.scale, modelResource->animationTimer_);
+	Vector3 translate = CalcuateValue(rootNodeAnimation.translate, animationTimer);
+	Quaternion rotate = CalcuateValue(rootNodeAnimation.rotate, animationTimer);
+	Vector3 scale = CalcuateValue(rootNodeAnimation.scale, animationTimer);
 	Matrix4x4 localMatrix = Make3DAffineMatrix4x4(scale, rotate, translate);
 
 
@@ -447,7 +446,7 @@ void DirectXDraw::DrawGltfAnimationModel(const WorldTransform3D* worldTransform,
 /// <param name="modelResource"></param>
 /// <param name="material"></param>
 void DirectXDraw::DrawGltfSkinningModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
-	const Material* material)
+	const Material* material , float animationTimer)
 {
 	// カメラの値を取得する
 	resourcesMainCamera_->data_->worldPosition = camera->GetWorldPosition();
@@ -462,8 +461,7 @@ void DirectXDraw::DrawGltfSkinningModel(const WorldTransform3D* worldTransform, 
 	Matrix4x4 worldViewProjectionMatrix = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
 
 	// アニメーションタイマーを進める
-	modelResource->ApplyAnimation();
-	modelResource->ApplyBoneAnimation();
+	modelResource->ApplyBoneAnimation(animationTimer);
 	modelResource->UpdateBone();
 
 

@@ -79,6 +79,20 @@ public:
 	uint32_t LoadModel(const std::string& directory, const std::string& fileName) { return modelStore_->LoadModel(directory, fileName); }
 
 	/// <summary>
+	/// アニメーションフラグのGetter
+	/// </summary>
+	/// <param name="modelHandle"></param>
+	/// <returns></returns>
+	bool IsAnimation(uint32_t modelHandle)const { return modelStore_->IsAnimation(modelHandle); }
+
+	/// <summary>
+	/// アニメーション時間のGetter
+	/// </summary>
+	/// <param name="modelHandle"></param>
+	/// <returns></returns>
+	float GetAnimationDuration(uint32_t modelHandle)const { return modelStore_->GetAnimationDuration(modelHandle); }
+
+	/// <summary>
 	/// テクスチャの横幅を取得する
 	/// </summary>
 	/// <param name="textureHandle"></param>
@@ -126,7 +140,7 @@ public:
 	/// <param name="modelHandle"></param>
 	/// <param name="material"></param>
 	void DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t modelHandle,
-		const Material* material);
+		const Material* material, float animationTimer);
 
 private:
 
@@ -152,7 +166,7 @@ private:
 	/// <param name="modelResource"></param>
 	/// <param name="material"></param>
 	void DrawGltfAnimationModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
-		const Material* material);
+		const Material* material, float animationTimer);
 
 	/// <summary>
 	/// Gltfファイルのスキニングを行うモデルを描画する
@@ -163,7 +177,7 @@ private:
 	/// <param name="modelResource"></param>
 	/// <param name="material"></param>
 	void DrawGltfSkinningModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
-		const Material* material);
+		const Material* material, float animationTimer);
 
 	/// <summary>
 	/// Objファイルのモデルを描画する

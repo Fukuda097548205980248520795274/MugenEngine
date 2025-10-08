@@ -19,18 +19,20 @@ void GameScene::Initialize(const MugenEngine* engine)
 	model0_->material_->enableBlinnPhong_ = true;
 
 	model1_ = std::make_unique<MeshModel>();
-	model1_->Initialize(engine_, camera3d_.get(), engine_->LoadModel("./Resources/Models/AnimationCube", "AnimationCube.gltf"));
+	model1_->Initialize(engine_, camera3d_.get(), engine_->LoadModel("./Resources/Models/Character", "Character.gltf"));
 	model1_->worldTransform_->translation_.x = 0.0f;
 	model1_->material_->enableHalfLambert_ = true;
 	model1_->material_->enableSpecular_ = true;
 	model1_->material_->enableBlinnPhong_ = true;
 
 	model2_ = std::make_unique<MeshModel>();
-	model2_->Initialize(engine_, camera3d_.get(), engine_->LoadModel("./Resources/Models/node", "node.gltf"));
+	model2_->Initialize(engine_, camera3d_.get(), engine_->LoadModel("./Resources/Models/Character", "Character.gltf"));
 	model2_->worldTransform_->translation_.x = 5.0f;
 	model2_->material_->enableHalfLambert_ = true;
 	model2_->material_->enableSpecular_ = true;
 	model2_->material_->enableBlinnPhong_ = true;
+
+	model2_->SetAnimationSpeed(0.0f);
 }
 
 /// <summary>

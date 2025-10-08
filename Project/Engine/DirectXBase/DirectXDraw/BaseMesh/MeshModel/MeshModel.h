@@ -35,6 +35,12 @@ public:
 	/// <param name="modelHandle"></param>
 	void SetModelHandle(uint32_t modelHandle) { modelHandle_ = modelHandle; }
 
+	/// <summary>
+	/// アニメーション速度のSetter
+	/// </summary>
+	/// <param name="animationSpeed"></param>
+	void SetAnimationSpeed(float animationSpeed) { animationSpeed_ = animationSpeed; }
+
 
 	// ワールドトランスフォーム
 	std::unique_ptr<WorldTransform3D> worldTransform_ = nullptr;
@@ -56,5 +62,24 @@ private:
 
 	// モデルハンドル
 	uint32_t modelHandle_ = 0;
+
+
+
+	/// <summary>
+	/// アニメーションの更新処理
+	/// </summary>
+	void UpdateAnimation();
+
+	// アニメーション有効化
+	bool isAnimation_ = false;
+
+	// アニメーションタイマー
+	float animationTimer_ = 0.0f;
+
+	// アニメーション速度
+	float animationSpeed_ = 1.0f;
+
+	// アニメーション時間
+	float duration_ = 0.0f;
 };
 
