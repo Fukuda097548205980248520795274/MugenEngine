@@ -76,6 +76,7 @@ void OffscreenDraw::DrawRtvToSwapChain()
 	ID3D12Resource* resource = renderTargetResources_[numUsesOffscreen_ - 1]->GetResource();
 	TransitionBarrier(resource, D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE, commandList_);
 
+
 	//  PSOの設定
 	psoCopyImage_->RegisterPSO();
 
@@ -84,6 +85,61 @@ void OffscreenDraw::DrawRtvToSwapChain()
 
 	// 頂点は3つ
 	commandList_->DrawInstanced(3, 1, 0, 0);
+
+
+	// バリアを張る
+	TransitionBarrier(resource, D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE, D3D12_RESOURCE_STATE_RENDER_TARGET, commandList_);
+}
+
+
+void OffscreenDraw::ImGuiOffscreen()
+{
+	// リソースを取得し、バリアを張る
+	ID3D12Resource* resource = renderTargetResources_[numUsesOffscreen_ - 1]->GetResource();
+	TransitionBarrier(resource, D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE, commandList_);
+
+	ImGui::Begin("Scene");
+
+	D3D12_GPU_DESCRIPTOR_HANDLE handle = renderTargetResources_[numUsesOffscreen_ - 1]->GetDescriptorHandleGPU();
+	ImTextureID texId = (ImTextureID)(handle.ptr);
+
+	ImVec2 availSize = ImGui::GetContentRegionAvail(); // ウィンドウ内の空きサイズ
+
+	float texWidth = static_cast<float>(renderTargetResources_[numUsesOffscreen_ - 1]->GetWdith());
+	float texHeight = static_cast<float>(renderTargetResources_[numUsesOffscreen_ - 1]->GetHeight());
+	float aspectRatio = texWidth / texHeight;
+
+	// アスペクト比を保ちつつ、ウィンドウサイズ内に最大表示
+	ImVec2 imageSize;
+
+	float availAspect = availSize.x / availSize.y;
+	if (availAspect > aspectRatio) {
+		// 横に余裕あり → 高さに合わせる
+		imageSize.y = availSize.y;
+		imageSize.x = availSize.y * aspectRatio;
+	} else {
+		imageSize.x = availSize.x;
+		imageSize.y = availSize.x / aspectRatio;
+	}
+
+	// 中央寄せ（X方向、Y方向両方）
+	ImVec2 cursorPos = ImGui::GetCursorPos();
+	ImVec2 newCursorPos = ImVec2(
+		cursorPos.x + (availSize.x - imageSize.x) * 0.5f,
+		cursorPos.y + (availSize.y - imageSize.y) * 0.5f
+	);
+
+	ImGui::SetCursorPos(newCursorPos);
+
+	ImGui::Image(texId, imageSize);
+
+	ImGui::End();
+
+	// ImGuiの内部コマンドを生成する
+	ImGui::Render();
+
+	// ImGuiを描画する
+	ImGui_ImplDX12_RenderDrawData(ImGui::GetDrawData(), commandList_);
 
 	// バリアを張る
 	TransitionBarrier(resource, D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE, D3D12_RESOURCE_STATE_RENDER_TARGET, commandList_);

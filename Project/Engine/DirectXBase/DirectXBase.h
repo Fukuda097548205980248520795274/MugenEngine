@@ -231,3 +231,6 @@ private:
 #endif
 };
 
+
+
+void CreateDockSpace(const char* name);

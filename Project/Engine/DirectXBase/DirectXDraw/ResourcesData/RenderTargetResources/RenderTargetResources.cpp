@@ -22,10 +22,14 @@ void RenderTargetResources::Initialize(ID3D12Device* device, ID3D12GraphicsComma
 
 
 	// クリア最適値を設定する
-	clearColor_ = Vector4(0.1f, 0.1f, 0.1f, 0.0f);
+	clearColor_ = Vector4(0.1f, 0.1f, 0.1f, 1.0f);
+
+	// 幅を取得する
+	width_ = directXBuffering_->GetSwapChainDesc().Width;
+	height_ = directXBuffering_->GetSwapChainDesc().Height;
 
 	// リソースを生成する
-	resource_ = CreateRenderTextureResource(device_, directXBuffering_->GetSwapChainDesc().Width, directXBuffering_->GetSwapChainDesc().Height,
+	resource_ = CreateRenderTextureResource(device_, width_, height_,
 		directXBuffering_->GetSwapChainDesc().Format, directXBuffering_->GetRtvDesc().Format, clearColor_);
 
 	/*----------------

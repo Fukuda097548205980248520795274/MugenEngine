@@ -455,7 +455,7 @@
       <UniqueIdentifier>{fb65df49-c47e-4b18-808a-b63c518ab01d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Externals\ImGui">
-      <UniqueIdentifier>{f96040aa-6761-4155-b47f-ced5c8da2a55}</UniqueIdentifier>
+      <UniqueIdentifier>{bff3cbdc-4241-44c3-8732-c668efa60f47}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

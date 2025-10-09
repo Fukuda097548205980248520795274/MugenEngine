@@ -130,6 +130,17 @@ public:
 	/// </summary>
 	void DrawRtvToSwapChain() { offscreenDraw_->DrawRtvToSwapChain(); };
 
+	/// <summary>
+	/// ImGuiに最終的なオフスクリーンを描画する
+	/// </summary>
+	void ImGuiOffscree() { offscreenDraw_->ImGuiOffscreen(); }
+
+	/// <summary>
+	/// 最後に使用したオフスクリーンのGPUハンドルを取得する
+	/// </summary>
+	/// <returns></returns>
+	D3D12_GPU_DESCRIPTOR_HANDLE GetLastOffscreenDescriptorHandleGPU()const { return offscreenDraw_->GetLastOffscreenDescriptorHandleGPU(); }
+
 
 #pragma region 描画処理
 

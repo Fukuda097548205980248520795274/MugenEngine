@@ -87,12 +87,24 @@ void DirectXBase::Initialize(LogFile* logFile, const WinApp* winApp, const int32
 	// ImGuiを初期化する
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
+
+	// ImGuiの初期化後
+	ImGuiIO& io = ImGui::GetIO();
+	// ドッキング機能を有効にする
+	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+
+	// ✅ Viewport機能の初期化
+	if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+	{
+		// Win32で追加のウィンドウを作成・管理するための処理をフック
+		ImGui_ImplWin32_EnableDpiAwareness();
+	}
+
 	ImGui::StyleColorsDark();
 	ImGui_ImplWin32_Init(winApp_->GetHwnd());
 	ImGui_ImplDX12_Init(directXDevice_->GetDevice(), directXBuffering_->GetSwapChainDesc().BufferCount,
 		directXBuffering_->GetRtvDesc().Format, directXHeap_->GetSrvDescriptorHeap(),
 		directXHeap_->GetSrvDescriptorHeap()->GetCPUDescriptorHandleForHeapStart(), directXHeap_->GetSrvDescriptorHeap()->GetGPUDescriptorHandleForHeapStart());
-
 }
 
 
@@ -102,13 +114,11 @@ void DirectXBase::Initialize(LogFile* logFile, const WinApp* winApp, const int32
 /// </summary>
 void DirectXBase::PreDraw()
 {
-
 	// フレームの開始をImGuiに伝える
-	ImGui_ImplDX12_NewFrame();
 	ImGui_ImplWin32_NewFrame();
+	ImGui_ImplDX12_NewFrame();
 	ImGui::NewFrame();
 
-	ImGui::ShowDemoWindow();
 
 	// ブレンドモードをリセットする
 	directXDraw_->ResetBlendMode();
@@ -159,11 +169,9 @@ void DirectXBase::PostDraw()
 	directXDraw_->DrawRtvToSwapChain();
 
 
-	// ImGuiの内部コマンドを生成する
-	ImGui::Render();
-
-	// ImGuiを描画する
-	ImGui_ImplDX12_RenderDrawData(ImGui::GetDrawData(), directXCommand_->GetCommandList());
+#ifdef _DEBUG
+	directXDraw_->ImGuiOffscree();
+#endif
 
 
 	// バックバッファリソース RenderTarget -> Present
@@ -243,4 +251,42 @@ void DirectXBase::UpdateFixFPS()
 
 	// 現在の時間を記録する
 	reference_ = std::chrono::steady_clock::now();
+}
+
+
+
+
+void CreateDockSpace(const char* name)
+{
+#ifdef _DEBUG
+
+	static bool opt_fullscreen = true;
+	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoDocking;
+
+	if (opt_fullscreen)
+	{
+		ImGuiViewport* viewport = ImGui::GetMainViewport();
+		ImGui::SetNextWindowPos(viewport->WorkPos);
+		ImGui::SetNextWindowSize(viewport->WorkSize);
+		ImGui::SetNextWindowViewport(viewport->ID);
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
+		window_flags |= ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove;
+		window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus;
+	}
+
+	// パディングを0に（メインDockSpaceの余白をなくす）
+	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
+
+	ImGui::Begin("DockSpace", nullptr, window_flags);
+
+	ImGui::PopStyleVar(3); // WindowPadding, Rounding, BorderSizeを戻す
+
+	// DockSpace作成（バーなし、背景のみ）
+	ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
+	ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), ImGuiDockNodeFlags_None);
+
+	ImGui::End();
+
+#endif
 }

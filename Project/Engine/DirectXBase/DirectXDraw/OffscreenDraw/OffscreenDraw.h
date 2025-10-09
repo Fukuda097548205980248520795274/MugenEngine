@@ -8,6 +8,10 @@
 
 #include "BasePSOPostEffect/PSOCopyImage/PSOCopyImage.h"
 
+#include "../Externals/ImGui/imgui.h"
+#include "../Externals/ImGui/imgui_impl_dx12.h"
+#include "../Externals/ImGui/imgui_impl_win32.h"
+
 class OffscreenDraw
 {
 public:
@@ -36,6 +40,17 @@ public:
 	/// 最終的なオフスクリーンをスワップチェーンにコピーする
 	/// </summary>
 	void DrawRtvToSwapChain();
+
+	/// <summary>
+	/// ImGuiにオフスクリーンを描画する
+	/// </summary>
+	void ImGuiOffscreen();
+
+	/// <summary>
+	/// 使用した最後のオフスクリーンのGPUディスクリプタハンドルを取得する
+	/// </summary>
+	/// <returns></returns>
+	D3D12_GPU_DESCRIPTOR_HANDLE GetLastOffscreenDescriptorHandleGPU()const { return renderTargetResources_[numUsesOffscreen_ - 1]->GetDescriptorHandleGPU(); }
 
 
 #pragma region 描画処理
