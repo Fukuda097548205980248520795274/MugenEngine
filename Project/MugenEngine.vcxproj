@@ -492,6 +492,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
+    <ClCompile Include="Engine\RecordSetting\RecordSetting.cpp" />
     <ClCompile Include="Engine\Scene\Scene.cpp" />
     <ClCompile Include="Engine\WinApp\WinApp.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
@@ -636,6 +637,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\MugenEngine.h" />
     <ClInclude Include="Engine\Physics\AirDrag\AirDrag.h" />
     <ClInclude Include="Engine\Physics\Friction\Friction.h" />
+    <ClInclude Include="Engine\RecordSetting\RecordSetting.h" />
     <ClInclude Include="Engine\Scene\Scene.h" />
     <ClInclude Include="Engine\WinApp\WinApp.h" />
     <ClInclude Include="Externals\ImGui\imconfig.h" />

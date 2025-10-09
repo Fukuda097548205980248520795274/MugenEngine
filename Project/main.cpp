@@ -56,5 +56,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	delete mugenEngine;
 	mugenEngine = nullptr;
 
+	// 解放漏れチェック
+	LeakChecker();
+
 	return 0;
 }

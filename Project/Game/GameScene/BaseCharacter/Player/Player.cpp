@@ -11,6 +11,11 @@ void Player::Initialize(const MugenEngine* engine, const Camera3D* camera3d, con
 	// 基底クラスの初期化
 	BaseCharacter::Initialize(engine, camera3d, startPosition);
 
+	// プレイヤーのグループを作成する
+	engine_->CreateGroup("Player");
+	engine_->SetValue<int32_t>("Player", "HP", 10);
+	engine_->SetValue<Vector3>("Player", "pos", Vector3(0.0f, 0.0f, 20.0f));
+
 	// 移動コントローラの生成と初期化
 	moveController_ = std::make_unique<MoveController>();
 	moveController_->Initialize(engine_);

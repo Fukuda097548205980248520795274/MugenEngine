@@ -92,6 +92,7 @@ void DirectXBase::Initialize(LogFile* logFile, const WinApp* winApp, const int32
 	ImGui_ImplDX12_Init(directXDevice_->GetDevice(), directXBuffering_->GetSwapChainDesc().BufferCount,
 		directXBuffering_->GetRtvDesc().Format, directXHeap_->GetSrvDescriptorHeap(),
 		directXHeap_->GetSrvDescriptorHeap()->GetCPUDescriptorHandleForHeapStart(), directXHeap_->GetSrvDescriptorHeap()->GetGPUDescriptorHandleForHeapStart());
+
 }
 
 
@@ -106,6 +107,8 @@ void DirectXBase::PreDraw()
 	ImGui_ImplDX12_NewFrame();
 	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
+
+	ImGui::ShowDemoWindow();
 
 	// ブレンドモードをリセットする
 	directXDraw_->ResetBlendMode();
@@ -144,7 +147,7 @@ void DirectXBase::PostDraw()
 	// バックバッファリソース Present -> RenderTarget
 	TransitionBarrier(backBufferResource, D3D12_RESOURCE_STATE_PRESENT, D3D12_RESOURCE_STATE_RENDER_TARGET, directXCommand_->GetCommandList());
 
-	// 描画先のRTVとDSVを設定する
+	// 描画先のRTVを設定する
 	directXCommand_->GetCommandList()->OMSetRenderTargets(1, &backBufferCPUHandle, false, nullptr);
 
 	// 指定した色で画面全体をクリアする
@@ -156,16 +159,15 @@ void DirectXBase::PostDraw()
 	directXDraw_->DrawRtvToSwapChain();
 
 
-	// バックバッファリソース RenderTarget -> Present
-	TransitionBarrier(backBufferResource, D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT, directXCommand_->GetCommandList());
-
-
-
 	// ImGuiの内部コマンドを生成する
 	ImGui::Render();
 
 	// ImGuiを描画する
 	ImGui_ImplDX12_RenderDrawData(ImGui::GetDrawData(), directXCommand_->GetCommandList());
+
+
+	// バックバッファリソース RenderTarget -> Present
+	TransitionBarrier(backBufferResource, D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT, directXCommand_->GetCommandList());
 
 
 	// コマンドの内容を確定させる（閉じる）

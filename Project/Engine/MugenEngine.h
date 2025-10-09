@@ -1,6 +1,5 @@
 #pragma once
 #define NOMINMAX
-#include <dxgidebug.h>
 
 #include "WinApp/WinApp.h"
 #include "LogFile/LogFile.h"
@@ -13,6 +12,7 @@
 #include "Math/Probability/Probability.h"
 #include "Math/Quaternion/Quaternion.h"
 #include "Math/Vector1/Vector1.h"
+#include "RecordSetting/RecordSetting.h"
 
 // マウスボタン
 enum MouseButton
@@ -724,6 +724,26 @@ public:
 
 #pragma endregion
 
+#pragma region 調整記録
+
+	/// <summary>
+	/// グループを作成する
+	/// </summary>
+	/// <param name="groupName"></param>
+	void CreateGroup(const std::string& groupName)const { recordSetting_->CreateGroup(groupName); }
+
+	/// <summary>
+	/// 項目の設定
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="groupName"></param>
+	/// <param name="key"></param>
+	/// <param name="value"></param>
+	template<typename T>
+	void SetValue(const std::string& groupName, const std::string& key, T value)const { recordSetting_->SetValue(groupName, key, value); }
+
+#pragma endregion
+
 
 private:
 
@@ -735,22 +755,25 @@ private:
 
 
 	// ログファイル
-	LogFile* logFile_ = nullptr;
+	std::unique_ptr<LogFile> logFile_ = nullptr;
 
 	// ウィンドウズアプリケーション
-	WinApp* winApp_ = nullptr;
+	std::unique_ptr<WinApp> winApp_ = nullptr;
 	
 	// DirectXのベース
-	DirectXBase* directXBase_ = nullptr;
+	std::unique_ptr<DirectXBase> directXBase_ = nullptr;
 
 	// 入力
-	Input* input_ = nullptr;
+	std::unique_ptr<Input> input_ = nullptr;
 
 	// オーディオ格納場所
-	AudioStore* audioStore_ = nullptr;
+	std::unique_ptr<AudioStore> audioStore_ = nullptr;
 
 	// 衝突判定
-	Collision* collision_ = nullptr;
+	std::unique_ptr<Collision> collision_ = nullptr;
+
+	// 設定記録
+	RecordSetting* recordSetting_ = nullptr;
 
 	// デルタタイム
 	float deltaTime_ = 1.0f / 60.0f;

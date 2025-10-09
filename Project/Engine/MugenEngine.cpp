@@ -17,36 +17,11 @@
 /// </summary>
 MugenEngine::~MugenEngine()
 {
-	// 衝突判定
-	delete collision_;
-
-	// オーディオ格納場所
-	delete audioStore_;
-
-	// 入力
-	delete input_;
-
-	// DirectXベース
-	delete directXBase_;
-
-	//ウィンドウアプリケーション
-	delete winApp_;
-
-	// ログファイル
-	delete logFile_;
+	// 設定記録の終了処理
+	recordSetting_->Finalize();
 
 	// COMの終了処理
 	CoUninitialize();
-
-	// 解放漏れを検知する
-	IDXGIDebug1* debug;
-	if (SUCCEEDED(DXGIGetDebugInterface1(0, IID_PPV_ARGS(&debug))))
-	{
-		debug->ReportLiveObjects(DXGI_DEBUG_ALL, DXGI_DEBUG_RLO_ALL);
-		debug->ReportLiveObjects(DXGI_DEBUG_APP, DXGI_DEBUG_RLO_ALL);
-		debug->ReportLiveObjects(DXGI_DEBUG_D3D12, DXGI_DEBUG_RLO_ALL);
-		debug->Release();
-	}
 }
 
 /// <summary>
@@ -64,11 +39,11 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 	SetUnhandledExceptionFilter(ExportDump);
 
 	// ログファイルの生成と初期化
-	logFile_ = new LogFile();
+	logFile_ = std::make_unique<LogFile>();
 	logFile_->Initialize();
 
 	// ウィンドウアプリケーションの生成と初期化
-	winApp_ = new WinApp();
+	winApp_ = std::make_unique<WinApp>();
 	winApp_->Initialize(clientWidth, clientHeight, title);
 
 	// クライアント領域のポインタを取得する
@@ -76,20 +51,23 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 	kClientHeight_ = winApp_->GetClientHeightP();
 
 	// DirectXベースの生成と初期化
-	directXBase_ = new DirectXBase();
-	directXBase_->Initialize(logFile_, winApp_, kClientWidth_, kClientHeight_);
+	directXBase_ = std::make_unique<DirectXBase>();
+	directXBase_->Initialize(logFile_.get(), winApp_.get(), kClientWidth_, kClientHeight_);
 
 	// 入力の生成と初期化
-	input_ = new Input();
-	input_->Initialize(logFile_, winApp_);
+	input_ = std::make_unique<Input>();
+	input_->Initialize(logFile_.get(), winApp_.get());
 
 	// オーディオ格納場所の生成と初期化
-	audioStore_ = new AudioStore();
-	audioStore_->Initialize(logFile_);
+	audioStore_ = std::make_unique<AudioStore>();
+	audioStore_->Initialize(logFile_.get());
 
 	// 衝突判定の生成と初期化
-	collision_ = new Collision();
+	collision_ = std::make_unique<Collision>();
 	collision_->Initialize(this);
+
+	// 設定記録のインスタンス取得
+	recordSetting_ = RecordSetting::GetInstance();
 }
 
 /// <summary>
@@ -105,6 +83,9 @@ void MugenEngine::FrameStart()
 
 	// 描画前処理
 	directXBase_->PreDraw();
+
+	// 調整記録の更新処理
+	recordSetting_->Update();
 }
 
 /// <summary>

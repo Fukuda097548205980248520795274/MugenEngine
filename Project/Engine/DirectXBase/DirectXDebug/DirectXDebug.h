@@ -1,6 +1,7 @@
 #pragma once
 #include <d3d12.h>
 #include <dxgi1_6.h>
+#include <dxgidebug.h>
 #include <cassert>
 #include <wrl.h>
 
@@ -36,3 +37,7 @@ private:
 	ComPtr<ID3D12Debug1> debugController_ = nullptr;
 };
 
+/// <summary>
+/// 解放漏れを検知する
+/// </summary>
+void LeakChecker();

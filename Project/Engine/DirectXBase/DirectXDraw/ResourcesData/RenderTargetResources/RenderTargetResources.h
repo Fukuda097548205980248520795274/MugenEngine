@@ -2,6 +2,7 @@
 #include "Func/LoadTexture/LoadTexture.h"
 #include "DirectXBase/DirectXBuffering/DirectXBuffering.h"
 #include "DirectXBase/DirectXHeap/DirectXHeap.h"
+#include "Func/DirectXTransitionBarrier/DirectXTransitionBarrier.h"
 
 class RenderTargetResources
 {

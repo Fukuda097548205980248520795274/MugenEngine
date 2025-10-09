@@ -310,9 +310,6 @@
     <Filter Include="Engine\Include\Math\Easing">
       <UniqueIdentifier>{1d868a8c-dc3c-44f1-8a94-4838912f9aab}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Externals\ImGui">
-      <UniqueIdentifier>{0cfd3b97-fbb3-4efa-9f34-4e218483a5cf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite">
       <UniqueIdentifier>{63842fed-9077-48f0-b340-465f290d37bb}</UniqueIdentifier>
     </Filter>
@@ -453,6 +450,12 @@
     </Filter>
     <Filter Include="Game\GameScene\GameSystem\SystemController\MoveController">
       <UniqueIdentifier>{a764a332-ac9c-4221-a91a-c54f9770f79a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\RecordSetting">
+      <UniqueIdentifier>{fb65df49-c47e-4b18-808a-b63c518ab01d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Externals\ImGui">
+      <UniqueIdentifier>{f96040aa-6761-4155-b47f-ced5c8da2a55}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -720,27 +723,6 @@
     <ClCompile Include="Engine\Math\Easing\Easing.cpp">
       <Filter>Engine\Include\Math\Easing</Filter>
     </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_demo.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_draw.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_impl_dx12.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_impl_win32.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_tables.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_widgets.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite</Filter>
     </ClCompile>
@@ -854,6 +836,30 @@
     </ClCompile>
     <ClCompile Include="Game\GameScene\GameSystem\SystemController\MoveController\MoveController.cpp">
       <Filter>Game\GameScene\GameSystem\SystemController\MoveController</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\RecordSetting\RecordSetting.cpp">
+      <Filter>Engine\Include\RecordSetting</Filter>
+    </ClCompile>
+    <ClCompile Include="Externals\ImGui\imgui.cpp">
+      <Filter>Externals\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Externals\ImGui\imgui_demo.cpp">
+      <Filter>Externals\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Externals\ImGui\imgui_draw.cpp">
+      <Filter>Externals\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Externals\ImGui\imgui_impl_dx12.cpp">
+      <Filter>Externals\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Externals\ImGui\imgui_impl_win32.cpp">
+      <Filter>Externals\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Externals\ImGui\imgui_tables.cpp">
+      <Filter>Externals\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Externals\ImGui\imgui_widgets.cpp">
+      <Filter>Externals\ImGui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1118,30 +1124,6 @@
     <ClInclude Include="Engine\Math\Easing\Easing.h">
       <Filter>Engine\Include\Math\Easing</Filter>
     </ClInclude>
-    <ClInclude Include="Externals\ImGui\imconfig.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imgui.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imgui_impl_dx12.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imgui_impl_win32.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imgui_internal.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imstb_rectpack.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imstb_textedit.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imstb_truetype.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite</Filter>
     </ClInclude>
@@ -1255,6 +1237,33 @@
     </ClInclude>
     <ClInclude Include="Game\GameScene\GameSystem\SystemController\MoveController\MoveController.h">
       <Filter>Game\GameScene\GameSystem\SystemController\MoveController</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\RecordSetting\RecordSetting.h">
+      <Filter>Engine\Include\RecordSetting</Filter>
+    </ClInclude>
+    <ClInclude Include="Externals\ImGui\imconfig.h">
+      <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Externals\ImGui\imgui.h">
+      <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Externals\ImGui\imgui_impl_dx12.h">
+      <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Externals\ImGui\imgui_impl_win32.h">
+      <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Externals\ImGui\imgui_internal.h">
+      <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Externals\ImGui\imstb_rectpack.h">
+      <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Externals\ImGui\imstb_textedit.h">
+      <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Externals\ImGui\imstb_truetype.h">
+      <Filter>Externals\ImGui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

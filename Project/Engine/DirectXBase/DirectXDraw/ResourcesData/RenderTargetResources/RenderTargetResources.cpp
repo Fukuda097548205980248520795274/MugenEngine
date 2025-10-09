@@ -79,6 +79,8 @@ void RenderTargetResources::Clear(D3D12_CPU_DESCRIPTOR_HANDLE dsvHandle)
 
 	// デプスステンシルをクリアする
 	commandList_->ClearDepthStencilView(dsvHandle, D3D12_CLEAR_FLAG_DEPTH, 1.0f, 0, 0, nullptr);
+
+
 }
 
 /// <summary>
