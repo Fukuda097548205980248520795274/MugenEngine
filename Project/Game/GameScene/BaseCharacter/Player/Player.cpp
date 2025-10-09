@@ -13,8 +13,7 @@ void Player::Initialize(const MugenEngine* engine, const Camera3D* camera3d, con
 
 	// プレイヤーのグループを作成する
 	engine_->CreateGroup("Player");
-	engine_->SetValue<int32_t>("Player", "HP", 10);
-	engine_->SetValue<Vector3>("Player", "pos", Vector3(0.0f, 0.0f, 20.0f));
+	engine_->SetValue("Player", "translation", worldTransform_->translation_.x);
 
 	// 移動コントローラの生成と初期化
 	moveController_ = std::make_unique<MoveController>();

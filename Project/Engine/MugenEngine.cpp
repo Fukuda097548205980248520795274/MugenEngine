@@ -84,8 +84,13 @@ void MugenEngine::FrameStart()
 	// 描画前処理
 	directXBase_->PreDraw();
 
+#ifdef _DEVELOPMENT
+	// DockSpaceの作成処理
+	CreateDockSpace("DockSpace");
+
 	// 調整記録の更新処理
 	recordSetting_->Update();
+#endif
 }
 
 /// <summary>

@@ -18,9 +18,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		// フレーム開始処理
 		mugenEngine->FrameStart();
 
-		// 【✅ ここにDockSpaceの作成処理を追加！】
-		CreateDockSpace("MainDockSpace");
-
 
 		///
 		/// ↓ 更新処理ここから
@@ -33,7 +30,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		/// ↑ 更新処理ここまで
 		/// 
 
-		
 
 		///
 		/// ↓ 描画処理ここから

@@ -73,7 +73,7 @@ private:
 
 
 	// スライダー項目
-	using Item = std::variant<int32_t, float, Vector2, Vector3, Vector4, Quaternion>;
+	using Item = std::variant<bool, int32_t, float, Vector2, Vector3, Vector4, Quaternion>;
 
 	// グループ
 	using Group = std::map<std::string, Item>;

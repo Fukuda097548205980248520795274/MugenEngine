@@ -169,7 +169,7 @@ void DirectXBase::PostDraw()
 	directXDraw_->DrawRtvToSwapChain();
 
 
-#ifdef _DEBUG
+#ifdef _DEVELOPMENT
 	directXDraw_->ImGuiOffscree();
 #endif
 
@@ -258,8 +258,6 @@ void DirectXBase::UpdateFixFPS()
 
 void CreateDockSpace(const char* name)
 {
-#ifdef _DEBUG
-
 	static bool opt_fullscreen = true;
 	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoDocking;
 
@@ -287,6 +285,4 @@ void CreateDockSpace(const char* name)
 	ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), ImGuiDockNodeFlags_None);
 
 	ImGui::End();
-
-#endif
 }
