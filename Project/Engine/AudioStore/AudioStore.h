@@ -8,6 +8,7 @@
 #include <wrl.h>
 #include <cassert>
 #include <list>
+#include <mferror.h>
 
 #include "../LogFile/LogFile.h"
 #include "../Func/ConvertString/ConvertString.h"
@@ -111,6 +112,9 @@ public:
 	/// </summary>
 	void DeletePlayAudio();
 
+	// Microsoft::WRL:: 省略
+	template<class T> using ComPtr = Microsoft::WRL::ComPtr<T>;
+
 
 private:
 
@@ -128,7 +132,7 @@ private:
 
 
 	// XAudio2
-	Microsoft::WRL::ComPtr<IXAudio2> xAudio2_ = nullptr;
+	ComPtr<IXAudio2> xAudio2_ = nullptr;
 
 	// マスターボイス
 	IXAudio2MasteringVoice* masterVoice_ = nullptr;

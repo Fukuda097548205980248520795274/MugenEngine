@@ -5,11 +5,11 @@
 /// </summary>
 AudioData::~AudioData()
 {
+	if (waveFormat) {
+		CoTaskMemFree(waveFormat);
+		waveFormat = nullptr;
+	}
 	mediaData.clear();
-	waveFormat = {};
-
-	// ウェーブフォーマットの終了処理
-	CoTaskMemFree(waveFormat);
 }
 
 
@@ -40,7 +40,7 @@ void AudioStore::Initialize(LogFile* logFile)
 	logFile_ = logFile;
 
 
-	// MFの初期化
+	// MFの初期化（ローカル版）
 	MFStartup(MF_VERSION, MFSTARTUP_NOSOCKET);
 
 	// XAudio2を初期化する
@@ -75,7 +75,9 @@ void AudioStore::Finalize()
 	// playData_ リストが unique_ptr であれば、ここで自動的に要素が解放される
 
 	// MFの終了処理
-	MFShutdown();
+	HRESULT hr = MFShutdown();
+	assert(SUCCEEDED(hr));
+
 	// XAudio2インスタンスを破棄する
 	xAudio2_.Reset();
 }
@@ -97,25 +99,25 @@ uint32_t AudioStore::LoadAudio(const std::string& filePath)
 	const std::wstring filePathW = ConvertString(filePath);
 
 	// ソースレーダを作成する
-	IMFSourceReader* pMFSourceReader{ nullptr };
+	ComPtr<IMFSourceReader> pMFSourceReader{ nullptr };
 	HRESULT hr = MFCreateSourceReaderFromURL(filePathW.c_str(), NULL, &pMFSourceReader);
 	assert(SUCCEEDED(hr));
 
 
 	// メディアタイプの作成
-	IMFMediaType* pMFMediaType{ nullptr };
-	hr = MFCreateMediaType(&pMFMediaType);
+	ComPtr<IMFMediaType> pReader{ nullptr };
+	hr = MFCreateMediaType(&pReader);
 	assert(SUCCEEDED(hr));
 
 	// ソースレーダとメディアタイプの設定
-	pMFMediaType->SetGUID(MF_MT_MAJOR_TYPE, MFMediaType_Audio);
-	pMFMediaType->SetGUID(MF_MT_SUBTYPE, MFAudioFormat_PCM);
-	pMFSourceReader->SetCurrentMediaType(MF_SOURCE_READER_FIRST_AUDIO_STREAM, nullptr, pMFMediaType);
+	pReader->SetGUID(MF_MT_MAJOR_TYPE, MFMediaType_Audio);
+	pReader->SetGUID(MF_MT_SUBTYPE, MFAudioFormat_PCM);
+	hr = pMFSourceReader->SetCurrentMediaType((DWORD)MF_SOURCE_READER_FIRST_AUDIO_STREAM, nullptr, pReader.Get());
+	assert(SUCCEEDED(hr));
 
 	// メディアタイプを解放し、再度作成する
-	pMFMediaType->Release();
-	pMFMediaType = nullptr;
-	hr = pMFSourceReader->GetCurrentMediaType(MF_SOURCE_READER_FIRST_AUDIO_STREAM, &pMFMediaType);
+	ComPtr<IMFMediaType> pOutType;
+	hr = pMFSourceReader->GetCurrentMediaType(MF_SOURCE_READER_FIRST_AUDIO_STREAM, &pOutType);
 	assert(SUCCEEDED(hr));
 
 
@@ -123,53 +125,43 @@ uint32_t AudioStore::LoadAudio(const std::string& filePath)
 	std::unique_ptr<AudioData> audioDatum = std::make_unique<AudioData>();
 	audioDatum->filePath = filePath;
 
-	// ファイルのサイズを先に求める
-	PROPVARIANT var;
-	hr = pMFSourceReader->GetPresentationAttribute(MF_SOURCE_READER_MEDIASOURCE, MF_PD_DURATION, &var);
-	assert(SUCCEEDED(hr));
-	audioDatum->mediaData.reserve(static_cast<BYTE>(var.vt));
-
 	// サウンドハンドルを取得する
 	uint32_t soundHandle = static_cast<uint32_t>(audioData_.size());
 	audioDatum->soundHandle = soundHandle;
 
 	// ウェーブフォーマットを作成する
-	MFCreateWaveFormatExFromMFMediaType(pMFMediaType, &audioDatum->waveFormat, nullptr);
+	MFCreateWaveFormatExFromMFMediaType(pOutType.Get(), &audioDatum->waveFormat, nullptr);
 
 	while (true)
 	{
-		IMFSample* pMFSample{ nullptr };
-		DWORD dwStreamFlags{ 0 };
-		hr = pMFSourceReader->ReadSample(MF_SOURCE_READER_FIRST_AUDIO_STREAM, 0, nullptr, &dwStreamFlags, nullptr, &pMFSample);
+		ComPtr<IMFSample> pMFSample{ nullptr };
+
+		DWORD streamIndex = 0;
+		DWORD flags = 0;
+		LONGLONG llTimeStamp = 0;
+
+		hr = pMFSourceReader->ReadSample(MF_SOURCE_READER_FIRST_AUDIO_STREAM, 0, &streamIndex, &flags, &llTimeStamp, &pMFSample);
 		assert(SUCCEEDED(hr));
 
-		if (dwStreamFlags & MF_SOURCE_READERF_ENDOFSTREAM)
+		if (flags & MF_SOURCE_READERF_ENDOFSTREAM)break;
+
+		if (pMFSample)
 		{
-			break;
+			ComPtr<IMFMediaBuffer> pBuffer{ nullptr };
+			hr = pMFSample->ConvertToContiguousBuffer(&pBuffer);
+			assert(SUCCEEDED(hr));
+
+			BYTE* pData{ nullptr };
+			DWORD currentLength = 0;
+			hr = pBuffer->Lock(&pData, nullptr, &currentLength);
+			assert(SUCCEEDED(hr));
+
+			audioDatum->mediaData.resize(audioDatum->mediaData.size() + currentLength);
+			memcpy(audioDatum->mediaData.data() + audioDatum->mediaData.size() - currentLength, pData, currentLength);
+
+			pBuffer->Unlock();
 		}
-
-		IMFMediaBuffer* pMFMediaBuffer{ nullptr };
-		hr = pMFSample->ConvertToContiguousBuffer(&pMFMediaBuffer);
-		assert(SUCCEEDED(hr));
-
-		BYTE* pBuffer{ nullptr };
-		DWORD cbCurrentLength{ 0 };
-		hr = pMFMediaBuffer->Lock(&pBuffer, nullptr, &cbCurrentLength);
-		assert(SUCCEEDED(hr));
-
-		audioDatum->mediaData.resize(audioDatum->mediaData.size() + cbCurrentLength);
-		memcpy(audioDatum->mediaData.data() + audioDatum->mediaData.size() - cbCurrentLength, pBuffer, cbCurrentLength);
-
-		pMFMediaBuffer->Unlock();
-
-		// 解放
-		pMFMediaBuffer->Release();
-		pMFSample->Release();
 	}
-
-	// 解放
-	pMFMediaType->Release();
-	pMFSourceReader->Release();
 
 	// 配列に登録する
 	audioData_.push_back(std::move(audioDatum));
@@ -246,6 +238,7 @@ void AudioStore::StopAudio(uint32_t playHandle)
 		if (playHandle == playDatum->playHandle)
 		{
 			playDatum->pSourceVoice->Stop(0);
+			playDatum->pSourceVoice->DestroyVoice();
 			playDatum->pSourceVoice = nullptr;
 
 			return;
@@ -330,7 +323,6 @@ void AudioStore::DeletePlayAudio()
 {
 	playData_.remove_if([](std::unique_ptr<PlayData>& playDatum)
 		{
-			// 音楽が終了したとき
 			if (playDatum->pSourceVoice)
 			{
 				XAUDIO2_VOICE_STATE state;
@@ -338,15 +330,14 @@ void AudioStore::DeletePlayAudio()
 
 				if (state.BuffersQueued <= 0)
 				{
+					playDatum->pSourceVoice->DestroyVoice();
+					playDatum->pSourceVoice = nullptr;
 					return true;
 				}
-			} 
-			else
+			} else
 			{
-				// 音楽を停止させたとき
 				return true;
 			}
-
 			return false;
 		}
 	);
