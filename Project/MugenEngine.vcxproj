@@ -446,6 +446,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
+    <ClCompile Include="Engine\Func\Random\Random.cpp" />
     <ClCompile Include="Engine\GameCamera\DebugCamera\DebugCamera.cpp" />
     <ClCompile Include="Engine\GameCamera\GameCamera.cpp" />
     <ClCompile Include="Engine\GameCamera\MainCamera\MainCamera.cpp" />
@@ -496,7 +497,6 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\RandomUtil\RandomUtil.cpp" />
     <ClCompile Include="Engine\RecordSetting\RecordSetting.cpp" />
     <ClCompile Include="Engine\Scene\Scene.cpp" />
     <ClCompile Include="Engine\WinApp\WinApp.cpp">
@@ -619,6 +619,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Func\CrushHandler\CrushHandler.h" />
     <ClInclude Include="Engine\Func\LoadModel\LoadModel.h" />
     <ClInclude Include="Engine\Func\LoadTexture\LoadTexture.h" />
+    <ClInclude Include="Engine\Func\Random\Random.h" />
     <ClInclude Include="Engine\GameCamera\DebugCamera\DebugCamera.h" />
     <ClInclude Include="Engine\GameCamera\GameCamera.h" />
     <ClInclude Include="Engine\GameCamera\MainCamera\MainCamera.h" />
@@ -636,7 +637,6 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\MugenEngine.h" />
     <ClInclude Include="Engine\Physics\AirDrag\AirDrag.h" />
     <ClInclude Include="Engine\Physics\Friction\Friction.h" />
-    <ClInclude Include="Engine\RandomUtil\RandomUtil.h" />
     <ClInclude Include="Engine\RecordSetting\RecordSetting.h" />
     <ClInclude Include="Engine\Scene\Scene.h" />
     <ClInclude Include="Engine\WinApp\WinApp.h" />

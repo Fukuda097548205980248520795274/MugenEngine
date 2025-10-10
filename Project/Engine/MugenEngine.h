@@ -13,7 +13,6 @@
 #include "Math/Quaternion/Quaternion.h"
 #include "Math/Vector1/Vector1.h"
 #include "RecordSetting/RecordSetting.h"
-#include "RandomUtil/RandomUtil.h"
 
 // マウスボタン
 enum MouseButton
@@ -775,9 +774,6 @@ private:
 
 	// 設定記録
 	RecordSetting* recordSetting_ = nullptr;
-
-	// 乱数生成
-	RandomUtil* randomUtil_ = nullptr;
 
 	// デルタタイム
 	float deltaTime_ = 1.0f / 60.0f;
