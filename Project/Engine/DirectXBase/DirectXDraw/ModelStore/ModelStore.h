@@ -9,7 +9,6 @@
 #include "../TextureStore/TextureStore.h"
 #include "../DataForGPU/MaterialData/MaterialData.h"
 #include "../DataForGPU/TransformationData/TransformationData.h"
-#include "../ResourcesData/IndexVertexResourcesData/IndexVertexResourcesData.h"
 
 
 

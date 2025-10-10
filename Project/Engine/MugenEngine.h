@@ -1,6 +1,5 @@
 #pragma once
 #define NOMINMAX
-#include <dxgidebug.h>
 
 #include "WinApp/WinApp.h"
 #include "LogFile/LogFile.h"
@@ -12,6 +11,9 @@
 #include "Scene/Scene.h"
 #include "Math/Probability/Probability.h"
 #include "Math/Quaternion/Quaternion.h"
+#include "Math/Vector1/Vector1.h"
+#include "RecordSetting/RecordSetting.h"
+#include "RandomUtil/RandomUtil.h"
 
 // マウスボタン
 enum MouseButton
@@ -664,6 +666,20 @@ public:
 		const UVTransform* uvTransform, const Camera2D* camera, uint32_t textureHandle, const Vector4& color, bool isFlipX, bool isFlipY)const;
 
 	/// <summary>
+	/// 平面を描画する
+	/// </summary>
+	/// <param name="worldTransform"></param>
+	/// <param name="uvTransform"></param>
+	/// <param name="camera"></param>
+	/// <param name="textureHandle"></param>
+	/// <param name="material"></param>
+	void DrawPlane(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
+		const Material* material) const
+	{
+		directXBase_->DrawPlane(worldTransform, uvTransform, camera, textureHandle, material);
+	}
+
+	/// <summary>
 	/// UV球を描画する
 	/// </summary>
 	/// <param name="worldTransform"></param>
@@ -709,6 +725,26 @@ public:
 
 #pragma endregion
 
+#pragma region 調整記録
+
+	/// <summary>
+	/// 設定したい値を設定する
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="groupName"></param>
+	/// <param name="key"></param>
+	/// <param name="value"></param>
+	template<typename T>
+	void SetSettingValue(const std::string& groupName, const std::string& key, T* value)const { recordSetting_->SetValue(groupName, key, value); }
+
+	/// <summary>
+	/// 登録した調整項目の値に、ファイルの値を反映させる
+	/// </summary>
+	/// <param name="groupName"></param>
+	void RegistGroupDataReflection(const std::string& groupName)const { recordSetting_->RegistGroupDataReflection(groupName); }
+
+#pragma endregion
+
 
 private:
 
@@ -720,22 +756,28 @@ private:
 
 
 	// ログファイル
-	LogFile* logFile_ = nullptr;
+	std::unique_ptr<LogFile> logFile_ = nullptr;
 
 	// ウィンドウズアプリケーション
-	WinApp* winApp_ = nullptr;
+	std::unique_ptr<WinApp> winApp_ = nullptr;
 	
 	// DirectXのベース
-	DirectXBase* directXBase_ = nullptr;
+	std::unique_ptr<DirectXBase> directXBase_ = nullptr;
 
 	// 入力
-	Input* input_ = nullptr;
+	std::unique_ptr<Input> input_ = nullptr;
 
 	// オーディオ格納場所
-	AudioStore* audioStore_ = nullptr;
+	std::unique_ptr<AudioStore> audioStore_ = nullptr;
 
 	// 衝突判定
-	Collision* collision_ = nullptr;
+	std::unique_ptr<Collision> collision_ = nullptr;
+
+	// 設定記録
+	RecordSetting* recordSetting_ = nullptr;
+
+	// 乱数生成
+	RandomUtil* randomUtil_ = nullptr;
 
 	// デルタタイム
 	float deltaTime_ = 1.0f / 60.0f;

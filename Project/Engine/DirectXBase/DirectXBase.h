@@ -1,6 +1,9 @@
 #pragma once
 #include <chrono>
 #include <thread>
+#include <imgui.h>
+#include <imgui_impl_dx12.h>
+#include <imgui_impl_win32.h>
 
 #include "DirectXDevice/DirectXDevice.h"
 #include "DirectXCommand/DirectXCommand.h"
@@ -12,10 +15,6 @@
 #include "DirectXDraw/DirectXDraw.h"
 #include "ResourcesDepthStencil/ResourcesDepthStencil.h"
 #include "WinApp/WinApp.h"
-
-#include "../../../Externals/ImGui/imgui.h"
-#include "../../../Externals/ImGui/imgui_impl_dx12.h"
-#include "../../../Externals/ImGui/imgui_impl_win32.h"
 
 class DirectXBase
 {
@@ -122,6 +121,20 @@ public:
 	void SetBlendModePrimitive(BlendMode blendMode) { directXDraw_->SetBlendModePrimitive(blendMode); }
 
 	/// <summary>
+	/// 平面を描画する
+	/// </summary>
+	/// <param name="worldTransform"></param>
+	/// <param name="uvTransform"></param>
+	/// <param name="camera"></param>
+	/// <param name="textureHandle"></param>
+	/// <param name="material"></param>
+	void DrawPlane(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
+		const Material* material)
+	{
+		directXDraw_->DrawPlane(worldTransform, uvTransform, camera, textureHandle, material);
+	}
+
+	/// <summary>
 	/// UV球を描画する
 	/// </summary>
 	/// <param name="worldTransform"></param>
@@ -217,3 +230,6 @@ private:
 #endif
 };
 
+
+
+void CreateDockSpace(const char* name);

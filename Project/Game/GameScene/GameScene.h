@@ -1,6 +1,8 @@
 #pragma once
 #include "MugenEngine.h"
 
+#include "BaseCharacter/Player/Player.h"
+
 class GameScene : public Scene
 {
 public:
@@ -24,9 +26,15 @@ public:
 
 public:
 
-
-	// モデル
-	std::unique_ptr<MeshModel> model0_ = nullptr;
 	
+	// プレイヤー
+	std::unique_ptr<Player> player_ = nullptr;
+
+
+	// サウンドハンドル
+	uint32_t soundHandle_ = 0;
+
+	// プレイハンドル
+	uint32_t playHandle_ = 0;
 };
 

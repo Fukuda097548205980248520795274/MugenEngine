@@ -90,6 +90,9 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, DirectX
 
 
 
+	// 平面リソースの生成と初期化
+	resourcesPlane_ = std::make_unique<PrimitiveResourcesPlane>();
+	resourcesPlane_->Initialize(device_, commandList_);
 
 	// 球用リソースの生成と初期化
 	resourcesUVSphere_ = std::make_unique<PrimitiveResourcesUVSphere>();
@@ -150,6 +153,7 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, DirectX
 /// </summary>
 void DirectXDraw::ResetBlendMode()
 {
+	skinningModelPSO_->ResetBlendMode();
 	primitivePSO_->ResetBlendMode();
 	spritePSO_->ResetBlendMode();
 }
@@ -642,6 +646,101 @@ void DirectXDraw::DrawObjModel(const WorldTransform3D* worldTransform, const UVT
 		// 描画したプリミティブをカウントする
 		CountDrawPrimitive();
 	}
+}
+
+
+/// <summary>
+/// 平面を描画する
+/// </summary>
+/// <param name="worldTransform"></param>
+/// <param name="uvTransform"></param>
+/// <param name="camera"></param>
+/// <param name="textureHandle"></param>
+/// <param name="material"></param>
+void DirectXDraw::DrawPlane(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
+	const Material* material)
+{
+	// カメラの値を取得する
+	resourcesMainCamera_->data_->worldPosition = camera->GetWorldPosition();
+
+	/*------------------------------
+		マテリアルデータを入力する
+	------------------------------*/
+
+	// UV座標
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->uvTransform_ = uvTransform->affineMatrix_;
+
+	// 色
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->color_ = material->color_;
+
+	// 拡散反射
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableLighting_ = static_cast<int32_t>(material->enableLighting_);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableHalfLambert_ = static_cast<int32_t>(material->enableHalfLambert_);
+
+	// 鏡面反射
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableSpecular_ = static_cast<int32_t>(material->enableSpecular_);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableBlinnPhong_ = static_cast<int32_t>(material->enableBlinnPhong_);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->shininess_ = material->shininess_;
+
+
+	/*-------------
+		座標変換
+	-------------*/
+
+	// 座標変換用の行列を取得する
+	primitiveTransformationResources_[drawPrimitiveCount_]->data_->world = worldTransform->worldMatrix_;
+
+	primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldInverseTranspose =
+		MakeInverseMatrix4x4(MakeTransposeMatrix4x4(worldTransform->worldMatrix_));
+
+	primitiveTransformationResources_[drawPrimitiveCount_]->data_->worldViewProjection =
+		worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
+
+
+	/*---------------------------------
+		コマンドリストに設定を登録する
+	---------------------------------*/
+
+	// ビューポート、シザー矩形の設定
+	commandList_->RSSetViewports(1, &viewport_);
+	commandList_->RSSetScissorRects(1, &scissorRect_);
+
+	// PSOの設定
+	primitivePSO_->SetPSOState();
+
+	// 平面の設定
+	resourcesPlane_->Register();
+
+	// マテリアルリソースの設定
+	primitiveMaterialResources_[drawPrimitiveCount_]->Register(0);
+
+	// 座標変換リソースの設定
+	primitiveTransformationResources_[drawPrimitiveCount_]->Register(1);
+
+	// メインカメラリソースの設定
+	resourcesMainCamera_->Register(5);
+
+	// 平行光源リソースの設定
+	resourcesDirectionalLight_->Register(3, 4);
+
+	// ポイントライトリソースの設定
+	resourcesPointLight_->Register(6, 7);
+
+	// スポットライトリソースの設定
+	resourcesSpotLight_->Register(8, 9);
+
+	// テクスチャのSRVを設定する
+	commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(textureHandle));
+
+	// 形状の設定
+	commandList_->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+	// ドローコール
+	commandList_->DrawIndexedInstanced(6, 1, 0, 0, 0);
+
+
+	// 描画したプリミティブをカウントする
+	CountDrawPrimitive();
 }
 
 /// <summary>

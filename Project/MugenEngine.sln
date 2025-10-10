@@ -12,13 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ソリューション項目
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DirectXTex", "Externals\DirectXTex\DirectXTex_Desktop_2022_Win10.vcxproj", "{371B9FA9-4C90-4AC6-A123-ACED756D6C77}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Externals", "Externals", "{DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ImGui", "ImGui", "{A53EE85B-F4AD-421A-A737-5F5165FE0C95}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DirectXTex", "DirectXTex", "{BBA1E9B1-AB8E-4E16-BBF8-3D49741C9E4D}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assimp", "assimp", "{7DBA9354-1AEE-4723-A9A6-B71791AAD2A8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImGui", "Externals\ImGui\ImGui.vcxproj", "{339E1691-6220-4E3B-81BF-25D30FBEFD08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,14 +33,15 @@ Global
 		{371B9FA9-4C90-4AC6-A123-ACED756D6C77}.Development|x64.Build.0 = Development|x64
 		{371B9FA9-4C90-4AC6-A123-ACED756D6C77}.Release|x64.ActiveCfg = Release|x64
 		{371B9FA9-4C90-4AC6-A123-ACED756D6C77}.Release|x64.Build.0 = Release|x64
+		{339E1691-6220-4E3B-81BF-25D30FBEFD08}.Debug|x64.ActiveCfg = Debug|x64
+		{339E1691-6220-4E3B-81BF-25D30FBEFD08}.Debug|x64.Build.0 = Debug|x64
+		{339E1691-6220-4E3B-81BF-25D30FBEFD08}.Development|x64.ActiveCfg = Release|x64
+		{339E1691-6220-4E3B-81BF-25D30FBEFD08}.Development|x64.Build.0 = Release|x64
+		{339E1691-6220-4E3B-81BF-25D30FBEFD08}.Release|x64.ActiveCfg = Release|x64
+		{339E1691-6220-4E3B-81BF-25D30FBEFD08}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{A53EE85B-F4AD-421A-A737-5F5165FE0C95} = {DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}
-		{BBA1E9B1-AB8E-4E16-BBF8-3D49741C9E4D} = {DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}
-		{7DBA9354-1AEE-4723-A9A6-B71791AAD2A8} = {DDB4EF12-CC4E-5E88-E6FC-71A802F4DE97}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6B3DA032-57E8-407B-859D-7DD36D53822D}

@@ -2,6 +2,7 @@
 #include "Func/LoadTexture/LoadTexture.h"
 #include "DirectXBase/DirectXBuffering/DirectXBuffering.h"
 #include "DirectXBase/DirectXHeap/DirectXHeap.h"
+#include "Func/DirectXTransitionBarrier/DirectXTransitionBarrier.h"
 
 class RenderTargetResources
 {
@@ -31,6 +32,24 @@ public:
 	/// <returns></returns>
 	ID3D12Resource* GetResource()const { return resource_.Get(); }
 
+	/// <summary>
+	/// GPUディスクリプタハンドルのGetter
+	/// </summary>
+	/// <returns></returns>
+	D3D12_GPU_DESCRIPTOR_HANDLE GetDescriptorHandleGPU()const { return srvDescriptorHandle_.second; }
+
+	/// <summary>
+	/// 横幅のGetter
+	/// </summary>
+	/// <returns></returns>
+	int32_t GetWdith()const { return width_; }
+
+	/// <summary>
+	/// 縦幅のGetter
+	/// </summary>
+	/// <returns></returns>
+	int32_t GetHeight()const { return height_; }
+
 
 private:
 
@@ -58,5 +77,11 @@ private:
 
 	// SRVのディスクリプタハンドル
 	std::pair<D3D12_CPU_DESCRIPTOR_HANDLE, D3D12_GPU_DESCRIPTOR_HANDLE> srvDescriptorHandle_{};
+
+	// 横幅
+	int32_t width_ = 0;
+
+	// 縦幅
+	uint32_t height_ = 0;
 };
 

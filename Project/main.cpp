@@ -30,7 +30,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		/// ↑ 更新処理ここまで
 		/// 
 
-		
 
 		///
 		/// ↓ 描画処理ここから
@@ -55,6 +54,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	// 無限エンジンの削除
 	delete mugenEngine;
 	mugenEngine = nullptr;
+
+	// 解放漏れチェック
+	LeakChecker();
 
 	return 0;
 }

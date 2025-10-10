@@ -36,7 +36,7 @@ void Scene::Initialize(const MugenEngine* engine)
 /// </summary>
 void Scene::Update()
 {
-#ifdef _DEBUG
+#ifdef _DEVELOPMENT
 
 	// F1でモード切替
 	if (engine_->GetKeyTrigger(DIK_F1))

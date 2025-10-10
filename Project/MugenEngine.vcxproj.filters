@@ -88,9 +88,6 @@
     <Filter Include="Engine\Include\Math\Matrix4x4">
       <UniqueIdentifier>{8d346657-3693-4f5c-a955-ce67d0365658}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Externals">
-      <UniqueIdentifier>{8a6493c2-3ccb-4d89-ad3f-6ec691f985bb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Include\Func\DirectXTransitionBarrier">
       <UniqueIdentifier>{76721cd8-d9aa-49f4-a033-67bcd75cd194}</UniqueIdentifier>
     </Filter>
@@ -250,9 +247,6 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel">
       <UniqueIdentifier>{17fcaea7-f009-46b5-ac48-03041b69fa6c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData">
-      <UniqueIdentifier>{3ee9378c-620d-4919-b4bd-0a259ba0c617}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\MaterialResourcesDataCBV">
       <UniqueIdentifier>{8884de02-bb17-4e15-8d21-597d0845bdea}</UniqueIdentifier>
     </Filter>
@@ -312,9 +306,6 @@
     </Filter>
     <Filter Include="Engine\Include\Math\Easing">
       <UniqueIdentifier>{1d868a8c-dc3c-44f1-8a94-4838912f9aab}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Externals\ImGui">
-      <UniqueIdentifier>{0cfd3b97-fbb3-4efa-9f34-4e218483a5cf}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite">
       <UniqueIdentifier>{63842fed-9077-48f0-b340-465f290d37bb}</UniqueIdentifier>
@@ -405,6 +396,63 @@
     </Filter>
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelScreen">
       <UniqueIdentifier>{cf09232b-7179-42f9-9eb9-8a48cb165dc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesPlane">
+      <UniqueIdentifier>{3dc1a697-506c-446b-8077-cedf6c45d0a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshPlane">
+      <UniqueIdentifier>{fc5764a0-2452-4062-a97e-169df50c8d17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\BaseCharacter">
+      <UniqueIdentifier>{ea5e56f7-9349-42aa-9cc1-aaaaf4c2cbe3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\BaseCharacter\Player">
+      <UniqueIdentifier>{d864256c-4f65-4b58-bab0-1c0296e49552}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem">
+      <UniqueIdentifier>{2b013102-eb90-477d-a4d2-866049c3ce1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\InputHandler">
+      <UniqueIdentifier>{5ee09737-aa53-4df2-a57e-cb8ff7ca1b3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\InputHandler\Gamepad">
+      <UniqueIdentifier>{0ec8c679-3be9-4692-a6e3-b729c5ddab84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\InputHandler\Gamepad\InputMoveGamepad">
+      <UniqueIdentifier>{140d5141-56f4-4569-be1d-5e565c10d77d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\InputHandler\Keyboard">
+      <UniqueIdentifier>{6f851041-a338-45e2-94a6-ecf2a900ba8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\InputHandler\Keyboard\InputMoveKey">
+      <UniqueIdentifier>{02a21eb6-a00b-4421-85a2-42d613bea0bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\InputHandler\Gamepad\InputDashGamepad">
+      <UniqueIdentifier>{53d49591-1f99-4690-9f5f-62797646e2a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\InputHandler\Keyboard\InputDashKey">
+      <UniqueIdentifier>{b6c0a96c-8055-42f0-9683-d39e8777b90b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\SystemLogic">
+      <UniqueIdentifier>{379aa51a-27a7-4815-b2c5-5cf8c5f5ef40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\SystemLogic\LogicMove">
+      <UniqueIdentifier>{a6dc33e2-b575-4f22-a7b3-925fbe780e59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\SystemLogic\LogicMoveSpeed">
+      <UniqueIdentifier>{8bfdd96f-83a9-4762-9625-293a412b7d5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\SystemController">
+      <UniqueIdentifier>{164353df-9b65-45c6-b8b3-437a49934aab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameScene\GameSystem\SystemController\MoveController">
+      <UniqueIdentifier>{a764a332-ac9c-4221-a91a-c54f9770f79a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\RecordSetting">
+      <UniqueIdentifier>{fb65df49-c47e-4b18-808a-b63c518ab01d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\RandomUtil">
+      <UniqueIdentifier>{4003b8d4-2acc-4cfa-8b23-0d8a66385208}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -624,9 +672,6 @@
     <ClCompile Include="Engine\Func\LoadModel\LoadModel.cpp">
       <Filter>Engine\Include\Func\LoadModel</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData\IndexVertexResourcesData.cpp">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshModel\MeshModel.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel</Filter>
     </ClCompile>
@@ -674,27 +719,6 @@
     </ClCompile>
     <ClCompile Include="Engine\Math\Easing\Easing.cpp">
       <Filter>Engine\Include\Math\Easing</Filter>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_demo.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_draw.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_impl_dx12.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_impl_win32.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_tables.cpp">
-      <Filter>Externals\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="Externals\ImGui\imgui_widgets.cpp">
-      <Filter>Externals\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite</Filter>
@@ -776,6 +800,45 @@
     </ClCompile>
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelScreen\SinglePSOSkinningModelScreen.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesPlane\PrimitiveResourcesPlane.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesPlane</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshPlane\MeshPlane.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshPlane</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameScene\BaseCharacter\BaseCharacter.cpp">
+      <Filter>Game\GameScene\BaseCharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameScene\GameSystem\InputHandler\Keyboard\InputMoveKey\InputMoveKey.cpp">
+      <Filter>Game\GameScene\GameSystem\InputHandler\Keyboard\InputMoveKey</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameScene\GameSystem\SystemLogic\LogicMove\LogicMove.cpp">
+      <Filter>Game\GameScene\GameSystem\SystemLogic\LogicMove</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameScene\GameSystem\InputHandler\Gamepad\InputMoveGamepad\InputMoveGamepad.cpp">
+      <Filter>Game\GameScene\GameSystem\InputHandler\Gamepad\InputMoveGamepad</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameScene\GameSystem\SystemLogic\LogicMoveSpeed\LogicMoveSpeed.cpp">
+      <Filter>Game\GameScene\GameSystem\SystemLogic\LogicMoveSpeed</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameScene\BaseCharacter\Player\Player.cpp">
+      <Filter>Game\GameScene\BaseCharacter\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameScene\GameSystem\InputHandler\Gamepad\InputDashGamepad\InputDashGamepad.cpp">
+      <Filter>Game\GameScene\GameSystem\InputHandler\Gamepad\InputDashGamepad</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameScene\GameSystem\InputHandler\Keyboard\InputDashKey\InputDashKey.cpp">
+      <Filter>Game\GameScene\GameSystem\InputHandler\Keyboard\InputDashKey</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameScene\GameSystem\SystemController\MoveController\MoveController.cpp">
+      <Filter>Game\GameScene\GameSystem\SystemController\MoveController</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\RecordSetting\RecordSetting.cpp">
+      <Filter>Engine\Include\RecordSetting</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\RandomUtil\RandomUtil.cpp">
+      <Filter>Engine\Include\RandomUtil</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -992,9 +1055,6 @@
     <ClInclude Include="Engine\Func\LoadModel\LoadModel.h">
       <Filter>Engine\Include\Func\LoadModel</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData\IndexVertexResourcesData.h">
-      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\IndexVertexResourcesData</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshModel\MeshModel.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshModel</Filter>
     </ClInclude>
@@ -1042,30 +1102,6 @@
     </ClInclude>
     <ClInclude Include="Engine\Math\Easing\Easing.h">
       <Filter>Engine\Include\Math\Easing</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imconfig.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imgui.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imgui_impl_dx12.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imgui_impl_win32.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imgui_internal.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imstb_rectpack.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imstb_textedit.h">
-      <Filter>Externals\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Externals\ImGui\imstb_truetype.h">
-      <Filter>Externals\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrgnaizePSOSprite</Filter>
@@ -1148,6 +1184,45 @@
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelScreen\SinglePSOSkinningModelScreen.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelScreen</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesPlane\PrimitiveResourcesPlane.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesPlane</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshPlane\MeshPlane.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseMesh\MeshPlane</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameScene\BaseCharacter\BaseCharacter.h">
+      <Filter>Game\GameScene\BaseCharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameScene\GameSystem\InputHandler\Keyboard\InputMoveKey\InputMoveKey.h">
+      <Filter>Game\GameScene\GameSystem\InputHandler\Keyboard\InputMoveKey</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameScene\GameSystem\SystemLogic\LogicMove\LogicMove.h">
+      <Filter>Game\GameScene\GameSystem\SystemLogic\LogicMove</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameScene\GameSystem\InputHandler\Gamepad\InputMoveGamepad\InputMoveGamepad.h">
+      <Filter>Game\GameScene\GameSystem\InputHandler\Gamepad\InputMoveGamepad</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameScene\GameSystem\SystemLogic\LogicMoveSpeed\LogicMoveSpeed.h">
+      <Filter>Game\GameScene\GameSystem\SystemLogic\LogicMoveSpeed</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameScene\BaseCharacter\Player\Player.h">
+      <Filter>Game\GameScene\BaseCharacter\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameScene\GameSystem\InputHandler\Gamepad\InputDashGamepad\InputDashGamepad.h">
+      <Filter>Game\GameScene\GameSystem\InputHandler\Gamepad\InputDashGamepad</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameScene\GameSystem\InputHandler\Keyboard\InputDashKey\InputDashKey.h">
+      <Filter>Game\GameScene\GameSystem\InputHandler\Keyboard\InputDashKey</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameScene\GameSystem\SystemController\MoveController\MoveController.h">
+      <Filter>Game\GameScene\GameSystem\SystemController\MoveController</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\RecordSetting\RecordSetting.h">
+      <Filter>Engine\Include\RecordSetting</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\RandomUtil\RandomUtil.h">
+      <Filter>Engine\Include\RandomUtil</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Resources\Shader\Primitive\Primitive.VS.hlsl">
@@ -1173,10 +1248,5 @@
     <None Include="Resources\Shader\PostEffect\Fullscreen.hlsli">
       <Filter>Engine\Shader\PostEffect</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Externals\ImGui\LICENSE.txt">
-      <Filter>Externals\ImGui</Filter>
-    </Text>
   </ItemGroup>
 </Project>

@@ -76,6 +76,7 @@ void OffscreenDraw::DrawRtvToSwapChain()
 	ID3D12Resource* resource = renderTargetResources_[numUsesOffscreen_ - 1]->GetResource();
 	TransitionBarrier(resource, D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE, commandList_);
 
+
 	//  PSOの設定
 	psoCopyImage_->RegisterPSO();
 
@@ -84,6 +85,7 @@ void OffscreenDraw::DrawRtvToSwapChain()
 
 	// 頂点は3つ
 	commandList_->DrawInstanced(3, 1, 0, 0);
+
 
 	// バリアを張る
 	TransitionBarrier(resource, D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE, D3D12_RESOURCE_STATE_RENDER_TARGET, commandList_);

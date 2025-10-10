@@ -10,13 +10,12 @@ void GameScene::Initialize(const MugenEngine* engine)
 	Scene::Initialize(engine);
 
 
-	// モデルの生成と初期化
-	model0_ = std::make_unique<MeshModel>();
-	model0_->Initialize(engine_, camera3d_.get(), engine_->LoadModel("./Resources/Models/Character", "Character.gltf"));
-	model0_->worldTransform_->translation_.x = -5.0f;
-	model0_->material_->enableHalfLambert_ = true;
-	model0_->material_->enableSpecular_ = true;
-	model0_->material_->enableBlinnPhong_ = true;
+	// プレイヤーの生成と初期化
+	player_ = std::make_unique<Player>();
+	player_->Initialize(engine_, camera3d_.get(), Vector3(0.0f, 0.0f, 0.0f));
+
+	// サウンドハンドル
+	//soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/forget_me_not.mp3");
 }
 
 /// <summary>
@@ -27,8 +26,14 @@ void GameScene::Update()
 	// 基底クラスの更新処理
 	Scene::Update();
 
-	// モデルの更新処理
-	model0_->Update();
+	// プレイヤーの更新処理
+	player_->Update();
+
+	// ループ再生
+	//if (!engine_->IsAudioPlay(playHandle_) || playHandle_ == 0)
+	//{
+	//	playHandle_ =  engine_->PlayAudio(soundHandle_ , 0.3f);
+	//}
 }
 
 /// <summary>
@@ -36,8 +41,9 @@ void GameScene::Update()
 /// </summary>
 void GameScene::Draw()
 {
-	// モデルの描画処理
-	model0_->Draw();
+
+	// プレイヤーの描画処理
+	player_->Draw();
 
 	// 基底クラスの描画処理
 	Scene::Draw();

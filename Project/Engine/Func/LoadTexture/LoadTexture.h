@@ -2,9 +2,9 @@
 #include <d3d12.h>
 #include <wrl.h>
 #include <vector>
+#include <DirectXTex.h>
+#include <d3dx12.h>
 
-#include "../Externals/DirectXTex/DirectXTex.h"
-#include "../Externals/DirectXTex/d3dx12.h"
 #include "../ConvertString/ConvertString.h"
 #include "../CreateBufferResource/CreateBufferResource.h"
 #include "Math/Vector4/Vector4.h"
