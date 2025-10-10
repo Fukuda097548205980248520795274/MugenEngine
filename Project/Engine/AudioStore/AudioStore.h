@@ -13,6 +13,7 @@
 #include "../LogFile/LogFile.h"
 #include "Func/ConvertString/ConvertString.h"
 #include "Func/Random/Random.h"
+#include "Handle/Handle.h"
 
 
 // オーディオデータ
@@ -35,7 +36,7 @@ public:
 	std::vector<BYTE> mediaData;
 
 	// サウンドハンドル
-	uint32_t soundHandle;
+	SoundHandle handle;
 };
 
 // プレイデータ
@@ -44,7 +45,7 @@ class PlayData
 public:
 
 	// プレイハンドル
-	uint32_t playHandle;
+	PlayHandle handle;
 
 	// ソースボイス
 	IXAudio2SourceVoice* pSourceVoice;
@@ -71,7 +72,7 @@ public:
 	/// オーディオファイルを読み込む
 	/// </summary>
 	/// <param name="filePath"></param>
-	uint32_t LoadAudio(const std::string& filePath);
+	SoundHandle LoadAudio(const std::string& filePath);
 
 	/// <summary>
 	/// オーディオを流す
@@ -79,33 +80,33 @@ public:
 	/// <param name="soundHandle"></param>
 	/// <param name="valume"></param>
 	/// <returns></returns>
-	uint32_t PlayAudio(uint32_t soundHandle, float volume);
+	PlayHandle PlayAudio(SoundHandle handle, float volume);
 
 	/// <summary>
 	/// 音声を停止する
 	/// </summary>
 	/// <param name="playHandle"></param>
-	void StopAudio(uint32_t playHandle);
+	void StopAudio(PlayHandle handle);
 
 	/// <summary>
 	/// 音楽が再生されているかどうか
 	/// </summary>
 	/// <param name="playHandle"></param>
-	bool IsAudioPlay(uint32_t playHandle);
+	bool IsAudioPlay(PlayHandle handle);
 
 	/// <summary>
 	/// 音量を設定する
 	/// </summary>
 	/// <param name="playHandle"></param>
 	/// <param name="setVolume"></param>
-	void SetVolume(uint32_t playHandle, float volume);
+	void SetVolume(PlayHandle handle, float volume);
 
 	/// <summary>
 	/// ピッチを設定する
 	/// </summary>
 	/// <param name="playHandle"></param>
 	/// <param name="pitch"></param>
-	void SetPitch(uint32_t playHandle, float pitch);
+	void SetPitch(PlayHandle handle, float pitch);
 
 	/// <summary>
 	/// 流れているオーディオを削除する

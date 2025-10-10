@@ -83,13 +83,13 @@ void AudioStore::Finalize()
 /// オーディオファイルを読み込む
 /// </summary>
 /// <param name="filePath"></param>
-uint32_t AudioStore::LoadAudio(const std::string& filePath)
+SoundHandle AudioStore::LoadAudio(const std::string& filePath)
 {
 	// 同じファイルパスを見つけたら、そのハンドルを返す
 	for (std::unique_ptr<AudioData>& data : audioData_)
 	{
 		if (strcmp(filePath.c_str(), data->filePath.c_str()) == 0)
-			return data->soundHandle;
+			return data->handle;
 	}
 
 	// wStringに変換する
@@ -123,8 +123,9 @@ uint32_t AudioStore::LoadAudio(const std::string& filePath)
 	audioDatum->filePath = filePath;
 
 	// サウンドハンドルを取得する
-	uint32_t soundHandle = static_cast<uint32_t>(audioData_.size());
-	audioDatum->soundHandle = soundHandle;
+	SoundHandle soundHandle;
+	soundHandle.value = static_cast<uint32_t>(audioData_.size());
+	audioDatum->handle = soundHandle;
 
 	// ウェーブフォーマットを作成する
 	MFCreateWaveFormatExFromMFMediaType(pOutType.Get(), &audioDatum->waveFormat, nullptr);
@@ -173,37 +174,37 @@ uint32_t AudioStore::LoadAudio(const std::string& filePath)
 /// <param name="soundHandle"></param>
 /// <param name="valume"></param>
 /// <returns></returns>
-uint32_t AudioStore::PlayAudio(uint32_t soundHandle, float volume)
+PlayHandle AudioStore::PlayAudio(SoundHandle handle, float volume)
 {
 	// プレイデータを生成する
 	std::unique_ptr<PlayData> playDatum = std::make_unique<PlayData>();
 
 	// プレイハンドルを作成する
-	uint32_t playHandle = 0;
-	while (playHandle == 0)
+	PlayHandle playHandle{};
+	while (playHandle.value == 0)
 	{
-		playHandle = GetRandomRange(1, 10000000);
+		playHandle.value = GetRandomRange(1, 10000000);
 
 		for (std::unique_ptr<PlayData>& data : playData_)
 		{
-			if (playHandle == data->playHandle)
+			if (playHandle.value == data->handle.value)
 			{
-				playHandle = 0;
+				playHandle.value = 0;
 				break;
 			}
 		}
 	}
-	playDatum->playHandle = playHandle;
+	playDatum->handle = playHandle;
 
 
 	// ソースボイスを生成する
-	HRESULT hr = xAudio2_->CreateSourceVoice(&playDatum->pSourceVoice, audioData_[soundHandle]->waveFormat);
+	HRESULT hr = xAudio2_->CreateSourceVoice(&playDatum->pSourceVoice, audioData_[handle.value]->waveFormat);
 	assert(SUCCEEDED(hr));
 
 	XAUDIO2_BUFFER buffer{ 0 };
-	buffer.pAudioData = audioData_[soundHandle]->mediaData.data();
+	buffer.pAudioData = audioData_[handle.value]->mediaData.data();
 	buffer.Flags = XAUDIO2_END_OF_STREAM;
-	buffer.AudioBytes = sizeof(BYTE) * static_cast<UINT32>(audioData_[soundHandle]->mediaData.size());
+	buffer.AudioBytes = sizeof(BYTE) * static_cast<UINT32>(audioData_[handle.value]->mediaData.size());
 	playDatum->pSourceVoice->SubmitSourceBuffer(&buffer);
 
 	const float kMaxSoundVolume = 1.0f;
@@ -228,11 +229,11 @@ uint32_t AudioStore::PlayAudio(uint32_t soundHandle, float volume)
 /// 音声を停止する
 /// </summary>
 /// <param name="playHandle"></param>
-void AudioStore::StopAudio(uint32_t playHandle)
+void AudioStore::StopAudio(PlayHandle handle)
 {
 	for (std::unique_ptr<PlayData>& playDatum : playData_)
 	{
-		if (playHandle == playDatum->playHandle)
+		if (handle.value == playDatum->handle.value)
 		{
 			playDatum->pSourceVoice->Stop(0);
 			playDatum->pSourceVoice->DestroyVoice();
@@ -249,11 +250,11 @@ void AudioStore::StopAudio(uint32_t playHandle)
 /// 音楽が再生されているかどうか
 /// </summary>
 /// <param name="playHandle"></param>
-bool AudioStore::IsAudioPlay(uint32_t playHandle)
+bool AudioStore::IsAudioPlay(PlayHandle handle)
 {
 	for (std::unique_ptr<PlayData>& playDatum : playData_)
 	{
-		if (playHandle == playDatum->playHandle)
+		if (handle.value == playDatum->handle.value)
 		{
 			return true;
 		}
@@ -268,7 +269,7 @@ bool AudioStore::IsAudioPlay(uint32_t playHandle)
 /// </summary>
 /// <param name="playHandle"></param>
 /// <param name="setVolume"></param>
-void AudioStore::SetVolume(uint32_t playHandle, float volume)
+void AudioStore::SetVolume(PlayHandle handle, float volume)
 {
 	const float kMaxSoundVolume = 1.0f;
 	const float kMinSoundVolume = 0.0f;
@@ -280,7 +281,7 @@ void AudioStore::SetVolume(uint32_t playHandle, float volume)
 	// ハンドルが一致する構造体を探す
 	for (std::unique_ptr<PlayData>& playDatum : playData_)
 	{
-		if (playHandle == playDatum->playHandle)
+		if (handle.value == playDatum->handle.value)
 		{
 			playDatum->pSourceVoice->SetVolume(volume);
 
@@ -296,12 +297,12 @@ void AudioStore::SetVolume(uint32_t playHandle, float volume)
 /// </summary>
 /// <param name="playHandle"></param>
 /// <param name="pitch"></param>
-void AudioStore::SetPitch(uint32_t playHandle, float pitch)
+void AudioStore::SetPitch(PlayHandle handle, float pitch)
 {
 	// ハンドルが一致する構造体を探す
 	for (std::unique_ptr<PlayData>& playDatum : playData_)
 	{
-		if (playHandle == playDatum->playHandle)
+		if (handle.value == playDatum->handle.value)
 		{
 			playDatum->pSourceVoice->SetFrequencyRatio(pitch);
 
