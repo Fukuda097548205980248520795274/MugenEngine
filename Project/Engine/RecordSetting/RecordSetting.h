@@ -36,12 +36,6 @@ public:
 	void Finalize();
 
 	/// <summary>
-	/// グループを作成する
-	/// </summary>
-	/// <param name="groupName"></param>
-	void CreateGroup(const std::string& groupName);
-
-	/// <summary>
 	/// 項目に値を入れる
 	/// </summary>
 	/// <typeparam name="T"></typeparam>

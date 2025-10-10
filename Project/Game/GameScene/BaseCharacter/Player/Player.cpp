@@ -23,6 +23,7 @@ void Player::Initialize(const MugenEngine* engine, const Camera3D* camera3d, con
 
 	// グループ名
 	std::string groupName = "Player";
+	engine_->SetSettingValue(groupName, "translation", &worldTransform_->translation_);
 	engine_->RegistGroupDataReflection(groupName);
 }
 
