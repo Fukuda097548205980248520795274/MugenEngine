@@ -454,6 +454,9 @@
     <Filter Include="Engine\Include\RandomUtil">
       <UniqueIdentifier>{4003b8d4-2acc-4cfa-8b23-0d8a66385208}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\ImGuiRender">
+      <UniqueIdentifier>{0b7b6025-cea9-44f7-bd9c-40acb6328e76}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -840,6 +843,9 @@
     <ClCompile Include="Engine\RandomUtil\RandomUtil.cpp">
       <Filter>Engine\Include\RandomUtil</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\ImGuiRender\ImGuiRender.cpp">
+      <Filter>Engine\Include\DirectXBase\ImGuiRender</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MugenEngine.h">
@@ -1222,6 +1228,9 @@
     </ClInclude>
     <ClInclude Include="Engine\RandomUtil\RandomUtil.h">
       <Filter>Engine\Include\RandomUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\ImGuiRender\ImGuiRender.h">
+      <Filter>Engine\Include\DirectXBase\ImGuiRender</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

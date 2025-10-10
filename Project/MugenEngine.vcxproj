@@ -393,6 +393,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\ImGuiRender\ImGuiRender.cpp" />
     <ClCompile Include="Engine\DirectXBase\ResourcesDepthStencil\ResourcesDepthStencil.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -604,6 +605,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\RenderTargetResources\RenderTargetResources.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData\SpotLightResourcesData.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV\TransformationResourcesDataCBV.h" />
+    <ClInclude Include="Engine\DirectXBase\ImGuiRender\ImGuiRender.h" />
     <ClInclude Include="Engine\DirectXBase\ResourcesDepthStencil\ResourcesDepthStencil.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\TextureStore\TextureStore.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\Transform\Transform.h" />

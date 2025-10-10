@@ -93,12 +93,9 @@ void MugenEngine::FrameStart()
 	directXBase_->PreDraw();
 
 #ifdef _DEVELOPMENT
-	// DockSpaceの作成処理
-	CreateDockSpace("DockSpace");
-
-	// 設定記録の更新処理
+	// 設定記録の調整の更新処理　Releaseだと使わない
 	recordSetting_->Update();
-
+	ImGui::ShowDemoWindow();
 #endif
 }
 

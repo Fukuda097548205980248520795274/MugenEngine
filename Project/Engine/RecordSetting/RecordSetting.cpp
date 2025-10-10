@@ -23,8 +23,6 @@ RecordSetting* RecordSetting::GetInstance()
 /// </summary>
 void RecordSetting::Update()
 {
-#ifdef _DEVELOPMENT
-
 	// メニューバーを使用する
 	if (!ImGui::Begin("Setting", nullptr, ImGuiWindowFlags_MenuBar))
 	{
@@ -127,8 +125,6 @@ void RecordSetting::Update()
 	// 終了
 	ImGui::EndMenuBar();
 	ImGui::End();
-
-#endif 
 }
 
 /// <summary>
