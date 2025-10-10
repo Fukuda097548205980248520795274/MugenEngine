@@ -49,7 +49,7 @@ void TextureStore::Finalize()
 /// </summary>
 /// <param name="filePath"></param>
 /// <returns></returns>
-uint32_t TextureStore::LoadTexture(const std::string& filePath)
+TextureHandle TextureStore::LoadTexture(const std::string& filePath)
 {
 	// テクスチャデータ
 	std::unique_ptr<TextureData> textureData = nullptr;
@@ -96,7 +96,8 @@ uint32_t TextureStore::LoadTexture(const std::string& filePath)
 	device_->CreateShaderResourceView(textureData->textureResource_.Get(), &srvDesc, textureData->cpuHandle_);
 
 	// ハンドルを取得する
-	uint32_t handle = static_cast<uint32_t>(dataCollection_.size());
+	TextureHandle handle{};
+	handle.value = static_cast<uint32_t>(dataCollection_.size());
 	textureData->handle_ = handle;
 
 	// 登録する

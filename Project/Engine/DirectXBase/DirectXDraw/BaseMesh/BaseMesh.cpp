@@ -6,7 +6,7 @@
 /// </summary>
 /// <param name="camera3d"></param>
 /// <param name="textureHandle"></param>
-void BaseMesh::Initialize(const MugenEngine* engine, const Camera3D* camera3d, uint32_t textureHandle)
+void BaseMesh::Initialize(const MugenEngine* engine, const Camera3D* camera3d, TextureHandle textureHandle)
 {
 	// nullptrチェック
 	assert(engine);

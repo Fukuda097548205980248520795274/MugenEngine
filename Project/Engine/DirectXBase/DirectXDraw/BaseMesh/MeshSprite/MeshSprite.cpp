@@ -7,7 +7,7 @@
 /// <param name="engine"></param>
 /// <param name="camera2d"></param>
 /// <param name="textureHandle"></param>
-void MeshSprite::Initialize(const MugenEngine* engine, const Camera2D* camera2d, uint32_t textureHandle)
+void MeshSprite::Initialize(const MugenEngine* engine, const Camera2D* camera2d, TextureHandle textureHandle)
 {
 	// nullptrチェック
 	assert(engine);

@@ -6,7 +6,7 @@
 /// </summary>
 /// <param name="camera3d"></param>
 /// <param name="modelHandle"></param>
-void MeshModel::Initialize(const MugenEngine* engine, const Camera3D* camera3d, uint32_t modelHandle)
+void MeshModel::Initialize(const MugenEngine* engine, const Camera3D* camera3d, ModelHandle modelHandle)
 {
 	// nullptrチェック
 	assert(engine);

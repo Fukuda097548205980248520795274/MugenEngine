@@ -111,7 +111,7 @@ void MugenEngine::FrameEnd()
 /// <param name="camera"></param>
 /// <param name="textureHandle"></param>
 void MugenEngine::DrawSprite(const WorldTransform2D* worldTransform, const Vector2& anchor, const Vector2& textureLeftTop, const Vector2& textureSize,
-	const UVTransform* uvTransform, const Camera2D* camera, uint32_t textureHandle, const Vector4& color, bool isFlipX, bool isFlipY)const
+	const UVTransform* uvTransform, const Camera2D* camera, TextureHandle textureHandle, const Vector4& color, bool isFlipX, bool isFlipY)const
 {
 	// ワールドビュープロジェクション行列
 	Matrix4x4 worldViewProjectionMatrix = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;

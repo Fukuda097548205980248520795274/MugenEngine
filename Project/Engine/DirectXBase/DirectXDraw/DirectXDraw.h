@@ -70,7 +70,7 @@ public:
 	/// </summary>
 	/// <param name="filePath"></param>
 	/// <returns></returns>
-	uint32_t LoadTexture(const std::string& filePath) { return textureStore_->LoadTexture(filePath); }
+	TextureHandle LoadTexture(const std::string& filePath) { return textureStore_->LoadTexture(filePath); }
 
 	/// <summary>
 	/// モデルを読み込む
@@ -78,35 +78,35 @@ public:
 	/// <param name="directory"></param>
 	/// <param name="fileName"></param>
 	/// <returns></returns>
-	uint32_t LoadModel(const std::string& directory, const std::string& fileName) { return modelStore_->LoadModel(directory, fileName); }
+	ModelHandle LoadModel(const std::string& directory, const std::string& fileName) { return modelStore_->LoadModel(directory, fileName); }
 
 	/// <summary>
 	/// アニメーションフラグのGetter
 	/// </summary>
 	/// <param name="modelHandle"></param>
 	/// <returns></returns>
-	bool IsAnimation(uint32_t modelHandle)const { return modelStore_->IsAnimation(modelHandle); }
+	bool IsAnimation(ModelHandle handle)const { return modelStore_->IsAnimation(handle); }
 
 	/// <summary>
 	/// アニメーション時間のGetter
 	/// </summary>
 	/// <param name="modelHandle"></param>
 	/// <returns></returns>
-	float GetAnimationDuration(uint32_t modelHandle)const { return modelStore_->GetAnimationDuration(modelHandle); }
+	float GetAnimationDuration(ModelHandle handle)const { return modelStore_->GetAnimationDuration(handle); }
 
 	/// <summary>
 	/// テクスチャの横幅を取得する
 	/// </summary>
 	/// <param name="textureHandle"></param>
 	/// <returns></returns>
-	float GetTextureWidth(uint32_t textureHandle)const { return textureStore_->GetTextureWidth(textureHandle); }
+	float GetTextureWidth(TextureHandle handle)const { return textureStore_->GetTextureWidth(handle); }
 
 	/// <summary>
 	/// テクスチャの縦幅を取得する
 	/// </summary>
 	/// <param name="textureHandle"></param>
 	/// <returns></returns>
-	float GetTextureHeight(uint32_t textureHandle)const { return textureStore_->GetTextureHeight(textureHandle); }
+	float GetTextureHeight(TextureHandle handle)const { return textureStore_->GetTextureHeight(handle); }
 
 	/// <summary>
 	/// プリミティブのブレンドモードを設定する
@@ -157,7 +157,7 @@ public:
 	/// <param name="camera"></param>
 	/// <param name="modelHandle"></param>
 	/// <param name="material"></param>
-	void DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t modelHandle,
+	void DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, ModelHandle modelHandle,
 		const Material* material, float animationTimer);
 
 private:
@@ -218,7 +218,7 @@ public:
 	/// <param name="camera"></param>
 	/// <param name="textureHandle"></param>
 	/// <param name="material"></param>
-	void DrawPlane(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
+	void DrawPlane(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, TextureHandle textureHandle,
 		const Material* material);
 
 	/// <summary>
@@ -233,7 +233,7 @@ public:
 	/// <param name="enableHalfLanbert"></param>
 	/// <param name="segment"></param>
 	/// <param name="ring"></param>
-	void DrawUVSphere(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
+	void DrawUVSphere(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, TextureHandle textureHandle,
 		const Material* material, int32_t segment, int32_t ring);
 
 	/// <summary>
@@ -246,7 +246,7 @@ public:
 	/// <param name="color"></param>
 	/// <param name="enableLighting"></param>
 	/// <param name="enableHalfLanbert"></param>
-	void DrawCube(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
+	void DrawCube(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, TextureHandle textureHandle,
 		const Material* material);
 
 	/// <summary>
@@ -259,7 +259,7 @@ public:
 	/// <param name="camera"></param>
 	/// <param name="textureHandle"></param>
 	void DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3& p2, const Vector3& p3, const Vector2& textureLeftTop, const Vector2& size,
-		const UVTransform* uvTransform, const Camera2D* camera, uint32_t textureHandle, const Vector4& color);
+		const UVTransform* uvTransform, const Camera2D* camera, TextureHandle textureHandle, const Vector4& color);
 
 #pragma endregion
 

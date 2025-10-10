@@ -6,7 +6,7 @@
 /// <param name="device_"></param>
 /// <param name="commandList"></param>
 void GltfModelResources::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* commandList, TextureStore* textureStore,
-	const std::string& fileDirectory, const std::string& fileName, const std::string& extName, uint32_t modelHandle)
+	const std::string& fileDirectory, const std::string& fileName, const std::string& extName, ModelHandle modelHandle)
 {
 	// 基底クラスの初期化
 	BaseModelResources::Initialize(device, commandList, textureStore, fileDirectory, fileName, extName, modelHandle);
@@ -48,14 +48,15 @@ void GltfModelResources::Initialize(ID3D12Device* device, ID3D12GraphicsCommandL
 		------------------------*/
 
 		// テクスチャハンドル
-		uint32_t textureHandle = 0;
+		TextureHandle textureHandle{};
 
 		// テクスチャがないとき
 		if (meshDatum.material.textureFilePath == "")
 		{
 			// テクスチャを読み込む
 			textureHandle = textureStore_->LoadTexture("./Resources/Textures/white2x2.png");
-		} else
+		}
+		else
 		{
 			// テクスチャがあるとき
 			textureHandle = textureStore_->LoadTexture(meshDatum.material.textureFilePath.c_str());

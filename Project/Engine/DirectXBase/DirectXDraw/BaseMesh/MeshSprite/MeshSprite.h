@@ -3,6 +3,7 @@
 #include "../MeshOptions/WorldTransform2D/WorldTransform2D.h"
 #include "../MeshOptions/UVTransform/UVTransform.h"
 #include "../../Camera/Camera2D/Camera2D.h"
+#include "Handle/Handle.h"
 
 // 前方宣言
 class MugenEngine;
@@ -17,7 +18,7 @@ public:
 	/// <param name="engine"></param>
 	/// <param name="camera2d"></param>
 	/// <param name="textureHandle"></param>
-	void Initialize(const MugenEngine* engine, const Camera2D* camera2d, uint32_t textureHandle);
+	void Initialize(const MugenEngine* engine, const Camera2D* camera2d, TextureHandle textureHandle);
 
 	/// <summary>
 	/// 更新処理
@@ -33,7 +34,7 @@ public:
 	/// テクスチャハンドルのSetter
 	/// </summary>
 	/// <param name="textureHandle"></param>
-	void SetTextureHandle(uint32_t textureHandle) { textureHandle_ = textureHandle; }
+	void SetTextureHandle(TextureHandle textureHandle) { textureHandle_ = textureHandle; }
 
 	/// <summary>
 	/// X方向をフリップする
@@ -79,7 +80,7 @@ private:
 
 
 	// テクスチャハンドル
-	uint32_t textureHandle_ = 0;
+	TextureHandle textureHandle_{};
 
 	// 左右フリップ
 	bool isFlipX_ = false;

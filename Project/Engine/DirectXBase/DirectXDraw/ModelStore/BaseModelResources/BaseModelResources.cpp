@@ -6,7 +6,7 @@
 /// <param name="device_"></param>
 /// <param name="commandList"></param>
 void BaseModelResources::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* commandList, TextureStore* textureStore,
-	const std::string& fileDirectory, const std::string& fileName, const std::string& extName, uint32_t modelHandle)
+	const std::string& fileDirectory, const std::string& fileName, const std::string& extName, ModelHandle modelHandle)
 {
 	// nullptrチェック
 	assert(device);
@@ -18,7 +18,7 @@ void BaseModelResources::Initialize(ID3D12Device* device, ID3D12GraphicsCommandL
 	commandList_ = commandList;
 	textureStore_ = textureStore;
 	extName_ = extName;
-	modelHandle_ = modelHandle;
+	handle_ = modelHandle;
 	filePath_ = fileDirectory + "/" + fileName;
 
 	

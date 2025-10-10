@@ -1,8 +1,8 @@
 #pragma once
 #include "Func/CreateBufferResource/CreateBufferResource.h"
 #include "Func/LoadModel/LoadModel.h"
-#include "../../TextureStore/TextureStore.h"
 #include "DirectXBase/DirectXDraw/TextureStore/TextureStore.h"
+#include "Handle/Handle.h"
 
 class BaseModelResources
 {
@@ -14,7 +14,7 @@ public:
 	/// <param name="device_"></param>
 	/// <param name="commandList"></param>
 	virtual void Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* commandList, TextureStore* textureStore,
-		const std::string& fileDirectory, const std::string& fileName, const std::string& extName , uint32_t modelHandle);
+		const std::string& fileDirectory, const std::string& fileName, const std::string& extName , ModelHandle modelHandle);
 
 	/// <summary>
 	/// インデックスと頂点の
@@ -55,7 +55,7 @@ public:
 	/// モデルハンドルのGetter
 	/// </summary>
 	/// <returns></returns>
-	uint32_t GetModelHandle()const { return modelHandle_; }
+	ModelHandle GetModelHandle()const { return handle_; }
 
 	/// <summary>
 	/// モデルデータのGetter
@@ -68,7 +68,7 @@ public:
 	/// </summary>
 	/// <param name="meshIndex"></param>
 	/// <returns></returns>
-	uint32_t GetTextureHandle(uint32_t meshIndex)const { return textureHandle_[meshIndex]; }
+	TextureHandle GetTextureHandle(uint32_t meshIndex)const { return textureHandle_[meshIndex]; }
 
 	/// <summary>
 	/// アニメーションフラグのGetter
@@ -145,10 +145,10 @@ protected:
 
 
 	// モデルハンドル
-	uint32_t modelHandle_;
+	ModelHandle handle_;
 
 	// テクスチャハンドル
-	std::vector<uint32_t> textureHandle_;
+	std::vector<TextureHandle> textureHandle_;
 
 
 	// リソース

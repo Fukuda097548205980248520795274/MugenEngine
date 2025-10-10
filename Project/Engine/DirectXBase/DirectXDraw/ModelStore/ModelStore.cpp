@@ -51,7 +51,7 @@ void ModelStore::Finalize()
 /// <param name="directoryPath"></param>
 /// <param name="filename"></param>
 /// <returns></returns>
-uint32_t ModelStore::LoadModel(const std::string& directoryPath, const std::string& filename)
+ModelHandle ModelStore::LoadModel(const std::string& directoryPath, const std::string& filename)
 {
 	// ファイルパス
 	std::string filePath = directoryPath + "/" + filename;
@@ -69,7 +69,8 @@ uint32_t ModelStore::LoadModel(const std::string& directoryPath, const std::stri
 
 
 	// ハンドルを取得する
-	uint32_t handle = static_cast<uint32_t>(modelResources_.size());
+	ModelHandle handle{};
+	handle.value = static_cast<uint32_t>(modelResources_.size());
 
 	// モデルリソースを用意する
 	std::unique_ptr<ObjModelResources> objModelResource = nullptr;

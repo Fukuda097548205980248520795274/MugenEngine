@@ -176,7 +176,7 @@ void DirectXDraw::OffscreenClear(D3D12_CPU_DESCRIPTOR_HANDLE dsvHandle)
 /// <param name="camera"></param>
 /// <param name="modelHandle"></param>
 /// <param name="material"></param>
-void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t modelHandle,
+void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, ModelHandle modelHandle,
 	const Material* material, float animationTimer)
 {
 	// モデル情報を取得する
@@ -657,7 +657,7 @@ void DirectXDraw::DrawObjModel(const WorldTransform3D* worldTransform, const UVT
 /// <param name="camera"></param>
 /// <param name="textureHandle"></param>
 /// <param name="material"></param>
-void DirectXDraw::DrawPlane(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
+void DirectXDraw::DrawPlane(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, TextureHandle textureHandle,
 	const Material* material)
 {
 	// カメラの値を取得する
@@ -751,7 +751,7 @@ void DirectXDraw::DrawPlane(const WorldTransform3D* worldTransform, const UVTran
 /// <param name="textureHandle"></param>
 /// <param name="segment"></param>
 /// <param name="ring"></param>
-void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
+void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, TextureHandle textureHandle,
 	const Material* material ,int32_t segment, int32_t ring)
 {
 	// セグメントとリングの数を制限する
@@ -935,7 +935,7 @@ void DirectXDraw::DrawUVSphere(const WorldTransform3D* worldTransform, const UVT
 /// <param name="worldTransform"></param>
 /// <param name="camera"></param>
 /// <param name="textureHandle"></param>
-void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
+void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, TextureHandle textureHandle,
 	const Material* material)
 {
 	// カメラの値を取得する
@@ -1027,7 +1027,7 @@ void DirectXDraw::DrawCube(const WorldTransform3D* worldTransform, const UVTrans
 /// </summary>
 /// <param name="textureHandle"></param>
 void DirectXDraw::DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3& p2, const Vector3& p3,const Vector2& textureLeftTop, const Vector2& textureSize,
-	const UVTransform* uvTransform, const Camera2D* camera, uint32_t textureHandle, const Vector4& color)
+	const UVTransform* uvTransform, const Camera2D* camera, TextureHandle textureHandle, const Vector4& color)
 {
 	/*------------------------
 	    頂点データを入力する

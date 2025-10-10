@@ -4,6 +4,7 @@
 #include "../MeshOptions/UVTransform/UVTransform.h"
 #include "../MeshOptions/Material/Material.h"
 #include "../../Camera/Camera3D/Camera3D.h"
+#include "Handle/Handle.h"
 
 // 前方宣言
 class MugenEngine;
@@ -17,7 +18,7 @@ public:
 	/// </summary>
 	/// <param name="camera3d"></param>
 	/// <param name="modelHandle"></param>
-	void Initialize(const MugenEngine* engine, const Camera3D* camera3d, uint32_t modelHandle);
+	void Initialize(const MugenEngine* engine, const Camera3D* camera3d, ModelHandle modelHandle);
 
 	/// <summary>
 	/// 更新処理
@@ -39,7 +40,7 @@ public:
 	/// モデルハンドルのSetter
 	/// </summary>
 	/// <param name="modelHandle"></param>
-	void SetModelHandle(uint32_t modelHandle) { modelHandle_ = modelHandle; }
+	void SetModelHandle(ModelHandle modelHandle) { modelHandle_ = modelHandle; }
 
 	/// <summary>
 	/// アニメーション速度のSetter
@@ -67,7 +68,7 @@ private:
 	const Camera3D* camera3d_ = nullptr;
 
 	// モデルハンドル
-	uint32_t modelHandle_ = 0;
+	ModelHandle modelHandle_{};
 
 
 
