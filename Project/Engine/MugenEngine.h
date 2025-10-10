@@ -13,7 +13,6 @@
 #include "Math/Quaternion/Quaternion.h"
 #include "Math/Vector1/Vector1.h"
 #include "RecordSetting/RecordSetting.h"
-#include "RandomUtil/RandomUtil.h"
 
 // マウスボタン
 enum MouseButton
@@ -229,21 +228,21 @@ public:
 	/// </summary>
 	/// <param name="filePath"></param>
 	/// <returns></returns>
-	uint32_t LoadTexture(const std::string& filePath)const { return directXBase_->LoadTexture(filePath); }
+	TextureHandle LoadTexture(const std::string& filePath)const { return directXBase_->LoadTexture(filePath); }
 
 	/// <summary>
 	/// テクスチャの横幅を取得する
 	/// </summary>
 	/// <param name="textureHandle"></param>
 	/// <returns></returns>
-	float GetTextureWidth(uint32_t textureHandle)const { return directXBase_->GetTextureWidth(textureHandle); }
+	float GetTextureWidth(TextureHandle handle)const { return directXBase_->GetTextureWidth(handle); }
 
 	/// <summary>
 	/// テクスチャの縦幅を取得する
 	/// </summary>
 	/// <param name="textureHandle"></param>
 	/// <returns></returns>
-	float GetTextureHeight(uint32_t textureHandle)const { return directXBase_->GetTextureHeight(textureHandle); }
+	float GetTextureHeight(TextureHandle handle)const { return directXBase_->GetTextureHeight(handle); }
 
 #pragma endregion
 
@@ -255,21 +254,21 @@ public:
 	/// <param name="directory"></param>
 	/// <param name="fileName"></param>
 	/// <returns></returns>
-	uint32_t LoadModel(const std::string& directory, const std::string& fileName)const { return directXBase_->LoadModel(directory, fileName); }
+	ModelHandle LoadModel(const std::string& directory, const std::string& fileName)const { return directXBase_->LoadModel(directory, fileName); }
 
 	/// <summary>
 	/// アニメーションフラグのGetter
 	/// </summary>
 	/// <param name="modelHandle"></param>
 	/// <returns></returns>
-	bool IsAnimation(uint32_t modelHandle)const { return directXBase_->IsAnimation(modelHandle); }
+	bool IsAnimation(ModelHandle handle)const { return directXBase_->IsAnimation(handle); }
 
 	/// <summary>
 	/// アニメーション時間のGetter
 	/// </summary>
 	/// <param name="modelHandle"></param>
 	/// <returns></returns>
-	float GetAnimationDuration(uint32_t modelHandle)const { return directXBase_->GetAnimationDuration(modelHandle); }
+	float GetAnimationDuration(ModelHandle handle)const { return directXBase_->GetAnimationDuration(handle); }
 
 #pragma endregion
 
@@ -280,40 +279,40 @@ public:
 	/// </summary>
 	/// <param name="filePath"></param>
 	/// <returns></returns>
-	uint32_t LoadAudio(const std::string& filePath) const { return audioStore_->LoadAudio(filePath); }
+	SoundHandle LoadAudio(const std::string& filePath) const { return audioStore_->LoadAudio(filePath); }
 
 	/// <summary>
 	/// 音量の設定
 	/// </summary>
 	/// <param name="playHandle"></param>
 	/// <param name="volume"></param>
-	void SetVolume(uint32_t playHandle, float volume) const { audioStore_->SetVolume(playHandle, volume); }
+	void SetVolume(PlayHandle handle, float volume) const { audioStore_->SetVolume(handle, volume); }
 
 	/// <summary>
 	/// ピッチの設定
 	/// </summary>
 	/// <param name="playHandle"></param>
 	/// <param name="pitch"></param>
-	void SetPitch(uint32_t playHandle, float pitch)const { audioStore_->SetPitch(playHandle, pitch); }
+	void SetPitch(PlayHandle handle, float pitch)const { audioStore_->SetPitch(handle, pitch); }
 
 	/// <summary>
 	/// 音声データを再生する
 	/// </summary>
 	/// <param name="soundHandle"></param>
-	uint32_t PlayAudio(uint32_t soundHandle, float volume) const { return audioStore_->PlayAudio(soundHandle, volume); }
+	PlayHandle PlayAudio(SoundHandle handle, float volume) const { return audioStore_->PlayAudio(handle, volume); }
 
 	/// <summary>
 	/// 音声データを停止する
 	/// </summary>
 	/// <param name="playHandle"></param>
-	void StopAudio(uint32_t playHandle) const { audioStore_->StopAudio(playHandle); }
+	void StopAudio(PlayHandle handle) const { audioStore_->StopAudio(handle); }
 
 	/// <summary>
 	/// 音楽が再生されているかどうか
 	/// </summary>
 	/// <param name="playHandle"></param>
 	/// <returns></returns>
-	bool IsAudioPlay(uint32_t playHandle)const { return audioStore_->IsAudioPlay(playHandle); }
+	bool IsAudioPlay(PlayHandle handle)const { return audioStore_->IsAudioPlay(handle); }
 
 #pragma endregion
 
@@ -650,7 +649,7 @@ public:
 	/// <param name="color"></param>
 	/// <param name="enableLighting"></param>
 	/// <param name="enableHalfLanbert"></param>
-	void DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t modelHandle,
+	void DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, ModelHandle modelHandle,
 		const Material* material, float animationTimer) const
 	{
 		directXBase_->DrawModel(worldTransform, uvTransform, camera, modelHandle, material, animationTimer);
@@ -663,7 +662,7 @@ public:
 	/// <param name="camera"></param>
 	/// <param name="textureHandle"></param>
 	void DrawSprite(const WorldTransform2D* worldTransform, const Vector2& anchor, const Vector2& textureLeftTop, const Vector2& textureSize,
-		const UVTransform* uvTransform, const Camera2D* camera, uint32_t textureHandle, const Vector4& color, bool isFlipX, bool isFlipY)const;
+		const UVTransform* uvTransform, const Camera2D* camera, TextureHandle textureHandle, const Vector4& color, bool isFlipX, bool isFlipY)const;
 
 	/// <summary>
 	/// 平面を描画する
@@ -673,7 +672,7 @@ public:
 	/// <param name="camera"></param>
 	/// <param name="textureHandle"></param>
 	/// <param name="material"></param>
-	void DrawPlane(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
+	void DrawPlane(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, TextureHandle textureHandle,
 		const Material* material) const
 	{
 		directXBase_->DrawPlane(worldTransform, uvTransform, camera, textureHandle, material);
@@ -691,7 +690,7 @@ public:
 	/// <param name="enableHalfLanbert"></param>
 	/// <param name="segment"></param>
 	/// <param name="ring"></param>
-	void DrawUVSphere(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
+	void DrawUVSphere(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, TextureHandle textureHandle,
 		const Material* material,int32_t segment, int32_t ring) const
 	{
 		directXBase_->DrawUVSphere(worldTransform, uvTransform, camera, textureHandle, material, segment, ring);
@@ -707,7 +706,7 @@ public:
 	/// <param name="color"></param>
 	/// <param name="enableLighting"></param>
 	/// <param name="enableHalfLanbert"></param>
-	void DrawCube(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, uint32_t textureHandle,
+	void DrawCube(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, TextureHandle textureHandle,
 		const Material* material) const
 	{
 		directXBase_->DrawCube(worldTransform, uvTransform, camera, textureHandle, material);
@@ -773,11 +772,10 @@ private:
 	// 衝突判定
 	std::unique_ptr<Collision> collision_ = nullptr;
 
+
 	// 設定記録
 	RecordSetting* recordSetting_ = nullptr;
 
-	// 乱数生成
-	RandomUtil* randomUtil_ = nullptr;
 
 	// デルタタイム
 	float deltaTime_ = 1.0f / 60.0f;

@@ -11,7 +11,7 @@ public:
 	/// <param name="device_"></param>
 	/// <param name="commandList"></param>
 	void Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* commandList, TextureStore* textureStore,
-		const std::string& fileDirectory, const std::string& fileName, const std::string& extName, uint32_t modelHandle) override;
+		const std::string& fileDirectory, const std::string& fileName, const std::string& extName, ModelHandle modelHandle) override;
 
 	/// <summary>
 	/// 頂点とインデックスをコマンドリストに登録する

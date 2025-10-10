@@ -32,9 +32,9 @@ public:
 
 
 	// サウンドハンドル
-	uint32_t soundHandle_ = 0;
+	SoundHandle soundHandle_{};
 
 	// プレイハンドル
-	uint32_t playHandle_ = 0;
+	PlayHandle playHandle_{};
 };
 

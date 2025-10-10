@@ -17,9 +17,6 @@
 /// </summary>
 MugenEngine::~MugenEngine()
 {
-	// 乱数生成の終了処理
-	randomUtil_->Finalize();
-
 	// 調整記録の終了処理
 	recordSetting_->Finalize();
 
@@ -72,10 +69,6 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 	// 調整記録の生成と初期化
 	recordSetting_ = RecordSetting::GetInstance();
 
-	// 乱数生成の生成と初期化
-	randomUtil_ = RandomUtil::GetInstance();
-	randomUtil_->Initialize();
-
 }
 
 /// <summary>
@@ -118,7 +111,7 @@ void MugenEngine::FrameEnd()
 /// <param name="camera"></param>
 /// <param name="textureHandle"></param>
 void MugenEngine::DrawSprite(const WorldTransform2D* worldTransform, const Vector2& anchor, const Vector2& textureLeftTop, const Vector2& textureSize,
-	const UVTransform* uvTransform, const Camera2D* camera, uint32_t textureHandle, const Vector4& color, bool isFlipX, bool isFlipY)const
+	const UVTransform* uvTransform, const Camera2D* camera, TextureHandle textureHandle, const Vector4& color, bool isFlipX, bool isFlipY)const
 {
 	// ワールドビュープロジェクション行列
 	Matrix4x4 worldViewProjectionMatrix = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;

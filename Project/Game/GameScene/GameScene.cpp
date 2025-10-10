@@ -30,7 +30,7 @@ void GameScene::Update()
 	player_->Update();
 
 	//ループ再生
-	if (!engine_->IsAudioPlay(playHandle_) || playHandle_ == 0)
+	if (!engine_->IsAudioPlay(playHandle_) || playHandle_.IsUse())
 	{
 		playHandle_ =  engine_->PlayAudio(soundHandle_ , 0.3f);
 	}

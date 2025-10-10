@@ -9,6 +9,7 @@
 #include "../TextureStore/TextureStore.h"
 #include "../DataForGPU/MaterialData/MaterialData.h"
 #include "../DataForGPU/TransformationData/TransformationData.h"
+#include "Handle/Handle.h"
 
 
 
@@ -39,28 +40,28 @@ public:
 	/// <param name="directoryPath"></param>
 	/// <param name="filename"></param>
 	/// <returns></returns>
-	uint32_t LoadModel(const std::string& directoryPath, const std::string& filename);
+	ModelHandle LoadModel(const std::string& directoryPath, const std::string& filename);
 
 	/// <summary>
 	/// モデルの情報のGetter
 	/// </summary>
 	/// <param name="modelHandle"></param>
 	/// <returns></returns>
-	BaseModelResources* GetModelInfo(uint32_t modelHandle)const { return modelResources_[modelHandle].get(); }
+	BaseModelResources* GetModelInfo(ModelHandle handle)const { return modelResources_[handle.value].get(); }
 
 	/// <summary>
 	/// アニメーションフラグのGetter
 	/// </summary>
 	/// <param name="modelHandle"></param>
 	/// <returns></returns>
-	bool IsAnimation(uint32_t modelHandle)const { return modelResources_[modelHandle]->IsAnimation(); }
+	bool IsAnimation(ModelHandle handle)const { return modelResources_[handle.value]->IsAnimation(); }
 
 	/// <summary>
 	/// アニメーション時間のGetter
 	/// </summary>
 	/// <param name="modelHandle"></param>
 	/// <returns></returns>
-	float GetAnimationDuration(uint32_t modelHandle)const { return modelResources_[modelHandle]->GetAnimation().duration; }
+	float GetAnimationDuration(ModelHandle handle)const { return modelResources_[handle.value]->GetAnimation().duration; }
 
 
 private:

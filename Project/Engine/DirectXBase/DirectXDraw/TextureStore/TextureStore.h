@@ -4,6 +4,7 @@
 #include "../../../Func/LoadTexture/LoadTexture.h"
 #include "../../../LogFile/LogFile.h"
 #include "../../DirectXHeap/DirectXHeap.h"
+#include "Handle/Handle.h"
 
 class TextureStore
 {
@@ -31,28 +32,28 @@ public:
 	/// </summary>
 	/// <param name="filePath"></param>
 	/// <returns></returns>
-	uint32_t LoadTexture(const std::string& filePath);
+	TextureHandle LoadTexture(const std::string& filePath);
 
 	/// <summary>
 	/// GPUハンドルのGetter
 	/// </summary>
 	/// <param name="textureHandle"></param>
 	/// <returns></returns>
-	D3D12_GPU_DESCRIPTOR_HANDLE GetGPUDescriptorHandle(uint32_t textureHandle)const { return dataCollection_[textureHandle]->gpuHandle_; }
+	D3D12_GPU_DESCRIPTOR_HANDLE GetGPUDescriptorHandle(TextureHandle handle)const { return dataCollection_[handle.value]->gpuHandle_; }
 
 	/// <summary>
 	/// テクスチャの横幅を取得する
 	/// </summary>
 	/// <param name="textureHandle"></param>
 	/// <returns></returns>
-	float GetTextureWidth(uint32_t textureHandle)const { return static_cast<float>(dataCollection_[textureHandle]->mipImages_.GetMetadata().width); }
+	float GetTextureWidth(TextureHandle handle)const { return static_cast<float>(dataCollection_[handle.value]->mipImages_.GetMetadata().width); }
 
 	/// <summary>
 	/// テクスチャの縦幅を取得する
 	/// </summary>
 	/// <param name="textureHandle"></param>
 	/// <returns></returns>
-	float GetTextureHeight(uint32_t textureHandle)const { return static_cast<float>(dataCollection_[textureHandle]->mipImages_.GetMetadata().height); }
+	float GetTextureHeight(TextureHandle handle)const { return static_cast<float>(dataCollection_[handle.value]->mipImages_.GetMetadata().height); }
 
 	/// <summary>
 	/// テクスチャのハッシュ値を計算する
@@ -109,7 +110,7 @@ private:
 		D3D12_GPU_DESCRIPTOR_HANDLE gpuHandle_{};
 
 		// ハンドル
-		uint32_t handle_ = 0;
+		TextureHandle handle_{};
 	};
 
 	// テクスチャデータの集まり

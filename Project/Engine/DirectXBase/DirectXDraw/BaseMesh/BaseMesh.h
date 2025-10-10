@@ -4,6 +4,7 @@
 #include "MeshOptions/UVTransform/UVTransform.h"
 #include "MeshOptions/Material/Material.h"
 #include "../Camera/Camera3D/Camera3D.h"
+#include "Handle/Handle.h"
 
 // 前方宣言
 class MugenEngine;
@@ -17,7 +18,7 @@ public:
 	/// </summary>
 	/// <param name="camera3d"></param>
 	/// <param name="textureHandle"></param>
-	virtual void Initialize(const MugenEngine* engine, const Camera3D* camera3d, uint32_t textureHandle);
+	virtual void Initialize(const MugenEngine* engine, const Camera3D* camera3d, TextureHandle textureHandle);
 
 	/// <summary>
 	/// 更新処理
@@ -43,7 +44,7 @@ public:
 	std::unique_ptr<UVTransform> uvTransform_ = nullptr;
 
 	// テクスチャハンドル
-	uint32_t textureHandle_ = 0;
+	TextureHandle textureHandle_{};
 
 	// マテリアル
 	std::unique_ptr<Material> material_ = nullptr;
