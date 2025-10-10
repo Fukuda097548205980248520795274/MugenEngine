@@ -5,6 +5,9 @@
 /// </summary>
 AudioData::~AudioData()
 {
+	mediaData.clear();
+	waveFormat = {};
+
 	// ウェーブフォーマットの終了処理
 	CoTaskMemFree(waveFormat);
 }
@@ -59,6 +62,7 @@ void AudioStore::Initialize(LogFile* logFile)
 /// </summary>
 void AudioStore::Finalize()
 {
+
 	// 全ての再生中の音声を停止・破棄する
 	for (std::unique_ptr<PlayData>& playDatum : playData_)
 	{
