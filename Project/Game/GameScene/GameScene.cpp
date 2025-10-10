@@ -15,7 +15,7 @@ void GameScene::Initialize(const MugenEngine* engine)
 	player_->Initialize(engine_, camera3d_.get(), Vector3(0.0f, 0.0f, 0.0f));
 
 	// サウンドハンドル
-	soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/forget_me_not.mp3");
+	//soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/forget_me_not.mp3");
 }
 
 /// <summary>
@@ -30,10 +30,10 @@ void GameScene::Update()
 	player_->Update();
 
 	// ループ再生
-	if (!engine_->IsAudioPlay(playHandle_) || playHandle_ == 0)
-	{
-		playHandle_ =  engine_->PlayAudio(soundHandle_ , 0.3f);
-	}
+	//if (!engine_->IsAudioPlay(playHandle_) || playHandle_ == 0)
+	//{
+	//	playHandle_ =  engine_->PlayAudio(soundHandle_ , 0.3f);
+	//}
 }
 
 /// <summary>

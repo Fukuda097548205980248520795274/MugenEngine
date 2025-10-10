@@ -1,6 +1,9 @@
 #pragma once
 #include <chrono>
 #include <thread>
+#include <imgui.h>
+#include <imgui_impl_dx12.h>
+#include <imgui_impl_win32.h>
 
 #include "DirectXDevice/DirectXDevice.h"
 #include "DirectXCommand/DirectXCommand.h"
@@ -12,10 +15,6 @@
 #include "DirectXDraw/DirectXDraw.h"
 #include "ResourcesDepthStencil/ResourcesDepthStencil.h"
 #include "WinApp/WinApp.h"
-
-#include "../../../Externals/ImGui/imgui.h"
-#include "../../../Externals/ImGui/imgui_impl_dx12.h"
-#include "../../../Externals/ImGui/imgui_impl_win32.h"
 
 class DirectXBase
 {

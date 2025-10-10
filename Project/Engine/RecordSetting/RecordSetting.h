@@ -7,13 +7,13 @@
 #include <cassert>
 #include <fstream>
 #include <Windows.h>
+#include <imgui.h>
+#include <imgui_impl_dx12.h>
+#include <imgui_impl_win32.h>
+
 #include "Math/Vector2/Vector2.h"
 #include "Math/Vector3/Vector3.h"
 #include "Math/Vector4/Vector4.h"
-
-#include "../../../Externals/ImGui/imgui.h"
-#include "../../../Externals/ImGui/imgui_impl_dx12.h"
-#include "../../../Externals/ImGui/imgui_impl_win32.h"
 
 class RecordSetting
 {
