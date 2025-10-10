@@ -93,7 +93,6 @@ uint32_t AudioStore::LoadAudio(const std::string& filePath)
 			return data->soundHandle;
 	}
 
-
 	// wStringに変換する
 	const std::wstring filePathW = ConvertString(filePath);
 
@@ -101,6 +100,7 @@ uint32_t AudioStore::LoadAudio(const std::string& filePath)
 	IMFSourceReader* pMFSourceReader{ nullptr };
 	HRESULT hr = MFCreateSourceReaderFromURL(filePathW.c_str(), NULL, &pMFSourceReader);
 	assert(SUCCEEDED(hr));
+
 
 	// メディアタイプの作成
 	IMFMediaType* pMFMediaType{ nullptr };
@@ -115,12 +115,19 @@ uint32_t AudioStore::LoadAudio(const std::string& filePath)
 	// メディアタイプを解放し、再度作成する
 	pMFMediaType->Release();
 	pMFMediaType = nullptr;
-	pMFSourceReader->GetCurrentMediaType(MF_SOURCE_READER_FIRST_AUDIO_STREAM, &pMFMediaType);
+	hr = pMFSourceReader->GetCurrentMediaType(MF_SOURCE_READER_FIRST_AUDIO_STREAM, &pMFMediaType);
+	assert(SUCCEEDED(hr));
 
 
 	// オーディオデータを作成する
 	std::unique_ptr<AudioData> audioDatum = std::make_unique<AudioData>();
 	audioDatum->filePath = filePath;
+
+	// ファイルのサイズを先に求める
+	PROPVARIANT var;
+	hr = pMFSourceReader->GetPresentationAttribute(MF_SOURCE_READER_MEDIASOURCE, MF_PD_DURATION, &var);
+	assert(SUCCEEDED(hr));
+	audioDatum->mediaData.reserve(static_cast<BYTE>(var.vt));
 
 	// サウンドハンドルを取得する
 	uint32_t soundHandle = static_cast<uint32_t>(audioData_.size());
@@ -133,7 +140,8 @@ uint32_t AudioStore::LoadAudio(const std::string& filePath)
 	{
 		IMFSample* pMFSample{ nullptr };
 		DWORD dwStreamFlags{ 0 };
-		pMFSourceReader->ReadSample(MF_SOURCE_READER_FIRST_AUDIO_STREAM, 0, nullptr, &dwStreamFlags, nullptr, &pMFSample);
+		hr = pMFSourceReader->ReadSample(MF_SOURCE_READER_FIRST_AUDIO_STREAM, 0, nullptr, &dwStreamFlags, nullptr, &pMFSample);
+		assert(SUCCEEDED(hr));
 
 		if (dwStreamFlags & MF_SOURCE_READERF_ENDOFSTREAM)
 		{
@@ -141,11 +149,13 @@ uint32_t AudioStore::LoadAudio(const std::string& filePath)
 		}
 
 		IMFMediaBuffer* pMFMediaBuffer{ nullptr };
-		pMFSample->ConvertToContiguousBuffer(&pMFMediaBuffer);
+		hr = pMFSample->ConvertToContiguousBuffer(&pMFMediaBuffer);
+		assert(SUCCEEDED(hr));
 
 		BYTE* pBuffer{ nullptr };
 		DWORD cbCurrentLength{ 0 };
-		pMFMediaBuffer->Lock(&pBuffer, nullptr, &cbCurrentLength);
+		hr = pMFMediaBuffer->Lock(&pBuffer, nullptr, &cbCurrentLength);
+		assert(SUCCEEDED(hr));
 
 		audioDatum->mediaData.resize(audioDatum->mediaData.size() + cbCurrentLength);
 		memcpy(audioDatum->mediaData.data() + audioDatum->mediaData.size() - cbCurrentLength, pBuffer, cbCurrentLength);
