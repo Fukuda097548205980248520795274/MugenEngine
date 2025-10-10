@@ -42,15 +42,16 @@ public:
 	void DrawRtvToSwapChain();
 
 	/// <summary>
-	/// ImGuiにオフスクリーンを描画する
-	/// </summary>
-	void ImGuiOffscreen();
-
-	/// <summary>
-	/// 使用した最後のオフスクリーンのGPUディスクリプタハンドルを取得する
+	/// 最後に使用したオフスクリーンのGPUディスクリプタハンドルを取得する
 	/// </summary>
 	/// <returns></returns>
 	D3D12_GPU_DESCRIPTOR_HANDLE GetLastOffscreenDescriptorHandleGPU()const { return renderTargetResources_[numUsesOffscreen_ - 1]->GetDescriptorHandleGPU(); }
+
+	/// <summary>
+	/// 最後に使用したオフスクリーンのリソースを取得する
+	/// </summary>
+	/// <returns></returns>
+	ID3D12Resource* GetLastOffscreenResource()const { return renderTargetResources_[numUsesOffscreen_ - 1]->GetResource(); }
 
 
 #pragma region 描画処理

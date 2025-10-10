@@ -171,7 +171,62 @@ void DirectXBase::PostDraw()
 
 	// ImGuiDockingに最終的なオフスクリーンを描画する
 #ifdef _DEVELOPMENT
-	directXDraw_->ImGuiOffscree();
+
+	// オフスクリーン最後のリソース
+	ID3D12Resource* lastOffscreenResource = directXDraw_->GetLastOffscreenResource();
+
+	// オフスクリーン最後のGPUハンドル
+	D3D12_GPU_DESCRIPTOR_HANDLE lastOffscreenDescriptorHandleGPU = directXDraw_->GetLastOffscreenDescriptorHandleGPU();
+
+	// RenderTarget -> PixelShaderResource
+	TransitionBarrier(lastOffscreenResource, 
+		D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE, directXCommand_->GetCommandList());
+
+	ImGui::Begin("Scene");
+
+	ImTextureID texId = (ImTextureID)(lastOffscreenDescriptorHandleGPU.ptr);
+
+	ImVec2 availSize = ImGui::GetContentRegionAvail(); // ウィンドウ内の空きサイズ
+
+	float texWidth = static_cast<float>(directXBuffering_->GetSwapChainDesc().Width);
+	float texHeight = static_cast<float>(directXBuffering_->GetSwapChainDesc().Height);
+	float aspectRatio = texWidth / texHeight;
+
+	// アスペクト比を保ちつつ、ウィンドウサイズ内に最大表示
+	ImVec2 imageSize;
+
+	float availAspect = availSize.x / availSize.y;
+	if (availAspect > aspectRatio) {
+		// 横に余裕あり → 高さに合わせる
+		imageSize.y = availSize.y;
+		imageSize.x = availSize.y * aspectRatio;
+	} else {
+		imageSize.x = availSize.x;
+		imageSize.y = availSize.x / aspectRatio;
+	}
+
+	// 中央寄せ（X方向、Y方向両方）
+	ImVec2 cursorPos = ImGui::GetCursorPos();
+	ImVec2 newCursorPos = ImVec2(
+		cursorPos.x + (availSize.x - imageSize.x) * 0.5f,
+		cursorPos.y + (availSize.y - imageSize.y) * 0.5f
+	);
+
+	ImGui::SetCursorPos(newCursorPos);
+
+	ImGui::Image(texId, imageSize);
+
+	ImGui::End();
+
+	// ImGuiの内部コマンドを生成する
+	ImGui::Render();
+
+	// ImGuiを描画する
+	ImGui_ImplDX12_RenderDrawData(ImGui::GetDrawData(), directXCommand_->GetCommandList());
+
+	// PixelShaderResource -> RenderTarget
+	TransitionBarrier(lastOffscreenResource,
+		D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE, D3D12_RESOURCE_STATE_RENDER_TARGET, directXCommand_->GetCommandList());
 #endif
 
 
