@@ -1,9 +1,6 @@
 #pragma once
 #include <chrono>
 #include <thread>
-#include <imgui.h>
-#include <imgui_impl_dx12.h>
-#include <imgui_impl_win32.h>
 
 #include "DirectXDevice/DirectXDevice.h"
 #include "DirectXCommand/DirectXCommand.h"
@@ -15,6 +12,7 @@
 #include "DirectXDraw/DirectXDraw.h"
 #include "ResourcesDepthStencil/ResourcesDepthStencil.h"
 #include "WinApp/WinApp.h"
+#include "DirectXBase/ImGuiRender/ImGuiRender.h"
 
 class DirectXBase
 {
@@ -221,15 +219,15 @@ private:
 	std::unique_ptr<ResourcesDepthStencil> resourceDepthStencil_ = nullptr;
 
 
+#ifdef _DEVELOPMENT
+	// ImGui描画システム
+	std::unique_ptr<ImGuiRender> imGuiRender_ = nullptr;
+#endif
+
 	
 #ifdef _DEBUG
-
 	// DirectXデバッグ
 	std::unique_ptr<DirectXDebug> directXDebug_ = nullptr;
-
 #endif
 };
 
-
-
-void CreateDockSpace(const char* name);
