@@ -29,5 +29,12 @@ public:
 	
 	// プレイヤー
 	std::unique_ptr<Player> player_ = nullptr;
+
+
+	// サウンドハンドル
+	uint32_t soundHandle_ = 0;
+
+	// プレイハンドル
+	uint32_t playHandle_ = 0;
 };
 

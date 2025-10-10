@@ -17,6 +17,9 @@
 /// </summary>
 MugenEngine::~MugenEngine()
 {
+	// 乱数生成の終了処理
+	randomUtil_->Finalize();
+
 	// 調整記録の終了処理
 	recordSetting_->Finalize();
 
@@ -68,6 +71,10 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 
 	// 調整記録の生成と初期化
 	recordSetting_ = RecordSetting::GetInstance();
+
+	// 乱数生成の生成と初期化
+	randomUtil_ = RandomUtil::GetInstance();
+	randomUtil_->Initialize();
 
 }
 

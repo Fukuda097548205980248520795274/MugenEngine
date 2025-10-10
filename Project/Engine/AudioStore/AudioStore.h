@@ -11,6 +11,7 @@
 
 #include "../LogFile/LogFile.h"
 #include "../Func/ConvertString/ConvertString.h"
+#include "RandomUtil/RandomUtil.h"
 
 
 // オーディオデータ
@@ -120,6 +121,9 @@ private:
 
 	// ログファイル
 	LogFile* logFile_ = nullptr;
+
+	// 乱数生成
+	RandomUtil* randomUtil_ = nullptr;
 
 
 

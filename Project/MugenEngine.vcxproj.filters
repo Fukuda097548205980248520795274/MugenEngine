@@ -457,6 +457,9 @@
     <Filter Include="Externals\ImGui">
       <UniqueIdentifier>{bff3cbdc-4241-44c3-8732-c668efa60f47}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\RandomUtil">
+      <UniqueIdentifier>{4003b8d4-2acc-4cfa-8b23-0d8a66385208}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -861,6 +864,9 @@
     <ClCompile Include="Externals\ImGui\imgui_widgets.cpp">
       <Filter>Externals\ImGui</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\RandomUtil\RandomUtil.cpp">
+      <Filter>Engine\Include\RandomUtil</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MugenEngine.h">
@@ -1264,6 +1270,9 @@
     </ClInclude>
     <ClInclude Include="Externals\ImGui\imstb_truetype.h">
       <Filter>Externals\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\RandomUtil\RandomUtil.h">
+      <Filter>Engine\Include\RandomUtil</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

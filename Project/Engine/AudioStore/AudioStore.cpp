@@ -49,6 +49,9 @@ void AudioStore::Initialize(LogFile* logFile)
 	hr = xAudio2_->CreateMasteringVoice(&masterVoice_);
 	assert(SUCCEEDED(hr));
 	logFile_->Log("SUCCEEDED : MasterVoice \n");
+
+	// 乱数生成を取得する
+	randomUtil_ = RandomUtil::GetInstance();
 }
 
 /// <summary>
@@ -176,7 +179,7 @@ uint32_t AudioStore::PlayAudio(uint32_t soundHandle, float volume)
 	uint32_t playHandle = 0;
 	while (playHandle == 0)
 	{
-		playHandle = rand() % 1000000 + 1;
+		playHandle = randomUtil_->GetRandomRange(1, 10000000);
 
 		for (std::unique_ptr<PlayData>& data : playData_)
 		{
