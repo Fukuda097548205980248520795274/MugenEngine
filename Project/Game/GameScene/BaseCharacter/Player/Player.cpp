@@ -11,10 +11,6 @@ void Player::Initialize(const MugenEngine* engine, const Camera3D* camera3d, con
 	// 基底クラスの初期化
 	BaseCharacter::Initialize(engine, camera3d, startPosition);
 
-	// プレイヤーのグループを作成する
-	engine_->CreateGroup("Player");
-	engine_->SetValue("Player", "translation", worldTransform_->translation_.x);
-
 	// 移動コントローラの生成と初期化
 	moveController_ = std::make_unique<MoveController>();
 	moveController_->Initialize(engine_);
@@ -24,6 +20,10 @@ void Player::Initialize(const MugenEngine* engine, const Camera3D* camera3d, con
 	model_->Initialize(engine_, camera3d_, engine_->LoadModel("./Resources/Models/characterBox", "characterBox.obj"));
 	model_->SetParent(worldTransform_.get());
 	model_->material_->enableHalfLambert_ = true;
+
+	// グループ名
+	std::string groupName = "Player";
+	engine_->RegistGroupDataReflection(groupName);
 }
 
 /// <summary>
@@ -31,8 +31,10 @@ void Player::Initialize(const MugenEngine* engine, const Camera3D* camera3d, con
 /// </summary>
 void Player::Update()
 {
+
 	// 移動の値を取得して、移動する
 	worldTransform_->translation_ += moveController_->GetMoveValue();
+	
 
 	// 基底クラスの更新処理
 	BaseCharacter::Update();

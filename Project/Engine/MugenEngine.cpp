@@ -17,7 +17,7 @@
 /// </summary>
 MugenEngine::~MugenEngine()
 {
-	// 設定記録の終了処理
+	// 調整記録の終了処理
 	recordSetting_->Finalize();
 
 	// COMの終了処理
@@ -66,8 +66,9 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 	collision_ = std::make_unique<Collision>();
 	collision_->Initialize(this);
 
-	// 設定記録のインスタンス取得
+	// 調整記録の生成と初期化
 	recordSetting_ = RecordSetting::GetInstance();
+
 }
 
 /// <summary>
@@ -88,8 +89,9 @@ void MugenEngine::FrameStart()
 	// DockSpaceの作成処理
 	CreateDockSpace("DockSpace");
 
-	// 調整記録の更新処理
+	// 設定記録の更新処理
 	recordSetting_->Update();
+
 #endif
 }
 

@@ -26,7 +26,7 @@ public:
 	bool enableLighting_ = true;
 
 	// ハーフランバート有効化
-	bool enableHalfLambert_ = false;
+	bool enableHalfLambert_ = true;
 
 
 	// スペキュラー有効化

@@ -727,20 +727,20 @@ public:
 #pragma region 調整記録
 
 	/// <summary>
-	/// グループを作成する
-	/// </summary>
-	/// <param name="groupName"></param>
-	void CreateGroup(const std::string& groupName)const { recordSetting_->CreateGroup(groupName); }
-
-	/// <summary>
-	/// 項目の設定
+	/// 設定したい値を設定する
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <param name="groupName"></param>
 	/// <param name="key"></param>
 	/// <param name="value"></param>
 	template<typename T>
-	void SetValue(const std::string& groupName, const std::string& key, T value)const { recordSetting_->SetValue(groupName, key, value); }
+	void SetSettingValue(const std::string& groupName, const std::string& key, T* value)const { recordSetting_->SetValue(groupName, key, value); }
+
+	/// <summary>
+	/// 登録した調整項目の値に、ファイルの値を反映させる
+	/// </summary>
+	/// <param name="groupName"></param>
+	void RegistGroupDataReflection(const std::string& groupName)const { recordSetting_->RegistGroupDataReflection(groupName); }
 
 #pragma endregion
 
