@@ -107,6 +107,16 @@ void RecordSetting::Update()
 			MessageBoxA(nullptr, message.c_str(), "RecordSetting", 0);
 		}
 
+		ImGui::Text("\n");
+
+		// ロードボタン
+		if (ImGui::Button("Load"))
+		{
+			RegistGroupDataReflection(groupName);
+			std::string message = std::format("{} : loaded.", groupName);
+			MessageBoxA(nullptr, message.c_str(), "RecordSetting", 0);
+		}
+
 
 		// 終了
 		ImGui::EndMenu();

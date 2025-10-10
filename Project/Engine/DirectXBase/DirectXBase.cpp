@@ -169,6 +169,7 @@ void DirectXBase::PostDraw()
 	directXDraw_->DrawRtvToSwapChain();
 
 
+	// ImGuiDockingに最終的なオフスクリーンを描画する
 #ifdef _DEVELOPMENT
 	directXDraw_->ImGuiOffscree();
 #endif
