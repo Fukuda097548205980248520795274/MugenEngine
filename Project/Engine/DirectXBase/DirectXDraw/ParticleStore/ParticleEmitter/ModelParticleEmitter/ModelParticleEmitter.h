@@ -1,4 +1,5 @@
 #pragma once
+#include "../../../Camera/Camera3D/Camera3D.h"
 #include "Math/Vector3/Vector3.h"
 #include "Handle/Handle.h"
 #include <string>
@@ -16,13 +17,13 @@ public:
 	/// </summary>
 	/// <param name="engine"></param>
 	/// <param name="numMaxParticle"></param>
-	void Initliaze(const MugenEngine* engine, uint32_t numMaxParticle, ModelHandle modelHandle, const std::string& name);
+	void Initliaze(const MugenEngine* engine,const Camera3D* camera3d, uint32_t numMaxParticle, ModelHandle modelHandle, const std::string& name);
 
 	/// <summary>
 	/// 初期化
 	/// </summary>
 	/// <param name="particleHandle"></param>
-	void Initliaze(const MugenEngine* engine, ParticleHandle particleHandle);
+	void Initliaze(const MugenEngine* engine, const Camera3D* camera3d, ParticleHandle particleHandle);
 
 	/// <summary>
 	/// 更新処理
@@ -82,6 +83,9 @@ private:
 
 	// エンジン
 	const MugenEngine* engine_ = nullptr;
+
+	// 3Dカメラ
+	const Camera3D* camera3d_ = nullptr;
 
 
 

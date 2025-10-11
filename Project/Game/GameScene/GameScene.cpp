@@ -21,9 +21,12 @@ void GameScene::Initialize(const MugenEngine* engine)
 	// テクスチャを読み込む
 	textureHandle_ = engine_->LoadTexture("./Resources/Textures/uvChecker.png");
 
+	// モデルを読み込む
+	modelHandle_ = engine_->LoadModel("./Resources/Models/suzanne", "suzanne.obj");
+
 	// パーティクルエミッターの生成と初期化
-	particleEmitter_ = std::make_unique<BillboardParticleEmitter>();
-	particleEmitter_->Initliaze(engine_, camera3d_.get(), 100, textureHandle_, "testParticle_0");
+	particleEmitter_ = std::make_unique<ModelParticleEmitter>();
+	particleEmitter_->Initliaze(engine_, camera3d_.get(), 100, modelHandle_, "testParticle_0");
 }
 
 /// <summary>

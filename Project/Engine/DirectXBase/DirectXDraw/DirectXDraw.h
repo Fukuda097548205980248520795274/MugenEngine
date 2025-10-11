@@ -297,6 +297,13 @@ public:
 	/// <param name="camera"></param>
 	void DrawBillboardParticle(ParticleHandle particleHandle, const Camera3D* camera);
 
+	/// <summary>
+	/// モデルパーティクルを描画する
+	/// </summary>
+	/// <param name=""></param>
+	/// <param name="camera"></param>
+	void DrawModelParticle(ParticleHandle particleHandle, const Camera3D* camera);
+
 #pragma endregion
 
 

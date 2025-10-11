@@ -19,6 +19,7 @@ void BillboardParticleEmitter::Initliaze(const MugenEngine* engine, const Camera
 	textureHandle_ = textureHandle;
 	name_ = name;
 
+	// パーティクルを読み込む
 	engine_->LoadParticleEmitter(this);
 }
 

@@ -39,6 +39,12 @@ public:
 	/// <returns></returns>
 	Vector3 GetScale()const { return transform.scale; }
 
+	/// <summary>
+	/// 回転のGetter
+	/// </summary>
+	/// <returns></returns>
+	Vector3 GetRotate()const { return transform.rotate; }
+
 
 private:
 

@@ -351,6 +351,13 @@ public:
 	/// <param name="camera"></param>
 	void DrawBillboardParticle(ParticleHandle particleHandle, const Camera3D* camera) const { directXBase_->DrawBillboardParticle(particleHandle, camera); }
 
+	/// <summary>
+	/// モデルパーティクルを描画する
+	/// </summary>
+	/// <param name=""></param>
+	/// <param name="camera"></param>
+	void DrawModelParticle(ParticleHandle particleHandle, const Camera3D* camera) const { directXBase_->DrawModelParticle(particleHandle, camera); }
+
 #pragma endregion
 
 #pragma region 衝突判定

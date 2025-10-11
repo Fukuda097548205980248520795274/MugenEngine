@@ -196,6 +196,13 @@ public:
 	/// <param name="particleHandle"></param>
 	/// <param name="camera"></param>
 	void DrawBillboardParticle(ParticleHandle particleHandle, const Camera3D* camera) { directXDraw_->DrawBillboardParticle(particleHandle, camera); }
+
+	/// <summary>
+	/// モデルパーティクルを描画する
+	/// </summary>
+	/// <param name=""></param>
+	/// <param name="camera"></param>
+	void DrawModelParticle(ParticleHandle particleHandle, const Camera3D* camera) { directXDraw_->DrawModelParticle(particleHandle, camera); }
 	
 private:
 
