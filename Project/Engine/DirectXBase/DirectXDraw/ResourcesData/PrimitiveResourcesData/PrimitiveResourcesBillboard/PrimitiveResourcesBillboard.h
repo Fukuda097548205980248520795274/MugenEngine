@@ -1,10 +1,9 @@
 #pragma once
 #include "../PrimitiveResourcesData.h"
 
-class PrimitiveResourcesPlane : public PrimitiveResourcesData
+class PrimitiveResourcesBillboard : public PrimitiveResourcesData
 {
 public:
-
 
 	/// <summary>
 	/// 初期化

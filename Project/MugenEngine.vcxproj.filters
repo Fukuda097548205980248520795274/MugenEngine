@@ -475,6 +475,45 @@
     <Filter Include="Engine\Include\Handle">
       <UniqueIdentifier>{eca3d1ae-1445-49a2-b356-094762a85e7b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesBillboard">
+      <UniqueIdentifier>{6cb12724-5011-4577-9ce6-3e9dd08d3282}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ParticleStore\ParticleEmitter">
+      <UniqueIdentifier>{49ce2bc4-195f-467c-8a86-cf7fddfbb336}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ParticleStore\ParticleEmitter\BillboardParticleEmitter">
+      <UniqueIdentifier>{1abfe441-46b5-4e8f-bd73-834ce7f146cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ParticleStore\ParticleEmitter\ModelParticleEmitter">
+      <UniqueIdentifier>{20910c24-0bb1-4357-852d-799bfae471af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Shader\Particle">
+      <UniqueIdentifier>{d098d713-3235-461e-a13b-bc45d0c9ce1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle">
+      <UniqueIdentifier>{91352e56-a83f-4f83-a656-980dd48b4d0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleAdd">
+      <UniqueIdentifier>{2b5c020d-667d-402e-b77b-b600046db000}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNone">
+      <UniqueIdentifier>{f328d0e7-d628-4154-81c9-48c81014c9df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNormal">
+      <UniqueIdentifier>{a3579e50-7d20-4a6f-96cf-e924f647339c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SignelPSOParticleSubtract">
+      <UniqueIdentifier>{b63db5e4-2973-44c7-bac7-a09f49b69a8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleMultiply">
+      <UniqueIdentifier>{b2f559d4-3012-4423-b740-5911b96f8e3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleScreen">
+      <UniqueIdentifier>{89edcfd9-fd0e-47c7-bb49-7f4d4b1eec72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ParticleStore\ParticleInstance">
+      <UniqueIdentifier>{415de9c2-0928-490a-810b-c7ec83a1cfc3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -882,6 +921,39 @@
     <ClCompile Include="Engine\Handle\Handle.cpp">
       <Filter>Engine\Include\Handle</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesBillboard\PrimitiveResourcesBillboard.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesBillboard</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleEmitter\BillboardParticleEmitter\BillboardParticleEmitter.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ParticleStore\ParticleEmitter\BillboardParticleEmitter</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleEmitter\ModelParticleEmitter\ModelParticleEmitter.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ParticleStore\ParticleEmitter\ModelParticleEmitter</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\OrganizePSOParticle.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNone\SinglePSOParticleNone.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNone</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNormal\SinglePSOParticleNormal.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNormal</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleAdd\SinglePSOParticleAdd.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleAdd</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleSubtract\SinglePSOParticleSubtract.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SignelPSOParticleSubtract</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleMultiply\SinglePSOParticleMultiply.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleMultiply</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleScreen\SinglePSOParticleScreen.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleScreen</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleInstance\ParticleInstance.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ParticleStore\ParticleInstance</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MugenEngine.h">
@@ -1286,6 +1358,39 @@
     <ClInclude Include="Engine\Handle\Handle.h">
       <Filter>Engine\Include\Handle</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesBillboard\PrimitiveResourcesBillboard.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesBillboard</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleEmitter\BillboardParticleEmitter\BillboardParticleEmitter.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ParticleStore\ParticleEmitter\BillboardParticleEmitter</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleEmitter\ModelParticleEmitter\ModelParticleEmitter.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ParticleStore\ParticleEmitter\ModelParticleEmitter</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\OrganizePSOParticle.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNone\SinglePSOParticleNone.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNone</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNormal\SinglePSOParticleNormal.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNormal</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleAdd\SinglePSOParticleAdd.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleAdd</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleSubtract\SinglePSOParticleSubtract.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SignelPSOParticleSubtract</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleMultiply\SinglePSOParticleMultiply.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleMultiply</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleScreen\SinglePSOParticleScreen.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleInstance\ParticleInstance.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\ParticleStore\ParticleInstance</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Resources\Shader\Primitive\Primitive.VS.hlsl">
@@ -1303,6 +1408,12 @@
     <FxCompile Include="Resources\Shader\SkinningModel\SkinningModel.VS.hlsl">
       <Filter>Engine\Shader\SkinningModel</Filter>
     </FxCompile>
+    <FxCompile Include="Resources\Shader\Particle\Particle.VS.hlsl">
+      <Filter>Engine\Shader\Particle</Filter>
+    </FxCompile>
+    <FxCompile Include="Resources\Shader\Particle\Particle.PS.hlsl">
+      <Filter>Engine\Shader\Particle</Filter>
+    </FxCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Shader\Primitive\Primitive.hlsli">
@@ -1310,6 +1421,9 @@
     </None>
     <None Include="Resources\Shader\PostEffect\Fullscreen.hlsli">
       <Filter>Engine\Shader\PostEffect</Filter>
+    </None>
+    <None Include="Resources\Shader\Particle\Particle.hlsli">
+      <Filter>Engine\Shader\Particle</Filter>
     </None>
   </ItemGroup>
 </Project>

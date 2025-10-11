@@ -12,6 +12,7 @@
 #include "TextureStore/TextureStore.h"
 #include "ModelStore/ModelStore.h"
 #include "OffscreenDraw/OffscreenDraw.h"
+#include "ParticleStore/ParticleStore.h"
 
 #include "BaseMesh/MeshUVSphere/MeshUVSphere.h"
 #include "BaseMesh/MeshPlane/MeshPlane.h"
@@ -22,11 +23,13 @@
 #include "BaseOrganizePSO/OrganizePSOPrimitive/OrganizePSOPrimitive.h"
 #include "BaseOrganizePSO/OrganizePSOSprite/OrganizePSOSprite.h"
 #include "BaseOrganizePSO/OrganizePSOSkinningModel/OrganizePSOSkinningModel.h"
+#include "BaseOrganizePSO/OrganizePSOParticle/OrganizePSOParticle.h"
 
 #include "ResourcesData/PrimitiveResourcesData/PrimitiveResourcesPlane/PrimitiveResourcesPlane.h"
 #include "ResourcesData/PrimitiveResourcesData/PrimitiveResourcesCube/PrimitiveResourcesCube.h"
 #include "ResourcesData/PrimitiveResourcesData/PrimitiveResourcesSprite/PrimitiveResourcesSprite.h"
 #include "ResourcesData/PrimitiveResourcesData/PrimitiveResourcesUVSphere/PrimitiveResourcesUVSphere.h"
+#include "ResourcesData/PrimitiveResourcesData/PrimitiveResourcesBillboard/PrimitiveResourcesBillboard.h"
 
 #include "ResourcesData/DirectionalLightResourcesData/DirectionalLightResourcesData.h"
 #include "ResourcesData/PointLightResourcesData/PointLightResourcesData.h"
@@ -263,6 +266,40 @@ public:
 
 #pragma endregion
 
+
+#pragma region パーティクル
+
+	/// <summary>
+	/// パーティクルを読み込む
+	/// </summary>
+	/// <param name="particleEmitter"></param>
+	/// <returns></returns>
+	ParticleHandle LoadParticleEmitter(BillboardParticleEmitter* particleEmitter) { return particleStore_->LoadParticleEmitter(particleEmitter); }
+
+	/// <summary>
+	/// パーティクルを読み込む
+	/// </summary>
+	/// <param name="particleEmitter"></param>
+	/// <returns></returns>
+	ParticleHandle LoadParticleEmitter(ModelParticleEmitter* particleEmitter) { return particleStore_->LoadParticleEmitter(particleEmitter); }
+
+	/// <summary>
+	/// 登録したパーティクルの更新処理
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	void UpdateRegistParticle(ParticleHandle particleHandle) { particleStore_->UpdateRegistParticle(particleHandle); }
+
+
+	/// <summary>
+	/// ビルボードパーティクルを描画する
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	/// <param name="camera"></param>
+	void DrawBillboardParticle(ParticleHandle particleHandle, const Camera3D* camera);
+
+#pragma endregion
+
+
 #pragma region ポストエフェクト
 
 	
@@ -308,12 +345,19 @@ private:
 	// オフスクリーン描画
 	std::unique_ptr<OffscreenDraw> offscreenDraw_ = nullptr;
 
+	// パーティクル格納場所
+	ParticleStore* particleStore_ = nullptr;
+
+
 
 	// プリミティブ用PSO
 	std::unique_ptr<OrganizePSOPrimitive> primitivePSO_ = nullptr;
 
 	// スプライト用PSO
 	std::unique_ptr<OrganizePSOSprite> spritePSO_ = nullptr;
+
+	// パーティクル用PSO
+	std::unique_ptr<OrganizePSOParticle> particlePSO_ = nullptr;
 
 	// スキニングモデル用PSO
 	std::unique_ptr<OrganizePSOSkinningModel> skinningModelPSO_ = nullptr;
@@ -338,6 +382,9 @@ private:
 
 	// スプライト用のリソース
 	std::unique_ptr<PrimitiveResourcesSprite> resourceSprite_ = nullptr;
+
+	// ビルボード用のリソース
+	std::unique_ptr<PrimitiveResourcesBillboard> resourceBillboard_ = nullptr;
 
 
 	// 描画できるプリミティブの数

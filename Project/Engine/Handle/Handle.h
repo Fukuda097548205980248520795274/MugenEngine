@@ -27,3 +27,9 @@ struct PlayHandle
 	// 使用しているかどうか
 	bool IsUse() { return value == 0 ? true : false; }
 };
+
+// パーティクルハンドル
+struct ParticleHandle
+{
+	uint32_t value;
+};

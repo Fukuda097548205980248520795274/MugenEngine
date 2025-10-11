@@ -16,6 +16,14 @@ void GameScene::Initialize(const MugenEngine* engine)
 
 	// サウンドハンドル
 	soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/forget_me_not.mp3");
+
+
+	// テクスチャを読み込む
+	textureHandle_ = engine_->LoadTexture("./Resources/Textures/uvChecker.png");
+
+	// パーティクルエミッターの生成と初期化
+	particleEmitter_ = std::make_unique<BillboardParticleEmitter>();
+	particleEmitter_->Initliaze(engine_, camera3d_.get(), 100, textureHandle_, "testParticle_0");
 }
 
 /// <summary>
@@ -28,6 +36,10 @@ void GameScene::Update()
 
 	// プレイヤーの更新処理
 	player_->Update();
+
+	// パーティクルの更新処理
+	particleEmitter_->Update();
+
 
 	//ループ再生
 	if (!engine_->IsAudioPlay(playHandle_) || playHandle_.IsUse())
@@ -44,6 +56,9 @@ void GameScene::Draw()
 
 	// プレイヤーの描画処理
 	player_->Draw();
+
+	// パーティクルの描画処理
+	particleEmitter_->Draw();
 
 	// 基底クラスの描画処理
 	Scene::Draw();

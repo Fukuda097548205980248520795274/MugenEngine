@@ -24,12 +24,11 @@ RecordSetting* RecordSetting::GetInstance()
 void RecordSetting::Update()
 {
 	// メニューバーを使用する
-	if (!ImGui::Begin("Setting", nullptr, ImGuiWindowFlags_MenuBar))
+	if (!ImGui::Begin("Setting"))
 	{
 		ImGui::End();
 		return;
 	}
-	if (!ImGui::BeginMenuBar())return;
 
 
 
@@ -43,7 +42,7 @@ void RecordSetting::Update()
 		Group& group = itGroup->second;
 
 		// 開いていないときは処理しない
-		if (!ImGui::BeginMenu(groupName.c_str()))continue;
+		if (!ImGui::TreeNode(groupName.c_str()))continue;
 
 
 		// 各項目について
@@ -117,13 +116,12 @@ void RecordSetting::Update()
 
 
 		// 終了
-		ImGui::EndMenu();
+		ImGui::TreePop();
 	}
 
 
 
 	// 終了
-	ImGui::EndMenuBar();
 	ImGui::End();
 }
 

@@ -5,7 +5,7 @@
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
 	// 無限エンジンの生成と初期化
-	MugenEngine* mugenEngine = new MugenEngine();
+	MugenEngine* mugenEngine = MugenEngine::GetInstance();
 	mugenEngine->Initialize(1280, 720, "LE2A_12_フクダ_ソウワ");
 
 	// ゲームの生成と初期化
@@ -51,9 +51,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	delete game;
 	game = nullptr;
 
-	// 無限エンジンの削除
-	delete mugenEngine;
-	mugenEngine = nullptr;
+	// 無限エンジンの終了処理
+	mugenEngine->Finalize();
 
 	// 解放漏れチェック
 	LeakChecker();

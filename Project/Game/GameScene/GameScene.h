@@ -31,10 +31,18 @@ public:
 	std::unique_ptr<Player> player_ = nullptr;
 
 
+	// パーティクルエミッター
+	std::unique_ptr<BillboardParticleEmitter> particleEmitter_ = nullptr;
+
+
 	// サウンドハンドル
 	SoundHandle soundHandle_{};
 
 	// プレイハンドル
 	PlayHandle playHandle_{};
+
+
+	// テクスチャハンドル
+	TextureHandle textureHandle_{};
 };
 
