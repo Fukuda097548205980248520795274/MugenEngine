@@ -4,16 +4,9 @@
 /// 初期化
 /// </summary>
 /// <param name="engine"></param>
-void Game::Initialize(const MugenEngine* engine)
+void Game::Initialize()
 {
-	// nullptrチェック
-	assert(engine);
-
-	// 引数を受け取る
-	engine_ = engine;
-
-
-	// ゲームシーンの生成と初期化
+	// シーンの生成と初期化
 	scene_ = std::make_unique<GameScene>();
 	scene_->Initialize(engine_);
 }

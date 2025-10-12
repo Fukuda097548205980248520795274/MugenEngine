@@ -514,6 +514,9 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\ParticleStore\ParticleInstance">
       <UniqueIdentifier>{415de9c2-0928-490a-810b-c7ec83a1cfc3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{dc55c32e-40e6-42f3-9453-6cb569c54ff8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -954,6 +957,9 @@
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleInstance\ParticleInstance.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ParticleStore\ParticleInstance</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\Framework.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MugenEngine.h">
@@ -1390,6 +1396,9 @@
     </ClInclude>
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleInstance\ParticleInstance.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ParticleStore\ParticleInstance</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Framework.h">
+      <Filter>Framework</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
