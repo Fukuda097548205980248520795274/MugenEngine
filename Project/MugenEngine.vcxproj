@@ -228,7 +228,10 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshPlane\MeshPlane.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshPlane\MeshPlane.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshSprite\MeshSprite.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -257,13 +260,34 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\OrganizePSOParticle.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleSubtract\SinglePSOParticleSubtract.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleAdd\SinglePSOParticleAdd.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleMultiply\SinglePSOParticleMultiply.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNone\SinglePSOParticleNone.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNormal\SinglePSOParticleNormal.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleScreen\SinglePSOParticleScreen.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\OrganizePSOParticle.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleSubtract\SinglePSOParticleSubtract.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleAdd\SinglePSOParticleAdd.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleMultiply\SinglePSOParticleMultiply.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNone\SinglePSOParticleNone.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNormal\SinglePSOParticleNormal.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleScreen\SinglePSOParticleScreen.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveAdd\SinglePSOPrimitiveAdd.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -284,20 +308,62 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\OrganizePSOSkinningModel.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelAdd\SinglePSOSkinningModelAdd.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelMultiply\SinglePSOSkinningModelMultiply.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelNone\SinglePSOSkinningModelNone.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelNormal\SinglePSOSkinningModelNormal.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelScreen\SinglePSOSkinningModelScreen.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelSubtract\SinglePSOSkinningModelSubtract.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteAdd\SinglePSOSpriteAdd.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteMultiply\SinglePSOSpriteMultiply.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone\SinglePSOSpriteNone.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNormal\SinglePSOSpriteNormal.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteScreen\SinglePSOSpriteScreen.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteSubtract\SinglePSOSpriteSubtract.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\OrganizePSOSkinningModel.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelAdd\SinglePSOSkinningModelAdd.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelMultiply\SinglePSOSkinningModelMultiply.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelNone\SinglePSOSkinningModelNone.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelNormal\SinglePSOSkinningModelNormal.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelScreen\SinglePSOSkinningModelScreen.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSkinningModel\SinglePSOSkinningModelSubtract\SinglePSOSkinningModelSubtract.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\OrganizePSOSprite.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteAdd\SinglePSOSpriteAdd.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteMultiply\SinglePSOSpriteMultiply.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNone\SinglePSOSpriteNone.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteNormal\SinglePSOSpriteNormal.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteScreen\SinglePSOSpriteScreen.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOSprite\SinglePSOSpriteSubtract\SinglePSOSpriteSubtract.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -330,33 +396,90 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\BaseModelResources.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\GltfModelResources\GltfModelResources.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\ObjModelResources\ObjModelResources.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\AnimationData\AnimationData.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\Influence\Influence.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\BaseModelResources.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\GltfModelResources\GltfModelResources.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\BaseModelResources\ObjModelResources\ObjModelResources.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\AnimationData\AnimationData.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\Influence\Influence.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\ModelData.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\Node\Node.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\SkeletonData\SkeletonData.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\SkinCluster\SkinCluster.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\WeightData\WeightData.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\Node\Node.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\SkeletonData\SkeletonData.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\SkinCluster\SkinCluster.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelData\WeightData\WeightData.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ModelStore\ModelStore.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\OffscreenDraw\BasePSOPostEffect\BasePSOPostEffect.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\OffscreenDraw\BasePSOPostEffect\PSOCopyImage\PSOCopyImage.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\OffscreenDraw\OffscreenDraw.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\BaseParticleData\BaseParticleData.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\BaseParticleData\BiilboardParticleData\BiilboardParticleData.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\BaseParticleData\ModelParticleData\ModelParticleData.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleEmitter\BillboardParticleEmitter\BillboardParticleEmitter.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleEmitter\ModelParticleEmitter\ModelParticleEmitter.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleInstance\ParticleInstance.cpp" />
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleStore.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\OffscreenDraw\BasePSOPostEffect\BasePSOPostEffect.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\OffscreenDraw\BasePSOPostEffect\PSOCopyImage\PSOCopyImage.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\OffscreenDraw\OffscreenDraw.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\BaseParticleData\BaseParticleData.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\BaseParticleData\BiilboardParticleData\BiilboardParticleData.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\BaseParticleData\ModelParticleData\ModelParticleData.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleEmitter\BillboardParticleEmitter\BillboardParticleEmitter.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleEmitter\ModelParticleEmitter\ModelParticleEmitter.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleInstance\ParticleInstance.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleStore.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData\DirectionalLightResourcesData.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -373,7 +496,10 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesBillboard\PrimitiveResourcesBillboard.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesBillboard\PrimitiveResourcesBillboard.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesCube\PrimitiveResourcesCube.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -382,7 +508,10 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesPlane\PrimitiveResourcesPlane.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesPlane\PrimitiveResourcesPlane.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesSprite\PrimitiveResourcesSprite.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -399,17 +528,26 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\RenderTargetResources\RenderTargetResources.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\RenderTargetResources\RenderTargetResources.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData\SpotLightResourcesData.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\TransformationResourceDataInstancing\TransformationResourceDataInstancing.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\TransformationResourceDataInstancing\TransformationResourceDataInstancing.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV\TransformationResourcesDataCBV.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\ImGuiRender\ImGuiRender.cpp" />
+    <ClCompile Include="Engine\DirectXBase\ImGuiRender\ImGuiRender.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
     <ClCompile Include="Engine\DirectXBase\ResourcesDepthStencil\ResourcesDepthStencil.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -462,11 +600,26 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Func\Random\Random.cpp" />
-    <ClCompile Include="Engine\GameCamera\DebugCamera\DebugCamera.cpp" />
-    <ClCompile Include="Engine\GameCamera\GameCamera.cpp" />
-    <ClCompile Include="Engine\GameCamera\MainCamera\MainCamera.cpp" />
-    <ClCompile Include="Engine\Handle\Handle.cpp" />
+    <ClCompile Include="Engine\Func\Random\Random.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\GameCamera\DebugCamera\DebugCamera.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\GameCamera\GameCamera.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\GameCamera\MainCamera\MainCamera.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\Handle\Handle.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
     <ClCompile Include="Engine\Input\Input.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -475,7 +628,10 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Math\Easing\Easing.cpp" />
+    <ClCompile Include="Engine\Math\Easing\Easing.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
     <ClCompile Include="Engine\Math\Matrix3x3\Matrix3x3.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -484,8 +640,14 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Math\Probability\Probability.cpp" />
-    <ClCompile Include="Engine\Math\Quaternion\Quaternion.cpp" />
+    <ClCompile Include="Engine\Math\Probability\Probability.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\Math\Quaternion\Quaternion.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
     <ClCompile Include="Engine\Math\Vector1\Vector1.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -514,13 +676,22 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\RecordSetting\RecordSetting.cpp" />
-    <ClCompile Include="Engine\Scene\Scene.cpp" />
+    <ClCompile Include="Engine\RecordSetting\RecordSetting.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
+    <ClCompile Include="Engine\Scene\Scene.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
     <ClCompile Include="Engine\WinApp\WinApp.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Framework\Framework.cpp" />
+    <ClCompile Include="Engine\Framework\Framework.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
+      <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
+    </ClCompile>
     <ClCompile Include="Game\Game.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">Disabled</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">false</WholeProgramOptimization>
@@ -675,7 +846,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\RecordSetting\RecordSetting.h" />
     <ClInclude Include="Engine\Scene\Scene.h" />
     <ClInclude Include="Engine\WinApp\WinApp.h" />
-    <ClInclude Include="Framework\Framework.h" />
+    <ClInclude Include="Engine\Framework\Framework.h" />
     <ClInclude Include="Game\Game.h" />
     <ClInclude Include="Game\GameScene\BaseCharacter\BaseCharacter.h" />
     <ClInclude Include="Game\GameScene\BaseCharacter\Player\Player.h" />

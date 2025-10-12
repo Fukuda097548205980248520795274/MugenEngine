@@ -56,17 +56,23 @@ public:
 class AudioStore
 {
 public:
-
+	
 	/// <summary>
-	/// デストラクタ
+	/// インスタンスを取得する
 	/// </summary>
-	~AudioStore();
+	/// <returns></returns>
+	static AudioStore* GetInstance();
 
 	/// <summary>
 	/// 初期化
 	/// </summary>
 	/// <param name="logFile"></param>
 	void Initialize(LogFile* logFile);
+
+	/// <summary>
+	/// 終了処理
+	/// </summary>
+	void Finalize();
 
 	/// <summary>
 	/// オーディオファイルを読み込む
@@ -119,10 +125,16 @@ public:
 
 private:
 
-	/// <summary>
-	/// 終了処理
-	/// </summary>
-	void Finalize();
+	// シングルトン
+	AudioStore() = default;
+	~AudioStore() = default;
+	AudioStore(AudioStore&) = delete;
+	AudioStore& operator=(AudioStore&) = delete;
+
+	// インスタンス
+	static AudioStore* instance_;
+
+
 
 	// ログファイル
 	LogFile* logFile_ = nullptr;

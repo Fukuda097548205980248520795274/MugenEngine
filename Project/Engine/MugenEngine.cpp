@@ -65,7 +65,7 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 	input_->Initialize(logFile_.get(), winApp_.get());
 
 	// オーディオ格納場所の生成と初期化
-	audioStore_ = std::make_unique<AudioStore>();
+	audioStore_ = AudioStore::GetInstance();
 	audioStore_->Initialize(logFile_.get());
 
 	// 衝突判定の生成と初期化
@@ -84,6 +84,9 @@ void MugenEngine::Finalize()
 {
 	// 調整記録の終了処理
 	recordSetting_->Finalize();
+
+	// オーディオ格納場所の終了処理
+	audioStore_->Finalize();
 
 	// COMの終了処理
 	CoUninitialize();

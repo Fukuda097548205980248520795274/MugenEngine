@@ -16,16 +16,23 @@ AudioData::~AudioData()
 
 
 
-
+// インスタンス
+AudioStore* AudioStore::instance_ = nullptr;
 
 /// <summary>
-/// デストラクタ
+/// インスタンスを取得する
 /// </summary>
-AudioStore::~AudioStore()
+/// <returns></returns>
+AudioStore* AudioStore::GetInstance()
 {
-	// 終了処理
-	Finalize();
+	if (instance_ == nullptr)
+	{
+		instance_ = new AudioStore();
+	}
+
+	return instance_;
 }
+
 
 /// <summary>
 /// 初期化
@@ -77,6 +84,10 @@ void AudioStore::Finalize()
 
 	// XAudio2インスタンスを破棄する
 	xAudio2_.Reset();
+
+	// インスタンスを削除する
+	delete instance_;
+	instance_ = nullptr;
 }
 
 /// <summary>
