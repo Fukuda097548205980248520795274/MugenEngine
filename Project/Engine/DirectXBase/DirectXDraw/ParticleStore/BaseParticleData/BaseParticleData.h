@@ -6,6 +6,7 @@
 #include "Handle/Handle.h"
 #include "../../ModelStore/ModelStore.h"
 #include "../ParticleInstance/ParticleInstance.h"
+#include "Func/Random/Random.h"
 
 // 前方宣言
 class MugenEngine;
@@ -98,6 +99,9 @@ protected:
 
 	// 発生頻度のポインタ
 	float* emitTime_ = nullptr;
+
+	// 発生範囲
+	Vector3* emitRange_ = nullptr;
 
 
 

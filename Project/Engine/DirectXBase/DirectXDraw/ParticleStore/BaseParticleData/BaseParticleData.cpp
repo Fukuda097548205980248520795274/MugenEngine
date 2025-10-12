@@ -32,11 +32,14 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 	position_ = (Vector3*)malloc(sizeof(Vector3));
 	perEmission_ = (int32_t*)malloc(sizeof(int32_t));
 	emitTime_ = (float*)malloc(sizeof(float));
+	emitRange_ = (Vector3*)malloc(sizeof(Vector3));
 
 	// 初期値を割り当てる
 	*position_ = Vector3(0.0f, 0.0f, 0.0f);
 	*perEmission_ = 1;
-	*emitTime_ = 1.0f;
+	*emitTime_ = 0.1f;
+	*emitRange_ = Vector3(0.0f, 0.0f, 0.0f);
+
 	name_ = name;
 
 
@@ -44,6 +47,7 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 	recordSetting->SetValue(*name_, "position", position_);
 	recordSetting->SetValue(*name_, "perEmission", perEmission_);
 	recordSetting->SetValue(*name_, "emitTime", emitTime_);
+	recordSetting->SetValue(*name_, "emitRange", emitRange_);
 	recordSetting->RegistGroupDataReflection(*name_);
 }
 
@@ -55,6 +59,21 @@ void BaseParticleData::Update()
 {
 	// タイマーを進める
 	emitTimer_ += engine_->GetDeltaTime();
+
+
+	// 発生範囲のワールド座標
+	std::pair<float, float> rangeX;
+	rangeX.first = position_->x - emitRange_->x;
+	rangeX.second = position_->x + emitRange_->x;
+
+	std::pair<float, float> rangeY;
+	rangeY.first = position_->y - emitRange_->y;
+	rangeY.second = position_->y + emitRange_->y;
+
+	std::pair<float, float> rangeZ;
+	rangeZ.first = position_->z - emitRange_->z;
+	rangeZ.second = position_->z + emitRange_->z;
+
 
 	// タイマーが越えたら放出する
 	if (emitTimer_ >= *emitTime_)
@@ -68,7 +87,8 @@ void BaseParticleData::Update()
 
 			// パーティクルの生成と初期化
 			std::unique_ptr<ParticleInstance> particle = std::make_unique<ParticleInstance>();
-			particle->Initialize(*position_, Vector3(0.0f, 0.0f, 0.0f), Vector3(1.0f, 1.0f, 1.0f), 0.5f);
+			particle->Initialize(Vector3(GetRandomRange(rangeX.first, rangeX.second), GetRandomRange(rangeY.first, rangeY.second), GetRandomRange(rangeZ.first, rangeZ.second)),
+				Vector3(0.0f, 0.0f, 0.0f), Vector3(1.0f, 1.0f, 1.0f), 0.5f);
 			particles_.push_back(std::move(particle));
 		}
 
