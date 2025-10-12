@@ -48,6 +48,20 @@ public:
 	/// <returns></returns>
 	BaseParticleData* GetParticleData(ParticleHandle particleHandle)const { return particleData_[particleHandle.value].get(); }
 
+	/// <summary>
+	/// モデルハンドルのSetter
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	/// <param name="modelHandle"></param>
+	void SetModelHandle(ParticleHandle particleHandle, ModelHandle modelHandle) { particleData_[particleHandle.value]->modelHandle_ = modelHandle; }
+
+	/// <summary>
+	/// テクスチャハンドルのSetter
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	/// <param name="textureHandle"></param>
+	void SetTextureHandle(ParticleHandle particleHandle, TextureHandle textureHandle) { particleData_[particleHandle.value]->textureHandle_ = textureHandle; }
+
 
 	/// <summary>
 	/// 格納されたパーティクルの更新処理

@@ -41,6 +41,12 @@ public:
 	void SetParticleHandle(ParticleHandle particleHandle) { particleHandle_ = particleHandle; }
 
 	/// <summary>
+	/// テクスチャハンドルのSetter
+	/// </summary>
+	/// <param name="textureHandle"></param>
+	void SetTextureHandle(TextureHandle textureHandle);
+
+	/// <summary>
 	/// 最大パーティクル数のGetter
 	/// </summary>
 	/// <returns></returns>

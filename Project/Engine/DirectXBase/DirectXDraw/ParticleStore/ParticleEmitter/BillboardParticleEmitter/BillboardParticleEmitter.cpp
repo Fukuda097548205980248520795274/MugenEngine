@@ -54,3 +54,14 @@ void BillboardParticleEmitter::Draw()
 {
 	engine_->DrawBillboardParticle(particleHandle_, camera3d_);
 }
+
+
+
+/// <summary>
+/// テクスチャハンドルのSetter
+/// </summary>
+/// <param name="textureHandle"></param>
+void BillboardParticleEmitter::SetTextureHandle(TextureHandle textureHandle)
+{
+	engine_->SetParticleTextureHandle(particleHandle_, textureHandle);
+}

@@ -289,6 +289,20 @@ public:
 	/// <param name="particleHandle"></param>
 	void UpdateRegistParticle(ParticleHandle particleHandle) { particleStore_->UpdateRegistParticle(particleHandle); }
 
+	/// <summary>
+	/// モデルハンドルのSetter
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	/// <param name="modelHandle"></param>
+	void SetParticleModelHandle(ParticleHandle particleHandle, ModelHandle modelHandle) { particleStore_->SetModelHandle(particleHandle, modelHandle); }
+
+	/// <summary>
+	/// テクスチャハンドルのSetter
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	/// <param name="textureHandle"></param>
+	void SetParticleTextureHandle(ParticleHandle particleHandle, TextureHandle textureHandle) { particleStore_->SetTextureHandle(particleHandle, textureHandle); }
+
 
 	/// <summary>
 	/// ビルボードパーティクルを描画する

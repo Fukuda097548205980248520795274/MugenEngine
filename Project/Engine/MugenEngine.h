@@ -345,6 +345,20 @@ public:
 	void UpdateRegistParticle(ParticleHandle particleHandle) const { directXBase_->UpdateRegistParticle(particleHandle); }
 
 	/// <summary>
+	/// モデルハンドルのSetter
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	/// <param name="modelHandle"></param>
+	void SetParticleModelHandle(ParticleHandle particleHandle, ModelHandle modelHandle) const { directXBase_->SetParticleModelHandle(particleHandle, modelHandle); }
+
+	/// <summary>
+	/// テクスチャハンドルのSetter
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	/// <param name="textureHandle"></param>
+	void SetParticleTextureHandle(ParticleHandle particleHandle, TextureHandle textureHandle) const { directXBase_->SetParticleTextureHandle(particleHandle, textureHandle); }
+
+	/// <summary>
 	/// ビルボードパーティクルを描画する
 	/// </summary>
 	/// <param name="particleHandle"></param>

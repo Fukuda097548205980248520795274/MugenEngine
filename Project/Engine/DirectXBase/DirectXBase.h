@@ -102,6 +102,20 @@ public:
 	/// <param name="particleHandle"></param>
 	void UpdateRegistParticle(ParticleHandle particleHandle) { directXDraw_->UpdateRegistParticle(particleHandle); }
 
+	/// <summary>
+	/// モデルハンドルのSetter
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	/// <param name="modelHandle"></param>
+	void SetParticleModelHandle(ParticleHandle particleHandle, ModelHandle modelHandle) { directXDraw_->SetParticleModelHandle(particleHandle, modelHandle); }
+
+	/// <summary>
+	/// テクスチャハンドルのSetter
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	/// <param name="textureHandle"></param>
+	void SetParticleTextureHandle(ParticleHandle particleHandle, TextureHandle textureHandle) { directXDraw_->SetParticleTextureHandle(particleHandle, textureHandle); }
+
 
 	/// <summary>
 	/// モデルを描画する

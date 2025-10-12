@@ -42,6 +42,12 @@ public:
 	void SetParticleHandle(ParticleHandle particleHandle) { particleHandle_ = particleHandle; }
 
 	/// <summary>
+	/// モデルハンドルのSetter
+	/// </summary>
+	/// <param name="modelHandle"></param>
+	void SetModelHandle(ModelHandle modelHandle);
+
+	/// <summary>
 	/// 最大パーティクル数のGetter
 	/// </summary>
 	/// <returns></returns>

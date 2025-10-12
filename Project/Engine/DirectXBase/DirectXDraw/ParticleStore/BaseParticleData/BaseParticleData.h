@@ -32,6 +32,7 @@ public:
 	void Register(UINT transformationRootParameterIndex);
 
 
+
 	// テクスチャハンドル
 	TextureHandle textureHandle_{};
 

@@ -53,3 +53,12 @@ void ModelParticleEmitter::Draw()
 {
 	engine_->DrawModelParticle(particleHandle_, camera3d_);
 }
+
+/// <summary>
+/// モデルハンドルのSetter
+/// </summary>
+/// <param name="modelHandle"></param>
+void ModelParticleEmitter::SetModelHandle(ModelHandle modelHandle)
+{
+	engine_->SetParticleModelHandle(particleHandle_, modelHandle);
+}
