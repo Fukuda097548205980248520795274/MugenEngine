@@ -9,6 +9,7 @@ void GameScene::Initialize(const MugenEngine* engine)
 	// 基底クラスの初期化
 	Scene::Initialize(engine);
 
+	mainCamera_->pivotPoint_ = Vector3(0.0f, 0.0f, -30.0f);
 
 	// プレイヤーの生成と初期化
 	player_ = std::make_unique<Player>();
@@ -19,12 +20,12 @@ void GameScene::Initialize(const MugenEngine* engine)
 
 
 	// テクスチャを読み込む
-	textureHandle_ = engine_->LoadTexture("./Resources/Textures/uvChecker.png");
+	textureHandle0_ = engine_->LoadTexture("./Resources/Textures/uvChecker.png");
+	textureHandle1_ = engine_->LoadTexture("./Resources/Textures/circle.png");
 
 	// ビルボードパーティクルエミッター
 	billboardParticleEmitter_ = std::make_unique<BillboardParticleEmitter>();
-	billboardParticleEmitter_->Initliaze(engine_, camera3d_.get(), 100, textureHandle_, "testParticle_0");
-	billboardParticleEmitter_->Initliaze(engine_, camera3d_.get(), 100, textureHandle_, "testParticle_0");
+	billboardParticleEmitter_->Initliaze(engine_, camera3d_.get(), 100, textureHandle0_, "testParticle_0");
 
 
 	// モデルを読み込む
@@ -40,11 +41,26 @@ void GameScene::Initialize(const MugenEngine* engine)
 /// </summary>
 void GameScene::Update()
 {
+	ImGui::Begin("Camera");
+	ImGui::DragFloat3("pivotPoint", &mainCamera_->pivotPoint_.x, 0.1f);
+	ImGui::End();
+
 	// 基底クラスの更新処理
 	Scene::Update();
 
 	// プレイヤーの更新処理
 	player_->Update();
+
+
+
+	if (rand() % 10 > 2)
+	{
+		billboardParticleEmitter_->SetTextureHandle(textureHandle0_);
+	}
+	else
+	{
+		billboardParticleEmitter_->SetTextureHandle(textureHandle1_);
+	}
 
 	// パーティクルの更新処理
 	billboardParticleEmitter_->Update();
