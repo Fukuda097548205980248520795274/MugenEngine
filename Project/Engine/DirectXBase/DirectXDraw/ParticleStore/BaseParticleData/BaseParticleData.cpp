@@ -30,7 +30,7 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 
 	// メモリを割り当てる
 	position_ = (Vector3*)malloc(sizeof(Vector3));
-	perEmission_ = (uint32_t*)malloc(sizeof(uint32_t));
+	perEmission_ = (int32_t*)malloc(sizeof(int32_t));
 	emitTime_ = (float*)malloc(sizeof(float));
 
 	// 初期値を割り当てる
@@ -57,7 +57,7 @@ void BaseParticleData::Update()
 	if (emitTimer_ >= *emitTime_)
 	{
 		// 放出数に合わせる
-		for (uint32_t i = 0; i < *perEmission_; ++i)
+		for (int32_t i = 0; i < *perEmission_; ++i)
 		{
 			// 最大数を越えないようにする
 			if (particles_.size() >= numMaxParticle_)

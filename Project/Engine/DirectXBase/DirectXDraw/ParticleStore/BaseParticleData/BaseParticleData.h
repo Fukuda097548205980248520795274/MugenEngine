@@ -81,7 +81,7 @@ protected:
 	Vector3* position_ = nullptr;
 
 	// 発生数のポインタ
-	uint32_t* perEmission_ = nullptr;
+	int32_t* perEmission_ = nullptr;
 
 	// 発生頻度のポインタ
 	float* emitTime_ = nullptr;
