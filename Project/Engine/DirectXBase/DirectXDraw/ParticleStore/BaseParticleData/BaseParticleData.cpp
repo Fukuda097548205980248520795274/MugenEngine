@@ -5,12 +5,13 @@
 /// 初期化
 /// </summary>
 void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* commandList, DirectXHeap* directXHeap,
-	uint32_t numMaxParticle, ParticleHandle particleHandle)
+	uint32_t numMaxParticle, ParticleHandle particleHandle, std::string* name)
 {
 	// nullptrチェック
 	assert(device);
 	assert(commandList);
 	assert(directXHeap);
+	assert(name);
 
 	// 引数を受け取る
 	device_ = device;
@@ -25,28 +26,19 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 	// 座標変換インスタンシングリソースの生成と初期化
 	transformationResource_ = std::make_unique<TransformationResourceDataInstancing>();
 	transformationResource_->Initialize(device_, commandList_,directXHeap_ , numMaxParticle_);
-}
 
 
-/// <summary>
-/// 値のポインタをセットする
-/// </summary>
-/// <param name="position"></param>
-/// <param name="emitNum"></param>
-/// <param name="emitTime"></param>
-void BaseParticleData::SetValueP(Vector3* position, uint32_t* emitNum, float* emitTime, std::string* name)
-{
-	// nullptrチェック
-	assert(position);
-	assert(emitNum);
-	assert(emitTime);
-	assert(name);
+	// メモリを割り当てる
+	position_ = (Vector3*)malloc(sizeof(Vector3));
+	perEmission_ = (uint32_t*)malloc(sizeof(uint32_t));
+	emitTime_ = (float*)malloc(sizeof(float));
 
-	// 引数を受け取る
-	position_ = position;
-	emitNum_ = emitNum;
-	emitTime_ = emitTime;
+	// 初期値を割り当てる
+	*position_ = Vector3(0.0f, 0.0f, 0.0f);
+	*perEmission_ = 1;
+	*emitTime_ = 1.0f;
 	name_ = name;
+
 
 	RecordSetting::GetInstance()->SetValue(*name_, "position", position_);
 	RecordSetting::GetInstance()->RegistGroupDataReflection(*name_);
@@ -65,7 +57,7 @@ void BaseParticleData::Update()
 	if (emitTimer_ >= *emitTime_)
 	{
 		// 放出数に合わせる
-		for (uint32_t i = 0; i < *emitNum_; ++i)
+		for (uint32_t i = 0; i < *perEmission_; ++i)
 		{
 			// 最大数を越えないようにする
 			if (particles_.size() >= numMaxParticle_)

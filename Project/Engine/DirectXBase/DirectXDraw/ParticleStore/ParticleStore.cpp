@@ -63,8 +63,7 @@ ParticleHandle ParticleStore::LoadParticleEmitter(BillboardParticleEmitter* part
 
 	// ビルボード用のパーティクルデータを用意する
 	std::unique_ptr<BiilboardParticleData> particleData = std::make_unique<BiilboardParticleData>();
-	particleData->Initialize(device_, commandList_, directXHeap_, numMaxParticle, particleHandle);
-	particleData->SetValueP(particleEmitter->GetPositionP(), particleEmitter->GetEmitNumP(), particleEmitter->GetEmitTimeP(), particleEmitter->GetNameP());
+	particleData->Initialize(device_, commandList_, directXHeap_, numMaxParticle, particleHandle, particleEmitter->GetNameP());
 
 	// テクスチャハンドルを取得する
 	particleData->textureHandle_ = particleEmitter->GetTextureHandle();
@@ -90,8 +89,7 @@ ParticleHandle ParticleStore::LoadParticleEmitter(ModelParticleEmitter* particle
 
 	// モデル用のパーティクルデータを用意する
 	std::unique_ptr<ModelParticleData> particleData = std::make_unique<ModelParticleData>();
-	particleData->Initialize(device_, commandList_, directXHeap_, numMaxParticle, particleHandle);
-	particleData->SetValueP(particleEmitter->GetPositionP(), particleEmitter->GetEmitNumP(), particleEmitter->GetEmitTimeP(), particleEmitter->GetNameP());
+	particleData->Initialize(device_, commandList_, directXHeap_, numMaxParticle, particleHandle, particleEmitter->GetNameP());
 
 	// モデルハンドルを取得する
 	particleData->modelHandle_ = particleEmitter->GetModelHandle();

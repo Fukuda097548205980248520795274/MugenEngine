@@ -1,5 +1,6 @@
 #pragma once
 #include <list>
+#include <cassert>
 
 #include "../../ResourcesData/TransformationResourceDataInstancing/TransformationResourceDataInstancing.h"
 #include "Handle/Handle.h"
@@ -17,16 +18,7 @@ public:
 	/// 初期化
 	/// </summary>
 	virtual void Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* commandList, DirectXHeap* directXHeap,
-		uint32_t numMaxParticle, ParticleHandle particleHandle);
-
-
-	/// <summary>
-	/// 値のポインタをセットする
-	/// </summary>
-	/// <param name="position"></param>
-	/// <param name="emitNum"></param>
-	/// <param name="emitTime"></param>
-	void SetValueP(Vector3* position, uint32_t* emitNum, float* emitTime, std::string* name);
+		uint32_t numMaxParticle, ParticleHandle particleHandle, std::string* name);
 
 	/// <summary>
 	/// 更新処理
@@ -80,18 +72,20 @@ protected:
 	// 最大パーティクル数
 	uint32_t numMaxParticle_ = 0;
 
+
+
 	// 名前
 	std::string* name_ = nullptr;
-
 
 	// 位置のポインタ
 	Vector3* position_ = nullptr;
 
 	// 発生数のポインタ
-	uint32_t* emitNum_ = nullptr;
+	uint32_t* perEmission_ = nullptr;
 
 	// 発生頻度のポインタ
 	float* emitTime_ = nullptr;
+
 
 
 	// 放射タイマー

@@ -53,26 +53,9 @@ public:
 	TextureHandle GetTextureHandle()const { return textureHandle_; }
 
 
-	/// <summary>
-	/// 位置のポインタのGetter
-	/// </summary>
-	/// <returns></returns>
-	Vector3* GetPositionP() { return &position_; }
 
 	/// <summary>
-	/// 放出数のポインタのGetter
-	/// </summary>
-	/// <returns></returns>
-	uint32_t* GetEmitNumP() { return &emitNum_; }
-
-	/// <summary>
-	/// 放出時間のポインタのGetter
-	/// </summary>
-	/// <returns></returns>
-	float* GetEmitTimeP() { return &emitTime_; }
-
-	/// <summary>
-	/// 名前のポインタのGetter
+	/// 名前のGetter
 	/// </summary>
 	/// <returns></returns>
 	std::string* GetNameP() { return &name_; }
@@ -92,16 +75,6 @@ private:
 
 	// 名前
 	std::string name_{};
-
-
-	// 位置
-	Vector3 position_ = Vector3(0.0f, 0.0f, 0.0f);
-
-	// 発生数
-	uint32_t emitNum_ = 1;
-
-	// 発生頻度
-	float emitTime_ = 0.0f;
 	
 
 	// テクスチャハンドル
