@@ -81,6 +81,42 @@ public:
 	/// <returns></returns>
 	float GetAnimationDuration(ModelHandle handle)const { return directXDraw_->GetAnimationDuration(handle); }
 
+
+	/// <summary>
+	/// パーティクルを読み込む
+	/// </summary>
+	/// <param name="particleEmitter"></param>
+	/// <returns></returns>
+	ParticleHandle LoadParticleEmitter(BillboardParticleEmitter* particleEmitter) { return directXDraw_->LoadParticleEmitter(particleEmitter); }
+
+	/// <summary>
+	/// パーティクルを読み込む
+	/// </summary>
+	/// <param name="particleEmitter"></param>
+	/// <returns></returns>
+	ParticleHandle LoadParticleEmitter(ModelParticleEmitter* particleEmitter) { return directXDraw_->LoadParticleEmitter(particleEmitter); }
+
+	/// <summary>
+	/// 登録したパーティクルの更新処理
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	void UpdateRegistParticle(ParticleHandle particleHandle) { directXDraw_->UpdateRegistParticle(particleHandle); }
+
+	/// <summary>
+	/// モデルハンドルのSetter
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	/// <param name="modelHandle"></param>
+	void SetParticleModelHandle(ParticleHandle particleHandle, ModelHandle modelHandle) { directXDraw_->SetParticleModelHandle(particleHandle, modelHandle); }
+
+	/// <summary>
+	/// テクスチャハンドルのSetter
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	/// <param name="textureHandle"></param>
+	void SetParticleTextureHandle(ParticleHandle particleHandle, TextureHandle textureHandle) { directXDraw_->SetParticleTextureHandle(particleHandle, textureHandle); }
+
+
 	/// <summary>
 	/// モデルを描画する
 	/// </summary>
@@ -166,6 +202,21 @@ public:
 		directXDraw_->DrawCube(worldTransform, uvTransform, camera, textureHandle, material);
 	}
 
+
+
+	/// <summary>
+	/// ビルボードパーティクルを描画する
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	/// <param name="camera"></param>
+	void DrawBillboardParticle(ParticleHandle particleHandle, const Camera3D* camera) { directXDraw_->DrawBillboardParticle(particleHandle, camera); }
+
+	/// <summary>
+	/// モデルパーティクルを描画する
+	/// </summary>
+	/// <param name=""></param>
+	/// <param name="camera"></param>
+	void DrawModelParticle(ParticleHandle particleHandle, const Camera3D* camera) { directXDraw_->DrawModelParticle(particleHandle, camera); }
 	
 private:
 

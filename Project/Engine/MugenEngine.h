@@ -35,14 +35,20 @@ public:
 #pragma region メインシステム
 
 	/// <summary>
-	/// デストラクタ
+	/// インスタンスを取得する
 	/// </summary>
-	~MugenEngine();
+	/// <returns></returns>
+	static MugenEngine* GetInstance();
 
 	/// <summary>
 	/// 初期化
 	/// </summary>
 	void Initialize(int32_t clientWidth, int32_t clientHeight, const std::string& title);
+
+	/// <summary>
+	/// 終了処理
+	/// </summary>
+	void Finalize();
 
 	/// <summary>
 	/// ウィンドウにメッセージを渡して応答する
@@ -313,6 +319,58 @@ public:
 	/// <param name="playHandle"></param>
 	/// <returns></returns>
 	bool IsAudioPlay(PlayHandle handle)const { return audioStore_->IsAudioPlay(handle); }
+
+#pragma endregion
+
+#pragma region パーティクル
+
+	/// <summary>
+	/// パーティクルを読み込む
+	/// </summary>
+	/// <param name="particleEmitter"></param>
+	/// <returns></returns>
+	ParticleHandle LoadParticleEmitter(BillboardParticleEmitter* particleEmitter) const { return directXBase_->LoadParticleEmitter(particleEmitter); }
+
+	/// <summary>
+	/// パーティクルを読み込む
+	/// </summary>
+	/// <param name="particleEmitter"></param>
+	/// <returns></returns>
+	ParticleHandle LoadParticleEmitter(ModelParticleEmitter* particleEmitter) const { return directXBase_->LoadParticleEmitter(particleEmitter); }
+
+	/// <summary>
+	/// 登録したパーティクルの更新処理
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	void UpdateRegistParticle(ParticleHandle particleHandle) const { directXBase_->UpdateRegistParticle(particleHandle); }
+
+	/// <summary>
+	/// モデルハンドルのSetter
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	/// <param name="modelHandle"></param>
+	void SetParticleModelHandle(ParticleHandle particleHandle, ModelHandle modelHandle) const { directXBase_->SetParticleModelHandle(particleHandle, modelHandle); }
+
+	/// <summary>
+	/// テクスチャハンドルのSetter
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	/// <param name="textureHandle"></param>
+	void SetParticleTextureHandle(ParticleHandle particleHandle, TextureHandle textureHandle) const { directXBase_->SetParticleTextureHandle(particleHandle, textureHandle); }
+
+	/// <summary>
+	/// ビルボードパーティクルを描画する
+	/// </summary>
+	/// <param name="particleHandle"></param>
+	/// <param name="camera"></param>
+	void DrawBillboardParticle(ParticleHandle particleHandle, const Camera3D* camera) const { directXBase_->DrawBillboardParticle(particleHandle, camera); }
+
+	/// <summary>
+	/// モデルパーティクルを描画する
+	/// </summary>
+	/// <param name=""></param>
+	/// <param name="camera"></param>
+	void DrawModelParticle(ParticleHandle particleHandle, const Camera3D* camera) const { directXBase_->DrawModelParticle(particleHandle, camera); }
 
 #pragma endregion
 
@@ -746,6 +804,17 @@ public:
 
 
 private:
+
+	// シングルトン
+	MugenEngine() = default;
+	~MugenEngine() = default;
+	MugenEngine(MugenEngine&) = delete;
+	MugenEngine& operator=(MugenEngine&) = delete;
+
+	// インスタンス
+	static MugenEngine* instance_;
+
+
 
 	// クライアント領域横幅
 	const int32_t* kClientWidth_ = nullptr;

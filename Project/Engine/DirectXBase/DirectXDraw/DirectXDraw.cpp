@@ -7,6 +7,9 @@
 /// </summary>
 DirectXDraw::~DirectXDraw()
 {
+	// ParticleStoreの終了処理
+	particleStore_->Finalize();
+
 	// ModelStoreを終了する
 	modelStore_->Finalize();
 
@@ -54,6 +57,10 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, DirectX
 	modelStore_ = ModelStore::GetInstance();
 	modelStore_->Initialize(textureStore_, device_, commandList_, directXHeap_);
 
+	// パーティクル格納場所の生成と初期化
+	particleStore_ = ParticleStore::GetInstance();
+	particleStore_->Initialize(device_, commandList_, directXHeap_, modelStore_);
+
 
 	// オフスクリーン描画の生成と初期化
 	offscreenDraw_ = std::make_unique<OffscreenDraw>();
@@ -63,6 +70,10 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, DirectX
 	// プリミティブ用PSOの生成と初期化
 	primitivePSO_ = std::make_unique<OrganizePSOPrimitive>();
 	primitivePSO_->Initialize(logFile_, directXShaderCompiler_.get(), commandList_, device_);
+
+	// パーティクル用PSOの生成と初期化
+	particlePSO_ = std::make_unique<OrganizePSOParticle>();
+	particlePSO_->Initialize(logFile_, directXShaderCompiler_.get(), commandList_, device_);
 
 	// スプライト用PSOの生成と初期化
 	spritePSO_ = std::make_unique<OrganizePSOSprite>();
@@ -105,6 +116,10 @@ void DirectXDraw::Initialize(LogFile* logFile, DirectXHeap* directXHeap, DirectX
 	// スプライト用リソースの生成と初期化
 	resourceSprite_ = std::make_unique<PrimitiveResourcesSprite>();
 	resourceSprite_->Initialize(device_, commandList_);
+
+	// ビルボード用リソースの生成と初期化
+	resourceBillboard_ = std::make_unique<PrimitiveResourcesBillboard>();
+	resourceBillboard_->Initialize(device_, commandList_);
 
 
 	// プリミティブ用のCBVリソースを生成する
@@ -156,6 +171,7 @@ void DirectXDraw::ResetBlendMode()
 	skinningModelPSO_->ResetBlendMode();
 	primitivePSO_->ResetBlendMode();
 	spritePSO_->ResetBlendMode();
+	particlePSO_->ResetBlendMode();
 }
 
 /// <summary>
@@ -1116,6 +1132,195 @@ void DirectXDraw::DrawSprite(const Vector3& p0, const Vector3& p1, const Vector3
 
 	// ドローコール
 	commandList_->DrawIndexedInstanced(6, 1, 0, 0, 0);
+
+
+	// 描画したプリミティブをカウントする
+	CountDrawPrimitive();
+}
+
+
+
+/// <summary>
+/// ビルボードパーティクルを描画する
+/// </summary>
+/// <param name="particleHandle"></param>
+/// <param name="camera"></param>
+void DirectXDraw::DrawBillboardParticle(ParticleHandle particleHandle, const Camera3D* camera)
+{
+	// パーティクルデータを取得する
+	BaseParticleData* particleData = particleStore_->GetParticleData(particleHandle);
+
+
+	/*-------------------
+		マテリアル設定
+	-------------------*/
+
+	// UV座標
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->uvTransform_ = MakeIdentityMatrix4x4();
+
+	// 色
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->color_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+
+	// ライティングは行わない
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableLighting_ = static_cast<int32_t>(false);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableHalfLambert_ = static_cast<int32_t>(false);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableSpecular_ = static_cast<int32_t>(false);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableBlinnPhong_ = static_cast<int32_t>(false);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->shininess_ = 1.0f;
+
+
+	/*------------------
+	    座標変換設定
+	------------------*/
+
+	// インスタンス数
+	uint32_t numInstance = 0;
+
+	// Y軸90度回転行列
+	Matrix4x4 backToFrontYMatrix = Make3DRotateYMatrix4x4(std::numbers::pi_v<float>);
+
+	// カメラ行列
+	Matrix4x4 cameraMatrix = Make3DAffineMatrix4x4(camera->scale_, camera->rotation_, camera->translation_);
+
+	// ビルボード行列
+	Matrix4x4 billboardMatrix = backToFrontYMatrix * cameraMatrix;
+	billboardMatrix.m[3][0] = 0.0f;
+	billboardMatrix.m[3][1] = 0.0f;
+	billboardMatrix.m[3][2] = 0.0f;
+
+
+	for (std::unique_ptr<ParticleInstance>& particle : particleData->particles_)
+	{
+
+		// ワールド行列
+		Matrix4x4 worldMatrix = Make3DScaleMatrix4x4(particle->GetScale()) * billboardMatrix * Make3DTranslateMatrix4x4(particle->GetTranslate());
+
+		particleData->transformationResource_->data_[numInstance].world = worldMatrix;
+		particleData->transformationResource_->data_[numInstance].worldViewProjection = worldMatrix * camera->viewMatrix_ * camera->projectionMatrix_;
+		particleData->transformationResource_->data_[numInstance].worldInverseTranspose = MakeTransposeMatrix4x4(worldMatrix);
+
+		// カウントする
+		numInstance++;
+	}
+	
+
+	/*--------------------------
+	    コマンドリストに登録
+	---------------------------*/
+
+	// ビューポート、シザー矩形の設定
+	commandList_->RSSetViewports(1, &viewport_);
+	commandList_->RSSetScissorRects(1, &scissorRect_);
+
+	// PSOの設定
+	particlePSO_->SetPSOState();
+
+	// ビルボードの設定
+	resourceBillboard_->Register();
+
+	// マテリアルリソースの設定
+	primitiveMaterialResources_[drawPrimitiveCount_]->Register(0);
+
+	// 座標変換リソースの設定
+	particleData->Register(1);
+
+	// テクスチャのSRVを設定する
+	commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(particleData->textureHandle_));
+
+	// 形状の設定
+	commandList_->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+	// ドローコール
+	commandList_->DrawIndexedInstanced(6, numInstance, 0, 0, 0);
+
+
+	// 描画したプリミティブをカウントする
+	CountDrawPrimitive();
+}
+
+/// <summary>
+/// モデルパーティクルを描画する
+/// </summary>
+/// <param name=""></param>
+/// <param name="camera"></param>
+void DirectXDraw::DrawModelParticle(ParticleHandle particleHandle, const Camera3D* camera)
+{
+	// パーティクルデータを取得する
+	BaseParticleData* particleData = particleStore_->GetParticleData(particleHandle);
+
+	// モデルリソースを取得する
+	BaseModelResources* modelResource = particleData->modelResource_;
+
+
+	/*-------------------
+		マテリアル設定
+	-------------------*/
+
+	// UV座標
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->uvTransform_ = MakeIdentityMatrix4x4();
+
+	// 色
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->color_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+
+	// ライティングは行わない
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableLighting_ = static_cast<int32_t>(false);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableHalfLambert_ = static_cast<int32_t>(false);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableSpecular_ = static_cast<int32_t>(false);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableBlinnPhong_ = static_cast<int32_t>(false);
+	primitiveMaterialResources_[drawPrimitiveCount_]->data_->shininess_ = 1.0f;
+
+
+	/*------------------
+		座標変換設定
+	------------------*/
+
+	// インスタンス数
+	uint32_t numInstance = 0;
+
+
+	for (std::unique_ptr<ParticleInstance>& particle : particleData->particles_)
+	{
+
+		// ワールド行列
+		Matrix4x4 worldMatrix = Make3DAffineMatrix4x4(particle->GetScale(), particle->GetRotate(), particle->GetTranslate());
+
+		particleData->transformationResource_->data_[numInstance].world = worldMatrix;
+		particleData->transformationResource_->data_[numInstance].worldViewProjection = worldMatrix * camera->viewMatrix_ * camera->projectionMatrix_;
+		particleData->transformationResource_->data_[numInstance].worldInverseTranspose = MakeTransposeMatrix4x4(worldMatrix);
+
+		// カウントする
+		numInstance++;
+	}
+
+
+	/*--------------------------
+		コマンドリストに登録
+	---------------------------*/
+
+	// ビューポート、シザー矩形の設定
+	commandList_->RSSetViewports(1, &viewport_);
+	commandList_->RSSetScissorRects(1, &scissorRect_);
+
+	// PSOの設定
+	particlePSO_->SetPSOState();
+
+	// モデルの設定
+	modelResource->Register(0);
+
+	// マテリアルリソースの設定
+	primitiveMaterialResources_[drawPrimitiveCount_]->Register(0);
+
+	// 座標変換リソースの設定
+	particleData->Register(1);
+
+	// テクスチャのSRVを設定する
+	commandList_->SetGraphicsRootDescriptorTable(2, textureStore_->GetGPUDescriptorHandle(modelResource->GetTextureHandle(0)));
+
+	// 形状の設定
+	commandList_->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+	// ドローコール
+	commandList_->DrawIndexedInstanced(modelResource->GetNumIndex(0), numInstance, 0, 0, 0);
 
 
 	// 描画したプリミティブをカウントする

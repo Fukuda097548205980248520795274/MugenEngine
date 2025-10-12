@@ -12,17 +12,23 @@
 #pragma comment(lib, "xaudio2.lib")
 #pragma comment(lib, "winmm.lib")
 
-/// <summary>
-/// デストラクタ
-/// </summary>
-MugenEngine::~MugenEngine()
-{
-	// 調整記録の終了処理
-	recordSetting_->Finalize();
+// インスタンス
+MugenEngine* MugenEngine::instance_ = nullptr;
 
-	// COMの終了処理
-	CoUninitialize();
+/// <summary>
+/// インスタンスを取得する
+/// </summary>
+/// <returns></returns>
+MugenEngine* MugenEngine::GetInstance()
+{
+	if (instance_ == nullptr)
+	{
+		instance_ = new MugenEngine();
+	}
+
+	return instance_;
 }
+
 
 /// <summary>
 /// 初期化
@@ -72,6 +78,23 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 }
 
 /// <summary>
+/// 終了処理
+/// </summary>
+void MugenEngine::Finalize()
+{
+	// 調整記録の終了処理
+	recordSetting_->Finalize();
+
+	// COMの終了処理
+	CoUninitialize();
+
+	// インスタンス削除
+	delete instance_;
+	instance_ = nullptr;
+}
+
+
+/// <summary>
 /// フレーム開始処理
 /// </summary>
 void MugenEngine::FrameStart()
@@ -88,7 +111,6 @@ void MugenEngine::FrameStart()
 #ifdef _DEVELOPMENT
 	// 設定記録の調整の更新処理　Releaseだと使わない
 	recordSetting_->Update();
-	ImGui::ShowDemoWindow();
 #endif
 }
 

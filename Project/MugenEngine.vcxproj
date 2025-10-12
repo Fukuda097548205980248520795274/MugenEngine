@@ -257,6 +257,13 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\OrganizePSOParticle.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleSubtract\SinglePSOParticleSubtract.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleAdd\SinglePSOParticleAdd.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleMultiply\SinglePSOParticleMultiply.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNone\SinglePSOParticleNone.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNormal\SinglePSOParticleNormal.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleScreen\SinglePSOParticleScreen.cpp" />
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveAdd\SinglePSOPrimitiveAdd.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -346,6 +353,9 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\BaseParticleData\BaseParticleData.cpp" />
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\BaseParticleData\BiilboardParticleData\BiilboardParticleData.cpp" />
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\BaseParticleData\ModelParticleData\ModelParticleData.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleEmitter\BillboardParticleEmitter\BillboardParticleEmitter.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleEmitter\ModelParticleEmitter\ModelParticleEmitter.cpp" />
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleInstance\ParticleInstance.cpp" />
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleStore.cpp" />
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData\DirectionalLightResourcesData.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
@@ -363,6 +373,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesBillboard\PrimitiveResourcesBillboard.cpp" />
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesCube\PrimitiveResourcesCube.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -556,6 +567,13 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseOrganizePSO.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\BaseSinglePSO\BaseSinglePSO.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\EnumBlendMode\EnumBlendMode.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\OrganizePSOParticle.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleSubtract\SinglePSOParticleSubtract.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleAdd\SinglePSOParticleAdd.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleMultiply\SinglePSOParticleMultiply.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNone\SinglePSOParticleNone.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleNormal\SinglePSOParticleNormal.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOParticle\SinglePSOParticleScreen\SinglePSOParticleScreen.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveAdd\SinglePSOPrimitiveAdd.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveMultiply\SinglePSOPrimitiveMultiply.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNormal\SinglePSOPrimitiveNormal.h" />
@@ -600,11 +618,15 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ParticleStore\BaseParticleData\BaseParticleData.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ParticleStore\BaseParticleData\BiilboardParticleData\BiilboardParticleData.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ParticleStore\BaseParticleData\ModelParticleData\ModelParticleData.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleEmitter\BillboardParticleEmitter\BillboardParticleEmitter.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleEmitter\ModelParticleEmitter\ModelParticleEmitter.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleInstance\ParticleInstance.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleStore.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\DirectionalLightResourcesData\DirectionalLightResourcesData.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\MainCameraResourcesDataCBV\MainCameraResourcesDataCBV.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\MaterialResourcesDataCBV\MaterialResourcesDataCBV.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PointLightResourcesData\PointLightResourcesData.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesBillboard\PrimitiveResourcesBillboard.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesCube\PrimitiveResourcesCube.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesData.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\PrimitiveResourcesData\PrimitiveResourcesPlane\PrimitiveResourcesPlane.h" />
@@ -665,6 +687,22 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Game\GameScene\GameSystem\InputHandler\Keyboard\InputMoveKey\InputMoveKey.h" />
   </ItemGroup>
   <ItemGroup>
+    <FxCompile Include="Resources\Shader\Particle\Particle.PS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Development|x64'">Pixel</ShaderType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
+    <FxCompile Include="Resources\Shader\Particle\Particle.VS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Development|x64'">Vertex</ShaderType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </FxCompile>
     <FxCompile Include="Resources\Shader\PostEffect\CopyImage\CopyImage.PS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
@@ -707,6 +745,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Shader\Particle\Particle.hlsli" />
     <None Include="Resources\Shader\PostEffect\Fullscreen.hlsli" />
     <None Include="Resources\Shader\Primitive\Primitive.hlsli" />
   </ItemGroup>
