@@ -54,6 +54,16 @@ void ParticleStore::Finalize()
 /// </summary>
 ParticleHandle ParticleStore::LoadParticleEmitter(BillboardParticleEmitter* particleEmitter)
 {
+	// 名前
+	std::string name = *particleEmitter->GetNameP();
+
+	for (std::unique_ptr<BaseParticleData>& data : particleData_)
+	{
+		if (strcmp(name.c_str(), data->GetName().c_str()) == 0)
+			return data->GetParticleHandle();
+	}
+
+
 	// 最大パーティクル数
 	uint32_t numMaxParticle = particleEmitter->GetNumMaxParticle();
 
@@ -80,6 +90,16 @@ ParticleHandle ParticleStore::LoadParticleEmitter(BillboardParticleEmitter* part
 /// </summary>
 ParticleHandle ParticleStore::LoadParticleEmitter(ModelParticleEmitter* particleEmitter)
 {
+	// 名前
+	std::string name = *particleEmitter->GetNameP();
+
+	for (std::unique_ptr<BaseParticleData>& data : particleData_)
+	{
+		if (strcmp(name.c_str(), data->GetName().c_str()) == 0)
+			return data->GetParticleHandle();
+	}
+
+
 	// 最大パーティクル数
 	uint32_t numMaxParticle = particleEmitter->GetNumMaxParticle();
 

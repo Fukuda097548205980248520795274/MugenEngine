@@ -24,6 +24,7 @@ void GameScene::Initialize(const MugenEngine* engine)
 	// ビルボードパーティクルエミッター
 	billboardParticleEmitter_ = std::make_unique<BillboardParticleEmitter>();
 	billboardParticleEmitter_->Initliaze(engine_, camera3d_.get(), 100, textureHandle_, "testParticle_0");
+	billboardParticleEmitter_->Initliaze(engine_, camera3d_.get(), 100, textureHandle_, "testParticle_0");
 
 
 	// モデルを読み込む

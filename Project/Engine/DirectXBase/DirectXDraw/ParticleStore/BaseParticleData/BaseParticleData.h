@@ -31,6 +31,18 @@ public:
 	/// <param name="transformationRootParameterIndex"></param>
 	void Register(UINT transformationRootParameterIndex);
 
+	/// <summary>
+	/// パーティクルハンドルのGetter
+	/// </summary>
+	/// <returns></returns>
+	ParticleHandle GetParticleHandle()const { return particleHandle_; }
+
+	/// <summary>
+	/// 名前のGetter
+	/// </summary>
+	/// <returns></returns>
+	const std::string& GetName()const { return *name_; }
+
 
 
 	// テクスチャハンドル
