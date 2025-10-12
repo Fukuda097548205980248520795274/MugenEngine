@@ -41,9 +41,11 @@ void GameScene::Initialize(const MugenEngine* engine)
 /// </summary>
 void GameScene::Update()
 {
+#ifdef _DEVELOPMENT
 	ImGui::Begin("Camera");
 	ImGui::DragFloat3("pivotPoint", &mainCamera_->pivotPoint_.x, 0.1f);
 	ImGui::End();
+#endif
 
 	// 基底クラスの更新処理
 	Scene::Update();
