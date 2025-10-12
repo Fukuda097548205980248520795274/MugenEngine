@@ -520,7 +520,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Framework\Framework.cpp" />
+    <ClCompile Include="Engine\Framework\Framework.cpp" />
     <ClCompile Include="Game\Game.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">Disabled</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">false</WholeProgramOptimization>
@@ -675,7 +675,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\RecordSetting\RecordSetting.h" />
     <ClInclude Include="Engine\Scene\Scene.h" />
     <ClInclude Include="Engine\WinApp\WinApp.h" />
-    <ClInclude Include="Framework\Framework.h" />
+    <ClInclude Include="Engine\Framework\Framework.h" />
     <ClInclude Include="Game\Game.h" />
     <ClInclude Include="Game\GameScene\BaseCharacter\BaseCharacter.h" />
     <ClInclude Include="Game\GameScene\BaseCharacter\Player\Player.h" />

@@ -836,7 +836,7 @@ private:
 	std::unique_ptr<Input> input_ = nullptr;
 
 	// オーディオ格納場所
-	std::unique_ptr<AudioStore> audioStore_ = nullptr;
+	AudioStore* audioStore_ = nullptr;
 
 	// 衝突判定
 	std::unique_ptr<Collision> collision_ = nullptr;
