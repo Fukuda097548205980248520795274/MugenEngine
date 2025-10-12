@@ -1,61 +1,11 @@
-#include "MugenEngine.h"
 #include "Game.h"
 
 // Windowsアプリでの main関数
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
-	// 無限エンジンの生成と初期化
-	MugenEngine* mugenEngine = MugenEngine::GetInstance();
-	mugenEngine->Initialize(1280, 720, "LE2A_12_フクダ_ソウワ");
-
-	// ゲームの生成と初期化
-	Game* game = new Game();
-	game->Initialize(mugenEngine);
-
-	// ゲームループ
-	while (mugenEngine->ProcessMessage())
-	{
-		// フレーム開始処理
-		mugenEngine->FrameStart();
-
-
-		///
-		/// ↓ 更新処理ここから
-		/// 
-
-		// ゲームの更新処理
-		game->Update();
-
-		///
-		/// ↑ 更新処理ここまで
-		/// 
-
-
-		///
-		/// ↓ 描画処理ここから
-		/// 
-
-		// ゲームの描画処理
-		game->Draw();
-
-		///
-		/// ↑ 描画処理ここまで
-		/// 
-
-
-		// フレーム終了処理
-		mugenEngine->FrameEnd();
-	}
-
-	// ゲームの削除
-	delete game;
-	game = nullptr;
-
-	// 無限エンジンの終了処理
-	mugenEngine->Finalize();
-
-	// 解放漏れチェック
-	LeakChecker();
+	// ゲームの実行
+	std::unique_ptr<Game> game = std::make_unique<Game>();
+	game->Run(1280, 720, "LE2A_12_フクダ_ソウワ");
 
 	return 0;
 }

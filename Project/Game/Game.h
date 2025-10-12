@@ -1,34 +1,29 @@
 #pragma once
-#include "MugenEngine.h"
-
+#include "Framework.h"
 #include "GameScene/GameScene.h"
 
-class Game
+class Game : public Framework
 {
-public:
+protected:
 
 	/// <summary>
 	/// 初期化
 	/// </summary>
 	/// <param name="engine"></param>
-	void Initialize(const MugenEngine* engine);
+	void Initialize() override;
 
 	/// <summary>
 	/// 更新処理
 	/// </summary>
-	void Update();
+	void Update()override;
 
 	/// <summary>
 	/// 描画処理
 	/// </summary>
-	void Draw();
+	void Draw()override;
 
 
 private:
-
-	// エンジン
-	const MugenEngine* engine_ = nullptr;
-
 
 	// ゲームシーン
 	std::unique_ptr<Scene> scene_ = nullptr;

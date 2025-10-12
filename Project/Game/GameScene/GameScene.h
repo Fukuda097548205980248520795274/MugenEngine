@@ -44,8 +44,7 @@ public:
 
 
 	// テクスチャハンドル
-	TextureHandle textureHandle0_{};
-	TextureHandle textureHandle1_{};
+	TextureHandle textureHandle_{};
 
 	// モデルハンドル
 	ModelHandle modelHandle_{};
