@@ -40,8 +40,11 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 	name_ = name;
 
 
-	RecordSetting::GetInstance()->SetValue(*name_, "position", position_);
-	RecordSetting::GetInstance()->RegistGroupDataReflection(*name_);
+	RecordSetting* recordSetting = RecordSetting::GetInstance();
+	recordSetting->SetValue(*name_, "position", position_);
+	recordSetting->SetValue(*name_, "perEmission", perEmission_);
+	recordSetting->SetValue(*name_, "emitTime", emitTime_);
+	recordSetting->RegistGroupDataReflection(*name_);
 }
 
 
