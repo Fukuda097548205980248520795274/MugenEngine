@@ -21,12 +21,17 @@ void GameScene::Initialize(const MugenEngine* engine)
 	// テクスチャを読み込む
 	textureHandle_ = engine_->LoadTexture("./Resources/Textures/uvChecker.png");
 
+	// ビルボードパーティクルエミッター
+	billboardParticleEmitter_ = std::make_unique<BillboardParticleEmitter>();
+	billboardParticleEmitter_->Initliaze(engine_, camera3d_.get(), 100, textureHandle_, "testParticle_0");
+
+
 	// モデルを読み込む
 	modelHandle_ = engine_->LoadModel("./Resources/Models/suzanne", "suzanne.obj");
 
-	// パーティクルエミッターの生成と初期化
-	particleEmitter_ = std::make_unique<ModelParticleEmitter>();
-	particleEmitter_->Initliaze(engine_, camera3d_.get(), 100, modelHandle_, "testParticle_0");
+	// モデルパーティクルエミッターの生成と初期化
+	modelParticleEmitter_ = std::make_unique<ModelParticleEmitter>();
+	modelParticleEmitter_->Initliaze(engine_, camera3d_.get(), 100, modelHandle_, "testParticle_1");
 }
 
 /// <summary>
@@ -41,7 +46,8 @@ void GameScene::Update()
 	player_->Update();
 
 	// パーティクルの更新処理
-	particleEmitter_->Update();
+	billboardParticleEmitter_->Update();
+	modelParticleEmitter_->Update();
 
 
 	//ループ再生
@@ -61,7 +67,8 @@ void GameScene::Draw()
 	player_->Draw();
 
 	// パーティクルの描画処理
-	particleEmitter_->Draw();
+	billboardParticleEmitter_->Draw();
+	modelParticleEmitter_->Draw();
 
 	// 基底クラスの描画処理
 	Scene::Draw();

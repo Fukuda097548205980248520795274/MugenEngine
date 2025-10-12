@@ -20,7 +20,7 @@ void ModelParticleEmitter::Initliaze(const MugenEngine* engine, const Camera3D* 
 	name_ = name;
 
 	// パーティクルを読み込む
-	engine_->LoadParticleEmitter(this);
+	particleHandle_ = engine_->LoadParticleEmitter(this);
 }
 
 /// <summary>
