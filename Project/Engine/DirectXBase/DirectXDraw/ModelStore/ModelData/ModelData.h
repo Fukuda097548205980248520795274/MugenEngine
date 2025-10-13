@@ -33,6 +33,9 @@ struct MeshData
 
 	// スキンクラスター
 	SkinCluster skinCluster;
+
+	// メッシュ番号
+	uint32_t meshNumber_;
 };
 
 // モデルデータ

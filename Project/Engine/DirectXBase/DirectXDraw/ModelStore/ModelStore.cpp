@@ -107,3 +107,18 @@ ModelHandle ModelStore::LoadModel(const std::string& directoryPath, const std::s
 
 	return handle;
 }
+
+/// <summary>
+/// メッシュ番号を取得する
+/// </summary>
+/// <param name="handle"></param>
+/// <param name="meshName"></param>
+/// <returns></returns>
+uint32_t ModelStore::GetMeshNumber(ModelHandle handle, const std::string& meshName)
+{
+	// モデルデータ
+	ModelData modelData = modelResources_[handle.value]->GetModelData();
+
+	// メッシュ番号を返却する
+	return modelData.meshData[meshName].meshNumber_;
+}

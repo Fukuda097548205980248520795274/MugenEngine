@@ -149,6 +149,9 @@ ModelData LoadObjFile(const std::string& directoryPath, const std::string& filen
 		// メッシュの名前を取得する
 		std::string meshName = mesh->mName.C_Str();
 
+		// メッシュの番号を取得する
+		meshData.meshNumber_ = meshIndex;
+
 		// 頂点データを登録する
 		for (uint32_t i = 0; i < mesh->mNumVertices; ++i)
 		{
@@ -259,6 +262,9 @@ ModelData LoadGltfFileWidthBone(const std::string& directoryPath, const std::str
 
 		// メッシュの名前を取得する
 		std::string meshName = mesh->mName.C_Str();
+
+		// メッシュの番号を取得する
+		meshData.meshNumber_ = meshIndex;
 
 		// 頂点データを登録する
 		for (uint32_t i = 0; i < mesh->mNumVertices; ++i)
