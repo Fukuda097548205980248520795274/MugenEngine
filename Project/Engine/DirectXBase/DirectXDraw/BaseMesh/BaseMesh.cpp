@@ -6,16 +6,17 @@
 /// </summary>
 /// <param name="camera3d"></param>
 /// <param name="textureHandle"></param>
-void BaseMesh::Initialize(const MugenEngine* engine, const Camera3D* camera3d, TextureHandle textureHandle)
+void BaseMesh::Initialize(const Camera3D* camera3d, TextureHandle textureHandle)
 {
 	// nullptrチェック
-	assert(engine);
 	assert(camera3d);
 
 	// 引数を受け取る
-	engine_ = engine;
 	camera3d_ = camera3d;
 	textureHandle_ = textureHandle;
+
+	// エンジンのインスタンスを取得する
+	engine_ = MugenEngine::GetInstance();
 
 	// ワールドトランスフォームの生成と初期化
 	worldTransform_ = std::make_unique<WorldTransform3D>();

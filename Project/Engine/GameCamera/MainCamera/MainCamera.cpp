@@ -4,10 +4,10 @@
 /// <summary>
 /// 初期化
 /// </summary>
-void MainCamera::Initialize(const MugenEngine* engine)
+void MainCamera::Initialize()
 {
 	// 基底クラスを初期化
-	GameCamera::Initialize(engine);
+	GameCamera::Initialize();
 
 	// 初期値を小さくする
 	pointLength_ = 1.0f;

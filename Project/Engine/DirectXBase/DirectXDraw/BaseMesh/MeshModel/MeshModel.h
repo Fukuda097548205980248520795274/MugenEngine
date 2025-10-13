@@ -19,7 +19,7 @@ public:
 	/// </summary>
 	/// <param name="camera3d"></param>
 	/// <param name="modelHandle"></param>
-	void Initialize(const MugenEngine* engine, const Camera3D* camera3d, ModelHandle modelHandle);
+	void Initialize(const Camera3D* camera3d, ModelHandle modelHandle);
 
 	/// <summary>
 	/// 更新処理

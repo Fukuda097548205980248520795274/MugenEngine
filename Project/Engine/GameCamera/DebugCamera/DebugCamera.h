@@ -9,7 +9,7 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	void Initialize(const MugenEngine* engine) override;
+	void Initialize() override;
 
 	/// <summary>
 	/// 更新処理

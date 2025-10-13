@@ -7,10 +7,10 @@
 /// <param name="engine"></param>
 /// <param name="camera3d"></param>
 /// <param name="textureHandle"></param>
-void MeshCube::Initialize(const MugenEngine* engine, const Camera3D* camera3d, TextureHandle textureHandle)
+void MeshCube::Initialize(const Camera3D* camera3d, TextureHandle textureHandle)
 {
 	// 基底クラスの初期化
-	BaseMesh::Initialize(engine, camera3d, textureHandle);
+	BaseMesh::Initialize(camera3d, textureHandle);
 }
 
 /// <summary>

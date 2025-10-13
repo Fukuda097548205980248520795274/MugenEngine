@@ -6,18 +6,18 @@
 /// <param name="engine"></param>
 /// <param name="camera3d"></param>
 /// <param name="startPosition"></param>
-void Player::Initialize(const MugenEngine* engine, const Camera3D* camera3d, const Vector3& startPosition)
+void Player::Initialize(const Camera3D* camera3d, const Vector3& startPosition)
 {
 	// 基底クラスの初期化
-	BaseCharacter::Initialize(engine, camera3d, startPosition);
+	BaseCharacter::Initialize(camera3d, startPosition);
 
 	// 移動コントローラの生成と初期化
 	moveController_ = std::make_unique<MoveController>();
-	moveController_->Initialize(engine_);
+	moveController_->Initialize();
 
 	// モデルの生成と初期化
 	model_ = std::make_unique<MeshModel>();
-	model_->Initialize(engine_, camera3d_, engine_->LoadModel("./Resources/Models/multiMaterial", "multiMaterial.obj"));
+	model_->Initialize(camera3d_, engine_->LoadModel("./Resources/Models/multiMaterial", "multiMaterial.obj"));
 	model_->SetParent(worldTransform_.get());
 	model_->material_[0]->enableHalfLambert_ = true;
 

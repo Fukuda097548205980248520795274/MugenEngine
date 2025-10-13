@@ -11,7 +11,7 @@ public:
 	/// </summary>
 	/// <param name="screenWidth"></param>
 	/// <param name="screenHeight"></param>
-	void Initialize(int32_t screenWidth, int32_t screenHeight);
+	void Initialize();
 
 	/// <summary>
 	/// 更新処理

@@ -11,7 +11,7 @@ void GameScene::Initialize()
 
 	// プレイヤーの生成と初期化
 	player_ = std::make_unique<Player>();
-	player_->Initialize(engine_, camera3d_.get(), Vector3(0.0f, 0.0f, 0.0f));
+	player_->Initialize(camera3d_.get(), Vector3(0.0f, 0.0f, 0.0f));
 
 	// サウンドハンドル
 	soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/forget_me_not.mp3");
@@ -22,7 +22,7 @@ void GameScene::Initialize()
 
 	// ビルボードパーティクルエミッター
 	billboardParticleEmitter_ = std::make_unique<BillboardParticleEmitter>();
-	billboardParticleEmitter_->Initliaze(engine_, camera3d_.get(), 100, textureHandle_, "testParticle_0");
+	billboardParticleEmitter_->Initliaze(camera3d_.get(), 100, textureHandle_, "testParticle_0");
 
 
 	// モデルを読み込む
@@ -30,7 +30,7 @@ void GameScene::Initialize()
 
 	// モデルパーティクルエミッターの生成と初期化
 	modelParticleEmitter_ = std::make_unique<ModelParticleEmitter>();
-	modelParticleEmitter_->Initliaze(engine_, camera3d_.get(), 100, modelHandle_, "testParticle_1");
+	modelParticleEmitter_->Initliaze(camera3d_.get(), 100, modelHandle_, "testParticle_1");
 }
 
 /// <summary>

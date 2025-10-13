@@ -11,7 +11,7 @@ void TitleScene::Initialize()
 
 	// プレイヤーの生成と初期化
 	player_ = std::make_unique<Player>();
-	player_->Initialize(engine_, camera3d_.get(), Vector3(0.0f, 0.0f, 0.0f));
+	player_->Initialize(camera3d_.get(), Vector3(0.0f, 0.0f, 0.0f));
 }
 
 /// <summary>

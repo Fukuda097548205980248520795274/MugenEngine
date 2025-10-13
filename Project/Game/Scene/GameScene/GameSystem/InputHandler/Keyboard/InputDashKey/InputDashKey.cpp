@@ -4,16 +4,15 @@
 /// 初期化
 /// </summary>
 /// <param name="engine"></param>
-void InputDashKey::Initialize(const MugenEngine* engine, BYTE key, float dashSpeed, float walkSpeed)
+void InputDashKey::Initialize(BYTE key, float dashSpeed, float walkSpeed)
 {
-	// nullptrチェック
-	assert(engine);
-
 	// 引数を受け取る
-	engine_ = engine;
 	key_ = key;
 	dashSpeed_ = dashSpeed;
 	walkSpeed_ = walkSpeed;
+
+	// エンジンのインスタンスを取得する
+	engine_ = MugenEngine::GetInstance();
 }
 
 /// <summary>

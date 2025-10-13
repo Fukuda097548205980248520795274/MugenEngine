@@ -13,7 +13,7 @@ public:
 	/// <param name="left"></param>
 	/// <param name="back"></param>
 	/// <param name="right"></param>
-	void Initialize(const MugenEngine* engine, BYTE front, BYTE left, BYTE back, BYTE right);
+	void Initialize(BYTE front, BYTE left, BYTE back, BYTE right);
 
 	/// <summary>
 	/// 押したキーに合わせて方向ベクトルを求める

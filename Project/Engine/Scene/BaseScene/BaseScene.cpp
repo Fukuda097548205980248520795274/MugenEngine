@@ -13,19 +13,19 @@ void BaseScene::Initialize()
 
 	// メインカメラの生成と初期化
 	mainCamera_ = std::make_unique<MainCamera>();
-	mainCamera_->Initialize(engine_);
+	mainCamera_->Initialize();
 
 	// デバッグカメラの生成と初期化
 	debugCamera_ = std::make_unique<DebugCamera>();
-	debugCamera_->Initialize(engine_);
+	debugCamera_->Initialize();
 
 	// 3Dカメラの生成と初期化
 	camera3d_ = std::make_unique<Camera3D>();
-	camera3d_->Initialize(engine_->GetScreenWidth(), engine_->GetScreenHeight());
+	camera3d_->Initialize();
 
 	// 2Dカメラの生成と初期化
 	camera2d_ = std::make_unique<Camera2D>();
-	camera2d_->Initialize(engine_->GetScreenWidth(), engine_->GetScreenHeight());
+	camera2d_->Initialize();
 
 	// シーンマネージャのインスタンスを取得する
 	sceneManager_ = SceneManager::GetInstance();

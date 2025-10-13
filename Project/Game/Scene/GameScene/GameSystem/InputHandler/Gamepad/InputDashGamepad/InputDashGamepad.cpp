@@ -4,16 +4,15 @@
 /// 初期化
 /// </summary>
 /// <param name="engine"></param>
-void InputDashGamepad::Initialize(const MugenEngine* engine, DWORD button, float dashSpeed, float walkSpeed)
+void InputDashGamepad::Initialize(DWORD button, float dashSpeed, float walkSpeed)
 {
-	// nullptrチェック
-	assert(engine);
-
 	// 引数を受け取る
-	engine_ = engine;
 	button_ = button;
 	dashSpeed_ = dashSpeed;
 	walkSpeed_ = walkSpeed;
+
+	// エンジンのインスタンスを取得する
+	engine_ = MugenEngine::GetInstance();
 }
 
 /// <summary>

@@ -6,16 +6,17 @@
 /// </summary>
 /// <param name="camera3d"></param>
 /// <param name="modelHandle"></param>
-void MeshModel::Initialize(const MugenEngine* engine, const Camera3D* camera3d, ModelHandle modelHandle)
+void MeshModel::Initialize(const Camera3D* camera3d, ModelHandle modelHandle)
 {
 	// nullptrチェック
-	assert(engine);
 	assert(camera3d);
 
 	// 引数を受け取る
-	engine_ = engine;
 	camera3d_ = camera3d;
 	modelHandle_ = modelHandle;
+
+	// エンジンのインスタンスを取得する
+	engine_ = MugenEngine::GetInstance();
 
 	// メッシュ数を取得する
 	numMesh_ = engine_->GetNumMesh(modelHandle);

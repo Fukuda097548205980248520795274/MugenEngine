@@ -8,17 +8,16 @@
 /// <param name="left"></param>
 /// <param name="back"></param>
 /// <param name="right"></param>
-void InputMoveKey::Initialize(const MugenEngine* engine, BYTE front, BYTE left, BYTE back, BYTE right)
+void InputMoveKey::Initialize(BYTE front, BYTE left, BYTE back, BYTE right)
 {
-	// nullptrチェック
-	assert(engine);
-
 	// 引数を受け取る
-	engine_ = engine;
 	front_ = front;
 	left_ = left;
 	back_ = back;
 	right_ = right;
+
+	// エンジンのインスタンスを取得する
+	engine_ = MugenEngine::GetInstance();
 }
 
 /// <summary>

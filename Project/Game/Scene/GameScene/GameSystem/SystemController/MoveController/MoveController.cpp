@@ -4,31 +4,28 @@
 /// 初期化
 /// </summary>
 /// <param name="engine"></param>
-void MoveController::Initialize(const MugenEngine* engine)
+void MoveController::Initialize()
 {
-	// nullptrチェック
-	assert(engine);
-
-	// 引数を受け取る
-	engine_ = engine;
+	// エンジンのインスタンスを取得する
+	engine_ = MugenEngine::GetInstance();
 
 
 	// 移動操作キーの生成と初期化
 	inputMoveKey_ = std::make_unique<InputMoveKey>();
-	inputMoveKey_->Initialize(engine_, DIK_W, DIK_A, DIK_S, DIK_D);
+	inputMoveKey_->Initialize(DIK_W, DIK_A, DIK_S, DIK_D);
 
 	// 移動操作ゲームパッドの生成と初期化
 	inputMoveGamepad_ = std::make_unique<InputMoveGamepad>();
-	inputMoveGamepad_->Initialize(engine_);
+	inputMoveGamepad_->Initialize();
 
 
 	// ダッシュ操作キーの生成と初期化
 	inputDashKey_ = std::make_unique<InputDashKey>();
-	inputDashKey_->Initialize(engine_, DIK_SPACE, dashSpeed_, walkSpeed_);
+	inputDashKey_->Initialize(DIK_SPACE, dashSpeed_, walkSpeed_);
 
 	// ダッシュ操作ゲームパッドの生成と初期化
 	inputDashGamepad_ = std::make_unique<InputDashGamepad>();
-	inputDashGamepad_->Initialize(engine_, XINPUT_GAMEPAD_A, dashSpeed_, walkSpeed_);
+	inputDashGamepad_->Initialize(XINPUT_GAMEPAD_A, dashSpeed_, walkSpeed_);
 
 
 	// 移動ロジックの生成と初期化

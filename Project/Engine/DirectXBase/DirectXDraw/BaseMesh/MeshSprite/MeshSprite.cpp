@@ -7,16 +7,17 @@
 /// <param name="engine"></param>
 /// <param name="camera2d"></param>
 /// <param name="textureHandle"></param>
-void MeshSprite::Initialize(const MugenEngine* engine, const Camera2D* camera2d, TextureHandle textureHandle)
+void MeshSprite::Initialize(const Camera2D* camera2d, TextureHandle textureHandle)
 {
 	// nullptrチェック
-	assert(engine);
 	assert(camera2d);
 
 	// 引数を受け取る
-	engine_ = engine;
 	camera2d_ = camera2d;
 	textureHandle_ = textureHandle;
+
+	// エンジンのインスタンスを取得する
+	engine_ = MugenEngine::GetInstance();
 
 	// ワールドトランスフォームの生成と初期化
 	worldTransform_ = std::make_unique<WorldTransform2D>();
