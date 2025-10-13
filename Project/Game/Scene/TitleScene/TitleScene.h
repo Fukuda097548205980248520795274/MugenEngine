@@ -11,7 +11,7 @@ public:
 	/// 初期化
 	/// </summary>
 	/// <param name="engine"></param>
-	void Initialize(const MugenEngine* engine) override;
+	void Initialize() override;
 
 	/// <summary>
 	/// 更新処理

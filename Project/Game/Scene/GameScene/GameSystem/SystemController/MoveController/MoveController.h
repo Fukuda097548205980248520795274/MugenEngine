@@ -17,7 +17,7 @@ public:
 	/// 初期化
 	/// </summary>
 	/// <param name="engine"></param>
-	void Initialize(const MugenEngine* engine);
+	void Initialize();
 
 	/// <summary>
 	/// 移動の値を取得する

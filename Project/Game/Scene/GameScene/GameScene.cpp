@@ -4,16 +4,14 @@
 /// 初期化
 /// </summary>
 /// <param name="engine"></param>
-void GameScene::Initialize(const MugenEngine* engine)
+void GameScene::Initialize()
 {
 	// 基底クラスの初期化
-	BaseScene::Initialize(engine);
-
-	mainCamera_->pivotPoint_ = Vector3(0.0f, 0.0f, -30.0f);
+	BaseScene::Initialize();
 
 	// プレイヤーの生成と初期化
 	player_ = std::make_unique<Player>();
-	player_->Initialize(engine_, camera3d_.get(), Vector3(0.0f, 0.0f, 0.0f));
+	player_->Initialize(camera3d_.get(), Vector3(0.0f, 0.0f, 0.0f));
 
 	// サウンドハンドル
 	soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/forget_me_not.mp3");
@@ -24,7 +22,7 @@ void GameScene::Initialize(const MugenEngine* engine)
 
 	// ビルボードパーティクルエミッター
 	billboardParticleEmitter_ = std::make_unique<BillboardParticleEmitter>();
-	billboardParticleEmitter_->Initliaze(engine_, camera3d_.get(), 100, textureHandle_, "testParticle_0");
+	billboardParticleEmitter_->Initliaze(camera3d_.get(), 100, textureHandle_, "testParticle_0");
 
 
 	// モデルを読み込む
@@ -32,7 +30,7 @@ void GameScene::Initialize(const MugenEngine* engine)
 
 	// モデルパーティクルエミッターの生成と初期化
 	modelParticleEmitter_ = std::make_unique<ModelParticleEmitter>();
-	modelParticleEmitter_->Initliaze(engine_, camera3d_.get(), 100, modelHandle_, "testParticle_1");
+	modelParticleEmitter_->Initliaze(camera3d_.get(), 100, modelHandle_, "testParticle_1");
 }
 
 /// <summary>

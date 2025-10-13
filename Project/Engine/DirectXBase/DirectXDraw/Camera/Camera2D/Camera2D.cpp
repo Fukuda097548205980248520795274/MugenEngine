@@ -1,15 +1,16 @@
 #include "Camera2D.h"
+#include "MugenEngine.h"
 
 /// <summary>
 /// 初期化
 /// </summary>
 /// <param name="screenWidth"></param>
 /// <param name="screenHeight"></param>
-void Camera2D::Initialize(int32_t screenWidth, int32_t screenHeight)
+void Camera2D::Initialize()
 {
 	// 引数を受け取る
-	screenWidth_ = static_cast<float>(screenWidth);
-	screenHeight_ = static_cast<float>(screenHeight);
+	screenWidth_ = static_cast<float>(MugenEngine::GetInstance()->GetScreenWidth());
+	screenHeight_ = static_cast<float>(MugenEngine::GetInstance()->GetScreenHeight());
 
 
 	// 拡縮

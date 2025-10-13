@@ -4,10 +4,10 @@
 /// <summary>
 /// 初期化
 /// </summary>
-void DebugCamera::Initialize(const MugenEngine* engine)
+void DebugCamera::Initialize()
 {
 	// 基底クラスの初期化
-	GameCamera::Initialize(engine);
+	GameCamera::Initialize();
 }
 
 /// <summary>

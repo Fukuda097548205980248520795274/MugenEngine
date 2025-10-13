@@ -18,7 +18,7 @@ public:
 	/// <param name="engine"></param>
 	/// <param name="camera2d"></param>
 	/// <param name="textureHandle"></param>
-	void Initialize(const MugenEngine* engine, const Camera2D* camera2d, TextureHandle textureHandle);
+	void Initialize(const Camera2D* camera2d, TextureHandle textureHandle);
 
 	/// <summary>
 	/// 更新処理

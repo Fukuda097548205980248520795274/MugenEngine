@@ -13,7 +13,7 @@ public:
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	virtual void Initialize(const MugenEngine* engine);
+	virtual void Initialize();
 
 	/// <summary>
 	/// 更新処理

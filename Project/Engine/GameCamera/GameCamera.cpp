@@ -4,17 +4,14 @@
 /// <summary>
 /// 初期化
 /// </summary>
-void GameCamera::Initialize(const MugenEngine* engine)
+void GameCamera::Initialize()
 {
-	// nullptrチェック
-	assert(engine);
-
-	// 引数を受け取る
-	engine_ = engine;
+	// インスタンスを取得する
+	engine_ = MugenEngine::GetInstance();
 
 	// 3Dカメラの生成と初期化
 	camera3d_ = std::make_unique<Camera3D>();
-	camera3d_->Initialize(engine_->GetScreenWidth(), engine_->GetScreenHeight());
+	camera3d_->Initialize();
 }
 
 /// <summary>

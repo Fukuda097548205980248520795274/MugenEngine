@@ -6,18 +6,19 @@
 /// </summary>
 /// <param name="engine"></param>
 /// <param name="numMaxParticle"></param>
-void ModelParticleEmitter::Initliaze(const MugenEngine* engine, const Camera3D* camera3d, uint32_t numMaxParticle, ModelHandle modelHandle, const std::string& name)
+void ModelParticleEmitter::Initliaze(const Camera3D* camera3d, uint32_t numMaxParticle, ModelHandle modelHandle, const std::string& name)
 {
 	// nullptrチェック
-	assert(engine);
 	assert(camera3d);
 
 	// 引数を受け取る
-	engine_ = engine;
 	camera3d_ = camera3d;
 	numMaxParticle_ = numMaxParticle;
 	modelHandle_ = modelHandle;
 	name_ = name;
+
+	// エンジンのインスタンスを取得する
+	engine_ = MugenEngine::GetInstance();
 
 	// パーティクルを読み込む
 	particleHandle_ = engine_->LoadParticleEmitter(this);
@@ -27,15 +28,14 @@ void ModelParticleEmitter::Initliaze(const MugenEngine* engine, const Camera3D* 
 /// 初期化
 /// </summary>
 /// <param name="particleHandle"></param>
-void ModelParticleEmitter::Initliaze(const MugenEngine* engine, const Camera3D* camera3d, ParticleHandle particleHandle)
+void ModelParticleEmitter::Initliaze(const Camera3D* camera3d, ParticleHandle particleHandle)
 {
-	// nullptrチェック
-	assert(engine);
-
 	// 引数を受け取る
-	engine_ = engine;
 	camera3d_ = camera3d;
 	particleHandle_ = particleHandle;
+
+	// エンジンのインスタンスを取得する
+	engine_ = MugenEngine::GetInstance();
 }
 
 /// <summary>

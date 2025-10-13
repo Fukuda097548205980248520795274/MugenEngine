@@ -9,7 +9,7 @@ public:
 	/// 初期化
 	/// </summary>
 	/// <param name="engine"></param>
-	void Initialize(const MugenEngine* engine, BYTE key, float dashSpeed, float walkSpeed);
+	void Initialize(BYTE key, float dashSpeed, float walkSpeed);
 
 	/// <summary>
 	/// 移動速度のGetter

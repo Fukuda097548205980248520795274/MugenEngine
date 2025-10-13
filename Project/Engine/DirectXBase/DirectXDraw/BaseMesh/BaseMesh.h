@@ -18,7 +18,7 @@ public:
 	/// </summary>
 	/// <param name="camera3d"></param>
 	/// <param name="textureHandle"></param>
-	virtual void Initialize(const MugenEngine* engine, const Camera3D* camera3d, TextureHandle textureHandle);
+	virtual void Initialize(const Camera3D* camera3d, TextureHandle textureHandle);
 
 	/// <summary>
 	/// 更新処理

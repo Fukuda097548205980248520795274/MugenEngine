@@ -11,7 +11,7 @@ public:
 	/// <param name="engine"></param>
 	/// <param name="camera3d"></param>
 	/// <param name="startPosition"></param>
-	virtual void Initialize(const MugenEngine* engine, const Camera3D* camera3d, const Vector3& startPosition);
+	virtual void Initialize(const Camera3D* camera3d, const Vector3& startPosition);
 
 	/// <summary>
 	/// 更新処理

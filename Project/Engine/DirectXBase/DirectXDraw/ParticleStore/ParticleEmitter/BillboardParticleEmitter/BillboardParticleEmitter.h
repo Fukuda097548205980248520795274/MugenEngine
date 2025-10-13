@@ -16,13 +16,13 @@ public:
 	/// </summary>
 	/// <param name="engine"></param>
 	/// <param name="numMaxParticle"></param>
-	void Initliaze(const MugenEngine* engine, const Camera3D* camera3d, uint32_t numMaxParticle, TextureHandle textureHandle, const std::string& name);
+	void Initliaze(const Camera3D* camera3d, uint32_t numMaxParticle, TextureHandle textureHandle, const std::string& name);
 
 	/// <summary>
 	/// 初期化
 	/// </summary>
 	/// <param name="particleHandle"></param>
-	void Initliaze(const MugenEngine* engine, const Camera3D* camera3d, ParticleHandle particleHandle);
+	void Initliaze(const Camera3D* camera3d, ParticleHandle particleHandle);
 
 	/// <summary>
 	/// 更新処理
