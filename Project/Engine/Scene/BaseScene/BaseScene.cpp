@@ -1,4 +1,4 @@
-#include "Scene.h"
+#include "BaseScene.h"
 #include "MugenEngine.h"
 
 
@@ -6,7 +6,7 @@
 /// 初期化
 /// </summary>
 /// <param name="engine"></param>
-void Scene::Initialize(const MugenEngine* engine)
+void BaseScene::Initialize(const MugenEngine* engine)
 {
 	// nullptrチェック
 	assert(engine);
@@ -29,12 +29,15 @@ void Scene::Initialize(const MugenEngine* engine)
 	// 2Dカメラの生成と初期化
 	camera2d_ = std::make_unique<Camera2D>();
 	camera2d_->Initialize(engine_->GetScreenWidth(), engine_->GetScreenHeight());
+
+	// シーンマネージャのインスタンスを取得する
+	sceneManager_ = SceneManager::GetInstance();
 }
 
 /// <summary>
 /// 更新処理
 /// </summary>
-void Scene::Update()
+void BaseScene::Update()
 {
 #ifdef _DEVELOPMENT
 
@@ -75,7 +78,7 @@ void Scene::Update()
 /// <summary>
 /// 描画処理
 /// </summary>
-void Scene::Draw()
+void BaseScene::Draw()
 {
 
 }

@@ -1,12 +1,12 @@
 #pragma once
 #include "MugenEngine.h"
 
-#include "GameScene/GameSystem/InputHandler/Gamepad/InputMoveGamepad/InputMoveGamepad.h"
-#include "GameScene/GameSystem/InputHandler/Gamepad/InputDashGamepad/InputDashGamepad.h"
-#include "GameScene/GameSystem/InputHandler/Keyboard/InputMoveKey/InputMoveKey.h"
-#include "GameScene/GameSystem/InputHandler/Keyboard/InputDashKey/InputDashKey.h"
-#include "GameScene/GameSystem/SystemLogic/LogicMove/LogicMove.h"
-#include "GameScene/GameSystem/SystemLogic/LogicMoveSpeed/LogicMoveSpeed.h"
+#include "../../InputHandler/Gamepad/InputMoveGamepad/InputMoveGamepad.h"
+#include "../../InputHandler/Gamepad/InputDashGamepad/InputDashGamepad.h"
+#include "../../InputHandler/Keyboard/InputMoveKey/InputMoveKey.h"
+#include "../../InputHandler/Keyboard/InputDashKey/InputDashKey.h"
+#include "../../SystemLogic/LogicMove/LogicMove.h"
+#include "../../SystemLogic/LogicMoveSpeed/LogicMoveSpeed.h"
 
 
 class MoveController

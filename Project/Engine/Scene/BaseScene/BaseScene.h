@@ -3,9 +3,17 @@
 #include "GameCamera/MainCamera/MainCamera.h"
 #include "GameCamera/DebugCamera/DebugCamera.h"
 
-class Scene
+// 前方宣言
+class SceneManager;
+
+class BaseScene
 {
 public:
+
+	/// <summary>
+	/// 仮想デストラクタ
+	/// </summary>
+	virtual ~BaseScene() = default;
 
 	/// <summary>
 	/// 初期化
@@ -37,6 +45,9 @@ protected:
 
 	// メインカメラ
 	std::unique_ptr<MainCamera> mainCamera_ = nullptr;
+
+	// シーンマネージャ
+	SceneManager* sceneManager_ = nullptr;
 
 
 private:

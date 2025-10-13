@@ -7,7 +7,7 @@
 void GameScene::Initialize(const MugenEngine* engine)
 {
 	// 基底クラスの初期化
-	Scene::Initialize(engine);
+	BaseScene::Initialize(engine);
 
 	mainCamera_->pivotPoint_ = Vector3(0.0f, 0.0f, -30.0f);
 
@@ -40,9 +40,8 @@ void GameScene::Initialize(const MugenEngine* engine)
 /// </summary>
 void GameScene::Update()
 {
-
 	// 基底クラスの更新処理
-	Scene::Update();
+	BaseScene::Update();
 
 	// プレイヤーの更新処理
 	player_->Update();
@@ -65,7 +64,6 @@ void GameScene::Update()
 /// </summary>
 void GameScene::Draw()
 {
-
 	// プレイヤーの描画処理
 	player_->Draw();
 
@@ -74,5 +72,5 @@ void GameScene::Draw()
 	modelParticleEmitter_->Draw();
 
 	// 基底クラスの描画処理
-	Scene::Draw();
+	BaseScene::Draw();
 }

@@ -1,6 +1,9 @@
 #pragma once
 #include "Framework/Framework.h"
-#include "GameScene/GameScene.h"
+#include "SceneFactory/SceneFactory.h"
+
+#include "Scene/GameScene/GameScene.h"
+#include "Scene/TitleScene/TitleScene.h"
 
 class Game : public Framework
 {
@@ -25,7 +28,7 @@ protected:
 
 private:
 
-	// ゲームシーン
-	std::unique_ptr<Scene> scene_ = nullptr;
+	// シーンマネージャ
+	SceneManager* sceneManager_ = nullptr;
 };
 

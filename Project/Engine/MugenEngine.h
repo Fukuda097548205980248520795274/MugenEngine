@@ -8,7 +8,9 @@
 #include "Input/Input.h"
 #include "AudioStore/AudioStore.h"
 #include "Collision/Collision.h"
-#include "Scene/Scene.h"
+#include "Scene/BaseScene/BaseScene.h"
+#include "Scene/SceneManager/SceneManager.h"
+#include "Scene/BaseSceneFactory/BaseSceneFactory.h"
 #include "Math/Probability/Probability.h"
 #include "Math/Quaternion/Quaternion.h"
 #include "Math/Vector1/Vector1.h"
@@ -841,9 +843,11 @@ private:
 	// 衝突判定
 	std::unique_ptr<Collision> collision_ = nullptr;
 
-
 	// 設定記録
 	RecordSetting* recordSetting_ = nullptr;
+
+	// シーンマネージャー
+	SceneManager* sceneManager_ = nullptr;
 
 
 	// デルタタイム
