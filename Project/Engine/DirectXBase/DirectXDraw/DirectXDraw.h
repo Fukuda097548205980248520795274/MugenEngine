@@ -122,6 +122,13 @@ public:
 	/// </summary>
 	void ResetBlendMode();
 
+	/// <summary>
+	/// メッシュ数のGetter
+	/// </summary>
+	/// <param name="handle"></param>
+	/// <returns></returns>
+	uint32_t GetNumMesh(ModelHandle handle) { return modelStore_->GetNumMesh(handle); }
+
 
 #pragma region オフスクリーン
 
@@ -160,8 +167,8 @@ public:
 	/// <param name="camera"></param>
 	/// <param name="modelHandle"></param>
 	/// <param name="material"></param>
-	void DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, ModelHandle modelHandle,
-		const Material* material, float animationTimer);
+	void DrawModel(const WorldTransform3D* worldTransform, const std::vector<UVTransform*> uvTransform, const Camera3D* camera, ModelHandle modelHandle,
+		const std::vector<Material*> material, float animationTimer);
 
 private:
 
@@ -175,8 +182,8 @@ private:
 	/// <param name="color"></param>
 	/// <param name="enableLighting"></param>
 	/// <param name="enableHalfLanbert"></param>
-	void DrawGltfModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
-		const Material* material);
+	void DrawGltfModel(const WorldTransform3D* worldTransform, const std::vector<UVTransform*> uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
+		const std::vector<Material*> material);
 
 	/// <summary>
 	/// Gltfファイルのアニメーション付きのモデルを描画する
@@ -186,8 +193,8 @@ private:
 	/// <param name="camera"></param>
 	/// <param name="modelResource"></param>
 	/// <param name="material"></param>
-	void DrawGltfAnimationModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
-		const Material* material, float animationTimer);
+	void DrawGltfAnimationModel(const WorldTransform3D* worldTransform, const std::vector<UVTransform*> uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
+		const std::vector<Material*> material, float animationTimer);
 
 	/// <summary>
 	/// Gltfファイルのスキニングを行うモデルを描画する
@@ -197,8 +204,8 @@ private:
 	/// <param name="camera"></param>
 	/// <param name="modelResource"></param>
 	/// <param name="material"></param>
-	void DrawGltfSkinningModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
-		const Material* material, float animationTimer);
+	void DrawGltfSkinningModel(const WorldTransform3D* worldTransform, const std::vector<UVTransform*> uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
+		const std::vector<Material*> material, float animationTimer);
 
 	/// <summary>
 	/// Objファイルのモデルを描画する
@@ -208,8 +215,8 @@ private:
 	/// <param name="camera"></param>
 	/// <param name="modelHandle"></param>
 	/// <param name="material"></param>
-	void DrawObjModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
-		const Material* material);
+	void DrawObjModel(const WorldTransform3D* worldTransform, const std::vector<UVTransform*> uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
+		const std::vector<Material*> material);
 
 public:
 

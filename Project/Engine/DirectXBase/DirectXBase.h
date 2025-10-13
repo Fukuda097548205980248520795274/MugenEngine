@@ -68,6 +68,13 @@ public:
 	ModelHandle LoadModel(const std::string& directory, const std::string& fileName) { return directXDraw_->LoadModel(directory, fileName); }
 
 	/// <summary>
+	/// メッシュ数のGetter
+	/// </summary>
+	/// <param name="handle"></param>
+	/// <returns></returns>
+	uint32_t GetNumMesh(ModelHandle handle) { return directXDraw_->GetNumMesh(handle); }
+
+	/// <summary>
 	/// アニメーションフラグのGetter
 	/// </summary>
 	/// <param name="modelHandle"></param>
@@ -127,8 +134,8 @@ public:
 	/// <param name="color"></param>
 	/// <param name="enableLighting"></param>
 	/// <param name="enableHalfLanbert"></param>
-	void DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, ModelHandle modelHandle,
-		const Material* material, float animationTimer)
+	void DrawModel(const WorldTransform3D* worldTransform, const std::vector<UVTransform*> uvTransform, const Camera3D* camera, ModelHandle modelHandle,
+		const std::vector<Material*> material, float animationTimer)
 	{
 		directXDraw_->DrawModel(worldTransform, uvTransform, camera, modelHandle, material, animationTimer);
 	}

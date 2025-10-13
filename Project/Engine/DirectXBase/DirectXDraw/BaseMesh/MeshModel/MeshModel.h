@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include <vector>
 #include "../MeshOptions/WorldTransform3D/WorldTransform3D.h"
 #include "../MeshOptions/UVTransform/UVTransform.h"
 #include "../MeshOptions/Material/Material.h"
@@ -53,10 +54,10 @@ public:
 	std::unique_ptr<WorldTransform3D> worldTransform_ = nullptr;
 
 	// UVトランスフォーム
-	std::unique_ptr<UVTransform> uvTransform_ = nullptr;
+	std::vector<std::unique_ptr<UVTransform>> uvTransform_;
 
 	// マテリアル
-	std::unique_ptr<Material> material_ = nullptr;
+	std::vector<std::unique_ptr<Material>> material_;
 
 
 private:
@@ -69,6 +70,15 @@ private:
 
 	// モデルハンドル
 	ModelHandle modelHandle_{};
+
+	// メッシュ数
+	uint32_t numMesh_ = 0;
+
+	// UVトランスフォーム
+	std::vector<UVTransform*> uvTransformP_;
+
+	// マテリアル
+	std::vector<Material*> materialP_;
 
 
 
