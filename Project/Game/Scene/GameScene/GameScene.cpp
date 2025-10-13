@@ -4,12 +4,10 @@
 /// 初期化
 /// </summary>
 /// <param name="engine"></param>
-void GameScene::Initialize(const MugenEngine* engine)
+void GameScene::Initialize()
 {
 	// 基底クラスの初期化
-	BaseScene::Initialize(engine);
-
-	mainCamera_->pivotPoint_ = Vector3(0.0f, 0.0f, -30.0f);
+	BaseScene::Initialize();
 
 	// プレイヤーの生成と初期化
 	player_ = std::make_unique<Player>();

@@ -44,6 +44,11 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 	// 例外が発生したときに起動する
 	SetUnhandledExceptionFilter(ExportDump);
 
+
+	/*-------------------------
+	    生成を行うインスタンス
+	-------------------------*/
+
 	// ログファイルの生成と初期化
 	logFile_ = std::make_unique<LogFile>();
 	logFile_->Initialize();
@@ -77,6 +82,20 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 
 	// シーンマネージャーの生成と初期化
 	sceneManager_ = SceneManager::GetInstance();
+
+
+	/*-------------------------
+	    取得のみのインスタンス
+	-------------------------*/
+
+	// テクスチャ格納場所
+	textureStore_ = TextureStore::GetInstance();
+
+	// モデル格納場所インスタンスを取得する
+	modelStore_ = ModelStore::GetInstance();
+
+	// パーティクル格納場所
+	particleStore_ = ParticleStore::GetInstance();
 }
 
 /// <summary>

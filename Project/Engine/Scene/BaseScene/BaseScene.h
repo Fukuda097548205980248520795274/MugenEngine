@@ -19,7 +19,7 @@ public:
 	/// 初期化
 	/// </summary>
 	/// <param name="engine"></param>
-	virtual void Initialize(const MugenEngine* engine);
+	virtual void Initialize();
 
 	/// <summary>
 	/// 更新処理

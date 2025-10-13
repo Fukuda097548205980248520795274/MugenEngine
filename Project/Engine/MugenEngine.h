@@ -227,13 +227,6 @@ public:
 	/// <returns></returns>
 	float GetDeltaTime()const { return deltaTime_; }
 
-	/// <summary>
-	/// メッシュ数のGetter
-	/// </summary>
-	/// <param name="handle"></param>
-	/// <returns></returns>
-	uint32_t GetNumMesh(ModelHandle handle) const { return directXBase_->GetNumMesh(handle); }
-
 #pragma endregion
 
 #pragma region テクスチャ
@@ -243,21 +236,21 @@ public:
 	/// </summary>
 	/// <param name="filePath"></param>
 	/// <returns></returns>
-	TextureHandle LoadTexture(const std::string& filePath)const { return directXBase_->LoadTexture(filePath); }
+	TextureHandle LoadTexture(const std::string& filePath)const { return textureStore_->LoadTexture(filePath); }
 
 	/// <summary>
 	/// テクスチャの横幅を取得する
 	/// </summary>
 	/// <param name="textureHandle"></param>
 	/// <returns></returns>
-	float GetTextureWidth(TextureHandle handle)const { return directXBase_->GetTextureWidth(handle); }
+	float GetTextureWidth(TextureHandle handle)const { return textureStore_->GetTextureWidth(handle); }
 
 	/// <summary>
 	/// テクスチャの縦幅を取得する
 	/// </summary>
 	/// <param name="textureHandle"></param>
 	/// <returns></returns>
-	float GetTextureHeight(TextureHandle handle)const { return directXBase_->GetTextureHeight(handle); }
+	float GetTextureHeight(TextureHandle handle)const { return textureStore_->GetTextureHeight(handle); }
 
 #pragma endregion
 
@@ -269,21 +262,28 @@ public:
 	/// <param name="directory"></param>
 	/// <param name="fileName"></param>
 	/// <returns></returns>
-	ModelHandle LoadModel(const std::string& directory, const std::string& fileName)const { return directXBase_->LoadModel(directory, fileName); }
+	ModelHandle LoadModel(const std::string& directory, const std::string& fileName)const { return modelStore_->LoadModel(directory, fileName); }
 
 	/// <summary>
 	/// アニメーションフラグのGetter
 	/// </summary>
 	/// <param name="modelHandle"></param>
 	/// <returns></returns>
-	bool IsAnimation(ModelHandle handle)const { return directXBase_->IsAnimation(handle); }
+	bool IsAnimation(ModelHandle handle)const { return modelStore_->IsAnimation(handle); }
 
 	/// <summary>
 	/// アニメーション時間のGetter
 	/// </summary>
 	/// <param name="modelHandle"></param>
 	/// <returns></returns>
-	float GetAnimationDuration(ModelHandle handle)const { return directXBase_->GetAnimationDuration(handle); }
+	float GetAnimationDuration(ModelHandle handle)const { return modelStore_->GetAnimationDuration(handle); }
+
+	/// <summary>
+	/// メッシュ数のGetter
+	/// </summary>
+	/// <param name="handle"></param>
+	/// <returns></returns>
+	uint32_t GetNumMesh(ModelHandle handle) const { return modelStore_->GetNumMesh(handle); }
 
 #pragma endregion
 
@@ -338,34 +338,34 @@ public:
 	/// </summary>
 	/// <param name="particleEmitter"></param>
 	/// <returns></returns>
-	ParticleHandle LoadParticleEmitter(BillboardParticleEmitter* particleEmitter) const { return directXBase_->LoadParticleEmitter(particleEmitter); }
+	ParticleHandle LoadParticleEmitter(BillboardParticleEmitter* particleEmitter) const { return particleStore_->LoadParticleEmitter(particleEmitter); }
 
 	/// <summary>
 	/// パーティクルを読み込む
 	/// </summary>
 	/// <param name="particleEmitter"></param>
 	/// <returns></returns>
-	ParticleHandle LoadParticleEmitter(ModelParticleEmitter* particleEmitter) const { return directXBase_->LoadParticleEmitter(particleEmitter); }
+	ParticleHandle LoadParticleEmitter(ModelParticleEmitter* particleEmitter) const { return particleStore_->LoadParticleEmitter(particleEmitter); }
 
 	/// <summary>
 	/// 登録したパーティクルの更新処理
 	/// </summary>
 	/// <param name="particleHandle"></param>
-	void UpdateRegistParticle(ParticleHandle particleHandle) const { directXBase_->UpdateRegistParticle(particleHandle); }
+	void UpdateRegistParticle(ParticleHandle particleHandle) const { particleStore_->UpdateRegistParticle(particleHandle); }
 
 	/// <summary>
 	/// モデルハンドルのSetter
 	/// </summary>
 	/// <param name="particleHandle"></param>
 	/// <param name="modelHandle"></param>
-	void SetParticleModelHandle(ParticleHandle particleHandle, ModelHandle modelHandle) const { directXBase_->SetParticleModelHandle(particleHandle, modelHandle); }
+	void SetParticleModelHandle(ParticleHandle particleHandle, ModelHandle modelHandle) const { particleStore_->SetModelHandle(particleHandle, modelHandle); }
 
 	/// <summary>
 	/// テクスチャハンドルのSetter
 	/// </summary>
 	/// <param name="particleHandle"></param>
 	/// <param name="textureHandle"></param>
-	void SetParticleTextureHandle(ParticleHandle particleHandle, TextureHandle textureHandle) const { directXBase_->SetParticleTextureHandle(particleHandle, textureHandle); }
+	void SetParticleTextureHandle(ParticleHandle particleHandle, TextureHandle textureHandle) const { particleStore_->SetTextureHandle(particleHandle, textureHandle); }
 
 	/// <summary>
 	/// ビルボードパーティクルを描画する
@@ -832,6 +832,14 @@ private:
 	const int32_t* kClientHeight_ = nullptr;
 
 
+	// デルタタイム
+	float deltaTime_ = 1.0f / 60.0f;
+
+
+	/*-------------------------
+	    生成込みのインスタンス
+	-------------------------*/
+
 	// ログファイル
 	std::unique_ptr<LogFile> logFile_ = nullptr;
 
@@ -857,7 +865,17 @@ private:
 	SceneManager* sceneManager_ = nullptr;
 
 
-	// デルタタイム
-	float deltaTime_ = 1.0f / 60.0f;
+	/*--------------------------
+	    取得のみのインスタンス
+	--------------------------*/
+
+	// テクスチャ格納場所
+	TextureStore* textureStore_ = nullptr;
+
+	// モデル格納場所
+	ModelStore* modelStore_ = nullptr;
+
+	// パーティクル格納場所
+	ParticleStore* particleStore_ = nullptr;
 };
 

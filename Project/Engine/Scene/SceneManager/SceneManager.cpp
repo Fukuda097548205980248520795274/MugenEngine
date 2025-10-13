@@ -82,7 +82,7 @@ void SceneManager::InitializeNextScene()
 	{
 		// シーンを譲渡し初期化する
 		scene_ = sceneFactory_->CreateScene(sceneName_);
-		scene_->Initialize(MugenEngine::GetInstance());
+		scene_->Initialize();
 
 		isTransition_ = false;
 	}

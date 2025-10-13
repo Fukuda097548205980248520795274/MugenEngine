@@ -69,49 +69,6 @@ public:
 	void CountDrawPrimitive() { drawPrimitiveCount_++; }
 
 	/// <summary>
-	/// テクスチャを読み込む
-	/// </summary>
-	/// <param name="filePath"></param>
-	/// <returns></returns>
-	TextureHandle LoadTexture(const std::string& filePath) { return textureStore_->LoadTexture(filePath); }
-
-	/// <summary>
-	/// モデルを読み込む
-	/// </summary>
-	/// <param name="directory"></param>
-	/// <param name="fileName"></param>
-	/// <returns></returns>
-	ModelHandle LoadModel(const std::string& directory, const std::string& fileName) { return modelStore_->LoadModel(directory, fileName); }
-
-	/// <summary>
-	/// アニメーションフラグのGetter
-	/// </summary>
-	/// <param name="modelHandle"></param>
-	/// <returns></returns>
-	bool IsAnimation(ModelHandle handle)const { return modelStore_->IsAnimation(handle); }
-
-	/// <summary>
-	/// アニメーション時間のGetter
-	/// </summary>
-	/// <param name="modelHandle"></param>
-	/// <returns></returns>
-	float GetAnimationDuration(ModelHandle handle)const { return modelStore_->GetAnimationDuration(handle); }
-
-	/// <summary>
-	/// テクスチャの横幅を取得する
-	/// </summary>
-	/// <param name="textureHandle"></param>
-	/// <returns></returns>
-	float GetTextureWidth(TextureHandle handle)const { return textureStore_->GetTextureWidth(handle); }
-
-	/// <summary>
-	/// テクスチャの縦幅を取得する
-	/// </summary>
-	/// <param name="textureHandle"></param>
-	/// <returns></returns>
-	float GetTextureHeight(TextureHandle handle)const { return textureStore_->GetTextureHeight(handle); }
-
-	/// <summary>
 	/// プリミティブのブレンドモードを設定する
 	/// </summary>
 	/// <param name="blendMode"></param>
@@ -121,13 +78,6 @@ public:
 	/// ブレンドモードをリセットする
 	/// </summary>
 	void ResetBlendMode();
-
-	/// <summary>
-	/// メッシュ数のGetter
-	/// </summary>
-	/// <param name="handle"></param>
-	/// <returns></returns>
-	uint32_t GetNumMesh(ModelHandle handle) { return modelStore_->GetNumMesh(handle); }
 
 
 #pragma region オフスクリーン
@@ -275,41 +225,6 @@ public:
 
 
 #pragma region パーティクル
-
-	/// <summary>
-	/// パーティクルを読み込む
-	/// </summary>
-	/// <param name="particleEmitter"></param>
-	/// <returns></returns>
-	ParticleHandle LoadParticleEmitter(BillboardParticleEmitter* particleEmitter) { return particleStore_->LoadParticleEmitter(particleEmitter); }
-
-	/// <summary>
-	/// パーティクルを読み込む
-	/// </summary>
-	/// <param name="particleEmitter"></param>
-	/// <returns></returns>
-	ParticleHandle LoadParticleEmitter(ModelParticleEmitter* particleEmitter) { return particleStore_->LoadParticleEmitter(particleEmitter); }
-
-	/// <summary>
-	/// 登録したパーティクルの更新処理
-	/// </summary>
-	/// <param name="particleHandle"></param>
-	void UpdateRegistParticle(ParticleHandle particleHandle) { particleStore_->UpdateRegistParticle(particleHandle); }
-
-	/// <summary>
-	/// モデルハンドルのSetter
-	/// </summary>
-	/// <param name="particleHandle"></param>
-	/// <param name="modelHandle"></param>
-	void SetParticleModelHandle(ParticleHandle particleHandle, ModelHandle modelHandle) { particleStore_->SetModelHandle(particleHandle, modelHandle); }
-
-	/// <summary>
-	/// テクスチャハンドルのSetter
-	/// </summary>
-	/// <param name="particleHandle"></param>
-	/// <param name="textureHandle"></param>
-	void SetParticleTextureHandle(ParticleHandle particleHandle, TextureHandle textureHandle) { particleStore_->SetTextureHandle(particleHandle, textureHandle); }
-
 
 	/// <summary>
 	/// ビルボードパーティクルを描画する

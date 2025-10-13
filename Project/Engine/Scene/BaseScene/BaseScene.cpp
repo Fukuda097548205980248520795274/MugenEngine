@@ -6,13 +6,10 @@
 /// 初期化
 /// </summary>
 /// <param name="engine"></param>
-void BaseScene::Initialize(const MugenEngine* engine)
+void BaseScene::Initialize()
 {
-	// nullptrチェック
-	assert(engine);
-
-	// 引数を受け取る
-	engine_ = engine;
+	// エンジンのインスタンスを取得する
+	engine_ = MugenEngine::GetInstance();
 
 	// メインカメラの生成と初期化
 	mainCamera_ = std::make_unique<MainCamera>();

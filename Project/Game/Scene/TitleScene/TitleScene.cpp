@@ -4,10 +4,10 @@
 /// 初期化
 /// </summary>
 /// <param name="engine"></param>
-void TitleScene::Initialize(const MugenEngine* engine)
+void TitleScene::Initialize()
 {
 	// 基底クラスの初期化
-	BaseScene::Initialize(engine);
+	BaseScene::Initialize();
 
 	// プレイヤーの生成と初期化
 	player_ = std::make_unique<Player>();
