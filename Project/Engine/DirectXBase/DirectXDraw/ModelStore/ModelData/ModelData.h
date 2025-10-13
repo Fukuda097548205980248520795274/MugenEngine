@@ -39,7 +39,13 @@ struct MeshData
 struct ModelData
 {
 	// メッシュデータ
-	std::vector<MeshData> meshData;
+	std::map<std::string, MeshData> meshData;
+
+	// メッシュの名前
+	std::vector<std::string> meshNames_;
+
+	// メッシュ数
+	uint32_t numMesh = 0;
 
 	// アニメーション有効化
 	bool isAnimation = false;

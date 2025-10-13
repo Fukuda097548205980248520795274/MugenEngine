@@ -145,6 +145,10 @@ ModelData LoadObjFile(const std::string& directoryPath, const std::string& filen
 		// UV座標がないのは非対応
 		assert(mesh->HasTextureCoords(0));
 
+
+		// メッシュの名前を取得する
+		std::string meshName = mesh->mName.C_Str();
+
 		// 頂点データを登録する
 		for (uint32_t i = 0; i < mesh->mNumVertices; ++i)
 		{
@@ -198,7 +202,11 @@ ModelData LoadObjFile(const std::string& directoryPath, const std::string& filen
 		}
 
 		// 登録する
-		modelData.meshData.push_back(meshData);
+		modelData.meshData[meshName] = meshData;
+		modelData.meshNames_.push_back(meshName);
+
+		// モデル数をカウントする
+		modelData.numMesh++;
 	}
 
 	return modelData;
@@ -247,6 +255,10 @@ ModelData LoadGltfFileWidthBone(const std::string& directoryPath, const std::str
 
 		// UV座標がないのは非対応
 		assert(mesh->HasTextureCoords(0));
+
+
+		// メッシュの名前を取得する
+		std::string meshName = mesh->mName.C_Str();
 
 		// 頂点データを登録する
 		for (uint32_t i = 0; i < mesh->mNumVertices; ++i)
@@ -333,7 +345,11 @@ ModelData LoadGltfFileWidthBone(const std::string& directoryPath, const std::str
 		}
 
 		// 登録する
-		modelData.meshData.push_back(meshData);
+		modelData.meshData[meshName] = meshData;
+		modelData.meshNames_.push_back(meshName);
+
+		// モデル数をカウントする
+		modelData.numMesh++;
 	}
 
 	return modelData;

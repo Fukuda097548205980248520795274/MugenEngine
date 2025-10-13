@@ -18,8 +18,13 @@ void ObjModelResources::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 
 
 	// メッシュデータの数に合わせて生成する
-	for (MeshData meshDatum : modelData_.meshData)
+	for (uint32_t i = 0 ; i < modelData_.numMesh ; ++i)
 	{
+		// メッシュの名前
+		std::string meshName = modelData_.meshNames_[i];
+
+
+
 		// リソース
 		std::pair<ComPtr<ID3D12Resource>, ComPtr<ID3D12Resource>> resource;
 
@@ -38,7 +43,7 @@ void ObjModelResources::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 		TextureHandle textureHandle{};
 
 		// テクスチャがないとき
-		if (meshDatum.material.textureFilePath == "")
+		if (modelData_.meshData[meshName].material.textureFilePath == "")
 		{
 			// テクスチャを読み込む
 			textureHandle = textureStore_->LoadTexture("./Resources/Textures/white2x2.png");
@@ -46,7 +51,7 @@ void ObjModelResources::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 		else
 		{
 			// テクスチャがあるとき
-			textureHandle = textureStore_->LoadTexture(meshDatum.material.textureFilePath.c_str());
+			textureHandle = textureStore_->LoadTexture(modelData_.meshData[meshName].material.textureFilePath.c_str());
 		}
 
 
@@ -55,18 +60,19 @@ void ObjModelResources::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 		----------------------------------*/
 
 		// リソース生成
-		resource.first = CreateBufferResource(device_, sizeof(uint32_t) * meshDatum.indices.size());
+		resource.first = CreateBufferResource(device_, sizeof(uint32_t) * modelData_.meshData[meshName].indices.size());
 
 		// ビューの設定
 		bufferView.first.BufferLocation = resource.first->GetGPUVirtualAddress();
 		bufferView.first.Format = DXGI_FORMAT_R32_UINT;
-		bufferView.first.SizeInBytes = sizeof(uint32_t) * static_cast<UINT>(meshDatum.indices.size());
+		bufferView.first.SizeInBytes = sizeof(uint32_t) * static_cast<UINT>(modelData_.meshData[meshName].indices.size());
 
 		// データを割り当てる
 		resource.first->Map(0, nullptr, reinterpret_cast<void**>(&data.first));
 
 		// モデルデータの値を持ってくる
-		std::memcpy(data.first, meshDatum.indices.data(), sizeof(uint32_t) * static_cast<UINT>(meshDatum.indices.size()));
+		std::memcpy(data.first, modelData_.meshData[meshName].indices.data(),
+			sizeof(uint32_t) * static_cast<UINT>(modelData_.meshData[meshName].indices.size()));
 
 
 		/*-------------------------
@@ -74,18 +80,19 @@ void ObjModelResources::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 		-------------------------*/
 
 		// リソース生成
-		resource.second = CreateBufferResource(device_, sizeof(VertexDataForGPU) * meshDatum.vertices.size());
+		resource.second = CreateBufferResource(device_, sizeof(VertexDataForGPU) * modelData_.meshData[meshName].vertices.size());
 
 		// ビューの設定
 		bufferView.second.BufferLocation = resource.second->GetGPUVirtualAddress();
-		bufferView.second.SizeInBytes = sizeof(VertexDataForGPU) * static_cast<UINT>(meshDatum.vertices.size());
+		bufferView.second.SizeInBytes = sizeof(VertexDataForGPU) * static_cast<UINT>(modelData_.meshData[meshName].vertices.size());
 		bufferView.second.StrideInBytes = sizeof(VertexDataForGPU);
 
 		// データを割り当てる
 		resource.second->Map(0, nullptr, reinterpret_cast<void**>(&data.second));
 
 		// モデルデータの値を持ってくる
-		std::memcpy(data.second, meshDatum.vertices.data(), sizeof(VertexDataForGPU) * static_cast<UINT>(meshDatum.vertices.size()));
+		std::memcpy(data.second, modelData_.meshData[meshName].vertices.data(),
+			sizeof(VertexDataForGPU) * static_cast<UINT>(modelData_.meshData[meshName].vertices.size()));
 
 
 		/*------------------------------
