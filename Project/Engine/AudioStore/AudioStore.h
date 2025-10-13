@@ -56,6 +56,8 @@ public:
 class AudioStore
 {
 public:
+
+	~AudioStore() = default;
 	
 	/// <summary>
 	/// インスタンスを取得する
@@ -127,13 +129,14 @@ private:
 
 	// シングルトン
 	AudioStore() = default;
-	~AudioStore() = default;
 	AudioStore(AudioStore&) = delete;
 	AudioStore& operator=(AudioStore&) = delete;
 
 	// インスタンス
-	static AudioStore* instance_;
+	static std::unique_ptr<AudioStore> instance_;
 
+	// フレンド宣言
+	friend std::unique_ptr<AudioStore> std::make_unique<AudioStore>();
 
 
 	// ログファイル

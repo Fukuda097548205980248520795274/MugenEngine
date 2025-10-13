@@ -1,7 +1,7 @@
 #include "RecordSetting.h"
 
 // インスタンス
-RecordSetting* RecordSetting::instance_ = nullptr;
+std::unique_ptr<RecordSetting> RecordSetting::instance_ = nullptr;
 
 /// <summary>
 /// インスタンスを取得する
@@ -12,10 +12,10 @@ RecordSetting* RecordSetting::GetInstance()
 	// nullなら生成する
 	if (instance_ == nullptr)
 	{
-		instance_ = new RecordSetting();
+		instance_ = std::make_unique<RecordSetting>();
 	}
 
-	return instance_;
+	return instance_.get();
 }
 
 /// <summary>
@@ -130,7 +130,7 @@ void RecordSetting::Update()
 /// </summary>
 void RecordSetting::Finalize()
 {
-	delete instance_;
+	instance_.reset();
 	instance_ = nullptr;
 }
 

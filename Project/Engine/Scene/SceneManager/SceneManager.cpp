@@ -2,7 +2,7 @@
 #include "MugenEngine.h"
 
 // インスタンス
-SceneManager* SceneManager::instance_ = nullptr;
+std::unique_ptr<SceneManager> SceneManager::instance_ = nullptr;
 
 /// <summary>
 /// インスタンスを取得する
@@ -12,10 +12,10 @@ SceneManager* SceneManager::GetInstance()
 {
 	if (instance_ == nullptr)
 	{
-		instance_ = new SceneManager();
+		instance_ = std::make_unique<SceneManager>();
 	}
 	
-	return instance_;
+	return instance_.get();
 }
 
 /// <summary>
@@ -67,7 +67,7 @@ void SceneManager::Draw()
 void SceneManager::Finalize()
 {
 	// インスタンスの削除
-	delete instance_;
+	instance_.reset();
 	instance_ = nullptr;
 }
 

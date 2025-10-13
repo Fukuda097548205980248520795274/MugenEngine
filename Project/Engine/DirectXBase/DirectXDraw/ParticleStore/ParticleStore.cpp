@@ -1,7 +1,7 @@
 #include "ParticleStore.h"
 
 // インスタンス
-ParticleStore* ParticleStore::instance_ = nullptr;
+std::unique_ptr<ParticleStore> ParticleStore::instance_ = nullptr;
 
 /// <summary>
 /// インスタンスを取得する
@@ -11,10 +11,10 @@ ParticleStore* ParticleStore::GetInstance()
 {
 	if (instance_ == nullptr)
 	{
-		instance_ = new ParticleStore();
+		instance_ = std::make_unique<ParticleStore>();
 	}
 
-	return instance_;
+	return instance_.get();
 }
 
 
@@ -44,7 +44,8 @@ void ParticleStore::Initialize(ID3D12Device* device, ID3D12GraphicsCommandList* 
 /// </summary>
 void ParticleStore::Finalize()
 {
-	delete instance_;
+	instance_.reset();
+	instance_ = nullptr;
 }
 
 

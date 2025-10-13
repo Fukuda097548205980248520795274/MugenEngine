@@ -17,7 +17,7 @@ AudioData::~AudioData()
 
 
 // インスタンス
-AudioStore* AudioStore::instance_ = nullptr;
+std::unique_ptr<AudioStore> AudioStore::instance_ = nullptr;
 
 /// <summary>
 /// インスタンスを取得する
@@ -27,10 +27,10 @@ AudioStore* AudioStore::GetInstance()
 {
 	if (instance_ == nullptr)
 	{
-		instance_ = new AudioStore();
+		instance_ = std::make_unique<AudioStore>();
 	}
 
-	return instance_;
+	return instance_.get();
 }
 
 
@@ -86,7 +86,7 @@ void AudioStore::Finalize()
 	xAudio2_.Reset();
 
 	// インスタンスを削除する
-	delete instance_;
+	instance_.reset();
 	instance_ = nullptr;
 }
 

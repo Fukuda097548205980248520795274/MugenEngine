@@ -1,7 +1,7 @@
 #include "TextureStore.h"
 
 // インスタンス
-TextureStore* TextureStore::instance = nullptr;
+std::unique_ptr<TextureStore> TextureStore::instance_ = nullptr;
 
 /// <summary>
 /// シングルトンインスタンスを取得する
@@ -9,12 +9,12 @@ TextureStore* TextureStore::instance = nullptr;
 /// <returns></returns>
 TextureStore* TextureStore::GetInstance()
 {
-	if (instance == nullptr)
+	if (instance_ == nullptr)
 	{
-		instance = new TextureStore();
+		instance_ = std::make_unique<TextureStore>();
 	}
 
-	return instance;
+	return instance_.get();
 }
 
 /// <summary>
@@ -41,7 +41,8 @@ void TextureStore::Initialize(DirectXHeap* directXHeap, LogFile* logFile, ID3D12
 /// </summary>
 void TextureStore::Finalize()
 {
-	delete instance;
+	instance_.reset();
+	instance_ = nullptr;
 }
 
 /// <summary>
