@@ -17,17 +17,29 @@ void MeshModel::Initialize(const MugenEngine* engine, const Camera3D* camera3d, 
 	camera3d_ = camera3d;
 	modelHandle_ = modelHandle;
 
+	// メッシュ数を取得する
+	numMesh_ = engine_->GetNumMesh(modelHandle);
+
 	// ワールドトランスフォームの生成と初期化
 	worldTransform_ = std::make_unique<WorldTransform3D>();
 	worldTransform_->Initialize();
 
-	// UVトランスフォームの生成と初期化
-	uvTransform_ = std::make_unique<UVTransform>();
-	uvTransform_->Initialize();
+	for (uint32_t i = 0; i < numMesh_; ++i)
+	{
+		// UVトランスフォームの生成と初期化
+		std::unique_ptr<UVTransform> uvTransform = std::make_unique<UVTransform>();
+		uvTransform->Initialize();
 
-	// マテリアルの生成と初期化
-	material_ = std::make_unique<Material>();
-	material_->Initialize();
+		// マテリアルの生成と初期化
+		std::unique_ptr<Material> material = std::make_unique<Material>();
+		material->Initialize();
+
+		// リストに登録する
+		uvTransformP_.push_back(uvTransform.get());
+		materialP_.push_back(material.get());
+		uvTransform_.push_back(std::move(uvTransform));
+		material_.push_back(std::move(material));
+	}
 
 	// アニメーションが有効かどうか
 	isAnimation_ = engine_->IsAnimation(modelHandle_);
@@ -47,13 +59,19 @@ void MeshModel::Update()
 		UpdateAnimation();
 
 	// マテリアルの更新処理
-	material_->Update();
+	for (std::unique_ptr<Material>& material : material_)
+	{
+		material->Update();
+	}
 
 	// ワールドトランスフォームの更新
 	worldTransform_->Update();
 
 	// UVトランスフォームの更新
-	uvTransform_->Update();
+	for (std::unique_ptr<UVTransform>& uvTransform : uvTransform_)
+	{
+		uvTransform->Update();
+	}
 }
 
 /// <summary>
@@ -61,8 +79,20 @@ void MeshModel::Update()
 /// </summary>
 void MeshModel::Draw()
 {
+	// マテリアルの更新処理
+	for (std::unique_ptr<Material>& material : material_)
+	{
+		
+	}
+
+	// UVトランスフォームの更新
+	for (std::unique_ptr<UVTransform>& uvTransform : uvTransform_)
+	{
+		
+	}
+
 	// モデルを描画する
-	engine_->DrawModel(worldTransform_.get(), uvTransform_.get(), camera3d_, modelHandle_, material_.get(), animationTimer_);
+	engine_->DrawModel(worldTransform_.get(), uvTransformP_, camera3d_, modelHandle_, materialP_, animationTimer_);
 }
 
 /// <summary>

@@ -52,6 +52,13 @@ public:
 	BaseModelResources* GetModelInfo(ModelHandle handle)const { return modelResources_[handle.value].get(); }
 
 	/// <summary>
+	/// メッシュ数のGetter
+	/// </summary>
+	/// <param name="handle"></param>
+	/// <returns></returns>
+	uint32_t GetNumMesh(ModelHandle handle)const { return static_cast<uint32_t>(modelResources_[handle.value]->GetModelData().meshData.size()); }
+
+	/// <summary>
 	/// アニメーションフラグのGetter
 	/// </summary>
 	/// <param name="modelHandle"></param>

@@ -17,13 +17,15 @@ void Player::Initialize(const MugenEngine* engine, const Camera3D* camera3d, con
 
 	// モデルの生成と初期化
 	model_ = std::make_unique<MeshModel>();
-	model_->Initialize(engine_, camera3d_, engine_->LoadModel("./Resources/Models/characterBox", "characterBox.obj"));
+	model_->Initialize(engine_, camera3d_, engine_->LoadModel("./Resources/Models/multiMaterial", "multiMaterial.obj"));
 	model_->SetParent(worldTransform_.get());
-	model_->material_->enableHalfLambert_ = true;
+	model_->material_[0]->enableHalfLambert_ = true;
 
 	// グループ名
 	std::string groupName = "Player";
 	engine_->SetSettingValue(groupName, "translation", &worldTransform_->translation_);
+	engine_->SetSettingValue(groupName, "uvTransform_0_rotate", &model_->uvTransform_[0]->rotation_);
+	engine_->SetSettingValue(groupName, "uvTransform_1_rotate", &model_->uvTransform_[1]->rotation_);
 	engine_->RegistGroupDataReflection(groupName);
 }
 

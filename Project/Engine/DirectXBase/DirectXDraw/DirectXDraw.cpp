@@ -192,8 +192,8 @@ void DirectXDraw::OffscreenClear(D3D12_CPU_DESCRIPTOR_HANDLE dsvHandle)
 /// <param name="camera"></param>
 /// <param name="modelHandle"></param>
 /// <param name="material"></param>
-void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, ModelHandle modelHandle,
-	const Material* material, float animationTimer)
+void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const std::vector<UVTransform*> uvTransform, const Camera3D* camera, ModelHandle modelHandle,
+	const std::vector<Material*> material, float animationTimer)
 {
 	// モデル情報を取得する
 	BaseModelResources* modelResource = modelStore_->GetModelInfo(modelHandle);
@@ -241,8 +241,8 @@ void DirectXDraw::DrawModel(const WorldTransform3D* worldTransform, const UVTran
 /// <param name="color"></param>
 /// <param name="enableLighting"></param>
 /// <param name="enableHalfLanbert"></param>
-void DirectXDraw::DrawGltfModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
-	const Material* material)
+void DirectXDraw::DrawGltfModel(const WorldTransform3D* worldTransform, const std::vector<UVTransform*> uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
+	const std::vector<Material*> material)
 {
 	// カメラの値を取得する
 	resourcesMainCamera_->data_->worldPosition = camera->GetWorldPosition();
@@ -264,19 +264,19 @@ void DirectXDraw::DrawGltfModel(const WorldTransform3D* worldTransform, const UV
 		-----------------------------*/
 	
 		// UV座標
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->uvTransform_ = uvTransform->affineMatrix_;
+		modelResource->materialResources_[meshIndex]->data_->uvTransform_ = uvTransform[meshIndex]->affineMatrix_;
 
 		// マテリアル
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->color_ = material->color_;
+		modelResource->materialResources_[meshIndex]->data_->color_ = material[meshIndex]->color_;
 
 		// 拡散反射
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableLighting_ = static_cast<int32_t>(material->enableLighting_);
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableHalfLambert_ = static_cast<int32_t>(material->enableHalfLambert_);
+		modelResource->materialResources_[meshIndex]->data_->enableLighting_ = static_cast<int32_t>(material[meshIndex]->enableLighting_);
+		modelResource->materialResources_[meshIndex]->data_->enableHalfLambert_ = static_cast<int32_t>(material[meshIndex]->enableHalfLambert_);
 
 		// 鏡面反射
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableSpecular_ = static_cast<int32_t>(material->enableSpecular_);
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableBlinnPhong_ = static_cast<int32_t>(material->enableBlinnPhong_);
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->shininess_ = material->shininess_;
+		modelResource->materialResources_[meshIndex]->data_->enableSpecular_ = static_cast<int32_t>(material[meshIndex]->enableSpecular_);
+		modelResource->materialResources_[meshIndex]->data_->enableBlinnPhong_ = static_cast<int32_t>(material[meshIndex]->enableBlinnPhong_);
+		modelResource->materialResources_[meshIndex]->data_->shininess_ = material[meshIndex]->shininess_;
 
 
 		/*----------------------------
@@ -303,10 +303,7 @@ void DirectXDraw::DrawGltfModel(const WorldTransform3D* worldTransform, const UV
 		primitivePSO_->SetPSOState();
 
 		// モデルの頂点、インデックスの設定
-		modelResource->Register(meshIndex);
-
-		// モデルリソースの設定
-		primitiveMaterialResources_[drawPrimitiveCount_]->Register(0);
+		modelResource->Register(meshIndex, 0);
 
 		// 座標変換リソースの設定
 		primitiveTransformationResources_[drawPrimitiveCount_]->Register(1);
@@ -346,8 +343,8 @@ void DirectXDraw::DrawGltfModel(const WorldTransform3D* worldTransform, const UV
 /// <param name="camera"></param>
 /// <param name="modelResource"></param>
 /// <param name="material"></param>
-void DirectXDraw::DrawGltfAnimationModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
-	const Material* material, float animationTimer)
+void DirectXDraw::DrawGltfAnimationModel(const WorldTransform3D* worldTransform, const std::vector<UVTransform*> uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
+	const std::vector<Material*> material, float animationTimer)
 {
 	// カメラの値を取得する
 	resourcesMainCamera_->data_->worldPosition = camera->GetWorldPosition();
@@ -382,19 +379,19 @@ void DirectXDraw::DrawGltfAnimationModel(const WorldTransform3D* worldTransform,
 		-----------------------------*/
 
 		// UV座標
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->uvTransform_ = uvTransform->affineMatrix_;
+		modelResource->materialResources_[meshIndex]->data_->uvTransform_ = uvTransform[meshIndex]->affineMatrix_;
 
 		// マテリアル
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->color_ = material->color_;
+		modelResource->materialResources_[meshIndex]->data_->color_ = material[meshIndex]->color_;
 
 		// 拡散反射
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableLighting_ = static_cast<int32_t>(material->enableLighting_);
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableHalfLambert_ = static_cast<int32_t>(material->enableHalfLambert_);
+		modelResource->materialResources_[meshIndex]->data_->enableLighting_ = static_cast<int32_t>(material[meshIndex]->enableLighting_);
+		modelResource->materialResources_[meshIndex]->data_->enableHalfLambert_ = static_cast<int32_t>(material[meshIndex]->enableHalfLambert_);
 
 		// 鏡面反射
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableSpecular_ = static_cast<int32_t>(material->enableSpecular_);
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableBlinnPhong_ = static_cast<int32_t>(material->enableBlinnPhong_);
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->shininess_ = material->shininess_;
+		modelResource->materialResources_[meshIndex]->data_->enableSpecular_ = static_cast<int32_t>(material[meshIndex]->enableSpecular_);
+		modelResource->materialResources_[meshIndex]->data_->enableBlinnPhong_ = static_cast<int32_t>(material[meshIndex]->enableBlinnPhong_);
+		modelResource->materialResources_[meshIndex]->data_->shininess_ = material[meshIndex]->shininess_;
 
 
 		/*----------------------------
@@ -422,10 +419,7 @@ void DirectXDraw::DrawGltfAnimationModel(const WorldTransform3D* worldTransform,
 		primitivePSO_->SetPSOState();
 
 		// モデルの頂点、インデックスの設定
-		modelResource->Register(meshIndex);
-
-		// モデルリソースの設定
-		primitiveMaterialResources_[drawPrimitiveCount_]->Register(0);
+		modelResource->Register(meshIndex,0);
 
 		// 座標変換リソースの設定
 		primitiveTransformationResources_[drawPrimitiveCount_]->Register(1);
@@ -465,8 +459,8 @@ void DirectXDraw::DrawGltfAnimationModel(const WorldTransform3D* worldTransform,
 /// <param name="camera"></param>
 /// <param name="modelResource"></param>
 /// <param name="material"></param>
-void DirectXDraw::DrawGltfSkinningModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
-	const Material* material , float animationTimer)
+void DirectXDraw::DrawGltfSkinningModel(const WorldTransform3D* worldTransform, const std::vector<UVTransform*> uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
+	const std::vector<Material*> material , float animationTimer)
 {
 	// カメラの値を取得する
 	resourcesMainCamera_->data_->worldPosition = camera->GetWorldPosition();
@@ -496,19 +490,19 @@ void DirectXDraw::DrawGltfSkinningModel(const WorldTransform3D* worldTransform, 
 		-----------------------------*/
 
 		// UV座標
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->uvTransform_ = uvTransform->affineMatrix_;
+		modelResource->materialResources_[meshIndex]->data_->uvTransform_ = uvTransform[meshIndex]->affineMatrix_;
 
 		// マテリアル
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->color_ = material->color_;
+		modelResource->materialResources_[meshIndex]->data_->color_ = material[meshIndex]->color_;
 
 		// 拡散反射
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableLighting_ = static_cast<int32_t>(material->enableLighting_);
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableHalfLambert_ = static_cast<int32_t>(material->enableHalfLambert_);
+		modelResource->materialResources_[meshIndex]->data_->enableLighting_ = static_cast<int32_t>(material[meshIndex]->enableLighting_);
+		modelResource->materialResources_[meshIndex]->data_->enableHalfLambert_ = static_cast<int32_t>(material[meshIndex]->enableHalfLambert_);
 
 		// 鏡面反射
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableSpecular_ = static_cast<int32_t>(material->enableSpecular_);
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableBlinnPhong_ = static_cast<int32_t>(material->enableBlinnPhong_);
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->shininess_ = material->shininess_;
+		modelResource->materialResources_[meshIndex]->data_->enableSpecular_ = static_cast<int32_t>(material[meshIndex]->enableSpecular_);
+		modelResource->materialResources_[meshIndex]->data_->enableBlinnPhong_ = static_cast<int32_t>(material[meshIndex]->enableBlinnPhong_);
+		modelResource->materialResources_[meshIndex]->data_->shininess_ = material[meshIndex]->shininess_;
 
 
 		/*----------------------------
@@ -534,10 +528,7 @@ void DirectXDraw::DrawGltfSkinningModel(const WorldTransform3D* worldTransform, 
 		skinningModelPSO_->SetPSOState();
 
 		// モデルの頂点、インデックスの設定
-		modelResource->Register(meshIndex);
-
-		// マテリアルリソースの設定
-		primitiveMaterialResources_[drawPrimitiveCount_]->Register(0);
+		modelResource->Register(meshIndex,0);
 
 		// 座標変換リソースの設定
 		primitiveTransformationResources_[drawPrimitiveCount_]->Register(1);
@@ -577,8 +568,8 @@ void DirectXDraw::DrawGltfSkinningModel(const WorldTransform3D* worldTransform, 
 /// <param name="camera"></param>
 /// <param name="modelHandle"></param>
 /// <param name="material"></param>
-void DirectXDraw::DrawObjModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
-	const Material* material)
+void DirectXDraw::DrawObjModel(const WorldTransform3D* worldTransform, const std::vector<UVTransform*> uvTransform, const Camera3D* camera, BaseModelResources* modelResource,
+	const std::vector<Material*> material)
 {
 	// カメラの値を取得する
 	resourcesMainCamera_->data_->worldPosition = camera->GetWorldPosition();
@@ -596,19 +587,19 @@ void DirectXDraw::DrawObjModel(const WorldTransform3D* worldTransform, const UVT
 		-----------------------------*/
 
 		// UV座標
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->uvTransform_ = uvTransform->affineMatrix_;
+		modelResource->materialResources_[meshIndex]->data_->uvTransform_ = uvTransform[meshIndex]->affineMatrix_;
 
 		// マテリアル
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->color_ = material->color_;
+		modelResource->materialResources_[meshIndex]->data_->color_ = material[meshIndex]->color_;
 
 		// 拡散反射
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableLighting_ = static_cast<int32_t>(material->enableLighting_);
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableHalfLambert_ = static_cast<int32_t>(material->enableHalfLambert_);
+		modelResource->materialResources_[meshIndex]->data_->enableLighting_ = static_cast<int32_t>(material[meshIndex]->enableLighting_);
+		modelResource->materialResources_[meshIndex]->data_->enableHalfLambert_ = static_cast<int32_t>(material[meshIndex]->enableHalfLambert_);
 
 		// 鏡面反射
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableSpecular_ = static_cast<int32_t>(material->enableSpecular_);
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->enableBlinnPhong_ = static_cast<int32_t>(material->enableBlinnPhong_);
-		primitiveMaterialResources_[drawPrimitiveCount_]->data_->shininess_ = material->shininess_;
+		modelResource->materialResources_[meshIndex]->data_->enableSpecular_ = static_cast<int32_t>(material[meshIndex]->enableSpecular_);
+		modelResource->materialResources_[meshIndex]->data_->enableBlinnPhong_ = static_cast<int32_t>(material[meshIndex]->enableBlinnPhong_);
+		modelResource->materialResources_[meshIndex]->data_->shininess_ = material[meshIndex]->shininess_;
 
 
 		/*----------------------------
@@ -629,10 +620,7 @@ void DirectXDraw::DrawObjModel(const WorldTransform3D* worldTransform, const UVT
 		primitivePSO_->SetPSOState();
 
 		// モデルの頂点、インデックスの設定
-		modelResource->Register(meshIndex);
-
-		// モデルリソースの設定
-		primitiveMaterialResources_[drawPrimitiveCount_]->Register(0);
+		modelResource->Register(meshIndex,0);
 
 		// 座標変換リソースの設定
 		primitiveTransformationResources_[drawPrimitiveCount_]->Register(1);
@@ -1305,10 +1293,7 @@ void DirectXDraw::DrawModelParticle(ParticleHandle particleHandle, const Camera3
 	particlePSO_->SetPSOState();
 
 	// モデルの設定
-	modelResource->Register(0);
-
-	// マテリアルリソースの設定
-	primitiveMaterialResources_[drawPrimitiveCount_]->Register(0);
+	modelResource->Register(0, 0);
 
 	// 座標変換リソースの設定
 	particleData->Register(1);

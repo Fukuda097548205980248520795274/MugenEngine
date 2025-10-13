@@ -227,6 +227,13 @@ public:
 	/// <returns></returns>
 	float GetDeltaTime()const { return deltaTime_; }
 
+	/// <summary>
+	/// メッシュ数のGetter
+	/// </summary>
+	/// <param name="handle"></param>
+	/// <returns></returns>
+	uint32_t GetNumMesh(ModelHandle handle) const { return directXBase_->GetNumMesh(handle); }
+
 #pragma endregion
 
 #pragma region テクスチャ
@@ -709,8 +716,8 @@ public:
 	/// <param name="color"></param>
 	/// <param name="enableLighting"></param>
 	/// <param name="enableHalfLanbert"></param>
-	void DrawModel(const WorldTransform3D* worldTransform, const UVTransform* uvTransform, const Camera3D* camera, ModelHandle modelHandle,
-		const Material* material, float animationTimer) const
+	void DrawModel(const WorldTransform3D* worldTransform, const std::vector<UVTransform*> uvTransform, const Camera3D* camera, ModelHandle modelHandle,
+		const std::vector<Material*> material, float animationTimer) const
 	{
 		directXBase_->DrawModel(worldTransform, uvTransform, camera, modelHandle, material, animationTimer);
 	}
