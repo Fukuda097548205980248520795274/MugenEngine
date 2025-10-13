@@ -11,6 +11,8 @@ class ParticleStore
 {
 public:
 
+	~ParticleStore() = default;
+
 	/// <summary>
 	/// インスタンスを取得する
 	/// </summary>
@@ -73,9 +75,11 @@ private:
 
 	// シングルトン
 	ParticleStore() = default;
-	~ParticleStore() = default;
 	ParticleStore(ParticleStore&) = delete;
 	ParticleStore& operator=(ParticleStore&) = delete;
+
+	// フレンド宣言
+	friend std::unique_ptr<ParticleStore> std::make_unique<ParticleStore>();
 
 
 
@@ -93,7 +97,7 @@ private:
 
 
 	// インスタンス
-	static ParticleStore* instance_;
+	static std::unique_ptr<ParticleStore> instance_;
 
 	// パーティクルデータ
 	std::vector<std::unique_ptr<BaseParticleData>> particleData_;

@@ -10,8 +10,11 @@ class TextureStore
 {
 public:
 
+	// デストラクタ
+	~TextureStore() = default;
+
 	/// <summary>
-	/// シングルトンインスタンスを取得する
+	/// インスタンスを取得する
 	/// </summary>
 	/// <returns></returns>
 	static TextureStore* GetInstance();
@@ -66,11 +69,14 @@ public:
 private:
 
 	// 静的メンバ変数のポインタ
-	static TextureStore* instance;
+	static std::unique_ptr<TextureStore> instance_;
+
+	// フレンド宣言
+	friend std::unique_ptr<TextureStore> std::make_unique<TextureStore>();
+
 
 	// シングルトンを使うため、コンストラクタなどを使えないようにする
 	TextureStore() = default;
-	~TextureStore() = default;
 	TextureStore(TextureStore&) = delete;
 	TextureStore& operator=(TextureStore&) = delete;
 

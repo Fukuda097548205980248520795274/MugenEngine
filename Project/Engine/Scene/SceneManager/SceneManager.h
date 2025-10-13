@@ -6,6 +6,8 @@ class SceneManager
 {
 public:
 
+	~SceneManager() = default;
+
 	/// <summary>
 	/// インスタンスを取得する
 	/// </summary>
@@ -50,12 +52,15 @@ private:
 
 	// シングルトン
 	SceneManager() = default;
-	~SceneManager() = default;
 	SceneManager(SceneManager&) = delete;
 	SceneManager& operator=(SceneManager&) = delete;
 
+	// フレンド宣言
+	friend std::unique_ptr<SceneManager> std::make_unique<SceneManager>();
+
+
 	// インスタンス
-	static SceneManager* instance_;
+	static std::unique_ptr<SceneManager> instance_;
 
 	// シーン
 	std::unique_ptr<BaseScene> scene_ = nullptr;

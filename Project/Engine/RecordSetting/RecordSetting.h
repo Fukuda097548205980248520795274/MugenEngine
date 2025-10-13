@@ -19,6 +19,8 @@ class RecordSetting
 {
 public:
 
+	~RecordSetting() = default;
+
 	/// <summary>
 	/// インスタンスを取得する
 	/// </summary>
@@ -67,7 +69,6 @@ private:
 
 	// シングルトン
 	RecordSetting() = default;
-	~RecordSetting() = default;
 	RecordSetting(RecordSetting&) = delete;
 	RecordSetting& operator=(RecordSetting&) = delete;
 
@@ -84,7 +85,11 @@ private:
 	void CreateRecordFile(const std::string& groupName);
 
 	// インスタンス
-	static RecordSetting* instance_;
+	static std::unique_ptr<RecordSetting> instance_;
+
+	// フレンド宣言
+	friend std::unique_ptr<RecordSetting> std::make_unique<RecordSetting>();
+
 
 	// ディレクトリパス
 	const std::string& kDirectory = "./Resources/Record/";

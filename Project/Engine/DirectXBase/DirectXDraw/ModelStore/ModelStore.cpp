@@ -2,7 +2,7 @@
 
 
 // インスタンスの初期化
-ModelStore* ModelStore::instance_ = nullptr;
+std::unique_ptr<ModelStore> ModelStore::instance_ = nullptr;
 
 /// <summary>
 /// インスタンスを取得する
@@ -12,10 +12,10 @@ ModelStore* ModelStore::GetInstance()
 {
 	if (instance_ == nullptr)
 	{
-		instance_ = new ModelStore();
+		instance_ = std::make_unique<ModelStore>();
 	}
 
-	return instance_;
+	return instance_.get();
 }
 
 /// <summary>
@@ -42,7 +42,8 @@ void ModelStore::Initialize(TextureStore* textureStore, ID3D12Device* device, ID
 /// </summary>
 void ModelStore::Finalize()
 {
-	delete instance_;
+	instance_.reset();
+	instance_ = nullptr;
 }
 
 /// <summary>

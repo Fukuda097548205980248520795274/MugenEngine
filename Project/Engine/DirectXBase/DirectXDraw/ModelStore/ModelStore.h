@@ -17,6 +17,8 @@ class ModelStore
 {
 public:
 
+	~ModelStore() = default;
+
 	/// <summary>
 	/// インスタンスを取得する
 	/// </summary>
@@ -79,12 +81,16 @@ private:
 	DirectXHeap* directXHeap_ = nullptr;
 
 
+
 	// インスタンス
-	static ModelStore* instance_;
+	static std::unique_ptr<ModelStore> instance_;
+
+	// フレンド宣言
+	friend std::unique_ptr<ModelStore> std::make_unique<ModelStore>();
+
 
 	// シングルトンを使うため、コンストラクタなどは使わない
 	ModelStore() = default;
-	~ModelStore() = default;
 	ModelStore(ModelStore&) = delete;
 	ModelStore& operator=(ModelStore&) = delete;
 
