@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene/BaseScene/BaseScene.h"
+#include "Scene/BaseSceneFactory/BaseSceneFactory.h"
 
 class SceneManager
 {
@@ -12,10 +13,16 @@ public:
 	static SceneManager* GetInstance();
 
 	/// <summary>
+	/// シーンファクトリーのSetter
+	/// </summary>
+	/// <param name="sceneFactory"></param>
+	void SetSceneFactory(std::unique_ptr<BaseSceneFactory> sceneFactory);
+
+	/// <summary>
 	/// シーン遷移する
 	/// </summary>
 	/// <param name="scene"></param>
-	void SceneTransition(std::unique_ptr<BaseScene> scene) { nextScene_ = std::move(scene); }
+	void SceneTransition(const std::string& sceneName);
 
 	/// <summary>
 	/// 更新処理
@@ -53,7 +60,15 @@ private:
 	// シーン
 	std::unique_ptr<BaseScene> scene_ = nullptr;
 
-	// 次のシーン
-	std::unique_ptr<BaseScene> nextScene_ = nullptr;
+
+	// シーン名
+	std::string sceneName_{};
+
+	// 遷移フラグ
+	bool isTransition_ = false;
+
+
+	// シーンファクトリー
+	std::unique_ptr<BaseSceneFactory> sceneFactory_ = nullptr;
 };
 

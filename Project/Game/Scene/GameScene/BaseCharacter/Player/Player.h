@@ -1,6 +1,6 @@
 #pragma once
 #include "../BaseCharacter.h"
-#include "GameScene/GameSystem/SystemController/MoveController/MoveController.h"
+#include "../../GameSystem/SystemController/MoveController/MoveController.h"
 
 class Player : public BaseCharacter
 {

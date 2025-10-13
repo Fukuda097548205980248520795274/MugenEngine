@@ -10,6 +10,7 @@
 #include "Collision/Collision.h"
 #include "Scene/BaseScene/BaseScene.h"
 #include "Scene/SceneManager/SceneManager.h"
+#include "Scene/BaseSceneFactory/BaseSceneFactory.h"
 #include "Math/Probability/Probability.h"
 #include "Math/Quaternion/Quaternion.h"
 #include "Math/Vector1/Vector1.h"

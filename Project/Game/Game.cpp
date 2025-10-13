@@ -9,8 +9,11 @@ void Game::Initialize()
 	// シーンマネージャを取得する
 	sceneManager_ = SceneManager::GetInstance();
 
+	// シーンファクトリーを設定する
+	sceneManager_->SetSceneFactory(std::make_unique<SceneFactory>());
+
 	// 最初のシーンを指定する
-	sceneManager_->SceneTransition(std::make_unique<TitleScene>());
+	sceneManager_->SceneTransition("TITLE");
 }
 
 /// <summary>

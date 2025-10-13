@@ -1,7 +1,5 @@
 #include "TitleScene.h"
 
-#include "../GameScene/GameScene.h"
-
 /// <summary>
 /// 初期化
 /// </summary>
@@ -32,7 +30,7 @@ void TitleScene::Update()
 #ifdef _DEVELOPMENT
 	if (ImGui::Button("GameScene"))
 	{
-		sceneManager_->SceneTransition(std::make_unique<GameScene>());
+		sceneManager_->SceneTransition("GAME");
 	}
 #endif
 }

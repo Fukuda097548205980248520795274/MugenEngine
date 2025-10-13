@@ -11,6 +11,11 @@ class BaseScene
 public:
 
 	/// <summary>
+	/// 仮想デストラクタ
+	/// </summary>
+	virtual ~BaseScene() = default;
+
+	/// <summary>
 	/// 初期化
 	/// </summary>
 	/// <param name="engine"></param>

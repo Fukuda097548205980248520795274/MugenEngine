@@ -1,8 +1,9 @@
 #pragma once
 #include "Framework/Framework.h"
+#include "SceneFactory/SceneFactory.h"
 
-#include "GameScene/GameScene.h"
-#include "TitleScene/TitleScene.h"
+#include "Scene/GameScene/GameScene.h"
+#include "Scene/TitleScene/TitleScene.h"
 
 class Game : public Framework
 {
