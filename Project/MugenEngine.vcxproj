@@ -680,10 +680,11 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\Scene\Scene.cpp">
+    <ClCompile Include="Engine\Scene\BaseScene\BaseScene.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
+    <ClCompile Include="Engine\Scene\SceneManager\SceneManager.cpp" />
     <ClCompile Include="Engine\WinApp\WinApp.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -706,6 +707,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Game\GameScene\GameSystem\SystemLogic\LogicMoveSpeed\LogicMoveSpeed.cpp" />
     <ClCompile Include="Game\GameScene\GameSystem\SystemLogic\LogicMove\LogicMove.cpp" />
     <ClCompile Include="Game\GameScene\GameSystem\InputHandler\Keyboard\InputMoveKey\InputMoveKey.cpp" />
+    <ClCompile Include="Game\TitleScene\TitleScene.cpp" />
     <ClCompile Include="main.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -844,7 +846,8 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\Physics\AirDrag\AirDrag.h" />
     <ClInclude Include="Engine\Physics\Friction\Friction.h" />
     <ClInclude Include="Engine\RecordSetting\RecordSetting.h" />
-    <ClInclude Include="Engine\Scene\Scene.h" />
+    <ClInclude Include="Engine\Scene\BaseScene\BaseScene.h" />
+    <ClInclude Include="Engine\Scene\SceneManager\SceneManager.h" />
     <ClInclude Include="Engine\WinApp\WinApp.h" />
     <ClInclude Include="Engine\Framework\Framework.h" />
     <ClInclude Include="Game\Game.h" />
@@ -858,6 +861,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Game\GameScene\GameSystem\SystemLogic\LogicMoveSpeed\LogicMoveSpeed.h" />
     <ClInclude Include="Game\GameScene\GameSystem\SystemLogic\LogicMove\LogicMove.h" />
     <ClInclude Include="Game\GameScene\GameSystem\InputHandler\Keyboard\InputMoveKey\InputMoveKey.h" />
+    <ClInclude Include="Game\TitleScene\TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Resources\Shader\Particle\Particle.PS.hlsl">

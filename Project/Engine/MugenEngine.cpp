@@ -75,6 +75,8 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 	// 調整記録の生成と初期化
 	recordSetting_ = RecordSetting::GetInstance();
 
+	// シーンマネージャーの生成と初期化
+	sceneManager_ = SceneManager::GetInstance();
 }
 
 /// <summary>
@@ -82,6 +84,9 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 /// </summary>
 void MugenEngine::Finalize()
 {
+	// シーンマネージャの終了処理
+	sceneManager_->Finalize();
+
 	// 調整記録の終了処理
 	recordSetting_->Finalize();
 

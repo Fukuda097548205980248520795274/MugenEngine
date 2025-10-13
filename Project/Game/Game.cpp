@@ -6,9 +6,11 @@
 /// <param name="engine"></param>
 void Game::Initialize()
 {
-	// シーンの生成と初期化
-	scene_ = std::make_unique<GameScene>();
-	scene_->Initialize(engine_);
+	// シーンマネージャを取得する
+	sceneManager_ = SceneManager::GetInstance();
+
+	// 最初のシーンを指定する
+	sceneManager_->SceneTransition(std::make_unique<TitleScene>());
 }
 
 /// <summary>
@@ -17,7 +19,7 @@ void Game::Initialize()
 void Game::Update()
 {
 	// シーンの更新処理
-	scene_->Update();
+	sceneManager_->Update();
 }
 
 /// <summary>
@@ -26,5 +28,5 @@ void Game::Update()
 void Game::Draw()
 {
 	// シーンの描画処理
-	scene_->Draw();
+	sceneManager_->Draw();
 }

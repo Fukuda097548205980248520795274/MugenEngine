@@ -3,7 +3,7 @@
 
 #include "BaseCharacter/Player/Player.h"
 
-class GameScene : public Scene
+class GameScene : public BaseScene
 {
 public:
 
