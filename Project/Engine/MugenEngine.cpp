@@ -96,6 +96,7 @@ void MugenEngine::Initialize(int32_t clientWidth, int32_t clientHeight, const st
 
 	// パーティクル格納場所
 	particleStore_ = ParticleStore::GetInstance();
+
 }
 
 /// <summary>
@@ -126,6 +127,12 @@ void MugenEngine::Finalize()
 /// </summary>
 void MugenEngine::FrameStart()
 {
+	TimePoint currentTime = Clock::now();
+	std::chrono::duration<float> deltaTime = currentTime - previousTime;
+	previousTime = currentTime;
+
+	deltaTime_ = deltaTime.count();
+
 	// 全ての入力情報を取得する
 	input_->CheckInputInfo();
 
