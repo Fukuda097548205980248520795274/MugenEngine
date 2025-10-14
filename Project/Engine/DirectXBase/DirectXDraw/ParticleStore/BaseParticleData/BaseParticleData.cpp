@@ -33,16 +33,22 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 	perEmission_ = (int32_t*)malloc(sizeof(int32_t));
 	emitTime_ = (float*)malloc(sizeof(float));
 	emitRange_ = (Vector3*)malloc(sizeof(Vector3));
-	sizeMin_ = (float*)malloc(sizeof(float));
-	sizeMax_ = (float*)malloc(sizeof(float));
+	sizeRange_ = (Vector2*)malloc(sizeof(Vector2));
+	speedRange_ = (Vector2*)malloc(sizeof(Vector2));
+	releasedTimeRange_ = (Vector2*)malloc(sizeof(Vector2));
+	gravityDirection_ = (Vector3*)malloc(sizeof(Vector3));
+	gravityAcceleration_ = (float*)malloc(sizeof(float));
 
 	// 初期値を割り当てる
 	*position_ = Vector3(0.0f, 0.0f, 0.0f);
 	*perEmission_ = 1;
 	*emitTime_ = 0.1f;
 	*emitRange_ = Vector3(0.0f, 0.0f, 0.0f);
-	*sizeMin_ = 1.0f;
-	*sizeMax_ = 1.0f;
+	*sizeRange_ = Vector2(1.0f, 1.0f);
+	*speedRange_ = Vector2(8.0f, 8.0f);
+	*releasedTimeRange_ = Vector2(1.0f, 1.0f);
+	*gravityDirection_ = Vector3(0.0f, -1.0f, 0.0f);
+	*gravityAcceleration_ = 0.0f;
 
 	name_ = name;
 
@@ -52,8 +58,11 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 	recordSetting->SetValue(*name_, "perEmission", perEmission_);
 	recordSetting->SetValue(*name_, "emitTime", emitTime_);
 	recordSetting->SetValue(*name_, "emitRange", emitRange_);
-	recordSetting->SetValue(*name_, "sizeMin", sizeMin_);
-	recordSetting->SetValue(*name_, "sizeMax", sizeMax_);
+	recordSetting->SetValue(*name_, "sizeRange", sizeRange_);
+	recordSetting->SetValue(*name_, "speedRange", speedRange_);
+	recordSetting->SetValue(*name_, "releasedTimeRange", releasedTimeRange_);
+	recordSetting->SetValue(*name_, "gravity_Direction", gravityDirection_);
+	recordSetting->SetValue(*name_, "gravity_Acceleration", gravityAcceleration_);
 	recordSetting->RegistGroupDataReflection(*name_);
 }
 
@@ -92,13 +101,23 @@ void BaseParticleData::Update()
 				break;
 
 			// サイズ
-			float size = GetRandomRange(*sizeMin_, *sizeMax_);
+			float size = GetRandomRange(sizeRange_->x, sizeRange_->y);
 			Vector3 scale = Vector3(size, size, size);
+
+			// 速度
+			float speed = GetRandomRange(speedRange_->x, speedRange_->y);
+
+			// 放出される時間
+			float releasedTime = GetRandomRange(releasedTimeRange_->x, releasedTimeRange_->y);
 
 			// パーティクルの生成と初期化
 			std::unique_ptr<ParticleInstance> particle = std::make_unique<ParticleInstance>();
 			particle->Initialize(Vector3(GetRandomRange(rangeX.first, rangeX.second), GetRandomRange(rangeY.first, rangeY.second), GetRandomRange(rangeZ.first, rangeZ.second)),
-				Vector3(0.0f, 0.0f, 0.0f), scale, 0.5f);
+				Vector3(0.0f, 0.0f, 0.0f), scale, releasedTime);
+			particle->SetDirection(Normalize(Vector3(GetRandomRange(-2.0f, 2.0f), GetRandomRange(-2.0f, 2.0f), GetRandomRange(-2.0f, 2.0f))));
+			particle->SetSpeed(speed);
+			particle->SetGravityDirection(*gravityDirection_);
+			particle->SetGravityAcceleration(*gravityAcceleration_);
 			particles_.push_back(std::move(particle));
 		}
 

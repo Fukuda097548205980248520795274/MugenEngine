@@ -33,4 +33,17 @@ void ParticleInstance::Update()
 		isFinished_ = true;
 		return;
 	}
+
+
+	// 加速度を加算する
+	gravitySpeed_ += gravityAcceleration_ * engine_->GetDeltaTime();
+
+	// 重力
+	Vector3 gravity = gravityDirection_ * gravitySpeed_ * engine_->GetDeltaTime();
+
+	// 速度ベクトル
+	Vector3 speedVector = (direction_ * speed_) * engine_->GetDeltaTime();
+
+		// 移動させる
+	transform.translate += speedVector + gravity;
 }

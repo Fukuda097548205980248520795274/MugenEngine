@@ -60,7 +60,7 @@ ParticleHandle ParticleStore::LoadParticleEmitter(BillboardParticleEmitter* part
 
 	for (std::unique_ptr<BaseParticleData>& data : particleData_)
 	{
-		if (strcmp(name.c_str(), data->GetName().c_str()) == 0)
+		if (name == data->GetName())
 			return data->GetParticleHandle();
 	}
 
@@ -96,7 +96,7 @@ ParticleHandle ParticleStore::LoadParticleEmitter(ModelParticleEmitter* particle
 
 	for (std::unique_ptr<BaseParticleData>& data : particleData_)
 	{
-		if (strcmp(name.c_str(), data->GetName().c_str()) == 0)
+		if (name == data->GetName())
 			return data->GetParticleHandle();
 	}
 

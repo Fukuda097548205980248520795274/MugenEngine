@@ -46,6 +46,32 @@ public:
 	Vector3 GetRotate()const { return transform.rotate; }
 
 
+	/// <summary>
+	/// 方向のSetter
+	/// </summary>
+	/// <param name="direction"></param>
+	void SetDirection(const Vector3& direction) { direction_ = direction; }
+
+	/// <summary>
+	/// 速度のSetter
+	/// </summary>
+	/// <param name="speed"></param>
+	void SetSpeed(float speed) { speed_ = speed; }
+
+
+	/// <summary>
+	/// 重力方向のSetter
+	/// </summary>
+	/// <param name="directionGraivity"></param>
+	void SetGravityDirection(const Vector3& directionGraivity) { gravityDirection_ = Normalize(directionGraivity); }
+
+	/// <summary>
+	/// 周力加速度のSetter
+	/// </summary>
+	/// <param name="gravityAcceleration"></param>
+	void SetGravityAcceleration(float gravityAcceleration) { gravityAcceleration_ = gravityAcceleration; }
+
+
 private:
 
 	// エンジン
@@ -63,5 +89,24 @@ private:
 
 	// 放出時間
 	float emitTime_ = 0.0f;
+
+
+	// 方向
+	Vector3 direction_ = Vector3(0.0f, 0.0f, 0.0f);
+
+	// 速度
+	float speed_ = 0.0f;
+
+
+
+
+	// 重力方向
+	Vector3 gravityDirection_ = Vector3(0.0f, -1.0f, 0.0f);
+
+	// 重力加速度
+	float gravityAcceleration_ = 9.8f;
+
+	// 重力速度
+	float gravitySpeed_ = 0.0f;
 };
 

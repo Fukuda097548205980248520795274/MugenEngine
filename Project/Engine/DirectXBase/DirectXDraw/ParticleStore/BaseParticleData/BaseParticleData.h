@@ -106,11 +106,21 @@ protected:
 	float* emitTime_ = nullptr;
 
 
-	// 最小サイズ
-	float* sizeMin_ = nullptr;
+	// サイズの範囲
+	Vector2* sizeRange_ = nullptr;
 
-	// 最大サイズ
-	float* sizeMax_ = nullptr;
+	// 速度の範囲
+	Vector2* speedRange_ = nullptr;
+
+	// 放出時間の範囲
+	Vector2* releasedTimeRange_ = nullptr;
+
+
+	// 重力方向
+	Vector3* gravityDirection_ = nullptr;
+
+	// 重力加速度
+	float* gravityAcceleration_ = nullptr;
 
 
 
