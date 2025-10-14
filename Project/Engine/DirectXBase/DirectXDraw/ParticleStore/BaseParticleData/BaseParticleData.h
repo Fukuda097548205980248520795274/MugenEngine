@@ -2,7 +2,7 @@
 #include <list>
 #include <cassert>
 
-#include "../../ResourcesData/TransformationResourceDataInstancing/TransformationResourceDataInstancing.h"
+#include "../../ResourcesData/ParticleDataInstancing/ParticleDataInstancing.h"
 #include "Handle/Handle.h"
 #include "../../ModelStore/ModelStore.h"
 #include "../ParticleInstance/ParticleInstance.h"
@@ -60,7 +60,7 @@ public:
 	std::list<std::unique_ptr<ParticleInstance>> particles_;
 
 	// 座標変換インスタンシングリソース
-	std::unique_ptr<TransformationResourceDataInstancing> transformationResource_ = nullptr;
+	std::unique_ptr<ParticleDataInstancing> particleResourcesInstancing_ = nullptr;
 
 
 
@@ -91,8 +91,13 @@ protected:
 	// 名前
 	std::string* name_ = nullptr;
 
+
 	// 位置のポインタ
 	Vector3* position_ = nullptr;
+
+	// 発生範囲
+	Vector3* emitRange_ = nullptr;
+
 
 	// 発生数のポインタ
 	int32_t* perEmission_ = nullptr;
@@ -100,8 +105,37 @@ protected:
 	// 発生頻度のポインタ
 	float* emitTime_ = nullptr;
 
-	// 発生範囲
-	Vector3* emitRange_ = nullptr;
+
+	// サイズの範囲
+	Vector2* sizeRange_ = nullptr;
+
+	// 最終的なサイズ
+	float* sizeFinal_ = nullptr;
+
+
+	// 速度の範囲
+	Vector2* speedRange_ = nullptr;
+
+	// 最終的な速度
+	float* speedFinal_ = nullptr;
+
+
+	// 放出時間の範囲
+	Vector2* releasedTimeRange_ = nullptr;
+
+
+	// 最初の色
+	Vector4* colorStart_ = nullptr;
+
+	// 最終的な色
+	Vector4* colorFinal_ = nullptr;
+
+
+	// 重力方向
+	Vector3* gravityDirection_ = nullptr;
+
+	// 重力加速度
+	float* gravityAcceleration_ = nullptr;
 
 
 

@@ -248,16 +248,20 @@ void DirectXDraw::DrawGltfModel(const WorldTransform3D* worldTransform, const st
 	resourcesMainCamera_->data_->worldPosition = camera->GetWorldPosition();
 
 
+	// モデルデータを取得する
+	ModelData modelData = modelResource->GetModelData();
+
 	// wvp行列
 	Matrix4x4 worldViewProjectionMatrix = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
 
+	// ルートノードを取得する
 	Node rootNode = modelResource->GetRootNode();
 	std::vector<Matrix4x4> nodeWorldMatrix;
 	GetNodeWorldMatrix(nodeWorldMatrix, rootNode);
 	
 
 	// メッシュの数を描画する
-	for (uint32_t meshIndex = 0; meshIndex < modelResource->GetNumMesh(); ++meshIndex)
+	for (uint32_t meshIndex = 0; meshIndex < modelData.numMesh; ++meshIndex)
 	{
 		/*-----------------------------
 			マテリアルデータを入力する
@@ -327,7 +331,7 @@ void DirectXDraw::DrawGltfModel(const WorldTransform3D* worldTransform, const st
 		commandList_->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 		// ドローコール
-		commandList_->DrawIndexedInstanced(modelResource->GetNumIndex(meshIndex), 1, 0, 0, 0);
+		commandList_->DrawIndexedInstanced(modelResource->GetNumIndex(modelData.meshNames_[meshIndex]), 1, 0, 0, 0);
 
 		
 		// 描画したプリミティブをカウントする
@@ -349,15 +353,18 @@ void DirectXDraw::DrawGltfAnimationModel(const WorldTransform3D* worldTransform,
 	// カメラの値を取得する
 	resourcesMainCamera_->data_->worldPosition = camera->GetWorldPosition();
 
+
 	// アニメーションを取得する
 	Animation animation = modelResource->GetAnimation();
 
 	// モデルデータを取得する
-	Node modelData = modelResource->GetRootNode();
+	ModelData modelData = modelResource->GetModelData();
+
 
 	// wvp行列
 	Matrix4x4 worldViewProjectionMatrix = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
 
+	// ルートノードを取得する
 	Node rootNode = modelResource->GetRootNode();
 	std::vector<Matrix4x4> nodeWorldMatrix;
 	GetNodeWorldMatrix(nodeWorldMatrix, rootNode);
@@ -372,7 +379,7 @@ void DirectXDraw::DrawGltfAnimationModel(const WorldTransform3D* worldTransform,
 
 
 	// メッシュの数を描画する
-	for (uint32_t meshIndex = 0; meshIndex < modelResource->GetNumMesh(); ++meshIndex)
+	for (uint32_t meshIndex = 0; meshIndex < modelData.numMesh; ++meshIndex)
 	{
 		/*-----------------------------
 			マテリアルデータを入力する
@@ -443,7 +450,7 @@ void DirectXDraw::DrawGltfAnimationModel(const WorldTransform3D* worldTransform,
 		commandList_->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 		// ドローコール
-		commandList_->DrawIndexedInstanced(modelResource->GetNumIndex(meshIndex), 1, 0, 0, 0);
+		commandList_->DrawIndexedInstanced(modelResource->GetNumIndex(modelData.meshNames_[meshIndex]), 1, 0, 0, 0);
 
 
 		// 描画したプリミティブをカウントする
@@ -469,7 +476,7 @@ void DirectXDraw::DrawGltfSkinningModel(const WorldTransform3D* worldTransform, 
 	Animation animation = modelResource->GetAnimation();
 
 	// モデルデータを取得する
-	Node modelData = modelResource->GetRootNode();
+	ModelData modelData = modelResource->GetModelData();
 
 	// wvp行列
 	Matrix4x4 worldViewProjectionMatrix = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
@@ -480,10 +487,10 @@ void DirectXDraw::DrawGltfSkinningModel(const WorldTransform3D* worldTransform, 
 
 
 	// メッシュの数を描画する
-	for (uint32_t meshIndex = 0; meshIndex < modelResource->GetNumMesh(); ++meshIndex)
+	for (uint32_t meshIndex = 0; meshIndex < modelData.numMesh; ++meshIndex)
 	{
 		// MatrixPaletteを更新する
-		modelResource->UpdateMatrixPalette(meshIndex);
+		modelResource->UpdateMatrixPalette(modelData.meshNames_[meshIndex]);
 
 		/*-----------------------------
 			マテリアルデータを入力する
@@ -552,7 +559,7 @@ void DirectXDraw::DrawGltfSkinningModel(const WorldTransform3D* worldTransform, 
 		commandList_->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 		// ドローコール
-		commandList_->DrawIndexedInstanced(modelResource->GetNumIndex(meshIndex), 1, 0, 0, 0);
+		commandList_->DrawIndexedInstanced(modelResource->GetNumIndex(modelData.meshNames_[meshIndex]), 1, 0, 0, 0);
 
 
 		// 描画したプリミティブをカウントする
@@ -574,6 +581,9 @@ void DirectXDraw::DrawObjModel(const WorldTransform3D* worldTransform, const std
 	// カメラの値を取得する
 	resourcesMainCamera_->data_->worldPosition = camera->GetWorldPosition();
 
+
+	// モデルデータを取得する
+	ModelData modelData = modelResource->GetModelData();
 
 	// wvp行列
 	Matrix4x4 worldViewProjectionMatrix = worldTransform->worldMatrix_ * camera->viewMatrix_ * camera->projectionMatrix_;
@@ -644,7 +654,7 @@ void DirectXDraw::DrawObjModel(const WorldTransform3D* worldTransform, const std
 		commandList_->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 		// ドローコール
-		commandList_->DrawIndexedInstanced(modelResource->GetNumIndex(meshIndex), 1, 0, 0, 0);
+		commandList_->DrawIndexedInstanced(modelResource->GetNumIndex(modelData.meshNames_[meshIndex]), 1, 0, 0, 0);
 
 
 		// 描画したプリミティブをカウントする
@@ -1183,9 +1193,9 @@ void DirectXDraw::DrawBillboardParticle(ParticleHandle particleHandle, const Cam
 		// ワールド行列
 		Matrix4x4 worldMatrix = Make3DScaleMatrix4x4(particle->GetScale()) * billboardMatrix * Make3DTranslateMatrix4x4(particle->GetTranslate());
 
-		particleData->transformationResource_->data_[numInstance].world = worldMatrix;
-		particleData->transformationResource_->data_[numInstance].worldViewProjection = worldMatrix * camera->viewMatrix_ * camera->projectionMatrix_;
-		particleData->transformationResource_->data_[numInstance].worldInverseTranspose = MakeTransposeMatrix4x4(worldMatrix);
+		particleData->particleResourcesInstancing_->data_[numInstance].world = worldMatrix;
+		particleData->particleResourcesInstancing_->data_[numInstance].worldViewProjectionMatrix = worldMatrix * camera->viewMatrix_ * camera->projectionMatrix_;
+		particleData->particleResourcesInstancing_->data_[numInstance].color = particle->GetCurrentColor();
 
 		// カウントする
 		numInstance++;
@@ -1239,6 +1249,9 @@ void DirectXDraw::DrawModelParticle(ParticleHandle particleHandle, const Camera3
 	// モデルリソースを取得する
 	BaseModelResources* modelResource = particleData->modelResource_;
 
+	// モデルデータを取得する
+	ModelData modelData = modelResource->GetModelData();
+
 
 	/*-------------------
 		マテリアル設定
@@ -1272,9 +1285,9 @@ void DirectXDraw::DrawModelParticle(ParticleHandle particleHandle, const Camera3
 		// ワールド行列
 		Matrix4x4 worldMatrix = Make3DAffineMatrix4x4(particle->GetScale(), particle->GetRotate(), particle->GetTranslate());
 
-		particleData->transformationResource_->data_[numInstance].world = worldMatrix;
-		particleData->transformationResource_->data_[numInstance].worldViewProjection = worldMatrix * camera->viewMatrix_ * camera->projectionMatrix_;
-		particleData->transformationResource_->data_[numInstance].worldInverseTranspose = MakeTransposeMatrix4x4(worldMatrix);
+		particleData->particleResourcesInstancing_->data_[numInstance].world = worldMatrix;
+		particleData->particleResourcesInstancing_->data_[numInstance].worldViewProjectionMatrix = worldMatrix * camera->viewMatrix_ * camera->projectionMatrix_;
+		particleData->particleResourcesInstancing_->data_[numInstance].color = particle->GetCurrentColor();
 
 		// カウントする
 		numInstance++;
@@ -1305,7 +1318,7 @@ void DirectXDraw::DrawModelParticle(ParticleHandle particleHandle, const Camera3
 	commandList_->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 	// ドローコール
-	commandList_->DrawIndexedInstanced(modelResource->GetNumIndex(0), numInstance, 0, 0, 0);
+	commandList_->DrawIndexedInstanced(modelResource->GetNumIndex(modelData.meshNames_[0]), numInstance, 0, 0, 0);
 
 
 	// 描画したプリミティブをカウントする

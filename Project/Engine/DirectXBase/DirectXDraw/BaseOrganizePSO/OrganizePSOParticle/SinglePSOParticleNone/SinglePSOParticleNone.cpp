@@ -122,7 +122,7 @@ void SinglePSOParticleNone::Initialize(LogFile* logFile, IDxcBlob* vertexShaderB
 		インプットレイアウトの設定
 	----------------------------*/
 
-	D3D12_INPUT_ELEMENT_DESC inputElementDescs[3] = {};
+	D3D12_INPUT_ELEMENT_DESC inputElementDescs[2] = {};
 
 	// POSITION 0 float4
 	inputElementDescs[0].SemanticName = "POSITION";
@@ -135,12 +135,6 @@ void SinglePSOParticleNone::Initialize(LogFile* logFile, IDxcBlob* vertexShaderB
 	inputElementDescs[1].SemanticIndex = 0;
 	inputElementDescs[1].Format = DXGI_FORMAT_R32G32_FLOAT;
 	inputElementDescs[1].AlignedByteOffset = D3D12_APPEND_ALIGNED_ELEMENT;
-
-	// NORMAL 0 float3
-	inputElementDescs[2].SemanticName = "NORMAL";
-	inputElementDescs[2].SemanticIndex = 0;
-	inputElementDescs[2].Format = DXGI_FORMAT_R32G32B32_FLOAT;
-	inputElementDescs[2].AlignedByteOffset = D3D12_APPEND_ALIGNED_ELEMENT;
 
 	D3D12_INPUT_LAYOUT_DESC inputLayoutDesc{};
 	inputLayoutDesc.pInputElementDescs = inputElementDescs;
@@ -180,8 +174,8 @@ void SinglePSOParticleNone::Initialize(LogFile* logFile, IDxcBlob* vertexShaderB
 	// Depthを有効化する
 	depthStencilDesc.DepthEnable = true;
 
-	// 書き込む
-	depthStencilDesc.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ALL;
+	// デプスは書き込まない
+	depthStencilDesc.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ZERO;
 
 	// 比較関数　近ければ描画する
 	depthStencilDesc.DepthFunc = D3D12_COMPARISON_FUNC_LESS_EQUAL;

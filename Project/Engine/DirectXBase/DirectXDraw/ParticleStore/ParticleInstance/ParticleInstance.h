@@ -14,7 +14,7 @@ public:
 	/// 初期化
 	/// </summary>
 	/// <param name="position"></param>
-	void Initialize(const Vector3& position, const Vector3& rotation, const Vector3& scale, float emitTime);
+	void Initialize(const Vector3& position, const Vector3& rotation, const Vector3& scale, float emitTime, const Vector4& color);
 
 	/// <summary>
 	/// 更新処理
@@ -45,6 +45,59 @@ public:
 	/// <returns></returns>
 	Vector3 GetRotate()const { return transform.rotate; }
 
+	/// <summary>
+	/// 色のGetter
+	/// </summary>
+	/// <returns></returns>
+	Vector4 GetCurrentColor()const { return currentColor_; }
+
+
+	/// <summary>
+	/// 方向のSetter
+	/// </summary>
+	/// <param name="direction"></param>
+	void SetDirection(const Vector3& direction) { direction_ = direction; }
+
+
+	/// <summary>
+	/// 最終的な大きさ
+	/// </summary>
+	/// <param name="scale"></param>
+	void SetSizeFinal(const Vector3& scale) { sizeFinal_ = scale; }
+
+
+	/// <summary>
+	/// 最初の速度のSetter
+	/// </summary>
+	/// <param name="speedStart"></param>
+	void SpeedStart(float speedStart) { speedStart_ = speedStart; }
+
+	/// <summary>
+	/// 最後の速度のSetter
+	/// </summary>
+	/// <param name="speedFinal"></param>
+	void SpeedFinal(float speedFinal) { speedFinal_ = speedFinal; }
+
+
+	/// <summary>
+	/// 最終的な色のSetter
+	/// </summary>
+	/// <param name="color"></param>
+	void SetColorFinal(const Vector4& color) { colorFinal_ = color; }
+
+
+	/// <summary>
+	/// 重力方向のSetter
+	/// </summary>
+	/// <param name="directionGraivity"></param>
+	void SetGravityDirection(const Vector3& directionGraivity) { gravityDirection_ = Normalize(directionGraivity); }
+
+	/// <summary>
+	/// 周力加速度のSetter
+	/// </summary>
+	/// <param name="gravityAcceleration"></param>
+	void SetGravityAcceleration(float gravityAcceleration) { gravityAcceleration_ = gravityAcceleration; }
+
 
 private:
 
@@ -63,5 +116,44 @@ private:
 
 	// 放出時間
 	float emitTime_ = 0.0f;
+
+
+	// 最初のサイズ
+	Vector3 sizeStart_ = Vector3(0.0f, 0.0f, 0.0f);
+
+	// 最終的なサイズ
+	Vector3 sizeFinal_ = Vector3(0.0f, 0.0f, 0.0f);
+
+
+	// 今の色
+	Vector4 currentColor_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+
+	// 最初の色
+	Vector4 colorStart_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+
+	// 最終的な色
+	Vector4 colorFinal_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+
+
+	// 方向
+	Vector3 direction_ = Vector3(0.0f, 0.0f, 0.0f);
+
+	// 最初の速度
+	float speedStart_ = 0.0f;
+
+	// 最終的な速度
+	float speedFinal_ = 0.0f;
+
+
+
+
+	// 重力方向
+	Vector3 gravityDirection_ = Vector3(0.0f, -1.0f, 0.0f);
+
+	// 重力加速度
+	float gravityAcceleration_ = 9.8f;
+
+	// 重力速度
+	float gravitySpeed_ = 0.0f;
 };
 

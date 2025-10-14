@@ -19,13 +19,16 @@ void Player::Initialize(const Camera3D* camera3d, const Vector3& startPosition)
 	model_ = std::make_unique<MeshModel>();
 	model_->Initialize(camera3d_, engine_->LoadModel("./Resources/Models/multiMaterial", "multiMaterial.obj"));
 	model_->SetParent(worldTransform_.get());
-	model_->material_[0]->enableHalfLambert_ = true;
+	
+	// UVトランスフォームを取得する
+	UVTransform* planeUVTransform = model_->GetUVTransform("Plane");
+	UVTransform* cubeUVTransform = model_->GetUVTransform("Cube");
 
 	// グループ名
 	std::string groupName = "Player";
 	engine_->SetSettingValue(groupName, "translation", &worldTransform_->translation_);
-	engine_->SetSettingValue(groupName, "uvTransform_0_rotate", &model_->uvTransform_[0]->rotation_);
-	engine_->SetSettingValue(groupName, "uvTransform_1_rotate", &model_->uvTransform_[1]->rotation_);
+	engine_->SetSettingValue(groupName, "uvTransform_0_rotate", &planeUVTransform->rotation_);
+	engine_->SetSettingValue(groupName, "uvTransform_1_rotate", &cubeUVTransform->rotation_);
 	engine_->RegistGroupDataReflection(groupName);
 }
 

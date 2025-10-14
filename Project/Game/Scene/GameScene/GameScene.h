@@ -31,9 +31,19 @@ public:
 	std::unique_ptr<Player> player_ = nullptr;
 
 
+	// テクスチャハンドル
+	TextureHandle textureHandle_{};
+
 	// パーティクルエミッター
 	std::unique_ptr<BillboardParticleEmitter> billboardParticleEmitter_ = nullptr;
+
+
+	// モデルハンドル
+	ModelHandle modelHandle_{};
+
+	// パーティクルエミッター
 	std::unique_ptr<ModelParticleEmitter> modelParticleEmitter_ = nullptr;
+
 
 
 	// サウンドハンドル
@@ -41,12 +51,5 @@ public:
 
 	// プレイハンドル
 	PlayHandle playHandle_{};
-
-
-	// テクスチャハンドル
-	TextureHandle textureHandle_{};
-
-	// モデルハンドル
-	ModelHandle modelHandle_{};
 };
 

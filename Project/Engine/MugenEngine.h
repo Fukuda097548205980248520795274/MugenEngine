@@ -285,6 +285,14 @@ public:
 	/// <returns></returns>
 	uint32_t GetNumMesh(ModelHandle handle) const { return modelStore_->GetNumMesh(handle); }
 
+	/// <summary>
+	/// メッシュ番号を取得する
+	/// </summary>
+	/// <param name="handle"></param>
+	/// <param name="meshName"></param>
+	/// <returns></returns>
+	uint32_t GetMeshNumber(ModelHandle handle, const std::string& meshName)const { return modelStore_->GetMeshNumber(handle, meshName); }
+
 #pragma endregion
 
 #pragma region オーディオ
@@ -832,8 +840,19 @@ private:
 	const int32_t* kClientHeight_ = nullptr;
 
 
+	/*-----------------
+	    デルタタイム
+	-----------------*/
+
+	using Clock = std::chrono::high_resolution_clock;
+	using TimePoint = std::chrono::time_point<Clock>;
+
+
+	TimePoint previousTime = Clock::now();
+
 	// デルタタイム
-	float deltaTime_ = 1.0f / 60.0f;
+	float deltaTime_ = 0.0f;
+
 
 
 	/*-------------------------

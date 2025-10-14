@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include <vector>
+#include <string>
 #include "../MeshOptions/WorldTransform3D/WorldTransform3D.h"
 #include "../MeshOptions/UVTransform/UVTransform.h"
 #include "../MeshOptions/Material/Material.h"
@@ -49,15 +50,23 @@ public:
 	/// <param name="animationSpeed"></param>
 	void SetAnimationSpeed(float animationSpeed) { animationSpeed_ = animationSpeed; }
 
+	/// <summary>
+	/// メッシュ名を指定してマテリアルを取得する
+	/// </summary>
+	/// <param name="meshName"></param>
+	/// <returns></returns>
+	Material* GetMateril(const std::string& meshName);
+
+	/// <summary>
+	/// メッシュ名を指定してUVトランスフォームを取得する
+	/// </summary>
+	/// <param name="meshName"></param>
+	/// <returns></returns>
+	UVTransform* GetUVTransform(const std::string& meshName);
+
 
 	// ワールドトランスフォーム
 	std::unique_ptr<WorldTransform3D> worldTransform_ = nullptr;
-
-	// UVトランスフォーム
-	std::vector<std::unique_ptr<UVTransform>> uvTransform_;
-
-	// マテリアル
-	std::vector<std::unique_ptr<Material>> material_;
 
 
 private:
@@ -73,6 +82,13 @@ private:
 
 	// メッシュ数
 	uint32_t numMesh_ = 0;
+
+
+	// UVトランスフォーム
+	std::vector<std::unique_ptr<UVTransform>> uvTransform_;
+
+	// マテリアル
+	std::vector<std::unique_ptr<Material>> material_;
 
 	// UVトランスフォーム
 	std::vector<UVTransform*> uvTransformP_;

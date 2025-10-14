@@ -72,6 +72,14 @@ public:
 	/// <returns></returns>
 	float GetAnimationDuration(ModelHandle handle)const { return modelResources_[handle.value]->GetAnimation().duration; }
 
+	/// <summary>
+	/// メッシュ番号を取得する
+	/// </summary>
+	/// <param name="handle"></param>
+	/// <param name="meshName"></param>
+	/// <returns></returns>
+	uint32_t GetMeshNumber(ModelHandle handle, const std::string& meshName);
+
 
 private:
 

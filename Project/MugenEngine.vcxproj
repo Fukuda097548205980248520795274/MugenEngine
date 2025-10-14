@@ -376,6 +376,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\DataForGPU\ParticleForGPU\ParticleForGPU.cpp" />
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\DirectXDraw.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
@@ -536,7 +537,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\TransformationResourceDataInstancing\TransformationResourceDataInstancing.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\ParticleDataInstancing\ParticleDataInstancing.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">MaxSpeed</Optimization>
       <WholeProgramOptimization Condition="'$(Configuration)|$(Platform)'=='Development|x64'">true</WholeProgramOptimization>
     </ClCompile>
@@ -772,6 +773,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\Camera\Camera2D\Camera2D.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\Camera\Camera3D\Camera3D.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\DataForGPU\CameraDataForGPU\CameraDataForGPU.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\DataForGPU\ParticleForGPU\ParticleForGPU.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\DirectXDraw.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\OrganizePSOPrimitive.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseOrganizePSO\OrganizePSOPrimitive\SinglePSOPrimitiveNone\SinglePSOPrimitiveNone.h" />
@@ -812,7 +814,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\BaseMesh\MeshOptions\WorldTransform3D\WorldTransform3D.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\RenderTargetResources\RenderTargetResources.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\SpotLightResourcesData\SpotLightResourcesData.h" />
-    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\TransformationResourceDataInstancing\TransformationResourceDataInstancing.h" />
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\ParticleDataInstancing\ParticleDataInstancing.h" />
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\TransformationResourcesDataCBV\TransformationResourcesDataCBV.h" />
     <ClInclude Include="Engine\DirectXBase\ImGuiRender\ImGuiRender.h" />
     <ClInclude Include="Engine\DirectXBase\ResourcesDepthStencil\ResourcesDepthStencil.h" />

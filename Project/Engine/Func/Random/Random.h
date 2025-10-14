@@ -11,6 +11,11 @@
 template<typename T>
 T GetRandomRange(T min, T max)
 {
+	if (max < min)
+	{
+		max = min;
+	}
+
 	static std::random_device generator;
 	static std::mt19937 randomEngine(generator());
 

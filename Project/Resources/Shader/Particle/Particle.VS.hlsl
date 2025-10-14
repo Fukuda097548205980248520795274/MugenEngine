@@ -5,11 +5,10 @@ struct VertexShaderInput
 {
     float4 position : POSITION0;
     float2 texcoord : TEXCOORD0;
-    float3 normal : NORMAL0;
 };
 
 // 座標変換行列
-struct TransformationMatrix
+struct ParticleForGPU
 {
     // WVP行列
     float4x4 worldViewProjection;
@@ -17,26 +16,23 @@ struct TransformationMatrix
     // ワールド行列
     float4x4 world;
     
-    // ワールド行列の逆転置行列
-    float4x4 worldInverseTranspose;
+    // 色
+    float4 color;
 };
-StructuredBuffer<TransformationMatrix> gTransformationMatrix : register(t0);
+StructuredBuffer<ParticleForGPU> gParticleForGPU : register(t0);
 
 VertexShaderOutput main(VertexShaderInput input, uint instanceID : SV_InstanceID)
 {
     VertexShaderOutput output;
     
     // 座標変換を行う
-    output.position = mul(input.position, gTransformationMatrix[instanceID].worldViewProjection);
+    output.position = mul(input.position, gParticleForGPU[instanceID].worldViewProjection);
     
     // UV座標を受け取る
     output.texcoord = input.texcoord;
     
-    // 法線をワールド座標に変換する
-    output.normal = normalize(mul(input.normal, (float3x3) gTransformationMatrix[instanceID].worldInverseTranspose));
-    
-    // オブジェクトのワールド座標
-    output.worldPosition = mul(input.position, gTransformationMatrix[instanceID].world).xyz;
+    // 色を受け取る
+    output.color = gParticleForGPU[instanceID].color;
     
     return output;
 }

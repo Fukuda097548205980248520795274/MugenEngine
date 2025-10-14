@@ -80,18 +80,6 @@ void MeshModel::Update()
 /// </summary>
 void MeshModel::Draw()
 {
-	// マテリアルの更新処理
-	for (std::unique_ptr<Material>& material : material_)
-	{
-		
-	}
-
-	// UVトランスフォームの更新
-	for (std::unique_ptr<UVTransform>& uvTransform : uvTransform_)
-	{
-		
-	}
-
 	// モデルを描画する
 	engine_->DrawModel(worldTransform_.get(), uvTransformP_, camera3d_, modelHandle_, materialP_, animationTimer_);
 }
@@ -106,4 +94,25 @@ void MeshModel::UpdateAnimation()
 
 	// 時間を越えらた周回する
 	animationTimer_ = std::fmod(animationTimer_, duration_);
+}
+
+
+/// <summary>
+/// メッシュ名を指定してマテリアルを取得する
+/// </summary>
+/// <param name="meshName"></param>
+/// <returns></returns>
+Material* MeshModel::GetMateril(const std::string& meshName)
+{
+	return material_[engine_->GetMeshNumber(modelHandle_, meshName)].get();
+}
+
+/// <summary>
+/// メッシュ名を指定してUVトランスフォームを取得する
+/// </summary>
+/// <param name="meshName"></param>
+/// <returns></returns>
+UVTransform* MeshModel::GetUVTransform(const std::string& meshName)
+{
+	return uvTransform_[engine_->GetMeshNumber(modelHandle_, meshName)].get();
 }

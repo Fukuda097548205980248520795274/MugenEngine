@@ -37,7 +37,7 @@ public:
 	/// MatrixPaletteを更新する
 	/// </summary>
 	/// <param name="meshIndex"></param>
-	virtual void UpdateMatrixPalette(uint32_t meshIndex) = 0;
+	virtual void UpdateMatrixPalette(const std::string& meshName) = 0;
 
 
 	/// <summary>
@@ -94,7 +94,7 @@ public:
 	/// </summary>
 	/// <param name="meshIndex"></param>
 	/// <returns></returns>
-	UINT GetNumIndex(uint32_t meshIndex)const { return static_cast<UINT>(modelData_.meshData[meshIndex].indices.size()); }
+	UINT GetNumIndex(const std::string& meshName) { return static_cast<UINT>(modelData_.meshData[meshName].indices.size()); }
 
 	/// <summary>
 	/// ルートノードのGetter

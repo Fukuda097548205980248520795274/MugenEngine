@@ -39,7 +39,7 @@ public:
 	/// MatrixPaletteを更新する
 	/// </summary>
 	/// <param name="meshIndex"></param>
-	void UpdateMatrixPalette(uint32_t meshIndex) override { UpdateSkinCluster(modelData_.meshData[meshIndex].skinCluster, skeleton_); }
+	void UpdateMatrixPalette(const std::string& meshName) override { UpdateSkinCluster(modelData_.meshData[meshName].skinCluster, skeleton_); }
 
 
 public:
