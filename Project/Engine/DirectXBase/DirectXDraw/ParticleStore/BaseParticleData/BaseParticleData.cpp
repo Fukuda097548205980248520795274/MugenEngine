@@ -34,6 +34,7 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 
 	emitTime_ = (float*)malloc(sizeof(float));
 	emitRange_ = (Vector3*)malloc(sizeof(Vector3));
+	enableSphere_ = (bool*)malloc(sizeof(bool));
 
 	sizeRange_ = (Vector2*)malloc(sizeof(Vector2));
 	sizeFinal_ = (float*)malloc(sizeof(float));
@@ -56,6 +57,7 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 
 	*emitTime_ = 0.1f;
 	*emitRange_ = Vector3(0.0f, 0.0f, 0.0f);
+	*enableSphere_ = false;
 
 	*sizeRange_ = Vector2(1.0f, 1.0f);
 	*sizeFinal_ = 0.0f;
@@ -78,8 +80,9 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 	RecordSetting* recordSetting = RecordSetting::GetInstance();
 	recordSetting->SetValue(*name_, "position", position_);
 	recordSetting->SetValue(*name_, "perEmission", perEmission_);
-	recordSetting->SetValue(*name_, "emitTime", emitTime_);
-	recordSetting->SetValue(*name_, "emitRange", emitRange_);
+	recordSetting->SetValue(*name_, "emit_Time", emitTime_);
+	recordSetting->SetValue(*name_, "emit_Range", emitRange_);
+	recordSetting->SetValue(*name_, "emit_EnableSphereRange", enableSphere_);
 	recordSetting->SetValue(*name_, "size_Range", sizeRange_);
 	recordSetting->SetValue(*name_, "size_Final", sizeFinal_);
 	recordSetting->SetValue(*name_, "speed_Range", speedRange_);
@@ -102,20 +105,6 @@ void BaseParticleData::Update()
 	emitTimer_ += engine_->GetDeltaTime();
 
 
-	// 発生範囲のワールド座標
-	std::pair<float, float> rangeX;
-	rangeX.first = position_->x - emitRange_->x;
-	rangeX.second = position_->x + emitRange_->x;
-
-	std::pair<float, float> rangeY;
-	rangeY.first = position_->y - emitRange_->y;
-	rangeY.second = position_->y + emitRange_->y;
-
-	std::pair<float, float> rangeZ;
-	rangeZ.first = position_->z - emitRange_->z;
-	rangeZ.second = position_->z + emitRange_->z;
-
-
 	// タイマーが越えたら放出する
 	if (emitTimer_ >= *emitTime_)
 	{
@@ -136,10 +125,38 @@ void BaseParticleData::Update()
 			// 放出される時間
 			float releasedTime = GetRandomRange(releasedTimeRange_->x, releasedTimeRange_->y);
 
+
+			// 発生範囲のワールド座標
+			Vector3 emitPosition = Vector3(0.0f, 0.0f, 0.0f);
+
+			if (*enableSphere_)
+			{
+				float length = Length(*emitRange_);
+				Vector3 vector = Normalize(Vector3(GetRandomRange(-2.0f, 2.0f), GetRandomRange(-2.0f, 2.0f), GetRandomRange(-2.0f, 2.0f)));
+				emitPosition = vector * GetRandomRange(0.0f, length);
+			}
+			else
+			{
+				std::pair<float, float> rangeX;
+				rangeX.first = position_->x - emitRange_->x;
+				rangeX.second = position_->x + emitRange_->x;
+
+				std::pair<float, float> rangeY;
+				rangeY.first = position_->y - emitRange_->y;
+				rangeY.second = position_->y + emitRange_->y;
+
+				std::pair<float, float> rangeZ;
+				rangeZ.first = position_->z - emitRange_->z;
+				rangeZ.second = position_->z + emitRange_->z;
+
+				emitPosition =
+					Vector3(GetRandomRange(rangeX.first, rangeX.second), GetRandomRange(rangeY.first, rangeY.second), GetRandomRange(rangeZ.first, rangeZ.second));
+			}
+
+
 			// パーティクルの生成と初期化
 			std::unique_ptr<ParticleInstance> particle = std::make_unique<ParticleInstance>();
-			particle->Initialize(Vector3(GetRandomRange(rangeX.first, rangeX.second), GetRandomRange(rangeY.first, rangeY.second), GetRandomRange(rangeZ.first, rangeZ.second)),
-				Vector3(0.0f, 0.0f, 0.0f), scale, releasedTime,*colorStart_);
+			particle->Initialize(emitPosition, Vector3(0.0f, 0.0f, 0.0f), scale, releasedTime,*colorStart_);
 			particle->SetDirection(Normalize(Vector3(GetRandomRange(-2.0f, 2.0f), GetRandomRange(-2.0f, 2.0f), GetRandomRange(-2.0f, 2.0f))));
 
 			particle->SetSizeFinal(Vector3(*sizeFinal_, *sizeFinal_, *sizeFinal_));

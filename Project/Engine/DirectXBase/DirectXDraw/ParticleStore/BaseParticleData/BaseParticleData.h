@@ -98,6 +98,9 @@ protected:
 	// 発生範囲
 	Vector3* emitRange_ = nullptr;
 
+	// 球体有効化
+	bool* enableSphere_ = nullptr;
+
 
 	// 発生数のポインタ
 	int32_t* perEmission_ = nullptr;
