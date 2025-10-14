@@ -89,7 +89,7 @@ void RecordSetting::Update()
 			{
 				// Vector4型
 				Vector4** ptr = std::get_if<Vector4*>(&item);
-				ImGui::SliderFloat4(itemName.c_str(), reinterpret_cast<float*>(*ptr), -50.0f, 50.0f);
+				ImGui::ColorEdit4(itemName.c_str(), reinterpret_cast<float*>(*ptr));
 			}
 		}
 

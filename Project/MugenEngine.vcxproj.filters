@@ -535,6 +535,9 @@
     <Filter Include="Game\SceneFactory">
       <UniqueIdentifier>{aa06fefd-d383-4599-b3fe-f01cbe4d75eb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\ParticleForGPU">
+      <UniqueIdentifier>{32bac59e-c010-4bd2-a842-a161a48465a3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -924,7 +927,7 @@
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleStore.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ParticleStore</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\TransformationResourceDataInstancing\TransformationResourceDataInstancing.cpp">
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\ResourcesData\ParticleDataInstancing\ParticleDataInstancing.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\TransformationResourceDataInstancing</Filter>
     </ClCompile>
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\ParticleStore\BaseParticleData\BaseParticleData.cpp">
@@ -989,6 +992,9 @@
     </ClCompile>
     <ClCompile Include="Game\SceneFactory\SceneFactory.cpp">
       <Filter>Game\SceneFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\DirectXBase\DirectXDraw\DataForGPU\ParticleForGPU\ParticleForGPU.cpp">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\DataForGPU\ParticleForGPU</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1376,7 +1382,7 @@
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ParticleStore\ParticleStore.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ParticleStore</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\TransformationResourceDataInstancing\TransformationResourceDataInstancing.h">
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\ResourcesData\ParticleDataInstancing\ParticleDataInstancing.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\ResourcesData\TransformationResourceDataInstancing</Filter>
     </ClInclude>
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\ParticleStore\BaseParticleData\BaseParticleData.h">
@@ -1441,6 +1447,9 @@
     </ClInclude>
     <ClInclude Include="Game\SceneFactory\SceneFactory.h">
       <Filter>Game\SceneFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\DirectXBase\DirectXDraw\DataForGPU\ParticleForGPU\ParticleForGPU.h">
+      <Filter>Engine\Include\DirectXBase\DirectXDraw\DataForGPU\ParticleForGPU</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

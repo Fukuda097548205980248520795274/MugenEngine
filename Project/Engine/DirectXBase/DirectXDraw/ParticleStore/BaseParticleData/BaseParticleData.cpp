@@ -24,8 +24,8 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 	engine_ = MugenEngine::GetInstance();
 
 	// 座標変換インスタンシングリソースの生成と初期化
-	transformationResource_ = std::make_unique<TransformationResourceDataInstancing>();
-	transformationResource_->Initialize(device_, commandList_,directXHeap_ , numMaxParticle_);
+	particleResourcesInstancing_ = std::make_unique<ParticleDataInstancing>();
+	particleResourcesInstancing_->Initialize(device_, commandList_,directXHeap_ , numMaxParticle_);
 
 
 	// メモリを割り当てる
@@ -43,8 +43,12 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 
 	releasedTimeRange_ = (Vector2*)malloc(sizeof(Vector2));
 
+	colorStart_ = (Vector4*)malloc(sizeof(Vector4));
+	colorFinal_ = (Vector4*)malloc(sizeof(Vector4));
+
 	gravityDirection_ = (Vector3*)malloc(sizeof(Vector3));
 	gravityAcceleration_ = (float*)malloc(sizeof(float));
+
 
 	// 初期値を割り当てる
 	*position_ = Vector3(0.0f, 0.0f, 0.0f);
@@ -60,6 +64,9 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 	*speedFinal_ = 0.0f;
 
 	*releasedTimeRange_ = Vector2(1.0f, 1.0f);
+
+	*colorStart_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+	*colorFinal_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 
 	*gravityDirection_ = Vector3(0.0f, -1.0f, 0.0f);
 	*gravityAcceleration_ = 0.0f;
@@ -78,6 +85,8 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 	recordSetting->SetValue(*name_, "speed_Range", speedRange_);
 	recordSetting->SetValue(*name_, "speed_Final", speedFinal_);
 	recordSetting->SetValue(*name_, "releasedTimeRange", releasedTimeRange_);
+	recordSetting->SetValue(*name_, "color_Start", colorStart_);
+	recordSetting->SetValue(*name_, "color_Final", colorFinal_);
 	recordSetting->SetValue(*name_, "gravity_Direction", gravityDirection_);
 	recordSetting->SetValue(*name_, "gravity_Acceleration", gravityAcceleration_);
 	recordSetting->RegistGroupDataReflection(*name_);
@@ -130,13 +139,15 @@ void BaseParticleData::Update()
 			// パーティクルの生成と初期化
 			std::unique_ptr<ParticleInstance> particle = std::make_unique<ParticleInstance>();
 			particle->Initialize(Vector3(GetRandomRange(rangeX.first, rangeX.second), GetRandomRange(rangeY.first, rangeY.second), GetRandomRange(rangeZ.first, rangeZ.second)),
-				Vector3(0.0f, 0.0f, 0.0f), scale, releasedTime);
+				Vector3(0.0f, 0.0f, 0.0f), scale, releasedTime,*colorStart_);
 			particle->SetDirection(Normalize(Vector3(GetRandomRange(-2.0f, 2.0f), GetRandomRange(-2.0f, 2.0f), GetRandomRange(-2.0f, 2.0f))));
 
 			particle->SetSizeFinal(Vector3(*sizeFinal_, *sizeFinal_, *sizeFinal_));
 			
 			particle->SpeedStart(speed);
 			particle->SpeedFinal(*speedFinal_);
+
+			particle->SetColorFinal(*colorFinal_);
 
 			particle->SetGravityDirection(*gravityDirection_);
 			particle->SetGravityAcceleration(*gravityAcceleration_);
@@ -178,5 +189,5 @@ void BaseParticleData::Update()
 void BaseParticleData::Register(UINT transformationRootParameterIndex)
 {
 	// 座標変換インスタンシングの設定
-	transformationResource_->Register(transformationRootParameterIndex);
+	particleResourcesInstancing_->Register(transformationRootParameterIndex);
 }

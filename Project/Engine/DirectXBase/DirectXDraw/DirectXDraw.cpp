@@ -1193,9 +1193,9 @@ void DirectXDraw::DrawBillboardParticle(ParticleHandle particleHandle, const Cam
 		// ワールド行列
 		Matrix4x4 worldMatrix = Make3DScaleMatrix4x4(particle->GetScale()) * billboardMatrix * Make3DTranslateMatrix4x4(particle->GetTranslate());
 
-		particleData->transformationResource_->data_[numInstance].world = worldMatrix;
-		particleData->transformationResource_->data_[numInstance].worldViewProjection = worldMatrix * camera->viewMatrix_ * camera->projectionMatrix_;
-		particleData->transformationResource_->data_[numInstance].worldInverseTranspose = MakeTransposeMatrix4x4(worldMatrix);
+		particleData->particleResourcesInstancing_->data_[numInstance].world = worldMatrix;
+		particleData->particleResourcesInstancing_->data_[numInstance].worldViewProjectionMatrix = worldMatrix * camera->viewMatrix_ * camera->projectionMatrix_;
+		particleData->particleResourcesInstancing_->data_[numInstance].color = particle->GetCurrentColor();
 
 		// カウントする
 		numInstance++;
@@ -1285,9 +1285,9 @@ void DirectXDraw::DrawModelParticle(ParticleHandle particleHandle, const Camera3
 		// ワールド行列
 		Matrix4x4 worldMatrix = Make3DAffineMatrix4x4(particle->GetScale(), particle->GetRotate(), particle->GetTranslate());
 
-		particleData->transformationResource_->data_[numInstance].world = worldMatrix;
-		particleData->transformationResource_->data_[numInstance].worldViewProjection = worldMatrix * camera->viewMatrix_ * camera->projectionMatrix_;
-		particleData->transformationResource_->data_[numInstance].worldInverseTranspose = MakeTransposeMatrix4x4(worldMatrix);
+		particleData->particleResourcesInstancing_->data_[numInstance].world = worldMatrix;
+		particleData->particleResourcesInstancing_->data_[numInstance].worldViewProjectionMatrix = worldMatrix * camera->viewMatrix_ * camera->projectionMatrix_;
+		particleData->particleResourcesInstancing_->data_[numInstance].color = particle->GetCurrentColor();
 
 		// カウントする
 		numInstance++;

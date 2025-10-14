@@ -5,7 +5,7 @@
 /// 初期化
 /// </summary>
 /// <param name="position"></param>
-void ParticleInstance::Initialize(const Vector3& position, const Vector3& rotation , const Vector3& scale, float emitTime)
+void ParticleInstance::Initialize(const Vector3& position, const Vector3& rotation , const Vector3& scale, float emitTime, const Vector4& color)
 {
 	// インスタンスを取得する
 	engine_ = MugenEngine::GetInstance();
@@ -16,6 +16,10 @@ void ParticleInstance::Initialize(const Vector3& position, const Vector3& rotati
 	transform.scale = scale;
 
 	sizeStart_ = scale;
+
+	// 色
+	currentColor_ = color;
+	colorStart_ = color;
 
 	// 放出時間
 	emitTime_ = emitTime;
@@ -41,6 +45,7 @@ void ParticleInstance::Update()
 	
 	float speed = Lerp(speedStart_, speedFinal_, t);
 	transform.scale = Lerp(sizeStart_, sizeFinal_, t);
+	currentColor_ = Lerp(colorStart_, colorFinal_, t);
 	
 
 

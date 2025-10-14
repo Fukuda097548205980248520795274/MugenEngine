@@ -2,7 +2,7 @@
 #include <list>
 #include <cassert>
 
-#include "../../ResourcesData/TransformationResourceDataInstancing/TransformationResourceDataInstancing.h"
+#include "../../ResourcesData/ParticleDataInstancing/ParticleDataInstancing.h"
 #include "Handle/Handle.h"
 #include "../../ModelStore/ModelStore.h"
 #include "../ParticleInstance/ParticleInstance.h"
@@ -60,7 +60,7 @@ public:
 	std::list<std::unique_ptr<ParticleInstance>> particles_;
 
 	// 座標変換インスタンシングリソース
-	std::unique_ptr<TransformationResourceDataInstancing> transformationResource_ = nullptr;
+	std::unique_ptr<ParticleDataInstancing> particleResourcesInstancing_ = nullptr;
 
 
 
@@ -122,6 +122,13 @@ protected:
 
 	// 放出時間の範囲
 	Vector2* releasedTimeRange_ = nullptr;
+
+
+	// 最初の色
+	Vector4* colorStart_ = nullptr;
+
+	// 最終的な色
+	Vector4* colorFinal_ = nullptr;
 
 
 	// 重力方向

@@ -14,7 +14,7 @@ public:
 	/// 初期化
 	/// </summary>
 	/// <param name="position"></param>
-	void Initialize(const Vector3& position, const Vector3& rotation, const Vector3& scale, float emitTime);
+	void Initialize(const Vector3& position, const Vector3& rotation, const Vector3& scale, float emitTime, const Vector4& color);
 
 	/// <summary>
 	/// 更新処理
@@ -45,6 +45,12 @@ public:
 	/// <returns></returns>
 	Vector3 GetRotate()const { return transform.rotate; }
 
+	/// <summary>
+	/// 色のGetter
+	/// </summary>
+	/// <returns></returns>
+	Vector4 GetCurrentColor()const { return currentColor_; }
+
 
 	/// <summary>
 	/// 方向のSetter
@@ -71,6 +77,13 @@ public:
 	/// </summary>
 	/// <param name="speedFinal"></param>
 	void SpeedFinal(float speedFinal) { speedFinal_ = speedFinal; }
+
+
+	/// <summary>
+	/// 最終的な色のSetter
+	/// </summary>
+	/// <param name="color"></param>
+	void SetColorFinal(const Vector4& color) { colorFinal_ = color; }
 
 
 	/// <summary>
@@ -110,6 +123,16 @@ private:
 
 	// 最終的なサイズ
 	Vector3 sizeFinal_ = Vector3(0.0f, 0.0f, 0.0f);
+
+
+	// 今の色
+	Vector4 currentColor_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+
+	// 最初の色
+	Vector4 colorStart_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+
+	// 最終的な色
+	Vector4 colorFinal_ = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 
 
 	// 方向

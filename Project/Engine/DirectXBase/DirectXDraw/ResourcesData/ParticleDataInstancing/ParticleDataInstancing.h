@@ -3,9 +3,9 @@
 
 #include "DirectXBase/DirectXHeap/DirectXHeap.h"
 #include "../../../../Func/CreateBufferResource/CreateBufferResource.h"
-#include "../../DataForGPU/TransformationData/TransformationData.h"
+#include "../../DataForGPU/ParticleForGPU/ParticleForGPU.h"
 
-class TransformationResourceDataInstancing
+class ParticleDataInstancing
 {
 public:
 
@@ -24,7 +24,7 @@ public:
 	void Register(UINT transformationRootParameter);
 
 	// データ
-	TransformationDataForGPU* data_ = nullptr;
+	ParticleForGPU* data_ = nullptr;
 
 private:
 
