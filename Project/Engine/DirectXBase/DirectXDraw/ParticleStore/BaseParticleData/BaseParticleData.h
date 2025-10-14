@@ -63,6 +63,14 @@ public:
 	std::unique_ptr<ParticleDataInstancing> particleResourcesInstancing_ = nullptr;
 
 
+	// 範囲の指定
+	enum class RANGETYPE
+	{
+		AABB,
+		SPHERE
+	};
+
+
 
 protected:
 
@@ -99,7 +107,7 @@ protected:
 	Vector3* emitRange_ = nullptr;
 
 	// 球体有効化
-	bool* enableSphere_ = nullptr;
+	RANGETYPE* enableSphere_ = nullptr;
 
 
 	// 発生数のポインタ

@@ -34,7 +34,7 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 
 	emitTime_ = (float*)malloc(sizeof(float));
 	emitRange_ = (Vector3*)malloc(sizeof(Vector3));
-	enableSphere_ = (bool*)malloc(sizeof(bool));
+	enableSphere_ = (RANGETYPE*)malloc(sizeof(RANGETYPE));
 
 	sizeRange_ = (Vector2*)malloc(sizeof(Vector2));
 	sizeFinal_ = (float*)malloc(sizeof(float));
@@ -57,7 +57,7 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 
 	*emitTime_ = 0.1f;
 	*emitRange_ = Vector3(0.0f, 0.0f, 0.0f);
-	*enableSphere_ = false;
+	*enableSphere_ = RANGETYPE::AABB;
 
 	*sizeRange_ = Vector2(1.0f, 1.0f);
 	*sizeFinal_ = 0.0f;
@@ -82,7 +82,7 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 	recordSetting->SetValue(*name_, "perEmission", perEmission_);
 	recordSetting->SetValue(*name_, "emit_Time", emitTime_);
 	recordSetting->SetValue(*name_, "emit_Range", emitRange_);
-	recordSetting->SetValue(*name_, "emit_EnableSphereRange", enableSphere_);
+	recordSetting->SetValue(*name_, "emit_Range_Type", enableSphere_);
 	recordSetting->SetValue(*name_, "size_Range", sizeRange_);
 	recordSetting->SetValue(*name_, "size_Final", sizeFinal_);
 	recordSetting->SetValue(*name_, "speed_Range", speedRange_);
@@ -129,13 +129,13 @@ void BaseParticleData::Update()
 			// 発生範囲のワールド座標
 			Vector3 emitPosition = Vector3(0.0f, 0.0f, 0.0f);
 
-			if (*enableSphere_)
+			if (*enableSphere_ == RANGETYPE::SPHERE)
 			{
 				float length = Length(*emitRange_);
 				Vector3 vector = Normalize(Vector3(GetRandomRange(-2.0f, 2.0f), GetRandomRange(-2.0f, 2.0f), GetRandomRange(-2.0f, 2.0f)));
 				emitPosition = vector * GetRandomRange(0.0f, length);
 			}
-			else
+			else if(*enableSphere_ == RANGETYPE::AABB)
 			{
 				std::pair<float, float> rangeX;
 				rangeX.first = position_->x - emitRange_->x;

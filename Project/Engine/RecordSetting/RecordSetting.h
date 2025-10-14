@@ -16,8 +16,16 @@
 #include "Math/Vector4/Vector4.h"
 #include "Math/Quaternion/Quaternion.h"
 
+#include "DirectXBase/DirectXDraw/ParticleStore/BaseParticleData/BaseParticleData.h"
+
 class RecordSetting
 {
+private:
+
+	// 範囲の指定
+	using RangeType = BaseParticleData::RANGETYPE;
+
+
 public:
 
 	~RecordSetting() = default;
@@ -97,8 +105,9 @@ private:
 
 
 
+
 	// 項目
-	using Item = std::variant<bool*, int32_t*, float*, Vector2*, Vector3*, Vector4*, Quaternion*>;
+	using Item = std::variant<bool*, int32_t*, float*, Vector2*, Vector3*, Vector4*, Quaternion*, RangeType*>;
 
 	// グループ
 	using Group = std::map<std::string, Item>;
