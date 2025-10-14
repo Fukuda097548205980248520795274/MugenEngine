@@ -91,8 +91,13 @@ protected:
 	// 名前
 	std::string* name_ = nullptr;
 
+
 	// 位置のポインタ
 	Vector3* position_ = nullptr;
+
+	// 発生範囲
+	Vector3* emitRange_ = nullptr;
+
 
 	// 発生数のポインタ
 	int32_t* perEmission_ = nullptr;
@@ -100,8 +105,12 @@ protected:
 	// 発生頻度のポインタ
 	float* emitTime_ = nullptr;
 
-	// 発生範囲
-	Vector3* emitRange_ = nullptr;
+
+	// 最小サイズ
+	float* sizeMin_ = nullptr;
+
+	// 最大サイズ
+	float* sizeMax_ = nullptr;
 
 
 

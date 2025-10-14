@@ -9,6 +9,8 @@ void GameScene::Initialize()
 	// 基底クラスの初期化
 	BaseScene::Initialize();
 
+	mainCamera_->pivotPoint_.z = -20.0f;
+
 	// プレイヤーの生成と初期化
 	player_ = std::make_unique<Player>();
 	player_->Initialize(camera3d_.get(), Vector3(0.0f, 0.0f, 0.0f));
@@ -18,19 +20,11 @@ void GameScene::Initialize()
 
 
 	// テクスチャを読み込む
-	textureHandle_ = engine_->LoadTexture("./Resources/Textures/uvChecker.png");
+	textureHandle_ = engine_->LoadTexture("./Resources/Textures/circle.png");
 
 	// ビルボードパーティクルエミッター
 	billboardParticleEmitter_ = std::make_unique<BillboardParticleEmitter>();
 	billboardParticleEmitter_->Initliaze(camera3d_.get(), 100, textureHandle_, "testParticle_0");
-
-
-	// モデルを読み込む
-	modelHandle_ = engine_->LoadModel("./Resources/Models/suzanne", "suzanne.obj");
-
-	// モデルパーティクルエミッターの生成と初期化
-	modelParticleEmitter_ = std::make_unique<ModelParticleEmitter>();
-	modelParticleEmitter_->Initliaze(camera3d_.get(), 100, modelHandle_, "testParticle_1");
 }
 
 /// <summary>
@@ -47,8 +41,6 @@ void GameScene::Update()
 
 	// パーティクルの更新処理
 	billboardParticleEmitter_->Update();
-	modelParticleEmitter_->Update();
-
 
 	//ループ再生
 	if (!engine_->IsAudioPlay(playHandle_) || playHandle_.IsUse())
@@ -67,7 +59,6 @@ void GameScene::Draw()
 
 	// パーティクルの描画処理
 	billboardParticleEmitter_->Draw();
-	modelParticleEmitter_->Draw();
 
 	// 基底クラスの描画処理
 	BaseScene::Draw();

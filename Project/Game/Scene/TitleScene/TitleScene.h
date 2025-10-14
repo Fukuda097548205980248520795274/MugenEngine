@@ -1,8 +1,6 @@
 #pragma once
 #include "MugenEngine.h"
 
-#include "../GameScene/BaseCharacter/Player/Player.h"
-
 class TitleScene : public BaseScene
 {
 public:
@@ -26,7 +24,5 @@ public:
 
 private:
 
-	// プレイヤー
-	std::unique_ptr<Player> player_ = nullptr;
 };
 

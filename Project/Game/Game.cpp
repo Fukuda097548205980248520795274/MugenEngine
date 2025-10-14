@@ -13,7 +13,7 @@ void Game::Initialize()
 	sceneManager_->SetSceneFactory(std::make_unique<SceneFactory>());
 
 	// 最初のシーンを指定する
-	sceneManager_->SceneTransition("TITLE");
+	sceneManager_->SceneTransition("GAME");
 }
 
 /// <summary>

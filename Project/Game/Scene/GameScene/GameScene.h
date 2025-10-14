@@ -33,7 +33,6 @@ public:
 
 	// パーティクルエミッター
 	std::unique_ptr<BillboardParticleEmitter> billboardParticleEmitter_ = nullptr;
-	std::unique_ptr<ModelParticleEmitter> modelParticleEmitter_ = nullptr;
 
 
 	// サウンドハンドル
@@ -45,8 +44,5 @@ public:
 
 	// テクスチャハンドル
 	TextureHandle textureHandle_{};
-
-	// モデルハンドル
-	ModelHandle modelHandle_{};
 };
 

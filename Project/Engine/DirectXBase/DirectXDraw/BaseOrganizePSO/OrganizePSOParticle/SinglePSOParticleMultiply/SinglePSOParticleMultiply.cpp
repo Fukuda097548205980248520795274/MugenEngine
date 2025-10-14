@@ -186,8 +186,8 @@ void SinglePSOParticleMultiply::Initialize(LogFile* logFile, IDxcBlob* vertexSha
 	// Depthを有効化する
 	depthStencilDesc.DepthEnable = true;
 
-	// 書き込む
-	depthStencilDesc.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ALL;
+	// デプスは書き込まない
+	depthStencilDesc.DepthWriteMask = D3D12_DEPTH_WRITE_MASK_ZERO;
 
 	// 比較関数　近ければ描画する
 	depthStencilDesc.DepthFunc = D3D12_COMPARISON_FUNC_LESS_EQUAL;

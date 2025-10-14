@@ -8,10 +8,6 @@ void TitleScene::Initialize()
 {
 	// 基底クラスの初期化
 	BaseScene::Initialize();
-
-	// プレイヤーの生成と初期化
-	player_ = std::make_unique<Player>();
-	player_->Initialize(camera3d_.get(), Vector3(0.0f, 0.0f, 0.0f));
 }
 
 /// <summary>
@@ -21,18 +17,6 @@ void TitleScene::Update()
 {
 	// 基底クラスの更新処理
 	BaseScene::Update();
-
-	// プレイヤーの更新処理
-	player_->Update();
-
-
-
-#ifdef _DEVELOPMENT
-	if (ImGui::Button("GameScene"))
-	{
-		sceneManager_->SceneTransition("GAME");
-	}
-#endif
 }
 
 /// <summary>
@@ -40,9 +24,6 @@ void TitleScene::Update()
 /// </summary>
 void TitleScene::Draw()
 {
-	// プレイヤーの描画処理
-	player_->Draw();
-
 	// 基底クラスの描画処理
 	BaseScene::Draw();
 }

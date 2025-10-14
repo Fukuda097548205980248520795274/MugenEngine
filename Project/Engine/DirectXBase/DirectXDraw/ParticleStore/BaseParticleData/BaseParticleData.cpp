@@ -33,12 +33,16 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 	perEmission_ = (int32_t*)malloc(sizeof(int32_t));
 	emitTime_ = (float*)malloc(sizeof(float));
 	emitRange_ = (Vector3*)malloc(sizeof(Vector3));
+	sizeMin_ = (float*)malloc(sizeof(float));
+	sizeMax_ = (float*)malloc(sizeof(float));
 
 	// 初期値を割り当てる
 	*position_ = Vector3(0.0f, 0.0f, 0.0f);
 	*perEmission_ = 1;
 	*emitTime_ = 0.1f;
 	*emitRange_ = Vector3(0.0f, 0.0f, 0.0f);
+	*sizeMin_ = 1.0f;
+	*sizeMax_ = 1.0f;
 
 	name_ = name;
 
@@ -48,6 +52,8 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 	recordSetting->SetValue(*name_, "perEmission", perEmission_);
 	recordSetting->SetValue(*name_, "emitTime", emitTime_);
 	recordSetting->SetValue(*name_, "emitRange", emitRange_);
+	recordSetting->SetValue(*name_, "sizeMin", sizeMin_);
+	recordSetting->SetValue(*name_, "sizeMax", sizeMax_);
 	recordSetting->RegistGroupDataReflection(*name_);
 }
 
@@ -85,10 +91,14 @@ void BaseParticleData::Update()
 			if (particles_.size() >= numMaxParticle_)
 				break;
 
+			// サイズ
+			float size = GetRandomRange(*sizeMin_, *sizeMax_);
+			Vector3 scale = Vector3(size, size, size);
+
 			// パーティクルの生成と初期化
 			std::unique_ptr<ParticleInstance> particle = std::make_unique<ParticleInstance>();
 			particle->Initialize(Vector3(GetRandomRange(rangeX.first, rangeX.second), GetRandomRange(rangeY.first, rangeY.second), GetRandomRange(rangeZ.first, rangeZ.second)),
-				Vector3(0.0f, 0.0f, 0.0f), Vector3(1.0f, 1.0f, 1.0f), 0.5f);
+				Vector3(0.0f, 0.0f, 0.0f), scale, 0.5f);
 			particles_.push_back(std::move(particle));
 		}
 
