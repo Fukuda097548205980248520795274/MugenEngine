@@ -91,6 +91,12 @@ void RecordSetting::Update()
 				Vector4** ptr = std::get_if<Vector4*>(&item);
 				ImGui::ColorEdit4(itemName.c_str(), reinterpret_cast<float*>(*ptr));
 			}
+			else if (std::holds_alternative<Quaternion*>(item))
+			{
+				// Quaternion型
+				Quaternion** ptr = std::get_if<Quaternion*>(&item);
+				ImGui::SliderFloat4(itemName.c_str(), reinterpret_cast<float*>(*ptr), -50.0f, 50.0f);
+			}
 		}
 
 
@@ -233,6 +239,12 @@ void RecordSetting::SaveFile(const std::string& groupName)
 			Vector4* value = std::get<Vector4*>(item);
 			root[groupName][itemName] = json::array({ value->x, value->y, value->z , value->w });
 		}
+		else if (std::holds_alternative<Quaternion*>(item))
+		{
+			// Vector4型
+			Quaternion* value = std::get<Quaternion*>(item);
+			root[groupName][itemName] = json::array({ value->x, value->y, value->z , value->w });
+		}
 	}
 
 	// ディレクトリがなければ作成する
@@ -363,6 +375,13 @@ void RecordSetting::RegistGroupDataReflection(const std::string& groupName)
 				// Vector4型
 				Vector4 value = { itItem->at(0), itItem->at(1), itItem->at(2), itItem->at(3) };
 				Vector4** ptr = std::get_if<Vector4*>(&item);
+				**ptr = value;
+			}
+			else if (itItem->is_array() && itItem->size() == 4 && std::holds_alternative<Quaternion*>(item))
+			{
+				// Quaternion型
+				Quaternion value = { itItem->at(0), itItem->at(1), itItem->at(2), itItem->at(3) };
+				Quaternion** ptr = std::get_if<Quaternion*>(&item);
 				**ptr = value;
 			}
 
