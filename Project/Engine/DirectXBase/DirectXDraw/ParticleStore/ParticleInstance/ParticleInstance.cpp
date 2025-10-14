@@ -15,6 +15,8 @@ void ParticleInstance::Initialize(const Vector3& position, const Vector3& rotati
 	transform.rotate = rotation;
 	transform.scale = scale;
 
+	sizeStart_ = scale;
+
 	// 放出時間
 	emitTime_ = emitTime;
 }
@@ -34,6 +36,13 @@ void ParticleInstance::Update()
 		return;
 	}
 
+	// 補間
+	float t = emitTimer_ / emitTime_;
+	
+	float speed = Lerp(speedStart_, speedFinal_, t);
+	transform.scale = Lerp(sizeStart_, sizeFinal_, t);
+	
+
 
 	// 加速度を加算する
 	gravitySpeed_ += gravityAcceleration_ * engine_->GetDeltaTime();
@@ -42,7 +51,7 @@ void ParticleInstance::Update()
 	Vector3 gravity = gravityDirection_ * gravitySpeed_ * engine_->GetDeltaTime();
 
 	// 速度ベクトル
-	Vector3 speedVector = (direction_ * speed_) * engine_->GetDeltaTime();
+	Vector3 speedVector = (direction_ * speed) * engine_->GetDeltaTime();
 
 		// 移動させる
 	transform.translate += speedVector + gravity;

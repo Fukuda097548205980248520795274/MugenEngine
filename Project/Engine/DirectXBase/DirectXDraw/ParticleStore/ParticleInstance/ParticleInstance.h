@@ -52,11 +52,25 @@ public:
 	/// <param name="direction"></param>
 	void SetDirection(const Vector3& direction) { direction_ = direction; }
 
+
 	/// <summary>
-	/// 速度のSetter
+	/// 最終的な大きさ
 	/// </summary>
-	/// <param name="speed"></param>
-	void SetSpeed(float speed) { speed_ = speed; }
+	/// <param name="scale"></param>
+	void SetSizeFinal(const Vector3& scale) { sizeFinal_ = scale; }
+
+
+	/// <summary>
+	/// 最初の速度のSetter
+	/// </summary>
+	/// <param name="speedStart"></param>
+	void SpeedStart(float speedStart) { speedStart_ = speedStart; }
+
+	/// <summary>
+	/// 最後の速度のSetter
+	/// </summary>
+	/// <param name="speedFinal"></param>
+	void SpeedFinal(float speedFinal) { speedFinal_ = speedFinal; }
 
 
 	/// <summary>
@@ -91,11 +105,21 @@ private:
 	float emitTime_ = 0.0f;
 
 
+	// 最初のサイズ
+	Vector3 sizeStart_ = Vector3(0.0f, 0.0f, 0.0f);
+
+	// 最終的なサイズ
+	Vector3 sizeFinal_ = Vector3(0.0f, 0.0f, 0.0f);
+
+
 	// 方向
 	Vector3 direction_ = Vector3(0.0f, 0.0f, 0.0f);
 
-	// 速度
-	float speed_ = 0.0f;
+	// 最初の速度
+	float speedStart_ = 0.0f;
+
+	// 最終的な速度
+	float speedFinal_ = 0.0f;
 
 
 

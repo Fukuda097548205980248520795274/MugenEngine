@@ -109,8 +109,16 @@ protected:
 	// サイズの範囲
 	Vector2* sizeRange_ = nullptr;
 
+	// 最終的なサイズ
+	float* sizeFinal_ = nullptr;
+
+
 	// 速度の範囲
 	Vector2* speedRange_ = nullptr;
+
+	// 最終的な速度
+	float* speedFinal_ = nullptr;
+
 
 	// 放出時間の範囲
 	Vector2* releasedTimeRange_ = nullptr;
