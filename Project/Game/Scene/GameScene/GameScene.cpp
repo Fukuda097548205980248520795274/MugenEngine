@@ -25,6 +25,14 @@ void GameScene::Initialize()
 	// ビルボードパーティクルエミッター
 	billboardParticleEmitter_ = std::make_unique<BillboardParticleEmitter>();
 	billboardParticleEmitter_->Initliaze(camera3d_.get(), 100, textureHandle_, "testParticle_0");
+
+
+	// モデルを読み込む
+	modelHandle_ = engine_->LoadModel("./Resources/Models/suzanne", "suzanne.obj");
+
+	// モデルパーティクルエミッター
+	modelParticleEmitter_ = std::make_unique<ModelParticleEmitter>();
+	modelParticleEmitter_->Initliaze(camera3d_.get(), 100, modelHandle_, "testParticle_1");
 }
 
 /// <summary>
@@ -41,6 +49,7 @@ void GameScene::Update()
 
 	// パーティクルの更新処理
 	billboardParticleEmitter_->Update();
+	modelParticleEmitter_->Update();
 
 	//ループ再生
 	if (!engine_->IsAudioPlay(playHandle_) || playHandle_.IsUse())
@@ -59,6 +68,7 @@ void GameScene::Draw()
 
 	// パーティクルの描画処理
 	billboardParticleEmitter_->Draw();
+	modelParticleEmitter_->Draw();
 
 	// 基底クラスの描画処理
 	BaseScene::Draw();
