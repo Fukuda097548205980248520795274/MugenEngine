@@ -376,6 +376,13 @@ public:
 	void SetParticleTextureHandle(ParticleHandle particleHandle, TextureHandle textureHandle) const { particleStore_->SetTextureHandle(particleHandle, textureHandle); }
 
 	/// <summary>
+	/// パーティクルエミッターのSetter
+	/// </summary>
+	/// <param name="position"></param>
+	/// <param name="particleHandle"></param>
+	void SetEmitterPosition(const Vector3& position, ParticleHandle particleHandle) const { particleStore_->SetEmitterPosition(position, particleHandle); }
+
+	/// <summary>
 	/// ビルボードパーティクルを描画する
 	/// </summary>
 	/// <param name="particleHandle"></param>

@@ -34,6 +34,7 @@ public:
 	/// </summary>
 	void Draw();
 
+
 	/// <summary>
 	/// パーティクルハンドルのSetter
 	/// </summary>
@@ -45,6 +46,14 @@ public:
 	/// </summary>
 	/// <param name="textureHandle"></param>
 	void SetTextureHandle(TextureHandle textureHandle);
+
+
+	/// <summary>
+	/// 位置のSetter
+	/// </summary>
+	/// <param name="position"></param>
+	void SetPosition(const Vector3& position);
+
 
 	/// <summary>
 	/// 最大パーティクル数のGetter

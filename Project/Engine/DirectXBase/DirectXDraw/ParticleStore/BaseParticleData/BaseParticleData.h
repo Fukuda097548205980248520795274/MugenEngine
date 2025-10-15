@@ -45,6 +45,13 @@ public:
 	const std::string& GetName()const { return *name_; }
 
 
+	/// <summary>
+	/// エミッターの位置のSetter
+	/// </summary>
+	/// <param name="position"></param>
+	void SetEmitterPosition(const Vector3& position) { *position_ = position; }
+
+
 
 	// テクスチャハンドル
 	TextureHandle textureHandle_{};

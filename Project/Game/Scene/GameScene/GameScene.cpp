@@ -27,6 +27,16 @@ void GameScene::Initialize()
 	enemy_->Initialize(camera3d_.get(), Vector3(0.0f, 0.0f, 10.0f));
 
 
+
+	// テクスチャを読み込む
+	textureHandle_ = engine_->LoadTexture("./Resources/Textures/circle.png");
+
+	// パーティクルエミッターの生成と初期化
+	particleEmitter_ = std::make_unique<BillboardParticleEmitter>();
+	particleEmitter_->Initliaze(camera3d_.get(), 200, textureHandle_, "particle_player");
+
+
+
 	// メインカメラ回転コントローラの生成と初期化
 	mainCameraRotateController_ = std::make_unique<MainCameraRotateController>();
 	mainCameraRotateController_->Initialize();
@@ -52,6 +62,7 @@ void GameScene::Update()
 	mainCamera_->pointRotation_.x = std::clamp(mainCamera_->pointRotation_.x, -std::numbers::pi_v<float> / 2.2f, std::numbers::pi_v<float> / 2.2f);
 	mainCamera_->pointRotation_.y = std::fmod(mainCamera_->pointRotation_.y, std::numbers::pi_v<float> *2.0f);
 
+	particleEmitter_->SetPosition(player_->GetWorldPosition());
 
 
 	// 基底クラスの更新処理
@@ -65,6 +76,10 @@ void GameScene::Update()
 
 	// 敵の更新処理
 	enemy_->Update();
+
+
+	// パーティクルの更新処理
+	particleEmitter_->Update();
 
 
 	// ループ再生
@@ -87,6 +102,9 @@ void GameScene::Draw()
 
 	// 敵の描画処理
 	enemy_->Draw();
+
+	// パーティクルの描画処理
+	particleEmitter_->Draw();
 
 	// 基底クラスの描画処理
 	BaseScene::Draw();

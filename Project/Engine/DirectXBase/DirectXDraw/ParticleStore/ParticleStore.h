@@ -64,6 +64,13 @@ public:
 	/// <param name="textureHandle"></param>
 	void SetTextureHandle(ParticleHandle particleHandle, TextureHandle textureHandle) { particleData_[particleHandle.value]->textureHandle_ = textureHandle; }
 
+	/// <summary>
+	/// パーティクルエミッターのSetter
+	/// </summary>
+	/// <param name="position"></param>
+	/// <param name="particleHandle"></param>
+	void SetEmitterPosition(const Vector3& position, ParticleHandle particleHandle) { particleData_[particleHandle.value]->SetEmitterPosition(position); }
+
 
 	/// <summary>
 	/// 格納されたパーティクルの更新処理
