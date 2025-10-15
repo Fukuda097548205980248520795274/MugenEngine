@@ -15,20 +15,17 @@ void Player::Initialize(const Camera3D* camera3d, const Vector3& startPosition)
 	moveController_ = std::make_unique<MoveController>();
 	moveController_->Initialize();
 
+	// 移動ロジックの生成と初期化
+	logicMoveRotate_ = std::make_unique<LogicMoveRotate>();
+
 	// モデルの生成と初期化
 	model_ = std::make_unique<MeshModel>();
-	model_->Initialize(camera3d_, engine_->LoadModel("./Resources/Models/multiMaterial", "multiMaterial.obj"));
+	model_->Initialize(camera3d_, engine_->LoadModel("./Resources/Models/characterBox", "characterBox.obj"));
 	model_->SetParent(worldTransform_.get());
-	
-	// UVトランスフォームを取得する
-	UVTransform* planeUVTransform = model_->GetUVTransform("Plane");
-	UVTransform* cubeUVTransform = model_->GetUVTransform("Cube");
 
 	// グループ名
 	std::string groupName = "Player";
 	engine_->SetSettingValue(groupName, "translation", &worldTransform_->translation_);
-	engine_->SetSettingValue(groupName, "uvTransform_0_rotate", &planeUVTransform->rotation_);
-	engine_->SetSettingValue(groupName, "uvTransform_1_rotate", &cubeUVTransform->rotation_);
 	engine_->RegistGroupDataReflection(groupName);
 }
 
@@ -37,9 +34,16 @@ void Player::Initialize(const Camera3D* camera3d, const Vector3& startPosition)
 /// </summary>
 void Player::Update()
 {
-
 	// 移動の値を取得して、移動する
-	worldTransform_->translation_ += moveController_->GetMoveValue();
+	worldTransform_->translation_ += moveController_->GetMoveValue(GetWorldPosition() - camera3d_->GetWorldPosition());
+
+
+	// 回転の補間
+	float tRotate = 0.075f;
+
+	// 移動回転を更新する
+	logicMoveRotate_->UpdateGoalDirection(moveController_->GetCurrentDirection());
+	worldTransform_->rotation_.y = logicMoveRotate_->GetMoveRotate(worldTransform_->rotation_.y, tRotate);
 	
 
 	// 基底クラスの更新処理

@@ -9,30 +9,31 @@ void GameScene::Initialize()
 	// 基底クラスの初期化
 	BaseScene::Initialize();
 
-	mainCamera_->pivotPoint_.z = -20.0f;
+	mainCamera_->pointLength_ = 12.0f;
+
+
+	// 平面の生成と初期化
+	plane_ = std::make_unique<MeshPlane>();
+	plane_->Initialize(camera3d_.get(), engine_->LoadTexture("./Resources/Textures/ground/ground.png"));
+	plane_->worldTransform_->scale_ *= 20.0f;
+	plane_->uvTransform_->scale_ *= 20.0f;
 
 	// プレイヤーの生成と初期化
 	player_ = std::make_unique<Player>();
 	player_->Initialize(camera3d_.get(), Vector3(0.0f, 0.0f, 0.0f));
 
+	// 敵の生成と初期化
+	enemy_ = std::make_unique<Enemy>();
+	enemy_->Initialize(camera3d_.get(), Vector3(0.0f, 0.0f, 10.0f));
+
+
+	// メインカメラ回転コントローラの生成と初期化
+	mainCameraRotateController_ = std::make_unique<MainCameraRotateController>();
+	mainCameraRotateController_->Initialize();
+
+
 	// サウンドハンドル
 	soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/forget_me_not.mp3");
-
-
-	// テクスチャを読み込む
-	textureHandle_ = engine_->LoadTexture("./Resources/Textures/circle.png");
-
-	// ビルボードパーティクルエミッター
-	billboardParticleEmitter_ = std::make_unique<BillboardParticleEmitter>();
-	billboardParticleEmitter_->Initliaze(camera3d_.get(), 100, textureHandle_, "testParticle_0");
-
-
-	// モデルを読み込む
-	modelHandle_ = engine_->LoadModel("./Resources/Models/suzanne", "suzanne.obj");
-
-	// モデルパーティクルエミッター
-	modelParticleEmitter_ = std::make_unique<ModelParticleEmitter>();
-	modelParticleEmitter_->Initliaze(camera3d_.get(), 100, modelHandle_, "testParticle_1");
 }
 
 /// <summary>
@@ -40,18 +41,33 @@ void GameScene::Initialize()
 /// </summary>
 void GameScene::Update()
 {
+	// メインカメラがプレイヤーを追従するようにする
+	Vector3 mainCameraOffset = Vector3(0.0f, 1.7f, 0.0f);
+	mainCamera_->pivotPoint_ = player_->GetWorldPosition() + mainCameraOffset;
+
+	// メインカメラ回転を取得し加算する
+	mainCamera_->pointRotation_ += mainCameraRotateController_->GetRotateValue();
+
+	// カメラの回転に限度を与える
+	mainCamera_->pointRotation_.x = std::clamp(mainCamera_->pointRotation_.x, -std::numbers::pi_v<float> / 2.2f, std::numbers::pi_v<float> / 2.2f);
+	mainCamera_->pointRotation_.y = std::fmod(mainCamera_->pointRotation_.y, std::numbers::pi_v<float> *2.0f);
+
+
+
 	// 基底クラスの更新処理
 	BaseScene::Update();
+
+	// 平面の更新処理
+	plane_->Update();
 
 	// プレイヤーの更新処理
 	player_->Update();
 
+	// 敵の更新処理
+	enemy_->Update();
 
-	// パーティクルの更新処理
-	billboardParticleEmitter_->Update();
-	modelParticleEmitter_->Update();
 
-	//ループ再生
+	// ループ再生
 	if (!engine_->IsAudioPlay(playHandle_) || playHandle_.IsUse())
 	{
 		playHandle_ =  engine_->PlayAudio(soundHandle_ , 0.3f);
@@ -63,12 +79,14 @@ void GameScene::Update()
 /// </summary>
 void GameScene::Draw()
 {
+	// 平面の描画処理
+	plane_->Draw();
+
 	// プレイヤーの描画処理
 	player_->Draw();
 
-	// パーティクルの描画処理
-	billboardParticleEmitter_->Draw();
-	modelParticleEmitter_->Draw();
+	// 敵の描画処理
+	enemy_->Draw();
 
 	// 基底クラスの描画処理
 	BaseScene::Draw();

@@ -1,7 +1,10 @@
 #pragma once
 #include "MugenEngine.h"
 
+#include "GameSystem/SystemController/MainCameraRotateController/MainCameraRotateController.h"
+
 #include "BaseCharacter/Player/Player.h"
+#include "BaseCharacter/Enemy/Enemy.h"
 
 class GameScene : public BaseScene
 {
@@ -30,20 +33,16 @@ public:
 	// プレイヤー
 	std::unique_ptr<Player> player_ = nullptr;
 
+	// 敵
+	std::unique_ptr<Enemy> enemy_ = nullptr;
 
-	// テクスチャハンドル
-	TextureHandle textureHandle_{};
-
-	// パーティクルエミッター
-	std::unique_ptr<BillboardParticleEmitter> billboardParticleEmitter_ = nullptr;
+	// 平面
+	std::unique_ptr<MeshPlane> plane_ = nullptr;
 
 
-	// モデルハンドル
-	ModelHandle modelHandle_{};
 
-	// パーティクルエミッター
-	std::unique_ptr<ModelParticleEmitter> modelParticleEmitter_ = nullptr;
-
+	// メインカメラ回転コントローラ
+	std::unique_ptr<MainCameraRotateController> mainCameraRotateController_ = nullptr;
 
 
 	// サウンドハンドル

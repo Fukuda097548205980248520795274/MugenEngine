@@ -23,7 +23,7 @@ public:
 	/// 頂点とインデックスをコマンドリストに登録する
 	/// </summary>
 	/// <param name="meshIndex"></param>
-	void Register(uint32_t meshIndex, UINT materialRootParameter) override;
+	void Register(uint32_t meshIndex) override;
 
 	/// <summary>
 	/// ボーンのアニメーションを再生する

@@ -23,6 +23,12 @@ public:
 	/// </summary>
 	virtual void Draw() = 0;
 
+	/// <summary>
+	/// ワールド座標を取得する
+	/// </summary>
+	/// <returns></returns>
+	Vector3 GetWorldPosition() const;
+
 
 protected:
 

@@ -22,6 +22,8 @@ public:
 	/// <param name="pivotPoint"></param>
 	void SetPivotPoint(const Vector3 pivotPoint) { pivotPoint_ = pivotPoint; }
 
+
+
 	// 回転
 	Vector3 pointRotation_ = Vector3(0.0f, 0.0f, 0.0f);
 };
