@@ -35,7 +35,7 @@ void Player::Initialize(const Camera3D* camera3d, const Vector3& startPosition)
 void Player::Update()
 {
 	// 移動の値を取得して、移動する
-	worldTransform_->translation_ += moveController_->GetMoveValue();
+	worldTransform_->translation_ += moveController_->GetMoveValue(GetWorldPosition() - camera3d_->GetWorldPosition());
 
 
 	// 回転の補間

@@ -10,7 +10,11 @@ void MainCameraRotateController::Initialize()
 
 	// メインカメラ回転入力ゲームパッドの生成と初期化
 	inputMainCameraRotateGamepad_ = std::make_unique<InputMainCameraRotateGamepad>();
-	inputMainCameraRotateGamepad_->Initialize(0.03f);
+	inputMainCameraRotateGamepad_->Initialize(rotateSpeed_);
+
+	// メインカメラ回転入力キーボードの生成と初期化
+	inputMainCameraRotatekeyboard_ = std::make_unique<InputMainCameraRotateKey>();
+	inputMainCameraRotatekeyboard_->Initialize(DIK_UP, DIK_LEFT, DIK_DOWN, DIK_RIGHT, rotateSpeed_);
 
 	// メインカメラ回転速度ロジックの生成
 	logicMainCameraRotateSpeed_ = std::make_unique<LogicMainCameraRotateSpeed>();
@@ -41,7 +45,19 @@ Vector3 MainCameraRotateController::GetRotateValue()
 /// </summary>
 Vector3 MainCameraRotateController::GetRotateValueKeyboard()
 {
-	return Vector3(0.0f, 0.0f, 0.0f);
+	// 回転
+	Vector3 rotate = Vector3(0.0f, 0.0f, 0.0f);
+
+	// 回転方向を取得する
+	Vector3 rotateDirection = inputMainCameraRotatekeyboard_->GetRotateDirection();
+
+	// 最大回転速度を取得する
+	float maxRotateSpeed = inputMainCameraRotatekeyboard_->GetRotateSpeed();
+
+	// 回転と速度を乗算する
+	rotate = rotateDirection * logicMainCameraRotateSpeed_->GetRotateSpeed(maxRotateSpeed);
+
+	return rotate * engine_->GetDeltaTime();
 }
 
 /// <summary>
@@ -53,7 +69,7 @@ Vector3 MainCameraRotateController::GetRotateValueGamepad()
 	Vector3 rotate = Vector3(0.0f, 0.0f, 0.0f);
 
 	// 回転方向を取得する
-	Vector3 rotateDirection = inputMainCameraRotateGamepad_->GetMoveDirection();
+	Vector3 rotateDirection = inputMainCameraRotateGamepad_->GetRotateDirection();
 
 	// 最大回転速度を取得する
 	float maxRotateSpeed = inputMainCameraRotateGamepad_->GetRotateSpeed();
@@ -61,5 +77,5 @@ Vector3 MainCameraRotateController::GetRotateValueGamepad()
 	// 回転と速度を乗算する
 	rotate = rotateDirection * logicMainCameraRotateSpeed_->GetRotateSpeed(maxRotateSpeed);
 
-	return rotate;
+	return rotate * engine_->GetDeltaTime();
 }

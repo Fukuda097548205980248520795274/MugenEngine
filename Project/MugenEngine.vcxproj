@@ -709,6 +709,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Game\Scene\GameScene\GameSystem\InputHandler\Gamepad\InputMoveGamepad\InputMoveGamepad.cpp" />
     <ClCompile Include="Game\Scene\GameScene\GameSystem\InputHandler\Gamepad\InputStanceGamepad\InputStanceGamepad.cpp" />
     <ClCompile Include="Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputDashKey\InputDashKey.cpp" />
+    <ClCompile Include="Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputMainCameraRotateKey\InputMainCameraRotateKey.cpp" />
     <ClCompile Include="Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputStanceKey\InputStanceKey.cpp" />
     <ClCompile Include="Game\Scene\GameScene\GameSystem\SystemController\MainCameraRotateController\MainCameraRotateController.cpp" />
     <ClCompile Include="Game\Scene\GameScene\GameSystem\SystemController\MoveController\MoveController.cpp" />
@@ -873,6 +874,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Game\Scene\GameScene\GameSystem\InputHandler\Gamepad\InputMoveGamepad\InputMoveGamepad.h" />
     <ClInclude Include="Game\Scene\GameScene\GameSystem\InputHandler\Gamepad\InputStanceGamepad\InputStanceGamepad.h" />
     <ClInclude Include="Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputDashKey\InputDashKey.h" />
+    <ClInclude Include="Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputMainCameraRotateKey\InputMainCameraRotateKey.h" />
     <ClInclude Include="Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputStanceKey\InputStanceKey.h" />
     <ClInclude Include="Game\Scene\GameScene\GameSystem\SystemController\MainCameraRotateController\MainCameraRotateController.h" />
     <ClInclude Include="Game\Scene\GameScene\GameSystem\SystemController\MoveController\MoveController.h" />

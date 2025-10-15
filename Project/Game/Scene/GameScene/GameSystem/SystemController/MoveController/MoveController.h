@@ -27,7 +27,7 @@ public:
 	/// 移動の値を取得する
 	/// </summary>
 	/// <returns></returns>
-	Vector3 GetMoveValue();
+	Vector3 GetMoveValue(const Vector3& toCharacter);
 
 	/// <summary>
 	/// 現在の向いている向きを取得する
@@ -44,12 +44,12 @@ private:
 	/// <summary>
 	/// キーボードで移動の値を取得する
 	/// </summary>
-	Vector3 GetMoveValueKeyboard();
+	Vector3 GetMoveValueKeyboard(const Vector3& toCharacter);
 
 	/// <summary>
 	/// ゲームパッドで移動の値を取得する
 	/// </summary>
-	Vector3 GetMoveValueGamepad();
+	Vector3 GetMoveValueGamepad(const Vector3& toCharacter);
 
 
 
@@ -64,7 +64,7 @@ private:
 	std::unique_ptr<InputMoveGamepad> inputMoveGamepad_ = nullptr;
 
 	// 歩き速度
-	float walkSpeed_ = 0.035f;
+	float walkSpeed_ = 3.0f;
 
 
 
@@ -75,7 +75,7 @@ private:
 	std::unique_ptr<InputDashGamepad> inputDashGamepad_ = nullptr;
 
 	// 走り速度
-	float dashSpeed_ = 0.125f;
+	float dashSpeed_ = 10.4f;
 
 
 	// 構え操作　キー
@@ -85,7 +85,7 @@ private:
 	std::unique_ptr<InputStanceGamepad> inputStanceGamepad_ = nullptr;
 
 	// 構え移動の速度
-	float stanceMoveSpeed_ = 0.035f;
+	float stanceMoveSpeed_ = 2.5f;
 
 
 	// 移動ロジック

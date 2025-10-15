@@ -15,7 +15,7 @@ public:
 	/// スティックに合わせて方向ベクトルを求める
 	/// </summary>
 	/// <returns></returns>
-	Vector3 GetMoveDirection();
+	Vector3 GetRotateDirection();
 
 	/// <summary>
 	/// 回転速度を取得する

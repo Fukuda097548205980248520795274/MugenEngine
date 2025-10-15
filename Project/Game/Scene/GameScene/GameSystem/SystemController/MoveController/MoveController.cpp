@@ -50,17 +50,17 @@ void MoveController::Initialize()
 /// 移動の値を取得する
 /// </summary>
 /// <returns></returns>
-Vector3 MoveController::GetMoveValue()
+Vector3 MoveController::GetMoveValue(const Vector3& toCharacter)
 {
 	// ゲームパッドが有効
 	if (engine_->IsGamepadEnable(0))
 	{
-		return GetMoveValueGamepad();
+		return GetMoveValueGamepad(toCharacter);
 	} 
 	else
 	{
 		// ゲームパッドが無効
-		return GetMoveValueKeyboard();
+		return GetMoveValueKeyboard(toCharacter);
 	}
 }
 
@@ -68,7 +68,7 @@ Vector3 MoveController::GetMoveValue()
 /// <summary>
 /// キーボードで移動の値を取得する
 /// </summary>
-Vector3 MoveController::GetMoveValueKeyboard()
+Vector3 MoveController::GetMoveValueKeyboard(const Vector3& toCharacter)
 {
 	// 方向ベクトル
 	Vector3 directionVector = Vector3(0.0f, 0.0f, 0.0f);
@@ -77,8 +77,14 @@ Vector3 MoveController::GetMoveValueKeyboard()
 	float maxSpeed = 0.0f;
 
 
+	// カメラからプレイヤーの方向に
+	Vector2 toPlayer = Normalize(Vector2(toCharacter.x, toCharacter.z));
+	float radian = std::atan2f(toPlayer.x, toPlayer.y);
+	Matrix4x4 rotateYMatrix = Make3DRotateYMatrix4x4(radian);
+
+
 	// 移動方向と移動速度を取得する
-	directionVector = inputMoveKey_->GetMoveDirection();
+	directionVector = TransformNormal(inputMoveKey_->GetMoveDirection(), rotateYMatrix);
 
 	// 構えている時　構え移動
 	if (inputStanceGamepad_->IsStance())
@@ -102,13 +108,13 @@ Vector3 MoveController::GetMoveValueKeyboard()
 	if (!inputStanceKey_->IsStance())
 		currentDirection_ = Normalize(directionVector);
 
-	return speedVector;
+	return speedVector * engine_->GetDeltaTime();
 }
 
 /// <summary>
 /// ゲームパッドで移動の値を取得する
 /// </summary>
-Vector3 MoveController::GetMoveValueGamepad()
+Vector3 MoveController::GetMoveValueGamepad(const Vector3& toCharacter)
 {
 	// 方向ベクトル
 	Vector3 directionVector = Vector3(0.0f, 0.0f, 0.0f);
@@ -117,8 +123,13 @@ Vector3 MoveController::GetMoveValueGamepad()
 	float maxSpeed = 0.0f;
 
 
+	// カメラからプレイヤーの方向に
+	Vector2 toPlayer = Normalize(Vector2(toCharacter.x, toCharacter.z));
+	float radian = std::atan2f(toPlayer.x, toPlayer.y);
+	Matrix4x4 rotateYMatrix = Make3DRotateYMatrix4x4(radian);
+
 	// 移動方向と移動速度を取得する
-	directionVector = inputMoveGamepad_->GetMoveDirection();
+	directionVector = TransformNormal(inputMoveGamepad_->GetMoveDirection(), rotateYMatrix);
 
 	// 構えている時　構え移動
 	if (inputStanceGamepad_->IsStance())
@@ -142,5 +153,5 @@ Vector3 MoveController::GetMoveValueGamepad()
 	if (!inputStanceGamepad_->IsStance())
 		currentDirection_ = Normalize(directionVector);
 
-	return speedVector;
+	return speedVector * engine_->GetDeltaTime();
 }

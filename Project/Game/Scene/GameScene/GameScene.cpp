@@ -48,6 +48,11 @@ void GameScene::Update()
 	// メインカメラ回転を取得し加算する
 	mainCamera_->pointRotation_ += mainCameraRotateController_->GetRotateValue();
 
+	// カメラの回転に限度を与える
+	mainCamera_->pointRotation_.x = std::clamp(mainCamera_->pointRotation_.x, -std::numbers::pi_v<float> / 2.2f, std::numbers::pi_v<float> / 2.2f);
+	mainCamera_->pointRotation_.y = std::fmod(mainCamera_->pointRotation_.y, std::numbers::pi_v<float> *2.0f);
+
+
 
 	// 基底クラスの更新処理
 	BaseScene::Update();

@@ -559,6 +559,9 @@
     <Filter Include="Game\Scene\GameScene\GameSystem\SystemController\MainCameraRotateController">
       <UniqueIdentifier>{10d400f6-5ee2-4887-bd9d-6847ef041470}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputMainCameraRotateKey">
+      <UniqueIdentifier>{82d4a0a7-f829-49f7-b2ef-07b9bfee7179}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -1038,6 +1041,9 @@
     <ClCompile Include="Game\Scene\GameScene\GameSystem\SystemController\MainCameraRotateController\MainCameraRotateController.cpp">
       <Filter>Game\Scene\GameScene\GameSystem\SystemController\MainCameraRotateController</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputMainCameraRotateKey\InputMainCameraRotateKey.cpp">
+      <Filter>Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputMainCameraRotateKey</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MugenEngine.h">
@@ -1513,6 +1519,9 @@
     </ClInclude>
     <ClInclude Include="Game\Scene\GameScene\GameSystem\SystemController\MainCameraRotateController\MainCameraRotateController.h">
       <Filter>Game\Scene\GameScene\GameSystem\SystemController\MainCameraRotateController</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputMainCameraRotateKey\InputMainCameraRotateKey.h">
+      <Filter>Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputMainCameraRotateKey</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

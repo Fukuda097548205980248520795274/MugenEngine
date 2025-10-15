@@ -17,7 +17,7 @@ void InputMainCameraRotateGamepad::Initialize(float rotateSpeed)
 /// スティックに合わせて方向ベクトルを求める
 /// </summary>
 /// <returns></returns>
-Vector3 InputMainCameraRotateGamepad::GetMoveDirection()
+Vector3 InputMainCameraRotateGamepad::GetRotateDirection()
 {
 	// 方向ベクトル
 	Vector3 direction = Vector3(0.0f, 0.0f, 0.0f);
