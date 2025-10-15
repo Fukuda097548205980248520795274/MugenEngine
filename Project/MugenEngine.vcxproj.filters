@@ -538,6 +538,15 @@
     <Filter Include="Engine\Include\DirectXBase\DirectXDraw\DataForGPU\ParticleForGPU">
       <UniqueIdentifier>{32bac59e-c010-4bd2-a842-a161a48465a3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Scene\GameScene\GameSystem\SystemLogic\LogicMoveRotate">
+      <UniqueIdentifier>{dd49a4de-a782-4752-9baa-7399408b442a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Scene\GameScene\GameSystem\InputHandler\Gamepad\InputStanceGamepad">
+      <UniqueIdentifier>{a49e4657-6f6e-43ad-b0d8-224a0f457e26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputStanceKey">
+      <UniqueIdentifier>{fa8100cf-c423-4996-8dde-0d609501fc16}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -996,6 +1005,15 @@
     <ClCompile Include="Engine\DirectXBase\DirectXDraw\DataForGPU\ParticleForGPU\ParticleForGPU.cpp">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\DataForGPU\ParticleForGPU</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Scene\GameScene\GameSystem\SystemLogic\LogicMoveRotate\LogicMoveRotate.cpp">
+      <Filter>Game\Scene\GameScene\GameSystem\SystemLogic\LogicMoveRotate</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\GameScene\GameSystem\InputHandler\Gamepad\InputStanceGamepad\InputStanceGamepad.cpp">
+      <Filter>Game\Scene\GameScene\GameSystem\InputHandler\Gamepad\InputStanceGamepad</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputStanceKey\InputStanceKey.cpp">
+      <Filter>Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputStanceKey</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MugenEngine.h">
@@ -1450,6 +1468,15 @@
     </ClInclude>
     <ClInclude Include="Engine\DirectXBase\DirectXDraw\DataForGPU\ParticleForGPU\ParticleForGPU.h">
       <Filter>Engine\Include\DirectXBase\DirectXDraw\DataForGPU\ParticleForGPU</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\GameScene\GameSystem\SystemLogic\LogicMoveRotate\LogicMoveRotate.h">
+      <Filter>Game\Scene\GameScene\GameSystem\SystemLogic\LogicMoveRotate</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\GameScene\GameSystem\InputHandler\Gamepad\InputStanceGamepad\InputStanceGamepad.h">
+      <Filter>Game\Scene\GameScene\GameSystem\InputHandler\Gamepad\InputStanceGamepad</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputStanceKey\InputStanceKey.h">
+      <Filter>Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputStanceKey</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

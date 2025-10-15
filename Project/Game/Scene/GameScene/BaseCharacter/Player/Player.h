@@ -2,6 +2,8 @@
 #include "../BaseCharacter.h"
 #include "../../GameSystem/SystemController/MoveController/MoveController.h"
 
+#include "../../GameSystem/SystemLogic/LogicMoveRotate/LogicMoveRotate.h"
+
 class Player : public BaseCharacter
 {
 public:
@@ -33,5 +35,8 @@ private:
 
 	// 移動コントローラ
 	std::unique_ptr<MoveController> moveController_ = nullptr;
+
+	// 移動回転ロジック
+	std::unique_ptr<LogicMoveRotate> logicMoveRotate_ = nullptr;
 };
 

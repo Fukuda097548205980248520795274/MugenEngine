@@ -705,8 +705,11 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClCompile Include="Game\Scene\GameScene\GameScene.cpp" />
     <ClCompile Include="Game\Scene\GameScene\GameSystem\InputHandler\Gamepad\InputDashGamepad\InputDashGamepad.cpp" />
     <ClCompile Include="Game\Scene\GameScene\GameSystem\InputHandler\Gamepad\InputMoveGamepad\InputMoveGamepad.cpp" />
+    <ClCompile Include="Game\Scene\GameScene\GameSystem\InputHandler\Gamepad\InputStanceGamepad\InputStanceGamepad.cpp" />
     <ClCompile Include="Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputDashKey\InputDashKey.cpp" />
+    <ClCompile Include="Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputStanceKey\InputStanceKey.cpp" />
     <ClCompile Include="Game\Scene\GameScene\GameSystem\SystemController\MoveController\MoveController.cpp" />
+    <ClCompile Include="Game\Scene\GameScene\GameSystem\SystemLogic\LogicMoveRotate\LogicMoveRotate.cpp" />
     <ClCompile Include="Game\Scene\GameScene\GameSystem\SystemLogic\LogicMoveSpeed\LogicMoveSpeed.cpp" />
     <ClCompile Include="Game\Scene\GameScene\GameSystem\SystemLogic\LogicMove\LogicMove.cpp" />
     <ClCompile Include="Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputMoveKey\InputMoveKey.cpp" />
@@ -862,8 +865,11 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Game\Scene\GameScene\GameScene.h" />
     <ClInclude Include="Game\Scene\GameScene\GameSystem\InputHandler\Gamepad\InputDashGamepad\InputDashGamepad.h" />
     <ClInclude Include="Game\Scene\GameScene\GameSystem\InputHandler\Gamepad\InputMoveGamepad\InputMoveGamepad.h" />
+    <ClInclude Include="Game\Scene\GameScene\GameSystem\InputHandler\Gamepad\InputStanceGamepad\InputStanceGamepad.h" />
     <ClInclude Include="Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputDashKey\InputDashKey.h" />
+    <ClInclude Include="Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputStanceKey\InputStanceKey.h" />
     <ClInclude Include="Game\Scene\GameScene\GameSystem\SystemController\MoveController\MoveController.h" />
+    <ClInclude Include="Game\Scene\GameScene\GameSystem\SystemLogic\LogicMoveRotate\LogicMoveRotate.h" />
     <ClInclude Include="Game\Scene\GameScene\GameSystem\SystemLogic\LogicMoveSpeed\LogicMoveSpeed.h" />
     <ClInclude Include="Game\Scene\GameScene\GameSystem\SystemLogic\LogicMove\LogicMove.h" />
     <ClInclude Include="Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputMoveKey\InputMoveKey.h" />
