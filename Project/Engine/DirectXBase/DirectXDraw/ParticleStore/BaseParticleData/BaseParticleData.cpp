@@ -133,7 +133,7 @@ void BaseParticleData::Update()
 			{
 				float length = Length(*emitRange_);
 				Vector3 vector = Normalize(Vector3(GetRandomRange(-2.0f, 2.0f), GetRandomRange(-2.0f, 2.0f), GetRandomRange(-2.0f, 2.0f)));
-				emitPosition = vector * GetRandomRange(0.0f, length);
+				emitPosition = *position_ + vector * GetRandomRange(0.0f, length);
 			}
 			else if(*enableSphere_ == RANGETYPE::AABB)
 			{

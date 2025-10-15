@@ -33,7 +33,7 @@ void GameScene::Initialize()
 
 	// パーティクルエミッターの生成と初期化
 	particleEmitter_ = std::make_unique<BillboardParticleEmitter>();
-	particleEmitter_->Initliaze(camera3d_.get(), 200, textureHandle_, "particle_player");
+	particleEmitter_->Initliaze(camera3d_.get(), 500, textureHandle_, "particle_player");
 
 
 
