@@ -1212,6 +1212,10 @@ void DirectXDraw::DrawBillboardParticle(ParticleHandle particleHandle, const Cam
 		// カウントする
 		numInstance++;
 	}
+
+	// インスタンスが0は処理しない
+	if (numInstance <= 0)
+		return;
 	
 
 	/*--------------------------
@@ -1304,6 +1308,10 @@ void DirectXDraw::DrawModelParticle(ParticleHandle particleHandle, const Camera3
 		// カウントする
 		numInstance++;
 	}
+
+	// インスタンスが0は処理しない
+	if (numInstance <= 0)
+		return;
 
 
 	/*--------------------------
