@@ -27,6 +27,11 @@ void GameScene::Initialize()
 	enemy_->Initialize(camera3d_.get(), Vector3(0.0f, 0.0f, 10.0f));
 
 
+	// メインカメラ回転コントローラの生成と初期化
+	mainCameraRotateController_ = std::make_unique<MainCameraRotateController>();
+	mainCameraRotateController_->Initialize();
+
+
 	// サウンドハンドル
 	soundHandle_ = engine_->LoadAudio("./Resources/Sounds/bgm/forget_me_not.mp3");
 }
@@ -39,6 +44,10 @@ void GameScene::Update()
 	// メインカメラがプレイヤーを追従するようにする
 	Vector3 mainCameraOffset = Vector3(0.0f, 1.7f, 0.0f);
 	mainCamera_->pivotPoint_ = player_->GetWorldPosition() + mainCameraOffset;
+
+	// メインカメラ回転を取得し加算する
+	mainCamera_->pointRotation_ += mainCameraRotateController_->GetRotateValue();
+
 
 	// 基底クラスの更新処理
 	BaseScene::Update();

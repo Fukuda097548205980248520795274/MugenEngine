@@ -1,6 +1,8 @@
 #pragma once
 #include "MugenEngine.h"
 
+#include "GameSystem/SystemController/MainCameraRotateController/MainCameraRotateController.h"
+
 #include "BaseCharacter/Player/Player.h"
 #include "BaseCharacter/Enemy/Enemy.h"
 
@@ -37,6 +39,10 @@ public:
 	// 平面
 	std::unique_ptr<MeshPlane> plane_ = nullptr;
 
+
+
+	// メインカメラ回転コントローラ
+	std::unique_ptr<MainCameraRotateController> mainCameraRotateController_ = nullptr;
 
 
 	// サウンドハンドル

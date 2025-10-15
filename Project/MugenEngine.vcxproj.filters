@@ -550,6 +550,15 @@
     <Filter Include="Game\Scene\GameScene\BaseCharacter\Enemy">
       <UniqueIdentifier>{d3fe2b81-0163-4397-a2b4-effc968d1b18}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Scene\GameScene\GameSystem\InputHandler\Gamepad\InputMainCameraRotateGamepad">
+      <UniqueIdentifier>{c426cfbe-47e5-4ac1-8d8b-f823ce7e870a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Scene\GameScene\GameSystem\SystemLogic\LogicMainCameraRotateSpeed">
+      <UniqueIdentifier>{94823834-5563-4cb3-b76a-f81b72e48069}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Scene\GameScene\GameSystem\SystemController\MainCameraRotateController">
+      <UniqueIdentifier>{10d400f6-5ee2-4887-bd9d-6847ef041470}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -1020,6 +1029,15 @@
     <ClCompile Include="Game\Scene\GameScene\BaseCharacter\Enemy\Enemy.cpp">
       <Filter>Game\Scene\GameScene\BaseCharacter\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Scene\GameScene\GameSystem\InputHandler\Gamepad\InputMainCameraRotateGamepad\InputMainCameraRotateGamepad.cpp">
+      <Filter>Game\Scene\GameScene\GameSystem\InputHandler\Gamepad\InputMainCameraRotateGamepad</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\GameScene\GameSystem\SystemLogic\LogicMainCameraRotateSpeed\LogicMainCameraRotateSpeed.cpp">
+      <Filter>Game\Scene\GameScene\GameSystem\SystemLogic\LogicMainCameraRotateSpeed</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\GameScene\GameSystem\SystemController\MainCameraRotateController\MainCameraRotateController.cpp">
+      <Filter>Game\Scene\GameScene\GameSystem\SystemController\MainCameraRotateController</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MugenEngine.h">
@@ -1486,6 +1504,15 @@
     </ClInclude>
     <ClInclude Include="Game\Scene\GameScene\BaseCharacter\Enemy\Enemy.h">
       <Filter>Game\Scene\GameScene\BaseCharacter\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\GameScene\GameSystem\InputHandler\Gamepad\InputMainCameraRotateGamepad\InputMainCameraRotateGamepad.h">
+      <Filter>Game\Scene\GameScene\GameSystem\InputHandler\Gamepad\InputMainCameraRotateGamepad</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\GameScene\GameSystem\SystemLogic\LogicMainCameraRotateSpeed\LogicMainCameraRotateSpeed.h">
+      <Filter>Game\Scene\GameScene\GameSystem\SystemLogic\LogicMainCameraRotateSpeed</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\GameScene\GameSystem\SystemController\MainCameraRotateController\MainCameraRotateController.h">
+      <Filter>Game\Scene\GameScene\GameSystem\SystemController\MainCameraRotateController</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
