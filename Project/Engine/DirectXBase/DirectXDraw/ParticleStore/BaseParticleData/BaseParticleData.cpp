@@ -109,7 +109,7 @@ void BaseParticleData::Update()
 	if (emitTimer_ >= *emitTime_)
 	{
 		// 放出数に合わせる
-		for (int32_t i = 0; i < *perEmission_; ++i)
+		for (uint32_t i = 0; i < *perEmission_; ++i)
 		{
 			// 最大数を越えないようにする
 			if (particles_.size() >= numMaxParticle_)
