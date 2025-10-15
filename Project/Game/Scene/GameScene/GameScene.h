@@ -2,6 +2,7 @@
 #include "MugenEngine.h"
 
 #include "BaseCharacter/Player/Player.h"
+#include "BaseCharacter/Enemy/Enemy.h"
 
 class GameScene : public BaseScene
 {
@@ -29,6 +30,9 @@ public:
 	
 	// プレイヤー
 	std::unique_ptr<Player> player_ = nullptr;
+
+	// 敵
+	std::unique_ptr<Enemy> enemy_ = nullptr;
 
 
 

@@ -95,15 +95,6 @@ void ObjModelResources::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 			sizeof(VertexDataForGPU) * static_cast<UINT>(modelData_.meshData[meshName].vertices.size()));
 
 
-		/*------------------------------
-		    マテリアルリソースを生成する
-		------------------------------*/
-
-		// マテリアルリソースの生成と初期化
-		std::unique_ptr<MaterialResourcesDataCBV> materialResource = std::make_unique<MaterialResourcesDataCBV>();
-		materialResource->Initialize(device_, commandList_);
-
-
 		/*---------------------
 			リストに登録する
 		---------------------*/
@@ -112,7 +103,6 @@ void ObjModelResources::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 		resource_.push_back(resource);
 		bufferView_.push_back(bufferView);
 		data_.push_back(data);
-		materialResources_.push_back(std::move(materialResource));
 	}
 }
 
@@ -120,14 +110,11 @@ void ObjModelResources::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLi
 /// 頂点とインデックスをコマンドリストに登録する
 /// </summary>
 /// <param name="meshIndex"></param>
-void ObjModelResources::Register(uint32_t meshIndex, UINT materialRootParameter)
+void ObjModelResources::Register(uint32_t meshIndex)
 {
 	// インデックスの設定
 	commandList_->IASetIndexBuffer(&bufferView_[meshIndex].first);
 
 	// 頂点の設定
 	commandList_->IASetVertexBuffers(0, 1, &bufferView_[meshIndex].second);
-
-	// マテリアルCBVの設定
-	materialResources_[meshIndex]->Register(materialRootParameter);
 }

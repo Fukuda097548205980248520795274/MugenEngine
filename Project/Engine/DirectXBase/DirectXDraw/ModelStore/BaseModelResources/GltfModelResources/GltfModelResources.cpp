@@ -107,15 +107,6 @@ void GltfModelResources::Initialize(ID3D12Device* device, ID3D12GraphicsCommandL
 			sizeof(VertexDataForGPU) * static_cast<UINT>(modelData_.meshData[meshName].vertices.size()));
 
 
-		/*------------------------------
-			マテリアルリソースを生成する
-		------------------------------*/
-
-		// マテリアルリソースの生成と初期化
-		std::unique_ptr<MaterialResourcesDataCBV> materialResource = std::make_unique<MaterialResourcesDataCBV>();
-		materialResource->Initialize(device_, commandList_);
-
-
 		/*---------------------
 			リストに登録する
 		---------------------*/
@@ -124,7 +115,6 @@ void GltfModelResources::Initialize(ID3D12Device* device, ID3D12GraphicsCommandL
 		resource_.push_back(resource);
 		bufferView_.push_back(bufferView);
 		data_.push_back(data);
-		materialResources_.push_back(std::move(materialResource));
 	}
 
 	return;
@@ -134,7 +124,7 @@ void GltfModelResources::Initialize(ID3D12Device* device, ID3D12GraphicsCommandL
 /// 頂点とインデックスをコマンドリストに登録する
 /// </summary>
 /// <param name="meshIndex"></param>
-void GltfModelResources::Register(uint32_t meshIndex, UINT materialRootParameter)
+void GltfModelResources::Register(uint32_t meshIndex)
 {
 	// メッシュの名前を取得する
 	std::string meshName = modelData_.meshNames_[meshIndex];
@@ -150,9 +140,6 @@ void GltfModelResources::Register(uint32_t meshIndex, UINT materialRootParameter
 		commandList_->IASetVertexBuffers(0, 2, vbvs);
 
 		commandList_->SetGraphicsRootDescriptorTable(10, modelData_.meshData[meshName].skinCluster.paletteSrvHandle.second);
-
-		// マテリアルCBVの設定
-		materialResources_[meshIndex]->Register(materialRootParameter);
 	}
 	else
 	{
@@ -161,8 +148,5 @@ void GltfModelResources::Register(uint32_t meshIndex, UINT materialRootParameter
 
 		// 頂点の設定
 		commandList_->IASetVertexBuffers(0, 1, &bufferView_[meshIndex].second);
-
-		// マテリアルCBVの設定
-		materialResources_[meshIndex]->Register(materialRootParameter);
 	}
 }

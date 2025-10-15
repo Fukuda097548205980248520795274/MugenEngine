@@ -21,7 +21,7 @@ public:
 	/// インデックスと頂点の
 	/// </summary>
 	/// <param name="meshIndex"></param>
-	virtual void Register(uint32_t meshIndex, UINT materialRootParameter) = 0;
+	virtual void Register(uint32_t meshIndex) = 0;
 
 	/// <summary>
 	/// ボーンのアニメーションを再生する
@@ -117,9 +117,6 @@ public:
 
 	// Microsoft::WRL 省略
 	template<class T> using ComPtr = Microsoft::WRL::ComPtr<T>;
-
-	// マテリアルリソース
-	std::vector<std::unique_ptr<MaterialResourcesDataCBV>> materialResources_;
 
 protected:
 

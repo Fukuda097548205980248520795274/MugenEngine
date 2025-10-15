@@ -547,6 +547,9 @@
     <Filter Include="Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputStanceKey">
       <UniqueIdentifier>{fa8100cf-c423-4996-8dde-0d609501fc16}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Scene\GameScene\BaseCharacter\Enemy">
+      <UniqueIdentifier>{d3fe2b81-0163-4397-a2b4-effc968d1b18}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -1014,6 +1017,9 @@
     <ClCompile Include="Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputStanceKey\InputStanceKey.cpp">
       <Filter>Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputStanceKey</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Scene\GameScene\BaseCharacter\Enemy\Enemy.cpp">
+      <Filter>Game\Scene\GameScene\BaseCharacter\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MugenEngine.h">
@@ -1477,6 +1483,9 @@
     </ClInclude>
     <ClInclude Include="Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputStanceKey\InputStanceKey.h">
       <Filter>Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputStanceKey</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\GameScene\BaseCharacter\Enemy\Enemy.h">
+      <Filter>Game\Scene\GameScene\BaseCharacter\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

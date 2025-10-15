@@ -701,6 +701,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     </ClCompile>
     <ClCompile Include="Game\SceneFactory\SceneFactory.cpp" />
     <ClCompile Include="Game\Scene\GameScene\BaseCharacter\BaseCharacter.cpp" />
+    <ClCompile Include="Game\Scene\GameScene\BaseCharacter\Enemy\Enemy.cpp" />
     <ClCompile Include="Game\Scene\GameScene\BaseCharacter\Player\Player.cpp" />
     <ClCompile Include="Game\Scene\GameScene\GameScene.cpp" />
     <ClCompile Include="Game\Scene\GameScene\GameSystem\InputHandler\Gamepad\InputDashGamepad\InputDashGamepad.cpp" />
@@ -861,6 +862,7 @@ copy "$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\dxil.dll" "$(TargetDir)dx
     <ClInclude Include="Game\Game.h" />
     <ClInclude Include="Game\SceneFactory\SceneFactory.h" />
     <ClInclude Include="Game\Scene\GameScene\BaseCharacter\BaseCharacter.h" />
+    <ClInclude Include="Game\Scene\GameScene\BaseCharacter\Enemy\Enemy.h" />
     <ClInclude Include="Game\Scene\GameScene\BaseCharacter\Player\Player.h" />
     <ClInclude Include="Game\Scene\GameScene\GameScene.h" />
     <ClInclude Include="Game\Scene\GameScene\GameSystem\InputHandler\Gamepad\InputDashGamepad\InputDashGamepad.h" />
