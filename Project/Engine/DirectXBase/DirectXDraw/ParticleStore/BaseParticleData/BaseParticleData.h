@@ -118,7 +118,7 @@ protected:
 
 
 	// 発生数のポインタ
-	int32_t* perEmission_ = nullptr;
+	uint32_t* perEmission_ = nullptr;
 
 	// 発生頻度のポインタ
 	float* emitTime_ = nullptr;

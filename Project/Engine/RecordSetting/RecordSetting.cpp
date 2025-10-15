@@ -65,25 +65,33 @@ void RecordSetting::Update()
 			{
 				// int32_t型
 				int32_t** ptr = std::get_if<int32_t*>(&item);
-				ImGui::SliderInt(itemName.c_str(), *ptr, -50, 50);
+				ImGui::DragInt(itemName.c_str(), *ptr, 0.5f, -100000, 100000);
+			}
+			else if (std::holds_alternative<uint32_t*>(item))
+			{
+				// uint32_t型
+				uint32_t** ptr = std::get_if<uint32_t*>(&item);
+				uint32_t min = 0;
+				uint32_t max = 100000;
+				ImGui::DragScalar(itemName.c_str(), ImGuiDataType_U32, *ptr, 0.5f, &min, &max);
 			}
 			else if (std::holds_alternative<float*>(item))
 			{
 				// float型
 				float** ptr = std::get_if<float*>(&item);
-				ImGui::SliderFloat(itemName.c_str(), *ptr, -50.0f, 50.0f);
+				ImGui::DragFloat(itemName.c_str(), *ptr, 0.01f, -100000.0f, 100000.0f);
 			}
 			else if (std::holds_alternative<Vector2*>(item))
 			{
 				// Vector2型
 				Vector2** ptr = std::get_if<Vector2*>(&item);
-				ImGui::SliderFloat2(itemName.c_str(), reinterpret_cast<float*>(*ptr), -50.0f, 50.0f);
+				ImGui::DragFloat2(itemName.c_str(), reinterpret_cast<float*>(*ptr), 0.01f, -100000.0f, 100000.0f);
 			}
 			else if (std::holds_alternative<Vector3*>(item))
 			{
 				// Vector3型
 				Vector3** ptr = std::get_if<Vector3*>(&item);
-				ImGui::SliderFloat3(itemName.c_str(), reinterpret_cast<float*>(*ptr), -50.0f, 50.0f);
+				ImGui::DragFloat3(itemName.c_str(), reinterpret_cast<float*>(*ptr), 0.01f, -100000.0f, 100000.0f);
 			}
 			else if (std::holds_alternative<Vector4*>(item))
 			{
@@ -95,7 +103,7 @@ void RecordSetting::Update()
 			{
 				// Quaternion型
 				Quaternion** ptr = std::get_if<Quaternion*>(&item);
-				ImGui::SliderFloat4(itemName.c_str(), reinterpret_cast<float*>(*ptr), -50.0f, 50.0f);
+				ImGui::DragFloat4(itemName.c_str(), reinterpret_cast<float*>(*ptr), 0.01f, -100000.0f, 100000.0f);
 			}
 			else if (std::holds_alternative<RangeType*>(item))
 			{
@@ -224,6 +232,12 @@ void RecordSetting::SaveFile(const std::string& groupName)
 		{
 			// int32_t型
 			int32_t* value = std::get<int32_t*>(item);
+			root[groupName][itemName] = *value;
+		}
+		else if (std::holds_alternative<uint32_t*>(item))
+		{
+			// uint32_t型
+			uint32_t* value = std::get<uint32_t*>(item);
 			root[groupName][itemName] = *value;
 		}
 		else if (std::holds_alternative<float*>(item))
@@ -364,6 +378,13 @@ void RecordSetting::RegistGroupDataReflection(const std::string& groupName)
 				// int32_t型
 				int32_t value = itItem->get<int32_t>();
 				int32_t** ptr = std::get_if<int32_t*>(&item);
+				**ptr = value;
+			}
+			else if (itItem->is_number_integer() && std::holds_alternative<uint32_t*>(item))
+			{
+				// uint32_t型
+				uint32_t value = itItem->get<uint32_t>();
+				uint32_t** ptr = std::get_if<uint32_t*>(&item);
 				**ptr = value;
 			}
 			else if (itItem->is_number_float() && std::holds_alternative<float*>(item))
