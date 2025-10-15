@@ -34,6 +34,9 @@ public:
 	// 敵
 	std::unique_ptr<Enemy> enemy_ = nullptr;
 
+	// 平面
+	std::unique_ptr<MeshPlane> plane_ = nullptr;
+
 
 
 	// サウンドハンドル

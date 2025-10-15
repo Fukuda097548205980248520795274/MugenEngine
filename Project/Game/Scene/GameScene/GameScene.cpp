@@ -9,6 +9,15 @@ void GameScene::Initialize()
 	// 基底クラスの初期化
 	BaseScene::Initialize();
 
+	mainCamera_->pointLength_ = 12.0f;
+
+
+	// 平面の生成と初期化
+	plane_ = std::make_unique<MeshPlane>();
+	plane_->Initialize(camera3d_.get(), engine_->LoadTexture("./Resources/Textures/ground/ground.png"));
+	plane_->worldTransform_->scale_ *= 20.0f;
+	plane_->uvTransform_->scale_ *= 20.0f;
+
 	// プレイヤーの生成と初期化
 	player_ = std::make_unique<Player>();
 	player_->Initialize(camera3d_.get(), Vector3(0.0f, 0.0f, 0.0f));
@@ -27,13 +36,20 @@ void GameScene::Initialize()
 /// </summary>
 void GameScene::Update()
 {
+	// メインカメラがプレイヤーを追従するようにする
+	Vector3 mainCameraOffset = Vector3(0.0f, 1.7f, 0.0f);
+	mainCamera_->pivotPoint_ = player_->GetWorldPosition() + mainCameraOffset;
+
 	// 基底クラスの更新処理
 	BaseScene::Update();
+
+	// 平面の更新処理
+	plane_->Update();
 
 	// プレイヤーの更新処理
 	player_->Update();
 
-	// 敵の更新所r
+	// 敵の更新処理
 	enemy_->Update();
 
 
@@ -49,6 +65,9 @@ void GameScene::Update()
 /// </summary>
 void GameScene::Draw()
 {
+	// 平面の描画処理
+	plane_->Draw();
+
 	// プレイヤーの描画処理
 	player_->Draw();
 
