@@ -41,6 +41,14 @@ public:
 
 
 
+	// パーティクル
+	std::unique_ptr<BillboardParticleEmitter> particleEmitter_ = nullptr;
+
+	// テクスチャハンドル
+	TextureHandle textureHandle_{};
+
+
+
 	// メインカメラ回転コントローラ
 	std::unique_ptr<MainCameraRotateController> mainCameraRotateController_ = nullptr;
 

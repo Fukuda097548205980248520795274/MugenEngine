@@ -33,6 +33,7 @@ private:
 	// モデル
 	std::unique_ptr<MeshModel> model_ = nullptr;
 
+
 	// 移動コントローラ
 	std::unique_ptr<MoveController> moveController_ = nullptr;
 

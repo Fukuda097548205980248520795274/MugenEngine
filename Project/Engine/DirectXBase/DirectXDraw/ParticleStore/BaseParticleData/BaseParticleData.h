@@ -45,6 +45,13 @@ public:
 	const std::string& GetName()const { return *name_; }
 
 
+	/// <summary>
+	/// エミッターの位置のSetter
+	/// </summary>
+	/// <param name="position"></param>
+	void SetEmitterPosition(const Vector3& position) { *position_ = position; }
+
+
 
 	// テクスチャハンドル
 	TextureHandle textureHandle_{};
@@ -111,7 +118,7 @@ protected:
 
 
 	// 発生数のポインタ
-	int32_t* perEmission_ = nullptr;
+	uint32_t* perEmission_ = nullptr;
 
 	// 発生頻度のポインタ
 	float* emitTime_ = nullptr;

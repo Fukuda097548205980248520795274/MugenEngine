@@ -1,0 +1,49 @@
+{
+    "particle_0": {
+        "color_Final": [
+            1.0,
+            1.0,
+            1.0,
+            0.0
+        ],
+        "color_Start": [
+            1.0,
+            1.0,
+            1.0,
+            1.0
+        ],
+        "emit_Range": [
+            10.145000457763672,
+            10.0,
+            10.0
+        ],
+        "emit_Range_Type": 1,
+        "emit_Time": -0.3019999861717224,
+        "gravity_Acceleration": 3.4140000343322754,
+        "gravity_Direction": [
+            0.0,
+            -1.0,
+            0.0
+        ],
+        "perEmission": 2,
+        "position": [
+            2.1740000247955322,
+            0.0,
+            0.0
+        ],
+        "releasedTimeRange": [
+            1.0,
+            1.0
+        ],
+        "size_Final": -0.0,
+        "size_Range": [
+            1.0,
+            1.0
+        ],
+        "speed_Final": 0.0,
+        "speed_Range": [
+            0.10499999672174454,
+            2.7820000648498535
+        ]
+    }
+}

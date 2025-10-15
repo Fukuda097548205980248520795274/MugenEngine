@@ -30,7 +30,7 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 
 	// メモリを割り当てる
 	position_ = (Vector3*)malloc(sizeof(Vector3));
-	perEmission_ = (int32_t*)malloc(sizeof(int32_t));
+	perEmission_ = (uint32_t*)malloc(sizeof(uint32_t));
 
 	emitTime_ = (float*)malloc(sizeof(float));
 	emitRange_ = (Vector3*)malloc(sizeof(Vector3));
@@ -78,8 +78,8 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 
 	// 調整項目
 	RecordSetting* recordSetting = RecordSetting::GetInstance();
-	recordSetting->SetValue(*name_, "position", position_);
-	recordSetting->SetValue(*name_, "perEmission", perEmission_);
+	recordSetting->SetValue(*name_, "emit_position", position_);
+	recordSetting->SetValue(*name_, "emit_perEmission", perEmission_);
 	recordSetting->SetValue(*name_, "emit_Time", emitTime_);
 	recordSetting->SetValue(*name_, "emit_Range", emitRange_);
 	recordSetting->SetValue(*name_, "emit_Range_Type", enableSphere_);

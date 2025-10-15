@@ -20,9 +20,5 @@ public:
 	/// 描画処理
 	/// </summary>
 	void Draw() override;
-
-
-private:
-
 };
 

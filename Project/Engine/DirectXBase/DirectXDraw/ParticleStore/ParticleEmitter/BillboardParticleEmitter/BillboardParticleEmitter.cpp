@@ -67,3 +67,13 @@ void BillboardParticleEmitter::SetTextureHandle(TextureHandle textureHandle)
 {
 	engine_->SetParticleTextureHandle(particleHandle_, textureHandle);
 }
+
+
+/// <summary>
+/// 位置のSetter
+/// </summary>
+/// <param name="position"></param>
+void BillboardParticleEmitter::SetPosition(const Vector3& position)
+{
+	engine_->SetEmitterPosition(position, particleHandle_);
+}
