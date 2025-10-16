@@ -29,6 +29,7 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 
 
 	// メモリを割り当てる
+	isEmission_ = (bool*)malloc(sizeof(bool));
 	position_ = (Vector3*)malloc(sizeof(Vector3));
 	perEmission_ = (uint32_t*)malloc(sizeof(uint32_t));
 
@@ -52,6 +53,7 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 
 
 	// 初期値を割り当てる
+	*isEmission_ = true;
 	*position_ = Vector3(0.0f, 0.0f, 0.0f);
 	*perEmission_ = 1;
 
@@ -78,6 +80,7 @@ void BaseParticleData::Initialize(ID3D12Device* device, ID3D12GraphicsCommandLis
 
 	// 調整項目
 	RecordSetting* recordSetting = RecordSetting::GetInstance();
+	recordSetting->SetValue(*name_, "isEmission", isEmission_);
 	recordSetting->SetValue(*name_, "emit_position", position_);
 	recordSetting->SetValue(*name_, "emit_perEmission", perEmission_);
 	recordSetting->SetValue(*name_, "emit_Time", emitTime_);
@@ -111,6 +114,10 @@ void BaseParticleData::Update()
 		// 放出数に合わせる
 		for (uint32_t i = 0; i < *perEmission_; ++i)
 		{
+			// 放出しないとき
+			if (*isEmission_ == false)
+				break;
+
 			// 最大数を越えないようにする
 			if (particles_.size() >= numMaxParticle_)
 				break;
@@ -133,7 +140,7 @@ void BaseParticleData::Update()
 			{
 				float length = Length(*emitRange_);
 				Vector3 vector = Normalize(Vector3(GetRandomRange(-2.0f, 2.0f), GetRandomRange(-2.0f, 2.0f), GetRandomRange(-2.0f, 2.0f)));
-				emitPosition = vector * GetRandomRange(0.0f, length);
+				emitPosition = *position_ + vector * GetRandomRange(0.0f, length);
 			}
 			else if(*enableSphere_ == RANGETYPE::AABB)
 			{
