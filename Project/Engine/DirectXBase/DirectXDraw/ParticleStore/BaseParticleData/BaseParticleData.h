@@ -107,6 +107,9 @@ protected:
 	std::string* name_ = nullptr;
 
 
+	// 放出フラグ
+	bool* isEmission_ = nullptr;
+
 	// 位置のポインタ
 	Vector3* position_ = nullptr;
 
