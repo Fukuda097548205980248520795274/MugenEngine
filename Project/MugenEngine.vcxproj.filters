@@ -562,6 +562,9 @@
     <Filter Include="Game\Scene\GameScene\GameSystem\InputHandler\Keyboard\InputMainCameraRotateKey">
       <UniqueIdentifier>{82d4a0a7-f829-49f7-b2ef-07b9bfee7179}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Scene\GameScene\BaseCharacter\Player\BaseMoveState">
+      <UniqueIdentifier>{72e610cc-c68d-4841-b2c6-59effa6a3d90}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

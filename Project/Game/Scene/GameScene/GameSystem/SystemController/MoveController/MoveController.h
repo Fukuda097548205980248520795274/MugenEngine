@@ -35,6 +35,12 @@ public:
 	/// <returns></returns>
 	Vector3 GetCurrentDirection()const { return currentDirection_; }
 
+	/// <summary>
+	/// 構えフラグのGetter
+	/// </summary>
+	/// <returns></returns>
+	bool IsStance()const { return isStance_; }
+
 
 private:
 
@@ -86,6 +92,10 @@ private:
 
 	// 構え移動の速度
 	float stanceMoveSpeed_ = 2.5f;
+
+
+	// 構えフラグ
+	bool isStance_ = false;
 
 
 	// 移動ロジック

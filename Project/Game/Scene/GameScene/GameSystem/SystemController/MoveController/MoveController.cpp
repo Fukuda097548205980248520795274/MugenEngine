@@ -86,8 +86,11 @@ Vector3 MoveController::GetMoveValueKeyboard(const Vector3& toCharacter)
 	// 移動方向と移動速度を取得する
 	directionVector = TransformNormal(inputMoveKey_->GetMoveDirection(), rotateYMatrix);
 
+	// 構えているかどうかの判定
+	isStance_ = inputStanceKey_->IsStance();
+
 	// 構えている時　構え移動
-	if (inputStanceGamepad_->IsStance())
+	if (isStance_)
 	{
 		maxSpeed = inputStanceKey_->GetStanceMoveSpeed();
 	}
@@ -131,8 +134,11 @@ Vector3 MoveController::GetMoveValueGamepad(const Vector3& toCharacter)
 	// 移動方向と移動速度を取得する
 	directionVector = TransformNormal(inputMoveGamepad_->GetMoveDirection(), rotateYMatrix);
 
+	// 構えているかどうかを判定する
+	isStance_ = inputStanceGamepad_->IsStance();
+
 	// 構えている時　構え移動
-	if (inputStanceGamepad_->IsStance())
+	if (isStance_)
 	{
 		maxSpeed = inputStanceGamepad_->GetStanceMoveSpeed();
 	}
